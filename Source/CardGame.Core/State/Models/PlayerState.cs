@@ -52,5 +52,41 @@ namespace CardGame.Core.State.Models
              ); /* Ręka / Pobieranie kart robimy później. */
         }
 
+        /* ----------- Pomocnicze metody dla Immutable State ------- 
+         * 1. Czy mamy wystarczająco dużo Blood, aby zagrać kartę */
+        public bool CanPlayCard(int cost)
+        {
+            return CurrentBlood >= cost;
+        }
+
+        // 2. Metoda zwracająca nowy stan gracza po wydaniu krwi/many.
+        public PlayerState WithBloodSpent(int amount)
+        {
+            return new PlayerState(
+                PlayerId, Health, MaxBlood,
+                CurrentBlood - amount, // Odjęcie krwi/many.
+                Hand, DrawPile,
+                DiscardPile);
+        }
+
+        public PlayerState WithCardRemovedFromHand(CardInstance cardToRemove)
+        {
+            var newHand = new List<CardInstance>(Hand);
+            var index = newHand.FindIndex(c => c.InstanceId == cardToRemove.InstanceId);
+
+            if (index != -1)
+            {
+                newHand.RemoveAt(index);
+            }
+            return new PlayerState(
+                PlayerId,
+                Health,
+                MaxBlood,
+                CurrentBlood,
+                newHand,
+                DrawPile,
+                DiscardPile);
+        }
+
     }
 }

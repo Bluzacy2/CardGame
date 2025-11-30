@@ -44,7 +44,7 @@ namespace CardGame.Core.StateMachine.Phases
             {startingPlayerForNextTurn = 2;}
 
             return currentState.With(
-                turnNummber: nextTurnNumber,
+                turnNumber: nextTurnNumber,
                 currentPhase: GamePhase.UnitOnly,
                 activePlayerId: startingPlayerForNextTurn);
         }

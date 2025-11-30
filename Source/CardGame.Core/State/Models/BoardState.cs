@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CardGame.Core.Cards.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,19 @@ namespace CardGame.Core.State.Models
                 emptyLines.Add(Line.Empty(i));
             }
             return new BoardState(emptyLines);
+        }
+
+        public BoardState WithUnitPlacedAt(int lineIndex, int playerId, CardInstance unit)
+        {
+            var newLines = new List<Line>(Lines);
+
+            var oldLine = newLines[lineIndex];
+            var newLine = oldLine.WithUnitPlaced(playerId, unit);
+
+            newLines[lineIndex] = newLine;
+
+            return new BoardState(newLines);
+
         }
     }
 }

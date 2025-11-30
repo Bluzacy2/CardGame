@@ -23,5 +23,22 @@ namespace CardGame.Core.State.Models
         {
             return new Line(index, null, null);
         }
+
+        public bool IsSlotEmpty(int playerId)
+        {
+            return playerId == 1 ? Player1Unit == null : Player2Unit == null;
+        }
+
+        public Line WithUnitPlaced(int playerId, CardInstance unit)
+        {
+            if (playerId == 1)
+            {
+                return new Line(Index, unit, Player2Unit); // Gracz 1 stawia jednostkę; Gracz 2 pozostaje bez zmian
+            }
+            else
+            {
+                return new Line(Index, Player1Unit, unit); // Gracz 2 stawia jednostkę; Gracz 1 pozostaje bez zmian
+            }
+        }
     }
 }

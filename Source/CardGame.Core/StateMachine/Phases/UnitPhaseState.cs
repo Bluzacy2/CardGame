@@ -23,7 +23,7 @@ namespace CardGame.Core.StateMachine.Phases
             /* Dozwolone komendy w fazie jednostek są następujące:
              * 1. Zagranie jedostki.
              * 2. Zakończenie fazy (tury gracza). */
-
+            if (command is PlayUnitCommand) return true;
             /* wstaw wystawienie jednostki komenda */
             if (command is EndPhaseCommand) return true;
 
