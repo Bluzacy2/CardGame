@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace CardGame.Core.GameRules.Damage
 {
-    internal class DamageType
+    public enum DamageType
     {
+        Combat,
+        Action,
+        Effect
     }
 }
