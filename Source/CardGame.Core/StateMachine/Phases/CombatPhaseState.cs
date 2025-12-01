@@ -9,6 +9,7 @@ using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
 using CardGame.Core.StateMachine.Interfaces;
+using CardGame.Core.Combat;
 
 namespace CardGame.Core.StateMachine.Phases
 {
@@ -29,6 +30,8 @@ namespace CardGame.Core.StateMachine.Phases
             /* ---------------------- KONIEC RUNDY ----------------------------
              * + następuje początek kolejnejm więc musimy:
              * 1. Zwiększyś numer++ rundy. */
+            var orchestrator = new CombatOrchestrator();
+            var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState);
             int nextTurnNumber = currentState.TurnNumber + 1;
             /* Ogarnąć, który gracz ma rozpocząć kolejną turę/rundę.
              * (termin tura/runda jest używany zamiennie w tym kontekście). */
@@ -43,7 +46,7 @@ namespace CardGame.Core.StateMachine.Phases
             else
             {startingPlayerForNextTurn = 2;}
 
-            return currentState.With(
+            return stateAfterCombat.With(
                 turnNumber: nextTurnNumber,
                 currentPhase: GamePhase.UnitOnly,
                 activePlayerId: startingPlayerForNextTurn);

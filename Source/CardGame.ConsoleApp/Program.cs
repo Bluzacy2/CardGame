@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using CardGame.Core.Application;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.Commands.Implementations;
-using CardGame.Core.State.Enums;  
+using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
 
 namespace CardGame.ConsoleApp
@@ -13,100 +12,86 @@ namespace CardGame.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8; // Żeby ładnie wyświetlało znaki
-            Console.WriteLine("=== TEST ZAGRYWANIA JEDNOSTKI ===");
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.WriteLine("=== TEST WALKI (IMMUTABLE) ===");
 
-            // 1. STWORZENIE KARTY
-            // Definicja: Krwawy Wilk (Atak 2, Życie 2, Koszt 1 Krwi)
-            var wolfStats = new CardStats(attack: 2, health: 2, bloodCost: 1);
-            var wolfDef = new CardDefinition("wolf_01", "Krwawy Wilk", wolfStats);
+            // 1. DEFINICJE KART
+            // Wilk: 2 Atak / 2 HP
+            var wolfStats = new CardStats(2, 2, 1);
+            var wolfDef = new CardDefinition("wolf", "Krwawy Wilk", wolfStats);
 
-            // Instancja: Konkretny egzemplarz tej karty (ID 100, Właściciel: Gracz 1)
-            var wolfCard = new CardInstance(instanceId: 100, ownerPlayerId: 1, definition: wolfDef);
+            // Goblin: 1 Atak / 1 HP
+            var goblinStats = new CardStats(1, 1, 1);
+            var goblinDef = new CardDefinition("goblin", "Słaby Goblin", goblinStats);
 
-            // 2. PRZYGOTOWANIE STANU GRY (Manualne, żeby dać kartę do ręki)
-            // Normalnie GameState.Initial daje puste ręce, więc robimy to "ręcznie"
+            // 2. INSTANCJE
+            var p1Wolf = new CardInstance(100, 1, wolfDef);   // Gracz 1
+            var p2Goblin = new CardInstance(200, 2, goblinDef); // Gracz 2
 
-            var handA = new List<CardInstance> { wolfCard }; // Gracz A ma Wilka w ręce
-            var deckA = new List<CardInstance>();
+            // 3. SETUP PLANSZY "NA SZTYWNO"
+            // Ustawiamy je naprzeciwko siebie na Linii 0
+            var line0 = new Line(0, p1Wolf, p2Goblin);
 
-            // Tworzymy Gracza A "na bogato" - ma kartę i 1 punkt Krwi
-            var playerA = new PlayerState(1, 20, 1, 1, handA, deckA, new List<CardInstance>());
-            var playerB = PlayerState.Initial(2, new List<CardInstance>()); // Gracz B pusty
+            var lines = new List<Line> {
+                line0,
+                Line.Empty(1), Line.Empty(2), Line.Empty(3)
+            };
+            var initialBoard = new BoardState(lines);
 
-            // Składamy GameState
+            // 4. SETUP STANU GRY (Faza Combat)
+            // Ustawiamy od razu fazę COMBAT, żeby nie klikać "End Phase" 5 razy
             var initialState = new GameState(
                 turnNumber: 1,
-                currentPhase: GamePhase.UnitOnly,
+                currentPhase: GamePhase.Combat, // <--- JESTEŚMY TUŻ PRZED WALKĄ
                 activePlayerId: 1,
-                board: BoardState.Empty(),
-                playerA: playerA,
-                playerB: playerB
+                board: initialBoard,
+                playerA: PlayerState.Initial(1, new List<CardInstance>()),
+                playerB: PlayerState.Initial(2, new List<CardInstance>())
             );
 
-            // 3. ODPALENIE SILNIKA
             var engine = new GameEngine(initialState);
 
-            // Wyświetl stan PRZED zagraniem
-            Console.WriteLine("\n--- STAN PRZED RUCHEM ---");
+            Console.WriteLine("\n--- SYTUACJA PRZED WALKĄ ---");
             PrintBoard(engine.CurrentState);
-            PrintPlayer(engine.CurrentState.PlayerA, "Gracz A");
 
-            // 4. WYKONANIE RUCHU (PlayUnitCommand)
-            Console.WriteLine("\n[AKCJA] Gracz A zagrywa 'Krwawego Wilka' na Linię 0...");
+            // 5. WYKONANIE WALKI
+            // W fazie Combat jedyna komenda to EndPhase, która odpala logikę walki
+            Console.WriteLine("\n[AKCJA] Rozpoczynamy walkę (EndPhaseCommand)...");
 
-            try
-            {
-                var playCommand = new PlayUnitCommand(
-                    playerId: 1,
-                    cardInstanceId: 100, // ID naszego wilka
-                    targetLineIndex: 0   // Pierwsza linia
-                );
+            var combatCmd = new EndPhaseCommand(1);
+            engine.ExecuteCommand(combatCmd);
 
-                engine.ExecuteCommand(playCommand);
+            Console.WriteLine("\n--- SYTUACJA PO WALCE ---");
+            PrintBoard(engine.CurrentState);
 
-                // Wyświetl stan PO zagraniu
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\n>>> SUKCES! KARTA ZAGRANA <<<");
-                Console.ResetColor();
+            // Weryfikacja
+            var l0 = engine.CurrentState.Board.Lines[0];
 
-                Console.WriteLine("\n--- STAN PO RUCHU ---");
-                PrintBoard(engine.CurrentState);
-                PrintPlayer(engine.CurrentState.PlayerA, "Gracz A");
-            }
-            catch (Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\n[BŁĄD] Nie udało się zagrać karty: {ex.Message}");
-                Console.ResetColor();
-            }
+            if (l0.Player1Unit != null && l0.Player1Unit.CurrentStats.Health == 1)
+                Console.WriteLine("\n[OK] Wilk przeżył i ma 1 HP.");
+            else
+                Console.WriteLine("\n[BŁĄD] Stan Wilka jest niepoprawny!");
+
+            if (l0.Player2Unit == null)
+                Console.WriteLine("[OK] Goblin zginął (zniknął z planszy).");
+            else
+                Console.WriteLine($"[BŁĄD] Goblin nadal żyje! HP: {l0.Player2Unit.CurrentStats.Health}");
 
             Console.ReadKey();
         }
 
-        // --- Metody pomocnicze do wyświetlania w konsoli ---
-
-        static void PrintPlayer(PlayerState p, string name)
-        {
-            Console.WriteLine($"{name} [HP: {p.Health} | Krew: {p.CurrentBlood}/{p.MaxBlood}]");
-            Console.WriteLine($"  Ręka: {p.Hand.Count} kart");
-            foreach (var c in p.Hand)
-            {
-                Console.WriteLine($"   - {c.Definition.Name} (Koszt: {c.CurrentStats.BloodCost})");
-            }
-        }
-
         static void PrintBoard(GameState state)
         {
-            Console.WriteLine("PLANASZA:");
-            for (int i = 0; i < 4; i++)
-            {
-                var line = state.Board.Lines[i];
-                var p1Unit = line.Player1Unit != null ? $"[{line.Player1Unit.Definition.Name}]" : "[PUSTO]";
-                var p2Unit = line.Player2Unit != null ? $"[{line.Player2Unit.Definition.Name}]" : "[PUSTO]";
+            var line = state.Board.Lines[0];
+            string p1Txt = line.Player1Unit != null
+                ? $"{line.Player1Unit.Definition.Name} ({line.Player1Unit.CurrentStats.Attack}/{line.Player1Unit.CurrentStats.Health})"
+                : "[TRUP/PUSTO]";
 
-                Console.WriteLine($"  Linia {i}: {p1Unit} vs {p2Unit}");
-            }
+            string p2Txt = line.Player2Unit != null
+                ? $"{line.Player2Unit.Definition.Name} ({line.Player2Unit.CurrentStats.Attack}/{line.Player2Unit.CurrentStats.Health})"
+                : "[TRUP/PUSTO]";
+
+            Console.WriteLine($"Linia 0: {p1Txt}  VS  {p2Txt}");
         }
     }
 }

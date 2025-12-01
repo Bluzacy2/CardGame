@@ -40,5 +40,11 @@ namespace CardGame.Core.State.Models
                 return new Line(Index, Player1Unit, unit); // Gracz 2 stawia jednostkę; Gracz 1 pozostaje bez zmian
             }
         }
+
+        // Dodatek dla Combat Phase'a: Aktualizowanie obu jednostek jednocześnie. - B.
+        public Line UpdateUnits(CardInstance ? newP1Unit, CardInstance ? newP2Unit)
+        {
+            return new Line(Index, newP1Unit, newP2Unit);
+        }
     }
 }
