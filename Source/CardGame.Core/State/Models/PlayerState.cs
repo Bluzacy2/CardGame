@@ -88,5 +88,62 @@ namespace CardGame.Core.State.Models
                 DiscardPile);
         }
 
+        public PlayerState WithCardDrawn()
+        {
+            if (DrawPile.Count == 0)
+            {
+                return this;
+            }
+            var cardToDraw = DrawPile[0];
+            var newDrawPile = new List<CardInstance>(DrawPile);
+            newDrawPile.RemoveAt(0);
+
+            var newHand = new List<CardInstance>(Hand);
+            newHand.Add(cardToDraw);
+
+            return new PlayerState(
+                PlayerId, Health, MaxBlood, CurrentBlood, 
+                newHand, newDrawPile, DiscardPile);
+        }
+
+        public PlayerState WithTurnStartBlood(int turnNumber)
+        {
+            int newMaxBlood = Math.Clamp(turnNumber, 1, 10);
+            return new PlayerState(
+                PlayerId, Health, newMaxBlood, newMaxBlood,
+                Hand, DrawPile, DiscardPile);
+        }
+
+        public PlayerState WithCardAddedToHand(CardInstance card)
+        {
+            var newHand = new List<CardInstance>(Hand);
+            newHand.Add(card);
+
+            return new PlayerState(
+                PlayerId,
+                Health,
+                MaxBlood,
+                CurrentBlood,
+                newHand, 
+                DrawPile,
+                DiscardPile
+            );
+        }
+
+        public PlayerState WithCardAddedToDiscard(CardInstance card)
+        {
+            var newDiscardPile = new List<CardInstance>(DiscardPile);
+            newDiscardPile.Add(card);
+
+            return new PlayerState(
+                PlayerId,
+                Health,
+                MaxBlood,
+                CurrentBlood,
+                Hand,
+                DrawPile,
+                newDiscardPile);
+        }
+
     }
 }

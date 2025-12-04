@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+
+using CardGame.Core.Events;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.State.Models; 
 
@@ -18,7 +20,7 @@ namespace CardGame.Core.Commands.Implementations
             TargetLineIndex = targetLineIndex;
         }
 
-        public GameState Execute(GameState currentState)
+        public GameState Execute(GameState currentState, EventBus eventBus)
         {
             // 1. Pobierz dane gracza
             var playerState = currentState.GetPlayer(PlayerId);
@@ -55,7 +57,10 @@ namespace CardGame.Core.Commands.Implementations
             var newBoardState = currentState.Board
                 .WithUnitPlacedAt(TargetLineIndex, PlayerId, card);
 
-            // C. Składamy to w całość
+            // C. Publikujemy zdarzenie, że karta (jednostka), została zagrana -B.
+            eventBus.Publish(new CardPlayedEvent(PlayerId, card));
+
+            // D. Składamy to w całość
             if (PlayerId == 1)
             {
                 return currentState.With(playerA: newPlayerState, board: newBoardState);

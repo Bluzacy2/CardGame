@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dohitnkit2tdm"]
+[gd_scene load_steps=4 format=3 uid="uid://dohitnkit2tdm"]
 
 [ext_resource type="Script" uid="uid://brjlv20u4il2w" path="res://GameBootstrap.cs" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://b2cbjoaeymfw0" path="res://Card.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://c2ia14ntiwycv" path="res://Line.tscn" id="3_r0du0"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("HandContainer")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("HandContainer", "BoardContainer")]
 script = ExtResource("1_glv2v")
 CardSceneTemplate = ExtResource("2_uu6xs")
+LineSceneTemplate = ExtResource("3_r0du0")
 HandContainer = NodePath("HandContainer")
+BoardContainer = NodePath("BoardContainer")
 
 [node name="HandContainer" type="Node2D" parent="."]
+
+[node name="BoardContainer" type="VBoxContainer" parent="."]
+offset_left = 530.0
+offset_top = 268.0
+offset_right = 570.0
+offset_bottom = 308.0

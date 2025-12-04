@@ -60,8 +60,11 @@ namespace CardGame.Core.Combat
                 newLines.Add(line.UpdateUnits(nextU1, nextU2));
             }
             var damagedBoard = new BoardState(newLines);
-            var cleanBoard = _deathResolver.ResolveDeaths(damagedBoard, currentState.PlayerA, currentState.PlayerB);
-            return currentState.With(board: cleanBoard);
+            var stateWithDamage = currentState.With(board: damagedBoard);
+            var finalState = _deathResolver.ResolveDeaths(stateWithDamage);
+
+            return finalState;
+
         }
     }
 }

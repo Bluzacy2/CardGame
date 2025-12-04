@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CardGame.Core.Events;
 using CardGame.Core.State.Models;
 namespace CardGame.Core.Commands.Interfaces
 {
@@ -13,6 +14,6 @@ namespace CardGame.Core.Commands.Interfaces
         int PlayerId { get; }
 
         // Metoda Wykonaj: Przyjmuje stary stan gry i zwraca nowy stan gry po zastosowaniu komendy.
-        GameState Execute(GameState currentState);
+        GameState Execute(GameState currentState, EventBus eventBus);
     }
 }

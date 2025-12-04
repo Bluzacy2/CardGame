@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CardGame.Core.Events.Interfaces
 {
-    internal interface IGameEvent
+    public interface IGameEvent
     {
     }
 }

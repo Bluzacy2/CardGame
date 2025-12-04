@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
 
 namespace CardGame.Core.GameRules.Death.Prevention
 {
-    internal interface IDeathPrevention
+    public interface IDeathPrevention
     {
+        bool CanPreventDeath(CardInstance unit, GameState state);
+
+        GameState PreventDeath(CardInstance unit, GameState currentState);
     }
 }

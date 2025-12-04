@@ -1,27 +1,34 @@
-﻿using System;
+﻿using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.Events.Triggers;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine;
+using CardGame.Core.StateMachine.Interfaces;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.State.Models;
-using CardGame.Core.StateMachine;
-using CardGame.Core.StateMachine.Interfaces;
-
 namespace CardGame.Core.Application
 {
     public class GameEngine
     {
-        /* Aktualny stan gry. */
         public GameState CurrentState { get; private set; }
-        /* Pomocnik tłumaczenia Faz gry. */
+        public EventBus Events { get; }
+
         private readonly GameStateMachine _stateMachine;
+        private readonly TriggerSystem _triggerSystem;
+
+        
         public GameEngine(GameState initialState)
         {
             CurrentState = initialState;
             _stateMachine = new GameStateMachine();
+            Events = new EventBus();
+            _triggerSystem = new TriggerSystem();
         }
 
         public void ExecuteCommand(IGameCommand command)
@@ -37,21 +44,20 @@ namespace CardGame.Core.Application
                 return;
             }
             /* 3. Wykonaj komendę, co zmienia cokolwiek. */
-            GameState newState = command.Execute(CurrentState);
+            GameState newState = command.Execute(CurrentState, Events);
 
             /* 4. Sprawdź, czy komenda to EndPhaseCommand, aby przetworzyć logikę końca fazy. */
             if (command is EndPhaseCommand)
             {
                 newState = currentPhaseLogic.ProcessEndPhase(newState);
             }
+            newState = _triggerSystem.ProcessEvents(newState, Events);
 
             /* 5. Zaktualizuj CurrentState do nowego stanu. */
             CurrentState = newState;
 
             // Debug output
-            Console.WriteLine($"Nowy stan gry po komendzie {command.GetType().Name}: " +
-                $"Tura {CurrentState.TurnNumber}, Faza {CurrentState.CurrentPhase}, " +
-                $"Aktywny gracz {CurrentState.ActivePlayerId}");
+            
         }
     }
 }

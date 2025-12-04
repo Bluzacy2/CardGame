@@ -32,24 +32,38 @@ namespace CardGame.Core.StateMachine.Phases
              * 1. Zwiększyś numer++ rundy. */
             var orchestrator = new CombatOrchestrator();
             var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState);
-            int nextTurnNumber = currentState.TurnNumber + 1;
+
             /* Ogarnąć, który gracz ma rozpocząć kolejną turę/rundę.
              * (termin tura/runda jest używany zamiennie w tym kontekście). */
+            int nextTurnNumber = currentState.TurnNumber + 1;
+            int nextActivePlayerId = (nextTurnNumber % 2 != 0) ? 1 : 2;
 
-            int startingPlayerForNextTurn;
+            var playerToStart = stateAfterCombat.GetPlayer(nextActivePlayerId);
+            var updatedPlayer = playerToStart
+               .WithTurnStartBlood(nextTurnNumber)
+               .WithCardDrawn();
 
-            /* Nieparzyste rundy zaczyna gracz 1, parzyste gracz 2. */
-            if (nextTurnNumber % 2 != 0)
-            { startingPlayerForNextTurn = 1; }
-            
-
+            GameState finalState;
+            if (nextActivePlayerId == 1)
+            {
+                finalState = stateAfterCombat.With(
+                    turnNumber: nextTurnNumber,
+                    currentPhase: GamePhase.UnitOnly,
+                    activePlayerId: nextActivePlayerId,
+                    playerA: updatedPlayer // Aktualizujemy A
+                );
+            }
             else
-            {startingPlayerForNextTurn = 2;}
+            {
+                finalState = stateAfterCombat.With(
+                    turnNumber: nextTurnNumber,
+                    currentPhase: GamePhase.UnitOnly,
+                    activePlayerId: nextActivePlayerId,
+                    playerB: updatedPlayer // Aktualizujemy B
+                );
+            }
 
-            return stateAfterCombat.With(
-                turnNumber: nextTurnNumber,
-                currentPhase: GamePhase.UnitOnly,
-                activePlayerId: startingPlayerForNextTurn);
+            return finalState;
         }
     }
 }

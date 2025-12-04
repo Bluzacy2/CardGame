@@ -1,0 +1,108 @@
+[
+  {
+    "Id": 1,
+    "Name": "Bone Sommelier",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Action": {
+          "Type": "AddCardToHand", 
+          "Target": "Self", 
+          "ValueParam": 900 
+        }
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": "Mokke",
+    "Type": "Unit",
+    "Subtypes": ["Animal"],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 2,
+    "Description": "When Destroyed: Heal Your Hero for 3 HP.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Action": {
+          "Type": "Heal",
+          "Target": "FriendlyHero",
+          "Amount": 3
+        }
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "BoomBots",
+    "Type": "Unit",
+    "Subtypes": ["Machine"],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "When Destroyed: Do 2 Damage to the Enemy Hero.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Action": {
+          "Type": "DealDamage",
+          "Target": "EnemyHero",
+          "Amount": 2
+        }
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "Name": "Informer",
+    "Type": "Unit",
+    "Subtypes": ["Mercenary"],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 2,
+    "Description": "When Played: Mark an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Action": {
+          "Type": "ApplyStatus",
+          "Target": "TargetEnemyUnit",
+          "StringParam": "Marked"
+        }
+      }
+    ]
+  },
+ {
+  "Id": 900,
+  "Name": "The Alluring Goblet",
+  "Type": "Spell",
+  "Cost": 1,
+  "Description": "A Friendly Unit gets [Unkillable] and then Destroy it.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "TargetFriendlyUnit", 
+      "Actions": [
+        {
+        
+          "Type": "AddKeyword",
+          "Target": "SelectedTarget", 
+          "StringParam": "Unkillable"
+        },
+        {
+    
+          "Type": "DestroyUnit",
+          "Target": "SelectedTarget"
+        }
+      ]
+    }
+  ]
+}
+]
