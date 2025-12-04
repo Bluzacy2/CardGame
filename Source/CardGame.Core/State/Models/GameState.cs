@@ -57,12 +57,15 @@ namespace CardGame.Core.State.Models
             PlayerState? playerB = null)
         {
             return new GameState(
-                turnNumber: turnNumber ?? this.TurnNumber,
-                currentPhase: currentPhase ?? this.CurrentPhase,
-                activePlayerId: activePlayerId ?? this.ActivePlayerId,
-                board: board ?? this.Board,     // Jeśli nie podano nowego, użyj starego
-                playerA: playerA ?? this.PlayerA,
-                playerB: playerB ?? this.PlayerB
+                turnNumber ?? this.TurnNumber,
+                currentPhase ?? this.CurrentPhase,
+                activePlayerId ?? this.ActivePlayerId,
+
+               
+                board ?? this.Board,
+
+                playerA ?? this.PlayerA,
+                playerB ?? this.PlayerB
             );
         }
 
@@ -78,5 +81,21 @@ namespace CardGame.Core.State.Models
         {
             return playerId == 1 ? PlayerB : PlayerA;
         }
+        public GameState UpdatePlayer(PlayerState newPlayerState)
+        {
+            if (newPlayerState.PlayerId == 1)
+                return this.With(playerA: newPlayerState);
+            else
+                return this.With(playerB: newPlayerState);
+        }
+
+        public GameState UpdateBoard(BoardState newBoard)
+        {
+            return this.With(board: newBoard);
+        }
+
+
     }
+
+
 }

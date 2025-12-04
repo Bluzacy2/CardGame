@@ -6,6 +6,7 @@ using CardGame.Core.State.Models;
 using CardGame.Core.StateMachine;
 using CardGame.Core.StateMachine.Interfaces;
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace CardGame.Core.Application
 {
     public class GameEngine
     {
-        public GameState CurrentState { get; private set; }
+        public GameState CurrentState { get;  set; }
         public EventBus Events { get; }
 
         private readonly GameStateMachine _stateMachine;
@@ -49,7 +50,7 @@ namespace CardGame.Core.Application
             /* 4. Sprawdź, czy komenda to EndPhaseCommand, aby przetworzyć logikę końca fazy. */
             if (command is EndPhaseCommand)
             {
-                newState = currentPhaseLogic.ProcessEndPhase(newState);
+                newState = currentPhaseLogic.ProcessEndPhase(newState, Events);
             }
             newState = _triggerSystem.ProcessEvents(newState, Events);
 

@@ -7,7 +7,16 @@ using System.Threading.Tasks;
 namespace CardGame.Core.Cards.Data
 {
     public enum CardType {  Unit, Spell }
-    public enum  Keyword { None, Armor, Armor2, DoubleStrike, SoulGuard, Unkillable}
+    public enum  Keyword 
+    { 
+        None, 
+        Armor,
+        Armor2,
+        DoubleStrike,
+        SoulGuard, 
+        Unkillable,
+        Marked
+    }
 
     public enum TriggerType
     {
@@ -16,21 +25,24 @@ namespace CardGame.Core.Cards.Data
         OnDamagTaken,
         OnTurnStart,
         OnTurnEnd,
-        WhileOnBoard
+        WhileOnBoard,
+        OnFriendlyUnitDied
     }
 
     public enum ActionType
     {
         DealDamage,
         Heal,
-        GainCard,
         ConjureCard,
         DestroyUnit,
         DiscardCard,
         ShuffleDeck,
         Transform,
         SummonUnit,
-        BuffStats
+        BuffStats,
+        AddCardToHand,
+        ApplyStatus,
+        ModifyGlobalBuff
     }
 
     public enum TargetType

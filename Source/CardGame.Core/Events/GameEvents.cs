@@ -58,4 +58,10 @@ namespace CardGame.Core.Events
         }
 
     }
+    public class UnitDiedEvent : IGameEvent
+    {
+        public CardInstance Unit { get; }
+        public int OwnerId { get; }
+        public UnitDiedEvent(CardInstance unit) { Unit = unit; OwnerId = unit.OwnerPlayerId; }
+    }
 }

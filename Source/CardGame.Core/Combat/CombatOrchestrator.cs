@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CardGame.Core.Events;
 using System.Collections.Generic;
 using CardGame.Core.GameRules.Damage;
 using CardGame.Core.GameRules.Death;
@@ -22,7 +23,7 @@ namespace CardGame.Core.Combat
             _deathResolver = new DeathResolver();
         }
 
-        public GameState ResolveCombatPhase(GameState currentState)
+        public GameState ResolveCombatPhase(GameState currentState, EventBus eventBus)
         {
             /* Kopiujemy planszę, gdyż będziemy ją zmieniać. **Powiniśmy** działać na kopiach obiektu
              * co może spróbuje zaimplementować, ale Amerykanin stwierdził, że możemy także działać na
@@ -61,7 +62,7 @@ namespace CardGame.Core.Combat
             }
             var damagedBoard = new BoardState(newLines);
             var stateWithDamage = currentState.With(board: damagedBoard);
-            var finalState = _deathResolver.ResolveDeaths(stateWithDamage);
+            var finalState = _deathResolver.ResolveDeaths(stateWithDamage, eventBus);
 
             return finalState;
 

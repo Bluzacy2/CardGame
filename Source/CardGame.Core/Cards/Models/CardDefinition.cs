@@ -16,14 +16,19 @@ namespace CardGame.Core.Cards.Models
         public CardStats BaseStats { get; }
 
         public IReadOnlyList<Keyword> Keywords { get; }
+        
+        public IReadOnlyList<EffectData> Effects { get; }
 
 
-        public CardDefinition(string id, string name, CardStats baseStats, IEnumerable<Keyword> kewords)
+        public CardDefinition(string id, string name, CardStats baseStats,
+            IEnumerable<Keyword> kewords,
+            IEnumerable<EffectData> effects)
         {
             Id = id;
             Name = name;
             BaseStats = baseStats;
             Keywords = new List<Keyword>(kewords);
+            Effects = new List<EffectData>(effects);
         }
     }
 }

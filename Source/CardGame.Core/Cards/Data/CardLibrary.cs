@@ -27,9 +27,11 @@ namespace CardGame.Core.Cards.Data
                 PropertyNameCaseInsensitive = true,
             };
 
-            List<CardData> loadedCards = JsonSerializer.Deserialize<List<CardData>>(jsonString, options);
+            List<CardData>? loadedCards = JsonSerializer.Deserialize<List<CardData>>(jsonString, options);
 
-            _cards = loadedCards.ToDictionary(k  => k.Id, k => k);
+            _cards = (loadedCards ?? new List<CardData>())
+                        .ToDictionary(k => k.Id, v => v);
+
             Console.WriteLine($"[LIBRARY] Załadowano {_cards.Count} kart z JSON.");
         }
         public CardData GetCard(int id)
@@ -42,7 +44,8 @@ namespace CardGame.Core.Cards.Data
         {
             var data = GetCard(id);
             return new CardDefinition(data.Id.ToString(),
-                data.Name, new CardStats(data.Attack, data.Health, data.Cost), data.Keywords);
+                data.Name, new CardStats(data.Attack, data.Health, data.Cost, data.Keywords), data.Keywords,
+                data.Effects);
         }
     }
 }

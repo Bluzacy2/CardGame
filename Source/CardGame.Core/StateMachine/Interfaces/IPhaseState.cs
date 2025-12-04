@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CardGame.Core.Events;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
@@ -25,6 +26,6 @@ namespace CardGame.Core.StateMachine.Interfaces
         bool IsCommandAllowed(IGameCommand command, GameState state);
 
         // Gdy faza się kończy, zwraca następny stan fazy gry.
-        GameState ProcessEndPhase(GameState currentState);
+        GameState ProcessEndPhase(GameState currentState, EventBus eventBus);
     }
 }

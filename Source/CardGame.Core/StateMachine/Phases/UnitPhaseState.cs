@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CardGame.Core.Events;
 using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.State.Enums;
@@ -31,7 +32,7 @@ namespace CardGame.Core.StateMachine.Phases
         }
     
 
-        public GameState ProcessEndPhase(GameState currentState)
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus)
         {
             int nextPlayerId = (currentState.ActivePlayerId == 1) ? 2 : 1;
             return currentState.With(

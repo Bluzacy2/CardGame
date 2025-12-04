@@ -15,122 +15,83 @@ namespace CardGame.ConsoleApp
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Console.WriteLine("=== TEST INTEGRACYJNY: JSON + UNKILLABLE + DEATH ===");
+            Console.WriteLine("=== TEST INFORMER (MARKED) ===");
 
-            // 1. PRZYGOTOWANIE PLIKU JSON "W LOCIE"
-            // Tworzymy tymczasowy plik z dwiema kartami:
-            // - Feniks: Ma keyword Unkillable, 5 Ataku, 1 HP
-            // - Zombie: Zwykły, 5 Ataku, 1 HP
-            // Obydwa zginą w walce, ale zadzieje się co innego.
-
-            string tempJsonPath = "test_cards_temp.json";
+            // 1. JSON
             string jsonContent = @"
             [
               {
-                ""Id"": 888,
-                ""Name"": ""Nieśmiertelny Feniks"",
-                ""Type"": ""Unit"",
-                ""Cost"": 1,
-                ""Attack"": 5,
-                ""Health"": 1,
-                ""Keywords"": [""Unkillable""]
+                ""Id"": 50, ""Name"": ""Informer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 2, ""Health"": 2,
+                ""Effects"": [ 
+                    { 
+                        ""Trigger"": ""OnPlayed"", 
+                        ""Actions"": [ 
+                            { ""Type"": ""ApplyStatus"", ""Target"": ""TargetEnemyUnit"", ""StringParam"": ""Marked"" } 
+                        ] 
+                    } 
+                ]
               },
               {
-                ""Id"": 999,
-                ""Name"": ""Zwykły Zombie"",
-                ""Type"": ""Unit"",
-                ""Cost"": 1,
-                ""Attack"": 5,
-                ""Health"": 1,
-                ""Keywords"": []
+                ""Id"": 60, ""Name"": ""Ofiara"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 0, ""Health"": 3
               }
             ]";
-            File.WriteAllText(tempJsonPath, jsonContent);
+            File.WriteAllText("informer_test.json", jsonContent);
+            CardLibrary.Instance.LoadFromJson("informer_test.json");
 
-            // 2. ŁADOWANIE BIBLIOTEKI
-            Console.WriteLine("\n[1] Ładowanie kart z JSON...");
-            try
-            {
-                CardLibrary.Instance.LoadFromJson(tempJsonPath);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"[BŁĄD] Nie udało się załadować JSON: {ex.Message}");
-                return;
-            }
+            // 2. SETUP
+            var pA = PlayerState.Initial(1, new List<CardInstance>()).WithBloodSpent(0);
+            var pB = PlayerState.Initial(2, new List<CardInstance>());
 
-            // 3. TWORZENIE INSTANCJI KART
-            var phoenixDef = CardLibrary.Instance.CreateDefinition(888);
-            var zombieDef = CardLibrary.Instance.CreateDefinition(999);
+            // Stawiamy Ofiarę (3 HP) na planszy dla Gracza 2
+            var victim = new CardInstance(200, 2, CardLibrary.Instance.CreateDefinition(60));
+            var board = BoardState.Empty().WithUnitPlacedAt(0, 2, victim);
 
-            // Gracz 1 ma Feniksa (ID instancji 100)
-            var p1Phoenix = new CardInstance(100, 1, phoenixDef);
-
-            // Gracz 2 ma Zombie (ID instancji 200)
-            var p2Zombie = new CardInstance(200, 2, zombieDef);
-
-            // 4. USTAWIANIE PLANSZY (WALKA)
-            // Stawiamy ich naprzeciwko siebie na Linii 0
-            var line0 = new Line(0, p1Phoenix, p2Zombie);
-
-            var board = new BoardState(new List<Line> {
-                line0, Line.Empty(1), Line.Empty(2), Line.Empty(3)
-            });
-
-            // Gracz 1 ma pustą rękę (żebyśmy widzieli czy Feniks wróci)
-            var playerA = PlayerState.Initial(1, new List<CardInstance>());
-            // Gracz 2 ma pusty cmentarz (żebyśmy widzieli czy Zombie tam trafi)
-            var playerB = PlayerState.Initial(2, new List<CardInstance>());
-
-            var state = new GameState(1, GamePhase.Combat, 1, board, playerA, playerB);
+            var state = new GameState(1, GamePhase.UnitOnly, 1, board, pA, pB);
             var engine = new GameEngine(state);
 
-            Console.WriteLine("\n[2] Sytuacja Przed Walką:");
-            PrintLine(engine.CurrentState.Board.Lines[0]);
-            Console.WriteLine($"   Gracz 1 Ręka: {engine.CurrentState.PlayerA.Hand.Count}");
-            Console.WriteLine($"   Gracz 2 Cmentarz: {engine.CurrentState.PlayerB.DiscardPile.Count}");
+            // Dajemy Informera do ręki
+            var informer = new CardInstance(100, 1, CardLibrary.Instance.CreateDefinition(50));
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(
+                engine.CurrentState.PlayerA.WithCardAddedToHand(informer)
+            );
 
-            // 5. EGZEKUCJA WALKI
-            Console.WriteLine("\n[3] ROZPOCZĘCIE WALKI...");
-            // Używamy EndPhase w fazie Combat, co odpala logikę walki i śmierci
-            engine.ExecuteCommand(new EndPhaseCommand(1));
+            // 3. ZAGRYWAMY INFORMERA (Powinien oznaczyć Ofiarę)
+            Console.WriteLine("\n[AKCJA] Zagrywam Informera...");
+            engine.ExecuteCommand(new PlayUnitCommand(1, 100, 0)); // Linia 0
 
-            // 6. WERYFIKACJA WYNIKÓW
-            Console.WriteLine("\n[4] Sytuacja Po Walce:");
-            var finalState = engine.CurrentState;
-            var finalLine = finalState.Board.Lines[0];
-
-            // A. Plansza
-            PrintLine(finalLine);
-            if (finalLine.Player1Unit == null && finalLine.Player2Unit == null)
-                Console.WriteLine("   [OK] Plansza jest pusta (obydwa 'zginęły').");
+            // Sprawdzenie czy Ofiara jest Marked
+            var victimOnBoard = engine.CurrentState.Board.Lines[0].Player2Unit;
+            if (victimOnBoard.CurrentStats.Keywords.Contains(Keyword.Marked))
+                Console.WriteLine("[SUKCES] Ofiara ma status MARKED!");
             else
-                Console.WriteLine("   [BŁĄD] Ktoś został na planszy!");
+                Console.WriteLine("[BŁĄD] Ofiara NIE JEST oznaczona.");
 
-            // B. Unkillable (Gracz 1)
-            var p1Hand = finalState.PlayerA.Hand;
-            if (p1Hand.Count == 1 && p1Hand[0].Definition.Id == "888")
-                Console.WriteLine($"   [OK] UNKILLABLE ZADZIAŁAŁ! Feniks wrócił do ręki Gracza 1.");
+            // 4. WALKA (Informer atakuje Ofiarę)
+            // Informer ma 2 ataku. Ofiara ma 3 HP.
+            // Bez Marked: 3 - 2 = 1 HP (Przeżywa).
+            // Z Marked: 3 - (2*2) = -1 HP (Ginie).
+
+            Console.WriteLine("\n[AKCJA] Faza Walki...");
+            engine.ExecuteCommand(new EndPhaseCommand(1)); // UnitOnly -> UnitSpell
+            engine.ExecuteCommand(new EndPhaseCommand(2)); // UnitSpell -> SpellOnly
+            engine.ExecuteCommand(new EndPhaseCommand(1)); // SpellOnly -> Combat
+
+            // --- BRAKOWAŁO TEJ LINII: ---
+            Console.WriteLine("[AKCJA] Rozstrzyganie Walki (wewnątrz Combat Phase)...");
+            engine.ExecuteCommand(new EndPhaseCommand(1)); // Combat -> Rozstrzygnij -> Nowa Tura)
+
+            // 5. WERYFIKACJA
+            var line = engine.CurrentState.Board.Lines[0];
+            if (line.Player2Unit == null)
+            {
+                Console.WriteLine("[SUKCES] Ofiara zginęła (2 dmg * 2 = 4 dmg > 3 HP). Mechanika Marked działa!");
+            }
             else
-                Console.WriteLine($"   [BŁĄD] Feniksa nie ma w ręce! Liczba kart: {p1Hand.Count}");
+            {
+                Console.WriteLine($"[BŁĄD] Ofiara przeżyła z {line.Player2Unit.CurrentStats.Health} HP.");
+            }
 
-            // C. Normal Death (Gracz 2)
-            var p2Discard = finalState.PlayerB.DiscardPile; // Upewnij się że to nazwałeś DiscardPile w PlayerState
-            if (p2Discard.Count == 1 && p2Discard[0].Definition.Id == "999")
-                Console.WriteLine($"   [OK] ŚMIERĆ ZADZIAŁAŁA! Zombie trafił na cmentarz Gracza 2.");
-            else
-                Console.WriteLine($"   [BŁĄD] Zombie nie ma na cmentarzu! Liczba kart: {p2Discard.Count}");
-
-            // Sprzątanie pliku tymczasowego
-            File.Delete(tempJsonPath);
             Console.ReadKey();
-        }
-
-        static void PrintLine(Line line)
-        {
-            string u1 = line.Player1Unit != null ? $"{line.Player1Unit.Definition.Name} (HP:{line.Player1Unit.CurrentStats.Health})" : "[PUSTO]";
-            string u2 = line.Player2Unit != null ? $"{line.Player2Unit.Definition.Name} (HP:{line.Player2Unit.CurrentStats.Health})" : "[PUSTO]";
-            Console.WriteLine($"   Linia 0: {u1}  VS  {u2}");
         }
     }
 }

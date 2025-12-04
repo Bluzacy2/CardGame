@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CardGame.Core.Events;
 using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.State.Enums;
@@ -26,7 +27,7 @@ namespace CardGame.Core.StateMachine.Phases
             if (command is EndPhaseCommand) return true;
             return false;
         }
-        public GameState ProcessEndPhase(GameState currentState)
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus)
         {
             /* LOGIKA PRZEJŚCIA DO KOLEJNEJ FAZY LUB TURY GRACZA
              * ActionPhase jest ostatnią interaktywną fazę, gdzie

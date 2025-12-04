@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CardGame.Core.Events;
 using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.State.Enums;
@@ -25,13 +26,13 @@ namespace CardGame.Core.StateMachine.Phases
             return false;
         }
 
-        public GameState ProcessEndPhase(GameState currentState)
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus)
         {
             /* ---------------------- KONIEC RUNDY ----------------------------
              * + następuje początek kolejnejm więc musimy:
              * 1. Zwiększyś numer++ rundy. */
             var orchestrator = new CombatOrchestrator();
-            var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState);
+            var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState, eventBus);
 
             /* Ogarnąć, który gracz ma rozpocząć kolejną turę/rundę.
              * (termin tura/runda jest używany zamiennie w tym kontekście). */

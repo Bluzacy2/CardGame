@@ -52,6 +52,25 @@ namespace CardGame.Core.State.Models
              ); /* Ręka / Pobieranie kart robimy później. */
         }
 
+        public PlayerState With(
+            int? health = null,
+            int? maxBlood = null,
+            int? currentBlood = null,
+            IEnumerable<CardInstance>? hand = null,
+            IEnumerable<CardInstance>? drawPile = null,
+            IEnumerable<CardInstance>? discardPile = null)
+        {
+            return new PlayerState(
+                PlayerId,
+                health ?? Health,
+                maxBlood ?? MaxBlood,
+                currentBlood ?? CurrentBlood,
+                hand ?? Hand,
+                drawPile ?? DrawPile,
+                discardPile ?? DiscardPile
+            );
+        }
+
         /* ----------- Pomocnicze metody dla Immutable State ------- 
          * 1. Czy mamy wystarczająco dużo Blood, aby zagrać kartę */
         public bool CanPlayCard(int cost)
@@ -144,6 +163,33 @@ namespace CardGame.Core.State.Models
                 DrawPile,
                 newDiscardPile);
         }
+
+        public PlayerState WithHealthRestored(int amount)
+        {
+            int newHealth = Math.Min(20, Health + amount);
+            return new PlayerState(
+                PlayerId,
+                newHealth,
+                MaxBlood,
+                CurrentBlood,
+                Hand,
+                DrawPile,
+                DiscardPile);
+        }
+
+        public PlayerState WithDamageTaken(int amount)
+        {
+            int newHealth = Health - amount;
+            return new PlayerState(
+                PlayerId,
+                newHealth,
+                MaxBlood,
+                CurrentBlood,
+                Hand,
+                DrawPile,
+                DiscardPile);
+        }
+
 
     }
 }

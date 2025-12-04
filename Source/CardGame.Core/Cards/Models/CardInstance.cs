@@ -1,8 +1,5 @@
-﻿using System;
+﻿using CardGame.Core.Cards.Data; // Dla Keyword
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.Cards.Models
 {
@@ -12,43 +9,52 @@ namespace CardGame.Core.Cards.Models
         public int OwnerPlayerId { get; }
         public CardDefinition Definition { get; }
 
-        /* Zamianka z podpisywania na tylko odczyt: Aby zachować pełny stan Immmutability dla kart - B. */
-        public CardStats CurrentStats { get;  }
-        public CardInstance(int instanceId, int ownerId, CardDefinition definition)
+        // Statystyki muszą być read-only properties
+        public CardStats CurrentStats { get; }
+
+        // Konstruktor publiczny (tworzy nową kartę z bazy)
+        public CardInstance(int instanceId, int OwnerPlayerId, CardDefinition definition)
+            : this(instanceId, OwnerPlayerId, definition, definition.BaseStats)
         {
-            InstanceId = instanceId;
-            OwnerPlayerId = ownerId;
-            Definition = definition;
-            CurrentStats = definition.BaseStats;
         }
-        // Prywatny konstruktor do tworzenia kopii ze zmienionymi statystykami
-        private CardInstance(int instanceId, int ownerId, CardDefinition definition, CardStats currentStats)
+
+        // --- TU BYŁ BŁĄD ---
+        // Konstruktor prywatny (tworzy kopię ze zmodyfikowanymi statystykami)
+        private CardInstance(int instanceId, int ownerPlayerId, CardDefinition definition, CardStats currentStats)
         {
             InstanceId = instanceId;
-            OwnerPlayerId = ownerId;
+            OwnerPlayerId = ownerPlayerId;
             Definition = definition;
+
+            // WAŻNE: Musimy przypisać currentStats (te przekazane), a NIE definition.BaseStats!
+            // Jeśli tu miałeś definition.BaseStats, to kasowałeś wszystkie zmiany (obrażenia, keywordy).
             CurrentStats = currentStats;
         }
 
-        /* ---------------- Metody dla IMMUTABILITY -------------------
-         * WithStats - zwraca kopię karty z nowymi jej statystykami 
-         * TakeDamage - zwraca kopię karty po utrzymaniu obrażeń
-         * (mam nadzieje, że bez błędów kompilacji tym razem proszę) - B.*/
+        // --- Metody Immutable ---
 
-        public CardInstance WithStats(CardStats newStats) {
-            return new
-                CardInstance(InstanceId, OwnerPlayerId, Definition, newStats);
+        public CardInstance WithStats(CardStats newStats)
+        {
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, newStats);
         }
 
-        public CardInstance TakeDamage(int amount) {
+        // Dodawanie Keyworda (np. Marked)
+        public CardInstance WithKeywordAdded(Keyword keyword)
+        {
+            var newStats = CurrentStats.WithKeyword(keyword);
+            return WithStats(newStats);
+        }
+
+        // Otrzymywanie obrażeń
+        public CardInstance TakeDamage(int amount)
+        {
             var newStats = new CardStats(
                 CurrentStats.Attack,
                 CurrentStats.Health - amount,
-                CurrentStats.BloodCost);
-
-            return new
-                CardInstance(InstanceId, OwnerPlayerId, Definition, newStats);
+                CurrentStats.BloodCost,
+                CurrentStats.Keywords // Pamiętaj, żeby przenieść też keywordy przy zmianie HP!
+            );
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, newStats);
         }
-
     }
 }

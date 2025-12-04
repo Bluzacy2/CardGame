@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.State.Models;
+using CardGame.Core.Events;
 using CardGame.Core.GameRules.Death.Prevention;
 
 namespace CardGame.Core.GameRules.Death
@@ -20,7 +21,7 @@ namespace CardGame.Core.GameRules.Death
         }
 
         // ZMIANA: Zwracamy GameState, bo śmierć zmienia też gracza (Cmentarz/Ręka)
-        public GameState ResolveDeaths(GameState currentState)
+        public GameState ResolveDeaths(GameState currentState, EventBus eventBus)
         {
             var workingState = currentState;
 
@@ -34,14 +35,14 @@ namespace CardGame.Core.GameRules.Death
                 // Sprawdzamy czy jednostka powinna zginąć
                 if (unit.CurrentStats.Health <= 0)
                 {
-                    workingState = HandleSingleUnitDeath(unit, workingState);
+                    workingState = HandleSingleUnitDeath(unit, workingState, eventBus);
                 }
             }
 
             return workingState;
         }
 
-        private GameState HandleSingleUnitDeath(CardInstance unit, GameState state)
+        private GameState HandleSingleUnitDeath(CardInstance unit, GameState state, EventBus eventBus)
         {
             // 1. Sprawdź Prewencję (Unkillable, Soul Guard)
             foreach (var prevention in _preventions)
@@ -52,6 +53,7 @@ namespace CardGame.Core.GameRules.Death
                     return prevention.PreventDeath(unit, state);
                 }
             }
+            eventBus.Publish(new UnitDiedEvent(unit));
 
             // 2. Jeśli brak prewencji -> Prawdziwa Śmierć
 

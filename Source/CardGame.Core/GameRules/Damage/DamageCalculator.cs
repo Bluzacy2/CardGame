@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CardGame.Core.Cards.Data;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.GameRules.Damage
 {
@@ -11,7 +9,23 @@ namespace CardGame.Core.GameRules.Damage
         public int CalculateFinalDamage(DamageContext context)
         {
             int finalDamage = context.RawAmount;
-            /* W przyszłości tutaj będzie się rozwiązywało lokigę związaną z Armorami, Markami itd. */
+
+            // 1. MARKED
+            if (context.Target.CurrentStats.Keywords.Contains(Keyword.Marked))
+            {
+                finalDamage *= 2;
+                Console.WriteLine($"[CALC] Cel MARKED! Podwajam obrażenia: {context.RawAmount} -> {finalDamage}");
+            }
+
+            // 2. ARMORED (Poprawiona nazwa z 'Armor' na 'Armored')
+            if (context.Target.CurrentStats.Keywords.Contains(Keyword.Armor))
+            {
+                if (context.Type == DamageType.Combat)
+                {
+                    finalDamage = Math.Max(0, finalDamage - 1);
+                    Console.WriteLine($"[CALC] Cel ARMORED! Redukcja: {finalDamage + 1} -> {finalDamage}");
+                }
+            }
 
             return Math.Max(0, finalDamage);
         }
