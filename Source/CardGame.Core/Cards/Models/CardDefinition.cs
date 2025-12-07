@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
 using CardGame.Core.Cards.Data;
 
 namespace CardGame.Core.Cards.Models
@@ -13,21 +7,27 @@ namespace CardGame.Core.Cards.Models
     {
         public string Id { get; }
         public string Name { get; }
-        public CardStats BaseStats { get; }
 
+        public CardType Type { get; }
+
+
+        public CardStats BaseStats { get; }
         public IReadOnlyList<Keyword> Keywords { get; }
-        
         public IReadOnlyList<EffectData> Effects { get; }
 
-
-        public CardDefinition(string id, string name, CardStats baseStats,
-            IEnumerable<Keyword> kewords,
+        public CardDefinition(
+            string id,
+            string name,
+            CardType type,
+            CardStats baseStats,
+            IEnumerable<Keyword> keywords,
             IEnumerable<EffectData> effects)
         {
             Id = id;
             Name = name;
+            Type = type;
             BaseStats = baseStats;
-            Keywords = new List<Keyword>(kewords);
+            Keywords = new List<Keyword>(keywords);
             Effects = new List<EffectData>(effects);
         }
     }

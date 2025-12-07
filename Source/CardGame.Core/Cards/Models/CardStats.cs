@@ -22,6 +22,10 @@ namespace CardGame.Core.Cards.Models
             BloodCost = bloodCost;
             Keywords = keywords != null ? new List<Keyword>(keywords) : new List<Keyword>();
         }
+        public CardStats(int attack, int health, int bloodCost)
+            : this(attack, health, bloodCost, null)
+        {
+        }
         public CardStats WithKeyword(Keyword keyword)
         {
             var newKeywords = new List<Keyword>(Keywords);
@@ -30,6 +34,24 @@ namespace CardGame.Core.Cards.Models
                 newKeywords.Add(keyword);
             }
             return new CardStats(Attack, Health, BloodCost, newKeywords);
+        }
+
+        public static CardStats operator +(CardStats a, CardStats b)
+        {
+            var combinedKeywords = new List<Keyword>(a.Keywords);
+            foreach (var keyword in b.Keywords)
+            {
+                if (!combinedKeywords.Contains(keyword))
+                {
+                    combinedKeywords.Add(keyword);
+                }
+            }
+            return new CardStats(
+                a.Attack + b.Attack,
+                a.Health + b.Health,
+                a.BloodCost + b.BloodCost,
+                combinedKeywords
+            );
         }
     }
 }

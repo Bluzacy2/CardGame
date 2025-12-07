@@ -9,6 +9,7 @@ namespace CardGame.Core.State.Enums
     public enum GamePhase
     {
         None,       // Faza nieokreślona lub początkowa
+        Mulligan,   // Pierwsza faza gry - Mulligan & Dobieranie kart
         UnitOnly, // Faza grania Unitów
         UnitAndAction, // Faza grania Unitów i Akcji
         ActionOnly, // Faza grania tylko Akcji

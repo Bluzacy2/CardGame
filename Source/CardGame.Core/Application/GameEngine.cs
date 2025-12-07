@@ -1,17 +1,16 @@
-﻿using CardGame.Core.Commands.Implementations;
+﻿using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Events;
 using CardGame.Core.Events.Triggers;
+using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
 using CardGame.Core.StateMachine;
 using CardGame.Core.StateMachine.Interfaces;
-
-
+using CardGame.Core.StateMachine.Phases;
+using CardGame.Core.GameRules.Death;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.Application
 {
@@ -20,16 +19,29 @@ namespace CardGame.Core.Application
         public GameState CurrentState { get;  set; }
         public EventBus Events { get; }
 
+        public DeterministicRng Rng { get; }
+        public CardFactory Factory { get; }
+
+        private readonly GameContext _gameContext;
+
         private readonly GameStateMachine _stateMachine;
         private readonly TriggerSystem _triggerSystem;
+        private readonly DeathResolver _deathResolver;
 
-        
-        public GameEngine(GameState initialState)
+
+        public GameEngine(GameState initialState, int seed = 0)
         {
             CurrentState = initialState;
-            _stateMachine = new GameStateMachine();
             Events = new EventBus();
+            Rng = new DeterministicRng(seed);
+            Factory = new CardFactory(CardLibrary.Instance, Rng);
+            
+            _gameContext = new GameContext(Factory, Rng, Events);
+
+            _stateMachine = new GameStateMachine();
             _triggerSystem = new TriggerSystem();
+            _deathResolver = new DeathResolver();
+
         }
 
         public void ExecuteCommand(IGameCommand command)
@@ -46,13 +58,42 @@ namespace CardGame.Core.Application
             }
             /* 3. Wykonaj komendę, co zmienia cokolwiek. */
             GameState newState = command.Execute(CurrentState, Events);
+            while (true)
+            {
+                // A. Przetwórz wszystkie aktywne triggery (np. OnPlayed, OnSacrificed)
+                newState = _triggerSystem.ProcessEvents(newState, Events, _gameContext);
+
+                // B. Sprawdź śmierć (Cleanup Step)
+                // To wygeneruje UnitDiedEvent, jeśli ktoś ma HP <= 0
+                // WAŻNE: DeathResolver musi być napisany tak, że jeśli nikt nie ginie, to nie generuje eventów.
+                newState = _deathResolver.ResolveDeaths(newState, Events);
+
+                // C. Warunek wyjścia:
+                // Jeśli nie ma nowych eventów (czyli nikt nie umarł, nic się nie odpaliło), kończymy.
+                if (!Events.HasEvents)
+                {
+                    break;
+                }
+
+                // Jeśli są eventy (np. UnitDied wygenerowane w kroku B), pętla leci od nowa,
+                // żeby TriggerSystem (krok A) mógł obsłużyć Deathrattle/CorpseEater!
+            }
+
 
             /* 4. Sprawdź, czy komenda to EndPhaseCommand, aby przetworzyć logikę końca fazy. */
             if (command is EndPhaseCommand)
             {
                 newState = currentPhaseLogic.ProcessEndPhase(newState, Events);
             }
-            newState = _triggerSystem.ProcessEvents(newState, Events);
+            else if (newState.CurrentPhase == CurrentState.CurrentPhase)
+            {
+                if (currentPhaseLogic.ShouldEndPhaseAutomatically(newState))
+                {
+                    Console.WriteLine($"[SILNIK] Faza {currentPhaseLogic.PhaseType} zakończona automatycznie.");
+                    newState = currentPhaseLogic.ProcessEndPhase(newState, Events);
+                }
+            }
+            newState = _triggerSystem.ProcessEvents(newState, Events, _gameContext);
 
             /* 5. Zaktualizuj CurrentState do nowego stanu. */
             CurrentState = newState;

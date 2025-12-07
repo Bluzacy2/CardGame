@@ -13,11 +13,14 @@ namespace CardGame.Core.Commands.Implementations
         public int CardInstanceId { get; }  // ID konkretnej karty w ręce
         public int TargetLineIndex { get; } // Na którą linię (0-3)
 
-        public PlayUnitCommand(int playerId, int cardInstanceId, int targetLineIndex)
+        public int? SelectedTargetId { get; } // ID celu, jeśli dotyczy (np. dla czarów)
+
+        public PlayUnitCommand(int playerId, int cardInstanceId, int targetLineIndex, int? selectedTargetId = null)
         {
             PlayerId = playerId;
             CardInstanceId = cardInstanceId;
             TargetLineIndex = targetLineIndex;
+            SelectedTargetId = selectedTargetId;
         }
 
         public GameState Execute(GameState currentState, EventBus eventBus)
@@ -51,14 +54,19 @@ namespace CardGame.Core.Commands.Implementations
             // A. Gracz płaci KREW i traci kartę z ręki
             var newPlayerState = playerState
                 .WithBloodSpent(card.CurrentStats.BloodCost) 
-                .WithCardRemovedFromHand(card);             
+                .WithCardRemovedFromHand(card);
 
             // B. Plansza otrzymuje jednostkę
+            var statsWithBuffs = card.CurrentStats + playerState.GlobalUnitBuffs;
+            var cardToPlay = card.WithStats(statsWithBuffs);
+            // -------------------------------------------------
+
+            // Używamy cardToPlay zamiast card!
             var newBoardState = currentState.Board
-                .WithUnitPlacedAt(TargetLineIndex, PlayerId, card);
+                .WithUnitPlacedAt(TargetLineIndex, PlayerId, cardToPlay);
 
             // C. Publikujemy zdarzenie, że karta (jednostka), została zagrana -B.
-            eventBus.Publish(new CardPlayedEvent(PlayerId, card));
+            eventBus.Publish(new CardPlayedEvent(PlayerId, card, TargetLineIndex, SelectedTargetId));
 
             // D. Składamy to w całość
             if (PlayerId == 1)

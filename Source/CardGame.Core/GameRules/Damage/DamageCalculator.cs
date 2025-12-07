@@ -18,7 +18,7 @@ namespace CardGame.Core.GameRules.Damage
             }
 
             // 2. ARMORED (Poprawiona nazwa z 'Armor' na 'Armored')
-            if (context.Target.CurrentStats.Keywords.Contains(Keyword.Armor))
+            if (context.Target.CurrentStats.Keywords.Contains(Keyword.Armored))
             {
                 if (context.Type == DamageType.Combat)
                 {

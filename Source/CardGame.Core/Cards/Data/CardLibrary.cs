@@ -44,7 +44,7 @@ namespace CardGame.Core.Cards.Data
         {
             var data = GetCard(id);
             return new CardDefinition(data.Id.ToString(),
-                data.Name, new CardStats(data.Attack, data.Health, data.Cost, data.Keywords), data.Keywords,
+                data.Name, data.Type, new CardStats(data.Attack, data.Health, data.Cost, data.Keywords), data.Keywords,
                 data.Effects);
         }
     }

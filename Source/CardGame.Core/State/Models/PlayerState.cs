@@ -1,4 +1,5 @@
-﻿using CardGame.Core.Cards.Models;
+﻿using CardGame.Core.Application;
+using CardGame.Core.Cards.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,15 @@ namespace CardGame.Core.State.Models
         public int MaxBlood { get; }
         public int CurrentBlood { get; }
 
+        
+
         // 1. Karty w ręce 2. Karty w talii 3. Karty zużyte (odrzucone) || Expectancy value!!
         public IReadOnlyList<CardInstance> Hand { get; }
         public IReadOnlyList<CardInstance> DrawPile { get; }
         public IReadOnlyList<CardInstance> DiscardPile { get; }
+
+        // Globalne buffy/modyfikatory dla jednostek tego gracza. - B.
+        public CardStats GlobalUnitBuffs { get; }
 
         public PlayerState(
             int playerId,
@@ -26,7 +32,8 @@ namespace CardGame.Core.State.Models
             int currentBlood,
             IEnumerable<CardInstance> hand,
             IEnumerable<CardInstance> drawPile,
-            IEnumerable<CardInstance> discardPile)
+            IEnumerable<CardInstance> discardPile,
+            CardStats? globalUnitBuffs = null)
         {
             PlayerId = playerId;
             Health = health;
@@ -35,20 +42,22 @@ namespace CardGame.Core.State.Models
             Hand = new List<CardInstance>(hand);
             DrawPile = new List<CardInstance>(drawPile);
             DiscardPile = new List<CardInstance>(discardPile);
+            GlobalUnitBuffs = globalUnitBuffs ?? new CardStats(0, 0, 0);
 
         }
 
         // Tworzenie początkowego stanu gracza z domyślnym zdrowiem, krwią i pustymi stosami kart.
-        public static PlayerState Initial(int playerId, List<CardInstance> startinDeck)
+        public static PlayerState Initial(int playerId, List<CardInstance> startingDeck)
         {
             return new PlayerState(
                 playerId,
                 health: 20,
                 maxBlood: 1,
                 currentBlood: 1,
-                drawPile: startinDeck,
                 hand: new List<CardInstance>(),
-                discardPile: new List<CardInstance>()
+                drawPile: startingDeck,
+                discardPile: new List<CardInstance>(),
+                new CardStats(0, 0, 0)
              ); /* Ręka / Pobieranie kart robimy później. */
         }
 
@@ -58,7 +67,8 @@ namespace CardGame.Core.State.Models
             int? currentBlood = null,
             IEnumerable<CardInstance>? hand = null,
             IEnumerable<CardInstance>? drawPile = null,
-            IEnumerable<CardInstance>? discardPile = null)
+            IEnumerable<CardInstance>? discardPile = null,
+            CardStats? globalUnitBuffs = null)
         {
             return new PlayerState(
                 PlayerId,
@@ -67,7 +77,8 @@ namespace CardGame.Core.State.Models
                 currentBlood ?? CurrentBlood,
                 hand ?? Hand,
                 drawPile ?? DrawPile,
-                discardPile ?? DiscardPile
+                discardPile ?? DiscardPile,
+                globalUnitBuffs ?? GlobalUnitBuffs
             );
         }
 
@@ -189,7 +200,78 @@ namespace CardGame.Core.State.Models
                 DrawPile,
                 DiscardPile);
         }
+        public PlayerState WithShuffledDeck(DeterministicRng rng)
+        {
+            var deckList = new List<CardInstance>(DrawPile);
+            int n = deckList.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(0, n + 1);
+                (deckList[k], deckList[n]) = (deckList[n], deckList[k]);
+            }
 
+            return With(drawPile: deckList);
+        }
+        public PlayerState WithGlobalBuffModifier(int atk, int hp)
+        {
+            var buffToAdd = new CardStats(atk, hp, 0);
+            var newBuffs = GlobalUnitBuffs + buffToAdd; // Używa operatora +
+            return With(globalUnitBuffs: newBuffs);
+        }
+
+        public PlayerState WithMulliganPerformed(List<int> cardInstanceIdsToReplace)
+        {
+            // Jeśli gracz nic nie wymienia, zwracamy stan bez zmian (ewentualnie logika przetasowania?)
+            // Ale musimy pamiętać, że karty wracają na dno.
+            if (cardInstanceIdsToReplace == null || cardInstanceIdsToReplace.Count == 0)
+            {
+                return this;
+            }
+
+            var currentHand = new List<CardInstance>(Hand);
+            var currentDeck = new List<CardInstance>(DrawPile);
+            int cardsToDraw = 0;
+
+            // 1. Usuń karty z ręki i odłóż je "na bok" (żeby nie dobrać ich od razu, jeśli talia mała)
+            // W Twoim przypadku: "Trafiają na dno".
+            // Czyli najpierw dobieramy, a potem wkładamy stare na dno?
+            // Zazwyczaj w karciankach: Wkładasz do talii -> Tasujesz -> Dobierasz.
+            // Twoja zasada: "Trafiają na samo dno".
+            // Więc: Usuń z ręki -> Dobierz z góry -> Dodaj usunięte na dół.
+
+            var cardsToReturnToDeck = new List<CardInstance>();
+
+            foreach (int idToRemove in cardInstanceIdsToReplace)
+            {
+                var card = currentHand.FirstOrDefault(c => c.InstanceId == idToRemove);
+                if (card != null)
+                {
+                    currentHand.Remove(card);
+                    cardsToReturnToDeck.Add(card); // Zapamiętujemy
+                    cardsToDraw++;
+                }
+            }
+
+            // 2. Dobierz nowe karty z góry talii
+            for (int i = 0; i < cardsToDraw; i++)
+            {
+                if (currentDeck.Count > 0)
+                {
+                    var newCard = currentDeck[0]; // Bierzemy z góry (index 0)
+                    currentDeck.RemoveAt(0);
+                    currentHand.Add(newCard);
+                }
+            }
+
+            // 3. Włóż stare karty na DNO talii (na koniec listy)
+            foreach (var oldCard in cardsToReturnToDeck)
+            {
+                currentDeck.Add(oldCard);
+            }
+
+            return With(hand: currentHand, drawPile: currentDeck);
+        }
 
     }
 }

@@ -16,6 +16,8 @@ namespace CardGame.Core.StateMachine
         {
             switch(phase)
             {
+                case GamePhase.Mulligan:
+                    return new MulliganPhaseState();
                 case GamePhase.UnitOnly:
                     return new UnitPhaseState();
                 case GamePhase.UnitAndAction:

@@ -27,7 +27,7 @@ namespace CardGame.Core.StateMachine.Phases
              * 3. Zakończenie fazy (tury gracza). */
 
             if (command is PlayUnitCommand) return true;
-            // if (command is ActionCommand) return true;
+            if (command is PlaySpellCommand) return true;
             if (command is EndPhaseCommand) return true;
             return false;
         }
@@ -38,6 +38,10 @@ namespace CardGame.Core.StateMachine.Phases
             return currentState.With(
                 currentPhase: GamePhase.ActionOnly,
                 activePlayerId: nextPlayerId);
+        }
+        public bool ShouldEndPhaseAutomatically(GameState state)
+        {
+            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
         }
     }
     

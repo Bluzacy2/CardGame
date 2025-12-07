@@ -66,5 +66,9 @@ namespace CardGame.Core.StateMachine.Phases
 
             return finalState;
         }
+        public bool ShouldEndPhaseAutomatically(GameState state)
+        {
+            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
+        }
     }
 }

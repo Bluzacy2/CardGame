@@ -20,71 +20,60 @@ namespace CardGame.Core.GameRules.Death
             };
         }
 
-        // ZMIANA: Zwracamy GameState, bo śmierć zmienia też gracza (Cmentarz/Ręka)
+      
         public GameState ResolveDeaths(GameState currentState, EventBus eventBus)
         {
             var workingState = currentState;
 
-            // Pobieramy listę wszystkich jednostek na planszy
-            // Musimy zrobić to na początku, bo będziemy modyfikować planszę w pętli
-            // i nie chcemy, żeby indeksy nam uciekły.
-            var unitsToCheck = GetAllUnits(workingState.Board);
-
-            foreach (var unit in unitsToCheck)
+            for (int i = 0; i < 4; i++)
             {
-                // Sprawdzamy czy jednostka powinna zginąć
-                if (unit.CurrentStats.Health <= 0)
+                // Musimy pobierać linię z 'workingState' w każdej iteracji, 
+                // bo poprzednia śmierć mogła zmienić stan (np. Unkillable cofnął kartę)
+                var line = workingState.Board.Lines[i];
+
+                // Sprawdzamy P1
+                if (line.Player1Unit != null && line.Player1Unit.CurrentStats.Health <= 0)
                 {
-                    workingState = HandleSingleUnitDeath(unit, workingState, eventBus);
+                    workingState = HandleDeath(line.Player1Unit, i, workingState, eventBus);
+                }
+
+                // Pobieramy linię ponownie, bo HandleDeath mogło ją zmienić
+                line = workingState.Board.Lines[i];
+
+                // Sprawdzamy P2
+                if (line.Player2Unit != null && line.Player2Unit.CurrentStats.Health <= 0)
+                {
+                    workingState = HandleDeath(line.Player2Unit, i, workingState, eventBus);
                 }
             }
 
             return workingState;
+
         }
 
-        private GameState HandleSingleUnitDeath(CardInstance unit, GameState state, EventBus eventBus)
+        private GameState HandleDeath(CardInstance unit, int lineIndex, GameState state, EventBus eventBus)
         {
-            // 1. Sprawdź Prewencję (Unkillable, Soul Guard)
+            // 1. Prewencja (Unkillable) - bez zmian
             foreach (var prevention in _preventions)
             {
                 if (prevention.CanPreventDeath(unit, state))
-                {
-                    // Jeśli zadziałała prewencja, ona zwraca nowy stan i kończymy temat dla tej jednostki
                     return prevention.PreventDeath(unit, state);
-                }
             }
-            eventBus.Publish(new UnitDiedEvent(unit));
 
-            // 2. Jeśli brak prewencji -> Prawdziwa Śmierć
+            // 2. Prawdziwa Śmierć
 
-            // A. Usuń z planszy
+            // PUBLIKUJEMY EVENT Z INDEKSEM LINII!
+            // (Musisz zaktualizować UnitDiedEvent w GameEvents.cs, żeby przyjmował int lineIndex)
+            eventBus.Publish(new UnitDiedEvent(unit, lineIndex));
+
             var newBoard = RemoveUnitFromBoard(state.Board, unit);
-
-            // B. Dodaj do Cmentarza (DiscardPile) właściciela
             var owner = state.GetPlayer(unit.OwnerPlayerId);
-
-            // Musisz dodać metodę WithCardAddedToDiscardPile do PlayerState!
-            // Zakładam, że działa analogicznie do WithCardAddedToHand
             var newOwnerState = owner.WithCardAddedToDiscard(unit);
 
-            // C. Zwróć nowy stan
-            if (unit.OwnerPlayerId == 1)
-                return state.With(board: newBoard, playerA: newOwnerState);
-            else
-                return state.With(board: newBoard, playerB: newOwnerState);
+            if (unit.OwnerPlayerId == 1) return state.With(board: newBoard, playerA: newOwnerState);
+            else return state.With(board: newBoard, playerB: newOwnerState);
         }
-
-        // Metody pomocnicze
-        private List<CardInstance> GetAllUnits(BoardState board)
-        {
-            var list = new List<CardInstance>();
-            foreach (var line in board.Lines)
-            {
-                if (line.Player1Unit != null) list.Add(line.Player1Unit);
-                if (line.Player2Unit != null) list.Add(line.Player2Unit);
-            }
-            return list;
-        }
+        
 
         private BoardState RemoveUnitFromBoard(BoardState board, CardInstance unit)
         {

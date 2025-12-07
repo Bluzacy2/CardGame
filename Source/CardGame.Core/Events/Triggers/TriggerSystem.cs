@@ -1,5 +1,8 @@
 ﻿using CardGame.Core.Application;
 using CardGame.Core.Cards.Component;
+using CardGame.Core.Cards.Components.Implementations;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Factories;
 using CardGame.Core.State.Models;
 using System;
 
@@ -7,8 +10,8 @@ namespace CardGame.Core.Events.Triggers
 {
     public class TriggerSystem
     {
-        // Główna metoda przetwarzająca kolejkę
-        public GameState ProcessEvents(GameState currentState, EventBus eventBus)
+       
+        public GameState ProcessEvents(GameState currentState, EventBus eventBus, GameContext context)
         {
             var workingState = currentState;
 
@@ -16,34 +19,54 @@ namespace CardGame.Core.Events.Triggers
             {
                 var evt = eventBus.Pop();
 
-                // 1. ZBIERZ WSZYSTKIE KARTY, KTÓRE MOGĄ ZAREAGOWAĆ
-                // (Jednostki na stole + ewentualnie karty w ręce, jeśli obsługujemy triggery z ręki)
-                var activeUnits = workingState.Board.GetAllUnits(); // Dodaj tę metodę do BoardState!
-
-                // Dla zdarzenia CardPlayedEvent, sama zagrana karta też może zareagować (Battlecry)
-                // Musimy ją znaleźć (jest w evencie)
-
-                // 2. SPRAWDŹ KAŻDĄ JEDNOSTKĘ
-                foreach (var unit in activeUnits)
+                // --- KROK 1: EFEKTY Z PLANSZY (Zone == Board) ---
+                var boardUnits = workingState.Board.GetAllUnits();
+                foreach (var unit in boardUnits)
                 {
-                    // Czy ta jednostka ma efekty w definicji?
-                    foreach (var effectData in unit.Definition.Effects)
+                    foreach (var effect in unit.Definition.Effects)
                     {
-                        if (effectData.Trigger == CardGame.Core.Cards.Data.TriggerType.OnPlayed)
+                        // Kluczowa poprawka: Sprawdzamy strefę!
+                        if (effect.Zone != EffectZone.Board && effect.Zone != EffectZone.Any)
                             continue;
-                        // Tworzymy komponent "w locie" (to lekkie)
-                        var component = new JsonEffectComponent(effectData, unit.InstanceId);
 
+                        // Pomijamy OnPlayed (Battlecry), bo to nie jest efekt pasywny/reaktywny z planszy w tym sensie
+                        if (effect.Trigger == CardGame.Core.Cards.Data.TriggerType.OnPlayed)
+                            continue;
+
+                        var component = new JsonEffectComponent(effect, unit.InstanceId);
                         if (component.ShouldTrigger(evt, workingState))
                         {
-                            Console.WriteLine($"[TRIGGER] Uruchamiam efekt karty {unit.Definition.Name}!");
-                            workingState = component.Resolve(evt, workingState);
+                            Console.WriteLine($"[TRIGGER BOARD] {unit.Definition.Name}: {evt.GetType().Name}");
+                            workingState = component.Resolve(evt, workingState, context);
                         }
                     }
                 }
 
-                // Specjalny przypadek: OnPlayed (Battlecry) dla karty, która właśnie wchodzi
-                // Ona może jeszcze nie być na liście "activeUnits" w zależności od momentu
+                // --- KROK 2: EFEKTY Z RĘKI (Zone == Hand) ---
+                
+                var handCards = workingState.PlayerA.Hand.Concat(workingState.PlayerB.Hand);
+
+                foreach (var card in handCards)
+                {
+                    foreach (var effect in card.Definition.Effects)
+                    {
+                        // Kluczowa poprawka: Reagujemy TYLKO jeśli efekt jest zdefiniowany jako Hand
+                        if (effect.Zone != EffectZone.Hand && effect.Zone != EffectZone.Any)
+                            continue;
+
+                        var component = new JsonEffectComponent(effect, card.InstanceId);
+
+                        // Tutaj ShouldTrigger zadziała normalnie
+                        if (component.ShouldTrigger(evt, workingState))
+                        {
+                            Console.WriteLine($"[TRIGGER HAND] {card.Definition.Name}: {evt.GetType().Name}");
+                            workingState = component.Resolve(evt, workingState, context);
+                        }
+                    }
+                }
+
+                // ---KROK 3: EFEKTY SPECJALNE(Battlecry / Deathrattle) ---
+                
                 if (evt is CardPlayedEvent cpe)
                 {
                     foreach (var effectData in cpe.Card.Definition.Effects)
@@ -56,11 +79,29 @@ namespace CardGame.Core.Events.Triggers
                             if (component.ShouldTrigger(evt, workingState))
                             {
                                 Console.WriteLine($"[TRIGGER] Battlecry karty {cpe.Card.Definition.Name}!");
-                                workingState = component.Resolve(evt, workingState);
+                                workingState = component.Resolve(evt, workingState, context);
                             }
                         }
                     }
                 }
+                if (evt is UnitDiedEvent diedEvent)
+                {
+                    foreach (var effectData in diedEvent.Unit.Definition.Effects)
+                    {
+                        // Interesuje nas TYLKO trigger OnDeath tej konkretnej jednostki
+                        if (effectData.Trigger == CardGame.Core.Cards.Data.TriggerType.OnDeath)
+                        {
+                            var component = new JsonEffectComponent(effectData, diedEvent.Unit.InstanceId);
+
+                            if (component.ShouldTrigger(evt, workingState))
+                            {
+                                Console.WriteLine($"[TRIGGER] Deathrattle karty {diedEvent.Unit.Definition.Name}!");
+                                workingState = component.Resolve(evt, workingState, context);
+                            }
+                        }
+                    }
+                }
+
             }
 
             return workingState;

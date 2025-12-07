@@ -23,7 +23,7 @@ namespace CardGame.Core.StateMachine.Phases
             /* Dozwolone komendy w fazie akcji są następujące:
              * 1. Wykonanie akcji.
              * 2. Zakończenie fazy (tury gracza). */
-            // if (command is ActionCommand) return true;
+            if (command is PlaySpellCommand) return true;
             if (command is EndPhaseCommand) return true;
             return false;
         }
@@ -37,6 +37,10 @@ namespace CardGame.Core.StateMachine.Phases
              * bez zmian.*/
             return currentState.With(
                 currentPhase: GamePhase.Combat);
+        }
+        public bool ShouldEndPhaseAutomatically(GameState state)
+        {
+            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
         }
     }
 }

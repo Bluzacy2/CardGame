@@ -1,16 +1,15 @@
-﻿using CardGame.Core.Events.Interfaces;
+﻿using System;
+using CardGame.Core.Application;
 using CardGame.Core.State.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Events.Interfaces;
+
 
 namespace CardGame.Core.Cards.Component
 {
     public interface ICardComponent
     {
         bool ShouldTrigger(IGameEvent gameEvent, GameState state);
-        GameState Resolve(IGameEvent gameEvent, GameState gameState);
+        GameState Resolve(IGameEvent gameEvent, GameState currentState, GameContext context);
     }
 }

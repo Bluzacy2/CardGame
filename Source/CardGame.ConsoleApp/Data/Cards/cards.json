@@ -1,0 +1,258 @@
+[
+  {
+    "Id": 1,
+    "Name": "Mokke",
+    "Type": "Unit",
+    "Subtypes": [ "Animal" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 2,
+    "Description": "Heal Hero for 3 on play.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          {
+            "Type": "Heal",
+            "Target": "FriendlyHero",
+            "Amount": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": "BoomBots",
+    "Type": "Unit",
+    "Subtypes": [ "Mech" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "Deal 2 damage to Enemy Hero on play.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          {
+            "Type": "DealDamage",
+            "Target": "EnemyHero",
+            "Amount": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "Bone Sommelier",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "Add 'The Alluring Goblet' to hand.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          {
+            "Type": "AddCardToHand",
+            "Target": "Self",
+            "ValueParam": 900
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "Name": "Informer",
+    "Type": "Unit",
+    "Subtypes": [ "Human" ],
+    "Cost": 1,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "Mark an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          {
+            "Type": "ApplyStatus",
+            "Target": "TargetEnemyUnit",
+            "StringParam": "Marked"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "Name": "Queen of Cards",
+    "Type": "Unit",
+    "Subtypes": [ "Noble" ],
+    "Cost": 3,
+    "Attack": 2,
+    "Health": 4,
+    "Description": "Draw a card when a friendly unit dies.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Actions": [
+          {
+            "Type": "DrawCard",
+            "Target": "FriendlyHero"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 6,
+    "Name": "Radio Demon",
+    "Type": "Unit",
+    "Subtypes": [ "Demon" ],
+    "Cost": 5,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "Give all friendly units +1/+1 (Global).",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          {
+            "Type": "ModifyGlobalBuff",
+            "Target": "FriendlyHero",
+            "BuffAtk": 1,
+            "BuffHp": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "Name": "Glock-17",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "Deal 3 damage to an enemy.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          {
+            "Type": "DealDamage",
+            "Target": "TargetEnemyUnit",
+            "Amount": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 8,
+    "Name": "Crusader",
+    "Type": "Unit",
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 3,
+    "Keywords": [ "Armored" ], 
+    "Description": "Armored."
+  },
+  {
+    "Id": 9,
+    "Name": "Corpse Eater",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 3,
+    "Attack": 3,
+    "Health": 1,
+    "Description": "While in Hand: When Friendly dies, play this.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Zone": "Hand",
+        "Actions": [
+          {
+            "Type": "SummonUnit",
+            "Target": "Self"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 10,
+    "Name": "Polar Bear",
+    "Type": "Unit",
+    "Subtypes": [ "Animal" ],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 3,
+    "Description": "When Played: Sacrifice a Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "TargetFriendlyUnit",
+        "Actions": [
+          {
+              "Type": "AbsorbStats", "Target": "SelectedTarget"
+          },
+          {
+            "Type": "SacrificeUnit",
+            "Target": "SelectedTarget"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 11,
+    "Name": "The Creature",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 7,
+    "Attack": 7,
+    "Health": 7,
+    "Keywords": [ "Unkillable" ],
+    "Description": "While In Hand: Each Time You Sacrifice a Card - this Card costs one less.",
+    "Effects": [
+      {
+        "Trigger": "OnSacrificed",
+        "Zone": "Hand",
+        "Actions": [
+          {
+            "Type": "BuffStats",
+            "Target": "Self",
+            "Amount": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 900,
+    "Name": "The Alluring Goblet",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Make unit Unkillable, then destroy it.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "TargetFriendlyUnit",
+        "Actions": [
+          {
+            "Type": "ApplyStatus",
+            "Target": "TargetFriendlyUnit",
+            "StringParam": "Unkillable"
+          },
+          {
+            "Type": "DestroyUnit",
+            "Target": "TargetFriendlyUnit"
+          }
+        ]
+      }
+    ]
+  }
+]

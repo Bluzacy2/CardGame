@@ -15,12 +15,16 @@ namespace CardGame.Core.Events
     {
         public int PlayerId { get; }
         public CardInstance Card { get; }
-        public int LineIndex { get; }
+        public int? LineIndex { get; }
 
-        public CardPlayedEvent(int playerId, CardInstance card)
+        public int? SelectedTargetId { get; }
+
+        public CardPlayedEvent(int playerId, CardInstance card, int? lineIndex, int? selectedTargetId)
         {
             PlayerId = playerId;
             Card = card;
+            LineIndex = lineIndex;
+            SelectedTargetId = selectedTargetId;
         }
     }
     public class UnitDamagedEvent : IGameEvent 
@@ -62,6 +66,24 @@ namespace CardGame.Core.Events
     {
         public CardInstance Unit { get; }
         public int OwnerId { get; }
-        public UnitDiedEvent(CardInstance unit) { Unit = unit; OwnerId = unit.OwnerPlayerId; }
+
+        public int LineIndex { get; }
+        public UnitDiedEvent(CardInstance unit, int lineIndex) { 
+            Unit = unit; 
+            OwnerId = unit.OwnerPlayerId;
+            LineIndex = lineIndex;
+        }
     }
+    public class UnitSacrificedEvent : IGameEvent
+    {
+        public CardInstance Unit { get; }
+        public int OwnerId { get; }
+
+        public UnitSacrificedEvent(CardInstance unit)
+        {
+            Unit = unit;
+            OwnerId = unit.OwnerPlayerId;
+        }
+    }
+
 }

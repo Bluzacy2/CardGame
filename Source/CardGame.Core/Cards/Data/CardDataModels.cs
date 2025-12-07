@@ -27,6 +27,8 @@ namespace CardGame.Core.Cards.Data
         public ConditionData? Condition { get; set; }
         public List<ActionData> Actions { get; set; } = new();
         public TargetType Targeting { get; set; }
+
+        public EffectZone Zone { get; set; } = EffectZone.Board;
     }
 
     public class ActionData

@@ -10,7 +10,7 @@ namespace CardGame.Core.Cards.Data
     public enum  Keyword 
     { 
         None, 
-        Armor,
+        Armored,
         Armor2,
         DoubleStrike,
         SoulGuard, 
@@ -26,7 +26,9 @@ namespace CardGame.Core.Cards.Data
         OnTurnStart,
         OnTurnEnd,
         WhileOnBoard,
-        OnFriendlyUnitDied
+        OnFriendlyUnitDied,
+
+        OnSacrificed
     }
 
     public enum ActionType
@@ -42,7 +44,11 @@ namespace CardGame.Core.Cards.Data
         BuffStats,
         AddCardToHand,
         ApplyStatus,
-        ModifyGlobalBuff
+        ModifyGlobalBuff,
+        DrawCard,
+
+        SacrificeUnit,
+        AbsorbStats
     }
 
     public enum TargetType
@@ -53,7 +59,10 @@ namespace CardGame.Core.Cards.Data
         AllEnemyUnits,
         ALlFriendlyUnits,
         EnemyHero,
-        FriendlyHero
+        FriendlyHero,
+
+        SelectedTarget
+
     }
 
     public enum ConditionType
@@ -64,6 +73,14 @@ namespace CardGame.Core.Cards.Data
         IsEnemy,
         IsUnit,
         IsType
+    }
+
+    public enum EffectZone
+    {
+        Board,     
+        Hand,      
+        Graveyard,  
+        Any        
     }
 
 

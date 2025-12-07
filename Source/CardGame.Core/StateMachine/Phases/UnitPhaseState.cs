@@ -39,5 +39,9 @@ namespace CardGame.Core.StateMachine.Phases
                 currentPhase: GamePhase.UnitAndAction,
                 activePlayerId: nextPlayerId);
         }
+        public bool ShouldEndPhaseAutomatically(GameState state)
+        {
+            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
+        }
     }
 }

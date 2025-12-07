@@ -11,4 +11,18 @@
     <ProjectReference Include="..\CardGame.Core\CardGame.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Decks\" />
+    <Folder Include="Data\Cards\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\Cards\cards.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Decks\starter_deck.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
