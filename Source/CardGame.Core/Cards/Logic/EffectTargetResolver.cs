@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Linq;
+
 using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Models;
 using CardGame.Core.Events;
+using CardGame.Core.Cards.Models;
+using System.Collections.Generic;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
 
+
 namespace CardGame.Core.Cards.Logic
 {
-    // Struktura pomocnicza do zwracania wyników namierzania
     public class EffectTargets
     {
         public PlayerState? TargetPlayer;
-        public CardInstance? TargetUnit;
+        public List<CardInstance> UnitTargets { get; set; } = new();
+        public CardInstance? TargetUnit => UnitTargets.FirstOrDefault();
+
     }
 
     public static class EffectTargetResolver
@@ -21,66 +25,42 @@ namespace CardGame.Core.Cards.Logic
         {
             var result = new EffectTargets();
 
-            // KROK 1: Ustal, kto jest właścicielem karty wywołującej efekt (Source Owner)
+            // 1. Ustal właściciela źródła
             int ownerId = DetermineSourceOwner(state, contextEvent, sourceCardId);
-
-            // Jeśli nie udało się ustalić właściciela, nie możemy bezpiecznie rozwiązać celów "Friendly/Enemy"
-            if (ownerId == -1)
-            {
-                Console.WriteLine($"[TARGET ERROR] Nie udało się ustalić właściciela karty źródłowej (ID: {sourceCardId})");
-                return result;
-            }
+            if (ownerId == -1) return result;
 
             int opponentId = (ownerId == 1) ? 2 : 1;
 
             switch (type)
             {
-                // Cel wybrany jawnie przez gracza (wskazanie myszką / komendą)
+                // --- CELE POJEDYNCZE (WYBIERANE) ---
                 case TargetType.SelectedTarget:
-                    if (contextEvent is CardPlayedEvent cpe && cpe.SelectedTargetId.HasValue)
-                    {
-                        // Szukamy na stole
-                        var targetUnit = FindUnitOnBoard(state, cpe.SelectedTargetId.Value);
-                        if (targetUnit != null)
-                        {
-                            result.TargetUnit = targetUnit;
-                        }
-                        else
-                        {
-                            Console.WriteLine($"[TARGET INFO] Wybranego celu ID {cpe.SelectedTargetId.Value} nie ma na stole.");
-                        }
-                    }
-                    break;
-
-                // Automatyczne namierzanie wroga (dla prostych efektów)
                 case TargetType.TargetEnemyUnit:
-                    // Jeśli gracz wskazał cel, używamy go
-                    if (contextEvent is CardPlayedEvent cpeEnemy && cpeEnemy.SelectedTargetId.HasValue)
-                    {
-                        var tUnit = FindUnitOnBoard(state, cpeEnemy.SelectedTargetId.Value);
-                        // Walidacja: Czy to faktycznie wróg?
-                        if (tUnit != null && tUnit.OwnerPlayerId == opponentId)
-                        {
-                            result.TargetUnit = tUnit;
-                        }
-                    }
-                    break;
-
-                // Automatyczne namierzanie sojusznika
                 case TargetType.TargetFriendlyUnit:
-                    // Jeśli gracz wskazał cel
-                    if (contextEvent is CardPlayedEvent cpeFriendly && cpeFriendly.SelectedTargetId.HasValue)
+
+                    int? targetId = null;
+                    if (contextEvent is CardPlayedEvent cpe) targetId = cpe.SelectedTargetId;
+                    if (contextEvent is TargetSelectedEvent tse) targetId = tse.SelectedTargetId;
+
+                    if (targetId.HasValue)
                     {
-                        var tUnit = FindUnitOnBoard(state, cpeFriendly.SelectedTargetId.Value);
-                        // Walidacja: Czy to sojusznik?
-                        if (tUnit != null && tUnit.OwnerPlayerId == ownerId)
+                        var tUnit = FindUnitOnBoard(state, targetId.Value);
+                        if (tUnit != null)
                         {
-                            result.TargetUnit = tUnit;
+                            bool isValid = true;
+                            if (type == TargetType.TargetEnemyUnit && tUnit.OwnerPlayerId != opponentId) isValid = false;
+                            if (type == TargetType.TargetFriendlyUnit && tUnit.OwnerPlayerId != ownerId) isValid = false;
+
+                            if (isValid)
+                            {
+                                // Dodajemy do listy
+                                result.UnitTargets.Add(tUnit);
+                            }
                         }
                     }
                     break;
 
-                // Cele globalne / Gracz
+                // --- CELE GRACZA ---
                 case TargetType.FriendlyHero:
                     result.TargetPlayer = state.GetPlayer(ownerId);
                     break;
@@ -89,66 +69,75 @@ namespace CardGame.Core.Cards.Logic
                     result.TargetPlayer = state.GetPlayer(opponentId);
                     break;
 
-                // Źródło efektu (Siebie)
+                // --- KONTEKSTOWE (SELF) ---
                 case TargetType.Self:
-                    // 1. Szukamy na stole (najczęstszy przypadek)
                     var onBoard = FindUnitOnBoard(state, sourceCardId);
                     if (onBoard != null)
                     {
-                        result.TargetUnit = onBoard;
+                        result.UnitTargets.Add(onBoard);
                         result.TargetPlayer = state.GetPlayer(ownerId);
                     }
                     else
                     {
-                        // 2. Szukamy w ręce (dla efektów "While in Hand" lub SummonUnit)
+                        // Szukamy w ręce (dla efektów z ręki)
                         var inHand = state.GetPlayer(ownerId).Hand.FirstOrDefault(u => u.InstanceId == sourceCardId);
                         if (inHand != null)
                         {
-                            result.TargetUnit = inHand;
+                            result.UnitTargets.Add(inHand);
                             result.TargetPlayer = state.GetPlayer(ownerId);
                         }
-                        // 3. W ostateczności TargetPlayer jest ustawiony (dla efektów Draw/Tutor z cmentarza)
                         else
                         {
+                            // Jeśli nie ma jednostki (np. czar już poszedł na cmentarz), ustawiamy chociaż gracza
                             result.TargetPlayer = state.GetPlayer(ownerId);
                         }
                     }
                     break;
 
-                   
+                // --- CELE ZBIOROWE (AOE) - NOWOŚĆ ---
+
+                case TargetType.AllEnemyUnits:
+                    var enemies = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == opponentId);
+                    result.UnitTargets.AddRange(enemies);
+                    break;
+
+                case TargetType.AllFriendlyUnits:
+                    // (Upewnij się, że w Enumie nie masz literówki 'ALlFriendlyUnits', jeśli tak - popraw tutaj nazwę)
+                    var friends = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == ownerId);
+                    result.UnitTargets.AddRange(friends);
+                    break;
+
+                case TargetType.OtherFriendlyUnits:
+                    // Wszyscy sojusznicy OPRÓCZ źródła (np. "Give OTHER units +1/+1")
+                    var others = state.Board.GetAllUnits()
+                        .Where(u => u.OwnerPlayerId == ownerId && u.InstanceId != sourceCardId);
+                    result.UnitTargets.AddRange(others);
+                    break;
             }
 
             return result;
         }
 
-        // --- METODY POMOCNICZE ---
-
+        // ... Metody DetermineSourceOwner i FindUnitOnBoard pozostają bez zmian ...
+        // (Jeśli ich nie masz pod ręką, mogę je wkleić ponownie)
         public static int DetermineSourceOwner(GameState state, IGameEvent contextEvent, int sourceCardId)
         {
-            // Priorytet 1: Event (To jest pewne źródło prawdy o momencie akcji)
-            if (contextEvent is CardPlayedEvent cpe && cpe.Card.InstanceId == sourceCardId)
-                return cpe.PlayerId;
+            if (contextEvent is CardPlayedEvent cpe && cpe.Card.InstanceId == sourceCardId) return cpe.PlayerId;
+            if (contextEvent is TargetSelectedEvent tse && tse.SourceCardId == sourceCardId) return tse.PlayerId;
+            if (contextEvent is UnitDiedEvent ude && ude.Unit.InstanceId == sourceCardId) return ude.Unit.OwnerPlayerId;
+            if (contextEvent is UnitSacrificedEvent use && use.Unit.InstanceId == sourceCardId) return use.Unit.OwnerPlayerId;
 
-            if (contextEvent is UnitDiedEvent ude && ude.Unit.InstanceId == sourceCardId)
-                return ude.Unit.OwnerPlayerId;
-
-            if (contextEvent is UnitSacrificedEvent use && use.Unit.InstanceId == sourceCardId)
-                return use.Unit.OwnerPlayerId;
-
-            // Priorytet 2: Stół (Dla efektów pasywnych / aktywowanych później)
             var unitOnBoard = FindUnitOnBoard(state, sourceCardId);
-            if (unitOnBoard != null)
-                return unitOnBoard.OwnerPlayerId;
+            if (unitOnBoard != null) return unitOnBoard.OwnerPlayerId;
 
-            // Priorytet 3: Ręka (Dla efektów z ręki)
             if (state.PlayerA.Hand.Any(c => c.InstanceId == sourceCardId)) return 1;
             if (state.PlayerB.Hand.Any(c => c.InstanceId == sourceCardId)) return 2;
 
-            // Priorytet 4: Cmentarz (Dla efektów działających po śmierci, jeśli event nie wystarczył)
+            // Szukamy też w Discard (ważne dla efektów pośmiertnych)
             if (state.PlayerA.DiscardPile.Any(c => c.InstanceId == sourceCardId)) return 1;
             if (state.PlayerB.DiscardPile.Any(c => c.InstanceId == sourceCardId)) return 2;
 
-            return -1; // Nie znaleziono
+            return -1;
         }
 
         private static CardInstance? FindUnitOnBoard(GameState state, int unitId)

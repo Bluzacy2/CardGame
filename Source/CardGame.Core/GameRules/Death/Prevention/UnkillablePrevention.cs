@@ -9,26 +9,21 @@ namespace CardGame.Core.GameRules.Death.Prevention
     {
         public bool CanPreventDeath(CardInstance unit, GameState state)
         {
-            // Sprawdzamy, czy karta ma keyword Unkillable
-            // Zakładam, że CardStats ma listę Keywords lub CardDefinition ją ma
-            // Dostosuj to do swojego modelu danych!
             return unit.Definition.Keywords.Contains(Keyword.Unkillable);
         }
 
         public GameState PreventDeath(CardInstance unit, GameState currentState)
         {
-            // 1. Zdejmij z planszy (ustaw null w linii)
             var newBoard = RemoveUnitFromBoard(currentState.Board, unit);
 
-            // 2. Dodaj do ręki właściciela (zresetowaną lub obecną)
             var owner = currentState.GetPlayer(unit.OwnerPlayerId);
 
-            // Resetujemy statystyki do bazowych przy powrocie do ręki
-            var returnedCard = unit.WithStats(unit.Definition.BaseStats);
+            var returnedCard = new CardInstance(unit.InstanceId, unit.OwnerPlayerId, unit.Definition);
 
             var newOwnerState = owner.WithCardAddedToHand(returnedCard);
 
-            // 3. Zwróć zaktualizowany stan
+            Console.WriteLine($"[UNKILLABLE] {unit.Definition.Name} wraca do ręki zamiast zginąć!");
+
             if (unit.OwnerPlayerId == 1)
                 return currentState.With(board: newBoard, playerA: newOwnerState);
             else

@@ -9,11 +9,11 @@ namespace CardGame.Core.GameRules.Damage
 {
     public class DamageContext
     {
-        public CardInstance Source { get; }
+        public CardInstance? Source { get; }
         public CardInstance Target { get; }
         public int RawAmount { get; }
         public DamageType Type { get; }
-        public DamageContext(CardInstance source, CardInstance target, int rawAmount, DamageType type)
+        public DamageContext(CardInstance? source, CardInstance target, int rawAmount, DamageType type)
         {
             Source = source;
             Target = target;

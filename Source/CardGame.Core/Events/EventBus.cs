@@ -9,21 +9,27 @@ namespace CardGame.Core.Events
 {
     public class EventBus
     {
-        private readonly Queue<IGameEvent> _eventQueue = new Queue<IGameEvent>();
+        private readonly Queue<IGameEvent> _processingQueue = new Queue<IGameEvent>();
+        private readonly List<IGameEvent> _history = new List<IGameEvent>();
 
         public void Publish(IGameEvent gameEvent)
         {
-            _eventQueue.Enqueue(gameEvent);
+            _processingQueue.Enqueue(gameEvent);
+            _history.Add(gameEvent);
         }
-        public bool HasEvents => _eventQueue.Count > 0;
+        public bool HasEvents => _processingQueue.Count > 0;
 
         public IGameEvent Pop()
         {
-            return _eventQueue.Dequeue();
+            return _processingQueue.Dequeue();
         }
-        public void Clear()
+        public void ClearHistory()
         {
-            _eventQueue.Clear();
+            _history.Clear();
+        }
+        public IEnumerable<IGameEvent> GetHistory()
+        {
+            return _history.AsReadOnly();
         }
     }
 }

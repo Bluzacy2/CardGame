@@ -1,9 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using CardGame.Core.Application;
 using CardGame.Core.Cards.Data;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Events;
 using CardGame.Core.State.Models;
+using System;
+using System.Linq;
 
 namespace CardGame.Core.Commands.Implementations
 {
@@ -21,7 +22,7 @@ namespace CardGame.Core.Commands.Implementations
         }
 
       
-        public GameState Execute(GameState currentState, EventBus eventBus)
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
         {
             var playerState = currentState.GetPlayer(PlayerId);
 

@@ -1,16 +1,15 @@
-﻿using System;
+﻿using CardGame.Core.Application;
+using CardGame.Core.Commands.Interfaces;
+/* W komendach NIE implementujemy logiki gry, jedynie przekazujemy dla StateMachine informacje co chcemy zrobić.
+ * Logika gry jest implementowana w StateMachine. */
+using CardGame.Core.Events;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.State.Models;
-using CardGame.Core.StateMachine.Interfaces;
-
-/* W komendach NIE implementujemy logiki gry, jedynie przekazujemy dla StateMachine informacje co chcemy zrobić.
- * Logika gry jest implementowana w StateMachine. */
-using CardGame.Core.Events;
 namespace CardGame.Core.Commands.Implementations
 {
     public class EndPhaseCommand: IGameCommand
@@ -21,7 +20,7 @@ namespace CardGame.Core.Commands.Implementations
             PlayerId = playerId;
         }
 
-        public GameState Execute(GameState currentState, EventBus eventBus)
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
         {
             /* Logika kończenia fazy jest wyjątkiem od reguły. Pozostałe komendy **zazwyczaj** same zmieniają stan gry
              * poprzez wykonywanie operacji przez samych siebie np. odejmij punkty życia, zagraj kartę itp.

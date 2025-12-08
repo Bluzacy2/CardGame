@@ -24,6 +24,7 @@ namespace CardGame.Core.StateMachine.Phases
              * 1. Wykonanie akcji.
              * 2. Zakończenie fazy (tury gracza). */
             if (command is PlaySpellCommand) return true;
+            if (command is SelectTargetCommand) return true;
             if (command is EndPhaseCommand) return true;
             return false;
         }

@@ -21,6 +21,9 @@ namespace CardGame.Core.State.Models
         // --- Mulligan ---
         public IReadOnlyList<int> PlayersReady { get; }
 
+        // --- Interakcje oczekujące na wybór celu ---
+        public PendingInteraction? PendingInteraction { get; }
+
         // Konstruktor
         public GameState(
             int turnNumber,
@@ -30,7 +33,8 @@ namespace CardGame.Core.State.Models
             PlayerState playerA,
             PlayerState playerB,
             // ZMIANA: Przyjmujemy IEnumerable, żeby naprawić błąd konwersji
-            IEnumerable<int>? playersReady = null)
+            IEnumerable<int>? playersReady = null,
+            PendingInteraction? pendingInteraction = null)
         {
             TurnNumber = turnNumber;
             CurrentPhase = currentPhase;
@@ -40,6 +44,7 @@ namespace CardGame.Core.State.Models
             PlayerB = playerB;
             // Konwertujemy na Listę wewnętrznie
             PlayersReady = playersReady != null ? new List<int>(playersReady) : new List<int>();
+            PendingInteraction = pendingInteraction;
         }
 
         // --- Metoda Fabrykująca ---
@@ -61,7 +66,8 @@ namespace CardGame.Core.State.Models
                 board: BoardState.Empty(),
                 playerA: pA,
                 playerB: pB,
-                playersReady: new List<int>()
+                playersReady: new List<int>(),
+                pendingInteraction: null
             );
         }
 
@@ -73,7 +79,9 @@ namespace CardGame.Core.State.Models
             BoardState? board = null,
             PlayerState? playerA = null,
             PlayerState? playerB = null,
-            IEnumerable<int>? playersReady = null) // Parametr opcjonalny
+            IEnumerable<int>? playersReady = null,
+            PendingInteraction? pendingInteraction = null, 
+            bool clearPending = false) 
         {
             return new GameState(
                 turnNumber ?? this.TurnNumber,
@@ -82,7 +90,8 @@ namespace CardGame.Core.State.Models
                 board ?? this.Board,
                 playerA ?? this.PlayerA,
                 playerB ?? this.PlayerB,
-                playersReady ?? this.PlayersReady // Teraz zadziała, bo konstruktor przyjmuje IEnumerable
+                playersReady ?? this.PlayersReady,
+                clearPending ? null : (pendingInteraction ?? this.PendingInteraction)
             );
         }
 

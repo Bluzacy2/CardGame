@@ -3,6 +3,7 @@ using CardGame.Core.Cards.Factories;
 using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Events;
+using CardGame.Core.Events.Interfaces;
 using CardGame.Core.Events.Triggers;
 using CardGame.Core.GameRules.Auras;
 using CardGame.Core.GameRules.Damage;
@@ -49,22 +50,24 @@ namespace CardGame.Core.Application
             CurrentState = _auraSystem.RecalculateAuras(CurrentState);
         }
 
-        public void ExecuteCommand(IGameCommand command)
+        public ExecutionResult ExecuteCommand(IGameCommand command)
         {
+            Events.ClearHistory();
+
             if (IsGameOver)
             {
                 Console.WriteLine("[SILNIK] Gra zakończona. Ruchy zablokowane.");
-                return;
+                return new ExecutionResult(CurrentState, new List<IGameEvent>());
             }
 
             IPhaseState currentPhaseLogic = _stateMachine.GetStateForPhase(CurrentState.CurrentPhase);
             if (!currentPhaseLogic.IsCommandAllowed(command, CurrentState))
             {
                 Console.WriteLine($"[BŁĄD] Komenda {command.GetType().Name} niedozwolona.");
-                return;
+                return new ExecutionResult(CurrentState, new List<IGameEvent>());
             }
 
-            GameState newState = command.Execute(CurrentState, Events);
+            GameState newState = command.Execute(CurrentState, Events, _gameContext);
 
             if (command is EndPhaseCommand)
             {
@@ -91,7 +94,7 @@ namespace CardGame.Core.Application
                 if (gameOver)
                 {
                     CurrentState = newState;
-                    return;
+                    return new ExecutionResult(CurrentState, Events.GetHistory());
                 }
 
                 if (!Events.HasEvents)
@@ -103,6 +106,7 @@ namespace CardGame.Core.Application
             }
 
             CurrentState = newState;
+            return new ExecutionResult(CurrentState, Events.GetHistory());
         }
 
         private bool CheckGameOver(GameState state)

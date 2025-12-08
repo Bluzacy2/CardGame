@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-
 using CardGame.Core.Events;
+using CardGame.Core.Application;
+using CardGame.Core.State.Models;
 using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.State.Models; 
 
 namespace CardGame.Core.Commands.Implementations
 {
@@ -23,7 +23,7 @@ namespace CardGame.Core.Commands.Implementations
             SelectedTargetId = selectedTargetId;
         }
 
-        public GameState Execute(GameState currentState, EventBus eventBus)
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
         {
             // 1. Pobierz dane gracza
             var playerState = currentState.GetPlayer(PlayerId);
@@ -58,7 +58,7 @@ namespace CardGame.Core.Commands.Implementations
 
             // B. Plansza otrzymuje jednostkę
             var statsWithBuffs = card.CurrentStats + playerState.GlobalUnitBuffs;
-            var cardToPlay = card.WithStats(statsWithBuffs);
+            var cardToPlay = card.AddPermanentBuff(playerState.GlobalUnitBuffs);
             // -------------------------------------------------
 
             // Używamy cardToPlay zamiast card!

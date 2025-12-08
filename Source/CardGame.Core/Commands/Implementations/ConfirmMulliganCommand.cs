@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using CardGame.Core.Application;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Events;
 using CardGame.Core.State.Models;
+using System.Collections.Generic;
 
 namespace CardGame.Core.Commands.Implementations
 {
@@ -16,7 +17,7 @@ namespace CardGame.Core.Commands.Implementations
             RejectedCardIds = rejectedCardIds ?? new List<int>();
         }
 
-        public GameState Execute(GameState currentState, EventBus eventBus)
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
         {
             // 1. Pobierz gracza
             var player = currentState.GetPlayer(PlayerId);

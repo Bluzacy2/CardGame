@@ -25,6 +25,7 @@ namespace CardGame.Core.StateMachine.Phases
              * 1. Zagranie jedostki.
              * 2. Zakończenie fazy (tury gracza). */
             if (command is PlayUnitCommand) return true;
+            if (command is SelectTargetCommand) return true;
             /* wstaw wystawienie jednostki komenda */
             if (command is EndPhaseCommand) return true;
 

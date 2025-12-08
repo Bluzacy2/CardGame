@@ -1,5 +1,6 @@
 ﻿using CardGame.Core.Cards.Data;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CardGame.Core.Cards.Models
 {
@@ -9,75 +10,84 @@ namespace CardGame.Core.Cards.Models
         public int OwnerPlayerId { get; }
         public CardDefinition Definition { get; }
 
-        public CardStats PermanentStats { get; }
+        
+        public int DamageTaken { get; }
+        public CardStats PermanentBuffs { get; }
         public IReadOnlyList<Keyword> AuraKeywords { get; }
+
         public CardStats CurrentStats
         {
             get
             {
-                if (AuraKeywords.Count == 0) return PermanentStats;
+            
+                var stats = Definition.BaseStats + PermanentBuffs;
 
-               
-                var mergedKeywords = new List<Keyword>(PermanentStats.Keywords);
-                mergedKeywords.AddRange(AuraKeywords);
+                int currentHp = stats.Health - DamageTaken;
 
-              
+                var combinedKeywords = new List<Keyword>(stats.Keywords);
+                if (AuraKeywords != null) combinedKeywords.AddRange(AuraKeywords);
+
                 return new CardStats(
-                    PermanentStats.Attack,
-                    PermanentStats.Health,
-                    PermanentStats.BloodCost,
-                    mergedKeywords.Distinct() 
+                    stats.Attack,
+                    currentHp, 
+                    stats.BloodCost,
+                    combinedKeywords.Distinct()
                 );
             }
         }
 
+        public int MaxHealth => (Definition.BaseStats + PermanentBuffs).Health;
+
+
         public CardInstance(int instanceId, int playerOwnerId, CardDefinition definition)
-            : this(instanceId, playerOwnerId, definition, definition.BaseStats, new List<Keyword>())
+            : this(instanceId, playerOwnerId, definition, 0, new CardStats(0, 0, 0), new List<Keyword>())
         {
         }
-
 
         private CardInstance(
            int instanceId,
            int playerOwnerId,
            CardDefinition definition,
-           CardStats permanentStats,
+           int damageTaken,
+           CardStats permanentBuffs,
            IEnumerable<Keyword> auraKeywords)
         {
             InstanceId = instanceId;
             OwnerPlayerId = playerOwnerId;
             Definition = definition;
-            PermanentStats = permanentStats;
+            DamageTaken = damageTaken;
+            PermanentBuffs = permanentBuffs;
             AuraKeywords = auraKeywords != null ? new List<Keyword>(auraKeywords) : new List<Keyword>();
         }
-
-
-        public CardInstance WithStats(CardStats newStats)
+        public CardInstance WithDamage(int totalDamage)
         {
-            
-            return new CardInstance(InstanceId, OwnerPlayerId, Definition, newStats, AuraKeywords);
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, totalDamage, PermanentBuffs, AuraKeywords);
         }
-        public CardInstance WithKeywordAdded(Keyword keyword)
-        {
-           
-            var newStats = PermanentStats.WithKeyword(keyword);
-            return new CardInstance(InstanceId, OwnerPlayerId, Definition, newStats, AuraKeywords);
-        }
+
         public CardInstance TakeDamage(int amount)
         {
-            var newStats = new CardStats(
-                PermanentStats.Attack,
-                PermanentStats.Health - amount,
-                PermanentStats.BloodCost,
-                PermanentStats.Keywords
-            );
-            return new CardInstance(InstanceId, OwnerPlayerId, Definition, newStats, AuraKeywords);
+            return WithDamage(DamageTaken + amount);
         }
 
-        public CardInstance WithAuras(IEnumerable<Keyword> newAuraKeywords)
+        public CardInstance Heal(int amount)
         {
-            return new CardInstance(InstanceId, OwnerPlayerId, Definition, PermanentStats, newAuraKeywords);
+            int newDamage = System.Math.Max(0, DamageTaken - amount);
+            return WithDamage(newDamage);
         }
 
+        public CardInstance AddPermanentBuff(CardStats buff)
+        {
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, PermanentBuffs + buff, AuraKeywords);
+        }
+
+        public CardInstance WithAuras(IEnumerable<Keyword> newAuras)
+        {
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, PermanentBuffs, newAuras);
+        }
+
+        public CardInstance Silence()
+        {
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, new CardStats(0, 0, 0), new List<Keyword>());
+        }
     }
 }

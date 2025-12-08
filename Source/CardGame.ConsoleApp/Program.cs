@@ -7,7 +7,6 @@ using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Factories;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.Commands.Implementations;
-using CardGame.Core.Decks;
 using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
 
@@ -18,253 +17,224 @@ namespace CardGame.ConsoleApp
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Console.WriteLine("=== MASTER TEST: WERYFIKACJA REFAKTORYZACJI ===");
+            Console.WriteLine("=== MASTER TEST MECHANIK (CONSOLE) ===\n");
 
             try
             {
-                // 1. GENEROWANIE KOMPLETNEGO JSONA
-                CreateMasterJson();
-                LoadGameData();
+                // 1. GENEROWANIE KART (Wszystkie przypadki testowe)
+                CreateMechanicsJson();
+                CardLibrary.Instance.LoadFromJson("mechanics_cards.json");
 
                 // 2. SETUP SILNIKA
-                var rng = new DeterministicRng(777);
+                var rng = new DeterministicRng(999);
                 var factory = new CardFactory(CardLibrary.Instance, rng);
 
-                // Tworzymy karty
-                var crusader = factory.CreateCard(20, 1);
-                var polarBear = factory.CreateCard(24, 1);
-                var moder = factory.CreateCard(25, 1);
-                var corpseEater = factory.CreateCard(21, 1);
-                var blackCat = factory.CreateCard(23, 1);
-                var criticalThinking = factory.CreateCard(26, 1);
-                var mokke = factory.CreateCard(1, 1); // Do talii
+                // --- PRZYGOTOWANIE GRACZA I KART ---
+                // Gracz ma nieskończoność many
+                var pA = PlayerState.Initial(1, new List<CardInstance>())
+                    .With(maxBlood: 100, currentBlood: 100);
 
-                // TWORZENIE STANU
-                // Stół: Crusader
-                var board = BoardState.Empty().WithUnitPlacedAt(0, 1, crusader);
+                // Tworzymy karty testowe
+                var tank = factory.CreateCard(1, 1);      // 1/5
+                var buffer = factory.CreateCard(2, 1);    // +2/+2
+                var healer = factory.CreateCard(3, 1);    // Heal 10
+                var armorer = factory.CreateCard(4, 1);   // Give Armored
+                var guardian = factory.CreateCard(5, 1);  // SoulGuard
+                var phoenix = factory.CreateCard(6, 1);   // Unkillable
+                var nuke = factory.CreateCard(99, 1);     // Deal 10 Dmg
 
-                // Ręka: Polar Bear, Moder, Corpse Eater, Black Cat, Critical Thinking
-                var hand = new List<CardInstance>();
-                var pA = PlayerState.Initial(1, new List<CardInstance> { mokke }) // Mokke w talii
-                    .With(maxBlood: 100, currentBlood: 100) // Infinite Mana
-                    .WithCardAddedToHand(polarBear)
-                    .WithCardAddedToHand(moder)
-                    .WithCardAddedToHand(corpseEater)
-                    .WithCardAddedToHand(blackCat)
-                    .WithCardAddedToHand(criticalThinking);
+                // Dodajemy karty akcyjne do ręki
+                pA = pA.WithCardAddedToHand(buffer)
+                       .WithCardAddedToHand(healer)
+                       .WithCardAddedToHand(armorer)
+                       .WithCardAddedToHand(nuke);
 
+                // Rozstawiamy sytuację na stole (żeby nie tracić czasu na zagrywanie wszystkiego)
+                var board = BoardState.Empty()
+                    .WithUnitPlacedAt(0, 1, tank)      // L0: Tank (będzie buffowany i leczony)
+                    .WithUnitPlacedAt(1, 1, guardian)  // L1: Guardian (test SoulGuard)
+                    .WithUnitPlacedAt(2, 1, phoenix);  // L2: Phoenix (test Unkillable)
+
+                // Tworzymy stan gry
                 var state = new GameState(1, GamePhase.UnitAndAction, 1, board, pA, PlayerState.Initial(2, new List<CardInstance>()));
-                var engine = new GameEngine(state, seed: 777);
+                var engine = new GameEngine(state, seed: 999);
 
-                Console.WriteLine("\n--- START TESTÓW ---\n");
+                Console.WriteLine("--- START ---");
 
-                // =======================================================================
-                // SCENARIUSZ 1: COMBO BESTII (Sacrifice -> Hand Trigger -> Death -> Summon)
-                // =======================================================================
-                Console.WriteLine("[SCENARIUSZ 1] Polar Bear zjada Crusadera...");
+                // ====================================================================
+                // TEST 1: BUFFOWANIE (+2/+2)
+                // ====================================================================
+                Console.WriteLine("\n[KROK 1] Zagrywam Buffera na Tanka (1/5)...");
+                // Buffer celuje w SelectedTarget. Wybieramy Tanka (L0).
+                engine.ExecuteCommand(new PlayUnitCommand(1, buffer.InstanceId, 3, selectedTargetId: tank.InstanceId));
 
-                var cmd1 = new PlayUnitCommand(1, polarBear.InstanceId, 1, selectedTargetId: crusader.InstanceId);
-                engine.ExecuteCommand(cmd1);
+                var tankCheck = engine.CurrentState.Board.Lines[0].Player1Unit;
+                Console.WriteLine($"   Tank Stats: {tankCheck.CurrentStats.Attack}/{tankCheck.CurrentStats.Health}");
 
-                // --- POPRAWIONA WERYFIKACJA ---
+                Assert(tankCheck.CurrentStats.Attack == 3, "Atak powinien być 1+2=3");
+                Assert(tankCheck.CurrentStats.Health == 7, "HP powinno być 5+2=7");
+                Assert(tankCheck.MaxHealth == 7, "MaxHP powinno być 7");
+                Console.WriteLine(">>> SUKCES: Buff zadziałał.");
 
-                // 1. Sprawdzamy, czy Crusader zniknął (nie sprawdzamy czy null, tylko czy ID się zmieniło)
-                var currentUnitL0 = engine.CurrentState.Board.Lines[0].Player1Unit;
-                Assert(currentUnitL0 == null || currentUnitL0.InstanceId != crusader.InstanceId,
-                       "Crusader powinien zniknąć!");
+                // ====================================================================
+                // TEST 2: OBRAŻENIA I LECZENIE (MaxHP Cap)
+                // ====================================================================
+                Console.WriteLine("\n[KROK 2] Zadaję 4 dmg Tankowi, usuwam Buffera, potem leczę Tanka...");
 
-                // 2. Sprawdzamy, czy Corpse Eater wskoczył na jego miejsce
-                Assert(currentUnitL0 != null && currentUnitL0.Definition.Name == "Corpse Eater",
-                       $"Na Linii 0 powinien być Corpse Eater, a jest: {currentUnitL0?.Definition.Name ?? "PUSTO"}");
+                // 1. Zadajemy obrażenia (Cheat)
+                var damagedTank = tankCheck.TakeDamage(4); // 7 - 4 = 3 HP
+                Console.WriteLine($"   (Cheat) Tank oberwał za 4. Ma teraz: {damagedTank.CurrentStats.Health} HP.");
 
-                // 3. Sprawdzamy Polar Beara
-                var unitL1 = engine.CurrentState.Board.Lines[1].Player1Unit;
-                Assert(unitL1 != null && unitL1.Definition.Name == "Polar Bear",
-                       "Polar Bear powinien być na Linii 1");
+                // 2. REKONSTRUKCJA PLANSZY (PEWNE USUNIĘCIE BUFFERA)
+                // Pobieramy aktualne wersje jednostek, które mają zostać
+                var guardianRef = engine.CurrentState.Board.Lines[1].Player1Unit;
+                var phoenixRef = engine.CurrentState.Board.Lines[2].Player1Unit;
 
-                // 4. Sprawdzamy The Moder (powinien być w ręce)
-                Assert(HasCardInHand(engine, "The Moder"), "The Moder powinien zostać w ręce");
+                // Tworzymy nową, czystą planszę i stawiamy na niej tylko to, co chcemy
+                var newBoard = BoardState.Empty()
+                    .WithUnitPlacedAt(0, 1, damagedTank) // Nasz raniony tank
+                    .WithUnitPlacedAt(1, 1, guardianRef)
+                    .WithUnitPlacedAt(2, 1, phoenixRef);
+                // Linia 3 jest teraz pusta (z definicji Empty)
 
-                Console.WriteLine(">>> SCENARIUSZ 1: SUKCES\n");
+                // Aktualizujemy silnik
+                engine.CurrentState = engine.CurrentState.UpdateBoard(newBoard);
 
-                // =======================================================================
-                // SCENARIUSZ 2: BLACK CAT (Return To Hand)
-                // Testuje: UnitSacrificedEvent, ReturnToHand, Interaction with Sacrifice
-                // =======================================================================
-                Console.WriteLine("[SCENARIUSZ 2] Zagrywam Kota, potem kolejny Polar Bear (cheat) zjada Kota...");
+                // Sprawdzenie diagnostyczne
+                if (engine.CurrentState.Board.Lines[3].Player1Unit != null)
+                    Console.WriteLine("   [OSTRZEŻENIE] Linia 3 nadal zajęta! Coś jest nie tak z BoardState.Empty().");
+                else
+                    Console.WriteLine("   [INFO] Linia 3 wyczyszczona pomyślnie.");
 
-                // Hack: Dodajmy drugiego niedźwiedzia do ręki (bo pierwszego już zagraliśmy)
-                var bear2 = factory.CreateCard(24, 1);
-                engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(bear2));
+                // 3. Zagrywamy Healera na Linię 3
+                engine.ExecuteCommand(new PlayUnitCommand(1, healer.InstanceId, 3, selectedTargetId: tank.InstanceId));
 
-                // 1. Zagraj Kota na Linię 2
-                engine.ExecuteCommand(new PlayUnitCommand(1, blackCat.InstanceId, 2));
-                Assert(IsUnitOnBoard(engine, 2, "Black Cat"), "Kot powinien wejść na stół");
+                var healedTank = engine.CurrentState.Board.Lines[0].Player1Unit;
+                Console.WriteLine($"   Tank po leczeniu: {healedTank.CurrentStats.Health}/{healedTank.MaxHealth}");
 
-                // 2. Zagraj Niedźwiedzia 2 na Linię 3, celując w Kota
-                engine.ExecuteCommand(new PlayUnitCommand(1, bear2.InstanceId, 3, selectedTargetId: blackCat.InstanceId));
+                Assert(healedTank.CurrentStats.Health == 7, "HP powinno wrócić do Max (7), a nie 13!");
+                Console.WriteLine(">>> SUKCES: Leczenie ograniczone do MaxHP.");
+                // ====================================================================
+                // TEST 3: STATUSY (Armored)
+                // ====================================================================
+                Console.WriteLine("\n[KROK 3] Nadaję status 'Armored' Tankowi...");
+                // Zwalniamy miejsce po Healerze
+                engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(3, 1, null));
 
-                // Weryfikacja:
-                // Kot powinien zniknąć ze stołu
-                Assert(!IsUnitOnBoard(engine, 2, "Black Cat"), "Kota nie powinno być na stole");
-                // Ale Kot powinien być w RĘCE (ReturnToHand)
-                // Uwaga: ID instancji Kota powinno zostać zachowane (chyba że fabryka tworzy nowego, ale użyliśmy WithStats)
-                Assert(HasCardInHand(engine, "Black Cat"), "Kot powinien wrócić do ręki!");
+                engine.ExecuteCommand(new PlayUnitCommand(1, armorer.InstanceId, 3, selectedTargetId: tank.InstanceId));
 
-                // Cmentarz nie powinien zawierać Kota
-                var discard = engine.CurrentState.PlayerA.DiscardPile;
-                Assert(!discard.Any(c => c.Definition.Name == "Black Cat"), "Kota nie powinno być na cmentarzu");
+                var armoredTank = engine.CurrentState.Board.Lines[0].Player1Unit;
+                bool hasArmor = armoredTank.CurrentStats.Keywords.Contains(Keyword.Armored);
+                Console.WriteLine($"   Tank Keywords: {string.Join(", ", armoredTank.CurrentStats.Keywords)}");
 
-                Console.WriteLine(">>> SCENARIUSZ 2: SUKCES\n");
+                Assert(hasArmor, "Tank powinien mieć Armored.");
+                Assert(armoredTank.CurrentStats.Attack == 3, "Statystyki nie powinny się zresetować.");
+                Console.WriteLine(">>> SUKCES: Status dodany.");
 
-                // =======================================================================
-                // SCENARIUSZ 3: CRITICAL THINKING (Tutor)
-                // Testuje: TargetType.Self (w kontekście Spell), TutorCard Action
-                // =======================================================================
-                Console.WriteLine("[SCENARIUSZ 3] Critical Thinking wyciąga Mokke z talii...");
+                // ====================================================================
+                // TEST 4: SOUL GUARD
+                // ====================================================================
+                Console.WriteLine("\n[KROK 4] Zabijam Guardiana (3 HP, SoulGuard) za pomocą Nuke (10 Dmg)...");
+                // Potrzebujemy Nuke w ręce. Mamy go (ID 99).
+                // Ale potrzebujemy Nuke x2 (do dobicia). Dodajmy drugiego.
+                var nuke2 = factory.CreateCard(99, 1);
+                engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(nuke2));
 
-                // W talii mamy Mokke.
-                // Critical Thinking (ID 26) jest w ręce.
-                // Zagrywamy Critical Thinking celując w ID Mokke (musimy je znać)
-                var mokkeInDeck = engine.CurrentState.PlayerA.DrawPile.First(c => c.Definition.Name == "Mokke");
+                // Strzał 1
+                engine.ExecuteCommand(new PlaySpellCommand(1, nuke.InstanceId, selectedTargetId: guardian.InstanceId));
 
-                Console.WriteLine($"Celuję w kartę w talii: {mokkeInDeck.Definition.Name} (ID: {mokkeInDeck.InstanceId})");
+                var guardianSurvivor = engine.CurrentState.Board.Lines[1].Player1Unit;
+                if (guardianSurvivor == null) throw new Exception("Guardian zginął, a powinien przeżyć!");
 
-                var cmdSpell = new PlaySpellCommand(1, criticalThinking.InstanceId, selectedTargetId: mokkeInDeck.InstanceId);
-                engine.ExecuteCommand(cmdSpell);
+                Console.WriteLine($"   Guardian HP: {guardianSurvivor.CurrentStats.Health}");
+                Console.WriteLine($"   Keywords: {string.Join(", ", guardianSurvivor.CurrentStats.Keywords)}");
 
-                // Weryfikacja
-                Assert(HasCardInHand(engine, "Mokke"), "Mokke powinien trafić do ręki");
-                Assert(!engine.CurrentState.PlayerA.DrawPile.Any(c => c.InstanceId == mokkeInDeck.InstanceId), "Mokke zniknął z talii");
+                Assert(guardianSurvivor.CurrentStats.Health == 1, "Guardian powinien mieć 1 HP.");
+                Assert(guardianSurvivor.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted), "Powinien mieć status Depleted.");
+                Console.WriteLine(">>> SUKCES: SoulGuard zadziałał.");
 
-                Console.WriteLine(">>> SCENARIUSZ 3: SUKCES\n");
+                Console.WriteLine("   -> Dobijam Guardiana...");
+                engine.ExecuteCommand(new PlaySpellCommand(1, nuke2.InstanceId, selectedTargetId: guardian.InstanceId));
 
-                // =======================================================================
-                // SCENARIUSZ 4: DOUBLE SURVIVALIST (Aura Loop Prevention)
-                // Testuje: AuraSystem, SoulGuardPrevention, Depleted Status, TargetType.OtherFriendlyUnits
-                // =======================================================================
-                Console.WriteLine("[SCENARIUSZ 4] Dwa Survivalisty (czy są nieśmiertelne?)...");
+                var deadGuardian = engine.CurrentState.Board.Lines[1].Player1Unit;
+                Assert(deadGuardian == null, "Guardian powinien zginąć za drugim razem.");
+                Console.WriteLine(">>> SUKCES: Guardian zginął definitywnie.");
 
-                // Tworzymy dwóch Survivalistów
-                var s1 = factory.CreateCard(22, 1);
-                var s2 = factory.CreateCard(22, 1);
+                // ====================================================================
+                // TEST 5: UNKILLABLE
+                // ====================================================================
+                Console.WriteLine("\n[KROK 5] Zabijam Phoenixa (Unkillable)...");
+                // Dodajmy Nuke 3
+                var nuke3 = factory.CreateCard(99, 1);
+                engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(nuke3));
 
-                // Wstawiamy ich "na siłę" na planszę (na linie 2 i 3, bo 0 i 1 są zajęte)
-                // Musimy zaktualizować stan ręcznie, bo nie chcemy ich zagrywać z ręki (kosztują manę)
-                var boardWithS = engine.CurrentState.Board
-                    .WithUnitPlacedAt(2, 1, s1)
-                    .WithUnitPlacedAt(3, 1, s2);
-                engine.CurrentState = engine.CurrentState.UpdateBoard(boardWithS);
+                // Najpierw buffnijmy Phoenixa, żeby sprawdzić czy straci buffy po powrocie
+                var buffedPhoenix = phoenix.AddPermanentBuff(new CardStats(5, 5, 0));
+                engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(2, 1, buffedPhoenix));
+                Console.WriteLine($"   Phoenix przed śmiercią: {buffedPhoenix.CurrentStats.Attack}/{buffedPhoenix.CurrentStats.Health}");
 
-                // Wymuszamy cykl silnika, żeby Aury się nałożyły
-                // Używamy EndPhase w UnitOnly, co jest bezpieczne (przełączy na UnitSpell, ale przeliczy aury)
-                engine.ExecuteCommand(new EndPhaseCommand(1));
+                // Kill
+                engine.ExecuteCommand(new PlaySpellCommand(1, nuke3.InstanceId, selectedTargetId: phoenix.InstanceId));
 
-                // Weryfikacja początkowa: Obaj powinni mieć SoulGuard
-                Assert(HasKeyword(engine, 2, Keyword.SoulGuard), "S1 powinien mieć SoulGuard");
-                Assert(HasKeyword(engine, 3, Keyword.SoulGuard), "S2 powinien mieć SoulGuard");
+                // Sprawdź stół
+                Assert(engine.CurrentState.Board.Lines[2].Player1Unit == null, "Phoenix powinien zniknąć ze stołu.");
 
-                // 1. ZABIJAMY S1 (Pierwszy raz)
-                Console.WriteLine("Zadaję śmiertelne obrażenia S1...");
-                var targetS1 = engine.CurrentState.Board.Lines[2].Player1Unit;
-                var deadS1 = targetS1.TakeDamage(10);
-                engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.UpdateUnit(deadS1));
+                // Sprawdź rękę (powinien wrócić jako ostatnia karta)
+                var returnedPhoenix = engine.CurrentState.PlayerA.Hand.Last();
+                Console.WriteLine($"   Phoenix w ręce: {returnedPhoenix.Definition.Name}, Stats: {returnedPhoenix.CurrentStats.Attack}/{returnedPhoenix.CurrentStats.Health}");
 
-                // Odpalamy Resolve loop
-                engine.ExecuteCommand(new EndPhaseCommand(2)); // Przełączamy dalej, żeby wymusić update
+                Assert(returnedPhoenix.Definition.Name == "Phoenix", "Karta w ręce to Phoenix.");
+                Assert(returnedPhoenix.CurrentStats.Attack == 1, "Statystyki powinny się zresetować (1/1).");
+                Console.WriteLine(">>> SUKCES: Unkillable działa poprawnie.");
 
-                // Weryfikacja po 1. śmierci:
-                // - Powinien żyć
-                // - Powinien mieć Depleted
-                // - NIE powinien mieć SoulGuard (Aura zablokowana)
-                Assert(IsUnitOnBoard(engine, 2, "Survivalist"), "S1 powinien przeżyć");
-                Assert(HasKeyword(engine, 2, Keyword.SoulGuardDepleted), "S1 powinien być Depleted");
-                Assert(!HasKeyword(engine, 2, Keyword.SoulGuard), "S1 NIE powinien odzyskać aury");
-
-                // 2. ZABIJAMY S1 (Drugi raz)
-                Console.WriteLine("Zadaję śmiertelne obrażenia S1 (drugi raz)...");
-                targetS1 = engine.CurrentState.Board.Lines[2].Player1Unit; // Pobieramy aktualny stan
-                deadS1 = targetS1.TakeDamage(10);
-                engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.UpdateUnit(deadS1));
-
-                engine.ExecuteCommand(new EndPhaseCommand(1)); // Resolve
-
-                // Weryfikacja ostateczna:
-                // - S1 powinien zginąć (zniknąć z planszy)
-                Assert(!IsUnitOnBoard(engine, 2, "Survivalist"), "S1 powinien zginąć definitywnie");
-                Assert(IsUnitOnBoard(engine, 3, "Survivalist"), "S2 powinien nadal żyć");
-
-                Console.WriteLine(">>> SCENARIUSZ 4: SUKCES\n");
-
-                // --- FINISH ---
+                // --- KONIEC ---
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("=============================================");
-                Console.WriteLine("WSZYSTKIE SYSTEMY DZIAŁAJĄ POPRAWNIE!");
-                Console.WriteLine("Refaktoryzacja zakończona sukcesem.");
+                Console.WriteLine("\n=============================================");
+                Console.WriteLine("WSZYSTKIE MECHANIKI DZIAŁAJĄ POPRAWNIE!");
                 Console.WriteLine("=============================================");
                 Console.ResetColor();
             }
             catch (Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\n[BŁĄD KRYTYCZNY] Test niezaliczony: {ex.Message}");
+                Console.WriteLine($"\n[BŁĄD] {ex.Message}");
                 Console.WriteLine(ex.StackTrace);
                 Console.ResetColor();
             }
 
-            // Sprzątanie
-            File.Delete("master_cards.json");
+            if (File.Exists("mechanics_cards.json")) File.Delete("mechanics_cards.json");
             Console.ReadKey();
         }
 
-        // --- POMOCNICY TESTOWI ---
+        // --- DANE TESTOWE ---
+        private static void CreateMechanicsJson()
+        {
+            string json = @"
+            [
+              { ""Id"": 1, ""Name"": ""Tank"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 5 },
+              
+              { ""Id"": 2, ""Name"": ""Buffer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""BuffStats"", ""Target"": ""SelectedTarget"", ""BuffAtk"": 2, ""BuffHp"": 2 } ] } ] },
+              
+              { ""Id"": 3, ""Name"": ""Healer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""Heal"", ""Target"": ""SelectedTarget"", ""Amount"": 10 } ] } ] },
+              
+              { ""Id"": 4, ""Name"": ""Armorer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""ApplyStatus"", ""Target"": ""SelectedTarget"", ""StringParam"": ""Armored"" } ] } ] },
+              
+              { ""Id"": 5, ""Name"": ""Guardian"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 3, ""Keywords"": [""SoulGuard""] },
+              
+              { ""Id"": 6, ""Name"": ""Phoenix"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1, ""Keywords"": [""Unkillable""] },
+              
+              { ""Id"": 99, ""Name"": ""Nuke"", ""Type"": ""Spell"", ""Cost"": 0,
+                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Target"": ""SelectedTarget"", ""Amount"": 10 } ] } ] }
+            ]";
+            File.WriteAllText("mechanics_cards.json", json);
+        }
 
         static void Assert(bool condition, string message)
         {
             if (!condition) throw new Exception(message);
         }
-
-        static bool HasCardInHand(GameEngine engine, string name)
-        {
-            return engine.CurrentState.PlayerA.Hand.Any(c => c.Definition.Name == name);
-        }
-
-        static bool IsUnitOnBoard(GameEngine engine, int lineIndex, string name)
-        {
-            var u = engine.CurrentState.Board.Lines[lineIndex].Player1Unit;
-            return u != null && u.Definition.Name == name;
-        }
-
-        private static void LoadGameData() { CardLibrary.Instance.LoadFromJson("master_cards.json"); }
-
-        private static void CreateMasterJson()
-        {
-            string json = @"
-            [
-              { ""Id"": 1, ""Name"": ""Mokke"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 2 },
-              { ""Id"": 20, ""Name"": ""Crusader"", ""Type"": ""Unit"", ""Cost"": 2, ""Attack"": 2, ""Health"": 3, ""Keywords"": [""Armored""] },
-              { ""Id"": 21, ""Name"": ""Corpse Eater"", ""Type"": ""Unit"", ""Subtypes"": [""Monster""], ""Cost"": 3, ""Attack"": 3, ""Health"": 1,
-                ""Effects"": [ { ""Trigger"": ""OnFriendlyUnitDied"", ""Zone"": ""Hand"", ""Actions"": [ { ""Type"": ""SummonUnit"", ""Target"": ""Self"" } ] } ] },
-              { ""Id"": 23, ""Name"": ""Black Cat"", ""Type"": ""Unit"", ""Subtypes"": [""Animal""], ""Cost"": 0, ""Attack"": 1, ""Health"": 1,
-                ""Effects"": [ { ""Trigger"": ""OnSacrificed"", ""Zone"": ""Board"", ""Actions"": [ { ""Type"": ""ReturnToHand"", ""Target"": ""Self"" } ] } ] },
-              { ""Id"": 24, ""Name"": ""Polar Bear"", ""Type"": ""Unit"", ""Subtypes"": [""Animal""], ""Cost"": 2, ""Attack"": 2, ""Health"": 3,
-                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetFriendlyUnit"", 
-                                 ""Actions"": [ { ""Type"": ""AbsorbStats"", ""Target"": ""SelectedTarget"" }, { ""Type"": ""SacrificeUnit"", ""Target"": ""SelectedTarget"" } ] } ] },
-              { ""Id"": 25, ""Name"": ""The Moder"", ""Type"": ""Unit"", ""Subtypes"": [""Monster""], ""Cost"": 7, ""Attack"": 7, ""Health"": 7,
-                ""Effects"": [ { ""Trigger"": ""OnSacrificed"", ""Zone"": ""Hand"", ""Actions"": [ { ""Type"": ""BuffStats"", ""Target"": ""Self"", ""Amount"": -1 } ] } ] },
-              { ""Id"": 26, ""Name"": ""Critical Thinking"", ""Type"": ""Spell"", ""Cost"": 1,
-                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""TutorCard"", ""Target"": ""Self"" }, { ""Type"": ""ShuffleDeck"", ""Target"": ""Self"" } ] } ] },
-              
-              { ""Id"": 22, ""Name"": ""Survivalist"", ""Type"": ""Unit"", ""Cost"": 4, ""Attack"": 2, ""Health"": 3,
-                ""Effects"": [ { ""Trigger"": ""Passive"", ""Zone"": ""Board"", ""Actions"": [ { ""Type"": ""ApplyStatus"", ""Target"": ""OtherFriendlyUnits"", ""StringParam"": ""SoulGuard"" } ] } ] }
-            ]";
-            File.WriteAllText("master_cards.json", json);
-        }
-        static bool HasKeyword(GameEngine engine, int lineIndex, Keyword keyword)
-        {
-            var u = engine.CurrentState.Board.Lines[lineIndex].Player1Unit;
-            return u != null && u.CurrentStats.Keywords.Contains(keyword);
-        }
-
     }
 }
