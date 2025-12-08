@@ -49,8 +49,8 @@
     "Type": "Unit",
     "Subtypes": [ "Monster" ],
     "Cost": 1,
-    "Attack": 1,
-    "Health": 3,
+    "Attack": 2,
+    "Health": 2,
     "Description": "Add 'The Alluring Goblet' to hand.",
     "Effects": [
       {
@@ -251,6 +251,61 @@
             "Type": "DestroyUnit",
             "Target": "TargetFriendlyUnit"
           }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 12,
+    "Name": "Black Cat",
+    "Type": "Unit",
+    "Subtypes": ["Animal"],
+    "Cost": 0,
+    "Attack": 1,
+    "Health": 1,
+    "Description": "When Sacrificed: Return to Hand instead.",
+    "Effects": [
+      {
+        "Trigger": "OnSacrificed",
+        "Zone": "Board", 
+        "Actions": [ { "Type": "ReturnToHand", "Target": "Self" } ]
+      }
+    ]
+  },
+  {
+    "Id": 13,
+    "Name": "Critical Thinking",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Pick a Card from Deck, Draw it, Shuffle.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "TutorCard", "Target": "Self" },
+          { "Type": "ShuffleDeck", "Target": "Self" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 14,
+    "Name": "Survivalist",
+    "Type": "Unit",
+    "Cost": 4,
+    "Attack": 2,
+    "Health": 3,
+    "Description": "While In Play: Other Friendly Units get SoulGuard.",
+    "Effects": [
+      {
+        "Trigger": "Passive",
+        "Zone": "Board",
+        "Actions": [ 
+            { 
+                "Type": "ApplyStatus", 
+                "Target": "OtherFriendlyUnits", 
+                "StringParam": "SoulGuard" 
+            } 
         ]
       }
     ]

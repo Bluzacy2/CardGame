@@ -1,4 +1,4 @@
-﻿using CardGame.Core.Cards.Data; // Dla Keyword
+﻿using CardGame.Core.Cards.Data;
 using System.Collections.Generic;
 
 namespace CardGame.Core.Cards.Models
@@ -9,52 +9,75 @@ namespace CardGame.Core.Cards.Models
         public int OwnerPlayerId { get; }
         public CardDefinition Definition { get; }
 
-        // Statystyki muszą być read-only properties
-        public CardStats CurrentStats { get; }
+        public CardStats PermanentStats { get; }
+        public IReadOnlyList<Keyword> AuraKeywords { get; }
+        public CardStats CurrentStats
+        {
+            get
+            {
+                if (AuraKeywords.Count == 0) return PermanentStats;
 
-        // Konstruktor publiczny (tworzy nową kartę z bazy)
-        public CardInstance(int instanceId, int OwnerPlayerId, CardDefinition definition)
-            : this(instanceId, OwnerPlayerId, definition, definition.BaseStats)
+               
+                var mergedKeywords = new List<Keyword>(PermanentStats.Keywords);
+                mergedKeywords.AddRange(AuraKeywords);
+
+              
+                return new CardStats(
+                    PermanentStats.Attack,
+                    PermanentStats.Health,
+                    PermanentStats.BloodCost,
+                    mergedKeywords.Distinct() 
+                );
+            }
+        }
+
+        public CardInstance(int instanceId, int playerOwnerId, CardDefinition definition)
+            : this(instanceId, playerOwnerId, definition, definition.BaseStats, new List<Keyword>())
         {
         }
 
-        // --- TU BYŁ BŁĄD ---
-        // Konstruktor prywatny (tworzy kopię ze zmodyfikowanymi statystykami)
-        private CardInstance(int instanceId, int ownerPlayerId, CardDefinition definition, CardStats currentStats)
+
+        private CardInstance(
+           int instanceId,
+           int playerOwnerId,
+           CardDefinition definition,
+           CardStats permanentStats,
+           IEnumerable<Keyword> auraKeywords)
         {
             InstanceId = instanceId;
-            OwnerPlayerId = ownerPlayerId;
+            OwnerPlayerId = playerOwnerId;
             Definition = definition;
-
-            // WAŻNE: Musimy przypisać currentStats (te przekazane), a NIE definition.BaseStats!
-            // Jeśli tu miałeś definition.BaseStats, to kasowałeś wszystkie zmiany (obrażenia, keywordy).
-            CurrentStats = currentStats;
+            PermanentStats = permanentStats;
+            AuraKeywords = auraKeywords != null ? new List<Keyword>(auraKeywords) : new List<Keyword>();
         }
 
-        // --- Metody Immutable ---
 
         public CardInstance WithStats(CardStats newStats)
         {
-            return new CardInstance(InstanceId, OwnerPlayerId, Definition, newStats);
+            
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, newStats, AuraKeywords);
         }
-
-        // Dodawanie Keyworda (np. Marked)
         public CardInstance WithKeywordAdded(Keyword keyword)
         {
-            var newStats = CurrentStats.WithKeyword(keyword);
-            return WithStats(newStats);
+           
+            var newStats = PermanentStats.WithKeyword(keyword);
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, newStats, AuraKeywords);
         }
-
-        // Otrzymywanie obrażeń
         public CardInstance TakeDamage(int amount)
         {
             var newStats = new CardStats(
-                CurrentStats.Attack,
-                CurrentStats.Health - amount,
-                CurrentStats.BloodCost,
-                CurrentStats.Keywords // Pamiętaj, żeby przenieść też keywordy przy zmianie HP!
+                PermanentStats.Attack,
+                PermanentStats.Health - amount,
+                PermanentStats.BloodCost,
+                PermanentStats.Keywords
             );
-            return new CardInstance(InstanceId, OwnerPlayerId, Definition, newStats);
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, newStats, AuraKeywords);
         }
+
+        public CardInstance WithAuras(IEnumerable<Keyword> newAuraKeywords)
+        {
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, PermanentStats, newAuraKeywords);
+        }
+
     }
 }

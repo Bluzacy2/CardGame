@@ -15,8 +15,8 @@ namespace CardGame.Core.GameRules.Death
             // Rejestrujemy wszystkie mechaniki ratunkowe
             _preventions = new List<IDeathPrevention>
             {
-                new UnkillablePrevention()
-                // Tu w przyszłości dodasz: new SoulGuardPrevention()
+                new SoulGuardPrevention(),
+                new UnkillablePrevention()     
             };
         }
 

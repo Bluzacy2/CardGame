@@ -10,14 +10,13 @@ namespace CardGame.Core.GameRules.Damage
         {
             int finalDamage = context.RawAmount;
 
-            // 1. MARKED
             if (context.Target.CurrentStats.Keywords.Contains(Keyword.Marked))
             {
                 finalDamage *= 2;
                 Console.WriteLine($"[CALC] Cel MARKED! Podwajam obrażenia: {context.RawAmount} -> {finalDamage}");
             }
 
-            // 2. ARMORED (Poprawiona nazwa z 'Armor' na 'Armored')
+          
             if (context.Target.CurrentStats.Keywords.Contains(Keyword.Armored))
             {
                 if (context.Type == DamageType.Combat)

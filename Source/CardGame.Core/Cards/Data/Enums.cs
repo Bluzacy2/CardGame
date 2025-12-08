@@ -15,7 +15,8 @@ namespace CardGame.Core.Cards.Data
         DoubleStrike,
         SoulGuard, 
         Unkillable,
-        Marked
+        Marked,
+        SoulGuardDepleted
     }
 
     public enum TriggerType
@@ -28,7 +29,8 @@ namespace CardGame.Core.Cards.Data
         WhileOnBoard,
         OnFriendlyUnitDied,
 
-        OnSacrificed
+        OnSacrificed,
+        Passive
     }
 
     public enum ActionType
@@ -38,7 +40,7 @@ namespace CardGame.Core.Cards.Data
         ConjureCard,
         DestroyUnit,
         DiscardCard,
-        ShuffleDeck,
+       
         Transform,
         SummonUnit,
         BuffStats,
@@ -48,7 +50,11 @@ namespace CardGame.Core.Cards.Data
         DrawCard,
 
         SacrificeUnit,
-        AbsorbStats
+        AbsorbStats,
+
+        ShuffleDeck,
+        ReturnToHand,
+        TutorCard
     }
 
     public enum TargetType
@@ -61,8 +67,10 @@ namespace CardGame.Core.Cards.Data
         EnemyHero,
         FriendlyHero,
 
-        SelectedTarget
+        SelectedTarget,
 
+        AllFriendlyUnits,
+        OtherFriendlyUnits,
     }
 
     public enum ConditionType

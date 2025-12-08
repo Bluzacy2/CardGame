@@ -25,15 +25,9 @@ namespace CardGame.Core.Combat
 
         public GameState ResolveCombatPhase(GameState currentState, EventBus eventBus)
         {
-            /* Kopiujemy planszę, gdyż będziemy ją zmieniać. **Powiniśmy** działać na kopiach obiektu
-             * co może spróbuje zaimplementować, ale Amerykanin stwierdził, że możemy także działać na
-             * Instancjach kart, aby nie będzie działać immutability. BoardState podmieniamy na nowy po
-             *  tym całym cyrku. - B. 13:57 */
-
-            /* Haha żartowałem. Teraz działamy na liniach i instancjach kart, aby zrobić z tego Immutability 
-             * Stan - B. 14:15. */
-
             var newLines = new List<Line>();
+            var tempPlayerA = currentState.PlayerA;
+            var tempPlayerB = currentState.PlayerB;
 
             foreach (var line in currentState.Board.Lines)
             {
@@ -52,16 +46,35 @@ namespace CardGame.Core.Combat
                     var ctx2 = new DamageContext(u2, u1, u2.CurrentStats.Attack, DamageType.Combat);
                     int dmgTo1 = _damageCalculator.CalculateFinalDamage(ctx2);
 
-                    /* ----------------------- Immutability Coded ----------------------- 
-                     * zamiast odejmować HP. od unitów, odejmujemy od nowych obiektów .*/
+                    
                     nextU2 = u2.TakeDamage(dmgTo2);
                     nextU1 = u1.TakeDamage(dmgTo1);
 
                 }
+                else if (u1 != null && u2 == null)
+                {
+                    int dmg = u1.CurrentStats.Attack;
+                    if (dmg > 0)
+                    {
+                        Console.WriteLine($"[WALKA] {u1.Definition.Name} (L{line.Index}) uderza wroga bezpośrednio za {dmg}!");
+                        tempPlayerB = tempPlayerB.WithDamageTaken(dmg);
+                    
+                    }
+                }
+                
+                else if (u2 != null && u1 == null)
+                {
+                    int dmg = u2.CurrentStats.Attack;
+                    if (dmg > 0)
+                    {
+                        Console.WriteLine($"[WALKA] {u2.Definition.Name} (L{line.Index}) uderza wroga bezpośrednio za {dmg}!");
+                        tempPlayerA = tempPlayerA.WithDamageTaken(dmg);
+                    }
+                }
                 newLines.Add(line.UpdateUnits(nextU1, nextU2));
             }
             var damagedBoard = new BoardState(newLines);
-            var stateWithDamage = currentState.With(board: damagedBoard);
+            var stateWithDamage = currentState.With(board: damagedBoard, playerA:tempPlayerA, playerB: tempPlayerB);
             var finalState = _deathResolver.ResolveDeaths(stateWithDamage, eventBus);
 
             return finalState;

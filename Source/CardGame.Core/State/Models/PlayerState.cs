@@ -272,6 +272,16 @@ namespace CardGame.Core.State.Models
 
             return With(hand: currentHand, drawPile: currentDeck);
         }
+        public PlayerState WithCardRemovedFromDeck(CardInstance cardToRemove)
+        {
+            var newDeck = new List<CardInstance>(DrawPile);
+            var index = newDeck.FindIndex(c => c.InstanceId == cardToRemove.InstanceId);
+            if (index != -1)
+            {
+                newDeck.RemoveAt(index);
+            }
+            return With(drawPile: newDeck);
+        }
 
     }
 }

@@ -4,30 +4,32 @@ using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Events;
 using CardGame.Core.Events.Triggers;
-using CardGame.Core.State.Enums;
+using CardGame.Core.GameRules.Auras;
+using CardGame.Core.GameRules.Damage;
+using CardGame.Core.GameRules.Death;
 using CardGame.Core.State.Models;
 using CardGame.Core.StateMachine;
 using CardGame.Core.StateMachine.Interfaces;
-using CardGame.Core.StateMachine.Phases;
-using CardGame.Core.GameRules.Death;
 using System;
+using static CardGame.Core.Events.UnitSacrificedEvent;
 
 namespace CardGame.Core.Application
 {
     public class GameEngine
     {
-        public GameState CurrentState { get;  set; }
-        public EventBus Events { get; }
+        public GameState CurrentState { get; set; }
+        public bool IsGameOver { get; private set; }
+        public int? WinnerId { get; private set; }
 
+        public EventBus Events { get; }
         public DeterministicRng Rng { get; }
         public CardFactory Factory { get; }
 
         private readonly GameContext _gameContext;
-
         private readonly GameStateMachine _stateMachine;
         private readonly TriggerSystem _triggerSystem;
         private readonly DeathResolver _deathResolver;
-
+        private readonly AuraSystem _auraSystem;
 
         public GameEngine(GameState initialState, int seed = 0)
         {
@@ -35,52 +37,35 @@ namespace CardGame.Core.Application
             Events = new EventBus();
             Rng = new DeterministicRng(seed);
             Factory = new CardFactory(CardLibrary.Instance, Rng);
-            
-            _gameContext = new GameContext(Factory, Rng, Events);
+
+            var damageCalculator = new DamageCalculator();
+            _gameContext = new GameContext(Factory, Rng, Events, damageCalculator);
 
             _stateMachine = new GameStateMachine();
             _triggerSystem = new TriggerSystem();
             _deathResolver = new DeathResolver();
+            _auraSystem = new AuraSystem();
 
+            CurrentState = _auraSystem.RecalculateAuras(CurrentState);
         }
 
         public void ExecuteCommand(IGameCommand command)
         {
-            /* 1. Pobierz logikę dla obecnej fazy, aby zadecydować, co można zrobić dla obecnej fazy. */
-            IPhaseState currentPhaseLogic = _stateMachine.GetStateForPhase(CurrentState.CurrentPhase);
-
-            /* 2. Sprawdź, czy komenda jest dozwolona w obecnej fazie (WALIDACJA). */
-            if (!currentPhaseLogic.IsCommandAllowed(command, CurrentState))
+            if (IsGameOver)
             {
-                Console.WriteLine($"Komenda {command.GetType().Name} nie jest dozwolona w fazie {CurrentState.CurrentPhase} " +
-                    $"dla gracza {command.PlayerId}.");
+                Console.WriteLine("[SILNIK] Gra zakończona. Ruchy zablokowane.");
                 return;
             }
-            /* 3. Wykonaj komendę, co zmienia cokolwiek. */
-            GameState newState = command.Execute(CurrentState, Events);
-            while (true)
+
+            IPhaseState currentPhaseLogic = _stateMachine.GetStateForPhase(CurrentState.CurrentPhase);
+            if (!currentPhaseLogic.IsCommandAllowed(command, CurrentState))
             {
-                // A. Przetwórz wszystkie aktywne triggery (np. OnPlayed, OnSacrificed)
-                newState = _triggerSystem.ProcessEvents(newState, Events, _gameContext);
-
-                // B. Sprawdź śmierć (Cleanup Step)
-                // To wygeneruje UnitDiedEvent, jeśli ktoś ma HP <= 0
-                // WAŻNE: DeathResolver musi być napisany tak, że jeśli nikt nie ginie, to nie generuje eventów.
-                newState = _deathResolver.ResolveDeaths(newState, Events);
-
-                // C. Warunek wyjścia:
-                // Jeśli nie ma nowych eventów (czyli nikt nie umarł, nic się nie odpaliło), kończymy.
-                if (!Events.HasEvents)
-                {
-                    break;
-                }
-
-                // Jeśli są eventy (np. UnitDied wygenerowane w kroku B), pętla leci od nowa,
-                // żeby TriggerSystem (krok A) mógł obsłużyć Deathrattle/CorpseEater!
+                Console.WriteLine($"[BŁĄD] Komenda {command.GetType().Name} niedozwolona.");
+                return;
             }
 
+            GameState newState = command.Execute(CurrentState, Events);
 
-            /* 4. Sprawdź, czy komenda to EndPhaseCommand, aby przetworzyć logikę końca fazy. */
             if (command is EndPhaseCommand)
             {
                 newState = currentPhaseLogic.ProcessEndPhase(newState, Events);
@@ -89,17 +74,69 @@ namespace CardGame.Core.Application
             {
                 if (currentPhaseLogic.ShouldEndPhaseAutomatically(newState))
                 {
-                    Console.WriteLine($"[SILNIK] Faza {currentPhaseLogic.PhaseType} zakończona automatycznie.");
                     newState = currentPhaseLogic.ProcessEndPhase(newState, Events);
                 }
             }
-            newState = _triggerSystem.ProcessEvents(newState, Events, _gameContext);
+            while (true)
+            {
+                var stateBeforeIteration = CurrentState;
+                newState = _auraSystem.RecalculateAuras(newState);
+                newState = _triggerSystem.ProcessEvents(newState, Events, _gameContext);
+                newState = _deathResolver.ResolveDeaths(newState, Events);
 
-            /* 5. Zaktualizuj CurrentState do nowego stanu. */
+                
+                bool gameOver = CheckGameOver(newState);
+
+
+                if (gameOver)
+                {
+                    CurrentState = newState;
+                    return;
+                }
+
+                if (!Events.HasEvents)
+                {
+                    newState = _auraSystem.RecalculateAuras(newState);
+                    break;
+                }
+
+            }
+
             CurrentState = newState;
+        }
 
-            // Debug output
-            
+        private bool CheckGameOver(GameState state)
+        {
+            // Console.WriteLine($"[DEBUG KOŃCA GRY] HP P1: {state.PlayerA.Health}, HP P2: {state.PlayerB.Health}");
+
+            bool p1Dead = state.PlayerA.Health <= 0;
+            bool p2Dead = state.PlayerB.Health <= 0;
+
+            if (p1Dead || p2Dead)
+            {
+                IsGameOver = true;
+
+                if (p1Dead && p2Dead)
+                {
+                    WinnerId = null;
+                    Console.WriteLine("[GAME OVER] REMIS!");
+                    Events.Publish(new GameOverEvent(null));
+                }
+                else if (p1Dead)
+                {
+                    WinnerId = 2;
+                    Console.WriteLine("[GAME OVER] Zwycięzca: Gracz 2!");
+                    Events.Publish(new GameOverEvent(2));
+                }
+                else
+                {
+                    WinnerId = 1;
+                    Console.WriteLine("[GAME OVER] Zwycięzca: Gracz 1!");
+                    Events.Publish(new GameOverEvent(1));
+                }
+                return true;
+            }
+            return false;
         }
     }
 }
