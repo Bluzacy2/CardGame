@@ -17,19 +17,21 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
         {
             if (targets.TargetUnit != null)
             {
-                // Sprawdzamy kto poświęca (helper z EffectTargetResolver)
-                int sourceOwnerId = EffectTargetResolver.DetermineSourceOwner(state, gameEvent, sourceId);
-
-                if (targets.TargetUnit.OwnerPlayerId != sourceOwnerId)
+                int lineIndex = -1;
+                for (int i = 0; i < 4; i++)
                 {
-                    Console.WriteLine("[BŁĄD ZASAD] Nie można poświęcić wrogiej jednostki!");
-                    return state;
+                    if (state.Board.Lines[i].Player1Unit?.InstanceId == targets.TargetUnit.InstanceId ||
+                        state.Board.Lines[i].Player2Unit?.InstanceId == targets.TargetUnit.InstanceId)
+                    {
+                        lineIndex = i;
+                        break;
+                    }
                 }
 
-                Console.WriteLine($"[EFEKT] POŚWIĘCAM: {targets.TargetUnit.Definition.Name}");
-                context.Events.Publish(new UnitSacrificedEvent(targets.TargetUnit));
+               
+                context.Events.Publish(new UnitSacrificedEvent(targets.TargetUnit, lineIndex));
 
-                // Zadaj obrażenia śmiertelne (mechanizm damage)
+            
                 var deadUnit = targets.TargetUnit.TakeDamage(9999);
                 return state.UpdateBoard(state.Board.UpdateUnit(deadUnit));
             }

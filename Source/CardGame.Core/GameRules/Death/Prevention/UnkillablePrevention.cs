@@ -1,5 +1,7 @@
-﻿using System.Linq;
-using CardGame.Core.Cards.Data; // Tu musi być enum Keyword
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.State.Models;
 
@@ -9,37 +11,35 @@ namespace CardGame.Core.GameRules.Death.Prevention
     {
         public bool CanPreventDeath(CardInstance unit, GameState state)
         {
-            return unit.Definition.Keywords.Contains(Keyword.Unkillable);
+            return unit.CurrentStats.Keywords.Contains(Keyword.Unkillable);
         }
 
         public GameState PreventDeath(CardInstance unit, GameState currentState)
         {
+            // 1. Usuń jednostkę ze stołu
             var newBoard = RemoveUnitFromBoard(currentState.Board, unit);
 
+            // 2. Przygotuj "świeżą" kopię karty (bez obrażeń i buffów)
             var owner = currentState.GetPlayer(unit.OwnerPlayerId);
-
             var returnedCard = new CardInstance(unit.InstanceId, unit.OwnerPlayerId, unit.Definition);
 
+            // 3. Dodaj ją do ręki właściciela
             var newOwnerState = owner.WithCardAddedToHand(returnedCard);
 
-            Console.WriteLine($"[UNKILLABLE] {unit.Definition.Name} wraca do ręki zamiast zginąć!");
+            Console.WriteLine($"[UNKILLABLE] {unit.Definition.Name} (ID:{unit.InstanceId}) wraca do ręki.");
 
-            if (unit.OwnerPlayerId == 1)
-                return currentState.With(board: newBoard, playerA: newOwnerState);
-            else
-                return currentState.With(board: newBoard, playerB: newOwnerState);
+            return currentState.UpdateBoard(newBoard).UpdatePlayer(newOwnerState);
         }
 
         private BoardState RemoveUnitFromBoard(BoardState board, CardInstance unit)
         {
-            // Znajdujemy linię i czyścimy slot
             var newLines = board.Lines.Select(line =>
             {
-                if (line.Player1Unit?.InstanceId == unit.InstanceId)
-                    return line.WithUnitPlaced(1, null);
-                if (line.Player2Unit?.InstanceId == unit.InstanceId)
-                    return line.WithUnitPlaced(2, null);
-                return line;
+                // Jeśli ID instancji pasuje, ustawiamy null w tym slocie
+                var p1 = line.Player1Unit?.InstanceId == unit.InstanceId ? null : line.Player1Unit;
+                var p2 = line.Player2Unit?.InstanceId == unit.InstanceId ? null : line.Player2Unit;
+
+                return line.UpdateUnits(p1, p2);
             }).ToList();
 
             return new BoardState(newLines);

@@ -1,16 +1,18 @@
-﻿using System;
+﻿using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Combat;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.GameRules.Death;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using CardGame.Core.Events;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-using CardGame.Core.StateMachine.Interfaces;
-using CardGame.Core.Combat;
 
 namespace CardGame.Core.StateMachine.Phases
 {
@@ -19,20 +21,19 @@ namespace CardGame.Core.StateMachine.Phases
         public GamePhase PhaseType => GamePhase.Combat;
         public bool IsCommandAllowed(IGameCommand command, GameState state)
         {
-            /* W fazie walki **zazwyczaj** gracze nie mogą nic robić (nie rozmawiamy o eventach w tym domu).
-             * Walka dzieje się sama od lewej strony bitwy do prawej. System sam kończy tę fazę (po zakończeniu
-             * animacji, I guess).*/
+         
             if (command is EndPhaseCommand) return true;
             return false;
         }
 
-        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus)
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
         {
             /* ---------------------- KONIEC RUNDY ----------------------------
              * + następuje początek kolejnejm więc musimy:
              * 1. Zwiększyś numer++ rundy. */
             var orchestrator = new CombatOrchestrator();
-            var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState, eventBus);
+            var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState, eventBus, context);
+            stateAfterCombat = ProcessEndOfRoundStatuses(stateAfterCombat, eventBus);
 
             /* Ogarnąć, który gracz ma rozpocząć kolejną turę/rundę.
              * (termin tura/runda jest używany zamiennie w tym kontekście). */
@@ -70,5 +71,24 @@ namespace CardGame.Core.StateMachine.Phases
         {
             return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
         }
+        private GameState ProcessEndOfRoundStatuses(GameState state, EventBus events)
+        {
+            var workingState = state;
+           
+            var unitsToCheck = workingState.Board.GetAllUnits().ToList();
+
+            foreach (var unit in unitsToCheck)
+            {
+                if (unit.CurrentStats.Keywords.Contains(Keyword.Burning))
+                {
+               
+                    var damagedUnit = unit.TakeDamage(1);
+                    workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(damagedUnit));
+                    events.Publish(new UnitDamagedEvent(unit, 1, null));
+                }
+            }
+            return new DeathResolver().ResolveDeaths(workingState, events);
+        }
     }
+
 }

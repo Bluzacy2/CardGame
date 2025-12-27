@@ -5,8 +5,9 @@ namespace CardGame.Core.Events
     public class TargetSelectedEvent : IGameEvent
     {
         public int PlayerId { get; }
-        public int SourceCardId { get; }     // ID karty, której efekt wznawiamy
-        public int SelectedTargetId { get; } // ID celu wybranego przez gracza
+        public int SourcePlayerId => PlayerId;
+        public int SourceCardId { get; }
+        public int SelectedTargetId { get; }
 
         public TargetSelectedEvent(int playerId, int sourceCardId, int selectedTargetId)
         {

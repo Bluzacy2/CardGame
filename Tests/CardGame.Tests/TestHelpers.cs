@@ -11,31 +11,29 @@ namespace CardGame.Tests
 {
     public static class TestHelpers
     {
-        // Tworzy silnik z załadowanymi kartami z JSON stringa
         public static GameEngine CreateEngineWithCards(string jsonContent, int seed = 1)
         {
-            // 1. Zapisz JSON do pliku tymczasowego (CardLibrary wymaga pliku)
             string tempFile = Path.GetTempFileName();
             File.WriteAllText(tempFile, jsonContent);
 
             try
             {
+                CardLibrary.Instance.Clear();
                 CardLibrary.Instance.LoadFromJson(tempFile);
             }
-            finally
-            {
-                // File.Delete(tempFile); // Można usunąć, ale Windows czasem blokuje plik
-            }
+            finally { }
 
-            // 2. Setup
             var rng = new DeterministicRng(seed);
             var factory = new CardFactory(CardLibrary.Instance, rng);
 
-            // 3. Pusty stan początkowy
+            // Ustawienie początkowe zasobów (Krew)
             var pA = PlayerState.Initial(1, new List<CardInstance>())
-                .With(maxBlood: 10, currentBlood: 10, health: 30);
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .With(health: 30);
+
             var pB = PlayerState.Initial(2, new List<CardInstance>())
-                .With(maxBlood: 10, currentBlood: 10, health: 30);
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .With(health: 30);
 
             var board = BoardState.Empty();
             var state = new GameState(1, GamePhase.UnitOnly, 1, board, pA, pB);

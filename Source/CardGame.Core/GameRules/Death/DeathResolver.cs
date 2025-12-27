@@ -3,6 +3,8 @@ using CardGame.Core.Cards.Models;
 using CardGame.Core.State.Models;
 using CardGame.Core.Events;
 using CardGame.Core.GameRules.Death.Prevention;
+using System.Linq;
+using System;
 
 namespace CardGame.Core.GameRules.Death
 {
@@ -12,80 +14,75 @@ namespace CardGame.Core.GameRules.Death
 
         public DeathResolver()
         {
-            // Rejestrujemy wszystkie mechaniki ratunkowe
-            _preventions = new List<IDeathPrevention>
-            {
-                new SoulGuardPrevention(),
-                new UnkillablePrevention()     
-            };
+            _preventions = new List<IDeathPrevention> { new SoulGuardPrevention(), new UnkillablePrevention() };
         }
 
-      
-        public GameState ResolveDeaths(GameState currentState, EventBus eventBus)
+        public GameState ResolveDeaths(GameState state, EventBus eventBus)
         {
-            var workingState = currentState;
+            var workingState = state;
+            var history = eventBus.GetHistory().ToList();
 
-            for (int i = 0; i < 4; i++)
+            while (true)
             {
-                // Musimy pobierać linię z 'workingState' w każdej iteracji, 
-                // bo poprzednia śmierć mogła zmienić stan (np. Unkillable cofnął kartę)
-                var line = workingState.Board.Lines[i];
+                var allUnits = workingState.Board.GetAllUnits();
+                // Szukamy jednostki, która ma 0 lub mniej życia
+                var unitToKill = allUnits.FirstOrDefault(u => u.CurrentStats.Health <= 0);
 
-                // Sprawdzamy P1
-                if (line.Player1Unit != null && line.Player1Unit.CurrentStats.Health <= 0)
+                if (unitToKill == null) break;
+
+                int lineIndex = -1;
+                for (int i = 0; i < 4; i++)
                 {
-                    workingState = HandleDeath(line.Player1Unit, i, workingState, eventBus);
+                    if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitToKill.InstanceId ||
+                        workingState.Board.Lines[i].Player2Unit?.InstanceId == unitToKill.InstanceId)
+                    {
+                        lineIndex = i;
+                        break;
+                    }
                 }
 
-                // Pobieramy linię ponownie, bo HandleDeath mogło ją zmienić
-                line = workingState.Board.Lines[i];
+                bool isSacrifice = history.Any(e => e is UnitSacrificedEvent use && use.Unit.InstanceId == unitToKill.InstanceId);
 
-                // Sprawdzamy P2
-                if (line.Player2Unit != null && line.Player2Unit.CurrentStats.Health <= 0)
-                {
-                    workingState = HandleDeath(line.Player2Unit, i, workingState, eventBus);
-                }
+                // Próbujemy obsłużyć śmierć (może zostać zapobiegnięta)
+                workingState = HandleDeath(unitToKill, lineIndex, workingState, eventBus, isSacrifice);
             }
 
             return workingState;
-
         }
 
-        private GameState HandleDeath(CardInstance unit, int lineIndex, GameState state, EventBus eventBus)
+        public GameState KillInstantly(GameState state, CardInstance unit, int lineIndex, EventBus events, bool isSacrifice)
         {
-            // 1. Prewencja (Unkillable) - bez zmian
-            foreach (var prevention in _preventions)
-            {
-                if (prevention.CanPreventDeath(unit, state))
-                    return prevention.PreventDeath(unit, state);
-            }
-
-            // 2. Prawdziwa Śmierć
-
-            // PUBLIKUJEMY EVENT Z INDEKSEM LINII!
-            // (Musisz zaktualizować UnitDiedEvent w GameEvents.cs, żeby przyjmował int lineIndex)
-            eventBus.Publish(new UnitDiedEvent(unit, lineIndex));
+            Console.WriteLine($"[DEATH] {unit.Definition.Name} (ID:{unit.InstanceId}) ginie.");
+            events.Publish(new UnitDiedEvent(unit, lineIndex, isSacrifice));
 
             var newBoard = RemoveUnitFromBoard(state.Board, unit);
             var owner = state.GetPlayer(unit.OwnerPlayerId);
-            var newOwnerState = owner.WithCardAddedToDiscard(unit);
 
-            if (unit.OwnerPlayerId == 1) return state.With(board: newBoard, playerA: newOwnerState);
-            else return state.With(board: newBoard, playerB: newOwnerState);
+            return state.UpdateBoard(newBoard).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
         }
-        
+
+        private GameState HandleDeath(CardInstance unit, int lineIndex, GameState state, EventBus eventBus, bool isSacrifice)
+        {
+            if (!isSacrifice)
+            {
+                foreach (var p in _preventions)
+                {
+                    if (p.CanPreventDeath(unit, state))
+                    {
+                        return p.PreventDeath(unit, state);
+                    }
+                }
+            }
+            return KillInstantly(state, unit, lineIndex, eventBus, isSacrifice);
+        }
 
         private BoardState RemoveUnitFromBoard(BoardState board, CardInstance unit)
         {
-            // Kopia metody z UnkillablePrevention - można to wynieść do wspólnego utils
-            var newLines = new List<Line>();
-            foreach (var line in board.Lines)
-            {
-                var l = line;
-                if (l.Player1Unit?.InstanceId == unit.InstanceId) l = l.WithUnitPlaced(1, null);
-                if (l.Player2Unit?.InstanceId == unit.InstanceId) l = l.WithUnitPlaced(2, null);
-                newLines.Add(l);
-            }
+            var newLines = board.Lines.Select(l => {
+                var p1 = l.Player1Unit?.InstanceId == unit.InstanceId ? null : l.Player1Unit;
+                var p2 = l.Player2Unit?.InstanceId == unit.InstanceId ? null : l.Player2Unit;
+                return l.UpdateUnits(p1, p2);
+            }).ToList();
             return new BoardState(newLines);
         }
     }

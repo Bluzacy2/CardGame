@@ -10,7 +10,6 @@ namespace CardGame.Core.Cards.Models
         public int OwnerPlayerId { get; }
         public CardDefinition Definition { get; }
 
-        
         public int DamageTaken { get; }
         public CardStats PermanentBuffs { get; }
         public IReadOnlyList<Keyword> AuraKeywords { get; }
@@ -19,25 +18,25 @@ namespace CardGame.Core.Cards.Models
         {
             get
             {
-            
                 var stats = Definition.BaseStats + PermanentBuffs;
-
                 int currentHp = stats.Health - DamageTaken;
 
                 var combinedKeywords = new List<Keyword>(stats.Keywords);
                 if (AuraKeywords != null) combinedKeywords.AddRange(AuraKeywords);
 
+                // Wywołanie konstruktora przyjmującego IEnumerable<Keyword>, by uniknąć rzutowania na ResourceType
                 return new CardStats(
                     stats.Attack,
-                    currentHp, 
+                    currentHp,
                     stats.BloodCost,
-                    combinedKeywords.Distinct()
+                    combinedKeywords.Distinct(),
+                    new Dictionary<Keyword, int>((Dictionary<Keyword, int>)stats.KeywordParams),
+                    stats.CostType
                 );
             }
         }
 
         public int MaxHealth => (Definition.BaseStats + PermanentBuffs).Health;
-
 
         public CardInstance(int instanceId, int playerOwnerId, CardDefinition definition)
             : this(instanceId, playerOwnerId, definition, 0, new CardStats(0, 0, 0), new List<Keyword>())
@@ -59,6 +58,7 @@ namespace CardGame.Core.Cards.Models
             PermanentBuffs = permanentBuffs;
             AuraKeywords = auraKeywords != null ? new List<Keyword>(auraKeywords) : new List<Keyword>();
         }
+
         public CardInstance WithDamage(int totalDamage)
         {
             return new CardInstance(InstanceId, OwnerPlayerId, Definition, totalDamage, PermanentBuffs, AuraKeywords);

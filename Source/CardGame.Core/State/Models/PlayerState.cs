@@ -1,10 +1,9 @@
 ﻿using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.State.Models
 {
@@ -14,274 +13,80 @@ namespace CardGame.Core.State.Models
         public int Health { get; }
         public int MaxBlood { get; }
         public int CurrentBlood { get; }
-
-        
-
-        // 1. Karty w ręce 2. Karty w talii 3. Karty zużyte (odrzucone) || Expectancy value!!
         public IReadOnlyList<CardInstance> Hand { get; }
         public IReadOnlyList<CardInstance> DrawPile { get; }
         public IReadOnlyList<CardInstance> DiscardPile { get; }
-
-        // Globalne buffy/modyfikatory dla jednostek tego gracza. - B.
         public CardStats GlobalUnitBuffs { get; }
 
-        public PlayerState(
-            int playerId,
-            int health,
-            int maxBlood,
-            int currentBlood,
-            IEnumerable<CardInstance> hand,
-            IEnumerable<CardInstance> drawPile,
-            IEnumerable<CardInstance> discardPile,
-            CardStats? globalUnitBuffs = null)
+        public PlayerState(int playerId, int health, int maxBlood, int currentBlood,
+            IEnumerable<CardInstance> hand, IEnumerable<CardInstance> drawPile,
+            IEnumerable<CardInstance> discardPile, CardStats? globalUnitBuffs = null)
         {
             PlayerId = playerId;
             Health = health;
             MaxBlood = maxBlood;
             CurrentBlood = currentBlood;
-            Hand = new List<CardInstance>(hand);
-            DrawPile = new List<CardInstance>(drawPile);
-            DiscardPile = new List<CardInstance>(discardPile);
+            Hand = hand.ToList();
+            DrawPile = drawPile.ToList();
+            DiscardPile = discardPile.ToList();
             GlobalUnitBuffs = globalUnitBuffs ?? new CardStats(0, 0, 0);
-
         }
 
-        // Tworzenie początkowego stanu gracza z domyślnym zdrowiem, krwią i pustymi stosami kart.
-        public static PlayerState Initial(int playerId, List<CardInstance> startingDeck)
+        public static PlayerState Initial(int playerId, List<CardInstance> startingDeck) =>
+            new PlayerState(playerId, 20, 1, 1, new List<CardInstance>(), startingDeck, new List<CardInstance>());
+
+        public PlayerState With(int? health = null, int? maxBlood = null, int? currentBlood = null,
+            IEnumerable<CardInstance>? hand = null, IEnumerable<CardInstance>? drawPile = null,
+            IEnumerable<CardInstance>? discardPile = null, CardStats? globalUnitBuffs = null)
         {
-            return new PlayerState(
-                playerId,
-                health: 20,
-                maxBlood: 1,
-                currentBlood: 1,
-                hand: new List<CardInstance>(),
-                drawPile: startingDeck,
-                discardPile: new List<CardInstance>(),
-                new CardStats(0, 0, 0)
-             ); /* Ręka / Pobieranie kart robimy później. */
+            return new PlayerState(PlayerId, health ?? Health, maxBlood ?? MaxBlood, currentBlood ?? CurrentBlood,
+                hand ?? Hand, drawPile ?? DrawPile, discardPile ?? DiscardPile, globalUnitBuffs ?? GlobalUnitBuffs);
         }
 
-        public PlayerState With(
-            int? health = null,
-            int? maxBlood = null,
-            int? currentBlood = null,
-            IEnumerable<CardInstance>? hand = null,
-            IEnumerable<CardInstance>? drawPile = null,
-            IEnumerable<CardInstance>? discardPile = null,
-            CardStats? globalUnitBuffs = null)
+        // Metoda wymagana przez testy do ręcznego ustawiania zasobów
+        public PlayerState WithResourceChanged(ResourceType type, int current, int max)
         {
-            return new PlayerState(
-                PlayerId,
-                health ?? Health,
-                maxBlood ?? MaxBlood,
-                currentBlood ?? CurrentBlood,
-                hand ?? Hand,
-                drawPile ?? DrawPile,
-                discardPile ?? DiscardPile,
-                globalUnitBuffs ?? GlobalUnitBuffs
-            );
-        }
-
-        /* ----------- Pomocnicze metody dla Immutable State ------- 
-         * 1. Czy mamy wystarczająco dużo Blood, aby zagrać kartę */
-        public bool CanPlayCard(int cost)
-        {
-            return CurrentBlood >= cost;
-        }
-
-        // 2. Metoda zwracająca nowy stan gracza po wydaniu krwi/many.
-        public PlayerState WithBloodSpent(int amount)
-        {
-            return new PlayerState(
-                PlayerId, Health, MaxBlood,
-                CurrentBlood - amount, // Odjęcie krwi/many.
-                Hand, DrawPile,
-                DiscardPile);
-        }
-
-        public PlayerState WithCardRemovedFromHand(CardInstance cardToRemove)
-        {
-            var newHand = new List<CardInstance>(Hand);
-            var index = newHand.FindIndex(c => c.InstanceId == cardToRemove.InstanceId);
-
-            if (index != -1)
+            if (type == ResourceType.Blood)
             {
-                newHand.RemoveAt(index);
+                return this.With(currentBlood: current, maxBlood: max);
             }
-            return new PlayerState(
-                PlayerId,
-                Health,
-                MaxBlood,
-                CurrentBlood,
-                newHand,
-                DrawPile,
-                DiscardPile);
+            return this;
         }
 
-        public PlayerState WithCardDrawn()
+        public bool CanPlayCard(int cost) => CurrentBlood >= cost;
+        public PlayerState WithBloodSpent(int amount) => this.With(currentBlood: CurrentBlood - amount);
+        public PlayerState WithCardRemovedFromHand(CardInstance card) => this.With(hand: Hand.Where(c => c.InstanceId != card.InstanceId));
+        public PlayerState WithCardDrawn() => DrawPile.Count == 0 ? this : this.With(hand: Hand.Append(DrawPile[0]), drawPile: DrawPile.Skip(1));
+
+        public PlayerState WithCardsDrawnFromDiscard(int count, int? excludeId = null)
         {
-            if (DrawPile.Count == 0)
-            {
-                return this;
-            }
-            var cardToDraw = DrawPile[0];
-            var newDrawPile = new List<CardInstance>(DrawPile);
-            newDrawPile.RemoveAt(0);
-
-            var newHand = new List<CardInstance>(Hand);
-            newHand.Add(cardToDraw);
-
-            return new PlayerState(
-                PlayerId, Health, MaxBlood, CurrentBlood, 
-                newHand, newDrawPile, DiscardPile);
+            var valid = DiscardPile.Where(c => c.InstanceId != excludeId).ToList();
+            if (valid.Count == 0) return this;
+            var toDraw = valid.TakeLast(Math.Min(count, valid.Count)).ToList();
+            return this.With(hand: Hand.Concat(toDraw), discardPile: DiscardPile.Where(c => !toDraw.Any(d => d.InstanceId == c.InstanceId)));
         }
 
-        public PlayerState WithTurnStartBlood(int turnNumber)
-        {
-            int newMaxBlood = Math.Clamp(turnNumber, 1, 10);
-            return new PlayerState(
-                PlayerId, Health, newMaxBlood, newMaxBlood,
-                Hand, DrawPile, DiscardPile);
-        }
-
-        public PlayerState WithCardAddedToHand(CardInstance card)
-        {
-            var newHand = new List<CardInstance>(Hand);
-            newHand.Add(card);
-
-            return new PlayerState(
-                PlayerId,
-                Health,
-                MaxBlood,
-                CurrentBlood,
-                newHand, 
-                DrawPile,
-                DiscardPile
-            );
-        }
-
-        public PlayerState WithCardAddedToDiscard(CardInstance card)
-        {
-            var newDiscardPile = new List<CardInstance>(DiscardPile);
-            newDiscardPile.Add(card);
-
-            return new PlayerState(
-                PlayerId,
-                Health,
-                MaxBlood,
-                CurrentBlood,
-                Hand,
-                DrawPile,
-                newDiscardPile);
-        }
-
-        public PlayerState WithHealthRestored(int amount)
-        {
-            int newHealth = Math.Min(20, Health + amount);
-            return new PlayerState(
-                PlayerId,
-                newHealth,
-                MaxBlood,
-                CurrentBlood,
-                Hand,
-                DrawPile,
-                DiscardPile);
-        }
-
-        public PlayerState WithDamageTaken(int amount)
-        {
-            int newHealth = Health - amount;
-            return new PlayerState(
-                PlayerId,
-                newHealth,
-                MaxBlood,
-                CurrentBlood,
-                Hand,
-                DrawPile,
-                DiscardPile);
-        }
+        public PlayerState WithTurnStartBlood(int turn) => this.With(maxBlood: Math.Clamp(turn, 1, 10), currentBlood: Math.Clamp(turn, 1, 10));
+        public PlayerState WithCardAddedToHand(CardInstance card) => this.With(hand: Hand.Append(card));
+        public PlayerState WithCardAddedToDiscard(CardInstance card) => this.With(discardPile: DiscardPile.Append(card));
+        public PlayerState WithHealthRestored(int amount) => this.With(health: Math.Min(20, Health + amount));
+        public PlayerState WithDamageTaken(int amount) => this.With(health: Health - amount);
         public PlayerState WithShuffledDeck(DeterministicRng rng)
         {
-            var deckList = new List<CardInstance>(DrawPile);
-            int n = deckList.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = rng.Next(0, n + 1);
-                (deckList[k], deckList[n]) = (deckList[n], deckList[k]);
-            }
-
-            return With(drawPile: deckList);
+            var list = DrawPile.ToList();
+            int n = list.Count;
+            while (n > 1) { n--; int k = rng.Next(0, n + 1); (list[k], list[n]) = (list[n], list[k]); }
+            return this.With(drawPile: list);
         }
-        public PlayerState WithGlobalBuffModifier(int atk, int hp)
+        public PlayerState WithGlobalBuffModifier(int atk, int hp) => this.With(globalUnitBuffs: GlobalUnitBuffs + new CardStats(atk, hp, 0));
+        public PlayerState WithCardRemovedFromDeck(CardInstance card) => this.With(drawPile: DrawPile.Where(c => c.InstanceId != card.InstanceId));
+        public PlayerState WithMulliganPerformed(List<int> ids)
         {
-            var buffToAdd = new CardStats(atk, hp, 0);
-            var newBuffs = GlobalUnitBuffs + buffToAdd; // Używa operatora +
-            return With(globalUnitBuffs: newBuffs);
+            var toRep = Hand.Where(c => ids.Contains(c.InstanceId)).ToList();
+            var nHand = Hand.Where(c => !ids.Contains(c.InstanceId)).ToList();
+            var nDeck = DrawPile.ToList();
+            foreach (var c in toRep) { if (nDeck.Count > 0) { nHand.Add(nDeck[0]); nDeck.RemoveAt(0); } nDeck.Add(c); }
+            return this.With(hand: nHand, drawPile: nDeck);
         }
-
-        public PlayerState WithMulliganPerformed(List<int> cardInstanceIdsToReplace)
-        {
-            // Jeśli gracz nic nie wymienia, zwracamy stan bez zmian (ewentualnie logika przetasowania?)
-            // Ale musimy pamiętać, że karty wracają na dno.
-            if (cardInstanceIdsToReplace == null || cardInstanceIdsToReplace.Count == 0)
-            {
-                return this;
-            }
-
-            var currentHand = new List<CardInstance>(Hand);
-            var currentDeck = new List<CardInstance>(DrawPile);
-            int cardsToDraw = 0;
-
-            // 1. Usuń karty z ręki i odłóż je "na bok" (żeby nie dobrać ich od razu, jeśli talia mała)
-            // W Twoim przypadku: "Trafiają na dno".
-            // Czyli najpierw dobieramy, a potem wkładamy stare na dno?
-            // Zazwyczaj w karciankach: Wkładasz do talii -> Tasujesz -> Dobierasz.
-            // Twoja zasada: "Trafiają na samo dno".
-            // Więc: Usuń z ręki -> Dobierz z góry -> Dodaj usunięte na dół.
-
-            var cardsToReturnToDeck = new List<CardInstance>();
-
-            foreach (int idToRemove in cardInstanceIdsToReplace)
-            {
-                var card = currentHand.FirstOrDefault(c => c.InstanceId == idToRemove);
-                if (card != null)
-                {
-                    currentHand.Remove(card);
-                    cardsToReturnToDeck.Add(card); // Zapamiętujemy
-                    cardsToDraw++;
-                }
-            }
-
-            // 2. Dobierz nowe karty z góry talii
-            for (int i = 0; i < cardsToDraw; i++)
-            {
-                if (currentDeck.Count > 0)
-                {
-                    var newCard = currentDeck[0]; // Bierzemy z góry (index 0)
-                    currentDeck.RemoveAt(0);
-                    currentHand.Add(newCard);
-                }
-            }
-
-            // 3. Włóż stare karty na DNO talii (na koniec listy)
-            foreach (var oldCard in cardsToReturnToDeck)
-            {
-                currentDeck.Add(oldCard);
-            }
-
-            return With(hand: currentHand, drawPile: currentDeck);
-        }
-        public PlayerState WithCardRemovedFromDeck(CardInstance cardToRemove)
-        {
-            var newDeck = new List<CardInstance>(DrawPile);
-            var index = newDeck.FindIndex(c => c.InstanceId == cardToRemove.InstanceId);
-            if (index != -1)
-            {
-                newDeck.RemoveAt(index);
-            }
-            return With(drawPile: newDeck);
-        }
-
     }
 }

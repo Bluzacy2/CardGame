@@ -1,9 +1,4 @@
 ﻿using CardGame.Core.Events.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.Events
 {
@@ -11,11 +6,14 @@ namespace CardGame.Core.Events
     {
         public int TurnNumer { get; }
         public int ActivePlayerId { get; }
+
+        // Implementacja interfejsu: Gracz, którego tura się zaczyna
+        public int SourcePlayerId => ActivePlayerId;
+
         public TurnStartedEvent(int turnNumer, int activePlayerId)
         {
             TurnNumer = turnNumer;
             ActivePlayerId = activePlayerId;
         }
-
     }
 }

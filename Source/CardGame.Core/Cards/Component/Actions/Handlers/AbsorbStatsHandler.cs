@@ -16,27 +16,40 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
 
         public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
         {
-            if (targets.TargetUnit != null)
+            if (targets.TargetUnit == null) return state;
+
+            // Szukamy źródła (jednostki, która absorbuje) - może być na stole LUB w ręce
+            CardInstance? me = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceId);
+            bool isOnBoard = me != null;
+
+            if (me == null)
             {
-                // Musimy znaleźć SIEBIE (jednostkę, która wywołała efekt) na planszy
-                var me = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceId);
+                me = state.PlayerA.Hand.FirstOrDefault(c => c.InstanceId == sourceId)
+                     ?? state.PlayerB.Hand.FirstOrDefault(c => c.InstanceId == sourceId);
+            }
 
-                if (me != null)
+            if (me != null)
+            {
+                var victimStats = targets.TargetUnit.CurrentStats;
+                // Tworzymy buffa z aktualnych statystyk ofiary
+                var buff = new CardStats(victimStats.Attack, victimStats.Health, 0);
+                var biggerMe = me.AddPermanentBuff(buff);
+
+                Console.WriteLine($"[EFEKT] AbsorbStats: {biggerMe.Definition.Name} pochłania statystyki {targets.TargetUnit.Definition.Name}");
+
+                if (isOnBoard)
                 {
-                    var victimStats = targets.TargetUnit.CurrentStats;
-                    var newStats = new CardStats(
-                        me.CurrentStats.Attack + victimStats.Attack,
-                        me.CurrentStats.Health + victimStats.Health,
-                        me.CurrentStats.BloodCost,
-                        me.CurrentStats.Keywords);
-
-                    var buff = new CardStats(victimStats.Attack, victimStats.Health, 0);
-
-                    var biggerMe = me.AddPermanentBuff(buff);
-                    Console.WriteLine($"[EFEKT] AbsorbStats: {biggerMe.Definition.Name} rośnie!");
                     return state.UpdateBoard(state.Board.UpdateUnit(biggerMe));
                 }
+                else
+                {
+                    // Jeśli jednostka absorbująca jest w ręce (np. jakiś specyficzny efekt)
+                    var owner = state.GetPlayer(biggerMe.OwnerPlayerId);
+                    var newHand = owner.Hand.Select(c => c.InstanceId == sourceId ? biggerMe : c).ToList();
+                    return state.UpdatePlayer(owner.With(hand: newHand));
+                }
             }
+
             return state;
         }
     }

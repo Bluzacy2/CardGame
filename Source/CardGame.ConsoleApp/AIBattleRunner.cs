@@ -21,6 +21,7 @@ namespace CardGame.ConsoleApp
             Console.WriteLine("\n=== SYMULACJA AI VS AI ===");
 
             CreateAiDeckJson();
+            CardLibrary.Instance.Clear();
             CardLibrary.Instance.LoadFromJson("ai_deck.json");
 
             var rng = new DeterministicRng(new Random().Next());
@@ -29,34 +30,26 @@ namespace CardGame.ConsoleApp
             var deckA = CreateRandomDeck(factory, 1, 15);
             var deckB = CreateRandomDeck(factory, 2, 15);
 
-            // --- POPRAWKA TUTAJ ---
-            // Inicjalizujemy stan i OD RAZU ustawiamy fazę na UnitOnly.
-            // Pomijamy Mulligan, bo boty jeszcze nie umieją go obsługiwać, a chcemy zobaczyć walkę.
             var state = GameState.Initial(1, deckA, deckB, rng)
                                  .With(currentPhase: GamePhase.UnitOnly);
 
             var engine = new GameEngine(state, rng.Seed);
 
             var ai1 = new AIPlayerController(engine, 1, new StandardStrategy());
-            // Zmieniam na RandomStrategy dla gracza 2, żeby było ciekawiej (AI vs Random)
-            // lub zostaw StandardStrategy dla AI vs AI
             var ai2 = new AIPlayerController(engine, 2, new StandardStrategy());
 
             Console.WriteLine($"Seed Gry: {rng.Seed}");
-            Console.WriteLine($"Start: Gracz 1 HP: {state.PlayerA.Health} vs Gracz 2 HP: {state.PlayerB.Health}");
             Console.WriteLine("Startuje symulację...\n");
 
             ai1.StartAutoPlay();
             ai2.StartAutoPlay();
 
             int lastTurn = 0;
-            // Zmienna pomocnicza do śledzenia aktywnego gracza, żeby odświeżać widok
             int lastActivePlayer = 0;
             GamePhase lastPhase = GamePhase.None;
 
             while (!engine.IsGameOver)
             {
-                // Odśwież widok jeśli zmieniła się tura, gracz LUB faza (np. po walce)
                 if (engine.CurrentState.TurnNumber != lastTurn ||
                     engine.CurrentState.ActivePlayerId != lastActivePlayer ||
                     engine.CurrentState.CurrentPhase != lastPhase)
@@ -71,7 +64,7 @@ namespace CardGame.ConsoleApp
                     Console.ResetColor();
                 }
 
-                await Task.Delay(200);
+                await Task.Delay(100);
             }
 
             Console.WriteLine("\n=== KONIEC GRY ===");
@@ -82,7 +75,6 @@ namespace CardGame.ConsoleApp
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("REMIS!");
             }
             Console.ResetColor();
@@ -93,7 +85,6 @@ namespace CardGame.ConsoleApp
         private static List<CardInstance> CreateRandomDeck(CardFactory factory, int ownerId, int count)
         {
             var deck = new List<CardInstance>();
-            // ID kart zdefiniowanych w CreateAiDeckJson
             int[] availableIds = { 10, 11, 20, 21, 30, 99 };
             var rand = new Random();
 
@@ -107,7 +98,7 @@ namespace CardGame.ConsoleApp
 
         private static void PrintBoardState(GameState state)
         {
-            Console.WriteLine($"P1 HP: {state.PlayerA.Health} (Karty: {state.PlayerA.Hand.Count}) | P2 HP: {state.PlayerB.Health} (Karty: {state.PlayerB.Hand.Count})");
+            Console.WriteLine($"P1 HP: {state.PlayerA.Health} (Blood: {state.PlayerA.CurrentBlood}/{state.PlayerA.MaxBlood}) | P2 HP: {state.PlayerB.Health}");
             Console.WriteLine("STÓŁ:");
             for (int i = 0; i < 4; i++)
             {
@@ -120,17 +111,18 @@ namespace CardGame.ConsoleApp
 
         private static void CreateAiDeckJson()
         {
+            // Zmieniono "Cost" na "Cost", bo biblioteka to mapuje, ale w logice wewnętrznej mamy BloodCost
             string json = @"
             [
               { ""Id"": 10, ""Name"": ""Recruit"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 2, ""Health"": 2 },
               { ""Id"": 11, ""Name"": ""Guard"", ""Type"": ""Unit"", ""Cost"": 2, ""Attack"": 2, ""Health"": 4, ""Keywords"": [""Armored""] },
               { ""Id"": 20, ""Name"": ""Berserker"", ""Type"": ""Unit"", ""Cost"": 3, ""Attack"": 4, ""Health"": 3 },
               { ""Id"": 21, ""Name"": ""Cleric"", ""Type"": ""Unit"", ""Cost"": 2, ""Attack"": 1, ""Health"": 3,
-                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetFriendlyUnit"", ""Actions"": [ { ""Type"": ""Heal"", ""Amount"": 3 } ] } ] },
+                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""Heal"", ""Amount"": 3, ""Target"": ""SelectedTarget"" } ] } ] },
               { ""Id"": 30, ""Name"": ""Archer"", ""Type"": ""Unit"", ""Cost"": 2, ""Attack"": 2, ""Health"": 2,
-                 ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetEnemyUnit"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Amount"": 2 } ] } ] },
+                 ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Amount"": 2, ""Target"": ""TargetEnemyUnit"" } ] } ] },
               { ""Id"": 99, ""Name"": ""Fireball"", ""Type"": ""Spell"", ""Cost"": 2,
-                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetEnemyUnit"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Amount"": 4 } ] } ] }
+                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Amount"": 4, ""Target"": ""TargetEnemyUnit"" } ] } ] }
             ]";
             File.WriteAllText("ai_deck.json", json);
         }

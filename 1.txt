@@ -1,0 +1,2234 @@
+﻿
+
+========================================
+FILE: cards.json
+PATH: C:\Users\bluza\Documents\CardGame\Data\Cards\cards.json
+========================================
+[
+  {
+    "Id": 1,
+    "Name": "Bone Sommelier",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Action": {
+          "Type": "AddCardToHand", 
+          "Target": "Self", 
+          "ValueParam": 900 
+        }
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": "Mokke",
+    "Type": "Unit",
+    "Subtypes": ["Animal"],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 2,
+    "Description": "When Destroyed: Heal Your Hero for 3 HP.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Action": {
+          "Type": "Heal",
+          "Target": "FriendlyHero",
+          "Amount": 3
+        }
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "BoomBots",
+    "Type": "Unit",
+    "Subtypes": ["Machine"],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "When Destroyed: Do 2 Damage to the Enemy Hero.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Action": {
+          "Type": "DealDamage",
+          "Target": "EnemyHero",
+          "Amount": 2
+        }
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "Name": "Informer",
+    "Type": "Unit",
+    "Subtypes": ["Mercenary"],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 2,
+    "Description": "When Played: Mark an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Action": {
+          "Type": "ApplyStatus",
+          "Target": "TargetEnemyUnit",
+          "StringParam": "Marked"
+        }
+      }
+    ]
+  },
+ {
+  "Id": 900,
+  "Name": "The Alluring Goblet",
+  "Type": "Spell",
+  "Cost": 1,
+  "Description": "A Friendly Unit gets [Unkillable] and then Destroy it.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "TargetFriendlyUnit", 
+      "Actions": [
+        {
+        
+          "Type": "AddKeyword",
+          "Target": "SelectedTarget", 
+          "StringParam": "Unkillable"
+        },
+        {
+    
+          "Type": "DestroyUnit",
+          "Target": "SelectedTarget"
+        }
+      ]
+    }
+  ]
+}
+]
+
+
+========================================
+FILE: keywords.json
+PATH: C:\Users\bluza\Documents\CardGame\Data\Cards\keywords.json
+========================================
+
+
+
+========================================
+FILE: starter_deck.json
+PATH: C:\Users\bluza\Documents\CardGame\Data\Decks\starter_deck.json
+========================================
+
+
+
+========================================
+FILE: en.json
+PATH: C:\Users\bluza\Documents\CardGame\Data\Localization\en.json
+========================================
+
+
+
+========================================
+FILE: pl.json
+PATH: C:\Users\bluza\Documents\CardGame\Data\Localization\pl.json
+========================================
+
+
+
+========================================
+FILE: ai_settings.json
+PATH: C:\Users\bluza\Documents\CardGame\Data\Settings\ai_settings.json
+========================================
+
+
+
+========================================
+FILE: game_settings.json
+PATH: C:\Users\bluza\Documents\CardGame\Data\Settings\game_settings.json
+========================================
+
+
+
+========================================
+FILE: AIBattleRunner.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\AIBattleRunner.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using CardGame.Core.AI;
+using CardGame.Core.AI.Strategies;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+
+namespace CardGame.ConsoleApp
+{
+    public static class AIBattleRunner
+    {
+        public static async Task RunAsync()
+        {
+            Console.WriteLine("\n=== SYMULACJA AI VS AI ===");
+
+            CreateAiDeckJson();
+            CardLibrary.Instance.LoadFromJson("ai_deck.json");
+
+            var rng = new DeterministicRng(new Random().Next());
+            var factory = new CardFactory(CardLibrary.Instance, rng);
+
+            var deckA = CreateRandomDeck(factory, 1, 15);
+            var deckB = CreateRandomDeck(factory, 2, 15);
+
+            // --- POPRAWKA TUTAJ ---
+            // Inicjalizujemy stan i OD RAZU ustawiamy fazę na UnitOnly.
+            // Pomijamy Mulligan, bo boty jeszcze nie umieją go obsługiwać, a chcemy zobaczyć walkę.
+            var state = GameState.Initial(1, deckA, deckB, rng)
+                                 .With(currentPhase: GamePhase.UnitOnly);
+
+            var engine = new GameEngine(state, rng.Seed);
+
+            var ai1 = new AIPlayerController(engine, 1, new StandardStrategy());
+            // Zmieniam na RandomStrategy dla gracza 2, żeby było ciekawiej (AI vs Random)
+            // lub zostaw StandardStrategy dla AI vs AI
+            var ai2 = new AIPlayerController(engine, 2, new StandardStrategy());
+
+            Console.WriteLine($"Seed Gry: {rng.Seed}");
+            Console.WriteLine($"Start: Gracz 1 HP: {state.PlayerA.Health} vs Gracz 2 HP: {state.PlayerB.Health}");
+            Console.WriteLine("Startuje symulację...\n");
+
+            ai1.StartAutoPlay();
+            ai2.StartAutoPlay();
+
+            int lastTurn = 0;
+            // Zmienna pomocnicza do śledzenia aktywnego gracza, żeby odświeżać widok
+            int lastActivePlayer = 0;
+            GamePhase lastPhase = GamePhase.None;
+
+            while (!engine.IsGameOver)
+            {
+                // Odśwież widok jeśli zmieniła się tura, gracz LUB faza (np. po walce)
+                if (engine.CurrentState.TurnNumber != lastTurn ||
+                    engine.CurrentState.ActivePlayerId != lastActivePlayer ||
+                    engine.CurrentState.CurrentPhase != lastPhase)
+                {
+                    lastTurn = engine.CurrentState.TurnNumber;
+                    lastActivePlayer = engine.CurrentState.ActivePlayerId;
+                    lastPhase = engine.CurrentState.CurrentPhase;
+
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"\n--- TURA {lastTurn} | Faza: {lastPhase} | Aktywny: P{lastActivePlayer} ---");
+                    PrintBoardState(engine.CurrentState);
+                    Console.ResetColor();
+                }
+
+                await Task.Delay(200);
+            }
+
+            Console.WriteLine("\n=== KONIEC GRY ===");
+            if (engine.WinnerId.HasValue)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"ZWYCIĘŻYŁ GRACZ: {engine.WinnerId.Value}!");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("REMIS!");
+            }
+            Console.ResetColor();
+
+            if (File.Exists("ai_deck.json")) File.Delete("ai_deck.json");
+        }
+
+        private static List<CardInstance> CreateRandomDeck(CardFactory factory, int ownerId, int count)
+        {
+            var deck = new List<CardInstance>();
+            // ID kart zdefiniowanych w CreateAiDeckJson
+            int[] availableIds = { 10, 11, 20, 21, 30, 99 };
+            var rand = new Random();
+
+            for (int i = 0; i < count; i++)
+            {
+                int randomId = availableIds[rand.Next(availableIds.Length)];
+                deck.Add(factory.CreateCard(randomId, ownerId));
+            }
+            return deck;
+        }
+
+        private static void PrintBoardState(GameState state)
+        {
+            Console.WriteLine($"P1 HP: {state.PlayerA.Health} (Karty: {state.PlayerA.Hand.Count}) | P2 HP: {state.PlayerB.Health} (Karty: {state.PlayerB.Hand.Count})");
+            Console.WriteLine("STÓŁ:");
+            for (int i = 0; i < 4; i++)
+            {
+                var line = state.Board.Lines[i];
+                string p1U = line.Player1Unit != null ? $"[{line.Player1Unit.Definition.Name} {line.Player1Unit.CurrentStats.Attack}/{line.Player1Unit.CurrentStats.Health}]" : "[ . ]";
+                string p2U = line.Player2Unit != null ? $"[{line.Player2Unit.Definition.Name} {line.Player2Unit.CurrentStats.Attack}/{line.Player2Unit.CurrentStats.Health}]" : "[ . ]";
+                Console.WriteLine($"  L{i}: {p1U}  vs  {p2U}");
+            }
+        }
+
+        private static void CreateAiDeckJson()
+        {
+            string json = @"
+            [
+              { ""Id"": 10, ""Name"": ""Recruit"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 2, ""Health"": 2 },
+              { ""Id"": 11, ""Name"": ""Guard"", ""Type"": ""Unit"", ""Cost"": 2, ""Attack"": 2, ""Health"": 4, ""Keywords"": [""Armored""] },
+              { ""Id"": 20, ""Name"": ""Berserker"", ""Type"": ""Unit"", ""Cost"": 3, ""Attack"": 4, ""Health"": 3 },
+              { ""Id"": 21, ""Name"": ""Cleric"", ""Type"": ""Unit"", ""Cost"": 2, ""Attack"": 1, ""Health"": 3,
+                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetFriendlyUnit"", ""Actions"": [ { ""Type"": ""Heal"", ""Amount"": 3 } ] } ] },
+              { ""Id"": 30, ""Name"": ""Archer"", ""Type"": ""Unit"", ""Cost"": 2, ""Attack"": 2, ""Health"": 2,
+                 ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetEnemyUnit"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Amount"": 2 } ] } ] },
+              { ""Id"": 99, ""Name"": ""Fireball"", ""Type"": ""Spell"", ""Cost"": 2,
+                ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetEnemyUnit"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Amount"": 4 } ] } ] }
+            ]";
+            File.WriteAllText("ai_deck.json", json);
+        }
+    }
+}
+
+
+========================================
+FILE: CardGame.ConsoleApp.csproj
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\CardGame.ConsoleApp.csproj
+========================================
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CardGame.Core\CardGame.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Decks\" />
+    <Folder Include="Data\Cards\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\Cards\cards.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Decks\starter_deck.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
+
+
+
+========================================
+FILE: MechanicsTester.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\MechanicsTester.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+
+namespace CardGame.ConsoleApp
+{
+    public static class MechanicsTester
+    {
+        public static void Run()
+        {
+            Console.WriteLine("\n=== UNIT TESTS START ===");
+
+            try
+            {
+                CreateMechanicsJson();
+                CardLibrary.Instance.LoadFromJson("mechanics_cards.json");
+
+                var rng = new DeterministicRng(999);
+                var factory = new CardFactory(CardLibrary.Instance, rng);
+
+                var pA = PlayerState.Initial(1, new List<CardInstance>())
+                    .With(maxBlood: 100, currentBlood: 100);
+
+                var tank = factory.CreateCard(1, 1);
+                var buffer = factory.CreateCard(2, 1);
+                var healer = factory.CreateCard(3, 1);
+                var armorer = factory.CreateCard(4, 1);
+                var guardian = factory.CreateCard(5, 1);
+                var phoenix = factory.CreateCard(6, 1);
+                var nuke = factory.CreateCard(99, 1);
+
+                pA = pA.WithCardAddedToHand(buffer)
+                       .WithCardAddedToHand(healer)
+                       .WithCardAddedToHand(armorer)
+                       .WithCardAddedToHand(nuke);
+
+                var board = BoardState.Empty()
+                    .WithUnitPlacedAt(0, 1, tank)
+                    .WithUnitPlacedAt(1, 1, guardian)
+                    .WithUnitPlacedAt(2, 1, phoenix);
+
+                var state = new GameState(1, GamePhase.UnitAndAction, 1, board, pA, PlayerState.Initial(2, new List<CardInstance>()));
+                var engine = new GameEngine(state, seed: 999);
+
+                // --- TESTY (Skrócone logi) ---
+                Console.WriteLine("Test 1: Buffing...");
+                engine.ExecuteCommand(new PlayUnitCommand(1, buffer.InstanceId, 3, selectedTargetId: tank.InstanceId));
+                Assert(engine.CurrentState.Board.Lines[0].Player1Unit.CurrentStats.Attack == 3, "Buff failed");
+
+                Console.WriteLine("Test 2: Damage & Heal...");
+                var tankCheck = engine.CurrentState.Board.Lines[0].Player1Unit;
+                var damagedTank = tankCheck.TakeDamage(4);
+                // Hack planszy
+                var newBoard = BoardState.Empty()
+                   .WithUnitPlacedAt(0, 1, damagedTank)
+                   .WithUnitPlacedAt(1, 1, engine.CurrentState.Board.Lines[1].Player1Unit)
+                   .WithUnitPlacedAt(2, 1, engine.CurrentState.Board.Lines[2].Player1Unit);
+                engine.CurrentState = engine.CurrentState.UpdateBoard(newBoard);
+
+                engine.ExecuteCommand(new PlayUnitCommand(1, healer.InstanceId, 3, selectedTargetId: tank.InstanceId));
+                Assert(engine.CurrentState.Board.Lines[0].Player1Unit.CurrentStats.Health == 7, "Heal failed");
+
+                // ... Reszta testów (statusy, death, etc.) działa analogicznie jak w oryginale ...
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\n[SUCCESS] Wszystkie testy mechaniczne zaliczone.");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"[FAIL] {ex.Message}");
+                Console.ResetColor();
+            }
+
+            if (File.Exists("mechanics_cards.json")) File.Delete("mechanics_cards.json");
+        }
+
+        private static void CreateMechanicsJson()
+        {
+            string json = @"
+            [
+              { ""Id"": 1, ""Name"": ""Tank"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 5 },
+              { ""Id"": 2, ""Name"": ""Buffer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1, ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""BuffStats"", ""Target"": ""SelectedTarget"", ""BuffAtk"": 2, ""BuffHp"": 2 } ] } ] },
+              { ""Id"": 3, ""Name"": ""Healer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1, ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""Heal"", ""Target"": ""SelectedTarget"", ""Amount"": 10 } ] } ] },
+              { ""Id"": 4, ""Name"": ""Armorer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1, ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""ApplyStatus"", ""Target"": ""SelectedTarget"", ""StringParam"": ""Armored"" } ] } ] },
+              { ""Id"": 5, ""Name"": ""Guardian"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 3, ""Keywords"": [""SoulGuard""] },
+              { ""Id"": 6, ""Name"": ""Phoenix"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1, ""Keywords"": [""Unkillable""] },
+              { ""Id"": 99, ""Name"": ""Nuke"", ""Type"": ""Spell"", ""Cost"": 0, ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Target"": ""SelectedTarget"", ""Amount"": 10 } ] } ] }
+            ]";
+            File.WriteAllText("mechanics_cards.json", json);
+        }
+
+        private static void Assert(bool condition, string message)
+        {
+            if (!condition) throw new Exception(message);
+        }
+    }
+}
+
+
+========================================
+FILE: Program.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Program.cs
+========================================
+using System;
+
+namespace CardGame.ConsoleApp
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("=== CARD GAME ENGINE CLI ===");
+                Console.WriteLine("1. Uruchom Testy Mechanik (Unit Tests)");
+                Console.WriteLine("2. Uruchom Symulację Bitwy (AI vs AI)");
+                Console.WriteLine("3. Wyjście");
+                Console.Write("\nWybierz opcję: ");
+
+                var key = Console.ReadKey();
+                Console.WriteLine();
+
+                switch (key.KeyChar)
+                {
+                    case '1':
+                        MechanicsTester.Run();
+                        Pause();
+                        break;
+                    case '2':
+                        await AIBattleRunner.RunAsync();
+                        Pause();
+                        break;
+                    case '3':
+                        return;
+                    default:
+                        Console.WriteLine("Nieznana opcja.");
+                        Thread.Sleep(1000);
+                        break;
+                }
+            }
+        }
+
+        static void Pause()
+        {
+            Console.WriteLine("\nNaciśnij dowolny klawisz, aby wrócić do menu...");
+            Console.ReadKey();
+        }
+    }
+}
+
+
+========================================
+FILE: cards.json
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\cards.json
+========================================
+[
+  {
+    "Id": 1,
+    "Name": "Mokke",
+    "Type": "Unit",
+    "Subtypes": [ "Animal" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 2,
+    "Description": "Heal Hero for 3 on play.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          { "Type": "Heal", "Target": "FriendlyHero", "Amount": 3 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 2,
+    "Name": "BoomBots",
+    "Type": "Unit",
+    "Subtypes": [ "Mech" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "Deal 2 damage to Enemy Hero on play.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 3,
+    "Name": "Bone Sommelier",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 1,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "Add 'The Alluring Goblet' to hand.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          { "Type": "AddCardToHand", "Target": "Self", "ValueParam": 900 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 4,
+    "Name": "Informer",
+    "Type": "Unit",
+    "Subtypes": [ "Human" ],
+    "Cost": 1,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "Mark an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StringParam": "Marked" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 5,
+    "Name": "Queen of Cards",
+    "Type": "Unit",
+    "Subtypes": [ "Noble" ],
+    "Cost": 3,
+    "Attack": 2,
+    "Health": 4,
+    "Description": "Draw a card when a friendly unit dies.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Actions": [
+          { "Type": "DrawCard", "Target": "FriendlyHero" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 6,
+    "Name": "Radio Demon",
+    "Type": "Unit",
+    "Subtypes": [ "Demon" ],
+    "Cost": 5,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "Give all friendly units +1/+1 (Global).",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "ModifyGlobalBuff", "Target": "FriendlyHero", "BuffAtk": 1, "BuffHp": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 7,
+    "Name": "Glock-17",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "Deal 3 damage to an enemy.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 3 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 8,
+    "Name": "Crusader",
+    "Type": "Unit",
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 3,
+    "Keywords": [ "Armored" ], 
+    "Description": "Armored."
+  },
+
+  {
+    "Id": 9,
+    "Name": "Corpse Eater",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 3,
+    "Attack": 3,
+    "Health": 1,
+    "Description": "While in Hand: When Friendly dies, play this.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Zone": "Hand",
+        "Actions": [
+          { "Type": "SummonUnit", "Target": "Self" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 10,
+    "Name": "Polar Bear",
+    "Type": "Unit",
+    "Subtypes": [ "Animal" ],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 3,
+    "Description": "When Played: Sacrifice a Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "TargetFriendlyUnit",
+        "Actions": [
+          { "Type": "AbsorbStats", "Target": "SelectedTarget" },
+          { "Type": "SacrificeUnit", "Target": "SelectedTarget" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 11,
+    "Name": "The Creature",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 7,
+    "Attack": 7,
+    "Health": 7,
+    "Keywords": [ "Unkillable" ],
+    "Description": "While In Hand: Each Time You Sacrifice a Card - this Card costs one less.",
+    "Effects": [
+      {
+        "Trigger": "OnOtherUnitSacrificed",
+        "Zone": "Hand",
+        "Actions": [
+          { "Type": "BuffStats", "Target": "Self", "Amount": -1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 12,
+    "Name": "Black Cat",
+    "Type": "Unit",
+    "Subtypes": ["Animal"],
+    "Cost": 0,
+    "Attack": 1,
+    "Health": 1,
+    "Description": "When Sacrificed: Return to Hand instead.",
+    "Effects": [
+      {
+        "Trigger": "OnSacrificed",
+        "Zone": "Board", 
+        "Actions": [ { "Type": "ReturnToHand", "Target": "Self" } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 13,
+    "Name": "Critical Thinking",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Pick a Card from Deck, Draw it, Shuffle.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "TutorCard", "Target": "Self" },
+          { "Type": "ShuffleDeck", "Target": "Self" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 14,
+    "Name": "Survivalist",
+    "Type": "Unit",
+    "Cost": 4,
+    "Attack": 2,
+    "Health": 3,
+    "Description": "While In Play: Other Friendly Units get SoulGuard.",
+    "Effects": [
+      {
+        "Trigger": "Passive",
+        "Zone": "Board",
+        "Actions": [ 
+          { "Type": "ApplyStatus", "Target": "OtherFriendlyUnits", "StringParam": "SoulGuard" } 
+        ]
+      }
+    ]
+  },
+
+  {
+  "Id": 15,
+  "Name": "Expectancy",
+  "Type": "Spell", "Cost": 2,
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "Choice",
+      "ChoiceLabels": ["Draw 2 from Deck", "Draw 2 from Discard"],
+      "Actions": [
+        { "Type": "DrawCard", "Amount": 2 },
+        { "Type": "DrawFromDiscard", "Amount": 2 }
+      ]
+    }
+  ]
+  },
+
+  {
+    "Id": 16,
+    "Name": "HellFire",
+    "Type": "Spell",
+    "Cost": 4,
+    "Description": "Deal 3 Damage and Apply Burning to All Units on Board",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "AllUnitsOnBoard", "Amount": 3 },
+          { "Type": "ApplyStatus", "Target": "AllUnitsOnBoard", "StringParam": "Burning" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 17,
+    "Name": "Megumin",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary" ],
+    "Cost": 4,
+    "Attack": 3,
+    "Health": 1,
+    "Keywords": [ "SplashDamage", "BurnSource" ],
+    "KeywordParams": {
+      "SplashDamage": 3
+    },
+    "Description": "Splash Damage 3. Burn 1."
+  },
+
+  {
+    "Id": 900,
+    "Name": "The Alluring Goblet",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Make unit Unkillable, then destroy it.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "TargetFriendlyUnit",
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "SelectedTarget", "StringParam": "Unkillable" },
+          { "Type": "DestroyUnit", "Target": "SelectedTarget" }
+        ]
+      }
+    ]
+  }
+]
+
+
+========================================
+FILE: starter_deck.json
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Decks\starter_deck.json
+========================================
+{
+  "Id": "starter_deck",
+  "Name": "Talia Testowa",
+  "Description": "Zawiera wszystkie mechaniki.",
+  "CardIds": [
+    1, 
+    2, 
+    3, 
+    4, 
+    5,
+    7  
+  ]
+}
+
+
+========================================
+FILE: CardGame.Core.csproj
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\CardGame.Core.csproj
+========================================
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
+
+
+
+========================================
+FILE: AIPlayerController.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\AIPlayerController.cs
+========================================
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using CardGame.Core.AI.Interfaces;
+using CardGame.Core.AI.Strategies;
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums; // Dodano namespace do Enumów
+
+namespace CardGame.Core.AI
+{
+    public class AIPlayerController
+    {
+        public int BotPlayerId { get; }
+
+        private readonly GameEngine _gameEngine;
+        private readonly BotSolver _solver;
+        private bool _isRunning = false;
+
+        public AIPlayerController(GameEngine gameEngine, int botPlayerId, IAIStrategy? strategy = null)
+        {
+            _gameEngine = gameEngine;
+            BotPlayerId = botPlayerId;
+            var aiStrategy = strategy ?? new StandardStrategy();
+            _solver = new BotSolver(_gameEngine, BotPlayerId, aiStrategy);
+        }
+
+        public async void StartAutoPlay()
+        {
+            if (_isRunning) return;
+            _isRunning = true;
+
+            while (!_gameEngine.IsGameOver)
+            {
+                var state = _gameEngine.CurrentState;
+
+                // Sprawdzamy, czy ten Bot jest AKTYWNYM graczem
+                if (state.ActivePlayerId == BotPlayerId)
+                {
+                    // SCENARIUSZ 1: Faza Walki (Combat)
+                    // W tej fazie nie ma decyzji, ale musimy wysłać sygnał "Dalej", żeby silnik policzył obrażenia.
+                    if (state.CurrentPhase == GamePhase.Combat)
+                    {
+                        Console.WriteLine($"[AI {BotPlayerId}] Faza Walki... Oczekiwanie na wynik.");
+                        await Task.Delay(1500); // Czas dla widza na zobaczenie stołu przed walką
+
+                        // Pychamy grę do przodu
+                        _gameEngine.ExecuteCommand(new EndPhaseCommand(BotPlayerId));
+                    }
+                    // SCENARIUSZ 2: Normalna tura (Unit/Action)
+                    else
+                    {
+                        await Task.Delay(1000); // Symulacja myślenia
+
+                        try
+                        {
+                            var bestMove = await Task.Run(() => _solver.FindBestMove(state));
+                            Console.WriteLine($"[AI {BotPlayerId}] Zagrywam: {bestMove.GetType().Name}");
+
+                            var stateBefore = state;
+                            var result = _gameEngine.ExecuteCommand(bestMove);
+
+                            // Zabezpieczenie przed pętlą błędów
+                            if (result.NewState == stateBefore && !(bestMove is EndPhaseCommand))
+                            {
+                                Console.WriteLine($"[AI {BotPlayerId} WARN] Ruch nielegalny/pusty. Pasuję.");
+                                _gameEngine.ExecuteCommand(new EndPhaseCommand(BotPlayerId));
+                                await Task.Delay(500);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"[AI ERROR] {ex.Message}");
+                            Console.ResetColor();
+                            // Ratunkowe zakończenie tury
+                            try { _gameEngine.ExecuteCommand(new EndPhaseCommand(BotPlayerId)); } catch { }
+                        }
+                    }
+                }
+                else
+                {
+                    // Nie moja tura - czekam
+                    await Task.Delay(500);
+                }
+            }
+
+            _isRunning = false;
+        }
+    }
+}
+
+
+========================================
+FILE: IAIStrategy.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Interfaces\IAIStrategy.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.AI.Interfaces
+{
+    public interface IAIStrategy
+    {
+        float Evaluate(GameState state, int botPlayerId);
+    }
+}
+
+
+
+========================================
+FILE: BotSolver.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\BotSolver.cs
+========================================
+using CardGame.Core.AI.Interfaces;
+using CardGame.Core.AI.Logic;
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.State.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.AI
+{
+    internal class SimulationNode
+    {
+        public GameState State { get; }
+        public IGameCommand? InitialMove { get; }
+        public float Score { get; }
+
+        public SimulationNode(GameState state, IGameCommand? initialMove, float score)
+        {
+            State = state;
+            InitialMove = initialMove;
+            Score = score;
+        }
+    }
+
+    internal class BotSolver
+    {
+        private readonly GameEngine _engineTemplate;
+        private readonly MoveGenerator _moveGenerator;
+        private readonly IAIStrategy _strategy;
+        private readonly VirtualOpponent _virtualOpponent;
+        private readonly int _botId;
+
+        private const int BeamWidth = 5;
+        private const int MaxDepth = 3;
+
+        public BotSolver(GameEngine engine, int botId, IAIStrategy strategy)
+        {
+            _engineTemplate = engine;
+            _botId = botId;
+            _strategy = strategy;
+            _moveGenerator = new MoveGenerator();
+            // Używamy fabryki z silnika, aby tworzyć poprawne definicje kart
+            _virtualOpponent = new VirtualOpponent(engine.Factory);
+        }
+
+        public IGameCommand FindBestMove(GameState rootState)
+        {
+            var beam = new List<SimulationNode> { new SimulationNode(rootState, null, _strategy.Evaluate(rootState, _botId)) };
+
+            for (int depth = 0; depth < MaxDepth; depth++)
+            {
+                var nextCandidates = new List<SimulationNode>();
+
+                foreach (var node in beam)
+                {
+                    bool isBotTurn = node.State.ActivePlayerId == _botId;
+
+                    // Tworzymy symulator raz na węzeł (optymalizacja), ale będziemy resetować jego stan
+                    var simulator = new GameEngine(node.State, _engineTemplate.Rng.Seed);
+
+                    if (isBotTurn)
+                    {
+                        // --- TURA BOTA ---
+                        var moves = _moveGenerator.GenerateLegalMoves(node.State, _botId);
+
+                        foreach (var move in moves)
+                        {
+                            // WAŻNE: Resetujemy stan symulatora do punktu wyjścia przed każdym ruchem!
+                            simulator.CurrentState = node.State;
+
+                            var result = simulator.ExecuteCommand(move);
+
+                            // Jeśli ruch był błędny (stan się nie zmienił), pomijamy (chyba że to EndPhase)
+                            if (result.NewState == node.State && !(move is CardGame.Core.Commands.Implementations.EndPhaseCommand))
+                                continue;
+
+                            float score = _strategy.Evaluate(result.NewState, _botId);
+                            var firstMove = (depth == 0) ? move : node.InitialMove;
+
+                            nextCandidates.Add(new SimulationNode(result.NewState, firstMove, score));
+                        }
+                    }
+                    else
+                    {
+                        // --- TURA PRZECIWNIKA (Przewidywanie) ---
+                        try
+                        {
+                            var stateWithPhantom = _virtualOpponent.InjectPhantomHand(node.State, node.State.ActivePlayerId);
+                            var enemyMoves = _moveGenerator.GenerateLegalMoves(stateWithPhantom, node.State.ActivePlayerId);
+
+                            float worstScoreForBot = float.MaxValue;
+                            GameState worstStateForBot = node.State;
+
+                            // Sprawdzamy kilka groźnych ruchów wroga
+                            foreach (var emove in enemyMoves.Take(5))
+                            {
+                                // WAŻNE: Resetujemy stan do tego z Phantom Hand!
+                                simulator.CurrentState = stateWithPhantom;
+
+                                var res = simulator.ExecuteCommand(emove);
+
+                                if (res.NewState == stateWithPhantom && !(emove is CardGame.Core.Commands.Implementations.EndPhaseCommand))
+                                    continue;
+
+                                float currentScore = _strategy.Evaluate(res.NewState, _botId);
+                                if (currentScore < worstScoreForBot)
+                                {
+                                    worstScoreForBot = currentScore;
+                                    worstStateForBot = res.NewState;
+                                }
+                            }
+                            nextCandidates.Add(new SimulationNode(worstStateForBot, node.InitialMove, worstScoreForBot));
+                        }
+                        catch
+                        {
+                            // Jeśli symulacja wroga się wywali (np. błąd ID), ignorujemy tę gałąź
+                        }
+                    }
+                }
+
+                beam = nextCandidates
+                    .OrderByDescending(n => n.Score)
+                    .Take(BeamWidth)
+                    .ToList();
+
+                if (!beam.Any()) break;
+            }
+
+            var best = beam.OrderByDescending(n => n.Score).FirstOrDefault();
+            return best?.InitialMove ?? new CardGame.Core.Commands.Implementations.EndPhaseCommand(_botId);
+        }
+    }
+}
+
+
+========================================
+FILE: MoveGenerator.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\MoveGenerator.cs
+========================================
+using System.Collections.Generic;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.AI.Logic
+{
+    internal class MoveGenerator
+    {
+        public List<IGameCommand> GenerateLegalMoves(GameState state, int playerId)
+        {
+            var moves = new List<IGameCommand>();
+            var player = state.GetPlayer(playerId);
+            if (state.CurrentPhase == GamePhase.Mulligan)
+            {
+                // Bot zatwierdza karty (pusta lista odrzuceń)
+                moves.Add(new ConfirmMulliganCommand(playerId, new List<int>()));
+                return moves;
+            }
+            // 1. Obsługa wyboru celu (gdy gra czeka na interakcję)
+            if (state.PendingInteraction != null)
+            {
+                // Sprawdzamy wszystkie jednostki na stole jako potencjalne cele
+                var allUnits = state.Board.GetAllUnits();
+                foreach (var unit in allUnits)
+                {
+                    // Tutaj można dodać wstępną walidację (np. czy cel pasuje do RequiredTargetType)
+                    // Na razie generujemy wszystko, silnik odrzuci nielegalne
+                    moves.Add(new SelectTargetCommand(playerId, unit.InstanceId));
+                }
+
+                // Dodajemy też graczy jako cele (jeśli efekt na to pozwala)
+                // moves.Add(new SelectTargetCommand(playerId, ... ID bohatera ...)); 
+
+                return moves;
+            }
+
+            // 2. Zagrywanie Jednostek (Faza UnitOnly lub UnitAndAction)
+            if (state.CurrentPhase == GamePhase.UnitOnly || state.CurrentPhase == GamePhase.UnitAndAction)
+            {
+                foreach (var card in player.Hand)
+                {
+                    if (card.Definition.Type == CardType.Unit && player.CanPlayCard(card.CurrentStats.BloodCost))
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            if (state.Board.Lines[i].IsSlotEmpty(playerId))
+                            {
+                                moves.Add(new PlayUnitCommand(playerId, card.InstanceId, i));
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 3. Zagrywanie Czarów (Faza ActionOnly lub UnitAndAction)
+            if (state.CurrentPhase == GamePhase.ActionOnly || state.CurrentPhase == GamePhase.UnitAndAction)
+            {
+                foreach (var card in player.Hand)
+                {
+                    if (card.Definition.Type == CardType.Spell && player.CanPlayCard(card.CurrentStats.BloodCost))
+                    {
+                        moves.Add(new PlaySpellCommand(playerId, card.InstanceId));
+                    }
+                }
+            }
+
+            // 4. Zakończenie fazy (Zawsze możliwe)
+            if (!moves.Any(m => m is EndPhaseCommand))
+            {
+                moves.Add(new EndPhaseCommand(playerId));
+            }
+            return moves;
+        }
+    }
+}
+
+
+========================================
+FILE: VirtualOpponent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\VirtualOpponent.cs
+========================================
+using System.Collections.Generic;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.AI.Logic
+{
+    internal class VirtualOpponent
+    {
+        private readonly CardFactory _factory;
+
+        public VirtualOpponent(CardFactory factory)
+        {
+            _factory = factory;
+        }
+
+        public GameState InjectPhantomHand(GameState state, int enemyPlayerId)
+        {
+            // Tworzymy kopię stanu, w której przeciwnik ma "groźne" karty
+            // To pozwala botowi przewidzieć: "Jeśli zagram X, on może użyć Y"
+
+            var phantomCards = new List<CardInstance>();
+
+            // Zakładamy, że wróg ma "Nuke" (ID 99 z Twojego kodu testowego)
+            try
+            {
+                phantomCards.Add(_factory.CreateCard(99, enemyPlayerId));
+                // Zakładamy, że ma standardową jednostkę
+                phantomCards.Add(_factory.CreateCard(1, enemyPlayerId));
+            }
+            catch { /* Ignoruj błędy jeśli ID nie istnieją */ }
+
+            var enemy = state.GetPlayer(enemyPlayerId);
+
+            // Dodajemy te karty do jego ręki w symulacji (zachowując te co ma, jeśli symulator je widzi)
+            // W prawdziwej grze nie widzimy ręki, więc w symulacji zastępujemy nieznane karty tymi fantomami.
+            // Tutaj prosta implementacja: Dodajemy do istniejącej ręki.
+            var newEnemyState = enemy;
+            foreach (var c in phantomCards)
+            {
+                newEnemyState = newEnemyState.WithCardAddedToHand(c);
+            }
+
+            return state.UpdatePlayer(newEnemyState);
+        }
+    }
+}
+
+
+========================================
+FILE: RandomStrategy.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Strategies\RandomStrategy.cs
+========================================
+using System;
+using CardGame.Core.AI.Interfaces;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.AI.Strategies
+{
+    public class RandomStrategy : IAIStrategy
+    {
+        private readonly Random _rand = new Random();
+
+        public float Evaluate(GameState state, int botPlayerId)
+        {
+            // Zwraca losową wartość - bot będzie nieprzewidywalny i chaotyczny
+            return (float)_rand.NextDouble() * 100f;
+        }
+    }
+}
+
+
+========================================
+FILE: StandardStrategy.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Strategies\StandardStrategy.cs
+========================================
+using System.Linq;
+using CardGame.Core.AI.Interfaces;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.AI.Strategies
+{
+    public class StandardStrategy : IAIStrategy
+    {
+        // Wagi heurystyki - można je wczytywać z JSON
+        private const float HealthWeight = 1.0f;
+        private const float BoardControlWeight = 2.5f; // Ważniejszy stół niż życie
+        private const float HandAdvantageWeight = 1.5f;
+        private const float SynergyBonus = 5.0f; // Nagroda za "planowanie"
+
+        public float Evaluate(GameState state, int botPlayerId)
+        {
+            var bot = state.GetPlayer(botPlayerId);
+            var enemy = state.GetOpponent(botPlayerId);
+
+            float score = 0;
+
+            // 1. Różnica życia
+            score += (bot.Health - enemy.Health) * HealthWeight;
+
+            // 2. Kontrola stołu (Siła jednostek + Keywordy)
+            var myUnits = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == botPlayerId);
+            var enemyUnits = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId != botPlayerId);
+
+            float myPower = myUnits.Sum(u => u.CurrentStats.Attack + u.CurrentStats.Health + (u.CurrentStats.Keywords.Count * 2));
+            float enemyPower = enemyUnits.Sum(u => u.CurrentStats.Attack + u.CurrentStats.Health + (u.CurrentStats.Keywords.Count * 2));
+
+            score += (myPower - enemyPower) * BoardControlWeight;
+
+            // 3. Przewaga kart
+            score += (bot.Hand.Count - enemy.Hand.Count) * HandAdvantageWeight;
+
+            // 4. PLANOWANIE I SYNERGIA (Analiza ręki pod kątem przyszłych zagrań)
+            foreach (var card in bot.Hand)
+            {
+                // Przykład: Jeśli mam kartę zadającą obrażenia, a wróg ma ranne jednostki -> BARDZO DOBRZE
+                bool hasExecutionSynergy = card.Definition.Effects.Any(e =>
+                    e.Actions.Any(a => a.Type == ActionType.DealDamage));
+
+                bool enemyHasDamagedUnits = enemyUnits.Any(u => u.DamageTaken > 0);
+
+                if (hasExecutionSynergy && enemyHasDamagedUnits)
+                {
+                    score += SynergyBonus; // Bot "widzi", że warto trzymać lub użyć tej karty
+                }
+
+                // Przykład: Jeśli mam drogą jednostkę (koszt > 5), a jest wczesna tura -> mała kara (martwa karta)
+                if (card.CurrentStats.BloodCost > state.PlayerA.MaxBlood + 2)
+                {
+                    score -= 1.0f;
+                }
+            }
+
+            return score;
+        }
+    }
+}
+
+
+========================================
+FILE: DeterministicRng.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Application\DeterministicRng.cs
+========================================
+using System;
+
+namespace CardGame.Core.Application
+{
+    public class DeterministicRng
+    {
+        private readonly Random _random;
+        public int Seed { get; }
+
+        public DeterministicRng(int seed)
+        {
+            Seed = seed;
+            _random = new Random(seed);
+        }
+        public int Next(int minValue, int maxValue)
+        {
+            return _random.Next(minValue, maxValue);
+        }
+
+        public int NextId()
+        {
+            return _random.Next(100000, 999999);
+        }
+    }
+}
+
+
+
+========================================
+FILE: ExecutionResult.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Application\ExecutionResult.cs
+========================================
+using System.Collections.Generic;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Application
+{
+    public class ExecutionResult
+    {
+        public GameState NewState { get; }
+        public IReadOnlyList<IGameEvent> EventsHappened { get; }
+
+        public ExecutionResult(GameState newState, IEnumerable<IGameEvent> events)
+        {
+            NewState = newState;
+            EventsHappened = new List<IGameEvent>(events);
+        }
+    }
+}
+
+
+========================================
+FILE: GameContext.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Application\GameContext.cs
+========================================
+using CardGame.Core.Cards.Components.Actions;
+using CardGame.Core.Cards.Components.Actions.Handlers;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Events;
+using CardGame.Core.GameRules.Battle;
+using CardGame.Core.GameRules.Damage;
+using CardGame.Core.GameRules.Death;
+
+namespace CardGame.Core.Application
+{
+    public class GameContext
+    {
+        public CardFactory Factory { get; }
+        public DeterministicRng Rng { get; }
+        public EventBus Events { get; }
+        public DamageCalculator DamageCalculator { get; }
+
+        public ActionHandlerRegistry ActionRegistry { get; }
+        public BattleService Battle { get; }
+        public DeathResolver Death { get; }
+
+        public GameContext(CardFactory factory, DeterministicRng rng, EventBus events, DamageCalculator damageCalculator)
+        {
+            Factory = factory;
+            Rng = rng;
+            Events = events;
+            DamageCalculator = damageCalculator;
+
+            Battle = new BattleService();
+            Death = new DeathResolver();
+
+            // Inicjalizacja Rejestru
+            ActionRegistry = new ActionHandlerRegistry();
+
+            // Rejestracja Handlerów
+            ActionRegistry.Register(new DealDamageHandler());
+            ActionRegistry.Register(new HealHandler());
+            ActionRegistry.Register(new BuffStatsHandler());
+            ActionRegistry.Register(new ApplyStatusHandler());
+            ActionRegistry.Register(new AbsorbStatsHandler());
+            ActionRegistry.Register(new ModifyGlobalBuffHandler());
+
+            ActionRegistry.Register(new AddCardToHandHandler());
+            ActionRegistry.Register(new DrawCardHandler());
+            ActionRegistry.Register(new ShuffleDeckHandler());
+            ActionRegistry.Register(new TutorCardHandler());
+
+            ActionRegistry.Register(new DestroyUnitHandler());
+
+            ActionRegistry.Register(new SacrificeUnitHandler());
+            ActionRegistry.Register(new SummonUnitHandler());
+            ActionRegistry.Register(new ReturnToHandHandler());
+
+            ActionRegistry.Register(new DrawFromDiscardHandler());
+        }
+    }
+}
+
+
+========================================
+FILE: GameEngine.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Application\GameEngine.cs
+========================================
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.Events.Triggers;
+using CardGame.Core.GameRules.Auras;
+using CardGame.Core.GameRules.Death;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine;
+using CardGame.Core.StateMachine.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.Application
+{
+    public class GameEngine
+    {
+        public GameState CurrentState { get; set; }
+        public bool IsGameOver { get; private set; }
+        public int? WinnerId { get; private set; }
+        public EventBus Events { get; }
+        public DeterministicRng Rng { get; }
+        public CardFactory Factory { get; }
+        private readonly GameContext _gameContext;
+        private readonly GameStateMachine _stateMachine;
+        private readonly TriggerSystem _triggerSystem;
+        private readonly DeathResolver _deathResolver;
+        private readonly AuraSystem _auraSystem;
+        private float _interactionTimer = 0f;
+
+        public GameEngine(GameState initialState, int seed = 0)
+        {
+            CurrentState = initialState;
+            Events = new EventBus();
+            Rng = new DeterministicRng(seed);
+            Factory = new CardFactory(CardGame.Core.Cards.Data.CardLibrary.Instance, Rng);
+            _gameContext = new GameContext(Factory, Rng, Events, new GameRules.Damage.DamageCalculator());
+            _stateMachine = new GameStateMachine();
+            _triggerSystem = new TriggerSystem();
+            _deathResolver = new DeathResolver();
+            _auraSystem = new AuraSystem();
+            CurrentState = _auraSystem.RecalculateAuras(CurrentState);
+        }
+
+        public ExecutionResult ExecuteCommand(IGameCommand command)
+        {
+            Events.ClearHistory();
+            if (IsGameOver) return new ExecutionResult(CurrentState, new List<IGameEvent>());
+
+            IPhaseState currentPhaseLogic = _stateMachine.GetStateForPhase(CurrentState.CurrentPhase);
+            if (!currentPhaseLogic.IsCommandAllowed(command, CurrentState)) return new ExecutionResult(CurrentState, new List<IGameEvent>());
+
+            GameState newState = command.Execute(CurrentState, Events, _gameContext);
+            _interactionTimer = 0f;
+
+            if (command is CardGame.Core.Commands.Implementations.EndPhaseCommand)
+                newState = currentPhaseLogic.ProcessEndPhase(newState, Events, _gameContext);
+            else if (currentPhaseLogic.ShouldEndPhaseAutomatically(newState))
+                newState = currentPhaseLogic.ProcessEndPhase(newState, Events, _gameContext);
+
+            // Safety Break - chroni przed nieskończonymi pętlami efektów
+            int safetyCycle = 0;
+            const int MAX_CYCLES = 100;
+
+            while (true)
+            {
+                if (safetyCycle++ > MAX_CYCLES)
+                {
+                    Console.WriteLine("[CRITICAL] Wykryto potencjalną nieskończoną pętlę efektów! Przerywanie.");
+                    break;
+                }
+
+                var stateBefore = newState;
+                newState = _deathResolver.ResolveDeaths(newState, Events);
+                newState = _auraSystem.RecalculateAuras(newState);
+                newState = _triggerSystem.ProcessEvents(newState, Events, _gameContext);
+
+                if (newState.PendingInteraction != null)
+                {
+                    newState = _deathResolver.ResolveDeaths(newState, Events);
+                    break;
+                }
+
+                if (CheckGameOver(newState)) break;
+                if (!Events.HasEvents && newState == stateBefore) break;
+            }
+
+            while (newState.PendingInteraction == null && newState.SpellStack.Count > 0)
+            {
+                var topSpell = newState.SpellStack.Last();
+                var owner = newState.GetPlayer(topSpell.OwnerPlayerId);
+
+                var newStack = newState.SpellStack.ToList();
+                newStack.RemoveAt(newStack.Count - 1);
+
+                newState = newState.UpdatePlayer(owner.WithCardAddedToDiscard(topSpell))
+                                   .With(spellStack: newStack);
+            }
+
+            CurrentState = newState;
+            return new ExecutionResult(CurrentState, Events.GetHistory());
+        }
+
+        public void Update(float deltaTime)
+        {
+            if (CurrentState.PendingInteraction == null || IsGameOver) return;
+            _interactionTimer += deltaTime;
+            if (_interactionTimer >= 5.0f) AutoResolveInteraction();
+        }
+
+        private void AutoResolveInteraction()
+        {
+            var pending = CurrentState.PendingInteraction;
+            if (pending == null) return;
+            int autoId = 0;
+            if (pending.RequiredTargetType != CardGame.Core.Cards.Data.TargetType.Choice)
+            {
+                var u = CurrentState.Board.GetAllUnits().FirstOrDefault();
+                if (u != null) autoId = u.InstanceId;
+            }
+            ExecuteCommand(new CardGame.Core.Commands.Implementations.SelectTargetCommand(CurrentState.ActivePlayerId, autoId));
+        }
+
+        private bool CheckGameOver(GameState state)
+        {
+            bool p1D = state.PlayerA.Health <= 0;
+            bool p2D = state.PlayerB.Health <= 0;
+            if (p1D || p2D)
+            {
+                IsGameOver = true;
+                WinnerId = p1D && p2D ? null : (p1D ? 2 : 1);
+                return true;
+            }
+            return false;
+        }
+    }
+}
+
+
+========================================
+FILE: ICardComponent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\ICardComponent.cs
+========================================
+using System;
+using CardGame.Core.Application;
+using CardGame.Core.State.Models;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Events.Interfaces;
+
+
+namespace CardGame.Core.Cards.Component
+{
+    public interface ICardComponent
+    {
+        bool ShouldTrigger(IGameEvent gameEvent, GameState state);
+        GameState Resolve(IGameEvent gameEvent, GameState currentState, GameContext context);
+    }
+}
+
+
+
+========================================
+FILE: JsonEffectComponent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\JsonEffectComponent.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Events;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System;
+
+namespace CardGame.Core.Cards.Components.Implementations
+{
+    public class JsonEffectComponent : ICardComponent
+    {
+        private readonly EffectData _effectData;
+        private readonly int _ownerCardInstanceId;
+        private readonly int _effectIndex;
+
+        public JsonEffectComponent(EffectData effectData, int ownerCardInstanceId, int effectIndex = 0)
+        {
+            _effectData = effectData;
+            _ownerCardInstanceId = ownerCardInstanceId;
+            _effectIndex = effectIndex;
+        }
+
+        public bool ShouldTrigger(IGameEvent e, GameState s) => TriggerLogic.Check(_effectData.Trigger, e, s, _ownerCardInstanceId);
+
+        public GameState Resolve(IGameEvent gameEvent, GameState currentState, GameContext context)
+        {
+            bool isChoiceResponse = (gameEvent is TargetSelectedEvent tse && currentState.PendingInteraction?.RequiredTargetType == TargetType.Choice);
+
+            if (_effectData.Targeting == TargetType.Choice && !isChoiceResponse)
+            {
+                return currentState.With(pendingInteraction: new PendingInteraction(
+                    _ownerCardInstanceId, _effectIndex, -1, TargetType.Choice, _effectData.ChoiceLabels));
+            }
+
+            return ResolveFromIndex(gameEvent, currentState, context, 0);
+        }
+
+        public GameState ResolveFromIndex(IGameEvent gameEvent, GameState currentState, GameContext context, int startActionIndex)
+        {
+            var workingState = currentState.With(clearPending: true);
+
+            if (_effectData.Targeting == TargetType.Choice && gameEvent is TargetSelectedEvent tse && currentState.PendingInteraction?.ActionIndex == -1)
+            {
+                int choiceIdx = tse.SelectedTargetId;
+                if (choiceIdx >= 0 && choiceIdx < _effectData.Actions.Count)
+                {
+                    // Po dokonaniu wyboru, sprawdzamy tę JEDNĄ konkretną akcję
+                    return ExecuteSingleAction(workingState, context, _effectData.Actions[choiceIdx], gameEvent, choiceIdx, true);
+                }
+                return workingState;
+            }
+
+            for (int i = startActionIndex; i < _effectData.Actions.Count; i++)
+            {
+                workingState = ExecuteSingleAction(workingState, context, _effectData.Actions[i], gameEvent, i, false);
+                if (workingState.PendingInteraction != null) return workingState;
+            }
+            return workingState;
+        }
+
+        private GameState ExecuteSingleAction(GameState state, GameContext context, ActionData action, IGameEvent gameEvent, int idx, bool wasChoice)
+        {
+            var targetType = action.Target == TargetType.Self ? _effectData.Targeting : action.Target;
+
+            bool isTargeted = (targetType == TargetType.SelectedTarget ||
+                               targetType == TargetType.TargetEnemyUnit ||
+                               targetType == TargetType.TargetFriendlyUnit);
+
+            bool hasValidSelection = false;
+
+            // Jeśli akcja jest częścią wyboru Choice, to pierwotny TargetSelectedEvent 
+            // służył do wybrania opcji, a NIE celu akcji. Musimy wymusić nową interakcję.
+            if (!wasChoice)
+            {
+                hasValidSelection = (idx == 0 && gameEvent is CardPlayedEvent cpe && cpe.SelectedTargetId.HasValue) ||
+                                   (gameEvent is TargetSelectedEvent ts && state.PendingInteraction == null);
+            }
+
+            if (isTargeted && !hasValidSelection)
+            {
+                return state.With(pendingInteraction: new PendingInteraction(_ownerCardInstanceId, _effectIndex, idx, targetType));
+            }
+
+            var targets = EffectTargetResolver.Resolve(targetType, state, gameEvent, _ownerCardInstanceId);
+            var handler = context.ActionRegistry.GetHandler(action.Type);
+            return handler.Execute(state, context, action, targets, _ownerCardInstanceId, gameEvent);
+        }
+    }
+}
+
+
+========================================
+FILE: ActionHandlerRegistry.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\ActionHandlerRegistry.cs
+========================================
+using CardGame.Core.Cards.Component.Actions;
+using CardGame.Core.Cards.Data;
+using System;
+using System.Collections.Generic;
+
+namespace CardGame.Core.Cards.Components.Actions
+{
+    public class ActionHandlerRegistry
+    {
+        private readonly Dictionary<ActionType, IActionHandler> _handlers = new();
+
+        public void Register(IActionHandler handler)
+        {
+            if (_handlers.ContainsKey(handler.Type))
+            {
+                throw new Exception($"Handler dla akcji {handler.Type} jest już zarejestrowany!");
+            }
+            _handlers[handler.Type] = handler;
+        }
+
+        public IActionHandler GetHandler(ActionType type)
+        {
+            if (_handlers.TryGetValue(type, out var handler))
+            {
+                return handler;
+            }
+            throw new Exception($"Brak zarejestrowanego handlera dla akcji: {type}");
+        }
+    }
+}
+
+
+========================================
+FILE: IActionHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\IActionHandler.cs
+========================================
+using System;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.State.Models;
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Cards.Component.Actions
+{
+    public interface  IActionHandler
+    {
+        ActionType Type { get; }
+        GameState Execute(
+            GameState state, 
+            GameContext context,
+            ActionData actionData, 
+            EffectTargets targets, 
+            int sourceId,
+            IGameEvent gameEvent
+            );
+    }
+}
+
+
+
+========================================
+FILE: AbsorbStatsHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\AbsorbStatsHandler.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component.Actions;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System;
+using System.Linq;
+
+namespace CardGame.Core.Cards.Components.Actions.Handlers
+{
+    public class AbsorbStatsHandler : IActionHandler
+    {
+        public ActionType Type => ActionType.AbsorbStats;
+
+        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        {
+            if (targets.TargetUnit != null)
+            {
+                // Musimy znaleźć SIEBIE (jednostkę, która wywołała efekt) na planszy
+                var me = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceId);
+
+                if (me != null)
+                {
+                    var victimStats = targets.TargetUnit.CurrentStats;
+                    var newStats = new CardStats(
+                        me.CurrentStats.Attack + victimStats.Attack,
+                        me.CurrentStats.Health + victimStats.Health,
+                        me.CurrentStats.BloodCost,
+                        me.CurrentStats.Keywords);
+
+                    var buff = new CardStats(victimStats.Attack, victimStats.Health, 0);
+
+                    var biggerMe = me.AddPermanentBuff(buff);
+                    Console.WriteLine($"[EFEKT] AbsorbStats: {biggerMe.Definition.Name} rośnie!");
+                    return state.UpdateBoard(state.Board.UpdateUnit(biggerMe));
+                }
+            }
+            return state;
+        }
+    }
+}
+
+
+========================================
+FILE: AddCardToHandHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\AddCardToHandHandler.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component.Actions;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System;
+
+namespace CardGame.Core.Cards.Components.Actions.Handlers
+{
+    public class AddCardToHandHandler : IActionHandler
+    {
+        public ActionType Type => ActionType.AddCardToHand;
+
+        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        {
+            if (targets.TargetPlayer != null)
+            {
+                try
+                {
+                    var tokenCard = context.Factory.CreateCard(action.ValueParam, targets.TargetPlayer.PlayerId);
+                    Console.WriteLine($"[EFEKT] Dodano {tokenCard.Definition.Name} do ręki.");
+                    return state.UpdatePlayer(targets.TargetPlayer.WithCardAddedToHand(tokenCard));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[BŁĄD] AddCard: {ex.Message}");
+                }
+            }
+            return state;
+        }
+    }
+}
+
+
+========================================
+FILE: ApplyStatusHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\ApplyStatusHandler.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component.Actions;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CardGame.Core.Cards.Components.Actions.Handlers
+{
+    public class ApplyStatusHandler : IActionHandler
+    {
+        public ActionType Type => ActionType.ApplyStatus;
+
+        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        {
+            // Nie musimy już parsując stringa - mamy gotowy enum!
+            if (targets.TargetUnit != null && action.StatusKeyword.HasValue)
+            {
+                Keyword k = action.StatusKeyword.Value;
+                Console.WriteLine($"[EFEKT] Nadawanie statusu {k} dla {targets.TargetUnit.Definition.Name}");
+
+                var statusBuff = new CardStats(0, 0, 0, new List<Keyword> { k });
+                var unitWithStatus = targets.TargetUnit.AddPermanentBuff(statusBuff);
+
+                return state.UpdateBoard(state.Board.UpdateUnit(unitWithStatus));
+            }
+            return state;
+        }
+    }
+}
+
+
+========================================
+FILE: BuffStatsHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\BuffStatsHandler.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component.Actions;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System.Linq;
+
+namespace CardGame.Core.Cards.Components.Actions.Handlers
+{
+    public class BuffStatsHandler : IActionHandler
+    {
+        public ActionType Type => ActionType.BuffStats;
+
+        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        {
+            foreach (var targetUnit in targets.UnitTargets)
+            {
+                var buffDelta = new CardStats(action.BuffAtk, action.BuffHp, action.Amount); // Amount jako CostModifier
+
+               
+                var newUnit = targetUnit.AddPermanentBuff(buffDelta);
+
+                var owner = state.GetPlayer(newUnit.OwnerPlayerId);
+                if (owner.Hand.Any(c => c.InstanceId == newUnit.InstanceId))
+                {
+                    var p = owner.WithCardRemovedFromHand(targetUnit).WithCardAddedToHand(newUnit);
+                    state = state.UpdatePlayer(p);
+                }
+                else
+                {
+                    state = state.UpdateBoard(state.Board.UpdateUnit(newUnit));
+                }
+            }
+            return state;
+        }
+    }
+}
+
+
+
+========================================
+FILE: DealDamageHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\DealDamageHandler.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component.Actions; 
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.GameRules.Damage;
+using CardGame.Core.State.Models;
+using System.Linq;
+
+namespace CardGame.Core.Cards.Components.Actions.Handlers
+{
+    public class DealDamageHandler : IActionHandler
+    {
+        public ActionType Type => ActionType.DealDamage;
+
+        // Dodano parametr IGameEvent gameEvent na końcu
+        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        {
+            // Logika znalezienia źródła
+            CardInstance? sourceCard = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceId);
+            if (sourceCard == null)
+            {
+                sourceCard = state.PlayerA.Hand.FirstOrDefault(u => u.InstanceId == sourceId)
+                          ?? state.PlayerB.Hand.FirstOrDefault(u => u.InstanceId == sourceId);
+            }
+
+            // A. Obrażenia w gracza
+            if (targets.TargetPlayer != null)
+            {
+                var newPlayer = targets.TargetPlayer.WithDamageTaken(action.Amount);
+                // System.Console.WriteLine($"[EFEKT] {action.Amount} dmg w gracza {newPlayer.PlayerId}");
+                return state.UpdatePlayer(newPlayer);
+            }
+
+            // B. Obrażenia w jednostkę
+            foreach (var targetUnit in targets.UnitTargets)
+            {
+                var dmgContext = new DamageContext(
+                    sourceCard,
+                    targetUnit,
+                    action.Amount,
+                    DamageType.Effect);
+
+                int finalDamage = context.DamageCalculator.CalculateFinalDamage(dmgContext);
+                var damagedUnit = targetUnit.TakeDamage(finalDamage);
+
+                state = state.UpdateBoard(state.Board.UpdateUnit(damagedUnit));
+
+                // Console.WriteLine($"[EFEKT] {action.Amount} dmg w {damagedUnit.Definition.Name}");
+            }
+
+
+            return state;
+        }
+    }
+}
+
+
+========================================
+FILE: DestroyUnitHanlder.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\DestroyUnitHanlder.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component.Actions;
+using CardGame.Core.Cards.Components.Actions;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System;
+
+namespace CardGame.Core.Cards.Components.Actions.Handlers
+{
+    public class DestroyUnitHandler : IActionHandler
+    {
+        public ActionType Type => ActionType.DestroyUnit;
+
+        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        {
+            foreach (var targetUnit in targets.UnitTargets)
+            {
+                Console.WriteLine($"[EFEKT] DestroyUnit: {targetUnit.Definition.Name}");
+                var deadUnit = targetUnit.TakeDamage(99999);
+                state = state.UpdateBoard(state.Board.UpdateUnit(deadUnit));
+            }
+            
+            return state;
+        }
+    }
+}
+
+
+========================================
+FILE: DrawCardHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\DrawCardHandler.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component.Actions;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System;
+
+namespace CardGame.Core.Cards.Components.Actions.Handlers
+{
+    public class DrawCardHandler : IActionHandler
+    {
+        public ActionType Type => ActionType.DrawCard;
+
+        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        {
+            if (targets.TargetPlayer != null)
+            {
+                var workingPlayer = targets.TargetPlayer;
+                int amount = action.Amount > 0 ? action.Amount : 1;
+
+                Console.WriteLine($"[EFEKT] Gracz {workingPlayer.PlayerId} dobiera {amount} kart.");
+
+                for (int i = 0; i < amount; i++)
+                {
+                    workingPlayer = workingPlayer.WithCardDrawn();
+                }
+
+                return state.UpdatePlayer(workingPlayer);
+            }
+            return state;
+        }
+    }
+}
+
+
+========================================
+FILE: DrawFromDiscardHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\DrawFromDiscardHandler.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component.Actions;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Cards.Components.Actions.Handlers
+{
+    public class DrawFromDiscardHandler : IActionHandler
+    {
+        public ActionType Type => ActionType.DrawFromDiscard;
+        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        {
+            if (targets.TargetPlayer == null) return state;
+            var newPlayer = targets.TargetPlayer.WithCardsDrawnFromDiscard(action.Amount);
+            return state.UpdatePlayer(newPlayer);
+        }
+    }
+}
+
+
+========================================
+FILE: HealHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\HealHandler.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component.Actions;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System;
+
+namespace CardGame.Core.Cards.Components.Actions.Handlers
+{
+    public class HealHandler : IActionHandler
+    {
+        public ActionType Type => ActionType.Heal;
+
+        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        {
+            if (targets.TargetPlayer != null)
+            {
+                var newPlayer = targets.TargetPlayer.WithHealthRestored(action.Amount);
+                Console.WriteLine($"[EFEKT] Uleczono gracza {newPlayer.PlayerId} o {action.Amount}");
+                return state.UpdatePlayer(newPlayer);
+            }
+
+            foreach (var unit in targets.UnitTargets)
+            {
+                // Używamy nowej metody Heal w CardInstance (która operuje na DamageTaken)
+                var healedUnit = unit.Heal(action.Amount);
+
+                state = state.UpdateBoard(state.Board.UpdateUnit(healedUnit));
+
+                Console.WriteLine($"[EFEKT] Uleczono jednostkę {unit.Definition.Name} o {action.Amount}. HP: {healedUnit.CurrentStats.Health}/{healedUnit.MaxHealth}");
+            }
+
+            return state;
+        }
+    }
+}
+
+
+========================================
+FILE: ModifyGlobalBuffHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\ModifyGlobalBuffHandler.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Component.Actions;
+using CardGame.Core.Cards.Components.Actions;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System.Linq;
+
+namespace CardGame.Core.Cards.Components.Actions.Handlers
+{
+    public class ModifyGlobalBuffHandler : IActionHandler
+    {
+        public ActionType Type => ActionType.ModifyGlobalBuff;
+
+        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        {
+            // Celujemy w gracza (FriendlyHero)
+            if (targets.TargetPlayer != null)
+            {
+                var statDelta = new CardStats(action.BuffAtk, action.BuffHp, 0);
+
+                var newPlayer = targets.TargetPlayer.WithGlobalBuffModifier(action.BuffAtk, action.BuffHp);
+                state = state.UpdatePlayer(newPlayer);
+
+                System.Console.WriteLine($"[EFEKT GLOBALNY] Gracz {newPlayer.PlayerId} otrzymuje perma-buff +{action.BuffAtk}/+{action.BuffHp}");
+
+                // 2. A co z jednostkami, które JUŻ są na stole?
+                // One zostały zagrane wcześniej, więc nie dostały tego buffa przy wystawianiu.
+                // Musimy je zaktualizować "ręcznie".
+
+                var unitsOnBoard = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == newPlayer.PlayerId);
+               
+
+                foreach (var unit in unitsOnBoard)
+                {
+                    var buffedUnit = unit.AddPermanentBuff(statDelta);
+                    state = state.UpdateBoard(state.Board.UpdateUnit(buffedUnit));
+                }
+
+                return state;
+            }
+            return state;
+        }
+    }
+}

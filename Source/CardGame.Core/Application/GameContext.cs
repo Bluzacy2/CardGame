@@ -2,7 +2,9 @@
 using CardGame.Core.Cards.Components.Actions.Handlers;
 using CardGame.Core.Cards.Factories;
 using CardGame.Core.Events;
+using CardGame.Core.GameRules.Battle;
 using CardGame.Core.GameRules.Damage;
+using CardGame.Core.GameRules.Death;
 
 namespace CardGame.Core.Application
 {
@@ -13,8 +15,9 @@ namespace CardGame.Core.Application
         public EventBus Events { get; }
         public DamageCalculator DamageCalculator { get; }
 
-        // --- BRAKUJĄCA WŁAŚCIWOŚĆ ---
         public ActionHandlerRegistry ActionRegistry { get; }
+        public BattleService Battle { get; }
+        public DeathResolver Death { get; }
 
         public GameContext(CardFactory factory, DeterministicRng rng, EventBus events, DamageCalculator damageCalculator)
         {
@@ -22,6 +25,9 @@ namespace CardGame.Core.Application
             Rng = rng;
             Events = events;
             DamageCalculator = damageCalculator;
+
+            Battle = new BattleService();
+            Death = new DeathResolver();
 
             // Inicjalizacja Rejestru
             ActionRegistry = new ActionHandlerRegistry();
@@ -44,6 +50,8 @@ namespace CardGame.Core.Application
             ActionRegistry.Register(new SacrificeUnitHandler());
             ActionRegistry.Register(new SummonUnitHandler());
             ActionRegistry.Register(new ReturnToHandHandler());
+
+            ActionRegistry.Register(new DrawFromDiscardHandler());
         }
     }
 }

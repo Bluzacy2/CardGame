@@ -6,6 +6,7 @@ using CardGame.Core.Cards.Models;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
 using System;
+using System.Collections.Generic;
 
 namespace CardGame.Core.Cards.Components.Actions.Handlers
 {
@@ -15,16 +16,16 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
 
         public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
         {
-            if (targets.TargetUnit != null && Enum.TryParse<Keyword>(action.StringParam, out var k))
+            // Nie musimy już parsując stringa - mamy gotowy enum!
+            if (targets.TargetUnit != null && action.StatusKeyword.HasValue)
             {
-                Console.WriteLine($"[EFEKT] Status {k} dla {targets.TargetUnit.Definition.Name}");
+                Keyword k = action.StatusKeyword.Value;
+                Console.WriteLine($"[EFEKT] Nadawanie statusu {k} dla {targets.TargetUnit.Definition.Name}");
 
                 var statusBuff = new CardStats(0, 0, 0, new List<Keyword> { k });
-
                 var unitWithStatus = targets.TargetUnit.AddPermanentBuff(statusBuff);
 
                 return state.UpdateBoard(state.Board.UpdateUnit(unitWithStatus));
-              
             }
             return state;
         }

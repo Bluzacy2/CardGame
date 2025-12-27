@@ -2,8 +2,9 @@ using System.Linq;
 using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.State.Models;
+
 using Xunit;
-using System;
+
 
 namespace CardGame.Tests
 {

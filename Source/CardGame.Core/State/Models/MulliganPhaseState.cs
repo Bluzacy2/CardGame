@@ -1,4 +1,5 @@
-﻿using CardGame.Core.Commands.Implementations;
+﻿using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Events;
 using CardGame.Core.State.Enums;
@@ -22,7 +23,7 @@ namespace CardGame.Core.StateMachine.Phases
             return false;
         }
 
-        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus)
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
         {
             // Ta metoda jest wywoływana zazwyczaj przez EndPhaseCommand.
             // W Mulliganie nie używamy EndPhaseCommand, tylko automatycznie przełączamy,

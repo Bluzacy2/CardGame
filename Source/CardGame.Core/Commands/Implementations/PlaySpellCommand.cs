@@ -21,37 +21,26 @@ namespace CardGame.Core.Commands.Implementations
             SelectedTargetId = selectedTargetId;
         }
 
-      
         public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
         {
-            var playerState = currentState.GetPlayer(PlayerId);
+            var player = currentState.GetPlayer(PlayerId);
+            var card = player.Hand.FirstOrDefault(c => c.InstanceId == CardInstanceId);
 
-            // 1. Znajdź kartę
-            var card = playerState.Hand.FirstOrDefault(c => c.InstanceId == CardInstanceId);
-            if (card == null)
-                throw new InvalidOperationException($"Gracz {PlayerId} nie ma karty {CardInstanceId} w ręce!");
+            if (card == null) throw new InvalidOperationException("Karta nie znajduje się w ręce.");
+            if (!player.CanPlayCard(card.CurrentStats.BloodCost)) throw new InvalidOperationException("Za mało krwi.");
 
-            // 2. Walidacja typu (Teraz card.Definition.Type zadziała!)
-            if (card.Definition.Type != CardType.Spell)
-                throw new InvalidOperationException($"Karta {card.Definition.Name} nie jest czarem!");
+            var newPlayer = player.WithBloodSpent(card.CurrentStats.BloodCost)
+                                  .WithCardRemovedFromHand(card);
 
-            // 3. Walidacja kosztu
-            if (!playerState.CanPlayCard(card.CurrentStats.BloodCost))
-                throw new InvalidOperationException("Za mało krwi!");
+            // ZMIANA: Dodajemy czar na koniec listy (szczyt stosu)
+            var newStack = currentState.SpellStack.ToList();
+            newStack.Add(card);
 
-            // --- WYKONANIE ---
+            var newState = currentState.UpdatePlayer(newPlayer).With(spellStack: newStack);
 
-            // A. Płacimy i wyrzucamy na cmentarz
-            var newPlayerState = playerState
-                .WithBloodSpent(card.CurrentStats.BloodCost)
-                .WithCardRemovedFromHand(card)
-                .WithCardAddedToDiscard(card);
-
-            // B. Event (Uruchamia efekt OnPlayed)
             eventBus.Publish(new CardPlayedEvent(PlayerId, card, null, SelectedTargetId));
 
-            // C. Zwracamy stan
-            return currentState.UpdatePlayer(newPlayerState);
+            return newState;
         }
     }
 }

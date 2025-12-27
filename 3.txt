@@ -1,0 +1,1960 @@
+﻿
+
+========================================
+FILE: IDeathPrevention.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Death\Prevention\IDeathPrevention.cs
+========================================
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.GameRules.Death.Prevention
+{
+    public interface IDeathPrevention
+    {
+        bool CanPreventDeath(CardInstance unit, GameState state);
+
+        GameState PreventDeath(CardInstance unit, GameState currentState);
+    }
+}
+
+
+========================================
+FILE: SoulGuardPrevention.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Death\Prevention\SoulGuardPrevention.cs
+========================================
+using System.Collections.Generic;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+using System;
+
+namespace CardGame.Core.GameRules.Death.Prevention
+{
+    public class SoulGuardPrevention : IDeathPrevention
+    {
+        public bool CanPreventDeath(CardInstance unit, GameState state)
+        {
+            var keywords = unit.CurrentStats.Keywords;
+            return keywords.Contains(Keyword.SoulGuard) && !keywords.Contains(Keyword.SoulGuardDepleted);
+        }
+
+        public GameState PreventDeath(CardInstance unit, GameState currentState)
+        {
+            int maxHp = unit.MaxHealth;
+            // Aby HP wynosiło 1, DamageTaken musi wynosić MaxHP - 1
+            int damageToSet = Math.Max(0, maxHp - 1);
+
+            var depletedMarker = new CardStats(0, 0, 0, new List<Keyword> { Keyword.SoulGuardDepleted });
+
+            // Używamy WithDamage (nadpisanie), a nie TakeDamage (dodanie), 
+            // bo inaczej przy -7 HP mielibyśmy nadal ujemną wartość.
+            var survivedUnit = unit
+                .WithDamage(damageToSet)
+                .AddPermanentBuff(depletedMarker);
+
+            Console.WriteLine($"[SOULGUARD] {unit.Definition.Name} (ID:{unit.InstanceId}) ratuje się przed śmiercią (HP: 1).");
+            return currentState.UpdateBoard(currentState.Board.UpdateUnit(survivedUnit));
+        }
+    }
+}
+
+
+========================================
+FILE: UnkillablePrevention.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Death\Prevention\UnkillablePrevention.cs
+========================================
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.GameRules.Death.Prevention
+{
+    public class UnkillablePrevention : IDeathPrevention
+    {
+        public bool CanPreventDeath(CardInstance unit, GameState state)
+        {
+            return unit.CurrentStats.Keywords.Contains(Keyword.Unkillable);
+        }
+
+        public GameState PreventDeath(CardInstance unit, GameState currentState)
+        {
+            // 1. Usuń jednostkę ze stołu
+            var newBoard = RemoveUnitFromBoard(currentState.Board, unit);
+
+            // 2. Przygotuj "świeżą" kopię karty (bez obrażeń i buffów)
+            var owner = currentState.GetPlayer(unit.OwnerPlayerId);
+            var returnedCard = new CardInstance(unit.InstanceId, unit.OwnerPlayerId, unit.Definition);
+
+            // 3. Dodaj ją do ręki właściciela
+            var newOwnerState = owner.WithCardAddedToHand(returnedCard);
+
+            Console.WriteLine($"[UNKILLABLE] {unit.Definition.Name} (ID:{unit.InstanceId}) wraca do ręki.");
+
+            return currentState.UpdateBoard(newBoard).UpdatePlayer(newOwnerState);
+        }
+
+        private BoardState RemoveUnitFromBoard(BoardState board, CardInstance unit)
+        {
+            var newLines = board.Lines.Select(line =>
+            {
+                // Jeśli ID instancji pasuje, ustawiamy null w tym slocie
+                var p1 = line.Player1Unit?.InstanceId == unit.InstanceId ? null : line.Player1Unit;
+                var p2 = line.Player2Unit?.InstanceId == unit.InstanceId ? null : line.Player2Unit;
+
+                return line.UpdateUnits(p1, p2);
+            }).ToList();
+
+            return new BoardState(newLines);
+        }
+    }
+}
+
+
+========================================
+FILE: NetworkCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\NetworkCommand.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer
+{
+    internal class NetworkCommand
+    {
+    }
+}
+
+
+
+========================================
+FILE: CommandQueue.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\Synchronization\CommandQueue.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer.Synchronization
+{
+    internal class CommandQueue
+    {
+    }
+}
+
+
+
+========================================
+FILE: LockstepManager.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\Synchronization\LockstepManager.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer.Synchronization
+{
+    internal class LockstepManager
+    {
+    }
+}
+
+
+
+========================================
+FILE: ISaveStrategy.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Saves\Interfaces\ISaveStrategy.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Saves.Interfaces
+{
+    internal interface ISaveStrategy
+    {
+    }
+}
+
+
+
+========================================
+FILE: SaveData.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Saves\Models\SaveData.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Saves.Models
+{
+    internal class SaveData
+    {
+    }
+}
+
+
+
+========================================
+FILE: GamePhase.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Enums\GamePhase.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.State.Enums
+{
+    public enum GamePhase
+    {
+        None,       // Faza nieokreślona lub początkowa
+        Mulligan,   // Pierwsza faza gry - Mulligan & Dobieranie kart
+        UnitOnly, // Faza grania Unitów
+        UnitAndAction, // Faza grania Unitów i Akcji
+        ActionOnly, // Faza grania tylko Akcji
+        Combat, // Faza walki
+        EndTurn    // Faza kończenia tury
+    }
+}
+
+
+
+========================================
+FILE: BoardState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\BoardState.cs
+========================================
+using CardGame.Core.Cards.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.State.Models
+{
+    public class BoardState
+    {
+        public IReadOnlyList<Line> Lines { get; }
+        public BoardState(IEnumerable<Line> lines)
+        {
+            Lines = new List<Line>(lines);
+        }
+
+        public static BoardState Empty()
+        { 
+            var emptyLines = new List<Line>();
+            for (int i = 0; i < 4; i++)
+            {
+                emptyLines.Add(Line.Empty(i));
+            }
+            return new BoardState(emptyLines);
+        }
+
+        public BoardState WithUnitPlacedAt(int lineIndex, int playerId, CardInstance unit)
+        {
+            var newLines = new List<Line>(Lines);
+
+            var oldLine = newLines[lineIndex];
+            var newLine = oldLine.WithUnitPlaced(playerId, unit);
+
+            newLines[lineIndex] = newLine;
+
+            return new BoardState(newLines);
+
+        }
+
+        public List<CardInstance> GetAllUnits()
+        {
+            var list = new List<CardInstance>();
+            foreach (var line in Lines)
+            {
+                if (line.Player1Unit != null) list.Add(line.Player1Unit);
+                if (line.Player2Unit != null) list.Add(line.Player2Unit);
+            }
+            return list;
+        }
+
+        public BoardState UpdateUnit(CardInstance updatedUnit)
+        {
+            var newLines = new List<Line>();
+            bool found = false;
+
+            Console.WriteLine($"[BOARD DEBUG] Próba aktualizacji jednostki ID: {updatedUnit.InstanceId} ({updatedUnit.Definition.Name})");
+
+
+            foreach (var line in Lines)
+            {
+                if (line.Player1Unit != null) Console.WriteLine($"  - Linia {line.Index} P1: ID {line.Player1Unit.InstanceId}");
+                if (line.Player2Unit != null) Console.WriteLine($"  - Linia {line.Index} P2: ID {line.Player2Unit.InstanceId}");
+                // Sprawdzamy, czy ta linia zawiera naszą jednostkę
+                if (line.Player1Unit?.InstanceId == updatedUnit.InstanceId)
+                {
+                    // Podmieniamy jednostkę gracza 1
+                    newLines.Add(line.WithUnitPlaced(1, updatedUnit));
+                    found = true;
+                    Console.WriteLine("  -> ZNALEZIONO u Gracza 1! Aktualizuję.");
+                }
+                else if (line.Player2Unit?.InstanceId == updatedUnit.InstanceId)
+                {
+                    // Podmieniamy jednostkę gracza 2
+                    newLines.Add(line.WithUnitPlaced(2, updatedUnit));
+                    found = true;
+                    Console.WriteLine("  -> ZNALEZIONO u Gracza 2! Aktualizuję.");
+                }
+                else
+                {
+                    // Bez zmian
+                    newLines.Add(line);
+                }
+            }
+
+            if (!found)
+            {
+                Console.WriteLine("[BOARD DEBUG] BŁĄD: Nie znaleziono jednostki do aktualizacji! Zwracam stary stan.");
+                // Jeśli nie znaleźliśmy (np. jednostka zginęła w reakcji na coś innego), zwracamy stan bez zmian
+                return this;
+            }
+
+            return new BoardState(newLines);
+        }
+    }
+}
+
+
+
+========================================
+FILE: GameState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\GameState.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Enums;
+
+namespace CardGame.Core.State.Models
+{
+    public class GameState
+    {
+        public int TurnNumber { get; }
+        public GamePhase CurrentPhase { get; }
+        public int ActivePlayerId { get; }
+        public BoardState Board { get; }
+        public PlayerState PlayerA { get; }
+        public PlayerState PlayerB { get; }
+        public IReadOnlyList<int> PlayersReady { get; }
+        public PendingInteraction? PendingInteraction { get; }
+
+        // ZMIANA: Zamiast jednego czaru, mamy stos czarów w trakcie rozpatrywania
+        public IReadOnlyList<CardInstance> SpellStack { get; }
+
+        public GameState(
+            int turnNumber,
+            GamePhase currentPhase,
+            int activePlayerId,
+            BoardState board,
+            PlayerState playerA,
+            PlayerState playerB,
+            IEnumerable<int>? playersReady = null,
+            PendingInteraction? pendingInteraction = null,
+            IEnumerable<CardInstance>? spellStack = null)
+        {
+            TurnNumber = turnNumber;
+            CurrentPhase = currentPhase;
+            ActivePlayerId = activePlayerId;
+            Board = board;
+            PlayerA = playerA;
+            PlayerB = playerB;
+            PlayersReady = playersReady != null ? new List<int>(playersReady) : new List<int>();
+            PendingInteraction = pendingInteraction;
+            SpellStack = spellStack != null ? new List<CardInstance>(spellStack) : new List<CardInstance>();
+        }
+
+        public static GameState Initial(int startingPlayerId, List<CardInstance> deckA, List<CardInstance> deckB, DeterministicRng rng)
+        {
+            var pA = PlayerState.Initial(1, deckA).WithShuffledDeck(rng);
+            var pB = PlayerState.Initial(2, deckB).WithShuffledDeck(rng);
+            for (int i = 0; i < 4; i++) pA = pA.WithCardDrawn();
+            for (int i = 0; i < 4; i++) pB = pB.WithCardDrawn();
+
+            return new GameState(1, GamePhase.Mulligan, startingPlayerId, BoardState.Empty(), pA, pB);
+        }
+
+        public GameState With(
+            int? turnNumber = null,
+            GamePhase? currentPhase = null,
+            int? activePlayerId = null,
+            BoardState? board = null,
+            PlayerState? playerA = null,
+            PlayerState? playerB = null,
+            IEnumerable<int>? playersReady = null,
+            PendingInteraction? pendingInteraction = null,
+            IEnumerable<CardInstance>? spellStack = null,
+            bool clearPending = false,
+            bool clearSpellStack = false)
+        {
+            return new GameState(
+                turnNumber ?? this.TurnNumber,
+                currentPhase ?? this.CurrentPhase,
+                activePlayerId ?? this.ActivePlayerId,
+                board ?? this.Board,
+                playerA ?? this.PlayerA,
+                playerB ?? this.PlayerB,
+                playersReady ?? this.PlayersReady,
+                clearPending ? null : (pendingInteraction ?? this.PendingInteraction),
+                clearSpellStack ? new List<CardInstance>() : (spellStack ?? this.SpellStack)
+            );
+        }
+
+        public PlayerState GetPlayer(int playerId) => playerId == 1 ? PlayerA : PlayerB;
+        public PlayerState GetOpponent(int playerId) => playerId == 1 ? PlayerB : PlayerA;
+        public GameState UpdatePlayer(PlayerState newPlayerState) => newPlayerState.PlayerId == 1 ? With(playerA: newPlayerState) : With(playerB: newPlayerState);
+        public GameState UpdateBoard(BoardState newBoard) => With(board: newBoard);
+        public GameState MarkPlayerAsReady(int playerId)
+        {
+            var newList = new List<int>(PlayersReady);
+            if (!newList.Contains(playerId)) newList.Add(playerId);
+            return With(playersReady: newList);
+        }
+    }
+}
+
+
+========================================
+FILE: Line.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\Line.cs
+========================================
+using CardGame.Core.Cards.Models;
+
+namespace CardGame.Core.State.Models
+{
+    public class Line
+    {
+        public int Index { get; }
+        public CardInstance? Player1Unit { get; }
+        public CardInstance? Player2Unit { get; }
+
+        public Line(int index, CardInstance? player1Unit, CardInstance? player2Unit)
+        {
+            Index = index;
+            Player1Unit = player1Unit;
+            Player2Unit = player2Unit;
+        }
+
+        public static Line Empty(int index) => new Line(index, null, null);
+
+        public bool IsSlotEmpty(int playerId) => playerId == 1 ? Player1Unit == null : Player2Unit == null;
+
+        public Line WithUnitPlaced(int playerId, CardInstance? unit)
+        {
+            return playerId == 1 ? new Line(Index, unit, Player2Unit) : new Line(Index, Player1Unit, unit);
+        }
+
+        public Line UpdateUnits(CardInstance? newP1Unit, CardInstance? newP2Unit) => new Line(Index, newP1Unit, newP2Unit);
+    }
+}
+
+
+========================================
+FILE: MulliganPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\MulliganPhaseState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+
+namespace CardGame.Core.StateMachine.Phases
+{
+    public class MulliganPhaseState : IPhaseState
+    {
+        public GamePhase PhaseType => GamePhase.Mulligan;
+
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        {
+            // W tej fazie każdy może wykonać ruch, ale tylko raz (teoretycznie)
+            // Można dodać walidację state.PlayersReady.Contains(command.PlayerId),
+            // żeby zablokować wielokrotne wysyłanie, ale UI powinno to blokować.
+
+            if (command is ConfirmMulliganCommand) return true;
+
+            return false;
+        }
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            // Ta metoda jest wywoływana zazwyczaj przez EndPhaseCommand.
+            // W Mulliganie nie używamy EndPhaseCommand, tylko automatycznie przełączamy,
+            // gdy obaj są gotowi. Ale GameEngine nie robi auto-przejścia sam z siebie.
+
+            // ARCHITEKTURA:
+            // GameEngine musi sprawdzić po wykonaniu komendy, czy zmienić fazę.
+            // Możemy to zrobić sprytnie: Niech ConfirmMulliganCommand na końcu
+            // sprawdza warunek i jeśli obaj gotowi, sama zmienia fazę?
+            // NIE. Komenda nie powinna zmieniać fazy.
+
+            // Zrobimy tak: GameEngine po każdej komendzie może zapytać PhaseState: "Czy to już koniec?".
+            // Ale Twój silnik jest prosty.
+
+            // Najprościej: Niech ConfirmMulliganCommand zwraca stan zaktualizowany.
+            // A jeśli obaj są gotowi, to GameStateMachine przy kolejnym zapytaniu
+            // (albo specjalny Check) powinien przenieść nas dalej.
+
+            // W Twoim obecnym GameEngine zmiana fazy dzieje się TYLKO przy EndPhaseCommand.
+            // To problem dla Mulligana, który kończy się "sam".
+
+            // ROZWIĄZANIE:
+            // Użyjmy "EndPhaseCommand" jako "Systemowy sygnał przejścia".
+            // Ale to skomplikowane.
+
+            // Zróbmy tak: Wewnątrz MulliganPhaseState dodajmy logikę, która 
+            // przy zapytaniu o 'ProcessEndPhase' po prostu przenosi do gry.
+            // A w GameEngine dodamy mały hack, żeby sprawdzić ten warunek.
+
+            // WRÓĆ. Najczystsze rozwiązanie w Twoim kodzie:
+            // 1. Gracz klika "Zatwierdź".
+            // 2. Komenda się wykonuje.
+            // 3. Jeśli 'PlayersReady' ma 2 osoby -> Wykonaj logicznie przejście do UnitOnly.
+
+            // Zróbmy to w GameEngine.
+
+            return currentState.With(currentPhase: GamePhase.UnitOnly);
+        }
+
+        // Metoda pomocnicza, którą wywoła GameEngine
+        public bool IsPhaseComplete(GameState state)
+        {
+            return state.PlayersReady.Contains(1) && state.PlayersReady.Contains(2);
+        }
+        public bool ShouldEndPhaseAutomatically(GameState state)
+        {
+            // Faza kończy się sama, gdy obaj gracze (ID 1 i 2) są na liście gotowych
+            return state.PlayersReady.Contains(1) && state.PlayersReady.Contains(2);
+        }
+    }
+}
+
+
+========================================
+FILE: PendingInteraction.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\PendingInteraction.cs
+========================================
+using CardGame.Core.Cards.Data;
+
+namespace CardGame.Core.State.Models
+{
+    public class PendingInteraction
+    {
+        public int SourceCardInstanceId { get; } // Karta wykonująca efekt
+        public int EffectIndex { get; }          // Który to efekt z listy Effects (0, 1, 2...)
+        public int ActionIndex { get; }          // Która akcja wewnątrz efektu (0, 1, 2...)
+        public TargetType RequiredTargetType { get; } // Czego UI ma szukać
+
+        public IReadOnlyList<string> Options { get; }
+
+        public PendingInteraction(int sourceId, int effectIndex, int actionIndex, TargetType targetType, IEnumerable<string>? options = null)
+        {
+            SourceCardInstanceId = sourceId;
+            EffectIndex = effectIndex;
+            ActionIndex = actionIndex;
+            RequiredTargetType = targetType;
+            Options = options != null ? new List<string>(options) : new List<string>();
+        }
+    }
+}
+
+
+========================================
+FILE: PlayerState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\PlayerState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.State.Models
+{
+    public class PlayerState
+    {
+        public int PlayerId { get; }
+        public int Health { get; }
+        public int MaxBlood { get; }
+        public int CurrentBlood { get; }
+        public IReadOnlyList<CardInstance> Hand { get; }
+        public IReadOnlyList<CardInstance> DrawPile { get; }
+        public IReadOnlyList<CardInstance> DiscardPile { get; }
+        public CardStats GlobalUnitBuffs { get; }
+
+        public PlayerState(int playerId, int health, int maxBlood, int currentBlood,
+            IEnumerable<CardInstance> hand, IEnumerable<CardInstance> drawPile,
+            IEnumerable<CardInstance> discardPile, CardStats? globalUnitBuffs = null)
+        {
+            PlayerId = playerId;
+            Health = health;
+            MaxBlood = maxBlood;
+            CurrentBlood = currentBlood;
+            Hand = hand.ToList();
+            DrawPile = drawPile.ToList();
+            DiscardPile = discardPile.ToList();
+            GlobalUnitBuffs = globalUnitBuffs ?? new CardStats(0, 0, 0);
+        }
+
+        public static PlayerState Initial(int playerId, List<CardInstance> startingDeck) =>
+            new PlayerState(playerId, 20, 1, 1, new List<CardInstance>(), startingDeck, new List<CardInstance>());
+
+        public PlayerState With(int? health = null, int? maxBlood = null, int? currentBlood = null,
+            IEnumerable<CardInstance>? hand = null, IEnumerable<CardInstance>? drawPile = null,
+            IEnumerable<CardInstance>? discardPile = null, CardStats? globalUnitBuffs = null)
+        {
+            return new PlayerState(PlayerId, health ?? Health, maxBlood ?? MaxBlood, currentBlood ?? CurrentBlood,
+                hand ?? Hand, drawPile ?? DrawPile, discardPile ?? DiscardPile, globalUnitBuffs ?? GlobalUnitBuffs);
+        }
+
+        public bool CanPlayCard(int cost) => CurrentBlood >= cost;
+        public PlayerState WithBloodSpent(int amount) => this.With(currentBlood: CurrentBlood - amount);
+        public PlayerState WithCardRemovedFromHand(CardInstance card) => this.With(hand: Hand.Where(c => c.InstanceId != card.InstanceId));
+        public PlayerState WithCardDrawn() => DrawPile.Count == 0 ? this : this.With(hand: Hand.Append(DrawPile[0]), drawPile: DrawPile.Skip(1));
+
+        public PlayerState WithCardsDrawnFromDiscard(int count, int? excludeId = null)
+        {
+            var valid = DiscardPile.Where(c => c.InstanceId != excludeId).ToList();
+            if (valid.Count == 0) return this;
+            var toDraw = valid.TakeLast(Math.Min(count, valid.Count)).ToList();
+            return this.With(hand: Hand.Concat(toDraw), discardPile: DiscardPile.Where(c => !toDraw.Any(d => d.InstanceId == c.InstanceId)));
+        }
+
+        public PlayerState WithTurnStartBlood(int turn) => this.With(maxBlood: Math.Clamp(turn, 1, 10), currentBlood: Math.Clamp(turn, 1, 10));
+        public PlayerState WithCardAddedToHand(CardInstance card) => this.With(hand: Hand.Append(card));
+        public PlayerState WithCardAddedToDiscard(CardInstance card) => this.With(discardPile: DiscardPile.Append(card));
+        public PlayerState WithHealthRestored(int amount) => this.With(health: Math.Min(20, Health + amount));
+        public PlayerState WithDamageTaken(int amount) => this.With(health: Health - amount);
+        public PlayerState WithShuffledDeck(DeterministicRng rng)
+        {
+            var list = DrawPile.ToList();
+            int n = list.Count;
+            while (n > 1) { n--; int k = rng.Next(0, n + 1); (list[k], list[n]) = (list[n], list[k]); }
+            return this.With(drawPile: list);
+        }
+        public PlayerState WithGlobalBuffModifier(int atk, int hp) => this.With(globalUnitBuffs: GlobalUnitBuffs + new CardStats(atk, hp, 0));
+        public PlayerState WithCardRemovedFromDeck(CardInstance card) => this.With(drawPile: DrawPile.Where(c => c.InstanceId != card.InstanceId));
+        public PlayerState WithMulliganPerformed(List<int> ids)
+        {
+            var toRep = Hand.Where(c => ids.Contains(c.InstanceId)).ToList();
+            var nHand = Hand.Where(c => !ids.Contains(c.InstanceId)).ToList();
+            var nDeck = DrawPile.ToList();
+            foreach (var c in toRep) { if (nDeck.Count > 0) { nHand.Add(nDeck[0]); nDeck.RemoveAt(0); } nDeck.Add(c); }
+            return this.With(hand: nHand, drawPile: nDeck);
+        }
+    }
+}
+
+
+========================================
+FILE: GameStateMachine.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\GameStateMachine.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using CardGame.Core.State.Enums;
+using CardGame.Core.StateMachine.Interfaces;
+using CardGame.Core.StateMachine.Phases;
+
+namespace CardGame.Core.StateMachine
+{
+    public class GameStateMachine
+    {
+        public IPhaseState GetStateForPhase(GamePhase phase)
+        {
+            switch(phase)
+            {
+                case GamePhase.Mulligan:
+                    return new MulliganPhaseState();
+                case GamePhase.UnitOnly:
+                    return new UnitPhaseState();
+                case GamePhase.UnitAndAction:
+                    return new BothPhaseState();
+                case GamePhase.ActionOnly:
+                    return new ActionPhaseState();
+                case GamePhase.Combat:
+                    return new CombatPhaseState();
+                default:
+                    throw new ArgumentException($"Nieobsługiwana faza gry: {phase}");
+            }
+        }
+    }
+}
+
+
+
+========================================
+FILE: IPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Interfaces\IPhaseState.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using CardGame.Core.Events;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.Application;
+
+namespace CardGame.Core.StateMachine.Interfaces
+{
+    public interface IPhaseState
+    {
+
+
+        GamePhase PhaseType { get; }
+        bool IsCommandAllowed(IGameCommand command, GameState state);
+
+        GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context);
+
+        bool ShouldEndPhaseAutomatically(GameState state);
+    }
+}
+
+
+
+========================================
+FILE: ActionPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Phases\ActionPhaseState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.StateMachine.Phases
+{
+    public class ActionPhaseState: IPhaseState
+    {
+        public GamePhase PhaseType => GamePhase.ActionOnly;
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        {
+            /* Walidacja, czy kraczyna wykonująca komendę jest aktywnym graczem. */
+            if (command.PlayerId != state.ActivePlayerId) return false;
+            /* Dozwolone komendy w fazie akcji są następujące:
+             * 1. Wykonanie akcji.
+             * 2. Zakończenie fazy (tury gracza). */
+            if (command is PlaySpellCommand) return true;
+            if (command is SelectTargetCommand) return true;
+            if (command is EndPhaseCommand) return true;
+            return false;
+        }
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            /* LOGIKA PRZEJŚCIA DO KOLEJNEJ FAZY LUB TURY GRACZA
+             * ActionPhase jest ostatnią interaktywną fazę, gdzie
+             * następnie przechodzimy w AutoBattlera na liniach od
+             * lewej. Jest wiele podejść co do tego co ma się dziać
+             * z ActivePlayerem, ale na razie uznajmy, że pozostoaje
+             * bez zmian.*/
+            return currentState.With(
+                currentPhase: GamePhase.Combat);
+        }
+        public bool ShouldEndPhaseAutomatically(GameState state)
+        {
+            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
+        }
+    }
+}
+
+
+
+========================================
+FILE: BothPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Phases\BothPhaseState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.StateMachine.Phases
+{
+    public class BothPhaseState : IPhaseState
+    {
+        public GamePhase PhaseType => GamePhase.UnitAndAction;
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        {
+            /* Walidacja, czy kraczyna wykonująca komendę jest aktywnym graczem. */
+            if (command.PlayerId != state.ActivePlayerId) return false;
+
+            /* Dozwolone komendy w fazie jednostek są następujące:
+             * 1. Zagranie jedostki.
+             * 2. Wykonanie akcji.
+             * 3. Zakończenie fazy (tury gracza). */
+
+            if (command is PlayUnitCommand) return true;
+            if (command is SelectTargetCommand) return true;
+            if (command is PlaySpellCommand) return true;
+            if (command is EndPhaseCommand) return true;
+            return false;
+        }
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            int nextPlayerId = (currentState.ActivePlayerId == 1) ? 2 : 1;
+            return currentState.With(
+                currentPhase: GamePhase.ActionOnly,
+                activePlayerId: nextPlayerId);
+        }
+        public bool ShouldEndPhaseAutomatically(GameState state)
+        {
+            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
+        }
+    }
+    
+    
+}
+
+
+
+========================================
+FILE: CombatPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Phases\CombatPhaseState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Combat;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.GameRules.Death;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.StateMachine.Phases
+{
+    public class CombatPhaseState: IPhaseState
+    {
+        public GamePhase PhaseType => GamePhase.Combat;
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        {
+         
+            if (command is EndPhaseCommand) return true;
+            return false;
+        }
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            /* ---------------------- KONIEC RUNDY ----------------------------
+             * + następuje początek kolejnejm więc musimy:
+             * 1. Zwiększyś numer++ rundy. */
+            var orchestrator = new CombatOrchestrator();
+            var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState, eventBus, context);
+            stateAfterCombat = ProcessEndOfRoundStatuses(stateAfterCombat, eventBus);
+
+            /* Ogarnąć, który gracz ma rozpocząć kolejną turę/rundę.
+             * (termin tura/runda jest używany zamiennie w tym kontekście). */
+            int nextTurnNumber = currentState.TurnNumber + 1;
+            int nextActivePlayerId = (nextTurnNumber % 2 != 0) ? 1 : 2;
+
+            var playerToStart = stateAfterCombat.GetPlayer(nextActivePlayerId);
+            var updatedPlayer = playerToStart
+               .WithTurnStartBlood(nextTurnNumber)
+               .WithCardDrawn();
+
+            GameState finalState;
+            if (nextActivePlayerId == 1)
+            {
+                finalState = stateAfterCombat.With(
+                    turnNumber: nextTurnNumber,
+                    currentPhase: GamePhase.UnitOnly,
+                    activePlayerId: nextActivePlayerId,
+                    playerA: updatedPlayer // Aktualizujemy A
+                );
+            }
+            else
+            {
+                finalState = stateAfterCombat.With(
+                    turnNumber: nextTurnNumber,
+                    currentPhase: GamePhase.UnitOnly,
+                    activePlayerId: nextActivePlayerId,
+                    playerB: updatedPlayer // Aktualizujemy B
+                );
+            }
+
+            return finalState;
+        }
+        public bool ShouldEndPhaseAutomatically(GameState state)
+        {
+            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
+        }
+        private GameState ProcessEndOfRoundStatuses(GameState state, EventBus events)
+        {
+            var workingState = state;
+           
+            var unitsToCheck = workingState.Board.GetAllUnits().ToList();
+
+            foreach (var unit in unitsToCheck)
+            {
+                if (unit.CurrentStats.Keywords.Contains(Keyword.Burning))
+                {
+               
+                    var damagedUnit = unit.TakeDamage(1);
+                    workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(damagedUnit));
+                    events.Publish(new UnitDamagedEvent(unit, 1, null));
+                }
+            }
+            return new DeathResolver().ResolveDeaths(workingState, events);
+        }
+    }
+
+}
+
+
+
+========================================
+FILE: UnitPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Phases\UnitPhaseState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.StateMachine.Phases
+{
+    public class UnitPhaseState : IPhaseState
+    {
+        public GamePhase PhaseType => GamePhase.UnitOnly;
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        {
+            /* Walidacja, czy kraczyna wykonująca komendę jest aktywnym graczem. */
+            if (command.PlayerId != state.ActivePlayerId) return false;
+
+            /* Dozwolone komendy w fazie jednostek są następujące:
+             * 1. Zagranie jedostki.
+             * 2. Zakończenie fazy (tury gracza). */
+            if (command is PlayUnitCommand) return true;
+            if (command is SelectTargetCommand) return true;
+            /* wstaw wystawienie jednostki komenda */
+            if (command is EndPhaseCommand) return true;
+
+            return false;
+        }
+    
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            int nextPlayerId = (currentState.ActivePlayerId == 1) ? 2 : 1;
+            return currentState.With(
+                currentPhase: GamePhase.UnitAndAction,
+                activePlayerId: nextPlayerId);
+        }
+        public bool ShouldEndPhaseAutomatically(GameState state)
+        {
+            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
+        }
+    }
+}
+
+
+
+========================================
+FILE: CardGame.GodotClient.csproj
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.GodotClient\CardGame.GodotClient.csproj
+========================================
+<Project Sdk="Godot.NET.Sdk/4.5.1">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CardGame.Core\CardGame.Core.csproj" />
+  </ItemGroup>
+</Project>
+
+
+========================================
+FILE: CardView.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.GodotClient\CardView.cs
+========================================
+using Godot;
+using CardGame.Core.Cards.Models;
+
+public partial class CardView : Control
+{
+	[Export] public Label NameLabel;
+	[Export] public Label CostLabel;
+	[Export] public Label HpLabel;
+	[Export] public Label AtkLabel;
+	[Export] public Button SelectButton; // <--- NOWE
+
+	// SygnaĹ‚: "KtoĹ› mnie kliknÄ…Ĺ‚!" (wysyĹ‚a samÄ… siebie - dane karty)
+	[Signal] public delegate void CardClickedEventHandler(CardView visual);
+
+	public CardInstance MyCardData { get; private set; } // Ĺ»ebyĹ›my wiedzieli co to za karta
+
+	public override void _Ready()
+	{
+		// Przekazujemy klikniÄ™cie dalej
+		if(SelectButton != null)
+			SelectButton.Pressed += () => EmitSignal(SignalName.CardClicked, this);
+	}
+
+	public void Render(CardInstance card)
+	{
+		MyCardData = card; // ZapamiÄ™tujemy dane!
+
+		// Twoje labele (dostosuj do tego jak je podzieliĹ‚eĹ›)
+		if (NameLabel != null) NameLabel.Text = card.Definition.Name;
+		if (CostLabel != null) CostLabel.Text = card.CurrentStats.BloodCost.ToString();
+		
+		// ZakĹ‚adam ĹĽe tak to podzieliĹ‚eĹ›:
+		if (AtkLabel != null) AtkLabel.Text = card.CurrentStats.Attack.ToString();
+		if (HpLabel != null) HpLabel.Text = card.CurrentStats.Health.ToString();
+	}
+}
+
+
+
+========================================
+FILE: GameBootstrap.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.GodotClient\GameBootstrap.cs
+========================================
+
+
+
+========================================
+FILE: LineView.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.GodotClient\LineView.cs
+========================================
+using Godot;
+using System;
+using CardGame.Core.State.Models;
+using CardGame.Core.Cards.Models;
+
+public partial class LineView : Control
+{
+	[Export] public Label InfoLabel;
+	[Export] public Control UnitsContainer;
+	[Export] public Button ClickArea; // Nasz przycisk tĹ‚a
+
+	// SygnaĹ‚: "KtoĹ› kliknÄ…Ĺ‚ w tÄ™ liniÄ™!" (wysyĹ‚a ID linii)
+	[Signal] public delegate void LineClickedEventHandler(int lineIndex);
+
+	private int _myIndex;
+
+	public override void _Ready()
+	{
+		// Podpinamy sygnaĹ‚ klikniÄ™cia przycisku do naszego sygnaĹ‚u
+		ClickArea.Pressed += () => EmitSignal(SignalName.LineClicked, _myIndex);
+	}
+
+	public void Render(Line lineData, PackedScene cardScene)
+	{
+		_myIndex = lineData.Index;
+		InfoLabel.Text = $"Linia {_myIndex}";
+
+		// 1. WyczyĹ›Ä‡ stare jednostki
+		foreach (Node child in UnitsContainer.GetChildren())
+		{
+			child.QueueFree();
+		}
+
+		// 2. Rysuj jednostkÄ™ Gracza A (jeĹ›li jest)
+		if (lineData.Player1Unit != null)
+		{
+			AddUnitVisual(lineData.Player1Unit, cardScene);
+		}
+		
+		// (Tu w przyszĹ‚oĹ›ci dodasz jednostkÄ™ Gracza B po drugiej stronie)
+	}
+
+	private void AddUnitVisual(CardInstance unit, PackedScene cardScene)
+	{
+		// UĹĽywamy tego samego widoku co w rÄ™ce, ale moĹĽe mniejszego?
+		var unitView = cardScene.Instantiate<CardView>();
+		UnitsContainer.AddChild(unitView);
+		unitView.Render(unit);
+		// Opcjonalnie: Zmniejsz trochÄ™ skalÄ™, ĹĽeby siÄ™ mieĹ›ciĹ‚y
+		unitView.Scale = new Vector2(0.8f, 0.8f);
+	}
+}
+
+
+
+========================================
+FILE: CardGame.Tests.csproj
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\CardGame.Tests.csproj
+========================================
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.5.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\CardGame.Core\CardGame.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Update="xunit.runner.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+
+
+</Project>
+
+
+
+========================================
+FILE: CombatRefractory.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\CombatRefractory.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models; // DODAJ TO
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using CardGame.Core.GameRules.Damage; // DODAJ TO
+using CardGame.Core.GameRules.Battle; // DODAJ TO
+using Xunit;
+
+namespace CardGame.Tests
+{
+    public class ComplexMechanicsTests
+    {
+        [Fact]
+        public void FullSystemTest_Combat_Splash_Burn_And_Tick()
+        {
+            // --- ARRANGE ---
+            // Definiujemy karty w formacie JSON, aby sprawdzić system Data-Driven
+            string json = @"[
+                { 
+                  ""Id"": 1, ""Name"": ""Megumin"", ""Type"": ""Unit"", ""Cost"": 4, ""Attack"": 3, ""Health"": 2, 
+                  ""Keywords"": [""SplashDamage"", ""BurnSource""], 
+                  ""KeywordParams"": {""SplashDamage"": 2} 
+                },
+                { ""Id"": 2, ""Name"": ""Recruit"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 2, ""Health"": 2 },
+                { ""Id"": 3, ""Name"": ""BigVictim"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 0, ""Health"": 10 }
+            ]";
+
+            // Korzystamy z Twojego TestHelpera do stworzenia silnika
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var factory = engine.Factory;
+
+            /* 
+               USTAWIENIE PLANSZY:
+               Linia 0: P1 Recruit (2/2)  vs  P2 Recruit (2/2)  -> Powinni się wytrade'ować (obaj zginąć)
+               Linia 1: P1 Megumin (3/2)  vs  P2 BigVictim (10 HP) -> Megumin bije za 3, nakłada Burn.
+               Linia 2: P2 BigVictim (10 HP) -> Powinien oberwać Splashem od Megumin z Linii 1.
+            */
+
+            var p1Recruit = factory.CreateCard(2, 1);
+            var p2Recruit = factory.CreateCard(2, 2);
+            var megumin = factory.CreateCard(1, 1);
+            var mainVictim = factory.CreateCard(3, 2);
+            var sideVictim = factory.CreateCard(3, 2);
+
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board
+                .WithUnitPlacedAt(0, 1, p1Recruit)
+                .WithUnitPlacedAt(0, 2, p2Recruit)
+                .WithUnitPlacedAt(1, 1, megumin)
+                .WithUnitPlacedAt(1, 2, mainVictim)
+                .WithUnitPlacedAt(2, 2, sideVictim));
+
+            // Ustawiamy fazę na Combat, żeby EndPhaseCommand odpalił ResolveCombatPhase
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.Combat);
+
+            // --- ACT ---
+            // 1. Wykonujemy fazę walki
+            engine.ExecuteCommand(new EndPhaseCommand(1));
+
+            // --- ASSERT ---
+            var board = engine.CurrentState.Board;
+
+            // TEST 1: Jednoczesność (Duel)
+            // Obie jednostki na L0 miały po 2 HP i atak 2. Powinny zniknąć (zginąć jednocześnie).
+            Assert.Null(board.Lines[0].Player1Unit);
+            Assert.Null(board.Lines[0].Player2Unit);
+
+            // TEST 2: Splash Damage (Flexible Param)
+            // Megumin z L1 atakowała. Jej SplashDamage wynosi 2. 
+            // SideVictim na L2 powinien mieć 10 - 2 = 8 HP.
+            var sideUnit = board.Lines[2].Player2Unit;
+            Assert.NotNull(sideUnit);
+            Assert.Equal(8, sideUnit.CurrentStats.Health);
+
+            // TEST 3: BurnSource (Nakładanie statusu)
+            // MainVictim na L1 powinien zostać trafiony przez Megumin i mieć status Burning.
+            var updatedMainVictim = board.Lines[1].Player2Unit;
+            Assert.NotNull(updatedMainVictim);
+            Assert.Contains(Keyword.Burning, updatedMainVictim.CurrentStats.Keywords);
+
+            // TEST 4: Burning Tick (Obrażenia na koniec rundy)
+            // MainVictim dostał: 3 (atak bezpośredni) + 1 (Burning tick na koniec fazy).
+            // HP: 10 - 3 - 1 = 6.
+            Assert.Equal(6, updatedMainVictim.CurrentStats.Health);
+        }
+
+        [Fact]
+        public void BonusStrike_ShouldBeOneSided_AndNotReceiveCounterDamage()
+        {
+            // --- ARRANGE ---
+            string json = @"[
+                { ""Id"": 1, ""Name"": ""Striker"", ""Type"": ""Unit"", ""Attack"": 3, ""Health"": 1 },
+                { ""Id"": 2, ""Name"": ""Defender"", ""Type"": ""Unit"", ""Attack"": 10, ""Health"": 10 }
+            ]";
+            var engine = TestHelpers.CreateEngineWithCards(json);
+
+            var attacker = engine.Factory.CreateCard(1, 1);
+            var defender = engine.Factory.CreateCard(2, 2);
+
+            // Umieszczamy na planszy
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board
+                .WithUnitPlacedAt(0, 1, attacker)
+                .WithUnitPlacedAt(0, 2, defender));
+
+            // Pobieramy context (z dostępem do BattleService)
+            var context = new GameContext(engine.Factory, engine.Rng, engine.Events, new DamageCalculator());
+
+            // --- ACT ---
+            // Symulujemy Bonus Attack (Strike) za pomocą BattleService
+            // Używamy metody ResolveBonusStrike (jednostronna)
+            var nextState = context.Battle.ResolveBonusStrike(
+                engine.CurrentState,
+                attacker,
+                defender,
+                0,
+                engine.Events,
+                context);
+
+            // --- ASSERT ---
+            var unitP1 = nextState.Board.Lines[0].Player1Unit;
+            var unitP2 = nextState.Board.Lines[0].Player2Unit;
+
+            // Napastnik (3/1) NIE powinien dostać 10 obrażeń zwrotnych, bo to Strike, a nie Duel.
+            Assert.Equal(1, unitP1.CurrentStats.Health);
+
+            // Obrońca powinien dostać 3 obrażenia.
+            Assert.Equal(7, unitP2.CurrentStats.Health);
+        }
+    }
+}
+
+
+========================================
+FILE: ComplexScenario.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\ComplexScenario.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using CardGame.Core.GameRules.Battle;
+using Xunit;
+
+namespace CardGame.Tests
+{
+    public class WomboComboTests
+    {
+        [Fact]
+        public void Ultimate_WomboCombo_Test()
+        {
+            string json = @"[
+                { ""Id"": 12, ""Name"": ""Black Cat"", ""Type"": ""Unit"", ""Cost"": 0, ""Attack"": 1, ""Health"": 1,
+                  ""Effects"": [ { ""Trigger"": ""OnSacrificed"", ""Zone"": ""Board"", ""Actions"": [ { ""Type"": ""ReturnToHand"", ""Target"": ""Self"" } ] } ] },
+                { ""Id"": 6, ""Name"": ""Radio Demon"", ""Type"": ""Unit"", ""Cost"": 5, ""Attack"": 2, ""Health"": 2,
+                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""ModifyGlobalBuff"", ""BuffAtk"": 1, ""BuffHp"": 1 } ] } ] },
+                { ""Id"": 10, ""Name"": ""Polar Bear"", ""Type"": ""Unit"", ""Cost"": 2, ""Attack"": 2, ""Health"": 3,
+                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetFriendlyUnit"", ""Actions"": [ { ""Type"": ""SacrificeUnit"", ""Target"": ""SelectedTarget"" } ] } ] },
+                { ""Id"": 9, ""Name"": ""Corpse Eater"", ""Type"": ""Unit"", ""Cost"": 3, ""Attack"": 3, ""Health"": 1,
+                  ""Effects"": [ { ""Trigger"": ""OnFriendlyUnitDied"", ""Zone"": ""Hand"", ""Actions"": [ { ""Type"": ""SummonUnit"", ""Target"": ""Self"" } ] } ] },
+                { ""Id"": 11, ""Name"": ""The Creature"", ""Type"": ""Unit"", ""Cost"": 7, ""Attack"": 7, ""Health"": 7,
+                  ""Effects"": [ { ""Trigger"": ""OnOtherUnitSacrificed"", ""Zone"": ""Hand"", ""Actions"": [ { ""Type"": ""BuffStats"", ""Target"": ""Self"", ""Amount"": -1 } ] } ] },
+                { ""Id"": 17, ""Name"": ""Megumin"", ""Type"": ""Unit"", ""Cost"": 4, ""Attack"": 3, ""Health"": 1, 
+                  ""Keywords"": [""SplashDamage""], ""KeywordParams"": {""SplashDamage"": 3} }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var factory = engine.Factory;
+
+            var cat = factory.CreateCard(12, 1);
+            var radio = factory.CreateCard(6, 1);
+            var bear = factory.CreateCard(10, 1);
+            var eater = factory.CreateCard(9, 1);
+            var creature = factory.CreateCard(11, 1);
+            var megumin = factory.CreateCard(17, 2);
+
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.With(
+                hand: new[] { cat, radio, bear, eater, creature },
+                health: 30).WithResourceChanged(ResourceType.Blood, 20, 20));
+
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board
+                .WithUnitPlacedAt(1, 2, megumin));
+
+            engine.ExecuteCommand(new PlayUnitCommand(1, cat.InstanceId, 3));
+            engine.ExecuteCommand(new PlayUnitCommand(1, radio.InstanceId, 0));
+            engine.ExecuteCommand(new PlayUnitCommand(1, bear.InstanceId, 2, selectedTargetId: cat.InstanceId));
+
+            Assert.Contains(engine.CurrentState.PlayerA.Hand, c => c.Definition.Name == "Black Cat");
+            Assert.NotNull(engine.CurrentState.Board.Lines[3].Player1Unit);
+            Assert.Equal("Corpse Eater", engine.CurrentState.Board.Lines[3].Player1Unit!.Definition.Name);
+
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.Combat);
+            engine.ExecuteCommand(new EndPhaseCommand(1));
+
+            Assert.Equal(27, engine.CurrentState.PlayerA.Health);
+            Assert.Null(engine.CurrentState.Board.Lines[0].Player1Unit);
+            Assert.Equal(1, engine.CurrentState.Board.Lines[2].Player1Unit!.CurrentStats.Health);
+        }
+    }
+}
+
+
+========================================
+FILE: GameIntegrationTests.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\GameIntegrationTests.cs
+========================================
+using System.Linq;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+
+using Xunit;
+
+
+namespace CardGame.Tests
+{
+    public class GameIntegrationTests
+    {
+        [Fact]
+        public void AoE_TargetAllEnemies_ShouldDamageAllEnemies()
+        {
+            // ARRANGE
+            string json = @"[
+                { 
+                  ""Id"": 1, ""Name"": ""Bombardier"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                  ""Effects"": [ 
+                    { 
+                      ""Trigger"": ""OnPlayed"", 
+                      ""Actions"": [ 
+                        { 
+                          ""Type"": ""DealDamage"", 
+                          ""Target"": ""AllEnemyUnits"",
+                          ""Amount"": 2 
+                        } 
+                      ] 
+                    } 
+                  ] 
+                },
+                { ""Id"": 2, ""Name"": ""Enemy Dummy"", ""Type"": ""Unit"", ""Cost"": 0, ""Attack"": 0, ""Health"": 2 }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var factory = engine.Factory;
+
+            // Ustawienie planszy: 2 wrogów (2 HP)
+            var enemy1 = factory.CreateCard(2, 2);
+            var enemy2 = factory.CreateCard(2, 2);
+
+            // Ważne: Musimy stworzyć nową planszę z jednostkami
+            var board = engine.CurrentState.Board
+                .WithUnitPlacedAt(0, 2, enemy1)
+                .WithUnitPlacedAt(1, 2, enemy2);
+
+            // Gracz ma Bombardiera
+            var bomber = factory.CreateCard(1, 1);
+            var pA = engine.CurrentState.PlayerA.WithCardAddedToHand(bomber);
+
+            // Aktualizacja stanu
+            engine.CurrentState = engine.CurrentState.With(board: board, playerA: pA);
+
+            // ACT
+            // Zagrywamy Bombardiera na linię 0
+            engine.ExecuteCommand(new PlayUnitCommand(1, bomber.InstanceId, 0));
+
+            // ASSERT
+            // Sprawdzamy czy wrogowie zniknęli z planszy (GetAllUnits zwraca tylko żywych)
+            var unitsOnBoard = engine.CurrentState.Board.GetAllUnits();
+
+            Assert.DoesNotContain(unitsOnBoard, u => u.InstanceId == enemy1.InstanceId);
+            Assert.DoesNotContain(unitsOnBoard, u => u.InstanceId == enemy2.InstanceId);
+        }
+
+        [Fact]
+        public void RadioDemon_GlobalBuff_ShouldBuffExistingAndNewUnits()
+        {
+            // ARRANGE
+            string json = @"[
+                { ""Id"": 1, ""Name"": ""Radio Demon"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""FriendlyHero"", ""Actions"": [ { ""Type"": ""ModifyGlobalBuff"", ""BuffAtk"": 1, ""BuffHp"": 1 } ] } ] },
+                { ""Id"": 2, ""Name"": ""Small Guy"", ""Type"": ""Unit"", ""Cost"": 0, ""Attack"": 1, ""Health"": 1 }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var factory = engine.Factory;
+
+            // Sytuacja: Jeden 'Small Guy' już stoi na stole
+            var existingGuy = factory.CreateCard(2, 1);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(
+                engine.CurrentState.Board.WithUnitPlacedAt(0, 1, existingGuy));
+
+            // Gracz ma Radio Demona i drugiego 'Small Guy' w ręce
+            var demon = factory.CreateCard(1, 1);
+            var newGuy = factory.CreateCard(2, 1);
+
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(
+                engine.CurrentState.PlayerA
+                    .WithCardAddedToHand(demon)
+                    .WithCardAddedToHand(newGuy));
+
+            // ACT 1: Zagraj Radio Demona
+            engine.ExecuteCommand(new PlayUnitCommand(1, demon.InstanceId, 1));
+
+            // ASSERT 1: Istniejący gość powinien urosnąć (1/1 -> 2/2)
+            var existingOnBoard = engine.CurrentState.Board.Lines[0].Player1Unit;
+            Assert.Equal(2, existingOnBoard.CurrentStats.Attack);
+            Assert.Equal(2, existingOnBoard.CurrentStats.Health);
+
+            // ACT 2: Zagraj nowego gościa z ręki
+            engine.ExecuteCommand(new PlayUnitCommand(1, newGuy.InstanceId, 2));
+
+            // ASSERT 2: Nowy gość powinien wejść od razu z buffem (1/1 -> 2/2)
+            var newOnBoard = engine.CurrentState.Board.Lines[2].Player1Unit;
+            Assert.Equal(2, newOnBoard.CurrentStats.Attack);
+            Assert.Equal(2, newOnBoard.CurrentStats.Health);
+        }
+
+        [Fact]
+        public void Interruption_DoubleTarget_ShouldPauseAndResume()
+        {
+            // ARRANGE
+            // Karta: Zniszcz cel 1 (wybór) -> Zniszcz cel 2 (wrogi)
+            string json = @"[
+                { ""Id"": 1, ""Name"": ""Double Agent"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                  ""Effects"": [ 
+                    { ""Trigger"": ""OnPlayed"", 
+                      ""Actions"": [ 
+                        { ""Type"": ""DestroyUnit"", ""Target"": ""SelectedTarget"" },
+                        { ""Type"": ""DestroyUnit"", ""Target"": ""TargetEnemyUnit"" } 
+                      ] 
+                    } 
+                  ] 
+                },
+                { ""Id"": 2, ""Name"": ""Target Dummy"", ""Type"": ""Unit"", ""Cost"": 0, ""Attack"": 0, ""Health"": 5 }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var factory = engine.Factory;
+
+            var allyTarget = factory.CreateCard(2, 1);
+            var enemyTarget = factory.CreateCard(2, 2);
+
+            // Plansza: Sojusznik na L0, Wróg na L1
+            var board = engine.CurrentState.Board
+                .WithUnitPlacedAt(0, 1, allyTarget)
+                .WithUnitPlacedAt(1, 2, enemyTarget);
+
+            var agent = factory.CreateCard(1, 1);
+            engine.CurrentState = engine.CurrentState.With(board: board,
+                playerA: engine.CurrentState.PlayerA.WithCardAddedToHand(agent));
+
+            // ACT 1: Zagrywamy Agenta, celując w Sojusznika (Cel 1)
+            // Stawiamy Agenta na Linię 2
+            engine.ExecuteCommand(new PlayUnitCommand(1, agent.InstanceId, 2, selectedTargetId: allyTarget.InstanceId));
+
+            // ASSERT 1: Stan "W TRAKCIE"
+            // 1. Sojusznik powinien zginąć (akcja 1 wykonana)
+            Assert.Null(engine.CurrentState.Board.Lines[0].Player1Unit);
+
+            // 2. Gra powinna być zapauzowana (czeka na TargetEnemyUnit)
+            Assert.NotNull(engine.CurrentState.PendingInteraction);
+            Assert.Equal(CardGame.Core.Cards.Data.TargetType.TargetEnemyUnit,
+                         engine.CurrentState.PendingInteraction.RequiredTargetType);
+
+            // ACT 2: Wybieramy drugi cel (Wróg)
+            engine.ExecuteCommand(new SelectTargetCommand(1, enemyTarget.InstanceId));
+
+            // ASSERT 2: Stan "ZAKOŃCZONY"
+            // 1. Gra wznowiona i zakończona (Pending null)
+            Assert.Null(engine.CurrentState.PendingInteraction);
+
+            // 2. Wróg powinien zginąć (akcja 2 wykonana)
+            Assert.Null(engine.CurrentState.Board.Lines[1].Player2Unit);
+        }
+    }
+}
+
+
+========================================
+FILE: MechanicsTests.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\MechanicsTests.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Commands.Implementations;
+using Xunit;
+
+namespace CardGame.Tests
+{
+    public class MechanicsTests
+    {
+        [Fact]
+        public void BuffSystem_ShouldBeAdditive_And_HealingShouldNotExceedMaxHp()
+        {
+            string json = @"[
+                { ""Id"": 1, ""Name"": ""Tank"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 5 },
+                { ""Id"": 2, ""Name"": ""Buffer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""AllFriendlyUnits"", ""Actions"": [ { ""Type"": ""BuffStats"", ""BuffAtk"": 2, ""BuffHp"": 2 } ] } ] },
+                { ""Id"": 3, ""Name"": ""Healer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""AllFriendlyUnits"", ""Actions"": [ { ""Type"": ""Heal"", ""Amount"": 10 } ] } ] },
+                { ""Id"": 4, ""Name"": ""Damager"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""AllFriendlyUnits"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Amount"": 4 } ] } ] }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var factory = engine.Factory;
+
+            var tank = factory.CreateCard(1, 1);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, tank));
+
+            var pA = engine.CurrentState.PlayerA
+                .WithCardAddedToHand(factory.CreateCard(2, 1))
+                .WithCardAddedToHand(factory.CreateCard(3, 1))
+                .WithCardAddedToHand(factory.CreateCard(4, 1))
+                .WithResourceChanged(ResourceType.Blood, 10, 10);
+
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(pA);
+
+            engine.ExecuteCommand(new PlayUnitCommand(1, pA.Hand[0].InstanceId, 1));
+            var tankAfterBuff = engine.CurrentState.Board.Lines[0].Player1Unit;
+            Assert.Equal(3, tankAfterBuff.CurrentStats.Attack);
+            Assert.Equal(7, tankAfterBuff.CurrentStats.Health);
+
+            engine.ExecuteCommand(new PlayUnitCommand(1, pA.Hand[2].InstanceId, 2));
+            var tankAfterDmg = engine.CurrentState.Board.Lines[0].Player1Unit;
+            Assert.Equal(3, tankAfterDmg.CurrentStats.Health);
+
+            engine.ExecuteCommand(new PlayUnitCommand(1, pA.Hand[1].InstanceId, 3));
+            var tankAfterHeal = engine.CurrentState.Board.Lines[0].Player1Unit;
+            Assert.Equal(7, tankAfterHeal.CurrentStats.Health);
+        }
+
+        [Fact]
+        public void ApplyStatus_ShouldAddKeyword_WithoutResettingStats()
+        {
+            string json = @"[
+                { ""Id"": 1, ""Name"": ""Knight"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 2, ""Health"": 2 },
+                { ""Id"": 2, ""Name"": ""Armorer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""AllFriendlyUnits"", ""Actions"": [ { ""Type"": ""ApplyStatus"", ""StatusKeyword"": ""Armored"" } ] } ] }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var knight = engine.Factory.CreateCard(1, 1);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, knight));
+
+            var armorer = engine.Factory.CreateCard(2, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .WithCardAddedToHand(armorer));
+
+            engine.ExecuteCommand(new PlayUnitCommand(1, armorer.InstanceId, 1));
+
+            var knightOnBoard = engine.CurrentState.Board.Lines[0].Player1Unit;
+            Assert.Equal(2, knightOnBoard.CurrentStats.Attack);
+            Assert.Contains(Keyword.Armored, knightOnBoard.CurrentStats.Keywords);
+        }
+
+        [Fact]
+        public void SoulGuard_ShouldPreventDeathOnce_AndSetDepleted()
+        {
+            string json = @"[
+                { ""Id"": 1, ""Name"": ""Guardian"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 3, ""Keywords"": [""SoulGuard""] },
+                { ""Id"": 2, ""Name"": ""Killer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""AllFriendlyUnits"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Amount"": 10 } ] } ] }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var guardian = engine.Factory.CreateCard(1, 1);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, guardian));
+
+            var killer = engine.Factory.CreateCard(2, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .WithCardAddedToHand(killer));
+
+            engine.ExecuteCommand(new PlayUnitCommand(1, killer.InstanceId, 1));
+            var guardianSurvivor = engine.CurrentState.Board.Lines[0].Player1Unit;
+            Assert.NotNull(guardianSurvivor);
+            Assert.Equal(1, guardianSurvivor.CurrentStats.Health);
+            Assert.Contains(Keyword.SoulGuardDepleted, guardianSurvivor.CurrentStats.Keywords);
+
+            var killer2 = engine.Factory.CreateCard(2, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(killer2));
+            engine.ExecuteCommand(new PlayUnitCommand(1, killer2.InstanceId, 2));
+
+            Assert.Null(engine.CurrentState.Board.Lines[0].Player1Unit);
+        }
+
+        [Fact]
+        public void Unkillable_ShouldReturnToHand_ResetStats()
+        {
+            string json = @"[
+                { ""Id"": 1, ""Name"": ""Phoenix"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1, ""Keywords"": [""Unkillable""] },
+                { ""Id"": 2, ""Name"": ""Killer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""AllFriendlyUnits"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Amount"": 10 } ] } ] }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var phoenix = engine.Factory.CreateCard(1, 1);
+            var buffedPhoenix = phoenix.AddPermanentBuff(new CardStats(5, 5, 0));
+
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, buffedPhoenix));
+
+            var killer = engine.Factory.CreateCard(2, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .WithCardAddedToHand(killer));
+
+            engine.ExecuteCommand(new PlayUnitCommand(1, killer.InstanceId, 1));
+
+            Assert.Null(engine.CurrentState.Board.Lines[0].Player1Unit);
+            var phoenixInHand = engine.CurrentState.PlayerA.Hand.Last();
+            Assert.Equal("Phoenix", phoenixInHand.Definition.Name);
+            Assert.Equal(1, phoenixInHand.CurrentStats.Attack);
+            Assert.Equal(1, phoenixInHand.CurrentStats.Health);
+        }
+    }
+}
+
+
+========================================
+FILE: ModalneTargetowanie.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\ModalneTargetowanie.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using Xunit;
+
+namespace CardGame.Tests
+{
+    public class TargetingAndChoiceTests
+    {
+        [Fact]
+        public void Expectancy_Logic_Choice_Test()
+        {
+            string json = @"[
+                { ""Id"": 15, ""Name"": ""Expectancy"", ""Type"": ""Spell"", ""Cost"": 2,
+                  ""Effects"": [ { 
+                      ""Trigger"": ""OnPlayed"", ""Targeting"": ""Choice"", ""ChoiceLabels"": [""Deck"", ""Discard""],
+                      ""Actions"": [ { ""Type"": ""DrawCard"", ""Amount"": 2 }, { ""Type"": ""DrawFromDiscard"", ""Amount"": 2 } ]
+                  } ] 
+                },
+                { ""Id"": 1, ""Name"": ""Token"", ""Type"": ""Unit"", ""Cost"": 0 }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var card1 = engine.Factory.CreateCard(1, 1);
+            var card2 = engine.Factory.CreateCard(1, 1);
+
+            // Setup: 2 karty na cmentarzu
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.With(discardPile: new[] { card1, card2 }));
+            var expectancy = engine.Factory.CreateCard(15, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(expectancy));
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.ActionOnly);
+
+            // Zagrywamy czar
+            engine.ExecuteCommand(new PlaySpellCommand(1, expectancy.InstanceId));
+
+            // ZMIANA: Sprawdzamy, czy stos nie jest pusty (czar jest w Limbo/SpellStack)
+            Assert.NotEmpty(engine.CurrentState.SpellStack);
+            // Sprawdzamy, czy konkretnie nasz czar tam jest
+            Assert.Contains(engine.CurrentState.SpellStack, s => s.InstanceId == expectancy.InstanceId);
+
+            // Upewniamy się, że nie ma go jeszcze na cmentarzu
+            Assert.DoesNotContain(engine.CurrentState.PlayerA.DiscardPile, c => c.InstanceId == expectancy.InstanceId);
+
+            // Wybieramy opcję 1 (Draw from Discard)
+            engine.ExecuteCommand(new SelectTargetCommand(1, 1));
+
+            // ZMIANA: Po zakończeniu akcji stos powinien być pusty
+            Assert.Empty(engine.CurrentState.SpellStack);
+
+            // Czar trafia na cmentarz
+            Assert.Contains(engine.CurrentState.PlayerA.DiscardPile, c => c.InstanceId == expectancy.InstanceId);
+            // Karty zostały dobrane z discardu
+            Assert.Equal(2, engine.CurrentState.PlayerA.Hand.Count(c => c.Definition.Name == "Token"));
+        }
+
+        [Fact]
+        public void Advanced_Modal_Targeting_Test()
+        {
+            string json = @"[
+                { ""Id"": 99, ""Name"": ""Modal Kill"", ""Type"": ""Spell"", ""Cost"": 0,
+                  ""Effects"": [ { 
+                      ""Trigger"": ""OnPlayed"", ""Targeting"": ""Choice"", ""ChoiceLabels"": [""Kill"", ""Draw""],
+                      ""Actions"": [ { ""Type"": ""DealDamage"", ""Target"": ""TargetEnemyUnit"", ""Amount"": 5 }, { ""Type"": ""DrawCard"", ""Amount"": 1 } ]
+                  } ] 
+                },
+                { ""Id"": 2, ""Name"": ""Victim"", ""Type"": ""Unit"", ""Health"": 5 }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var victim = engine.Factory.CreateCard(2, 2);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 2, victim));
+            var spell = engine.Factory.CreateCard(99, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(spell));
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.ActionOnly);
+
+            engine.ExecuteCommand(new PlaySpellCommand(1, spell.InstanceId));
+            engine.ExecuteCommand(new SelectTargetCommand(1, 0)); // Wybór "Kill"
+            engine.ExecuteCommand(new SelectTargetCommand(1, victim.InstanceId));
+
+            // Jednostka zginęła
+            Assert.Null(engine.CurrentState.Board.Lines[0].Player2Unit);
+            // Czar na cmentarzu (zdjęty ze stosu)
+            Assert.Contains(engine.CurrentState.PlayerA.DiscardPile, c => c.InstanceId == spell.InstanceId);
+            // Stos pusty
+            Assert.Empty(engine.CurrentState.SpellStack);
+        }
+    }
+}
+
+
+========================================
+FILE: TestHelpers.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\TestHelpers.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using System.Collections.Generic;
+using System.IO;
+
+namespace CardGame.Tests
+{
+    public static class TestHelpers
+    {
+        public static GameEngine CreateEngineWithCards(string jsonContent, int seed = 1)
+        {
+            string tempFile = Path.GetTempFileName();
+            File.WriteAllText(tempFile, jsonContent);
+
+            try
+            {
+                CardLibrary.Instance.Clear();
+                CardLibrary.Instance.LoadFromJson(tempFile);
+            }
+            finally { }
+
+            var rng = new DeterministicRng(seed);
+            var factory = new CardFactory(CardLibrary.Instance, rng);
+
+            // Ustawienie początkowe zasobów (Krew)
+            var pA = PlayerState.Initial(1, new List<CardInstance>())
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .With(health: 30);
+
+            var pB = PlayerState.Initial(2, new List<CardInstance>())
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .With(health: 30);
+
+            var board = BoardState.Empty();
+            var state = new GameState(1, GamePhase.UnitOnly, 1, board, pA, pB);
+
+            return new GameEngine(state, seed);
+        }
+
+        public static CardInstance CreateCard(GameEngine engine, int id, int ownerId)
+        {
+            return engine.Factory.CreateCard(id, ownerId);
+        }
+    }
+}
+
+
+========================================
+FILE: TimeOutTest.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\TimeOutTest.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using Xunit;
+
+namespace CardGame.Tests
+{
+    public class TimeoutTests
+    {
+        [Fact]
+        public void Expectancy_ShouldAutoResolve_WhenUpdateTimerReachesLimit()
+        {
+            string json = @"[
+                { ""Id"": 15, ""Name"": ""Expectancy"", ""Type"": ""Spell"", ""Cost"": 2,
+                  ""Effects"": [ { 
+                      ""Trigger"": ""OnPlayed"", 
+                      ""Targeting"": ""Choice"",
+                      ""ChoiceLabels"": [""Deck"", ""Discard""],
+                      ""Actions"": [
+                          { ""Type"": ""DrawCard"", ""Amount"": 2 },
+                          { ""Type"": ""DrawFromDiscard"", ""Amount"": 2 }
+                      ]
+                  } ] 
+                },
+                { ""Id"": 1, ""Name"": ""Token"", ""Type"": ""Unit"", ""Cost"": 0 }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var factory = engine.Factory;
+
+            var p1 = engine.CurrentState.PlayerA.With(
+                drawPile: new[] { factory.CreateCard(1, 1), factory.CreateCard(1, 1) }
+            ).WithResourceChanged(ResourceType.Blood, 10, 10);
+
+            var expectancy = factory.CreateCard(15, 1);
+            p1 = p1.WithCardAddedToHand(expectancy);
+
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(p1);
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.ActionOnly);
+
+            engine.ExecuteCommand(new PlaySpellCommand(1, expectancy.InstanceId));
+            Assert.NotNull(engine.CurrentState.PendingInteraction);
+
+            engine.Update(5.1f);
+
+            Assert.Null(engine.CurrentState.PendingInteraction);
+            Assert.Equal(2, engine.CurrentState.PlayerA.Hand.Count);
+        }
+
+        [Fact]
+        public void UnitTargeting_ShouldAutoResolve_OnTimeout()
+        {
+            string json = @"[
+                { ""Id"": 4, ""Name"": ""Informer"", ""Type"": ""Unit"", ""Cost"": 1,
+                  ""Effects"": [ { 
+                      ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetEnemyUnit"",
+                      ""Actions"": [ { ""Type"": ""ApplyStatus"", ""StatusKeyword"": ""Marked"" } ]
+                  } ] 
+                },
+                { ""Id"": 2, ""Name"": ""Target"", ""Type"": ""Unit"", ""Health"": 5 }
+            ]";
+
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var victim = engine.Factory.CreateCard(2, 2);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(
+                engine.CurrentState.Board.WithUnitPlacedAt(0, 2, victim));
+
+            var informer = engine.Factory.CreateCard(4, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(
+                engine.CurrentState.PlayerA
+                    .WithCardAddedToHand(informer)
+                    .WithResourceChanged(ResourceType.Blood, 10, 10));
+
+            engine.ExecuteCommand(new PlayUnitCommand(1, informer.InstanceId, 3));
+            engine.Update(5.0f);
+
+            Assert.Null(engine.CurrentState.PendingInteraction);
+            var updatedVictim = engine.CurrentState.Board.Lines[0].Player2Unit;
+            Assert.Contains(Keyword.Marked, updatedVictim!.CurrentStats.Keywords);
+        }
+    }
+}
+
+
+========================================
+FILE: xunit.runner.json
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\xunit.runner.json
+========================================
+{
+  "parallelizeAssembly": false,
+  "parallelizeTestCollections": false
+}

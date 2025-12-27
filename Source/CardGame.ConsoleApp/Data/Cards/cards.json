@@ -12,15 +12,12 @@
       {
         "Trigger": "OnDeath",
         "Actions": [
-          {
-            "Type": "Heal",
-            "Target": "FriendlyHero",
-            "Amount": 3
-          }
+          { "Type": "Heal", "Target": "FriendlyHero", "Amount": 3 }
         ]
       }
     ]
   },
+
   {
     "Id": 2,
     "Name": "BoomBots",
@@ -34,15 +31,12 @@
       {
         "Trigger": "OnDeath",
         "Actions": [
-          {
-            "Type": "DealDamage",
-            "Target": "EnemyHero",
-            "Amount": 2
-          }
+          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
         ]
       }
     ]
   },
+
   {
     "Id": 3,
     "Name": "Bone Sommelier",
@@ -56,15 +50,12 @@
       {
         "Trigger": "OnDeath",
         "Actions": [
-          {
-            "Type": "AddCardToHand",
-            "Target": "Self",
-            "ValueParam": 900
-          }
+          { "Type": "AddCardToHand", "Target": "Self", "ValueParam": 900 }
         ]
       }
     ]
   },
+
   {
     "Id": 4,
     "Name": "Informer",
@@ -78,15 +69,12 @@
       {
         "Trigger": "OnPlayed",
         "Actions": [
-          {
-            "Type": "ApplyStatus",
-            "Target": "TargetEnemyUnit",
-            "StringParam": "Marked"
-          }
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StringParam": "Marked" }
         ]
       }
     ]
   },
+
   {
     "Id": 5,
     "Name": "Queen of Cards",
@@ -100,14 +88,12 @@
       {
         "Trigger": "OnFriendlyUnitDied",
         "Actions": [
-          {
-            "Type": "DrawCard",
-            "Target": "FriendlyHero"
-          }
+          { "Type": "DrawCard", "Target": "FriendlyHero" }
         ]
       }
     ]
   },
+
   {
     "Id": 6,
     "Name": "Radio Demon",
@@ -121,16 +107,12 @@
       {
         "Trigger": "OnPlayed",
         "Actions": [
-          {
-            "Type": "ModifyGlobalBuff",
-            "Target": "FriendlyHero",
-            "BuffAtk": 1,
-            "BuffHp": 1
-          }
+          { "Type": "ModifyGlobalBuff", "Target": "FriendlyHero", "BuffAtk": 1, "BuffHp": 1 }
         ]
       }
     ]
   },
+
   {
     "Id": 7,
     "Name": "Glock-17",
@@ -141,15 +123,12 @@
       {
         "Trigger": "OnPlayed",
         "Actions": [
-          {
-            "Type": "DealDamage",
-            "Target": "TargetEnemyUnit",
-            "Amount": 3
-          }
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 3 }
         ]
       }
     ]
   },
+
   {
     "Id": 8,
     "Name": "Crusader",
@@ -160,6 +139,7 @@
     "Keywords": [ "Armored" ], 
     "Description": "Armored."
   },
+
   {
     "Id": 9,
     "Name": "Corpse Eater",
@@ -174,14 +154,12 @@
         "Trigger": "OnFriendlyUnitDied",
         "Zone": "Hand",
         "Actions": [
-          {
-            "Type": "SummonUnit",
-            "Target": "Self"
-          }
+          { "Type": "SummonUnit", "Target": "Self" }
         ]
       }
     ]
   },
+
   {
     "Id": 10,
     "Name": "Polar Bear",
@@ -196,17 +174,13 @@
         "Trigger": "OnPlayed",
         "Targeting": "TargetFriendlyUnit",
         "Actions": [
-          {
-              "Type": "AbsorbStats", "Target": "SelectedTarget"
-          },
-          {
-            "Type": "SacrificeUnit",
-            "Target": "SelectedTarget"
-          }
+          { "Type": "AbsorbStats", "Target": "SelectedTarget" },
+          { "Type": "SacrificeUnit", "Target": "SelectedTarget" }
         ]
       }
     ]
   },
+
   {
     "Id": 11,
     "Name": "The Creature",
@@ -219,42 +193,15 @@
     "Description": "While In Hand: Each Time You Sacrifice a Card - this Card costs one less.",
     "Effects": [
       {
-        "Trigger": "OnSacrificed",
+        "Trigger": "OnOtherUnitSacrificed",
         "Zone": "Hand",
         "Actions": [
-          {
-            "Type": "BuffStats",
-            "Target": "Self",
-            "Amount": -1
-          }
+          { "Type": "BuffStats", "Target": "Self", "Amount": -1 }
         ]
       }
     ]
   },
-  {
-    "Id": 900,
-    "Name": "The Alluring Goblet",
-    "Type": "Spell",
-    "Cost": 1,
-    "Description": "Make unit Unkillable, then destroy it.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Targeting": "TargetFriendlyUnit",
-        "Actions": [
-          {
-            "Type": "ApplyStatus",
-            "Target": "TargetFriendlyUnit",
-            "StringParam": "Unkillable"
-          },
-          {
-            "Type": "DestroyUnit",
-            "Target": "TargetFriendlyUnit"
-          }
-        ]
-      }
-    ]
-  },
+
   {
     "Id": 12,
     "Name": "Black Cat",
@@ -272,6 +219,7 @@
       }
     ]
   },
+
   {
     "Id": 13,
     "Name": "Critical Thinking",
@@ -288,6 +236,7 @@
       }
     ]
   },
+
   {
     "Id": 14,
     "Name": "Survivalist",
@@ -301,11 +250,74 @@
         "Trigger": "Passive",
         "Zone": "Board",
         "Actions": [ 
-            { 
-                "Type": "ApplyStatus", 
-                "Target": "OtherFriendlyUnits", 
-                "StringParam": "SoulGuard" 
-            } 
+          { "Type": "ApplyStatus", "Target": "OtherFriendlyUnits", "StringParam": "SoulGuard" } 
+        ]
+      }
+    ]
+  },
+
+  {
+  "Id": 15,
+  "Name": "Expectancy",
+  "Type": "Spell", "Cost": 2,
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "Choice",
+      "ChoiceLabels": ["Draw 2 from Deck", "Draw 2 from Discard"],
+      "Actions": [
+        { "Type": "DrawCard", "Amount": 2 },
+        { "Type": "DrawFromDiscard", "Amount": 2 }
+      ]
+    }
+  ]
+  },
+
+  {
+    "Id": 16,
+    "Name": "HellFire",
+    "Type": "Spell",
+    "Cost": 4,
+    "Description": "Deal 3 Damage and Apply Burning to All Units on Board",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "AllUnitsOnBoard", "Amount": 3 },
+          { "Type": "ApplyStatus", "Target": "AllUnitsOnBoard", "StringParam": "Burning" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 17,
+    "Name": "Megumin",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary" ],
+    "Cost": 4,
+    "Attack": 3,
+    "Health": 1,
+    "Keywords": [ "SplashDamage", "BurnSource" ],
+    "KeywordParams": {
+      "SplashDamage": 3
+    },
+    "Description": "Splash Damage 3. Burn 1."
+  },
+
+  {
+    "Id": 900,
+    "Name": "The Alluring Goblet",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Make unit Unkillable, then destroy it.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "TargetFriendlyUnit",
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "SelectedTarget", "StringParam": "Unkillable" },
+          { "Type": "DestroyUnit", "Target": "SelectedTarget" }
         ]
       }
     ]

@@ -7,13 +7,16 @@ namespace CardGame.Core.Events
     {
         public CardInstance Unit { get; }
         public int OwnerId { get; }
+        public int SourcePlayerId => OwnerId;
         public int LineIndex { get; }
+        public bool IsSacrifice { get; }
 
-        public UnitDiedEvent(CardInstance unit, int lineIndex = -1)
+        public UnitDiedEvent(CardInstance unit, int lineIndex = -1, bool isSacrifice = false)
         {
             Unit = unit;
             OwnerId = unit.OwnerPlayerId;
             LineIndex = lineIndex;
+            IsSacrifice = isSacrifice;
         }
     }
 }

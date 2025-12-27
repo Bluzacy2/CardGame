@@ -2,6 +2,7 @@
 using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.State.Models;
+using System;
 
 namespace CardGame.Core.GameRules.Death.Prevention
 {
@@ -10,30 +11,24 @@ namespace CardGame.Core.GameRules.Death.Prevention
         public bool CanPreventDeath(CardInstance unit, GameState state)
         {
             var keywords = unit.CurrentStats.Keywords;
-
-            
-            bool hasShield = keywords.Contains(Keyword.SoulGuard);
-            bool isDepleted = keywords.Contains(Keyword.SoulGuardDepleted);
-
-            return hasShield && !isDepleted;
+            return keywords.Contains(Keyword.SoulGuard) && !keywords.Contains(Keyword.SoulGuardDepleted);
         }
 
         public GameState PreventDeath(CardInstance unit, GameState currentState)
         {
-
             int maxHp = unit.MaxHealth;
-            int neededDamageTaken = maxHp - 1;
+            // Aby HP wynosiło 1, DamageTaken musi wynosić MaxHP - 1
+            int damageToSet = Math.Max(0, maxHp - 1);
 
-            if (neededDamageTaken < 0) neededDamageTaken = 0;
-           
             var depletedMarker = new CardStats(0, 0, 0, new List<Keyword> { Keyword.SoulGuardDepleted });
 
+            // Używamy WithDamage (nadpisanie), a nie TakeDamage (dodanie), 
+            // bo inaczej przy -7 HP mielibyśmy nadal ujemną wartość.
             var survivedUnit = unit
-                .WithDamage(neededDamageTaken)     
-                .AddPermanentBuff(depletedMarker);  
+                .WithDamage(damageToSet)
+                .AddPermanentBuff(depletedMarker);
 
-            System.Console.WriteLine($"[SOUL GUARD] {unit.Definition.Name} uniknął śmierci! (HP ustawione na 1, Tarcza zużyta)");
-
+            Console.WriteLine($"[SOULGUARD] {unit.Definition.Name} (ID:{unit.InstanceId}) ratuje się przed śmiercią (HP: 1).");
             return currentState.UpdateBoard(currentState.Board.UpdateUnit(survivedUnit));
         }
     }

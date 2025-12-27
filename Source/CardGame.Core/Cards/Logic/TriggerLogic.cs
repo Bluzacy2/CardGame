@@ -2,6 +2,7 @@
 using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
+using System.Linq;
 
 namespace CardGame.Core.Cards.Logic
 {
@@ -18,37 +19,51 @@ namespace CardGame.Core.Cards.Logic
                     return gameEvent is UnitDiedEvent ude && ude.Unit.InstanceId == sourceCardId;
 
                 case TriggerType.OnSacrificed:
-                    // Przypadek A: To ta karta została poświęcona (np. Black Cat)
-                    if (gameEvent is UnitSacrificedEvent use && use.Unit.InstanceId == sourceCardId)
-                        return true;
+              
+                    return gameEvent is UnitSacrificedEvent use && use.Unit.InstanceId == sourceCardId;
 
-                    // Przypadek B: Karta jest w ręce/stole i patrzy jak inna jest poświęcana (np. The Moder)
-                    if (gameEvent is UnitSacrificedEvent useOther)
+                case TriggerType.OnOtherUnitSacrificed:
+                 
+                    if (gameEvent is UnitSacrificedEvent useOther && useOther.Unit.InstanceId != sourceCardId)
                     {
-                        int myOwnerId = EffectTargetResolver.DetermineSourceOwner(state, gameEvent, sourceCardId);
-                        // Reagujemy tylko na poświęcenia WŁASNYCH jednostek
-                        if (useOther.OwnerId == myOwnerId) return true;
+                        int myOwnerId = GetOwnerOfInstance(state, sourceCardId);
+                        return useOther.OwnerId == myOwnerId;
                     }
                     return false;
 
                 case TriggerType.OnFriendlyUnitDied:
-                    if (gameEvent is UnitDiedEvent diedEvent)
-                    {
-                        int myOwnerId = EffectTargetResolver.DetermineSourceOwner(state, gameEvent, sourceCardId);
+            
+                    int ownerId = GetOwnerOfInstance(state, sourceCardId);
 
-                        // Czy zginęła jednostka mojego gracza, ale NIE ta sama, która ma ten efekt?
-                        if (diedEvent.Unit.OwnerPlayerId == myOwnerId && diedEvent.Unit.InstanceId != sourceCardId)
-                        {
-                            return true;
-                        }
-                    }
+                    if (gameEvent is UnitDiedEvent ude2 && ude2.Unit.InstanceId != sourceCardId)
+                        return ude2.OwnerId == ownerId;
+
+                    if (gameEvent is UnitSacrificedEvent use2 && use2.Unit.InstanceId != sourceCardId)
+                        return use2.OwnerId == ownerId;
+
                     return false;
-
-                // Tutaj w przyszłości dodasz: OnTurnStart, OnDamageTaken itp.
 
                 default:
                     return false;
             }
+        }
+
+     
+        private static int GetOwnerOfInstance(GameState state, int instanceId)
+        {
+       
+            var unitOnBoard = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == instanceId);
+            if (unitOnBoard != null) return unitOnBoard.OwnerPlayerId;
+
+       
+            if (state.PlayerA.Hand.Any(c => c.InstanceId == instanceId)) return 1;
+            if (state.PlayerB.Hand.Any(c => c.InstanceId == instanceId)) return 2;
+
+        
+            var spellOnStack = state.SpellStack.FirstOrDefault(s => s.InstanceId == instanceId);
+            if (spellOnStack != null) return spellOnStack.OwnerPlayerId;
+
+            return -1;
         }
     }
 }

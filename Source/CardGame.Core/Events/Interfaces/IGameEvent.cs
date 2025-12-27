@@ -8,5 +8,6 @@ namespace CardGame.Core.Events.Interfaces
 {
     public interface IGameEvent
     {
+        int SourcePlayerId { get; }
     }
 }

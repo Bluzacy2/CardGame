@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CardGame.Core.Cards.Data
+﻿namespace CardGame.Core.Cards.Data
 {
-    public enum CardType {  Unit, Spell }
-    public enum  Keyword 
-    { 
-        None, 
+    public enum CardType { Unit, Spell }
+
+    public enum ResourceType
+    {
+        Blood
+    }
+
+    public enum Keyword
+    {
+        None,
         Armored,
         Armor2,
         DoubleStrike,
-        SoulGuard, 
+        SoulGuard,
         Unkillable,
         Marked,
-        SoulGuardDepleted
+        SoulGuardDepleted,
+        Burning,
+        SplashDamage,
+        BurnSource
     }
 
     public enum TriggerType
@@ -28,9 +31,9 @@ namespace CardGame.Core.Cards.Data
         OnTurnEnd,
         WhileOnBoard,
         OnFriendlyUnitDied,
-
         OnSacrificed,
-        Passive
+        Passive,
+        OnOtherUnitSacrificed
     }
 
     public enum ActionType
@@ -40,7 +43,6 @@ namespace CardGame.Core.Cards.Data
         ConjureCard,
         DestroyUnit,
         DiscardCard,
-       
         Transform,
         SummonUnit,
         BuffStats,
@@ -48,13 +50,12 @@ namespace CardGame.Core.Cards.Data
         ApplyStatus,
         ModifyGlobalBuff,
         DrawCard,
-
         SacrificeUnit,
         AbsorbStats,
-
         ShuffleDeck,
         ReturnToHand,
-        TutorCard
+        TutorCard,
+        DrawFromDiscard
     }
 
     public enum TargetType
@@ -63,14 +64,14 @@ namespace CardGame.Core.Cards.Data
         TargetEnemyUnit,
         TargetFriendlyUnit,
         AllEnemyUnits,
-        ALlFriendlyUnits,
+        AllFriendlyUnits, // Poprawiona literówka
         EnemyHero,
         FriendlyHero,
-
         SelectedTarget,
-
-        AllFriendlyUnits,
         OtherFriendlyUnits,
+        AdjacentEnemyUnits,
+        AllUnitsOnBoard,
+        Choice
     }
 
     public enum ConditionType
@@ -85,12 +86,9 @@ namespace CardGame.Core.Cards.Data
 
     public enum EffectZone
     {
-        Board,     
-        Hand,      
-        Graveyard,  
-        Any        
+        Board,
+        Hand,
+        Graveyard,
+        Any
     }
-
-
-
 }

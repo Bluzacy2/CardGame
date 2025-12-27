@@ -13,9 +13,8 @@ namespace CardGame.Core.Cards.Components.Implementations
     {
         private readonly EffectData _effectData;
         private readonly int _ownerCardInstanceId;
-        private readonly int _effectIndex; // Musimy wiedzieć, który to efekt na liście
+        private readonly int _effectIndex;
 
-        // Zaktualizowany konstruktor
         public JsonEffectComponent(EffectData effectData, int ownerCardInstanceId, int effectIndex = 0)
         {
             _effectData = effectData;
@@ -23,79 +22,70 @@ namespace CardGame.Core.Cards.Components.Implementations
             _effectIndex = effectIndex;
         }
 
-        public bool ShouldTrigger(IGameEvent gameEvent, GameState state)
-        {
-            return TriggerLogic.Check(_effectData.Trigger, gameEvent, state, _ownerCardInstanceId);
-        }
+        public bool ShouldTrigger(IGameEvent e, GameState s) => TriggerLogic.Check(_effectData.Trigger, e, s, _ownerCardInstanceId);
 
         public GameState Resolve(IGameEvent gameEvent, GameState currentState, GameContext context)
         {
+            bool isChoiceResponse = (gameEvent is TargetSelectedEvent tse && currentState.PendingInteraction?.RequiredTargetType == TargetType.Choice);
+
+            if (_effectData.Targeting == TargetType.Choice && !isChoiceResponse)
+            {
+                return currentState.With(pendingInteraction: new PendingInteraction(
+                    _ownerCardInstanceId, _effectIndex, -1, TargetType.Choice, _effectData.ChoiceLabels));
+            }
+
             return ResolveFromIndex(gameEvent, currentState, context, 0);
         }
 
         public GameState ResolveFromIndex(IGameEvent gameEvent, GameState currentState, GameContext context, int startActionIndex)
         {
-            var workingState = currentState;
+            var workingState = currentState.With(clearPending: true);
+
+            if (_effectData.Targeting == TargetType.Choice && gameEvent is TargetSelectedEvent tse && currentState.PendingInteraction?.ActionIndex == -1)
+            {
+                int choiceIdx = tse.SelectedTargetId;
+                if (choiceIdx >= 0 && choiceIdx < _effectData.Actions.Count)
+                {
+                    // Po dokonaniu wyboru, sprawdzamy tę JEDNĄ konkretną akcję
+                    return ExecuteSingleAction(workingState, context, _effectData.Actions[choiceIdx], gameEvent, choiceIdx, true);
+                }
+                return workingState;
+            }
 
             for (int i = startActionIndex; i < _effectData.Actions.Count; i++)
             {
-                var action = _effectData.Actions[i];
-
-                // 1. Sprawdź czy to akcja wymagająca interakcji
-                if (IsPlayerSelectionRequired(action.Target))
-                {
-                    bool targetProvided = false;
-
-                    // A. Mamy cel w CardPlayedEvent (tylko dla pierwszej akcji - index 0)
-                    if (startActionIndex == 0 && i == 0 && gameEvent is CardPlayedEvent cpe && cpe.SelectedTargetId.HasValue)
-                        targetProvided = true;
-
-                    // B. Mamy cel w TargetSelectedEvent (dla wznawiania)
-                    if (gameEvent is TargetSelectedEvent)
-                        targetProvided = true;
-
-                    // Jeśli nie mamy celu -> PRZERYWAMY
-                    if (!targetProvided)
-                    {
-                        Console.WriteLine($"[INTERAKCJA] Zatrzymano na efekcie {_effectIndex}, akcji {i}. Czekam na cel.");
-                        return workingState.With(
-                            pendingInteraction: new PendingInteraction(_ownerCardInstanceId, _effectIndex, i, action.Target)
-                        );
-                    }
-                }
-
-                // 2. Standardowe rozwiązywanie
-                var targets = EffectTargetResolver.Resolve(action.Target, workingState, gameEvent, _ownerCardInstanceId);
-
-                // Walidacja dostępności celów
-                if (targets.TargetPlayer == null && targets.TargetUnit == null
-                    && action.Type != ActionType.SummonUnit
-                    && action.Type != ActionType.AddCardToHand)
-                {
-                    continue;
-                }
-
-                // 3. Wykonanie
-                try
-                {
-                    var handler = context.ActionRegistry.GetHandler(action.Type);
-                    workingState = handler.Execute(workingState, context, action, targets, _ownerCardInstanceId, gameEvent);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"[CRITICAL ERROR] {ex.Message}");
-                }
+                workingState = ExecuteSingleAction(workingState, context, _effectData.Actions[i], gameEvent, i, false);
+                if (workingState.PendingInteraction != null) return workingState;
             }
-
-            // Sukces - czyścimy flagę oczekiwania
-            return workingState.With(clearPending: true);
+            return workingState;
         }
 
-        private bool IsPlayerSelectionRequired(TargetType targetType)
+        private GameState ExecuteSingleAction(GameState state, GameContext context, ActionData action, IGameEvent gameEvent, int idx, bool wasChoice)
         {
-            return targetType == TargetType.SelectedTarget
-                || targetType == TargetType.TargetEnemyUnit
-                || targetType == TargetType.TargetFriendlyUnit;
+            var targetType = action.Target == TargetType.Self ? _effectData.Targeting : action.Target;
+
+            bool isTargeted = (targetType == TargetType.SelectedTarget ||
+                               targetType == TargetType.TargetEnemyUnit ||
+                               targetType == TargetType.TargetFriendlyUnit);
+
+            bool hasValidSelection = false;
+
+            // Jeśli akcja jest częścią wyboru Choice, to pierwotny TargetSelectedEvent 
+            // służył do wybrania opcji, a NIE celu akcji. Musimy wymusić nową interakcję.
+            if (!wasChoice)
+            {
+                hasValidSelection = (idx == 0 && gameEvent is CardPlayedEvent cpe && cpe.SelectedTargetId.HasValue) ||
+                                   (gameEvent is TargetSelectedEvent ts && state.PendingInteraction == null);
+            }
+
+            if (isTargeted && !hasValidSelection)
+            {
+                return state.With(pendingInteraction: new PendingInteraction(_ownerCardInstanceId, _effectIndex, idx, targetType));
+            }
+
+            var targets = EffectTargetResolver.Resolve(targetType, state, gameEvent, _ownerCardInstanceId);
+            var handler = context.ActionRegistry.GetHandler(action.Type);
+            return handler.Execute(state, context, action, targets, _ownerCardInstanceId, gameEvent);
         }
     }
 }

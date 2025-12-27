@@ -13,31 +13,24 @@ namespace CardGame.Core.AI.Logic
         {
             var moves = new List<IGameCommand>();
             var player = state.GetPlayer(playerId);
+
             if (state.CurrentPhase == GamePhase.Mulligan)
             {
-                // Bot zatwierdza karty (pusta lista odrzuceń)
                 moves.Add(new ConfirmMulliganCommand(playerId, new List<int>()));
                 return moves;
             }
-            // 1. Obsługa wyboru celu (gdy gra czeka na interakcję)
+
             if (state.PendingInteraction != null)
             {
-                // Sprawdzamy wszystkie jednostki na stole jako potencjalne cele
                 var allUnits = state.Board.GetAllUnits();
                 foreach (var unit in allUnits)
                 {
-                    // Tutaj można dodać wstępną walidację (np. czy cel pasuje do RequiredTargetType)
-                    // Na razie generujemy wszystko, silnik odrzuci nielegalne
                     moves.Add(new SelectTargetCommand(playerId, unit.InstanceId));
                 }
-
-                // Dodajemy też graczy jako cele (jeśli efekt na to pozwala)
-                // moves.Add(new SelectTargetCommand(playerId, ... ID bohatera ...)); 
-
                 return moves;
             }
 
-            // 2. Zagrywanie Jednostek (Faza UnitOnly lub UnitAndAction)
+            // Zagrywanie Jednostek - używamy BloodCost
             if (state.CurrentPhase == GamePhase.UnitOnly || state.CurrentPhase == GamePhase.UnitAndAction)
             {
                 foreach (var card in player.Hand)
@@ -55,7 +48,7 @@ namespace CardGame.Core.AI.Logic
                 }
             }
 
-            // 3. Zagrywanie Czarów (Faza ActionOnly lub UnitAndAction)
+            // Zagrywanie Czarów - używamy BloodCost
             if (state.CurrentPhase == GamePhase.ActionOnly || state.CurrentPhase == GamePhase.UnitAndAction)
             {
                 foreach (var card in player.Hand)
@@ -67,11 +60,11 @@ namespace CardGame.Core.AI.Logic
                 }
             }
 
-            // 4. Zakończenie fazy (Zawsze możliwe)
-            if (!moves.Any(m => m is EndPhaseCommand))
+            if (moves.Count == 0 || !moves.Exists(m => m is EndPhaseCommand))
             {
                 moves.Add(new EndPhaseCommand(playerId));
             }
+
             return moves;
         }
     }

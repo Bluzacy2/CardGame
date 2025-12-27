@@ -6,6 +6,7 @@ namespace CardGame.Core.Events
     public class CardPlayedEvent : IGameEvent
     {
         public int PlayerId { get; }
+        public int SourcePlayerId => PlayerId;
         public CardInstance Card { get; }
         public int? LineIndex { get; }
         public int? SelectedTargetId { get; }

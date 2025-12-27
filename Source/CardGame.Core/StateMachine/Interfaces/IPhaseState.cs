@@ -8,6 +8,7 @@ using CardGame.Core.Events;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
+using CardGame.Core.Application;
 
 namespace CardGame.Core.StateMachine.Interfaces
 {
@@ -18,7 +19,7 @@ namespace CardGame.Core.StateMachine.Interfaces
         GamePhase PhaseType { get; }
         bool IsCommandAllowed(IGameCommand command, GameState state);
 
-        GameState ProcessEndPhase(GameState currentState, EventBus eventBus);
+        GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context);
 
         bool ShouldEndPhaseAutomatically(GameState state);
     }
