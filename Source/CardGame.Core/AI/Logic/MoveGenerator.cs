@@ -1,0 +1,78 @@
+﻿using System.Collections.Generic;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.AI.Logic
+{
+    internal class MoveGenerator
+    {
+        public List<IGameCommand> GenerateLegalMoves(GameState state, int playerId)
+        {
+            var moves = new List<IGameCommand>();
+            var player = state.GetPlayer(playerId);
+            if (state.CurrentPhase == GamePhase.Mulligan)
+            {
+                // Bot zatwierdza karty (pusta lista odrzuceń)
+                moves.Add(new ConfirmMulliganCommand(playerId, new List<int>()));
+                return moves;
+            }
+            // 1. Obsługa wyboru celu (gdy gra czeka na interakcję)
+            if (state.PendingInteraction != null)
+            {
+                // Sprawdzamy wszystkie jednostki na stole jako potencjalne cele
+                var allUnits = state.Board.GetAllUnits();
+                foreach (var unit in allUnits)
+                {
+                    // Tutaj można dodać wstępną walidację (np. czy cel pasuje do RequiredTargetType)
+                    // Na razie generujemy wszystko, silnik odrzuci nielegalne
+                    moves.Add(new SelectTargetCommand(playerId, unit.InstanceId));
+                }
+
+                // Dodajemy też graczy jako cele (jeśli efekt na to pozwala)
+                // moves.Add(new SelectTargetCommand(playerId, ... ID bohatera ...)); 
+
+                return moves;
+            }
+
+            // 2. Zagrywanie Jednostek (Faza UnitOnly lub UnitAndAction)
+            if (state.CurrentPhase == GamePhase.UnitOnly || state.CurrentPhase == GamePhase.UnitAndAction)
+            {
+                foreach (var card in player.Hand)
+                {
+                    if (card.Definition.Type == CardType.Unit && player.CanPlayCard(card.CurrentStats.BloodCost))
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            if (state.Board.Lines[i].IsSlotEmpty(playerId))
+                            {
+                                moves.Add(new PlayUnitCommand(playerId, card.InstanceId, i));
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 3. Zagrywanie Czarów (Faza ActionOnly lub UnitAndAction)
+            if (state.CurrentPhase == GamePhase.ActionOnly || state.CurrentPhase == GamePhase.UnitAndAction)
+            {
+                foreach (var card in player.Hand)
+                {
+                    if (card.Definition.Type == CardType.Spell && player.CanPlayCard(card.CurrentStats.BloodCost))
+                    {
+                        moves.Add(new PlaySpellCommand(playerId, card.InstanceId));
+                    }
+                }
+            }
+
+            // 4. Zakończenie fazy (Zawsze możliwe)
+            if (!moves.Any(m => m is EndPhaseCommand))
+            {
+                moves.Add(new EndPhaseCommand(playerId));
+            }
+            return moves;
+        }
+    }
+}
