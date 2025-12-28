@@ -1,33 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.State.Models;
 using CardGame.Core.Events;
-using CardGame.Core.GameRules.Death.Prevention;
-using System.Linq;
-using System;
+using CardGame.Core.Application;
 
 namespace CardGame.Core.GameRules.Death
 {
     public class DeathResolver
     {
-        private readonly List<IDeathPrevention> _preventions;
-
-        public DeathResolver()
-        {
-            _preventions = new List<IDeathPrevention> { new SoulGuardPrevention(), new UnkillablePrevention() };
-        }
-
-        public GameState ResolveDeaths(GameState state, EventBus eventBus)
+        public GameState ResolveDeaths(GameState state, EventBus eventBus, GameContext context)
         {
             var workingState = state;
-            var history = eventBus.GetHistory().ToList();
-
             while (true)
             {
                 var allUnits = workingState.Board.GetAllUnits();
-                // Szukamy jednostki, która ma 0 lub mniej życia
                 var unitToKill = allUnits.FirstOrDefault(u => u.CurrentStats.Health <= 0);
-
                 if (unitToKill == null) break;
 
                 int lineIndex = -1;
@@ -35,55 +23,42 @@ namespace CardGame.Core.GameRules.Death
                 {
                     if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitToKill.InstanceId ||
                         workingState.Board.Lines[i].Player2Unit?.InstanceId == unitToKill.InstanceId)
-                    {
-                        lineIndex = i;
-                        break;
-                    }
+                    { lineIndex = i; break; }
                 }
 
-                bool isSacrifice = history.Any(e => e is UnitSacrificedEvent use && use.Unit.InstanceId == unitToKill.InstanceId);
+                var history = eventBus.GetHistory().ToList();
+                bool isSacrifice = history.Any(e => e is UnitSacrificedEvent sac && sac.Unit.InstanceId == unitToKill.InstanceId);
 
-                // Próbujemy obsłużyć śmierć (może zostać zapobiegnięta)
-                workingState = HandleDeath(unitToKill, lineIndex, workingState, eventBus, isSacrifice);
+                // Sprawdź keywordy chroniące przed śmiercią (tylko jeśli to nie poświęcenie)
+                if (!isSacrifice && context.Keywords.TryPreventDeath(ref workingState, unitToKill, context))
+                {
+                    // Jeśli TryPreventDeath zmieniło stan (np. SoulGuard), kontynuuj pętlę
+                    continue;
+                }
+
+                var lastDmg = history.OfType<UnitDamagedEvent>()
+                    .LastOrDefault(e => e.Unit?.InstanceId == unitToKill.InstanceId && e.Source != null);
+
+                workingState = KillInstantly(workingState, unitToKill, lineIndex, eventBus, lastDmg?.Source?.InstanceId);
             }
-
             return workingState;
         }
 
-        public GameState KillInstantly(GameState state, CardInstance unit, int lineIndex, EventBus events, bool isSacrifice)
+        public GameState KillInstantly(GameState state, CardInstance unit, int lineIndex, EventBus events, int? killerId)
         {
-            Console.WriteLine($"[DEATH] {unit.Definition.Name} (ID:{unit.InstanceId}) ginie.");
-            events.Publish(new UnitDiedEvent(unit, lineIndex, isSacrifice));
-
-            var newBoard = RemoveUnitFromBoard(state.Board, unit);
-            var owner = state.GetPlayer(unit.OwnerPlayerId);
-
-            return state.UpdateBoard(newBoard).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
-        }
-
-        private GameState HandleDeath(CardInstance unit, int lineIndex, GameState state, EventBus eventBus, bool isSacrifice)
-        {
-            if (!isSacrifice)
+            var board = state.Board;
+            for (int i = 0; i < 4; i++)
             {
-                foreach (var p in _preventions)
-                {
-                    if (p.CanPreventDeath(unit, state))
-                    {
-                        return p.PreventDeath(unit, state);
-                    }
-                }
+                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId) board = board.WithUnitPlacedAt(i, 1, null);
+                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId) board = board.WithUnitPlacedAt(i, 2, null);
             }
-            return KillInstantly(state, unit, lineIndex, eventBus, isSacrifice);
-        }
 
-        private BoardState RemoveUnitFromBoard(BoardState board, CardInstance unit)
-        {
-            var newLines = board.Lines.Select(l => {
-                var p1 = l.Player1Unit?.InstanceId == unit.InstanceId ? null : l.Player1Unit;
-                var p2 = l.Player2Unit?.InstanceId == unit.InstanceId ? null : l.Player2Unit;
-                return l.UpdateUnits(p1, p2);
-            }).ToList();
-            return new BoardState(newLines);
+            // Pobieramy najświeższego właściciela ze stanu przekazanego do metody
+            var owner = state.GetPlayer(unit.OwnerPlayerId);
+            var newState = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
+
+            events.Publish(new UnitDiedEvent(unit, lineIndex, killerId));
+            return newState;
         }
     }
 }

@@ -9,14 +9,14 @@ namespace CardGame.Core.Events
         public int OwnerId { get; }
         public int SourcePlayerId => OwnerId;
         public int LineIndex { get; }
-        public bool IsSacrifice { get; }
+        public int? KillerInstanceId { get; } // NOWE
 
-        public UnitDiedEvent(CardInstance unit, int lineIndex = -1, bool isSacrifice = false)
+        public UnitDiedEvent(CardInstance unit, int lineIndex = -1, int? killerId = null)
         {
             Unit = unit;
             OwnerId = unit.OwnerPlayerId;
             LineIndex = lineIndex;
-            IsSacrifice = isSacrifice;
+            KillerInstanceId = killerId;
         }
     }
 }

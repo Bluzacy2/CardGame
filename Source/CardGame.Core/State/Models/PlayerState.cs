@@ -1,6 +1,7 @@
 ﻿using CardGame.Core.Application;
 using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Models;
+using CardGame.Core.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +23,8 @@ namespace CardGame.Core.State.Models
             IEnumerable<CardInstance> hand, IEnumerable<CardInstance> drawPile,
             IEnumerable<CardInstance> discardPile, CardStats? globalUnitBuffs = null)
         {
-            PlayerId = playerId;
-            Health = health;
-            MaxBlood = maxBlood;
-            CurrentBlood = currentBlood;
-            Hand = hand.ToList();
-            DrawPile = drawPile.ToList();
-            DiscardPile = discardPile.ToList();
+            PlayerId = playerId; Health = health; MaxBlood = maxBlood; CurrentBlood = currentBlood;
+            Hand = hand.ToList(); DrawPile = drawPile.ToList(); DiscardPile = discardPile.ToList();
             GlobalUnitBuffs = globalUnitBuffs ?? new CardStats(0, 0, 0);
         }
 
@@ -43,20 +39,22 @@ namespace CardGame.Core.State.Models
                 hand ?? Hand, drawPile ?? DrawPile, discardPile ?? DiscardPile, globalUnitBuffs ?? GlobalUnitBuffs);
         }
 
-        // Metoda wymagana przez testy do ręcznego ustawiania zasobów
         public PlayerState WithResourceChanged(ResourceType type, int current, int max)
         {
-            if (type == ResourceType.Blood)
-            {
-                return this.With(currentBlood: current, maxBlood: max);
-            }
+            if (type == ResourceType.Blood) return this.With(currentBlood: current, maxBlood: max);
             return this;
         }
 
         public bool CanPlayCard(int cost) => CurrentBlood >= cost;
         public PlayerState WithBloodSpent(int amount) => this.With(currentBlood: CurrentBlood - amount);
         public PlayerState WithCardRemovedFromHand(CardInstance card) => this.With(hand: Hand.Where(c => c.InstanceId != card.InstanceId));
-        public PlayerState WithCardDrawn() => DrawPile.Count == 0 ? this : this.With(hand: Hand.Append(DrawPile[0]), drawPile: DrawPile.Skip(1));
+
+        public PlayerState WithCardDrawn(EventBus? events = null)
+        {
+            if (DrawPile.Count == 0) return this;
+            events?.Publish(new CardDrawnEvent(PlayerId));
+            return this.With(hand: Hand.Append(DrawPile[0]), drawPile: DrawPile.Skip(1));
+        }
 
         public PlayerState WithCardsDrawnFromDiscard(int count, int? excludeId = null)
         {
@@ -69,7 +67,7 @@ namespace CardGame.Core.State.Models
         public PlayerState WithTurnStartBlood(int turn) => this.With(maxBlood: Math.Clamp(turn, 1, 10), currentBlood: Math.Clamp(turn, 1, 10));
         public PlayerState WithCardAddedToHand(CardInstance card) => this.With(hand: Hand.Append(card));
         public PlayerState WithCardAddedToDiscard(CardInstance card) => this.With(discardPile: DiscardPile.Append(card));
-        public PlayerState WithHealthRestored(int amount) => this.With(health: Math.Min(20, Health + amount));
+        public PlayerState WithHealthRestored(int amount) => this.With(health: Health + amount); // USUNIĘTO CLAMP DO 20
         public PlayerState WithDamageTaken(int amount) => this.With(health: Health - amount);
         public PlayerState WithShuffledDeck(DeterministicRng rng)
         {

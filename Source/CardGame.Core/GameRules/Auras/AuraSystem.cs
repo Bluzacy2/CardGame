@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CardGame.Core.Cards.Data;
+﻿using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.State.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CardGame.Core.GameRules.Auras
 {
@@ -11,106 +10,60 @@ namespace CardGame.Core.GameRules.Auras
     {
         public GameState RecalculateAuras(GameState currentState)
         {
-            // 1. WYCZYŚĆ AURY
-            var state = ClearAllAuras(currentState);
+            var workingState = currentState;
+            var allUnits = workingState.Board.GetAllUnits();
 
-            // 2. ZNAJDŹ ŹRÓDŁA I CELE
-            var units = state.Board.GetAllUnits();
-            var pendingBuffs = new List<(int TargetId, Keyword KeywordToAdd)>();
-
-            foreach (var sourceUnit in units)
+            var map = new Dictionary<int, List<Keyword>>();
+            foreach (var src in allUnits)
             {
-                foreach (var effect in sourceUnit.Definition.Effects)
+                if (src.IsSilenced) continue;
+                var passives = src.Definition.Effects.Where(e => e.Trigger == TriggerType.Passive && e.Zone == EffectZone.Board);
+                foreach (var eff in passives)
                 {
-                    if (effect.Trigger == TriggerType.Passive && effect.Zone == EffectZone.Board)
+                    foreach (var act in eff.Actions.Where(a => a.Type == ActionType.ApplyStatus && a.StatusKeyword.HasValue))
                     {
-                        foreach (var action in effect.Actions)
+                        var targets = FindTargets(workingState, src, act.Target);
+                        foreach (var t in targets)
                         {
-                            if (action.Type == ActionType.ApplyStatus && Enum.TryParse<Keyword>(action.StringParam, out var keyword))
-                            {
-                                var targets = FindTargets(state, sourceUnit, action.Target);
-                                foreach (var t in targets)
-                                {
-                                    pendingBuffs.Add((t.InstanceId, keyword));
-                                }
-                            }
+                            if (!map.ContainsKey(t.InstanceId)) map[t.InstanceId] = new List<Keyword>();
+                            map[t.InstanceId].Add(act.StatusKeyword!.Value);
                         }
                     }
                 }
             }
 
-            // 3. ZAAPLIKUJ (Z WALIDACJĄ)
-            foreach (var buff in pendingBuffs)
+            foreach (var unit in allUnits)
             {
-                var targetUnit = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == buff.TargetId);
+                // Zawsze pobieraj najświeższą wersję z aktualizowanego stanu (naprawia Silence)
+                var latestUnit = workingState.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == unit.InstanceId);
+                if (latestUnit == null) continue;
 
-                if (targetUnit != null)
+                var targetKw = map.ContainsKey(latestUnit.InstanceId) ? map[latestUnit.InstanceId].Distinct().ToList() : new List<Keyword>();
+                if (latestUnit.IsSilenced) targetKw.Clear();
+
+                if (targetKw.Contains(Keyword.SoulGuard) && latestUnit.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted))
+                    targetKw.Remove(Keyword.SoulGuard);
+
+                if (!latestUnit.AuraKeywords.SequenceEqual(targetKw))
                 {
-                    // --- DIAGNOSTYKA ---
-                    if (buff.KeywordToAdd == Keyword.SoulGuard)
-                    {
-                        bool hasDepleted = targetUnit.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted);
-                        Console.WriteLine($"[AURA CHECK] ID {targetUnit.InstanceId} ({targetUnit.Definition.Name}): Chcę nadać SoulGuard. Ma Depleted? {hasDepleted}");
-
-                        // Debug keywordów
-                        // Console.WriteLine($"   Keywordy: {string.Join(", ", targetUnit.CurrentStats.Keywords)}");
-                    }
-                    // -------------------
-
-                    // BLOKADA: Jeśli ma Depleted, nie dawaj SoulGuarda
-                    if (buff.KeywordToAdd == Keyword.SoulGuard &&
-                        targetUnit.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted))
-                    {
-                        Console.WriteLine($"[AURA BLOCKED] Zablokowano odnowienie SoulGuard dla {targetUnit.Definition.Name}!");
-                        continue;
-                    }
-
-                    var newAuras = new List<Keyword>(targetUnit.AuraKeywords);
-                    if (!newAuras.Contains(buff.KeywordToAdd))
-                    {
-                        newAuras.Add(buff.KeywordToAdd);
-                    }
-
-                    var newUnit = targetUnit.WithAuras(newAuras);
-                    state = state.UpdateBoard(state.Board.UpdateUnit(newUnit));
+                    var updated = latestUnit.WithAuras(targetKw);
+                    workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(updated));
                 }
             }
-
-            return state;
+            return workingState;
         }
 
-        private GameState ClearAllAuras(GameState state)
+        private List<CardInstance> FindTargets(GameState s, CardInstance src, TargetType t)
         {
-            var units = state.Board.GetAllUnits();
-            foreach (var unit in units)
+            var u = s.Board.GetAllUnits();
+            return t switch
             {
-                if (unit.AuraKeywords.Count > 0)
-                {
-                    var cleanUnit = unit.WithAuras(new List<Keyword>());
-                    state = state.UpdateBoard(state.Board.UpdateUnit(cleanUnit));
-                }
-            }
-            return state;
-        }
-
-        private List<CardInstance> FindTargets(GameState state, CardInstance source, TargetType targetType)
-        {
-            var all = state.Board.GetAllUnits();
-            switch (targetType)
-            {
-                case TargetType.AllFriendlyUnits:
-                    return all.Where(u => u.OwnerPlayerId == source.OwnerPlayerId).ToList();
-
-                case TargetType.OtherFriendlyUnits:
-                    return all.Where(u => u.OwnerPlayerId == source.OwnerPlayerId && u.InstanceId != source.InstanceId).ToList();
-
-                case TargetType.AllEnemyUnits:
-                    int enemyId = source.OwnerPlayerId == 1 ? 2 : 1;
-                    return all.Where(u => u.OwnerPlayerId == enemyId).ToList();
-
-                default:
-                    return new List<CardInstance>();
-            }
+                TargetType.AllFriendlyUnits => u.Where(x => x.OwnerPlayerId == src.OwnerPlayerId).ToList(),
+                TargetType.OtherFriendlyUnits => u.Where(x => x.OwnerPlayerId == src.OwnerPlayerId && x.InstanceId != src.InstanceId).ToList(),
+                TargetType.AllEnemyUnits => u.Where(x => x.OwnerPlayerId != src.OwnerPlayerId).ToList(),
+                TargetType.AllUnitsOnBoard => u.ToList(),
+                _ => new List<CardInstance>()
+            };
         }
     }
 }

@@ -33,6 +33,7 @@ namespace CardGame.Core.Cards.Data
             List<CardData>? loadedCards = JsonSerializer.Deserialize<List<CardData>>(jsonString, options);
             _cards = (loadedCards ?? new List<CardData>()).ToDictionary(k => k.Id, v => v);
 
+    
             ValidateLibrary();
 
             Console.WriteLine($"[LIBRARY] Załadowano i zweryfikowano {_cards.Count} kart.");
@@ -71,11 +72,11 @@ namespace CardGame.Core.Cards.Data
         public CardDefinition CreateDefinition(int id)
         {
             var data = GetCard(id);
-            // data.Cost mapujemy na bloodCost w strukturze CardStats
             return new CardDefinition(
                 data.Id.ToString(),
                 data.Name,
                 data.Type,
+                data.Subtypes,
                 new CardStats(data.Attack, data.Health, data.Cost, data.Keywords, data.KeywordParams, data.CostType),
                 data.Keywords,
                 data.Effects);

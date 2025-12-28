@@ -15,25 +15,26 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
 
         public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
         {
+            var workingState = state;
             foreach (var targetUnit in targets.UnitTargets)
             {
-                var buffDelta = new CardStats(action.BuffAtk, action.BuffHp, action.Amount); // Amount jako CostModifier
-
-               
+                var buffDelta = new CardStats(action.BuffAtk, action.BuffHp, action.Amount);
                 var newUnit = targetUnit.AddPermanentBuff(buffDelta);
 
-                var owner = state.GetPlayer(newUnit.OwnerPlayerId);
+                // Pobieramy aktualny stan właściciela
+                var owner = workingState.GetPlayer(newUnit.OwnerPlayerId);
+
                 if (owner.Hand.Any(c => c.InstanceId == newUnit.InstanceId))
                 {
-                    var p = owner.WithCardRemovedFromHand(targetUnit).WithCardAddedToHand(newUnit);
-                    state = state.UpdatePlayer(p);
+                    var newHand = owner.Hand.Select(c => c.InstanceId == newUnit.InstanceId ? newUnit : c).ToList();
+                    workingState = workingState.UpdatePlayer(owner.With(hand: newHand));
                 }
                 else
                 {
-                    state = state.UpdateBoard(state.Board.UpdateUnit(newUnit));
+                    workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(newUnit));
                 }
             }
-            return state;
+            return workingState;
         }
     }
 }

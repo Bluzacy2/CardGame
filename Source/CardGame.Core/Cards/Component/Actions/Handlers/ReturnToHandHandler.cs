@@ -6,6 +6,7 @@ using CardGame.Core.Cards.Models;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
 using System;
+using System.Linq;
 
 namespace CardGame.Core.Cards.Components.Actions.Handlers
 {
@@ -15,27 +16,23 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
 
         public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
         {
-            if (targets.TargetUnit != null)
+            var workingState = state;
+            foreach (var unit in targets.UnitTargets)
             {
-                var unit = targets.TargetUnit;
-                // Reset statystyk do bazowych
-                var freshCard = new CardInstance(unit.InstanceId, unit.OwnerPlayerId, unit.Definition);
+                // Kluczowe: MoveAndReset zachowuje ID i Silence, ale czyści obrażenia/buffami
+                var freshCard = unit.MoveAndReset();
+                var currentOwner = workingState.GetPlayer(unit.OwnerPlayerId);
+                workingState = workingState.UpdatePlayer(currentOwner.WithCardAddedToHand(freshCard));
 
-                var owner = state.GetPlayer(unit.OwnerPlayerId);
-                state = state.UpdatePlayer(owner.WithCardAddedToHand(freshCard));
-
-                // Usuń z planszy (przeszukujemy linie)
+                var board = workingState.Board;
                 for (int i = 0; i < 4; i++)
                 {
-                    var l = state.Board.Lines[i];
-                    if (l.Player1Unit?.InstanceId == unit.InstanceId)
-                        state = state.UpdateBoard(state.Board.WithUnitPlacedAt(i, 1, null));
-                    if (l.Player2Unit?.InstanceId == unit.InstanceId)
-                        state = state.UpdateBoard(state.Board.WithUnitPlacedAt(i, 2, null));
+                    if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId) board = board.WithUnitPlacedAt(i, 1, null);
+                    if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId) board = board.WithUnitPlacedAt(i, 2, null);
                 }
-                Console.WriteLine($"[EFEKT] ReturnToHand: {unit.Definition.Name}");
+                workingState = workingState.UpdateBoard(board);
             }
-            return state;
+            return workingState;
         }
     }
 }

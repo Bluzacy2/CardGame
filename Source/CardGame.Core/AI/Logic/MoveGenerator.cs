@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic; 
 using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.State.Enums;
@@ -30,41 +31,33 @@ namespace CardGame.Core.AI.Logic
                 return moves;
             }
 
-            // Zagrywanie Jednostek - używamy BloodCost
             if (state.CurrentPhase == GamePhase.UnitOnly || state.CurrentPhase == GamePhase.UnitAndAction)
             {
                 foreach (var card in player.Hand)
                 {
-                    if (card.Definition.Type == CardType.Unit && player.CanPlayCard(card.CurrentStats.BloodCost))
+                    if (card.Definition.Type == CardType.Unit && PlayValidator.CanPlay(card, state, playerId))
                     {
                         for (int i = 0; i < 4; i++)
                         {
                             if (state.Board.Lines[i].IsSlotEmpty(playerId))
-                            {
                                 moves.Add(new PlayUnitCommand(playerId, card.InstanceId, i));
-                            }
                         }
                     }
                 }
             }
 
-            // Zagrywanie Czarów - używamy BloodCost
             if (state.CurrentPhase == GamePhase.ActionOnly || state.CurrentPhase == GamePhase.UnitAndAction)
             {
                 foreach (var card in player.Hand)
                 {
-                    if (card.Definition.Type == CardType.Spell && player.CanPlayCard(card.CurrentStats.BloodCost))
+                    if (card.Definition.Type == CardType.Spell && PlayValidator.CanPlay(card, state, playerId))
                     {
                         moves.Add(new PlaySpellCommand(playerId, card.InstanceId));
                     }
                 }
             }
 
-            if (moves.Count == 0 || !moves.Exists(m => m is EndPhaseCommand))
-            {
-                moves.Add(new EndPhaseCommand(playerId));
-            }
-
+            moves.Add(new EndPhaseCommand(playerId));
             return moves;
         }
     }

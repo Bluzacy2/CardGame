@@ -1,91 +1,89 @@
 ﻿using CardGame.Core.Application;
-using CardGame.Core.Cards.Component;
 using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Logic;
 using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
-using System;
+using System.Linq;
 
 namespace CardGame.Core.Cards.Components.Implementations
 {
-    public class JsonEffectComponent : ICardComponent
+    public class JsonEffectComponent
     {
-        private readonly EffectData _effectData;
-        private readonly int _ownerCardInstanceId;
+        private readonly EffectData _data;
+        private readonly int _sourceId;
         private readonly int _effectIndex;
 
-        public JsonEffectComponent(EffectData effectData, int ownerCardInstanceId, int effectIndex = 0)
+        public JsonEffectComponent(EffectData data, int sourceId, int effectIndex = 0)
         {
-            _effectData = effectData;
-            _ownerCardInstanceId = ownerCardInstanceId;
-            _effectIndex = effectIndex;
+            _data = data; _sourceId = sourceId; _effectIndex = effectIndex;
         }
 
-        public bool ShouldTrigger(IGameEvent e, GameState s) => TriggerLogic.Check(_effectData.Trigger, e, s, _ownerCardInstanceId);
+        public bool ShouldTrigger(IGameEvent e, GameState s) => TriggerLogic.Check(_data, e, s, _sourceId);
 
-        public GameState Resolve(IGameEvent gameEvent, GameState currentState, GameContext context)
+        public GameState Resolve(IGameEvent evt, GameState state, GameContext context)
         {
-            bool isChoiceResponse = (gameEvent is TargetSelectedEvent tse && currentState.PendingInteraction?.RequiredTargetType == TargetType.Choice);
-
-            if (_effectData.Targeting == TargetType.Choice && !isChoiceResponse)
+            if (_data.Targeting == TargetType.Choice && !(evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1))
             {
-                return currentState.With(pendingInteraction: new PendingInteraction(
-                    _ownerCardInstanceId, _effectIndex, -1, TargetType.Choice, _effectData.ChoiceLabels));
+                return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, -1, TargetType.Choice, _data.ChoiceLabels));
             }
-
-            return ResolveFromIndex(gameEvent, currentState, context, 0);
+            return ResolveFromIndex(evt, state, context, 0);
         }
 
-        public GameState ResolveFromIndex(IGameEvent gameEvent, GameState currentState, GameContext context, int startActionIndex)
+        public GameState ResolveFromIndex(IGameEvent evt, GameState state, GameContext context, int startIndex)
         {
-            var workingState = currentState.With(clearPending: true);
+            GameState workingState = state.With(clearPending: true);
 
-            if (_effectData.Targeting == TargetType.Choice && gameEvent is TargetSelectedEvent tse && currentState.PendingInteraction?.ActionIndex == -1)
+            // Obsługa Choice (wybór ścieżki efektu)
+            if (_data.Targeting == TargetType.Choice && evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1)
             {
                 int choiceIdx = tse.SelectedTargetId;
-                if (choiceIdx >= 0 && choiceIdx < _effectData.Actions.Count)
-                {
-                    // Po dokonaniu wyboru, sprawdzamy tę JEDNĄ konkretną akcję
-                    return ExecuteSingleAction(workingState, context, _effectData.Actions[choiceIdx], gameEvent, choiceIdx, true);
-                }
+                if (choiceIdx >= 0 && choiceIdx < _data.Actions.Count)
+                    return ExecuteAction(workingState, context, _data.Actions[choiceIdx], evt, choiceIdx);
                 return workingState;
             }
 
-            for (int i = startActionIndex; i < _effectData.Actions.Count; i++)
+            for (int i = startIndex; i < _data.Actions.Count; i++)
             {
-                workingState = ExecuteSingleAction(workingState, context, _effectData.Actions[i], gameEvent, i, false);
-                if (workingState.PendingInteraction != null) return workingState;
+                var nextState = ExecuteAction(workingState, context, _data.Actions[i], evt, i);
+                if (nextState.PendingInteraction != null) return nextState;
+                workingState = nextState;
             }
             return workingState;
         }
 
-        private GameState ExecuteSingleAction(GameState state, GameContext context, ActionData action, IGameEvent gameEvent, int idx, bool wasChoice)
+        private GameState ExecuteAction(GameState state, GameContext context, ActionData action, IGameEvent evt, int actionIdx)
         {
-            var targetType = action.Target == TargetType.Self ? _effectData.Targeting : action.Target;
+            var targetType = (action.Target == TargetType.Self && _data.Targeting != TargetType.Self) ? _data.Targeting : action.Target;
 
-            bool isTargeted = (targetType == TargetType.SelectedTarget ||
-                               targetType == TargetType.TargetEnemyUnit ||
-                               targetType == TargetType.TargetFriendlyUnit);
-
-            bool hasValidSelection = false;
-
-            // Jeśli akcja jest częścią wyboru Choice, to pierwotny TargetSelectedEvent 
-            // służył do wybrania opcji, a NIE celu akcji. Musimy wymusić nową interakcję.
-            if (!wasChoice)
+            if (IsManualTarget(targetType))
             {
-                hasValidSelection = (idx == 0 && gameEvent is CardPlayedEvent cpe && cpe.SelectedTargetId.HasValue) ||
-                                   (gameEvent is TargetSelectedEvent ts && state.PendingInteraction == null);
+                var resolved = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);
+
+                // SPRAWDZENIE: Czy ten konkretny cel został już dostarczony?
+                bool targetAlreadyProvided = false;
+
+                // A. Przez komendę zagrania (tylko dla pierwszej akcji)
+                if (actionIdx == 0 && evt is CardPlayedEvent cpe && cpe.SelectedTargetId.HasValue)
+                    targetAlreadyProvided = true;
+
+                // B. Przez wznowienie interakcji (tylko jeśli ID akcji się zgadza)
+                if (evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == actionIdx)
+                    targetAlreadyProvided = true;
+
+                if (!resolved.UnitTargets.Any() && !targetAlreadyProvided)
+                {
+                    if (EffectTargetResolver.GetPotentialTargets(targetType, state, _sourceId).Any())
+                        return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, actionIdx, targetType));
+                    return state;
+                }
+                return context.ActionRegistry.GetHandler(action.Type).Execute(state, context, action, resolved, _sourceId, evt);
             }
 
-            if (isTargeted && !hasValidSelection)
-            {
-                return state.With(pendingInteraction: new PendingInteraction(_ownerCardInstanceId, _effectIndex, idx, targetType));
-            }
-
-            var targets = EffectTargetResolver.Resolve(targetType, state, gameEvent, _ownerCardInstanceId);
-            var handler = context.ActionRegistry.GetHandler(action.Type);
-            return handler.Execute(state, context, action, targets, _ownerCardInstanceId, gameEvent);
+            var autoTargets = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);
+            return context.ActionRegistry.GetHandler(action.Type).Execute(state, context, action, autoTargets, _sourceId, evt);
         }
+
+        private bool IsManualTarget(TargetType t) => t == TargetType.SelectedTarget || t == TargetType.TargetEnemyUnit || t == TargetType.TargetFriendlyUnit;
     }
 }

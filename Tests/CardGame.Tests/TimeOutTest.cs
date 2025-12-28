@@ -25,7 +25,7 @@ namespace CardGame.Tests
                       ]
                   } ] 
                 },
-                { ""Id"": 1, ""Name"": ""Token"", ""Type"": ""Unit"", ""Cost"": 0 }
+                { ""Id"": 1, ""Name"": ""Token"", ""Type"": ""Unit"", ""Cost"": 0, ""Attack"": 1, ""Health"": 1 }
             ]";
 
             var engine = TestHelpers.CreateEngineWithCards(json);
@@ -54,13 +54,13 @@ namespace CardGame.Tests
         public void UnitTargeting_ShouldAutoResolve_OnTimeout()
         {
             string json = @"[
-                { ""Id"": 4, ""Name"": ""Informer"", ""Type"": ""Unit"", ""Cost"": 1,
+                { ""Id"": 4, ""Name"": ""Informer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 2,
                   ""Effects"": [ { 
                       ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetEnemyUnit"",
                       ""Actions"": [ { ""Type"": ""ApplyStatus"", ""StatusKeyword"": ""Marked"" } ]
                   } ] 
                 },
-                { ""Id"": 2, ""Name"": ""Target"", ""Type"": ""Unit"", ""Health"": 5 }
+                { ""Id"": 2, ""Name"": ""Target"", ""Type"": ""Unit"", ""Attack"": 1, ""Health"": 5 }
             ]";
 
             var engine = TestHelpers.CreateEngineWithCards(json);
@@ -75,6 +75,10 @@ namespace CardGame.Tests
                     .WithResourceChanged(ResourceType.Blood, 10, 10));
 
             engine.ExecuteCommand(new PlayUnitCommand(1, informer.InstanceId, 3));
+
+            // Sprawdź czy interakcja się pojawiła
+            Assert.NotNull(engine.CurrentState.PendingInteraction);
+
             engine.Update(5.0f);
 
             Assert.Null(engine.CurrentState.PendingInteraction);

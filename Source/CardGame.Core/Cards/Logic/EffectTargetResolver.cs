@@ -21,7 +21,7 @@ namespace CardGame.Core.Cards.Logic
         public static EffectTargets Resolve(TargetType type, GameState state, IGameEvent contextEvent, int sourceCardId)
         {
             var result = new EffectTargets();
-            int ownerId = contextEvent.SourcePlayerId; // Pobieramy bezpośrednio z eventu!
+            int ownerId = GetOwner(state, sourceCardId);
             int opponentId = (ownerId == 1) ? 2 : 1;
 
             switch (type)
@@ -29,7 +29,18 @@ namespace CardGame.Core.Cards.Logic
                 case TargetType.SelectedTarget:
                 case TargetType.TargetEnemyUnit:
                 case TargetType.TargetFriendlyUnit:
-                    int? targetId = (contextEvent is CardPlayedEvent cpe) ? cpe.SelectedTargetId : (contextEvent is TargetSelectedEvent tse) ? tse.SelectedTargetId : null;
+                    int? targetId = null;
+
+                    if (contextEvent is CardPlayedEvent cpe) targetId = cpe.SelectedTargetId;
+                    else if (contextEvent is TargetSelectedEvent tse) targetId = tse.SelectedTargetId;
+                    else if (contextEvent is StatusAppliedEvent sae) targetId = sae.TargetUnitId;
+                    else if (contextEvent is UnitDamagedEvent ude)
+                    {
+                        // Poprawka dla Bohatera: Jeśli ofiarą jest Hero (Unit == null), celem jest Atakujący (Source)
+                        targetId = ude.Unit?.InstanceId ?? ude.Source?.InstanceId;
+                    }
+                    else if (contextEvent is UnitDiedEvent udied) targetId = udied.Unit.InstanceId;
+
                     if (targetId.HasValue)
                     {
                         var tUnit = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == targetId.Value);
@@ -43,38 +54,51 @@ namespace CardGame.Core.Cards.Logic
                     }
                     break;
 
-                case TargetType.FriendlyHero:
-                case TargetType.Choice:
-                case TargetType.Self when type == TargetType.Choice:
-                    result.TargetPlayer = state.GetPlayer(ownerId);
-                    break;
-
-                case TargetType.EnemyHero:
-                    result.TargetPlayer = state.GetPlayer(opponentId);
-                    break;
-
-                case TargetType.AllUnitsOnBoard:
-                    result.UnitTargets.AddRange(state.Board.GetAllUnits());
-                    break;
-
-                case TargetType.AllEnemyUnits:
-                    result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == opponentId));
-                    break;
-
-                case TargetType.AllFriendlyUnits:
-                    result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == ownerId));
-                    break;
-
+                case TargetType.FriendlyHero: result.TargetPlayer = state.GetPlayer(ownerId); break;
+                case TargetType.EnemyHero: result.TargetPlayer = state.GetPlayer(opponentId); break;
+                case TargetType.Choice: result.TargetPlayer = state.GetPlayer(ownerId); break;
+                case TargetType.AllUnitsOnBoard: result.UnitTargets.AddRange(state.Board.GetAllUnits()); break;
+                case TargetType.AllEnemyUnits: result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == opponentId)); break;
+                case TargetType.AllFriendlyUnits: result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == ownerId)); break;
+                case TargetType.OtherFriendlyUnits: result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == ownerId && u.InstanceId != sourceCardId)); break;
                 case TargetType.Self:
                     var self = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceCardId) ??
-                               state.GetPlayer(ownerId).Hand.FirstOrDefault(c => c.InstanceId == sourceCardId) ??
-                               state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceCardId);
-
+                               state.PlayerA.Hand.Concat(state.PlayerB.Hand).FirstOrDefault(c => c.InstanceId == sourceCardId) ??
+                               state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceCardId) ??
+                               state.PlayerA.DiscardPile.Concat(state.PlayerB.DiscardPile).FirstOrDefault(c => c.InstanceId == sourceCardId);
                     if (self != null) result.UnitTargets.Add(self);
                     result.TargetPlayer = state.GetPlayer(ownerId);
                     break;
             }
             return result;
+        }
+
+        public static List<CardInstance> GetPotentialTargets(TargetType type, GameState state, int sourceCardId)
+        {
+            int ownerId = GetOwner(state, sourceCardId);
+            int opponentId = (ownerId == 1) ? 2 : 1;
+            var allUnits = state.Board.GetAllUnits();
+
+            return type switch
+            {
+                TargetType.TargetEnemyUnit => allUnits.Where(u => u.OwnerPlayerId == opponentId).ToList(),
+                TargetType.TargetFriendlyUnit => allUnits.Where(u => u.OwnerPlayerId == ownerId).ToList(),
+                TargetType.SelectedTarget => allUnits.ToList(),
+                TargetType.OtherFriendlyUnits => allUnits.Where(u => u.OwnerPlayerId == ownerId && u.InstanceId != sourceCardId).ToList(),
+                _ => new List<CardInstance>()
+            };
+        }
+
+        private static int GetOwner(GameState state, int instanceId)
+        {
+            var unit = state.Board.GetAllUnits().FirstOrDefault(x => x.InstanceId == instanceId);
+            if (unit != null) return unit.OwnerPlayerId;
+            if (state.PlayerA.Hand.Any(x => x.InstanceId == instanceId)) return 1;
+            if (state.PlayerB.Hand.Any(x => x.InstanceId == instanceId)) return 2;
+            if (state.SpellStack.Any(x => x.InstanceId == instanceId)) return state.SpellStack.First(x => x.InstanceId == instanceId).OwnerPlayerId;
+            if (state.PlayerA.DiscardPile.Any(x => x.InstanceId == instanceId)) return 1;
+            if (state.PlayerB.DiscardPile.Any(x => x.InstanceId == instanceId)) return 2;
+            return 1;
         }
     }
 }

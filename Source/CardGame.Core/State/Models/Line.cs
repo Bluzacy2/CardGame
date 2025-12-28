@@ -1,4 +1,5 @@
 ﻿using CardGame.Core.Cards.Models;
+using System.Collections.Generic;
 
 namespace CardGame.Core.State.Models
 {
@@ -25,5 +26,13 @@ namespace CardGame.Core.State.Models
         }
 
         public Line UpdateUnits(CardInstance? newP1Unit, CardInstance? newP2Unit) => new Line(Index, newP1Unit, newP2Unit);
+
+        public List<CardInstance> GetAllUnits()
+        {
+            var units = new List<CardInstance>();
+            if (Player1Unit != null) units.Add(Player1Unit);
+            if (Player2Unit != null) units.Add(Player2Unit);
+            return units;
+        }
     }
 }

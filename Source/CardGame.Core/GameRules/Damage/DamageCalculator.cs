@@ -1,30 +1,22 @@
-﻿using CardGame.Core.Cards.Data;
+﻿using CardGame.Core.Application;
 using System;
-using System.Linq;
 
 namespace CardGame.Core.GameRules.Damage
 {
     public class DamageCalculator
     {
+        private readonly GameContext _context;
+
+        public DamageCalculator(GameContext context)
+        {
+            _context = context;
+        }
+
         public int CalculateFinalDamage(DamageContext context)
         {
             int finalDamage = context.RawAmount;
 
-            if (context.Target.CurrentStats.Keywords.Contains(Keyword.Marked))
-            {
-                finalDamage *= 2;
-                Console.WriteLine($"[CALC] Cel MARKED! Podwajam obrażenia: {context.RawAmount} -> {finalDamage}");
-            }
-
-          
-            if (context.Target.CurrentStats.Keywords.Contains(Keyword.Armored))
-            {
-                if (context.Type == DamageType.Combat)
-                {
-                    finalDamage = Math.Max(0, finalDamage - 1);
-                    Console.WriteLine($"[CALC] Cel ARMORED! Redukcja: {finalDamage + 1} -> {finalDamage}");
-                }
-            }
+            finalDamage = _context.Keywords.ProcessDamageTaken(finalDamage, context);
 
             return Math.Max(0, finalDamage);
         }

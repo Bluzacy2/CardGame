@@ -26,7 +26,7 @@ namespace CardGame.Tests
             var rng = new DeterministicRng(seed);
             var factory = new CardFactory(CardLibrary.Instance, rng);
 
-            // Ustawienie początkowe zasobów (Krew)
+            // Ustawienie początkowe zasobów (Używamy WithResourceChanged)
             var pA = PlayerState.Initial(1, new List<CardInstance>())
                 .WithResourceChanged(ResourceType.Blood, 10, 10)
                 .With(health: 30);

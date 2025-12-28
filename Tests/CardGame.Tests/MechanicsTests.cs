@@ -37,16 +37,16 @@ namespace CardGame.Tests
             engine.CurrentState = engine.CurrentState.UpdatePlayer(pA);
 
             engine.ExecuteCommand(new PlayUnitCommand(1, pA.Hand[0].InstanceId, 1));
-            var tankAfterBuff = engine.CurrentState.Board.Lines[0].Player1Unit;
+            var tankAfterBuff = engine.CurrentState.Board.Lines[0].Player1Unit!;
             Assert.Equal(3, tankAfterBuff.CurrentStats.Attack);
             Assert.Equal(7, tankAfterBuff.CurrentStats.Health);
 
             engine.ExecuteCommand(new PlayUnitCommand(1, pA.Hand[2].InstanceId, 2));
-            var tankAfterDmg = engine.CurrentState.Board.Lines[0].Player1Unit;
+            var tankAfterDmg = engine.CurrentState.Board.Lines[0].Player1Unit!;
             Assert.Equal(3, tankAfterDmg.CurrentStats.Health);
 
             engine.ExecuteCommand(new PlayUnitCommand(1, pA.Hand[1].InstanceId, 3));
-            var tankAfterHeal = engine.CurrentState.Board.Lines[0].Player1Unit;
+            var tankAfterHeal = engine.CurrentState.Board.Lines[0].Player1Unit!;
             Assert.Equal(7, tankAfterHeal.CurrentStats.Health);
         }
 
@@ -70,7 +70,7 @@ namespace CardGame.Tests
 
             engine.ExecuteCommand(new PlayUnitCommand(1, armorer.InstanceId, 1));
 
-            var knightOnBoard = engine.CurrentState.Board.Lines[0].Player1Unit;
+            var knightOnBoard = engine.CurrentState.Board.Lines[0].Player1Unit!;
             Assert.Equal(2, knightOnBoard.CurrentStats.Attack);
             Assert.Contains(Keyword.Armored, knightOnBoard.CurrentStats.Keywords);
         }

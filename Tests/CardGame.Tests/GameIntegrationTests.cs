@@ -95,7 +95,7 @@ namespace CardGame.Tests
             engine.ExecuteCommand(new PlayUnitCommand(1, demon.InstanceId, 1));
 
             // ASSERT 1: Istniej¹cy goœæ powinien urosn¹æ (1/1 -> 2/2)
-            var existingOnBoard = engine.CurrentState.Board.Lines[0].Player1Unit;
+            var existingOnBoard = engine.CurrentState.Board.Lines[0].Player1Unit!;
             Assert.Equal(2, existingOnBoard.CurrentStats.Attack);
             Assert.Equal(2, existingOnBoard.CurrentStats.Health);
 
@@ -103,7 +103,7 @@ namespace CardGame.Tests
             engine.ExecuteCommand(new PlayUnitCommand(1, newGuy.InstanceId, 2));
 
             // ASSERT 2: Nowy goœæ powinien wejœæ od razu z buffem (1/1 -> 2/2)
-            var newOnBoard = engine.CurrentState.Board.Lines[2].Player1Unit;
+            var newOnBoard = engine.CurrentState.Board.Lines[2].Player1Unit!;
             Assert.Equal(2, newOnBoard.CurrentStats.Attack);
             Assert.Equal(2, newOnBoard.CurrentStats.Health);
         }

@@ -1,17 +1,20 @@
 ﻿using CardGame.Core.Cards.Models;
 using CardGame.Core.Events.Interfaces;
 
-public class UnitDamagedEvent : IGameEvent
+namespace CardGame.Core.Events
 {
-    public CardInstance Unit { get; }
-    public int Amount { get; }
-    public CardInstance? Source { get; }
-    public int SourcePlayerId => Source?.OwnerPlayerId ?? Unit.OwnerPlayerId;
-
-    public UnitDamagedEvent(CardInstance unit, int amount, CardInstance? source)
+    public class UnitDamagedEvent : IGameEvent
     {
-        Unit = unit;
-        Amount = amount;
-        Source = source;
+        public CardInstance Unit { get; }
+        public int Amount { get; }
+        public CardInstance? Source { get; }
+        public int SourcePlayerId => Source?.OwnerPlayerId ?? Unit.OwnerPlayerId;
+
+        public UnitDamagedEvent(CardInstance unit, int amount, CardInstance? source)
+        {
+            Unit = unit;
+            Amount = amount;
+            Source = source;
+        }
     }
 }

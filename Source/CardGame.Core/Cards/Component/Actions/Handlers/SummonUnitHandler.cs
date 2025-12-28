@@ -6,6 +6,7 @@ using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
 using System;
+using System.Linq;
 
 namespace CardGame.Core.Cards.Components.Actions.Handlers
 {
@@ -15,36 +16,23 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
 
         public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
         {
-            // KROK 1: Szukamy linii w zdarzeniu (Priorytet dla Corpse Eater / Deathrattle)
             int lineIdx = -1;
             if (gameEvent is UnitDiedEvent death) lineIdx = death.LineIndex;
             else if (gameEvent is UnitSacrificedEvent sac) lineIdx = sac.LineIndex;
+            if (lineIdx == -1) lineIdx = action.ValueParam;
 
-            // KROK 2: Jeśli event nie podał linii (np. rzucamy czar przyzwania), bierzemy ją z JSON
-            // Ale tylko jeśli ValueParam jest ustawione (czyli np. nie jest domyślnym 0 przy Summonach reaktywnych)
-            if (lineIdx == -1)
-            {
-                lineIdx = action.ValueParam;
-            }
+            var unitToSummon = targets.TargetUnit;
+            if (unitToSummon == null || lineIdx < 0) return state;
 
-            if (lineIdx != -1 && targets.TargetUnit != null)
-            {
-                var owner = state.GetPlayer(targets.TargetUnit.OwnerPlayerId);
+            // POBIERZ NAJŚWIEŻSZEGO GRACZA ZE STANU (naprawia WomboCombo)
+            var owner = state.GetPlayer(unitToSummon.OwnerPlayerId);
+            if (!state.Board.Lines[lineIdx].IsSlotEmpty(owner.PlayerId)) return state;
 
-                // KROK 3: Sprawdzenie wolnego miejsca
-                if (!state.Board.Lines[lineIdx].IsSlotEmpty(owner.PlayerId))
-                {
-                    Console.WriteLine($"[SUMMON DEBUG] Linia {lineIdx} zajęta. Summon przerwany.");
-                    return state;
-                }
+            var cardInHand = owner.Hand.FirstOrDefault(c => c.InstanceId == unitToSummon.InstanceId);
+            if (cardInHand == null) return state;
 
-                var newOwner = owner.WithCardRemovedFromHand(targets.TargetUnit);
-                var workingState = state.UpdatePlayer(newOwner);
-
-                Console.WriteLine($"[EFEKT] Summon: {targets.TargetUnit.Definition.Name} na linię {lineIdx}");
-                return workingState.UpdateBoard(workingState.Board.WithUnitPlacedAt(lineIdx, owner.PlayerId, targets.TargetUnit));
-            }
-            return state;
+            var newOwner = owner.WithCardRemovedFromHand(cardInHand);
+            return state.UpdatePlayer(newOwner).UpdateBoard(state.Board.WithUnitPlacedAt(lineIdx, owner.PlayerId, cardInHand));
         }
     }
 }

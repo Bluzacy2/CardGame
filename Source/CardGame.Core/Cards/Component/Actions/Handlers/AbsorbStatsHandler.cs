@@ -18,7 +18,7 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
         {
             if (targets.TargetUnit == null) return state;
 
-            // Szukamy źródła (jednostki, która absorbuje) - może być na stole LUB w ręce
+
             CardInstance? me = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceId);
             bool isOnBoard = me != null;
 
@@ -31,7 +31,7 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             if (me != null)
             {
                 var victimStats = targets.TargetUnit.CurrentStats;
-                // Tworzymy buffa z aktualnych statystyk ofiary
+
                 var buff = new CardStats(victimStats.Attack, victimStats.Health, 0);
                 var biggerMe = me.AddPermanentBuff(buff);
 
@@ -43,7 +43,6 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                 }
                 else
                 {
-                    // Jeśli jednostka absorbująca jest w ręce (np. jakiś specyficzny efekt)
                     var owner = state.GetPlayer(biggerMe.OwnerPlayerId);
                     var newHand = owner.Hand.Select(c => c.InstanceId == sourceId ? biggerMe : c).ToList();
                     return state.UpdatePlayer(owner.With(hand: newHand));

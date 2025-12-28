@@ -33,7 +33,7 @@ namespace CardGame.Core.StateMachine.Phases
              * 1. Zwiększyś numer++ rundy. */
             var orchestrator = new CombatOrchestrator();
             var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState, eventBus, context);
-            stateAfterCombat = ProcessEndOfRoundStatuses(stateAfterCombat, eventBus);
+            stateAfterCombat = ProcessEndOfRoundStatuses(stateAfterCombat, eventBus, context);
 
             /* Ogarnąć, który gracz ma rozpocząć kolejną turę/rundę.
              * (termin tura/runda jest używany zamiennie w tym kontekście). */
@@ -71,23 +71,18 @@ namespace CardGame.Core.StateMachine.Phases
         {
             return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
         }
-        private GameState ProcessEndOfRoundStatuses(GameState state, EventBus events)
+        private GameState ProcessEndOfRoundStatuses(GameState state, EventBus events, GameContext context)
         {
             var workingState = state;
-           
-            var unitsToCheck = workingState.Board.GetAllUnits().ToList();
+            var unitsToCheck = workingState.Board.GetAllUnits();
 
             foreach (var unit in unitsToCheck)
             {
-                if (unit.CurrentStats.Keywords.Contains(Keyword.Burning))
-                {
-               
-                    var damagedUnit = unit.TakeDamage(1);
-                    workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(damagedUnit));
-                    events.Publish(new UnitDamagedEvent(unit, 1, null));
-                }
+                // KeywordProcessor sprawdzi Burning i inne przyszłe efekty końca tury
+                workingState = context.Keywords.ProcessRoundEnd(workingState, unit, context);
             }
-            return new DeathResolver().ResolveDeaths(workingState, events);
+
+            return new DeathResolver().ResolveDeaths(workingState, events, context);
         }
     }
 

@@ -7,7 +7,7 @@
     "Cost": 1,
     "Attack": 1,
     "Health": 2,
-    "Description": "Heal Hero for 3 on play.",
+    "Description": "When Destroyed: Heal Your Hero for 3 HP.",
     "Effects": [
       {
         "Trigger": "OnDeath",
@@ -26,7 +26,7 @@
     "Cost": 1,
     "Attack": 1,
     "Health": 3,
-    "Description": "Deal 2 damage to Enemy Hero on play.",
+    "Description": "When Destroyed: Do 2 Damage to the Enemy Hero.",
     "Effects": [
       {
         "Trigger": "OnDeath",
@@ -45,7 +45,7 @@
     "Cost": 1,
     "Attack": 2,
     "Health": 2,
-    "Description": "Add 'The Alluring Goblet' to hand.",
+    "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
     "Effects": [
       {
         "Trigger": "OnDeath",
@@ -64,12 +64,12 @@
     "Cost": 1,
     "Attack": 2,
     "Health": 2,
-    "Description": "Mark an Enemy Unit.",
+    "Description": "When Played: Mark an Enemy Unit.",
     "Effects": [
       {
         "Trigger": "OnPlayed",
         "Actions": [
-          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StringParam": "Marked" }
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" }
         ]
       }
     ]
@@ -168,7 +168,7 @@
     "Cost": 2,
     "Attack": 2,
     "Health": 3,
-    "Description": "When Played: Sacrifice a Unit.",
+    "Description": "When Played: Sacrifice a Unit to absorb its stats.",
     "Effects": [
       {
         "Trigger": "OnPlayed",
@@ -190,7 +190,7 @@
     "Attack": 7,
     "Health": 7,
     "Keywords": [ "Unkillable" ],
-    "Description": "While In Hand: Each Time You Sacrifice a Card - this Card costs one less.",
+    "Description": "While In Hand: Costs 1 less whenever you sacrifice a unit.",
     "Effects": [
       {
         "Trigger": "OnOtherUnitSacrificed",
@@ -250,27 +250,29 @@
         "Trigger": "Passive",
         "Zone": "Board",
         "Actions": [ 
-          { "Type": "ApplyStatus", "Target": "OtherFriendlyUnits", "StringParam": "SoulGuard" } 
+          { "Type": "ApplyStatus", "Target": "OtherFriendlyUnits", "StatusKeyword": "SoulGuard" } 
         ]
       }
     ]
   },
 
   {
-  "Id": 15,
-  "Name": "Expectancy",
-  "Type": "Spell", "Cost": 2,
-  "Effects": [
-    {
-      "Trigger": "OnPlayed",
-      "Targeting": "Choice",
-      "ChoiceLabels": ["Draw 2 from Deck", "Draw 2 from Discard"],
-      "Actions": [
-        { "Type": "DrawCard", "Amount": 2 },
-        { "Type": "DrawFromDiscard", "Amount": 2 }
-      ]
-    }
-  ]
+    "Id": 15,
+    "Name": "Expectancy",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "Draw 2 from Deck OR Discard.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "Choice",
+        "ChoiceLabels": ["Draw 2 from Deck", "Draw 2 from Discard"],
+        "Actions": [
+          { "Type": "DrawCard", "Amount": 2 },
+          { "Type": "DrawFromDiscard", "Amount": 2 }
+        ]
+      }
+    ]
   },
 
   {
@@ -278,13 +280,13 @@
     "Name": "HellFire",
     "Type": "Spell",
     "Cost": 4,
-    "Description": "Deal 3 Damage and Apply Burning to All Units on Board",
+    "Description": "Deal 3 Damage and Apply Burning to All Units on Board.",
     "Effects": [
       {
         "Trigger": "OnPlayed",
         "Actions": [
           { "Type": "DealDamage", "Target": "AllUnitsOnBoard", "Amount": 3 },
-          { "Type": "ApplyStatus", "Target": "AllUnitsOnBoard", "StringParam": "Burning" }
+          { "Type": "ApplyStatus", "Target": "AllUnitsOnBoard", "StatusKeyword": "Burning" }
         ]
       }
     ]
@@ -306,17 +308,351 @@
   },
 
   {
+    "Id": 18,
+    "Name": "Final Mission",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Sacrifice a Friendly Unit to deal 4 damage to an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "SacrificeUnit", "Target": "TargetFriendlyUnit" },
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 4 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 19,
+    "Name": "Nepotism",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "A Friendly Unit does a Bonus Attack.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "BonusAttack", "Target": "TargetFriendlyUnit" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 20,
+    "Name": "Genie",
+    "Type": "Unit",
+    "Subtypes": [ "Mystical" ],
+    "Cost": 4,
+    "Attack": 3,
+    "Health": 3,
+    "Description": "When Played: Choose a Unit and return it to hand.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "SelectedTarget",
+        "Actions": [
+          { "Type": "ReturnToHand", "Target": "SelectedTarget" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 21,
+    "Name": "Juggernaut",
+    "Type": "Unit",
+    "Subtypes": [ "Machine" ],
+    "Cost": 4,
+    "Attack": 4,
+    "Health": 2,
+    "Keywords": [ "Armored" ],
+    "KeywordParams": { "Armored": 2 },
+    "Description": "Armored 2. When dealing damage to a unit: Deal 2 to Enemy Hero.",
+    "Effects": [
+      {
+        "Trigger": "OnDamagedEnemyUnit",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 22,
+    "Name": "QuickDraw Gun Man",
+    "Type": "Unit",
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "Whenever Enemy Hero draws a card: Deal 1 damage to them.",
+    "Effects": [
+      {
+        "Trigger": "OnOpponentCardDrawn",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 23,
+    "Name": "FireAxe Man",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 5,
+    "Attack": 4,
+    "Health": 6,
+    "Description": "When this unit kills an enemy: Heal to full and +2 HP.",
+    "Effects": [
+      {
+        "Trigger": "OnKill",
+        "Actions": [
+          { "Type": "HealToFull", "Target": "Self" },
+          { "Type": "BuffStats", "Target": "Self", "BuffHp": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 24,
+    "Name": "Gerard from Rivia",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary" ],
+    "Cost": 5,
+    "Attack": 5,
+    "Health": 5,
+    "Description": "Whenever you Mark an enemy: Bonus Attack.",
+    "Effects": [
+      {
+        "Trigger": "OnStatusApplied",
+        "Condition": { 
+          "Condition": "IsStatus", 
+          "TargetParam": "Marked" 
+        },
+        "Actions": [
+          { "Type": "BonusAttack", "Target": "Self" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 25,
+    "Name": "Bounty Hunter",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary" ],
+    "Cost": 3,
+    "Attack": 3,
+    "Health": 3,
+    "Description": "When You Mark an enemy: Stun it.",
+    "Effects": [
+      {
+        "Trigger": "OnStatusApplied",
+        "Condition": { "Condition": "IsStatus", "TargetParam": "Marked" },
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Stunned" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 26,
+    "Name": "Occultist",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary" ],
+    "Cost": 4,
+    "Attack": 2,
+    "Health": 3,
+    "Description": "Before Combat in this lane: Mark an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPreCombatLine",
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 27,
+    "Name": "Raiding Raptor",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 3,
+    "Attack": 1,
+    "Health": 4,
+    "Description": "Hit Hero: Draw. You Draw: +1 Atk.",
+    "Effects": [
+      {
+        "Trigger": "OnDamagedEnemyHero",
+        "Actions": [ { "Type": "DrawCard", "Target": "FriendlyHero" } ]
+      },
+      {
+        "Trigger": "OnFriendlyCardDrawn",
+        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1 } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 28,
+    "Name": "Exploding Fruitcake",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "6 Dmg to enemy. Opponent gains this.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 6 },
+          { "Type": "GiveToOpponent", "Target": "Self" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 29,
+    "Name": "Blighteinstein",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 5,
+    "Attack": 5,
+    "Health": 6,
+    "Description": "On Kill: Move Right.",
+    "Effects": [
+      {
+        "Trigger": "OnKill",
+        "Actions": [ { "Type": "MoveRight", "Target": "Self" } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 30,
+    "Name": "SharkCannon",
+    "Type": "Unit",
+    "Cost": 5,
+    "Attack": 0,
+    "Health": 7,
+    "Description": "Before Combat here: 5 Dmg to Enemy Hero.",
+    "Effects": [
+      {
+        "Trigger": "OnPreCombatLine",
+        "Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 5 } ]
+      }
+    ]
+  },
+  {
+    "Id": 31,
+    "Name": "Silence",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "Enemy Unit loses all Bonus Stats, Keywords and Passive Abilities.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [ { "Type": "Silence", "Target": "TargetEnemyUnit" } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 32,
+    "Name": "Marked for Death",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Mark an Enemy Unit. Draw a Card.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [ 
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" },
+          { "Type": "DrawCard", "Target": "FriendlyHero" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 33,
+    "Name": "Mouse",
+    "Type": "Unit",
+    "Subtypes": [ "Machine" ],
+    "Cost": 5,
+    "Attack": 5,
+    "Health": 10,
+    "Keywords": [ "Stunned" ],
+    "Description": "Stunned."
+  },
+
+  {
+    "Id": 34,
+    "Name": "MaidMask",
+    "Type": "Unit",
+    "Cost": 2,
+    "Attack": 3,
+    "Health": 1,
+    "Keywords": [ "SoulGuard" ],
+    "Description": "SoulGuard."
+  },
+
+  {
+    "Id": 35,
+    "Name": "Cathulli Captain",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "When a Friendly Monster Unit hurts Enemy Hero that unit gets +1/+1.",
+    "Effects": [
+      {
+        "Trigger": "OnDamagedEnemyHero",
+        "Condition": { "Condition": "IsSubtype", "TargetParam": "Monster" },
+        "Actions": [ { "Type": "BuffStats", "Target": "SelectedTarget", "BuffAtk": 1, "BuffHp": 1 } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 36,
+    "Name": "Death",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 5,
+    "Attack": 3,
+    "Health": 3,
+    "Keywords": [ "SoulGuard" ],
+    "Description": "Whenever a Friendly Unit is Destroyed: Deal 3 damage to the Enemy Hero. SoulGuard.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 3 } ]
+      }
+    ]
+  },
+
+  {
     "Id": 900,
     "Name": "The Alluring Goblet",
     "Type": "Spell",
     "Cost": 1,
-    "Description": "Make unit Unkillable, then destroy it.",
+    "Description": "Make a unit Unkillable, then destroy it.",
     "Effects": [
       {
         "Trigger": "OnPlayed",
         "Targeting": "TargetFriendlyUnit",
         "Actions": [
-          { "Type": "ApplyStatus", "Target": "SelectedTarget", "StringParam": "Unkillable" },
+          { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Unkillable" },
           { "Type": "DestroyUnit", "Target": "SelectedTarget" }
         ]
       }
