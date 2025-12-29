@@ -72,12 +72,10 @@ namespace CardGame.Tests
             var engine = TestHelpers.CreateEngineWithCards(GetJson());
             var mouse = engine.Factory.CreateCard(33, 1);
             var victim = engine.Factory.CreateCard(99, 2);
-
-            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board
-                .WithUnitPlacedAt(0, 1, mouse)
-                .WithUnitPlacedAt(0, 2, victim));
-
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, mouse).WithUnitPlacedAt(0, 2, victim));
             engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.Combat);
+
+            // ACT: Rozliczamy walkę
             engine.ExecuteCommand(new EndPhaseCommand(1));
 
             Assert.NotNull(engine.CurrentState.Board.Lines[0].Player2Unit);

@@ -24,7 +24,7 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                     context.Events.Publish(new UnitSacrificedEvent(targetUnit, -1));
                 }
 
-                Console.WriteLine($"[EFEKT] DestroyUnit: {targetUnit.Definition.Name}");
+             
                 var deadUnit = targetUnit.TakeDamage(99999);
                 workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(deadUnit));
             }

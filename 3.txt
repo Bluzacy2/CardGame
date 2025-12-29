@@ -1,6 +1,264 @@
 ﻿
 
 ========================================
+FILE: PlaySpellCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Commands\Implementations\PlaySpellCommand.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Models;
+using System;
+using System.Linq;
+
+namespace CardGame.Core.Commands.Implementations
+{
+    public class PlaySpellCommand : IGameCommand
+    {
+        public int PlayerId { get; }
+        public int CardInstanceId { get; }
+        public int? SelectedTargetId { get; }
+
+        public PlaySpellCommand(int playerId, int cardInstanceId, int? selectedTargetId = null)
+        {
+            PlayerId = playerId;
+            CardInstanceId = cardInstanceId;
+            SelectedTargetId = selectedTargetId;
+        }
+
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            var player = currentState.GetPlayer(PlayerId);
+            var card = player.Hand.FirstOrDefault(c => c.InstanceId == CardInstanceId);
+
+            if (card == null) return currentState;
+
+            if (!PlayValidator.CanPlay(card, currentState, PlayerId))
+            {
+                Console.WriteLine($"[BLOKADA] Nie można zagrać czaru {card.Definition.Name}.");
+                return currentState;
+            }
+
+            var newPlayer = player.WithBloodSpent(card.CurrentStats.BloodCost)
+                                  .WithCardRemovedFromHand(card);
+
+            var newStack = currentState.SpellStack.ToList();
+            newStack.Add(card);
+
+            var newState = currentState.UpdatePlayer(newPlayer).With(spellStack: newStack);
+            eventBus.Publish(new CardPlayedEvent(PlayerId, card, null, SelectedTargetId));
+
+            return newState;
+        }
+    }
+}
+
+
+========================================
+FILE: PlayUnitCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Commands\Implementations\PlayUnitCommand.cs
+========================================
+using System;
+using System.Linq;
+using CardGame.Core.Events;
+using CardGame.Core.Application;
+using CardGame.Core.State.Models;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Cards.Logic;
+
+namespace CardGame.Core.Commands.Implementations
+{
+    public class PlayUnitCommand : IGameCommand
+    {
+        public int PlayerId { get; }
+        public int CardInstanceId { get; }
+        public int TargetLineIndex { get; }
+        public int? SelectedTargetId { get; }
+
+        public PlayUnitCommand(int playerId, int cardInstanceId, int targetLineIndex, int? selectedTargetId = null)
+        {
+            PlayerId = playerId;
+            CardInstanceId = cardInstanceId;
+            TargetLineIndex = targetLineIndex;
+            SelectedTargetId = selectedTargetId;
+        }
+
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            var playerState = currentState.GetPlayer(PlayerId);
+            var card = playerState.Hand.FirstOrDefault(c => c.InstanceId == CardInstanceId);
+
+            if (card == null) return currentState;
+
+            if (!PlayValidator.CanPlay(card, currentState, PlayerId))
+            {
+                return currentState;
+            }
+
+            if (!currentState.Board.Lines[TargetLineIndex].IsSlotEmpty(PlayerId))
+            {
+                return currentState;
+            }
+
+            var newPlayerState = playerState
+                .WithBloodSpent(card.CurrentStats.BloodCost)
+                .WithCardRemovedFromHand(card);
+
+            var cardToPlay = card.AddPermanentBuff(playerState.GlobalUnitBuffs);
+            var newBoardState = currentState.Board.WithUnitPlacedAt(TargetLineIndex, PlayerId, cardToPlay);
+
+            eventBus.Publish(new CardPlayedEvent(PlayerId, card, TargetLineIndex, SelectedTargetId));
+
+            return currentState.With(
+                playerA: PlayerId == 1 ? newPlayerState : currentState.PlayerA,
+                playerB: PlayerId == 2 ? newPlayerState : currentState.PlayerB,
+                board: newBoardState);
+        }
+    }
+}
+
+
+========================================
+FILE: SelectTargetCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Commands\Implementations\SelectTargetCommand.cs
+========================================
+using System;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Components.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Commands.Implementations
+{
+    public class SelectTargetCommand : IGameCommand
+    {
+        public int PlayerId { get; }
+        public int TargetId { get; }
+
+        public SelectTargetCommand(int playerId, int targetId)
+        {
+            PlayerId = playerId;
+            TargetId = targetId;
+        }
+
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            var pending = currentState.PendingInteraction;
+            if (pending == null) throw new InvalidOperationException("Gra nie oczekuje na wybór celu!");
+
+            // ZMIANA: Szukamy źródła na stosie (SpellStack) zamiast w ActiveSpell
+            var sourceCard = currentState.SpellStack.FirstOrDefault(s => s.InstanceId == pending.SourceCardInstanceId)
+                          ?? currentState.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
+                          ?? currentState.PlayerA.Hand.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
+                          ?? currentState.PlayerB.Hand.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
+                          ?? currentState.PlayerA.DiscardPile.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
+                          ?? currentState.PlayerB.DiscardPile.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId);
+
+            if (sourceCard == null) throw new Exception("Nie znaleziono źródła efektu.");
+
+            var effectData = sourceCard.Definition.Effects[pending.EffectIndex];
+            var selectionEvent = new TargetSelectedEvent(PlayerId, pending.SourceCardInstanceId, TargetId);
+            var component = new JsonEffectComponent(effectData, sourceCard.InstanceId, pending.EffectIndex);
+
+            return (pending.ActionIndex == -1)
+                ? component.Resolve(selectionEvent, currentState, context)
+                : component.ResolveFromIndex(selectionEvent, currentState, context, pending.ActionIndex);
+        }
+    }
+}
+
+
+========================================
+FILE: IGameCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Commands\Interfaces\IGameCommand.cs
+========================================
+using System;
+using CardGame.Core.Events;
+using CardGame.Core.Application;
+using CardGame.Core.State.Models;
+namespace CardGame.Core.Commands.Interfaces
+{
+    public interface IGameCommand
+    {
+       
+        int PlayerId { get; }
+
+       
+        GameState Execute(GameState currentState, EventBus eventBus, GameContext context);
+    }
+}
+
+
+
+========================================
+FILE: DeckRepository.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Decks\DeckRepository.cs
+========================================
+using System;
+
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using CardGame.Core.Decks.Data;
+using System.Collections.Generic;
+
+namespace CardGame.Core.Decks
+{
+    public class DeckRepository
+    {
+        public static DeckRepository Instance { get; } = new DeckRepository();
+        private Dictionary<string, DeckData> _decks = new Dictionary<string, DeckData>();
+
+        public void LoadDecksFromDirectory(string directoryPath)
+        {
+            if (!Directory.Exists(directoryPath))
+            {
+                Console.WriteLine($"[DECK REPO] Folder nie istnieje: {directoryPath}");
+                return;
+            }
+
+            var files = Directory.GetFiles(directoryPath, "*.json");
+            foreach (var file in files)
+            {
+                try
+                {
+                    string json = File.ReadAllText(file);
+                    // Opcja CaseInsensitive pozwala pisać "cardIds" lub "CardIds"
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    var deck = JsonSerializer.Deserialize<DeckData>(json, options);
+
+                    if (deck != null && !string.IsNullOrEmpty(deck.Id))
+                    {
+                        _decks[deck.Id] = deck;
+                        Console.WriteLine($"[DECK REPO] Załadowano talię: {deck.Name} ({deck.CardIds.Count} kart)");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[BŁĄD] Nie udało się wczytać talii z {file}: {ex.Message}");
+                }
+            }
+        }
+
+        public DeckData GetDeck(string deckId)
+        {
+            if (_decks.TryGetValue(deckId, out var deck))
+            {
+                return deck;
+            }
+            throw new Exception($"Nie znaleziono talii o ID: {deckId}");
+        }
+    }
+}
+    
+
+
+
+
+========================================
 FILE: DeckService.cs
 PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Decks\DeckService.cs
 ========================================
@@ -1107,9 +1365,10 @@ namespace CardGame.Core.State.Models
         public PlayerState PlayerB { get; }
         public IReadOnlyList<int> PlayersReady { get; }
         public PendingInteraction? PendingInteraction { get; }
-
-        // ZMIANA: Zamiast jednego czaru, mamy stos czarów w trakcie rozpatrywania
         public IReadOnlyList<CardInstance> SpellStack { get; }
+
+        // Identyfikator gracza, który rozpoczął tę rundę (1 lub 2)
+        public int RoundStartingPlayerId { get; }
 
         public GameState(
             int turnNumber,
@@ -1120,7 +1379,8 @@ namespace CardGame.Core.State.Models
             PlayerState playerB,
             IEnumerable<int>? playersReady = null,
             PendingInteraction? pendingInteraction = null,
-            IEnumerable<CardInstance>? spellStack = null)
+            IEnumerable<CardInstance>? spellStack = null,
+            int roundStartingPlayerId = 1)
         {
             TurnNumber = turnNumber;
             CurrentPhase = currentPhase;
@@ -1131,16 +1391,26 @@ namespace CardGame.Core.State.Models
             PlayersReady = playersReady != null ? new List<int>(playersReady) : new List<int>();
             PendingInteraction = pendingInteraction;
             SpellStack = spellStack != null ? new List<CardInstance>(spellStack) : new List<CardInstance>();
+            RoundStartingPlayerId = roundStartingPlayerId;
         }
 
         public static GameState Initial(int startingPlayerId, List<CardInstance> deckA, List<CardInstance> deckB, DeterministicRng rng)
         {
             var pA = PlayerState.Initial(1, deckA).WithShuffledDeck(rng);
             var pB = PlayerState.Initial(2, deckB).WithShuffledDeck(rng);
+
             for (int i = 0; i < 4; i++) pA = pA.WithCardDrawn();
             for (int i = 0; i < 4; i++) pB = pB.WithCardDrawn();
 
-            return new GameState(1, GamePhase.Mulligan, startingPlayerId, BoardState.Empty(), pA, pB);
+            return new GameState(
+                turnNumber: 1,
+                currentPhase: GamePhase.Mulligan,
+                activePlayerId: startingPlayerId,
+                board: BoardState.Empty(),
+                playerA: pA,
+                playerB: pB,
+                roundStartingPlayerId: startingPlayerId
+            );
         }
 
         public GameState With(
@@ -1153,8 +1423,8 @@ namespace CardGame.Core.State.Models
             IEnumerable<int>? playersReady = null,
             PendingInteraction? pendingInteraction = null,
             IEnumerable<CardInstance>? spellStack = null,
-            bool clearPending = false,
-            bool clearSpellStack = false)
+            int? roundStartingPlayerId = null,
+            bool clearPending = false)
         {
             return new GameState(
                 turnNumber ?? this.TurnNumber,
@@ -1165,20 +1435,22 @@ namespace CardGame.Core.State.Models
                 playerB ?? this.PlayerB,
                 playersReady ?? this.PlayersReady,
                 clearPending ? null : (pendingInteraction ?? this.PendingInteraction),
-                clearSpellStack ? new List<CardInstance>() : (spellStack ?? this.SpellStack)
+                spellStack ?? this.SpellStack,
+                roundStartingPlayerId ?? this.RoundStartingPlayerId
             );
         }
 
-        public PlayerState GetPlayer(int playerId) => playerId == 1 ? PlayerA : PlayerB;
-        public PlayerState GetOpponent(int playerId) => playerId == 1 ? PlayerB : PlayerA;
-        public GameState UpdatePlayer(PlayerState newPlayerState) => newPlayerState.PlayerId == 1 ? With(playerA: newPlayerState) : With(playerB: newPlayerState);
-        public GameState UpdateBoard(BoardState newBoard) => With(board: newBoard);
         public GameState MarkPlayerAsReady(int playerId)
         {
             var newList = new List<int>(PlayersReady);
             if (!newList.Contains(playerId)) newList.Add(playerId);
             return With(playersReady: newList);
         }
+
+        public PlayerState GetPlayer(int playerId) => playerId == 1 ? PlayerA : PlayerB;
+        public PlayerState GetOpponent(int playerId) => playerId == 1 ? PlayerB : PlayerA;
+        public GameState UpdatePlayer(PlayerState newPlayerState) => newPlayerState.PlayerId == 1 ? With(playerA: newPlayerState) : With(playerB: newPlayerState);
+        public GameState UpdateBoard(BoardState newBoard) => With(board: newBoard);
     }
 }
 
@@ -1244,67 +1516,22 @@ namespace CardGame.Core.StateMachine.Phases
     public class MulliganPhaseState : IPhaseState
     {
         public GamePhase PhaseType => GamePhase.Mulligan;
-
-        public bool IsCommandAllowed(IGameCommand command, GameState state)
-        {
-            // W tej fazie każdy może wykonać ruch, ale tylko raz (teoretycznie)
-            // Można dodać walidację state.PlayersReady.Contains(command.PlayerId),
-            // żeby zablokować wielokrotne wysyłanie, ale UI powinno to blokować.
-
-            if (command is ConfirmMulliganCommand) return true;
-
-            return false;
-        }
+        public bool IsCommandAllowed(IGameCommand command, GameState state) => command is CardGame.Core.Commands.Implementations.ConfirmMulliganCommand;
+        public bool ShouldEndPhaseAutomatically(GameState state) => state.PlayersReady.Contains(1) && state.PlayersReady.Contains(2);
 
         public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
         {
-            // Ta metoda jest wywoływana zazwyczaj przez EndPhaseCommand.
-            // W Mulliganie nie używamy EndPhaseCommand, tylko automatycznie przełączamy,
-            // gdy obaj są gotowi. Ale GameEngine nie robi auto-przejścia sam z siebie.
+            // Start Rundy 1: Obaj gracze dobierają kartę
+            var pA = currentState.PlayerA.WithCardDrawn(eventBus);
+            var pB = currentState.PlayerB.WithCardDrawn(eventBus);
 
-            // ARCHITEKTURA:
-            // GameEngine musi sprawdzić po wykonaniu komendy, czy zmienić fazę.
-            // Możemy to zrobić sprytnie: Niech ConfirmMulliganCommand na końcu
-            // sprawdza warunek i jeśli obaj gotowi, sama zmienia fazę?
-            // NIE. Komenda nie powinna zmieniać fazy.
-
-            // Zrobimy tak: GameEngine po każdej komendzie może zapytać PhaseState: "Czy to już koniec?".
-            // Ale Twój silnik jest prosty.
-
-            // Najprościej: Niech ConfirmMulliganCommand zwraca stan zaktualizowany.
-            // A jeśli obaj są gotowi, to GameStateMachine przy kolejnym zapytaniu
-            // (albo specjalny Check) powinien przenieść nas dalej.
-
-            // W Twoim obecnym GameEngine zmiana fazy dzieje się TYLKO przy EndPhaseCommand.
-            // To problem dla Mulligana, który kończy się "sam".
-
-            // ROZWIĄZANIE:
-            // Użyjmy "EndPhaseCommand" jako "Systemowy sygnał przejścia".
-            // Ale to skomplikowane.
-
-            // Zróbmy tak: Wewnątrz MulliganPhaseState dodajmy logikę, która 
-            // przy zapytaniu o 'ProcessEndPhase' po prostu przenosi do gry.
-            // A w GameEngine dodamy mały hack, żeby sprawdzić ten warunek.
-
-            // WRÓĆ. Najczystsze rozwiązanie w Twoim kodzie:
-            // 1. Gracz klika "Zatwierdź".
-            // 2. Komenda się wykonuje.
-            // 3. Jeśli 'PlayersReady' ma 2 osoby -> Wykonaj logicznie przejście do UnitOnly.
-
-            // Zróbmy to w GameEngine.
-
-            return currentState.With(currentPhase: GamePhase.UnitOnly);
-        }
-
-        // Metoda pomocnicza, którą wywoła GameEngine
-        public bool IsPhaseComplete(GameState state)
-        {
-            return state.PlayersReady.Contains(1) && state.PlayersReady.Contains(2);
-        }
-        public bool ShouldEndPhaseAutomatically(GameState state)
-        {
-            // Faza kończy się sama, gdy obaj gracze (ID 1 i 2) są na liście gotowych
-            return state.PlayersReady.Contains(1) && state.PlayersReady.Contains(2);
+            return currentState.With(
+                currentPhase: GamePhase.UnitOnly,
+                activePlayerId: 1,
+                roundStartingPlayerId: 1,
+                playerA: pA,
+                playerB: pB
+            );
         }
     }
 }
@@ -1409,10 +1636,14 @@ namespace CardGame.Core.State.Models
             return this.With(hand: Hand.Concat(toDraw), discardPile: DiscardPile.Where(c => !toDraw.Any(d => d.InstanceId == c.InstanceId)));
         }
 
-        public PlayerState WithTurnStartBlood(int turn) => this.With(maxBlood: Math.Clamp(turn, 1, 10), currentBlood: Math.Clamp(turn, 1, 10));
+        public PlayerState WithTurnStartBlood(int manaLimit, bool refill)
+        {
+            int newMax = Math.Clamp(manaLimit, 1, 10);
+            return this.With(maxBlood: newMax, currentBlood: refill ? newMax : CurrentBlood);
+        }
         public PlayerState WithCardAddedToHand(CardInstance card) => this.With(hand: Hand.Append(card));
         public PlayerState WithCardAddedToDiscard(CardInstance card) => this.With(discardPile: DiscardPile.Append(card));
-        public PlayerState WithHealthRestored(int amount) => this.With(health: Health + amount); // USUNIĘTO CLAMP DO 20
+        public PlayerState WithHealthRestored(int amount) => this.With(health: Health + amount);
         public PlayerState WithDamageTaken(int amount) => this.With(health: Health - amount);
         public PlayerState WithShuffledDeck(DeterministicRng rng)
         {
@@ -1528,39 +1759,18 @@ using System.Threading.Tasks;
 
 namespace CardGame.Core.StateMachine.Phases
 {
-    public class ActionPhaseState: IPhaseState
+    public class ActionPhaseState : IPhaseState
     {
         public GamePhase PhaseType => GamePhase.ActionOnly;
-        public bool IsCommandAllowed(IGameCommand command, GameState state)
-        {
-            /* Walidacja, czy kraczyna wykonująca komendę jest aktywnym graczem. */
-            if (command.PlayerId != state.ActivePlayerId) return false;
-            /* Dozwolone komendy w fazie akcji są następujące:
-             * 1. Wykonanie akcji.
-             * 2. Zakończenie fazy (tury gracza). */
-            if (command is PlaySpellCommand) return true;
-            if (command is SelectTargetCommand) return true;
-            if (command is EndPhaseCommand) return true;
-            return false;
-        }
+        public bool IsCommandAllowed(IGameCommand command, GameState state) => command.PlayerId == state.ActivePlayerId && (command is CardGame.Core.Commands.Implementations.PlaySpellCommand || command is CardGame.Core.Commands.Implementations.EndPhaseCommand);
+        public bool ShouldEndPhaseAutomatically(GameState state) => false;
+
         public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
         {
-            /* LOGIKA PRZEJŚCIA DO KOLEJNEJ FAZY LUB TURY GRACZA
-             * ActionPhase jest ostatnią interaktywną fazę, gdzie
-             * następnie przechodzimy w AutoBattlera na liniach od
-             * lewej. Jest wiele podejść co do tego co ma się dziać
-             * z ActivePlayerem, ale na razie uznajmy, że pozostoaje
-             * bez zmian.*/
-            return currentState.With(
-                currentPhase: GamePhase.Combat);
-        }
-        public bool ShouldEndPhaseAutomatically(GameState state)
-        {
-            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
+            return currentState.With(currentPhase: GamePhase.Combat);
         }
     }
 }
-
 
 
 ========================================
@@ -1582,40 +1792,22 @@ using System.Threading.Tasks;
 
 namespace CardGame.Core.StateMachine.Phases
 {
-    public class BothPhaseState : IPhaseState
+    public class BothPhaseState : CardGame.Core.StateMachine.Interfaces.IPhaseState
     {
-        public GamePhase PhaseType => GamePhase.UnitAndAction;
-        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        public CardGame.Core.State.Enums.GamePhase PhaseType => CardGame.Core.State.Enums.GamePhase.UnitAndAction;
+        public bool IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand command, CardGame.Core.State.Models.GameState state) =>
+            command.PlayerId == state.ActivePlayerId && (command is CardGame.Core.Commands.Implementations.PlayUnitCommand || command is CardGame.Core.Commands.Implementations.PlaySpellCommand || command is CardGame.Core.Commands.Implementations.EndPhaseCommand);
+        public bool ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState state) => false;
+
+        public CardGame.Core.State.Models.GameState ProcessEndPhase(CardGame.Core.State.Models.GameState currentState, CardGame.Core.Events.EventBus eventBus, CardGame.Core.Application.GameContext context)
         {
-            /* Walidacja, czy kraczyna wykonująca komendę jest aktywnym graczem. */
-            if (command.PlayerId != state.ActivePlayerId) return false;
-
-            /* Dozwolone komendy w fazie jednostek są następujące:
-             * 1. Zagranie jedostki.
-             * 2. Wykonanie akcji.
-             * 3. Zakończenie fazy (tury gracza). */
-
-            if (command is PlayUnitCommand) return true;
-            if (command is SelectTargetCommand) return true;
-            if (command is PlaySpellCommand) return true;
-            if (command is EndPhaseCommand) return true;
-            return false;
-        }
-
-        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
-        {
-            int nextPlayerId = (currentState.ActivePlayerId == 1) ? 2 : 1;
+            // Powrót do startera na czary. ŻADNEGO dobierania kart.
             return currentState.With(
-                currentPhase: GamePhase.ActionOnly,
-                activePlayerId: nextPlayerId);
-        }
-        public bool ShouldEndPhaseAutomatically(GameState state)
-        {
-            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
+                currentPhase: CardGame.Core.State.Enums.GamePhase.ActionOnly,
+                activePlayerId: currentState.RoundStartingPlayerId
+            );
         }
     }
-    
-    
 }
 
 
@@ -1625,95 +1817,53 @@ FILE: CombatPhaseState.cs
 PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Phases\CombatPhaseState.cs
 ========================================
 using CardGame.Core.Application;
-using CardGame.Core.Cards.Data;
 using CardGame.Core.Combat;
-using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Events;
 using CardGame.Core.GameRules.Death;
 using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
 using CardGame.Core.StateMachine.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.StateMachine.Phases
 {
-    public class CombatPhaseState: IPhaseState
+    public class CombatPhaseState : CardGame.Core.StateMachine.Interfaces.IPhaseState
     {
-        public GamePhase PhaseType => GamePhase.Combat;
-        public bool IsCommandAllowed(IGameCommand command, GameState state)
-        {
-         
-            if (command is EndPhaseCommand) return true;
-            return false;
-        }
+        public CardGame.Core.State.Enums.GamePhase PhaseType => CardGame.Core.State.Enums.GamePhase.Combat;
+        public bool IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand command, CardGame.Core.State.Models.GameState state) => command is CardGame.Core.Commands.Implementations.EndPhaseCommand;
+        public bool ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState state) => true;
 
-        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        public CardGame.Core.State.Models.GameState ProcessEndPhase(CardGame.Core.State.Models.GameState currentState, CardGame.Core.Events.EventBus eventBus, CardGame.Core.Application.GameContext context)
         {
-            /* ---------------------- KONIEC RUNDY ----------------------------
-             * + następuje początek kolejnejm więc musimy:
-             * 1. Zwiększyś numer++ rundy. */
-            var orchestrator = new CombatOrchestrator();
+            var orchestrator = new CardGame.Core.Combat.CombatOrchestrator();
             var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState, eventBus, context);
-            stateAfterCombat = ProcessEndOfRoundStatuses(stateAfterCombat, eventBus, context);
 
-            /* Ogarnąć, który gracz ma rozpocząć kolejną turę/rundę.
-             * (termin tura/runda jest używany zamiennie w tym kontekście). */
-            int nextTurnNumber = currentState.TurnNumber + 1;
-            int nextActivePlayerId = (nextTurnNumber % 2 != 0) ? 1 : 2;
-
-            var playerToStart = stateAfterCombat.GetPlayer(nextActivePlayerId);
-            var updatedPlayer = playerToStart
-               .WithTurnStartBlood(nextTurnNumber)
-               .WithCardDrawn();
-
-            GameState finalState;
-            if (nextActivePlayerId == 1)
-            {
-                finalState = stateAfterCombat.With(
-                    turnNumber: nextTurnNumber,
-                    currentPhase: GamePhase.UnitOnly,
-                    activePlayerId: nextActivePlayerId,
-                    playerA: updatedPlayer // Aktualizujemy A
-                );
-            }
-            else
-            {
-                finalState = stateAfterCombat.With(
-                    turnNumber: nextTurnNumber,
-                    currentPhase: GamePhase.UnitOnly,
-                    activePlayerId: nextActivePlayerId,
-                    playerB: updatedPlayer // Aktualizujemy B
-                );
-            }
-
-            return finalState;
-        }
-        public bool ShouldEndPhaseAutomatically(GameState state)
-        {
-            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
-        }
-        private GameState ProcessEndOfRoundStatuses(GameState state, EventBus events, GameContext context)
-        {
-            var workingState = state;
-            var unitsToCheck = workingState.Board.GetAllUnits();
-
-            foreach (var unit in unitsToCheck)
-            {
-                // KeywordProcessor sprawdzi Burning i inne przyszłe efekty końca tury
+            // Logika statusów (Burning itp.)
+            var workingState = stateAfterCombat;
+            foreach (var unit in workingState.Board.GetAllUnits())
                 workingState = context.Keywords.ProcessRoundEnd(workingState, unit, context);
-            }
+            workingState = new CardGame.Core.GameRules.Death.DeathResolver().ResolveDeaths(workingState, eventBus, context);
 
-            return new DeathResolver().ResolveDeaths(workingState, events, context);
+            // Nowa runda
+            int nextRoundStarter = 3 - currentState.RoundStartingPlayerId;
+            int nextTurnNumber = currentState.TurnNumber + 1;
+            int manaLimit = (nextTurnNumber + 1) / 2;
+
+            // TU I TYLKO TU: Obaj dobierają karty i Starter dostaje refill many
+            var pA = workingState.PlayerA.WithTurnStartBlood(manaLimit, nextRoundStarter == 1).WithCardDrawn(eventBus);
+            var pB = workingState.PlayerB.WithTurnStartBlood(manaLimit, nextRoundStarter == 2).WithCardDrawn(eventBus);
+
+            return workingState.With(
+                turnNumber: nextTurnNumber,
+                currentPhase: CardGame.Core.State.Enums.GamePhase.UnitOnly,
+                activePlayerId: nextRoundStarter,
+                roundStartingPlayerId: nextRoundStarter,
+                playerA: pA,
+                playerB: pB
+            );
         }
     }
-
 }
-
 
 
 ========================================
@@ -1735,36 +1885,21 @@ using System.Threading.Tasks;
 
 namespace CardGame.Core.StateMachine.Phases
 {
-    public class UnitPhaseState : IPhaseState
+    public class UnitPhaseState : CardGame.Core.StateMachine.Interfaces.IPhaseState
     {
-        public GamePhase PhaseType => GamePhase.UnitOnly;
-        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        public CardGame.Core.State.Enums.GamePhase PhaseType => CardGame.Core.State.Enums.GamePhase.UnitOnly;
+        public bool IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand command, CardGame.Core.State.Models.GameState state) =>
+            command.PlayerId == state.ActivePlayerId && (command is CardGame.Core.Commands.Implementations.PlayUnitCommand || command is CardGame.Core.Commands.Implementations.EndPhaseCommand);
+        public bool ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState state) => false;
+
+        public CardGame.Core.State.Models.GameState ProcessEndPhase(CardGame.Core.State.Models.GameState currentState, CardGame.Core.Events.EventBus eventBus, CardGame.Core.Application.GameContext context)
         {
-            /* Walidacja, czy kraczyna wykonująca komendę jest aktywnym graczem. */
-            if (command.PlayerId != state.ActivePlayerId) return false;
-
-            /* Dozwolone komendy w fazie jednostek są następujące:
-             * 1. Zagranie jedostki.
-             * 2. Zakończenie fazy (tury gracza). */
-            if (command is PlayUnitCommand) return true;
-            if (command is SelectTargetCommand) return true;
-            /* wstaw wystawienie jednostki komenda */
-            if (command is EndPhaseCommand) return true;
-
-            return false;
-        }
-    
-
-        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
-        {
-            int nextPlayerId = (currentState.ActivePlayerId == 1) ? 2 : 1;
+            // Przejście do przeciwnika na pełną turę. ŻADNEGO dobierania kart.
+            int opponentId = 3 - currentState.ActivePlayerId;
             return currentState.With(
-                currentPhase: GamePhase.UnitAndAction,
-                activePlayerId: nextPlayerId);
-        }
-        public bool ShouldEndPhaseAutomatically(GameState state)
-        {
-            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
+                currentPhase: CardGame.Core.State.Enums.GamePhase.UnitAndAction,
+                activePlayerId: opponentId
+            );
         }
     }
 }
@@ -2045,78 +2180,6 @@ namespace CardGame.Tests
 
             Assert.Equal(1, unitP1.CurrentStats.Health);
             Assert.Equal(7, unitP2.CurrentStats.Health);
-        }
-    }
-}
-
-
-========================================
-FILE: ComplexScenario.cs
-PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\ComplexScenario.cs
-========================================
-using System.Collections.Generic;
-using System.Linq;
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.State.Enums;
-using CardGame.Core.GameRules.Battle;
-using Xunit;
-
-namespace CardGame.Tests
-{
-    public class WomboComboTests
-    {
-        [Fact]
-        public void Ultimate_WomboCombo_Test()
-        {
-            string json = @"[
-                { ""Id"": 12, ""Name"": ""Black Cat"", ""Type"": ""Unit"", ""Cost"": 0, ""Attack"": 1, ""Health"": 1,
-                  ""Effects"": [ { ""Trigger"": ""OnSacrificed"", ""Zone"": ""Board"", ""Actions"": [ { ""Type"": ""ReturnToHand"", ""Target"": ""Self"" } ] } ] },
-                { ""Id"": 6, ""Name"": ""Radio Demon"", ""Type"": ""Unit"", ""Cost"": 5, ""Attack"": 2, ""Health"": 2,
-                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""ModifyGlobalBuff"", ""BuffAtk"": 1, ""BuffHp"": 1 } ] } ] },
-                { ""Id"": 10, ""Name"": ""Polar Bear"", ""Type"": ""Unit"", ""Cost"": 2, ""Attack"": 2, ""Health"": 3,
-                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetFriendlyUnit"", ""Actions"": [ { ""Type"": ""SacrificeUnit"", ""Target"": ""SelectedTarget"" } ] } ] },
-                { ""Id"": 9, ""Name"": ""Corpse Eater"", ""Type"": ""Unit"", ""Cost"": 3, ""Attack"": 3, ""Health"": 1,
-                  ""Effects"": [ { ""Trigger"": ""OnFriendlyUnitDied"", ""Zone"": ""Hand"", ""Actions"": [ { ""Type"": ""SummonUnit"", ""Target"": ""Self"" } ] } ] },
-                { ""Id"": 11, ""Name"": ""The Creature"", ""Type"": ""Unit"", ""Cost"": 7, ""Attack"": 7, ""Health"": 7,
-                  ""Effects"": [ { ""Trigger"": ""OnOtherUnitSacrificed"", ""Zone"": ""Hand"", ""Actions"": [ { ""Type"": ""BuffStats"", ""Target"": ""Self"", ""Amount"": -1 } ] } ] },
-                { ""Id"": 17, ""Name"": ""Megumin"", ""Type"": ""Unit"", ""Cost"": 4, ""Attack"": 3, ""Health"": 1, 
-                  ""Keywords"": [""SplashDamage""], ""KeywordParams"": {""SplashDamage"": 3} }
-            ]";
-
-            var engine = TestHelpers.CreateEngineWithCards(json);
-            var factory = engine.Factory;
-
-            var cat = factory.CreateCard(12, 1);
-            var radio = factory.CreateCard(6, 1);
-            var bear = factory.CreateCard(10, 1);
-            var eater = factory.CreateCard(9, 1);
-            var creature = factory.CreateCard(11, 1);
-            var megumin = factory.CreateCard(17, 2);
-
-            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.With(
-                hand: new[] { cat, radio, bear, eater, creature },
-                health: 30).WithResourceChanged(ResourceType.Blood, 20, 20));
-
-            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board
-                .WithUnitPlacedAt(1, 2, megumin));
-
-            engine.ExecuteCommand(new PlayUnitCommand(1, cat.InstanceId, 3));
-            engine.ExecuteCommand(new PlayUnitCommand(1, radio.InstanceId, 0));
-            engine.ExecuteCommand(new PlayUnitCommand(1, bear.InstanceId, 2, selectedTargetId: cat.InstanceId));
-
-            Assert.Contains(engine.CurrentState.PlayerA.Hand, c => c.Definition.Name == "Black Cat");
-            Assert.NotNull(engine.CurrentState.Board.Lines[3].Player1Unit);
-            Assert.Equal("Corpse Eater", engine.CurrentState.Board.Lines[3].Player1Unit!.Definition.Name);
-
-            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.Combat);
-            engine.ExecuteCommand(new EndPhaseCommand(1));
-
-            Assert.Equal(27, engine.CurrentState.PlayerA.Health);
-            Assert.Null(engine.CurrentState.Board.Lines[0].Player1Unit);
-            Assert.Equal(1, engine.CurrentState.Board.Lines[2].Player1Unit!.CurrentStats.Health);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                 try
                 {
                     var tokenCard = context.Factory.CreateCard(action.ValueParam, targets.TargetPlayer.PlayerId);
-                    Console.WriteLine($"[EFEKT] Dodano {tokenCard.Definition.Name} do ręki.");
+                  
                     return state.UpdatePlayer(targets.TargetPlayer.WithCardAddedToHand(tokenCard));
                 }
                 catch (Exception ex)

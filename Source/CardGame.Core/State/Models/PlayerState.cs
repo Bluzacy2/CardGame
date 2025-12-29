@@ -64,10 +64,14 @@ namespace CardGame.Core.State.Models
             return this.With(hand: Hand.Concat(toDraw), discardPile: DiscardPile.Where(c => !toDraw.Any(d => d.InstanceId == c.InstanceId)));
         }
 
-        public PlayerState WithTurnStartBlood(int turn) => this.With(maxBlood: Math.Clamp(turn, 1, 10), currentBlood: Math.Clamp(turn, 1, 10));
+        public PlayerState WithTurnStartBlood(int manaLimit, bool refill)
+        {
+            int newMax = Math.Clamp(manaLimit, 1, 10);
+            return this.With(maxBlood: newMax, currentBlood: refill ? newMax : CurrentBlood);
+        }
         public PlayerState WithCardAddedToHand(CardInstance card) => this.With(hand: Hand.Append(card));
         public PlayerState WithCardAddedToDiscard(CardInstance card) => this.With(discardPile: DiscardPile.Append(card));
-        public PlayerState WithHealthRestored(int amount) => this.With(health: Health + amount); // USUNIĘTO CLAMP DO 20
+        public PlayerState WithHealthRestored(int amount) => this.With(health: Health + amount);
         public PlayerState WithDamageTaken(int amount) => this.With(health: Health - amount);
         public PlayerState WithShuffledDeck(DeterministicRng rng)
         {

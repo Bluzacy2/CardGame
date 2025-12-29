@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic; 
+using CardGame.Core.Cards.Logic;
 using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.State.Enums;
@@ -15,27 +16,33 @@ namespace CardGame.Core.AI.Logic
             var moves = new List<IGameCommand>();
             var player = state.GetPlayer(playerId);
 
-            if (state.CurrentPhase == GamePhase.Mulligan)
-            {
-                moves.Add(new ConfirmMulliganCommand(playerId, new List<int>()));
-                return moves;
-            }
-
+           
             if (state.PendingInteraction != null)
             {
-                var allUnits = state.Board.GetAllUnits();
-                foreach (var unit in allUnits)
+                var pending = state.PendingInteraction;
+
+                if (pending.RequiredTargetType == TargetType.Choice)
                 {
-                    moves.Add(new SelectTargetCommand(playerId, unit.InstanceId));
+                   
+                    for (int i = 0; i < pending.Options.Count; i++)
+                        moves.Add(new SelectTargetCommand(playerId, i));
+                }
+                else
+                {
+                  
+                    var targets = EffectTargetResolver.GetPotentialTargets(pending.RequiredTargetType, state, pending.SourceCardInstanceId);
+                    foreach (var t in targets)
+                        moves.Add(new SelectTargetCommand(playerId, t.InstanceId));
                 }
                 return moves;
             }
 
+         
             if (state.CurrentPhase == GamePhase.UnitOnly || state.CurrentPhase == GamePhase.UnitAndAction)
             {
-                foreach (var card in player.Hand)
+                foreach (var card in player.Hand.Where(c => c.Definition.Type == CardType.Unit))
                 {
-                    if (card.Definition.Type == CardType.Unit && PlayValidator.CanPlay(card, state, playerId))
+                    if (PlayValidator.CanPlay(card, state, playerId))
                     {
                         for (int i = 0; i < 4; i++)
                         {
@@ -45,18 +52,16 @@ namespace CardGame.Core.AI.Logic
                     }
                 }
             }
-
             if (state.CurrentPhase == GamePhase.ActionOnly || state.CurrentPhase == GamePhase.UnitAndAction)
             {
-                foreach (var card in player.Hand)
+                foreach (var card in player.Hand.Where(c => c.Definition.Type == CardType.Spell))
                 {
-                    if (card.Definition.Type == CardType.Spell && PlayValidator.CanPlay(card, state, playerId))
-                    {
+                    if (PlayValidator.CanPlay(card, state, playerId))
                         moves.Add(new PlaySpellCommand(playerId, card.InstanceId));
-                    }
                 }
             }
 
+          
             moves.Add(new EndPhaseCommand(playerId));
             return moves;
         }

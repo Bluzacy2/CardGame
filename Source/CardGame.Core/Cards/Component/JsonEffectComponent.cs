@@ -16,13 +16,16 @@ namespace CardGame.Core.Cards.Components.Implementations
 
         public JsonEffectComponent(EffectData data, int sourceId, int effectIndex = 0)
         {
-            _data = data; _sourceId = sourceId; _effectIndex = effectIndex;
+            _data = data;
+            _sourceId = sourceId;
+            _effectIndex = effectIndex;
         }
 
         public bool ShouldTrigger(IGameEvent e, GameState s) => TriggerLogic.Check(_data, e, s, _sourceId);
 
         public GameState Resolve(IGameEvent evt, GameState state, GameContext context)
         {
+            // Start interakcji Choice (menu wyboru)
             if (_data.Targeting == TargetType.Choice && !(evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1))
             {
                 return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, -1, TargetType.Choice, _data.ChoiceLabels));
@@ -34,19 +37,26 @@ namespace CardGame.Core.Cards.Components.Implementations
         {
             GameState workingState = state.With(clearPending: true);
 
-            // Obsługa Choice (wybór ścieżki efektu)
+       
             if (_data.Targeting == TargetType.Choice && evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1)
             {
                 int choiceIdx = tse.SelectedTargetId;
                 if (choiceIdx >= 0 && choiceIdx < _data.Actions.Count)
+                {
+                 
                     return ExecuteAction(workingState, context, _data.Actions[choiceIdx], evt, choiceIdx);
+                }
                 return workingState;
             }
 
+          
             for (int i = startIndex; i < _data.Actions.Count; i++)
             {
                 var nextState = ExecuteAction(workingState, context, _data.Actions[i], evt, i);
+
+               
                 if (nextState.PendingInteraction != null) return nextState;
+
                 workingState = nextState;
             }
             return workingState;
@@ -60,24 +70,20 @@ namespace CardGame.Core.Cards.Components.Implementations
             {
                 var resolved = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);
 
-                // SPRAWDZENIE: Czy ten konkretny cel został już dostarczony?
-                bool targetAlreadyProvided = false;
+            
+                bool provided = (evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == actionIdx) ||
+                                (actionIdx == 0 && evt is CardPlayedEvent cpe && cpe.SelectedTargetId.HasValue);
 
-                // A. Przez komendę zagrania (tylko dla pierwszej akcji)
-                if (actionIdx == 0 && evt is CardPlayedEvent cpe && cpe.SelectedTargetId.HasValue)
-                    targetAlreadyProvided = true;
-
-                // B. Przez wznowienie interakcji (tylko jeśli ID akcji się zgadza)
-                if (evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == actionIdx)
-                    targetAlreadyProvided = true;
-
-                if (!resolved.UnitTargets.Any() && !targetAlreadyProvided)
+                if (!resolved.UnitTargets.Any() && !provided)
                 {
+                  
                     if (EffectTargetResolver.GetPotentialTargets(targetType, state, _sourceId).Any())
                         return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, actionIdx, targetType));
+
+                  
                     return state;
                 }
-                return context.ActionRegistry.GetHandler(action.Type).Execute(state, context, action, resolved, _sourceId, evt);
+                return context.ActionRegistry.GetHandler(action.Type).Execute(state.With(clearPending: true), context, action, resolved, _sourceId, evt);
             }
 
             var autoTargets = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);

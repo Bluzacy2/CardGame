@@ -4,7 +4,6 @@ using CardGame.Core.GameRules.Battle;
 using CardGame.Core.GameRules.Death;
 using CardGame.Core.State.Models;
 using CardGame.Core.Events.Triggers;
-using System.Collections.Generic;
 
 namespace CardGame.Core.Combat
 {
@@ -20,15 +19,14 @@ namespace CardGame.Core.Combat
 
             for (int i = 0; i < 4; i++)
             {
-           
                 eventBus.Publish(new PreLineCombatEvent(i));
                 workingState = _triggerSystem.ProcessEvents(workingState, eventBus, context);
                 workingState = _deathResolver.ResolveDeaths(workingState, eventBus, context);
 
-             
                 var line = workingState.Board.Lines[i];
                 var u1 = line.Player1Unit;
                 var u2 = line.Player2Unit;
+
 
                 if (u1 != null && u2 != null)
                     workingState = _battleService.ResolveCombatDuel(workingState, u1, u2, i, eventBus, context);

@@ -17,18 +17,18 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             if (targets.TargetPlayer != null)
             {
                 var newPlayer = targets.TargetPlayer.WithHealthRestored(action.Amount);
-                Console.WriteLine($"[EFEKT] Uleczono gracza {newPlayer.PlayerId} o {action.Amount}");
+              
                 return state.UpdatePlayer(newPlayer);
             }
 
             foreach (var unit in targets.UnitTargets)
             {
-                // Używamy nowej metody Heal w CardInstance (która operuje na DamageTaken)
+           
                 var healedUnit = unit.Heal(action.Amount);
 
                 state = state.UpdateBoard(state.Board.UpdateUnit(healedUnit));
 
-                Console.WriteLine($"[EFEKT] Uleczono jednostkę {unit.Definition.Name} o {action.Amount}. HP: {healedUnit.CurrentStats.Health}/{healedUnit.MaxHealth}");
+              
             }
 
             return state;

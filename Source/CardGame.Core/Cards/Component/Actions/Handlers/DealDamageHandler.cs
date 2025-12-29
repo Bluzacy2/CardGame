@@ -24,7 +24,7 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             if (targets.TargetPlayer != null)
             {
                 var newPlayer = targets.TargetPlayer.WithDamageTaken(action.Amount);
-                // Publikujemy event: Unit = null oznacza Bohatera. To uruchamia Juggernauta/Raptora.
+
                 context.Events.Publish(new UnitDamagedEvent(null!, action.Amount, sourceCard));
                 return state.UpdatePlayer(newPlayer);
             }

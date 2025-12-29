@@ -14,7 +14,8 @@ namespace CardGame.ConsoleApp
                 Console.WriteLine("=== CARD GAME ENGINE CLI ===");
                 Console.WriteLine("1. Uruchom Testy Mechanik (Unit Tests)");
                 Console.WriteLine("2. Uruchom Symulację Bitwy (AI vs AI)");
-                Console.WriteLine("3. Wyjście");
+                Console.WriteLine("3. Uruchom Symulację Bitwy (AI vs AI) v2");
+                Console.WriteLine("4. Wyjście");
                 Console.Write("\nWybierz opcję: ");
 
                 var key = Console.ReadKey();
@@ -31,6 +32,10 @@ namespace CardGame.ConsoleApp
                         Pause();
                         break;
                     case '3':
+                        await AIBattleRunnerII.RunAsync();
+                        Pause();
+                        break;
+                    case '4':
                         return;
                     default:
                         Console.WriteLine("Nieznana opcja.");

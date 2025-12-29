@@ -15,21 +15,22 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
         public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
         {
             var workingState = state;
-            foreach (var unit in targets.UnitTargets)
+            foreach (var target in targets.UnitTargets)
             {
+                var unit = workingState.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == target.InstanceId);
+                if (unit == null) continue;
+
                 int lineIdx = -1;
                 for (int i = 0; i < 4; i++)
                 {
                     if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId ||
                         workingState.Board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
-                    {
-                        lineIdx = i; break;
-                    }
+                    { lineIdx = i; break; }
                 }
                 if (lineIdx == -1) continue;
+
                 int opponentId = unit.OwnerPlayerId == 1 ? 2 : 1;
                 var defender = (opponentId == 1) ? workingState.Board.Lines[lineIdx].Player1Unit : workingState.Board.Lines[lineIdx].Player2Unit;
-                Console.WriteLine($"[AKCJA] BonusAttack: {unit.Definition.Name}");
                 workingState = context.Battle.ResolveBonusStrike(workingState, unit, defender, lineIdx, context.Events, context);
             }
             return workingState;
@@ -42,9 +43,12 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
         public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
         {
             var workingState = state;
-            foreach (var unit in targets.UnitTargets)
+            foreach (var target in targets.UnitTargets)
             {
-                var healed = unit.Heal(999);
+                var unitOnBoard = workingState.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == target.InstanceId);
+                if (unitOnBoard == null) continue;
+
+                var healed = unitOnBoard.Heal(999);
                 workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(healed));
             }
             return workingState;
@@ -57,19 +61,26 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
         public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
         {
             var workingState = state;
-            foreach (var unit in targets.UnitTargets)
+            foreach (var target in targets.UnitTargets)
             {
+                var unitOnBoard = workingState.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == target.InstanceId);
+                if (unitOnBoard == null) continue;
+
                 int currentLine = -1;
-                for (int i = 0; i < 4; i++) if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId || workingState.Board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId) { currentLine = i; break; }
+                for (int i = 0; i < 4; i++)
+                {
+                    if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitOnBoard.InstanceId ||
+                        workingState.Board.Lines[i].Player2Unit?.InstanceId == unitOnBoard.InstanceId)
+                    { currentLine = i; break; }
+                }
 
                 if (currentLine != -1 && currentLine < 3)
                 {
                     int nextLine = currentLine + 1;
-                    if (workingState.Board.Lines[nextLine].IsSlotEmpty(unit.OwnerPlayerId))
+                    if (workingState.Board.Lines[nextLine].IsSlotEmpty(unitOnBoard.OwnerPlayerId))
                     {
-                        Console.WriteLine($"[RUCH] {unit.Definition.Name} przesuwa się w prawo.");
-                        var board = workingState.Board.WithUnitPlacedAt(currentLine, unit.OwnerPlayerId, null);
-                        board = board.WithUnitPlacedAt(nextLine, unit.OwnerPlayerId, unit);
+                        var board = workingState.Board.WithUnitPlacedAt(currentLine, unitOnBoard.OwnerPlayerId, null);
+                        board = board.WithUnitPlacedAt(nextLine, unitOnBoard.OwnerPlayerId, unitOnBoard);
                         workingState = workingState.UpdateBoard(board);
                     }
                 }

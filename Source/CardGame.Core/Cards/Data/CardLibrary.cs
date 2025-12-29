@@ -36,7 +36,7 @@ namespace CardGame.Core.Cards.Data
     
             ValidateLibrary();
 
-            Console.WriteLine($"[LIBRARY] Załadowano i zweryfikowano {_cards.Count} kart.");
+           
         }
 
         private void ValidateLibrary()

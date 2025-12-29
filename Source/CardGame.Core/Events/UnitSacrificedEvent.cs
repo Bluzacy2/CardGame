@@ -8,7 +8,7 @@ namespace CardGame.Core.Events
         public CardInstance Unit { get; }
         public int OwnerId { get; }
 
-        // Implementacja interfejsu: Podmiotem jest gracz poświęcający jednostkę
+     
         public int SourcePlayerId => OwnerId;
 
         public int LineIndex { get; }

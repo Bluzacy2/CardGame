@@ -1,89 +1,48 @@
 ﻿using CardGame.Core.Application;
-using CardGame.Core.Cards.Data;
 using CardGame.Core.Combat;
-using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Events;
 using CardGame.Core.GameRules.Death;
 using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
 using CardGame.Core.StateMachine.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.StateMachine.Phases
 {
-    public class CombatPhaseState: IPhaseState
+    public class CombatPhaseState : CardGame.Core.StateMachine.Interfaces.IPhaseState
     {
-        public GamePhase PhaseType => GamePhase.Combat;
-        public bool IsCommandAllowed(IGameCommand command, GameState state)
-        {
-         
-            if (command is EndPhaseCommand) return true;
-            return false;
-        }
+        public CardGame.Core.State.Enums.GamePhase PhaseType => CardGame.Core.State.Enums.GamePhase.Combat;
+        public bool IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand command, CardGame.Core.State.Models.GameState state) => command is CardGame.Core.Commands.Implementations.EndPhaseCommand;
+        public bool ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState state) => true;
 
-        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        public CardGame.Core.State.Models.GameState ProcessEndPhase(CardGame.Core.State.Models.GameState currentState, CardGame.Core.Events.EventBus eventBus, CardGame.Core.Application.GameContext context)
         {
-            /* ---------------------- KONIEC RUNDY ----------------------------
-             * + następuje początek kolejnejm więc musimy:
-             * 1. Zwiększyś numer++ rundy. */
-            var orchestrator = new CombatOrchestrator();
+            var orchestrator = new CardGame.Core.Combat.CombatOrchestrator();
             var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState, eventBus, context);
-            stateAfterCombat = ProcessEndOfRoundStatuses(stateAfterCombat, eventBus, context);
 
-            /* Ogarnąć, który gracz ma rozpocząć kolejną turę/rundę.
-             * (termin tura/runda jest używany zamiennie w tym kontekście). */
-            int nextTurnNumber = currentState.TurnNumber + 1;
-            int nextActivePlayerId = (nextTurnNumber % 2 != 0) ? 1 : 2;
-
-            var playerToStart = stateAfterCombat.GetPlayer(nextActivePlayerId);
-            var updatedPlayer = playerToStart
-               .WithTurnStartBlood(nextTurnNumber)
-               .WithCardDrawn();
-
-            GameState finalState;
-            if (nextActivePlayerId == 1)
-            {
-                finalState = stateAfterCombat.With(
-                    turnNumber: nextTurnNumber,
-                    currentPhase: GamePhase.UnitOnly,
-                    activePlayerId: nextActivePlayerId,
-                    playerA: updatedPlayer // Aktualizujemy A
-                );
-            }
-            else
-            {
-                finalState = stateAfterCombat.With(
-                    turnNumber: nextTurnNumber,
-                    currentPhase: GamePhase.UnitOnly,
-                    activePlayerId: nextActivePlayerId,
-                    playerB: updatedPlayer // Aktualizujemy B
-                );
-            }
-
-            return finalState;
-        }
-        public bool ShouldEndPhaseAutomatically(GameState state)
-        {
-            return false; // Ta faza nigdy nie kończy się sama, czeka na EndPhaseCommand
-        }
-        private GameState ProcessEndOfRoundStatuses(GameState state, EventBus events, GameContext context)
-        {
-            var workingState = state;
-            var unitsToCheck = workingState.Board.GetAllUnits();
-
-            foreach (var unit in unitsToCheck)
-            {
-                // KeywordProcessor sprawdzi Burning i inne przyszłe efekty końca tury
+            // Logika statusów (Burning itp.)
+            var workingState = stateAfterCombat;
+            foreach (var unit in workingState.Board.GetAllUnits())
                 workingState = context.Keywords.ProcessRoundEnd(workingState, unit, context);
-            }
+            workingState = new CardGame.Core.GameRules.Death.DeathResolver().ResolveDeaths(workingState, eventBus, context);
 
-            return new DeathResolver().ResolveDeaths(workingState, events, context);
+            // Nowa runda
+            int nextRoundStarter = 3 - currentState.RoundStartingPlayerId;
+            int nextTurnNumber = currentState.TurnNumber + 1;
+            int manaLimit = (nextTurnNumber + 1) / 2;
+
+            // TU I TYLKO TU: Obaj dobierają karty i Starter dostaje refill many
+            var pA = workingState.PlayerA.WithTurnStartBlood(manaLimit, nextRoundStarter == 1).WithCardDrawn(eventBus);
+            var pB = workingState.PlayerB.WithTurnStartBlood(manaLimit, nextRoundStarter == 2).WithCardDrawn(eventBus);
+
+            return workingState.With(
+                turnNumber: nextTurnNumber,
+                currentPhase: CardGame.Core.State.Enums.GamePhase.UnitOnly,
+                activePlayerId: nextRoundStarter,
+                roundStartingPlayerId: nextRoundStarter,
+                playerA: pA,
+                playerB: pB
+            );
         }
     }
-
 }

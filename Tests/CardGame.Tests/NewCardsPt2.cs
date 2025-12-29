@@ -61,14 +61,12 @@ namespace CardGame.Tests
         {
             var engine = TestHelpers.CreateEngineWithCards(GetJson());
             var cannon = engine.Factory.CreateCard(30, 1);
-
             engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, cannon));
             engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.Combat);
 
-            // ACT: Start fazy walki
+            // ACT: W nowym silniku musimy "pchnąć" fazę walki komendą
             engine.ExecuteCommand(new EndPhaseCommand(1));
 
-            // ASSERT: Przeciwnik powinien dostać 5 dmg przed samą walką
             Assert.Equal(25, engine.CurrentState.PlayerB.Health);
         }
 

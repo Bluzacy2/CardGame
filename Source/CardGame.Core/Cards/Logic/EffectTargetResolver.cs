@@ -36,7 +36,7 @@ namespace CardGame.Core.Cards.Logic
                     else if (contextEvent is StatusAppliedEvent sae) targetId = sae.TargetUnitId;
                     else if (contextEvent is UnitDamagedEvent ude)
                     {
-                        // Poprawka dla Bohatera: Jeśli ofiarą jest Hero (Unit == null), celem jest Atakujący (Source)
+                    
                         targetId = ude.Unit?.InstanceId ?? ude.Source?.InstanceId;
                     }
                     else if (contextEvent is UnitDiedEvent udied) targetId = udied.Unit.InstanceId;
@@ -91,14 +91,23 @@ namespace CardGame.Core.Cards.Logic
 
         private static int GetOwner(GameState state, int instanceId)
         {
+          
             var unit = state.Board.GetAllUnits().FirstOrDefault(x => x.InstanceId == instanceId);
             if (unit != null) return unit.OwnerPlayerId;
+
+          
+            var spell = state.SpellStack.FirstOrDefault(x => x.InstanceId == instanceId);
+            if (spell != null) return spell.OwnerPlayerId;
+
+          
             if (state.PlayerA.Hand.Any(x => x.InstanceId == instanceId)) return 1;
             if (state.PlayerB.Hand.Any(x => x.InstanceId == instanceId)) return 2;
-            if (state.SpellStack.Any(x => x.InstanceId == instanceId)) return state.SpellStack.First(x => x.InstanceId == instanceId).OwnerPlayerId;
+
+           
             if (state.PlayerA.DiscardPile.Any(x => x.InstanceId == instanceId)) return 1;
             if (state.PlayerB.DiscardPile.Any(x => x.InstanceId == instanceId)) return 2;
-            return 1;
+
+            return state.ActivePlayerId;
         }
     }
 }

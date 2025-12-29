@@ -53,29 +53,30 @@ namespace CardGame.Core.Application
             GameState newState = command.Execute(CurrentState, Events, _gameContext);
             _interactionTimer = 0f;
 
-            if (command is CardGame.Core.Commands.Implementations.EndPhaseCommand || logic.ShouldEndPhaseAutomatically(newState))
-                newState = logic.ProcessEndPhase(newState, Events, _gameContext);
 
-            // STABILIZACJA STANU - Kluczowe dla łańcuchów reakcji
+            bool phaseChanged = command is CardGame.Core.Commands.Implementations.EndPhaseCommand || logic.ShouldEndPhaseAutomatically(newState);
+            while (phaseChanged)
+            {
+                var currentLogic = _stateMachine.GetStateForPhase(newState.CurrentPhase);
+                newState = currentLogic.ProcessEndPhase(newState, Events, _gameContext);
+
+                var nextLogic = _stateMachine.GetStateForPhase(newState.CurrentPhase);
+                phaseChanged = nextLogic.ShouldEndPhaseAutomatically(newState);
+
+                if (CheckGameOver(newState)) break;
+            }
+
+
             int safety = 0;
             while (safety++ < 100)
             {
                 var start = newState;
-
-                // 1. Najpierw triggery (mogą zadać obrażenia)
                 newState = _triggerSystem.ProcessEvents(newState, Events, _gameContext);
-                // 2. Potem śmierć (może wywołać kolejne triggery)
                 newState = _deathResolver.ResolveDeaths(newState, Events, _gameContext);
-                // 3. Na końcu aury
                 newState = _auraSystem.RecalculateAuras(newState);
 
                 if (newState.PendingInteraction != null || CheckGameOver(newState)) break;
-
-                // Kontynuuj dopóki są eventy w kolejce LUB stan się zmienia
-                if (!Events.HasEvents &&
-                    newState.Board == start.Board &&
-                    newState.PlayerA == start.PlayerA &&
-                    newState.PlayerB == start.PlayerB) break;
+                if (!Events.HasEvents && newState.Board == start.Board) break;
             }
 
             while (newState.PendingInteraction == null && newState.SpellStack.Any())
@@ -96,8 +97,11 @@ namespace CardGame.Core.Application
             if (_interactionTimer >= 5.0f)
             {
                 var pending = CurrentState.PendingInteraction;
+                _interactionTimer = 0f;
+
                 int tid = (pending.RequiredTargetType == CardGame.Core.Cards.Data.TargetType.Choice) ? 0 :
                           (CurrentState.Board.GetAllUnits().FirstOrDefault()?.InstanceId ?? 0);
+
                 ExecuteCommand(new CardGame.Core.Commands.Implementations.SelectTargetCommand(CurrentState.ActivePlayerId, tid));
             }
         }

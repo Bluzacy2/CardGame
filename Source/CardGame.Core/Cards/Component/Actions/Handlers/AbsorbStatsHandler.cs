@@ -35,8 +35,6 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                 var buff = new CardStats(victimStats.Attack, victimStats.Health, 0);
                 var biggerMe = me.AddPermanentBuff(buff);
 
-                Console.WriteLine($"[EFEKT] AbsorbStats: {biggerMe.Definition.Name} pochłania statystyki {targets.TargetUnit.Definition.Name}");
-
                 if (isOnBoard)
                 {
                     return state.UpdateBoard(state.Board.UpdateUnit(biggerMe));

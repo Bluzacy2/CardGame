@@ -18,11 +18,11 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             var workingState = state;
             foreach (var unit in targets.UnitTargets)
             {
-                // Re-fetch jednostki z planszy, aby mieć pewność, że operujemy na najnowszym stanie
+            
                 var latestUnit = workingState.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == unit.InstanceId);
                 if (latestUnit == null) continue;
 
-                Console.WriteLine($"[AKCJA] Silence na: {latestUnit.Definition.Name}");
+          
                 var silencedUnit = latestUnit.Silence();
                 workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(silencedUnit));
             }

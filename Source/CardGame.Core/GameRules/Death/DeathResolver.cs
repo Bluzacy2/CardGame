@@ -12,34 +12,47 @@ namespace CardGame.Core.GameRules.Death
         public GameState ResolveDeaths(GameState state, EventBus eventBus, GameContext context)
         {
             var workingState = state;
-            while (true)
+            bool changed = true;
+
+            while (changed)
             {
+                changed = false;
                 var allUnits = workingState.Board.GetAllUnits();
+                // Szukamy pierwszej jednostki, która powinna umrzeć
                 var unitToKill = allUnits.FirstOrDefault(u => u.CurrentStats.Health <= 0);
-                if (unitToKill == null) break;
 
-                int lineIndex = -1;
-                for (int i = 0; i < 4; i++)
+                if (unitToKill != null)
                 {
-                    if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitToKill.InstanceId ||
-                        workingState.Board.Lines[i].Player2Unit?.InstanceId == unitToKill.InstanceId)
-                    { lineIndex = i; break; }
+                    int lineIndex = -1;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitToKill.InstanceId ||
+                            workingState.Board.Lines[i].Player2Unit?.InstanceId == unitToKill.InstanceId)
+                        {
+                            lineIndex = i;
+                            break;
+                        }
+                    }
+
+                    var history = eventBus.GetHistory().ToList();
+
+                    // Sprawdzamy, czy śmierć nie jest wynikiem poświęcenia (Sacrifice)
+                    bool isSacrifice = history.Any(e => e is UnitSacrificedEvent sac && sac.Unit.InstanceId == unitToKill.InstanceId);
+
+                    // Próba zapobieżenia śmierci (np. Soul Guard), o ile nie jest to poświęcenie
+                    if (!isSacrifice && context.Keywords.TryPreventDeath(ref workingState, unitToKill, context))
+                    {
+                        changed = true;
+                        continue;
+                    }
+
+                    // Znajdujemy zabójcę, przeszukując historię zadanych obrażeń tej jednostce
+                    var lastDmg = history.OfType<UnitDamagedEvent>()
+                        .LastOrDefault(e => e.Unit?.InstanceId == unitToKill.InstanceId && e.Source != null);
+
+                    workingState = KillInstantly(workingState, unitToKill, lineIndex, eventBus, lastDmg?.Source?.InstanceId);
+                    changed = true;
                 }
-
-                var history = eventBus.GetHistory().ToList();
-                bool isSacrifice = history.Any(e => e is UnitSacrificedEvent sac && sac.Unit.InstanceId == unitToKill.InstanceId);
-
-                // Sprawdź keywordy chroniące przed śmiercią (tylko jeśli to nie poświęcenie)
-                if (!isSacrifice && context.Keywords.TryPreventDeath(ref workingState, unitToKill, context))
-                {
-                    // Jeśli TryPreventDeath zmieniło stan (np. SoulGuard), kontynuuj pętlę
-                    continue;
-                }
-
-                var lastDmg = history.OfType<UnitDamagedEvent>()
-                    .LastOrDefault(e => e.Unit?.InstanceId == unitToKill.InstanceId && e.Source != null);
-
-                workingState = KillInstantly(workingState, unitToKill, lineIndex, eventBus, lastDmg?.Source?.InstanceId);
             }
             return workingState;
         }
@@ -49,14 +62,16 @@ namespace CardGame.Core.GameRules.Death
             var board = state.Board;
             for (int i = 0; i < 4; i++)
             {
-                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId) board = board.WithUnitPlacedAt(i, 1, null);
-                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId) board = board.WithUnitPlacedAt(i, 2, null);
+                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 1, null);
+                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 2, null);
             }
 
-            // Pobieramy najświeższego właściciela ze stanu przekazanego do metody
             var owner = state.GetPlayer(unit.OwnerPlayerId);
             var newState = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
 
+            // Wysyłamy informację o śmierci wraz z ID zabójcy (killerId)
             events.Publish(new UnitDiedEvent(unit, lineIndex, killerId));
             return newState;
         }

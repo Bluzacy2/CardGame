@@ -104,7 +104,6 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
             int damageToSet = Math.Max(0, unit.MaxHealth - 1);
             var survivedUnit = unit.WithDamage(damageToSet).AddPermanentBuff(new CardStats(0, 0, 0, new[] { Keyword.SoulGuardDepleted }));
             state = state.UpdateBoard(state.Board.UpdateUnit(survivedUnit));
-            Console.WriteLine($"[SOULGUARD] {unit.Definition.Name} ratuje się przed śmiercią.");
             return true;
         }
     }
@@ -132,7 +131,7 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
             var owner = state.GetPlayer(unit.OwnerPlayerId);
 
             state = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToHand(returnedCard));
-            Console.WriteLine($"[UNKILLABLE] {unit.Definition.Name} wraca do ręki.");
+          
             return true;
         }
     }
