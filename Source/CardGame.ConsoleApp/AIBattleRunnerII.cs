@@ -19,7 +19,7 @@ namespace CardGame.ConsoleApp
     public static class AIBattleRunnerII
     {
         private static readonly Queue<string> _displayLogs = new();
-        private const int MaxLogLines = 6; // Rozmiar ramki logów
+        private const int MaxLogLines = 7;
         private static int _eventsSeenSoFar = 0;
         private const int UI_WIDTH = 114;
 
@@ -47,7 +47,7 @@ namespace CardGame.ConsoleApp
 
             while (!engine.IsGameOver)
             {
-                var allEvents = engine.Events.GetHistory().ToList();
+                var allEvents = engine.Events.GetGlobalHistory().ToList();
 
                 if (allEvents.Count > _eventsSeenSoFar)
                 {
@@ -60,20 +60,20 @@ namespace CardGame.ConsoleApp
                             if (_displayLogs.Count > MaxLogLines) _displayLogs.Dequeue();
 
                             DrawNuclearUI(engine.CurrentState);
-                            await Task.Delay(500); // Opóźnienie dla czytelności logów
+                            await Task.Delay(400);
                         }
                     }
                     _eventsSeenSoFar = allEvents.Count;
                 }
 
                 DrawNuclearUI(engine.CurrentState);
-                await Task.Delay(200);
+                await Task.Delay(150);
             }
 
             DrawNuclearUI(engine.CurrentState);
-            Console.SetCursorPosition(0, 36);
+            Console.SetCursorPosition(0, 42); // Przesunięte w dół ze względu na dodatkowe linie rąk
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"\n  === SYMULACJA ZAKOŃCZONA: ZWYCIĘSTWO GRACZA {engine.WinnerId ?? 0} ===");
+            Console.WriteLine($"\n  === KONIEC SYMULACJI: ZWYCIĘSTWO GRACZA {engine.WinnerId ?? 0} ===");
             Console.ResetColor();
             Console.CursorVisible = true;
         }
@@ -83,7 +83,7 @@ namespace CardGame.ConsoleApp
             StringBuilder sb = new StringBuilder();
             Console.SetCursorPosition(0, 0);
 
-            // 1. HEADER (Główny pasek informacyjny)
+            // --- 1. HEADER ---
             int roundNum = (state.TurnNumber + 1) / 2;
             string headerInfo = $" RUNDA: {roundNum} | FAZA: {state.CurrentPhase} | AKTYWNY: Gracz {state.ActivePlayerId} ";
 
@@ -91,12 +91,16 @@ namespace CardGame.ConsoleApp
             sb.AppendLine("║" + CenterText(headerInfo, UI_WIDTH - 2) + "║");
             sb.AppendLine("╠" + new string('═', UI_WIDTH - 2) + "╣");
 
-            // 2. STATYSTYKI GRACZA 2 (Nad jego kartami)
-            string p2Info = $" [ ENEMY P2 ]  HP: {state.PlayerB.Health,2} | Blood: {state.PlayerB.CurrentBlood,2}/{state.PlayerB.MaxBlood,2} | Ręka: {state.PlayerB.Hand.Count} ";
+            // --- 2. GRACZ 2 (Góra) ---
+            string p2Info = $" [ ENEMY P2 ]  HP: {state.PlayerB.Health,2} | Blood: {state.PlayerB.CurrentBlood,2}/{state.PlayerB.MaxBlood,2} ";
+            var (p2Hand1, p2Hand2) = GetHandDisplayStrings(state.PlayerB);
+
             sb.AppendLine("║" + CenterText(p2Info, UI_WIDTH - 2) + "║");
+            sb.AppendLine("║" + CenterText(p2Hand1, UI_WIDTH - 2) + "║");
+            sb.AppendLine("║" + CenterText(p2Hand2, UI_WIDTH - 2) + "║");
             sb.AppendLine("║" + new string(' ', UI_WIDTH - 2) + "║");
 
-            // 3. PLANSZA (Karty P2, vs, Karty P1)
+            // --- 3. PLANSZA (Jednostki) ---
             for (int row = 0; row < 11; row++)
             {
                 string lineRow = "║     ";
@@ -107,30 +111,73 @@ namespace CardGame.ConsoleApp
                 sb.AppendLine(lineRow.PadRight(UI_WIDTH - 1) + "║");
             }
 
-            // 4. STATYSTYKI GRACZA 1 (Pod jego kartami)
+            // --- 4. GRACZ 1 (Dół) ---
             sb.AppendLine("║" + new string(' ', UI_WIDTH - 2) + "║");
-            string p1Info = $" [ FRIEND P1 ]  HP: {state.PlayerA.Health,2} | Blood: {state.PlayerA.CurrentBlood,2}/{state.PlayerA.MaxBlood,2} | Ręka: {state.PlayerA.Hand.Count} ";
-            sb.AppendLine("║" + CenterText(p1Info, UI_WIDTH - 2) + "║");
+            string p1Info = $" [ FRIEND P1 ]  HP: {state.PlayerA.Health,2} | Blood: {state.PlayerA.CurrentBlood,2}/{state.PlayerA.MaxBlood,2} ";
+            var (p1Hand1, p1Hand2) = GetHandDisplayStrings(state.PlayerA);
 
-            // 5. RAMKA LOGÓW (Na dole)
+            sb.AppendLine("║" + CenterText(p1Info, UI_WIDTH - 2) + "║");
+            sb.AppendLine("║" + CenterText(p1Hand1, UI_WIDTH - 2) + "║");
+            sb.AppendLine("║" + CenterText(p1Hand2, UI_WIDTH - 2) + "║");
+
+            // --- 5. RAMKA LOGÓW ---
             sb.AppendLine("╠" + new string('═', UI_WIDTH - 2) + "╣");
             sb.AppendLine("║  DZIENNIK ZDARZEŃ:".PadRight(UI_WIDTH - 1) + "║");
 
             int displayed = 0;
             foreach (var log in _displayLogs)
             {
-                string logLine = " » " + log;
-                if (logLine.Length > UI_WIDTH - 6) logLine = logLine.Substring(0, UI_WIDTH - 9) + "...";
-                sb.AppendLine("║  " + logLine.PadRight(UI_WIDTH - 6) + "║");
+                sb.AppendLine("║  » " + log.PadRight(UI_WIDTH - 7) + "║");
                 displayed++;
             }
-            // Dopełnienie pustych linii w ramce logów
             for (int i = 0; i < (MaxLogLines - displayed); i++)
                 sb.AppendLine("║".PadRight(UI_WIDTH - 1) + "║");
 
             sb.AppendLine("╚" + new string('═', UI_WIDTH - 2) + "╝");
 
             Console.Write(sb.ToString());
+        }
+
+        private static (string line1, string line2) GetHandDisplayStrings(PlayerState player)
+        {
+            if (player.Hand.Count == 0) return ("[ RĘKA PUSTA ]", "");
+
+            var cardStrings = player.Hand.Select(c => $"({c.CurrentStats.BloodCost}) {c.Definition.Name}").ToList();
+            string fullString = string.Join(", ", cardStrings);
+            int maxLineLen = UI_WIDTH - 12;
+
+            if (fullString.Length <= maxLineLen)
+            {
+                return ("[ " + fullString + " ]", "");
+            }
+
+            // Szukanie bezpiecznego miejsca do podziału (na przecinku)
+            int splitPoint = 0;
+            string currentLine = "";
+            int cardsInFirstLine = 0;
+
+            for (int i = 0; i < cardStrings.Count; i++)
+            {
+                string nextPart = (currentLine == "" ? "" : ", ") + cardStrings[i];
+                if ((currentLine + nextPart).Length > maxLineLen)
+                {
+                    splitPoint = i;
+                    break;
+                }
+                currentLine += nextPart;
+                cardsInFirstLine++;
+            }
+
+            string l1 = "[ " + string.Join(", ", cardStrings.Take(cardsInFirstLine)) + ",";
+            string l2 = "  " + string.Join(", ", cardStrings.Skip(cardsInFirstLine)) + " ]";
+
+            // Zabezpieczenie przed przepełnieniem drugiej linii
+            if (l2.Length > maxLineLen)
+            {
+                l2 = l2.Substring(0, maxLineLen - 3) + "... ]";
+            }
+
+            return (l1, l2);
         }
 
         private static string GetRowSegment(int row, Line line)
@@ -170,6 +217,7 @@ namespace CardGame.ConsoleApp
         {
             if (string.IsNullOrEmpty(text)) return new string(' ', width);
             int leftPadding = (width - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0;
             return text.PadLeft(leftPadding + text.Length).PadRight(width);
         }
 
@@ -178,21 +226,13 @@ namespace CardGame.ConsoleApp
             if (evt is UnitDamagedEvent ude)
             {
                 string source = ude.Source?.Definition.Name ?? "Efekt";
-                return ude.Unit == null
-                    ? $"{source} uderza BOHATERA za {ude.Amount} DMG!"
-                    : $"{source} zadaje {ude.Amount} DMG jednostce {ude.Unit.Definition.Name}";
+                return ude.Unit == null ? $"{source} bije BOHATERA za {ude.Amount} DMG" : $"{source} zadaje {ude.Amount} DMG jednostce {ude.Unit.Definition.Name}";
             }
-            if (evt is CardPlayedEvent cpe)
-                return $"Gracz {cpe.PlayerId} zagrywa: {cpe.Card.Definition.Name}";
-            if (evt is UnitDiedEvent ud)
-                return $"ŚMIERĆ: {ud.Unit.Definition.Name} opuszcza pole bitwy";
-            if (evt is UnitSacrificedEvent us)
-                return $"OFIARA: {us.Unit.Definition.Name} został poświęcony";
-            if (evt is StatusAppliedEvent sae)
-                return $"STATUS: {sae.Status} nałożony na jednostkę";
-            if (evt is CardDrawnEvent cde)
-                return $"Gracz {cde.PlayerId} dobrał kartę";
-
+            if (evt is CardPlayedEvent cpe) return $"P{cpe.PlayerId} zagrywa: {cpe.Card.Definition.Name}";
+            if (evt is UnitDiedEvent ud) return $"ŚMIERĆ: {ud.Unit.Definition.Name} ginie";
+            if (evt is UnitSacrificedEvent us) return $"OFIARA: {us.Unit.Definition.Name} poświęcony";
+            if (evt is CardDrawnEvent cde) return $"Gracz {cde.PlayerId} dobrał kartę";
+            if (evt is TurnStartedEvent tse) return $"--- NOWA TURA GRACZA {tse.ActivePlayerId} ---";
             return null;
         }
 

@@ -43,7 +43,9 @@ namespace CardGame.Core.Application
 
         public ExecutionResult ExecuteCommand(IGameCommand command)
         {
+            // Czyści krótką historię komendy, by silnik nie widział zdarzeń z poprzedniej tury
             Events.ClearHistory();
+
             if (IsGameOver) return new ExecutionResult(CurrentState, new List<CardGame.Core.Events.Interfaces.IGameEvent>());
 
             var logic = _stateMachine.GetStateForPhase(CurrentState.CurrentPhase);
@@ -53,19 +55,18 @@ namespace CardGame.Core.Application
             GameState newState = command.Execute(CurrentState, Events, _gameContext);
             _interactionTimer = 0f;
 
+            bool phaseFinished = command is CardGame.Core.Commands.Implementations.EndPhaseCommand || logic.ShouldEndPhaseAutomatically(newState);
 
-            bool phaseChanged = command is CardGame.Core.Commands.Implementations.EndPhaseCommand || logic.ShouldEndPhaseAutomatically(newState);
-            while (phaseChanged)
+            while (phaseFinished)
             {
                 var currentLogic = _stateMachine.GetStateForPhase(newState.CurrentPhase);
                 newState = currentLogic.ProcessEndPhase(newState, Events, _gameContext);
 
                 var nextLogic = _stateMachine.GetStateForPhase(newState.CurrentPhase);
-                phaseChanged = nextLogic.ShouldEndPhaseAutomatically(newState);
+                phaseFinished = nextLogic.ShouldEndPhaseAutomatically(newState);
 
                 if (CheckGameOver(newState)) break;
             }
-
 
             int safety = 0;
             while (safety++ < 100)
@@ -98,7 +99,6 @@ namespace CardGame.Core.Application
             {
                 var pending = CurrentState.PendingInteraction;
                 _interactionTimer = 0f;
-
                 int tid = (pending.RequiredTargetType == CardGame.Core.Cards.Data.TargetType.Choice) ? 0 :
                           (CurrentState.Board.GetAllUnits().FirstOrDefault()?.InstanceId ?? 0);
 
