@@ -16,7 +16,6 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
         {
             if (targets.TargetPlayer != null)
             {
-                Console.WriteLine($"[EFEKT] Tasowanie talii gracza {targets.TargetPlayer.PlayerId}.");
                 return state.UpdatePlayer(targets.TargetPlayer.WithShuffledDeck(context.Rng));
             }
             return state;

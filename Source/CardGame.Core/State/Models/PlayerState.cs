@@ -19,6 +19,9 @@ namespace CardGame.Core.State.Models
         public IReadOnlyList<CardInstance> DiscardPile { get; }
         public CardStats GlobalUnitBuffs { get; }
 
+        // Stała określająca limit kart w ręce
+        public const int MaxHandSize = 8;
+
         public PlayerState(int playerId, int health, int maxBlood, int currentBlood,
             IEnumerable<CardInstance> hand, IEnumerable<CardInstance> drawPile,
             IEnumerable<CardInstance> discardPile, CardStats? globalUnitBuffs = null)
@@ -49,19 +52,39 @@ namespace CardGame.Core.State.Models
         public PlayerState WithBloodSpent(int amount) => this.With(currentBlood: CurrentBlood - amount);
         public PlayerState WithCardRemovedFromHand(CardInstance card) => this.With(hand: Hand.Where(c => c.InstanceId != card.InstanceId));
 
+        // POPRAWKA: Dodano warunek Hand.Count < MaxHandSize
         public PlayerState WithCardDrawn(EventBus? events = null)
         {
-            if (DrawPile.Count == 0) return this;
+            // Jeśli talia jest pusta LUB osiągnięto limit kart w ręce - przerywamy
+            if (DrawPile.Count == 0 || Hand.Count >= MaxHandSize)
+                return this;
+
             events?.Publish(new CardDrawnEvent(PlayerId));
-            return this.With(hand: Hand.Append(DrawPile[0]), drawPile: DrawPile.Skip(1));
+
+            // Pobieramy kartę, usuwamy ją z talii i dodajemy do ręki
+            return this.With(
+                hand: Hand.Append(DrawPile[0]),
+                drawPile: DrawPile.Skip(1)
+            );
         }
 
+        // Dodatkowa poprawka dla dobierania z cmentarza (opcjonalnie, by zachować spójność)
         public PlayerState WithCardsDrawnFromDiscard(int count, int? excludeId = null)
         {
             var valid = DiscardPile.Where(c => c.InstanceId != excludeId).ToList();
-            if (valid.Count == 0) return this;
-            var toDraw = valid.TakeLast(Math.Min(count, valid.Count)).ToList();
-            return this.With(hand: Hand.Concat(toDraw), discardPile: DiscardPile.Where(c => !toDraw.Any(d => d.InstanceId == c.InstanceId)));
+            if (valid.Count == 0 || Hand.Count >= MaxHandSize) return this;
+
+            // Obliczamy ile faktycznie możemy dobrać
+            int spaceInHand = MaxHandSize - Hand.Count;
+            int actualToDraw = Math.Min(count, spaceInHand);
+
+            if (actualToDraw <= 0) return this;
+
+            var toDraw = valid.TakeLast(actualToDraw).ToList();
+            return this.With(
+                hand: Hand.Concat(toDraw),
+                discardPile: DiscardPile.Where(c => !toDraw.Any(d => d.InstanceId == c.InstanceId))
+            );
         }
 
         public PlayerState WithTurnStartBlood(int manaLimit, bool refill)
@@ -69,10 +92,17 @@ namespace CardGame.Core.State.Models
             int newMax = Math.Clamp(manaLimit, 1, 10);
             return this.With(maxBlood: newMax, currentBlood: refill ? newMax : CurrentBlood);
         }
-        public PlayerState WithCardAddedToHand(CardInstance card) => this.With(hand: Hand.Append(card));
+
+        public PlayerState WithCardAddedToHand(CardInstance card)
+        {
+            if (Hand.Count >= MaxHandSize) return this; // Blokada ręcznego dodawania
+            return this.With(hand: Hand.Append(card));
+        }
+
         public PlayerState WithCardAddedToDiscard(CardInstance card) => this.With(discardPile: DiscardPile.Append(card));
         public PlayerState WithHealthRestored(int amount) => this.With(health: Health + amount);
         public PlayerState WithDamageTaken(int amount) => this.With(health: Health - amount);
+
         public PlayerState WithShuffledDeck(DeterministicRng rng)
         {
             var list = DrawPile.ToList();
@@ -80,8 +110,10 @@ namespace CardGame.Core.State.Models
             while (n > 1) { n--; int k = rng.Next(0, n + 1); (list[k], list[n]) = (list[n], list[k]); }
             return this.With(drawPile: list);
         }
+
         public PlayerState WithGlobalBuffModifier(int atk, int hp) => this.With(globalUnitBuffs: GlobalUnitBuffs + new CardStats(atk, hp, 0));
         public PlayerState WithCardRemovedFromDeck(CardInstance card) => this.With(drawPile: DrawPile.Where(c => c.InstanceId != card.InstanceId));
+
         public PlayerState WithMulliganPerformed(List<int> ids)
         {
             var toRep = Hand.Where(c => ids.Contains(c.InstanceId)).ToList();

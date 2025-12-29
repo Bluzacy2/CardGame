@@ -28,12 +28,10 @@ namespace CardGame.Core.GameRules.Battle
             if (u1Stunned)
             {
                 workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(activeU1));
-                Console.WriteLine($"[STUN] {u1.Definition.Name} pomija atak.");
             }
             if (u2Stunned)
             {
-                workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(activeU2));
-                Console.WriteLine($"[STUN] {u2.Definition.Name} pomija atak.");
+                workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(activeU2));      
             }
 
             // Obliczamy obrażenia (0 jeśli Stunned)

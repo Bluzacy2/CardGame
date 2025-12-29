@@ -172,7 +172,7 @@
     "Effects": [
       {
         "Trigger": "OnPlayed",
-        "Targeting": "TargetFriendlyUnit",
+        "Targeting": "OtherFriendlyUnits",
         "Actions": [
           { "Type": "AbsorbStats", "Target": "SelectedTarget" },
           { "Type": "SacrificeUnit", "Target": "SelectedTarget" }
@@ -443,23 +443,29 @@
   },
 
   {
-    "Id": 25,
-    "Name": "Bounty Hunter",
-    "Type": "Unit",
-    "Subtypes": [ "Mercenary" ],
-    "Cost": 3,
-    "Attack": 3,
-    "Health": 3,
-    "Description": "When You Mark an enemy: Stun it.",
-    "Effects": [
-      {
-        "Trigger": "OnStatusApplied",
-        "Condition": { "Condition": "IsStatus", "TargetParam": "Marked" },
-        "Actions": [
-          { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Stunned" }
+  "Id": 25,
+  "Name": "Bounty Hunter",
+  "Type": "Unit",
+  "Subtypes": [ "Mercenary" ],
+  "Cost": 3,
+  "Attack": 3,
+  "Health": 3,
+  "Description": "When an Enemy is Marked: Stun it.",
+  "Effects": [
+    {
+      "Trigger": "OnStatusApplied",
+      "Condition": {
+        "Condition": "And",
+        "SubConditions": [
+          { "Condition": "IsStatus", "TargetParam": "Marked" },
+          { "Condition": "IsEnemy" }
         ]
-      }
-    ]
+      },
+      "Actions": [
+        { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Stunned" }
+      ]
+    }
+  ]
   },
 
   {

@@ -376,38 +376,52 @@ using CardGame.Core.Events.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.Events
 {
     public class EventBus
     {
         private readonly Queue<IGameEvent> _processingQueue = new Queue<IGameEvent>();
-        private readonly List<IGameEvent> _history = new List<IGameEvent>();
+
+        // Historia tylko dla obecnej komendy/klatki (używana przez DeathResolver)
+        private readonly List<IGameEvent> _commandHistory = new List<IGameEvent>();
+
+        // Cała historia gry od początku (używana przez UI/Runnera)
+        private readonly List<IGameEvent> _globalHistory = new List<IGameEvent>();
 
         public void Publish(IGameEvent gameEvent)
         {
             _processingQueue.Enqueue(gameEvent);
-            _history.Add(gameEvent);
+            _commandHistory.Add(gameEvent);
+            _globalHistory.Add(gameEvent);
         }
+
         public bool HasEvents => _processingQueue.Count > 0;
 
         public IGameEvent Pop()
         {
             return _processingQueue.Dequeue();
         }
+
+        // Metoda dla silnika - czyści tylko krótką historię
         public void ClearHistory()
         {
-            _history.Clear();
+            _commandHistory.Clear();
         }
+
+        // Metoda dla DeathResolvera i Triggerów (krótka historia)
         public IEnumerable<IGameEvent> GetHistory()
         {
-            return _history.AsReadOnly();
+            return _commandHistory.AsReadOnly();
+        }
+
+        // Metoda dla Runnera/UI (cała historia gry)
+        public IEnumerable<IGameEvent> GetGlobalHistory()
+        {
+            return _globalHistory.AsReadOnly();
         }
     }
 }
-
 
 
 ========================================
@@ -617,7 +631,7 @@ namespace CardGame.Core.Events
         public CardInstance Unit { get; }
         public int OwnerId { get; }
 
-        // Implementacja interfejsu: Podmiotem jest gracz poświęcający jednostkę
+     
         public int SourcePlayerId => OwnerId;
 
         public int LineIndex { get; }
@@ -1089,34 +1103,47 @@ namespace CardGame.Core.GameRules.Death
         public GameState ResolveDeaths(GameState state, EventBus eventBus, GameContext context)
         {
             var workingState = state;
-            while (true)
+            bool changed = true;
+
+            while (changed)
             {
+                changed = false;
                 var allUnits = workingState.Board.GetAllUnits();
+                // Szukamy pierwszej jednostki, która powinna umrzeć
                 var unitToKill = allUnits.FirstOrDefault(u => u.CurrentStats.Health <= 0);
-                if (unitToKill == null) break;
 
-                int lineIndex = -1;
-                for (int i = 0; i < 4; i++)
+                if (unitToKill != null)
                 {
-                    if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitToKill.InstanceId ||
-                        workingState.Board.Lines[i].Player2Unit?.InstanceId == unitToKill.InstanceId)
-                    { lineIndex = i; break; }
+                    int lineIndex = -1;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitToKill.InstanceId ||
+                            workingState.Board.Lines[i].Player2Unit?.InstanceId == unitToKill.InstanceId)
+                        {
+                            lineIndex = i;
+                            break;
+                        }
+                    }
+
+                    var history = eventBus.GetHistory().ToList();
+
+                    // Sprawdzamy, czy śmierć nie jest wynikiem poświęcenia (Sacrifice)
+                    bool isSacrifice = history.Any(e => e is UnitSacrificedEvent sac && sac.Unit.InstanceId == unitToKill.InstanceId);
+
+                    // Próba zapobieżenia śmierci (np. Soul Guard), o ile nie jest to poświęcenie
+                    if (!isSacrifice && context.Keywords.TryPreventDeath(ref workingState, unitToKill, context))
+                    {
+                        changed = true;
+                        continue;
+                    }
+
+                    // Znajdujemy zabójcę, przeszukując historię zadanych obrażeń tej jednostce
+                    var lastDmg = history.OfType<UnitDamagedEvent>()
+                        .LastOrDefault(e => e.Unit?.InstanceId == unitToKill.InstanceId && e.Source != null);
+
+                    workingState = KillInstantly(workingState, unitToKill, lineIndex, eventBus, lastDmg?.Source?.InstanceId);
+                    changed = true;
                 }
-
-                var history = eventBus.GetHistory().ToList();
-                bool isSacrifice = history.Any(e => e is UnitSacrificedEvent sac && sac.Unit.InstanceId == unitToKill.InstanceId);
-
-                // Sprawdź keywordy chroniące przed śmiercią (tylko jeśli to nie poświęcenie)
-                if (!isSacrifice && context.Keywords.TryPreventDeath(ref workingState, unitToKill, context))
-                {
-                    // Jeśli TryPreventDeath zmieniło stan (np. SoulGuard), kontynuuj pętlę
-                    continue;
-                }
-
-                var lastDmg = history.OfType<UnitDamagedEvent>()
-                    .LastOrDefault(e => e.Unit?.InstanceId == unitToKill.InstanceId && e.Source != null);
-
-                workingState = KillInstantly(workingState, unitToKill, lineIndex, eventBus, lastDmg?.Source?.InstanceId);
             }
             return workingState;
         }
@@ -1126,14 +1153,16 @@ namespace CardGame.Core.GameRules.Death
             var board = state.Board;
             for (int i = 0; i < 4; i++)
             {
-                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId) board = board.WithUnitPlacedAt(i, 1, null);
-                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId) board = board.WithUnitPlacedAt(i, 2, null);
+                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 1, null);
+                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 2, null);
             }
 
-            // Pobieramy najświeższego właściciela ze stanu przekazanego do metody
             var owner = state.GetPlayer(unit.OwnerPlayerId);
             var newState = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
 
+            // Wysyłamy informację o śmierci wraz z ID zabójcy (killerId)
             events.Publish(new UnitDiedEvent(unit, lineIndex, killerId));
             return newState;
         }
@@ -1751,22 +1780,28 @@ using CardGame.Core.Events;
 using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
 using CardGame.Core.StateMachine.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.StateMachine.Phases
 {
     public class ActionPhaseState : IPhaseState
     {
         public GamePhase PhaseType => GamePhase.ActionOnly;
-        public bool IsCommandAllowed(IGameCommand command, GameState state) => command.PlayerId == state.ActivePlayerId && (command is CardGame.Core.Commands.Implementations.PlaySpellCommand || command is CardGame.Core.Commands.Implementations.EndPhaseCommand);
+
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        {
+       
+            if (command is SelectTargetCommand) return true;
+ 
+            return command.PlayerId == state.ActivePlayerId &&
+                   (command is PlaySpellCommand ||
+                    command is EndPhaseCommand);
+        }
+
         public bool ShouldEndPhaseAutomatically(GameState state) => false;
 
         public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
         {
+  
             return currentState.With(currentPhase: GamePhase.Combat);
         }
     }
@@ -1784,32 +1819,36 @@ using CardGame.Core.Events;
 using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
 using CardGame.Core.StateMachine.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.StateMachine.Phases
 {
-    public class BothPhaseState : CardGame.Core.StateMachine.Interfaces.IPhaseState
+    public class BothPhaseState : IPhaseState
     {
-        public CardGame.Core.State.Enums.GamePhase PhaseType => CardGame.Core.State.Enums.GamePhase.UnitAndAction;
-        public bool IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand command, CardGame.Core.State.Models.GameState state) =>
-            command.PlayerId == state.ActivePlayerId && (command is CardGame.Core.Commands.Implementations.PlayUnitCommand || command is CardGame.Core.Commands.Implementations.PlaySpellCommand || command is CardGame.Core.Commands.Implementations.EndPhaseCommand);
-        public bool ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState state) => false;
+        public GamePhase PhaseType => GamePhase.UnitAndAction;
 
-        public CardGame.Core.State.Models.GameState ProcessEndPhase(CardGame.Core.State.Models.GameState currentState, CardGame.Core.Events.EventBus eventBus, CardGame.Core.Application.GameContext context)
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
         {
-            // Powrót do startera na czary. ŻADNEGO dobierania kart.
+     
+            if (command is SelectTargetCommand) return true;
+
+        
+            return command.PlayerId == state.ActivePlayerId &&
+                   (command is PlayUnitCommand ||
+                    command is PlaySpellCommand ||
+                    command is EndPhaseCommand);
+        }
+
+        public bool ShouldEndPhaseAutomatically(GameState state) => false;
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
             return currentState.With(
-                currentPhase: CardGame.Core.State.Enums.GamePhase.ActionOnly,
+                currentPhase: GamePhase.ActionOnly,
                 activePlayerId: currentState.RoundStartingPlayerId
             );
         }
     }
 }
-
 
 
 ========================================
@@ -1877,33 +1916,33 @@ using CardGame.Core.Events;
 using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
 using CardGame.Core.StateMachine.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.StateMachine.Phases
 {
-    public class UnitPhaseState : CardGame.Core.StateMachine.Interfaces.IPhaseState
+    public class UnitPhaseState : IPhaseState
     {
-        public CardGame.Core.State.Enums.GamePhase PhaseType => CardGame.Core.State.Enums.GamePhase.UnitOnly;
-        public bool IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand command, CardGame.Core.State.Models.GameState state) =>
-            command.PlayerId == state.ActivePlayerId && (command is CardGame.Core.Commands.Implementations.PlayUnitCommand || command is CardGame.Core.Commands.Implementations.EndPhaseCommand);
-        public bool ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState state) => false;
+        public GamePhase PhaseType => GamePhase.UnitOnly;
 
-        public CardGame.Core.State.Models.GameState ProcessEndPhase(CardGame.Core.State.Models.GameState currentState, CardGame.Core.Events.EventBus eventBus, CardGame.Core.Application.GameContext context)
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
         {
-            // Przejście do przeciwnika na pełną turę. ŻADNEGO dobierania kart.
+            if (command is SelectTargetCommand) return true;
+
+            return command.PlayerId == state.ActivePlayerId &&
+                   (command is PlayUnitCommand || command is EndPhaseCommand);
+        }
+
+        public bool ShouldEndPhaseAutomatically(GameState state) => false;
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
             int opponentId = 3 - currentState.ActivePlayerId;
             return currentState.With(
-                currentPhase: CardGame.Core.State.Enums.GamePhase.UnitAndAction,
+                currentPhase: GamePhase.UnitAndAction,
                 activePlayerId: opponentId
             );
         }
     }
 }
-
 
 
 ========================================

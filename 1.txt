@@ -316,11 +316,10 @@ namespace CardGame.ConsoleApp
 {
     public static class AIBattleRunnerII
     {
-        // --- KONFIGURACJA LOGÓW I UI ---
         private static readonly Queue<string> _displayLogs = new();
-        private const int MaxLogLines = 8;
+        private const int MaxLogLines = 7;
         private static int _eventsSeenSoFar = 0;
-        private const int UI_WIDTH = 112;
+        private const int UI_WIDTH = 114;
 
         public static async Task RunAsync()
         {
@@ -328,12 +327,10 @@ namespace CardGame.ConsoleApp
             Console.CursorVisible = false;
             Console.OutputEncoding = Encoding.UTF8;
 
-            // 1. Inicjalizacja bibliotek
             CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
             var rng = new DeterministicRng(new Random().Next());
             var factory = new CardFactory(CardLibrary.Instance, rng);
 
-            // 2. Tworzenie talii Highlander (Unikalne karty 1-36)
             var deckA = CreateHighlanderDeck(factory, 1, 30);
             var deckB = CreateHighlanderDeck(factory, 2, 30);
 
@@ -346,11 +343,10 @@ namespace CardGame.ConsoleApp
             ai1.StartAutoPlay();
             ai2.StartAutoPlay();
 
-            // 3. Główna pętla symulacji
             while (!engine.IsGameOver)
             {
-                // Przetwarzanie nowych zdarzeń z silnika do bufora logów
-                var allEvents = engine.Events.GetHistory().ToList();
+                var allEvents = engine.Events.GetGlobalHistory().ToList();
+
                 if (allEvents.Count > _eventsSeenSoFar)
                 {
                     for (int i = _eventsSeenSoFar; i < allEvents.Count; i++)
@@ -358,22 +354,24 @@ namespace CardGame.ConsoleApp
                         string? logText = ParseEventToText(allEvents[i]);
                         if (logText != null)
                         {
-                            _displayLogs.Enqueue($"[{DateTime.Now:HH:mm:ss}] {logText}");
+                            _displayLogs.Enqueue(logText);
                             if (_displayLogs.Count > MaxLogLines) _displayLogs.Dequeue();
+
+                            DrawNuclearUI(engine.CurrentState);
+                            await Task.Delay(400);
                         }
                     }
                     _eventsSeenSoFar = allEvents.Count;
                 }
 
                 DrawNuclearUI(engine.CurrentState);
-                await Task.Delay(500);
+                await Task.Delay(150);
             }
 
-            // Render końcowy
             DrawNuclearUI(engine.CurrentState);
-            Console.SetCursorPosition(0, 32);
+            Console.SetCursorPosition(0, 42); // Przesunięte w dół ze względu na dodatkowe linie rąk
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"\n  === SYMULACJA ZAKOŃCZONA: ZWYCIĘSTWO GRACZA {engine.WinnerId ?? 0} ===");
+            Console.WriteLine($"\n  === KONIEC SYMULACJI: ZWYCIĘSTWO GRACZA {engine.WinnerId ?? 0} ===");
             Console.ResetColor();
             Console.CursorVisible = true;
         }
@@ -381,78 +379,120 @@ namespace CardGame.ConsoleApp
         private static void DrawNuclearUI(GameState state)
         {
             StringBuilder sb = new StringBuilder();
-
-            // --- 1. HEADER (TOP BAR) ---
             Console.SetCursorPosition(0, 0);
-            string roundInfo = $"[[ RUNDA: {(state.TurnNumber + 1) / 2} | {state.CurrentPhase} ]]";
-            string p1Info = $" P1 HP: {state.PlayerA.Health,2} | Blood: {state.PlayerA.CurrentBlood,2}/{state.PlayerA.MaxBlood,2} ";
-            string p2Info = $" P2 HP: {state.PlayerB.Health,2} | Blood: {state.PlayerB.CurrentBlood,2}/{state.PlayerB.MaxBlood,2} ";
 
-            // Formatowanie nagłówka do szerokości UI
-            string header = $"{p1Info}{roundInfo.PadLeft(UI_WIDTH / 2 - p1Info.Length + roundInfo.Length / 2).PadRight(UI_WIDTH - p2Info.Length - p1Info.Length)}{p2Info}";
+            // --- 1. HEADER ---
+            int roundNum = (state.TurnNumber + 1) / 2;
+            string headerInfo = $" RUNDA: {roundNum} | FAZA: {state.CurrentPhase} | AKTYWNY: Gracz {state.ActivePlayerId} ";
 
             sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
-            sb.AppendLine("║" + header.PadRight(UI_WIDTH - 2) + "║");
+            sb.AppendLine("║" + CenterText(headerInfo, UI_WIDTH - 2) + "║");
             sb.AppendLine("╠" + new string('═', UI_WIDTH - 2) + "╣");
 
-            // --- 2. LANES (KOLUMNY) ---
+            // --- 2. GRACZ 2 (Góra) ---
+            string p2Info = $" [ ENEMY P2 ]  HP: {state.PlayerB.Health,2} | Blood: {state.PlayerB.CurrentBlood,2}/{state.PlayerB.MaxBlood,2} ";
+            var (p2Hand1, p2Hand2) = GetHandDisplayStrings(state.PlayerB);
+
+            sb.AppendLine("║" + CenterText(p2Info, UI_WIDTH - 2) + "║");
+            sb.AppendLine("║" + CenterText(p2Hand1, UI_WIDTH - 2) + "║");
+            sb.AppendLine("║" + CenterText(p2Hand2, UI_WIDTH - 2) + "║");
             sb.AppendLine("║" + new string(' ', UI_WIDTH - 2) + "║");
-            for (int row = 0; row < 15; row++)
+
+            // --- 3. PLANSZA (Jednostki) ---
+            for (int row = 0; row < 11; row++)
             {
                 string lineRow = "║     ";
                 for (int col = 0; col < 4; col++)
                 {
-                    var line = state.Board.Lines[col];
-                    lineRow += GetRowSegment(row, line).PadRight(26);
+                    lineRow += GetRowSegment(row, state.Board.Lines[col]).PadRight(26);
                 }
                 sb.AppendLine(lineRow.PadRight(UI_WIDTH - 1) + "║");
             }
-            sb.AppendLine("║" + new string(' ', UI_WIDTH - 2) + "║");
 
-            // --- 3. LOGS SECTION (STAŁA WYSOKOŚĆ) ---
+            // --- 4. GRACZ 1 (Dół) ---
+            sb.AppendLine("║" + new string(' ', UI_WIDTH - 2) + "║");
+            string p1Info = $" [ FRIEND P1 ]  HP: {state.PlayerA.Health,2} | Blood: {state.PlayerA.CurrentBlood,2}/{state.PlayerA.MaxBlood,2} ";
+            var (p1Hand1, p1Hand2) = GetHandDisplayStrings(state.PlayerA);
+
+            sb.AppendLine("║" + CenterText(p1Info, UI_WIDTH - 2) + "║");
+            sb.AppendLine("║" + CenterText(p1Hand1, UI_WIDTH - 2) + "║");
+            sb.AppendLine("║" + CenterText(p1Hand2, UI_WIDTH - 2) + "║");
+
+            // --- 5. RAMKA LOGÓW ---
             sb.AppendLine("╠" + new string('═', UI_WIDTH - 2) + "╣");
-            sb.AppendLine("║  OSTATNIE ZDARZENIA NA POLU BITWY:".PadRight(UI_WIDTH - 1) + "║");
+            sb.AppendLine("║  DZIENNIK ZDARZEŃ:".PadRight(UI_WIDTH - 1) + "║");
 
             int displayed = 0;
             foreach (var log in _displayLogs)
             {
-                sb.AppendLine("║  " + log.PadRight(UI_WIDTH - 6) + "║");
+                sb.AppendLine("║  » " + log.PadRight(UI_WIDTH - 7) + "║");
                 displayed++;
             }
-            // Dopełnianie pustych linii logów
             for (int i = 0; i < (MaxLogLines - displayed); i++)
-            {
                 sb.AppendLine("║".PadRight(UI_WIDTH - 1) + "║");
-            }
 
-            // --- 4. FOOTER ---
             sb.AppendLine("╚" + new string('═', UI_WIDTH - 2) + "╝");
-            string footer = $" AKTYWNY: Gracz {state.ActivePlayerId} | P1 Ręka: {state.PlayerA.Hand.Count} | P2 Ręka: {state.PlayerB.Hand.Count}";
-            sb.AppendLine("  " + footer.PadRight(UI_WIDTH));
-            sb.AppendLine(new string(' ', UI_WIDTH));
-            sb.AppendLine(new string(' ', UI_WIDTH));
 
-            // Wyświetlenie całego bufora
             Console.Write(sb.ToString());
         }
 
-        private static string GetRowSegment(int row, CardGame.Core.State.Models.Line line)
+        private static (string line1, string line2) GetHandDisplayStrings(PlayerState player)
+        {
+            if (player.Hand.Count == 0) return ("[ RĘKA PUSTA ]", "");
+
+            var cardStrings = player.Hand.Select(c => $"({c.CurrentStats.BloodCost}) {c.Definition.Name}").ToList();
+            string fullString = string.Join(", ", cardStrings);
+            int maxLineLen = UI_WIDTH - 12;
+
+            if (fullString.Length <= maxLineLen)
+            {
+                return ("[ " + fullString + " ]", "");
+            }
+
+            // Szukanie bezpiecznego miejsca do podziału (na przecinku)
+            int splitPoint = 0;
+            string currentLine = "";
+            int cardsInFirstLine = 0;
+
+            for (int i = 0; i < cardStrings.Count; i++)
+            {
+                string nextPart = (currentLine == "" ? "" : ", ") + cardStrings[i];
+                if ((currentLine + nextPart).Length > maxLineLen)
+                {
+                    splitPoint = i;
+                    break;
+                }
+                currentLine += nextPart;
+                cardsInFirstLine++;
+            }
+
+            string l1 = "[ " + string.Join(", ", cardStrings.Take(cardsInFirstLine)) + ",";
+            string l2 = "  " + string.Join(", ", cardStrings.Skip(cardsInFirstLine)) + " ]";
+
+            // Zabezpieczenie przed przepełnieniem drugiej linii
+            if (l2.Length > maxLineLen)
+            {
+                l2 = l2.Substring(0, maxLineLen - 3) + "... ]";
+            }
+
+            return (l1, l2);
+        }
+
+        private static string GetRowSegment(int row, Line line)
         {
             return row switch
             {
                 0 => "╭────────────────────╮",
-                1 => "│     ENEMY (P2)     │",
-                2 => RenderUnitName(line.Player2Unit),
-                3 => RenderUnitStats(line.Player2Unit),
-                4 => "╰────────────────────╯",
-                5 => "          ┃           ",
-                6 => "          VS          ",
-                7 => "          ┃           ",
-                8 => "╭────────────────────╮",
-                9 => "│    FRIEND (P1)     │",
-                10 => RenderUnitName(line.Player1Unit),
-                11 => RenderUnitStats(line.Player1Unit),
-                12 => "╰────────────────────╯",
+                1 => RenderUnitName(line.Player2Unit),
+                2 => RenderUnitStats(line.Player2Unit),
+                3 => "╰────────────────────╯",
+                4 => "          ┃           ",
+                5 => "          VS          ",
+                6 => "          ┃           ",
+                7 => "╭────────────────────╮",
+                8 => RenderUnitName(line.Player1Unit),
+                9 => RenderUnitStats(line.Player1Unit),
+                10 => "╰────────────────────╯",
                 _ => ""
             };
         }
@@ -471,38 +511,32 @@ namespace CardGame.ConsoleApp
             return $"│ ATK:{u.CurrentStats.Attack,-2}  HP:{u.CurrentStats.Health,-2}  {sil} │";
         }
 
+        private static string CenterText(string text, int width)
+        {
+            if (string.IsNullOrEmpty(text)) return new string(' ', width);
+            int leftPadding = (width - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0;
+            return text.PadLeft(leftPadding + text.Length).PadRight(width);
+        }
+
         private static string? ParseEventToText(IGameEvent evt)
         {
             if (evt is UnitDamagedEvent ude)
             {
                 string source = ude.Source?.Definition.Name ?? "Efekt";
-                if (ude.Unit == null)
-                    return $"{source} uderza BOHATERA za {ude.Amount} DMG!";
-                return $"{source} zadaje {ude.Amount} DMG jednostce {ude.Unit.Definition.Name}";
+                return ude.Unit == null ? $"{source} bije BOHATERA za {ude.Amount} DMG" : $"{source} zadaje {ude.Amount} DMG jednostce {ude.Unit.Definition.Name}";
             }
-            if (evt is CardPlayedEvent cpe)
-                return $"P{cpe.PlayerId} zagrywa: {cpe.Card.Definition.Name}";
-            if (evt is UnitDiedEvent ud)
-                return $"ŚMIERĆ: {ud.Unit.Definition.Name} opuszcza arenę";
-            if (evt is UnitSacrificedEvent us)
-                return $"OFIARA: {us.Unit.Definition.Name} został poświęcony";
-            if (evt is StatusAppliedEvent sae)
-                return $"STATUS: {sae.Status} na jednostce {sae.TargetUnitId}";
-            if (evt is StatusAppliedEvent saae)
-                return $"STATUS: {saae.Status} na jednostce {saae.TargetUnitId}";
-
-           
-            if (evt is CardPlayedEvent cppe && cppe.Card.Definition.Id == "6")
-                return $"RADIO DEMON: Wszystkie jednostki P{cppe.PlayerId} otrzymują +1/+1!";
-
-
+            if (evt is CardPlayedEvent cpe) return $"P{cpe.PlayerId} zagrywa: {cpe.Card.Definition.Name}";
+            if (evt is UnitDiedEvent ud) return $"ŚMIERĆ: {ud.Unit.Definition.Name} ginie";
+            if (evt is UnitSacrificedEvent us) return $"OFIARA: {us.Unit.Definition.Name} poświęcony";
+            if (evt is CardDrawnEvent cde) return $"Gracz {cde.PlayerId} dobrał kartę";
+            if (evt is TurnStartedEvent tse) return $"--- NOWA TURA GRACZA {tse.ActivePlayerId} ---";
             return null;
         }
 
         private static List<CardInstance> CreateHighlanderDeck(CardFactory factory, int ownerId, int size)
         {
             var rand = new Random();
-            // Karty od 1 do 36, bez ID 900+
             var availableIds = Enumerable.Range(1, 36).OrderBy(x => rand.Next()).Take(size);
             return availableIds.Select(id => factory.CreateCard(id, ownerId)).ToList();
         }
@@ -896,7 +930,7 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\ca
     "Effects": [
       {
         "Trigger": "OnPlayed",
-        "Targeting": "TargetFriendlyUnit",
+        "Targeting": "OtherFriendlyUnits",
         "Actions": [
           { "Type": "AbsorbStats", "Target": "SelectedTarget" },
           { "Type": "SacrificeUnit", "Target": "SelectedTarget" }
@@ -1475,8 +1509,7 @@ namespace CardGame.Core.AI
                 {
                     if (state.CurrentPhase == GamePhase.Combat)
                     {
-                        await Task.Delay(1000);
-                        _gameEngine.ExecuteCommand(new EndPhaseCommand(BotPlayerId));
+                        return; 
                     }
                     else
                     {
@@ -2072,7 +2105,9 @@ namespace CardGame.Core.Application
 
         public ExecutionResult ExecuteCommand(IGameCommand command)
         {
+            // Czyści krótką historię komendy, by silnik nie widział zdarzeń z poprzedniej tury
             Events.ClearHistory();
+
             if (IsGameOver) return new ExecutionResult(CurrentState, new List<CardGame.Core.Events.Interfaces.IGameEvent>());
 
             var logic = _stateMachine.GetStateForPhase(CurrentState.CurrentPhase);
@@ -2082,29 +2117,29 @@ namespace CardGame.Core.Application
             GameState newState = command.Execute(CurrentState, Events, _gameContext);
             _interactionTimer = 0f;
 
-            if (command is CardGame.Core.Commands.Implementations.EndPhaseCommand || logic.ShouldEndPhaseAutomatically(newState))
-                newState = logic.ProcessEndPhase(newState, Events, _gameContext);
+            bool phaseFinished = command is CardGame.Core.Commands.Implementations.EndPhaseCommand || logic.ShouldEndPhaseAutomatically(newState);
 
-            // STABILIZACJA STANU - Kluczowe dla łańcuchów reakcji
+            while (phaseFinished)
+            {
+                var currentLogic = _stateMachine.GetStateForPhase(newState.CurrentPhase);
+                newState = currentLogic.ProcessEndPhase(newState, Events, _gameContext);
+
+                var nextLogic = _stateMachine.GetStateForPhase(newState.CurrentPhase);
+                phaseFinished = nextLogic.ShouldEndPhaseAutomatically(newState);
+
+                if (CheckGameOver(newState)) break;
+            }
+
             int safety = 0;
             while (safety++ < 100)
             {
                 var start = newState;
-
-                // 1. Najpierw triggery (mogą zadać obrażenia)
                 newState = _triggerSystem.ProcessEvents(newState, Events, _gameContext);
-                // 2. Potem śmierć (może wywołać kolejne triggery)
                 newState = _deathResolver.ResolveDeaths(newState, Events, _gameContext);
-                // 3. Na końcu aury
                 newState = _auraSystem.RecalculateAuras(newState);
 
                 if (newState.PendingInteraction != null || CheckGameOver(newState)) break;
-
-                // Kontynuuj dopóki są eventy w kolejce LUB stan się zmienia
-                if (!Events.HasEvents &&
-                    newState.Board == start.Board &&
-                    newState.PlayerA == start.PlayerA &&
-                    newState.PlayerB == start.PlayerB) break;
+                if (!Events.HasEvents && newState.Board == start.Board) break;
             }
 
             while (newState.PendingInteraction == null && newState.SpellStack.Any())
@@ -2125,6 +2160,7 @@ namespace CardGame.Core.Application
             if (_interactionTimer >= 5.0f)
             {
                 var pending = CurrentState.PendingInteraction;
+                _interactionTimer = 0f;
                 int tid = (pending.RequiredTargetType == CardGame.Core.Cards.Data.TargetType.Choice) ? 0 :
                           (CurrentState.Board.GetAllUnits().FirstOrDefault()?.InstanceId ?? 0);
 
@@ -2186,14 +2222,15 @@ namespace CardGame.Core.Cards.Components.Implementations
 
         public JsonEffectComponent(EffectData data, int sourceId, int effectIndex = 0)
         {
-            _data = data; _sourceId = sourceId; _effectIndex = effectIndex;
+            _data = data;
+            _sourceId = sourceId;
+            _effectIndex = effectIndex;
         }
 
         public bool ShouldTrigger(IGameEvent e, GameState s) => TriggerLogic.Check(_data, e, s, _sourceId);
 
         public GameState Resolve(IGameEvent evt, GameState state, GameContext context)
         {
-            // Start interakcji modalnej
             if (_data.Targeting == TargetType.Choice && !(evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1))
             {
                 return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, -1, TargetType.Choice, _data.ChoiceLabels));
@@ -2205,54 +2242,65 @@ namespace CardGame.Core.Cards.Components.Implementations
         {
             GameState workingState = state.With(clearPending: true);
 
-            // Jeśli wracamy z wyboru ścieżki (Choice)
             if (_data.Targeting == TargetType.Choice && evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1)
             {
                 int choiceIdx = tse.SelectedTargetId;
                 if (choiceIdx >= 0 && choiceIdx < _data.Actions.Count)
                 {
-                    // KLUCZ: Natychmiast wykonaj akcję odpowiadającą wyborowi
                     return ExecuteAction(workingState, context, _data.Actions[choiceIdx], evt, choiceIdx);
                 }
                 return workingState;
             }
 
-            // Normalna pętla
             for (int i = startIndex; i < _data.Actions.Count; i++)
             {
                 var nextState = ExecuteAction(workingState, context, _data.Actions[i], evt, i);
                 if (nextState.PendingInteraction != null) return nextState;
-                workingState = nextState;
+                workingState = nextState; // Przekazanie stanu do następnej akcji w pętli
             }
             return workingState;
         }
 
         private GameState ExecuteAction(GameState state, GameContext context, ActionData action, IGameEvent evt, int actionIdx)
         {
-            var targetType = (action.Target == TargetType.Self && _data.Targeting != TargetType.Self) ? _data.Targeting : action.Target;
-
-            if (IsManualTarget(targetType))
+            var targetType = action.Target;
+            if ((targetType == TargetType.SelectedTarget || targetType == TargetType.Self) && _data.Targeting != TargetType.Self)
             {
-                var resolved = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);
+                targetType = _data.Targeting;
+            }
 
-                // Sprawdzamy czy cel już jest dostarczony
-                bool provided = (actionIdx == 0 && evt is CardPlayedEvent cpe && cpe.SelectedTargetId.HasValue) ||
-                                (evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == actionIdx);
+            // 1. Sprawdź czy cel już wynika z kontekstu (np. Trigger, CardPlayedEvent)
+            var resolved = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);
 
-                if (!resolved.UnitTargets.Any() && !provided)
-                {
-                    if (EffectTargetResolver.GetPotentialTargets(targetType, state, _sourceId).Any())
-                        return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, actionIdx, targetType));
-                    return state;
-                }
+            if (resolved.UnitTargets.Any() || resolved.TargetPlayer != null)
+            {
                 return context.ActionRegistry.GetHandler(action.Type).Execute(state.With(clearPending: true), context, action, resolved, _sourceId, evt);
             }
 
-            var autoTargets = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);
-            return context.ActionRegistry.GetHandler(action.Type).Execute(state, context, action, autoTargets, _sourceId, evt);
+            // 2. Jeśli nie, sprawdź manualny wybór / auto-wybór
+            if (IsManualTarget(targetType))
+            {
+                var potential = EffectTargetResolver.GetPotentialTargets(targetType, state, _sourceId);
+
+                if (potential.Count == 0) return state; // Pomiń
+
+                if (potential.Count == 1)
+                {
+                    // Auto-resolve: Symulujemy wybór jedynego słusznego celu
+                    var autoEvent = new TargetSelectedEvent(evt.SourcePlayerId, _sourceId, potential[0].InstanceId);
+                    var autoResolved = EffectTargetResolver.Resolve(targetType, state, autoEvent, _sourceId);
+                    return context.ActionRegistry.GetHandler(action.Type).Execute(state.With(clearPending: true), context, action, autoResolved, _sourceId, evt);
+                }
+
+                // Pauza dla UI (2+ cele)
+                return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, actionIdx, targetType));
+            }
+
+            return context.ActionRegistry.GetHandler(action.Type).Execute(state, context, action, resolved, _sourceId, evt);
         }
 
-        private bool IsManualTarget(TargetType t) => t == TargetType.SelectedTarget || t == TargetType.TargetEnemyUnit || t == TargetType.TargetFriendlyUnit;
+        private bool IsManualTarget(TargetType t) =>
+            t == TargetType.SelectedTarget || t == TargetType.TargetEnemyUnit || t == TargetType.TargetFriendlyUnit || t == TargetType.OtherFriendlyUnits;
     }
 }
 
