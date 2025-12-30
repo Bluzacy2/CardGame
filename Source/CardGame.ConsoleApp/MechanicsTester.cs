@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -53,22 +53,27 @@ namespace CardGame.ConsoleApp
                 // --- TESTY (Skrócone logi) ---
                 Console.WriteLine("Test 1: Buffing...");
                 engine.ExecuteCommand(new PlayUnitCommand(1, buffer.InstanceId, 3, selectedTargetId: tank.InstanceId));
+                Assert(engine.CurrentState.Board.Lines[0].Player1Unit != null, "Buff test failed: Tank is null");
                 Assert(engine.CurrentState.Board.Lines[0].Player1Unit.CurrentStats.Attack == 3, "Buff failed");
 
                 Console.WriteLine("Test 2: Damage & Heal...");
                 var tankCheck = engine.CurrentState.Board.Lines[0].Player1Unit;
+                Assert(tankCheck != null, "Heal test failed: Tank is null before damage");
                 var damagedTank = tankCheck.TakeDamage(4);
+                
                 // Hack planszy
+                var guardianCheck = engine.CurrentState.Board.Lines[1].Player1Unit;
+                var phoenixCheck = engine.CurrentState.Board.Lines[2].Player1Unit;
+                Assert(guardianCheck != null && phoenixCheck != null, "Heal test failed: Guardian or Phoenix is null");
                 var newBoard = BoardState.Empty()
                    .WithUnitPlacedAt(0, 1, damagedTank)
-                   .WithUnitPlacedAt(1, 1, engine.CurrentState.Board.Lines[1].Player1Unit)
-                   .WithUnitPlacedAt(2, 1, engine.CurrentState.Board.Lines[2].Player1Unit);
+                   .WithUnitPlacedAt(1, 1, guardianCheck)
+                   .WithUnitPlacedAt(2, 1, phoenixCheck);
                 engine.CurrentState = engine.CurrentState.UpdateBoard(newBoard);
 
                 engine.ExecuteCommand(new PlayUnitCommand(1, healer.InstanceId, 3, selectedTargetId: tank.InstanceId));
+                Assert(engine.CurrentState.Board.Lines[0].Player1Unit != null, "Heal test failed: Tank is null after heal");
                 Assert(engine.CurrentState.Board.Lines[0].Player1Unit.CurrentStats.Health == 7, "Heal failed");
-
-                // ... Reszta testów (statusy, death, etc.) działa analogicznie jak w oryginale ...
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\n[SUCCESS] Wszystkie testy mechaniczne zaliczone.");

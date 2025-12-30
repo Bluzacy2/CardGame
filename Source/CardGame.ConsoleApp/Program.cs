@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Threading.Tasks;
 
 namespace CardGame.ConsoleApp
 {
@@ -15,7 +16,8 @@ namespace CardGame.ConsoleApp
                 Console.WriteLine("1. Uruchom Testy Mechanik (Unit Tests)");
                 Console.WriteLine("2. Uruchom Symulację Bitwy (AI vs AI)");
                 Console.WriteLine("3. Uruchom Symulację Bitwy (AI vs AI) v2");
-                Console.WriteLine("4. Wyjście");
+                Console.WriteLine("4. Uruchom Zoptymalizowaną Symulację (AI vs AI)"); // ADDED
+                Console.WriteLine("5. Wyjście"); // MODIFIED
                 Console.Write("\nWybierz opcję: ");
 
                 var key = Console.ReadKey();
@@ -35,11 +37,15 @@ namespace CardGame.ConsoleApp
                         await AIBattleRunnerII.RunAsync();
                         Pause();
                         break;
-                    case '4':
+                    case '4': // ADDED
+                        await OptimizedAILogger.RunAsync();
+                        Pause();
+                        break;
+                    case '5': // MODIFIED
                         return;
                     default:
                         Console.WriteLine("Nieznana opcja.");
-                        Thread.Sleep(1000);
+                        await Task.Delay(1000);
                         break;
                 }
             }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Logic;
