@@ -1,9 +1,8 @@
 ﻿using CardGame.Core.AI.Interfaces;
 using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
 using CardGame.Core.Cards.Models;
-using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
+using CardGame.Core.Cards.Logic;
 using System;
 using System.Linq;
 
@@ -17,28 +16,15 @@ namespace CardGame.Core.AI.Strategies
             var enemy = state.GetOpponent(botPlayerId);
             float score = 1000.0f;
 
-            // 1. ANALIZA RĘKI - CZY JESTEM AGRESOREM?
-            int unitCount = bot.Hand.Count(c => c.Definition.Type == CardType.Unit);
-            int spellCount = bot.Hand.Count(c => c.Definition.Type == CardType.Spell);
-            bool isAggroMood = unitCount > spellCount; // Jeśli mam więcej jednostek, chcę spamić
+            // 1. ZASOBY - Bot chce wydać CurrentBlood, by nie marnować tury
+            float bloodToSpend = bot.CurrentBlood;
+            score -= (bloodToSpend * 15.0f);
 
-            // 2. DYNAMICZNA MANA
-            float spentBlood = bot.MaxBlood - bot.CurrentBlood;
-            if (state.CurrentPhase == GamePhase.UnitOnly)
-            {
-                // Jeśli mam nastroj agresywny (Sacrifice), wydawanie many na jednostki jest OK (+20)
-                // Jeśli mam nastroj kontrolny, wydawanie jest ryzykowne (+5)
-                score += spentBlood * (isAggroMood ? 20.0f : 5.0f);
-            }
-            else
-            {
-                score += spentBlood * 25.0f; // W późniejszych fazach zawsze chcemy wydać wszystko
-            }
-
-            // 3. ŻYCIE
+            // 2. ŻYCIE - Kluczowe przy końcówkach
             score += (bot.Health - enemy.Health) * 10.0f;
+            if (bot.Health < 12) score -= (15 - bot.Health) * 12.0f;
 
-            // 4. PLANSZA - ANALIZA LINII I SPLASH DAMAGE
+            // 3. PLANSZA - ANALIZA LINII I SPLASH DAMAGE
             bool hasGerard = state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && u.Definition.Name.Contains("Gerard"));
 
             for (int i = 0; i < 4; i++)
@@ -51,51 +37,57 @@ namespace CardGame.Core.AI.Strategies
                 score -= EvaluateUnitPresence(en, my, i, state, false, false) * 22.0f;
             }
 
-            // 5. RĘKA
-            score += bot.Hand.Count * 10.0f;
+            // 4. RĘKA - Kara za zapchanie i bonus za synergię
+            score += bot.Hand.Count * 5.0f;
+            if (bot.Hand.Count >= 8) score -= 150.0f;
+
+            // 5. BLOKADA POMIJANIA TURY
+            if (state.ActivePlayerId == botPlayerId && bot.CurrentBlood > 0)
+            {
+                if (bot.Hand.Any(c => c.CurrentStats.BloodCost <= bot.CurrentBlood))
+                    score -= 100.0f; // Kara za PASS gdy nas stać na ruch
+            }
+
             return score;
         }
 
-        private float EvaluateUnitPresence(CardInstance? u, CardInstance? opp, int lineIdx, GameState state, bool g, bool f)
+        private float EvaluateUnitPresence(CardInstance? u, CardInstance? opp, int lineIdx, GameState state, bool playerHasGerard, bool isFriendly)
         {
             if (u == null) return 0;
             var s = u.CurrentStats;
-            float val = (s.Attack * 2.0f) + s.Health;
+            float val = (s.Attack * 2.5f) + s.Health;
 
             // --- LOGIKA SPLASH DAMAGE ---
             if (s.Keywords.Contains(Keyword.SplashDamage))
             {
-                // Pobieramy wartość splasha z parametrów (np. 3)
                 int splashPower = 1;
                 if (u.Definition.BaseStats.KeywordParams.TryGetValue(Keyword.SplashDamage, out int p)) splashPower = p;
 
-                // Sprawdzamy sąsiadów na planszy
-                int targetsHit = 0;
-                foreach (int neighborIdx in new[] { lineIdx - 1, lineIdx + 1 })
+                int actualHits = 0;
+                foreach (int neighbor in new[] { lineIdx - 1, lineIdx + 1 })
                 {
-                    if (neighborIdx >= 0 && neighborIdx < 4)
+                    if (neighbor >= 0 && neighbor < 4)
                     {
-                        var neighborLine = state.Board.Lines[neighborIdx];
-                        var potentialVictim = (u.OwnerPlayerId == 1) ? neighborLine.Player2Unit : neighborLine.Player1Unit;
-                        if (potentialVictim != null) targetsHit++;
+                        var nLine = state.Board.Lines[neighbor];
+                        var potentialVictim = (u.OwnerPlayerId == 1) ? nLine.Player2Unit : nLine.Player1Unit;
+                        if (potentialVictim != null) actualHits++;
                     }
                 }
-
-                // Splash jest wart tym więcej, im więcej jednostek faktycznie uderzy
-                val += (targetsHit * splashPower * 1.5f);
-
-                // Bonus za samo "dobre pozycjonowanie" (środkowe linie dają potencjał na 2 cele)
-                if (lineIdx == 1 || lineIdx == 2) val += 2.0f;
+                // Wyższa wartość na liniach 1 i 2 (środek planszy)
+                val += (actualHits * splashPower * 2.0f);
+                if (lineIdx == 1 || lineIdx == 2) val += 5.0f;
             }
 
-            // Analiza walki
+            // Analiza walki (Trade analysis)
             if (opp != null)
             {
-                if (s.Health <= opp.CurrentStats.Attack && opp.CurrentStats.Health > s.Attack) val -= 15.0f;
-                if (opp.CurrentStats.Health <= s.Attack && s.Health > opp.CurrentStats.Attack) val += 10.0f;
+                bool iDie = s.Health <= opp.CurrentStats.Attack;
+                bool enemyDies = opp.CurrentStats.Health <= s.Attack;
+                if (iDie && !enemyDies) val -= 25.0f; // Fatalny ruch (oddanie jednostki za nic)
+                if (!iDie && enemyDies) val += 15.0f; // Świetny ruch
             }
 
-            if (s.Keywords.Contains(Keyword.Marked)) val += f ? -30 : (g ? 40 : 10);
+            if (s.Keywords.Contains(Keyword.Marked)) val += isFriendly ? -40 : (playerHasGerard ? 50 : 15);
             if (s.Keywords.Contains(Keyword.Stunned)) val *= 0.1f;
             if (s.Keywords.Contains(Keyword.Unkillable)) val += 15.0f;
 
