@@ -304,7 +304,7 @@ namespace CardGame.ConsoleApp
 
         private static List<CardInstance> CreateDeck(CardFactory f, int id, bool ctrl)
         {
-            int[] ids = ctrl ? new[] { 4, 32, 24, 25, 26, 21, 6, 31, 15, 7 } : new[] { 12, 10, 11, 3, 9, 1, 2, 5, 16, 14 };
+            int[] ids = ctrl ? new[] { 4, 32, 26, 24, 25, 31, 7, 21, 15, 13 } : new[] { 12, 3, 6, 10, 11, 36, 9, 18, 1, 5 };
             var d = new List<CardInstance>();
             foreach (var cid in ids) for (int i = 0; i < 3; i++) d.Add(f.CreateCard(cid, id));
             return d;
