@@ -16,8 +16,9 @@ namespace CardGame.ConsoleApp
                 Console.WriteLine("1. Uruchom Testy Mechanik (Unit Tests)");
                 Console.WriteLine("2. Uruchom Symulację Bitwy (AI vs AI)");
                 Console.WriteLine("3. Uruchom Symulację Bitwy (AI vs AI) v2");
-                Console.WriteLine("4. Uruchom Zoptymalizowaną Symulację (AI vs AI)"); // ADDED
-                Console.WriteLine("5. Wyjście"); // MODIFIED
+                Console.WriteLine("4. Pętla Symulacji Bitwy (Balance AI Tester)");
+                Console.WriteLine("5. Zoptymalizowana Symulacja (Optimized AI Logger)");
+                Console.WriteLine("6. Wyjście");
                 Console.Write("\nWybierz opcję: ");
 
                 var key = Console.ReadKey();
@@ -37,11 +38,15 @@ namespace CardGame.ConsoleApp
                         await AIBattleRunnerII.RunAsync();
                         Pause();
                         break;
-                    case '4': // ADDED
+                    case '4':
+                        await BalanceAITester.RunAsync();
+                        Pause();
+                        break;
+                    case '5':
                         await OptimizedAILogger.RunAsync();
                         Pause();
                         break;
-                    case '5': // MODIFIED
+                    case '6':
                         return;
                     default:
                         Console.WriteLine("Nieznana opcja.");

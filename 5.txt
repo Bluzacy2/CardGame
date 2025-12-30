@@ -1,0 +1,276 @@
+﻿
+
+========================================
+FILE: NewCardsPt3.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\NewCardsPt3.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using Xunit;
+
+namespace CardGame.Tests
+{
+    public class NewMechanicsPt3Tests
+    {
+        private string GetJson() => @"[
+            { ""Id"": 31, ""Name"": ""Silence"", ""Type"": ""Spell"", ""Cost"": 2,
+              ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""Silence"", ""Target"": ""TargetEnemyUnit"" } ] } ] },
+            { ""Id"": 33, ""Name"": ""Mouse"", ""Type"": ""Unit"", ""Attack"": 5, ""Health"": 10, ""Keywords"": [""Stunned""] },
+            { ""Id"": 34, ""Name"": ""MaidMask"", ""Type"": ""Unit"", ""Attack"": 3, ""Health"": 1, ""Keywords"": [""SoulGuard""] },
+            { ""Id"": 36, ""Name"": ""Death"", ""Type"": ""Unit"", ""Attack"": 3, ""Health"": 3,
+              ""Effects"": [ { ""Trigger"": ""OnFriendlyUnitDied"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Target"": ""EnemyHero"", ""Amount"": 3 } ] } ] },
+            { ""Id"": 99, ""Name"": ""Victim"", ""Type"": ""Unit"", ""Attack"": 1, ""Health"": 1 }
+        ]";
+
+        [Fact]
+        public void Silence_ShouldRemoveSoulGuard_AndBonusStats()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetJson());
+            var victim = engine.Factory.CreateCard(34, 2);
+            var buffedVictim = victim.AddPermanentBuff(new CardGame.Core.Cards.Models.CardStats(2, 2, 0));
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 2, buffedVictim));
+
+            var silence = engine.Factory.CreateCard(31, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(silence));
+
+            // --- KLUCZOWA POPRAWKA: Zmiana fazy na taką, która pozwala na czary ---
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.ActionOnly);
+
+            engine.ExecuteCommand(new PlaySpellCommand(1, silence.InstanceId, selectedTargetId: victim.InstanceId));
+
+            var silencedUnit = engine.CurrentState.Board.Lines[0].Player2Unit!;
+
+            // Jeśli faza jest poprawna, te asercje sprawdzą realne działanie uciszenia
+            Assert.True(silencedUnit.IsSilenced);
+            Assert.Equal(3, silencedUnit.CurrentStats.Attack);
+            Assert.DoesNotContain(Keyword.SoulGuard, silencedUnit.CurrentStats.Keywords);
+        }
+
+        [Fact]
+        public void Death_ShouldPingHero_WhenFriendlyUnitDies()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetJson());
+            var death = engine.Factory.CreateCard(36, 1);
+            var ally = engine.Factory.CreateCard(99, 1);
+            var enemy = engine.Factory.CreateCard(99, 2);
+            var blocker = engine.Factory.CreateCard(99, 2); // NOWE: Blokuje atak Death
+
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board
+                .WithUnitPlacedAt(0, 1, death)
+                .WithUnitPlacedAt(0, 2, blocker) // Death bije w blokera, nie w Hero
+                .WithUnitPlacedAt(1, 1, ally)
+                .WithUnitPlacedAt(1, 2, enemy));
+
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.Combat);
+            engine.ExecuteCommand(new EndPhaseCommand(1));
+
+            // Ally (P1) ginie -> Death (P1) zadaje 3 dmg w P2. Expected: 30 - 3 = 27.
+            Assert.Equal(27, engine.CurrentState.PlayerB.Health);
+        }
+
+        [Fact]
+        public void StartingStun_ShouldWorkOnMouse()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetJson());
+            var mouse = engine.Factory.CreateCard(33, 1);
+            var victim = engine.Factory.CreateCard(99, 2);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, mouse).WithUnitPlacedAt(0, 2, victim));
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.Combat);
+
+            // ACT: Rozliczamy walkę
+            engine.ExecuteCommand(new EndPhaseCommand(1));
+
+            Assert.NotNull(engine.CurrentState.Board.Lines[0].Player2Unit);
+            var mouseAfter = engine.CurrentState.Board.Lines[0].Player1Unit!;
+            Assert.DoesNotContain(Keyword.Stunned, mouseAfter.CurrentStats.Keywords);
+        }
+    }
+}
+
+
+========================================
+FILE: TestHelpers.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\TestHelpers.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using System.Collections.Generic;
+using System.IO;
+
+namespace CardGame.Tests
+{
+    public static class TestHelpers
+    {
+        public static GameEngine CreateEngineWithCards(string jsonContent, int seed = 1)
+        {
+            string tempFile = Path.GetTempFileName();
+            File.WriteAllText(tempFile, jsonContent);
+
+            try
+            {
+                CardLibrary.Instance.Clear();
+                CardLibrary.Instance.LoadFromJson(tempFile);
+            }
+            finally { }
+
+            var rng = new DeterministicRng(seed);
+            var factory = new CardFactory(CardLibrary.Instance, rng);
+
+            // Ustawienie początkowe zasobów (Używamy WithResourceChanged)
+            var pA = PlayerState.Initial(1, new List<CardInstance>())
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .With(health: 30);
+
+            var pB = PlayerState.Initial(2, new List<CardInstance>())
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .With(health: 30);
+
+            var board = BoardState.Empty();
+            var state = new GameState(1, GamePhase.UnitOnly, 1, board, pA, pB);
+
+            return new GameEngine(state, seed);
+        }
+
+        public static CardInstance CreateCard(GameEngine engine, int id, int ownerId)
+        {
+            return engine.Factory.CreateCard(id, ownerId);
+        }
+    }
+}
+
+
+========================================
+FILE: TimeOutTest.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\TimeOutTest.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using Xunit;
+
+namespace CardGame.Tests
+{
+    public class TimeoutTests
+    {
+        [Fact]
+        public void Choice_ShouldAutoResolve_OnTimeout()
+        {
+            string json = @"[
+                { ""Id"": 15, ""Name"": ""Expectancy"", ""Type"": ""Spell"", ""Cost"": 2,
+                  ""Effects"": [ { 
+                      ""Trigger"": ""OnPlayed"", ""Targeting"": ""Choice"", ""ChoiceLabels"": [""A"", ""B""],
+                      ""Actions"": [ { ""Type"": ""DrawCard"", ""Amount"": 1 }, { ""Type"": ""Heal"", ""Amount"": 1, ""Target"": ""FriendlyHero"" } ]
+                  } ] 
+                }
+            ]";
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var spell = engine.Factory.CreateCard(15, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(spell));
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.ActionOnly);
+            engine.ExecuteCommand(new PlaySpellCommand(1, spell.InstanceId));
+            Assert.NotNull(engine.CurrentState.PendingInteraction);
+            engine.Update(5.1f);
+            Assert.Null(engine.CurrentState.PendingInteraction);
+        }
+
+        [Fact]
+        public void UnitTargeting_ShouldAutoResolve_OnTimeout_WhenMultipleTargetsExist()
+        {
+            string json = @"[
+                { ""Id"": 4, ""Name"": ""Informer"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 2,
+                  ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetEnemyUnit"", ""Actions"": [ { ""Type"": ""ApplyStatus"", ""StatusKeyword"": ""Marked"" } ] } ] },
+                { ""Id"": 2, ""Name"": ""Target"", ""Type"": ""Unit"", ""Attack"": 1, ""Health"": 5 }
+            ]";
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board
+                .WithUnitPlacedAt(0, 2, engine.Factory.CreateCard(2, 2))
+                .WithUnitPlacedAt(1, 2, engine.Factory.CreateCard(2, 2)));
+            var informer = engine.Factory.CreateCard(4, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(informer));
+            engine.ExecuteCommand(new PlayUnitCommand(1, informer.InstanceId, 3));
+            Assert.NotNull(engine.CurrentState.PendingInteraction);
+            engine.Update(5.0f);
+            Assert.Null(engine.CurrentState.PendingInteraction);
+        }
+    }
+}
+
+
+========================================
+FILE: UltimateStressTest.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\UltimateStressTest.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using Xunit;
+
+namespace CardGame.Tests
+{
+    public class NuclearChaosTests
+    {
+        private string GetFinalChaosJson() => @"[
+            { ""Id"": 12, ""Name"": ""Black Cat"", ""Type"": ""Unit"", ""Cost"": 0, ""Attack"": 1, ""Health"": 1,
+              ""Effects"": [ { ""Trigger"": ""OnSacrificed"", ""Zone"": ""Board"", ""Actions"": [ { ""Type"": ""ReturnToHand"", ""Target"": ""Self"" } ] } ] },
+            { ""Id"": 36, ""Name"": ""Death"", ""Type"": ""Unit"", ""Subtypes"": [ ""Monster"" ], ""Cost"": 5, ""Attack"": 3, ""Health"": 3,
+              ""Effects"": [ { ""Trigger"": ""OnFriendlyUnitDied"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Target"": ""EnemyHero"", ""Amount"": 3 } ] } ] },
+            { ""Id"": 35, ""Name"": ""Cathulli Captain"", ""Type"": ""Unit"", ""Cost"": 2, ""Attack"": 2, ""Health"": 2,
+              ""Effects"": [ { 
+                  ""Trigger"": ""OnDamagedEnemyHero"", 
+                  ""Condition"": { ""Condition"": ""IsSubtype"", ""TargetParam"": ""Monster"" }, 
+                  ""Actions"": [ { ""Type"": ""BuffStats"", ""Target"": ""SelectedTarget"", ""BuffAtk"": 1, ""BuffHp"": 1 } ] 
+              } ] },
+            { ""Id"": 27, ""Name"": ""Raiding Raptor"", ""Type"": ""Unit"", ""Attack"": 1, ""Health"": 4,
+              ""Effects"": [ 
+                { ""Trigger"": ""OnDamagedEnemyHero"", ""Condition"": { ""Condition"": ""IsSelf"" }, ""Actions"": [ { ""Type"": ""DrawCard"", ""Target"": ""FriendlyHero"" } ] },
+                { ""Trigger"": ""OnFriendlyCardDrawn"", ""Actions"": [ { ""Type"": ""BuffStats"", ""Target"": ""Self"", ""BuffAtk"": 1 } ] } 
+              ] },
+            { ""Id"": 900, ""Name"": ""The Alluring Goblet"", ""Type"": ""Spell"", ""Cost"": 1,
+              ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetFriendlyUnit"", ""Actions"": [ { ""Type"": ""DestroyUnit"" } ] } ] }
+        ]";
+
+        [Fact]
+        public void Absolute_Nuclear_Butterfly_Effect_Test()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetFinalChaosJson());
+            var factory = engine.Factory;
+            var death = factory.CreateCard(36, 1);
+            var cap = factory.CreateCard(35, 1);
+            var cat = factory.CreateCard(12, 1);
+            var raptor = factory.CreateCard(27, 1);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, death).WithUnitPlacedAt(1, 1, cap).WithUnitPlacedAt(2, 1, cat).WithUnitPlacedAt(3, 1, raptor));
+            var goblet = factory.CreateCard(900, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.With(hand: new List<CardInstance> { goblet }, drawPile: new List<CardInstance> { factory.CreateCard(12, 1) }).WithResourceChanged(ResourceType.Blood, 10, 10));
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.ActionOnly);
+            engine.ExecuteCommand(new PlaySpellCommand(1, goblet.InstanceId, selectedTargetId: cat.InstanceId));
+            var deathUnit = engine.CurrentState.Board.GetAllUnits().First(u => u.Definition.Name == "Death");
+            Assert.Equal(4, deathUnit.CurrentStats.Attack);
+            Assert.Equal(4, deathUnit.CurrentStats.Health);
+        }
+    }
+}
+
+
+========================================
+FILE: xunit.runner.json
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\xunit.runner.json
+========================================
+{
+  "parallelizeAssembly": false,
+  "parallelizeTestCollections": false
+}

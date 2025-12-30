@@ -36,8 +36,11 @@ namespace CardGame.ConsoleApp
             var rng = new DeterministicRng(new Random().Next());
             var factory = new CardFactory(CardLibrary.Instance, rng);
 
-            var deckA = CreateHighlanderDeck(factory, 1, 30);
-            var deckB = CreateHighlanderDeck(factory, 2, 30);
+            //var deckA = CreateHighlanderDeck(factory, 1, 30);
+            //var deckB = CreateHighlanderDeck(factory, 2, 30);
+
+            var deckA = CreateDeckForBot(factory, 1, true);  // Gracz 1: Control
+            var deckB = CreateDeckForBot(factory, 2, false); // Gracz 2: Sacrifice
 
             var state = GameState.Initial(1, deckA, deckB, rng);
             var engine = new GameEngine(state, rng.Seed);
@@ -258,6 +261,25 @@ namespace CardGame.ConsoleApp
             var rand = new Random();
             var availableIds = Enumerable.Range(1, 36).OrderBy(x => rand.Next()).Take(size);
             return availableIds.Select(id => factory.CreateCard(id, ownerId)).ToList();
+        }
+        private static List<CardInstance> CreateDeckForBot(CardFactory factory, int ownerId, bool isControlDeck)
+        {
+            var deck = new List<CardInstance>();
+
+          
+            int[] controlIds = { 4, 32, 24, 25, 37, 21, 6, 31, 15, 7 };
+            int[] sacrificeIds = { 12, 10, 11, 3, 9, 1, 2, 5, 16, 14 };
+
+            int[] selectedIds = isControlDeck ? controlIds : sacrificeIds;
+
+            foreach (var id in selectedIds)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    deck.Add(factory.CreateCard(id, ownerId));
+                }
+            }
+            return deck;
         }
     }
 }

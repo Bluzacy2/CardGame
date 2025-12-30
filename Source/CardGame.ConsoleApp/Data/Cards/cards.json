@@ -420,27 +420,27 @@
   },
 
   {
-    "Id": 24,
-    "Name": "Gerard from Rivia",
-    "Type": "Unit",
-    "Subtypes": [ "Mercenary" ],
-    "Cost": 5,
-    "Attack": 5,
-    "Health": 5,
-    "Description": "Whenever you Mark an enemy: Bonus Attack.",
-    "Effects": [
-      {
-        "Trigger": "OnStatusApplied",
-        "Condition": { 
-          "Condition": "IsStatus", 
-          "TargetParam": "Marked" 
-        },
-        "Actions": [
-          { "Type": "BonusAttack", "Target": "Self" }
+  "Id": 24, 
+  "Name": "Gerard from Rivia",
+  "Type": "Unit",
+  "Subtypes": [ "Mercenary" ],
+  "Cost": 5,
+  "Attack": 5,
+  "Health": 5,
+  "Effects": [
+    {
+      "Trigger": "OnStatusApplied",
+      "Condition": {
+        "Condition": "And",
+        "SubConditions": [
+          { "Condition": "IsStatus", "TargetParam": "Marked" },
+          { "Condition": "IsEnemy" } 
         ]
-      }
-    ]
-  },
+      },
+      "Actions": [ { "Type": "BonusAttack", "Target": "Self" } ]
+    }
+  ]
+},
 
   {
   "Id": 25,
@@ -648,6 +648,27 @@
   },
 
   {
+  "Id": 37,
+  "Name": "Archer",
+  "Type": "Unit",
+  "Subtypes": ["Mercenary"],
+  "Cost": 2, "Attack": 1, "Health": 4,
+  "Description": "Before Combat Here: Apply Burning to an Enemy Unit.",
+  "Effects": [
+    {
+      "Trigger": "OnPreCombatLine",
+      "Actions": [
+        { 
+          "Type": "ApplyStatus", 
+          "Target": "TargetEnemyUnit", 
+          "StatusKeyword": "Burning" 
+        }
+      ]
+    }
+  ]
+},
+
+{
     "Id": 900,
     "Name": "The Alluring Goblet",
     "Type": "Spell",
@@ -663,5 +684,5 @@
         ]
       }
     ]
-  }
+ }
 ]
