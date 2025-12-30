@@ -89,7 +89,11 @@ namespace CardGame.ConsoleApp
                         var best = _lastThoughts.FirstOrDefault();
                         if (best != null)
                         {
-                            _fullAudit.AppendLine($"[T{state.TurnNumber} P{state.ActivePlayerId}] Ruch: {FormatCmdDetailed(best.Command, state)} (Score: {best.Score:F1})");
+                            _fullAudit.AppendLine($"[T{state.TurnNumber} P{state.ActivePlayerId}] Ruch: {FormatCmdDetailed(best.Command, state)}");
+                            _fullAudit.AppendLine($"    - Wynik: {best.Score:F1}");
+                            _fullAudit.AppendLine($"    - Uzasadnienie: {best.Description}");
+                            _fullAudit.AppendLine($"    - Wizja końcowa: {best.DeepReasoning}");
+                            _fullAudit.AppendLine(new string('-', 30));
                             engine.ExecuteCommand(best.Command);
                         }
                         else
@@ -181,10 +185,16 @@ namespace CardGame.ConsoleApp
         {
             var res = new List<string> { $"   MYŚLI BOTA P{s.ActivePlayerId}", "------------------------" };
             if (s.CurrentPhase == GamePhase.Combat) { res.Add(" [AUTO] Walka..."); return res.ToArray(); }
-            foreach (var t in _lastThoughts.Take(25))
+
+            foreach (var t in _lastThoughts.Take(15)) // Mniej ruchów, by starczyło miejsca na opisy
             {
                 string prefix = t == _lastThoughts.First() ? ">>" : "  ";
-                res.Add($"{prefix} {FormatCmdDetailed(t.Command, s).PadRight(24)} | {t.Score:F0}");
+                res.Add($"{prefix} {t.Description.PadRight(24)} | {t.Score:F0}");
+                if (t == _lastThoughts.First())
+                {
+                    res.Add($"   L {t.DeepReasoning}"); // Wyświetla plan tylko dla najlepszego ruchu
+                    res.Add("");
+                }
             }
             return res.ToArray();
         }

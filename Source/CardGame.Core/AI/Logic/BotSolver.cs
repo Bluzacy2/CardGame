@@ -1,7 +1,9 @@
 using CardGame.Core.AI.Interfaces;
 using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
 using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
 using System;
 using System.Collections.Generic;
@@ -9,18 +11,19 @@ using System.Linq;
 
 namespace CardGame.Core.AI.Logic
 {
-    // NEW CLASS: Represents a move that has been evaluated by the AI.
     public class EvaluatedMove
     {
         public IGameCommand Command { get; }
         public float Score { get; }
         public string Description { get; }
+        public string DeepReasoning { get; }
 
-        public EvaluatedMove(IGameCommand command, float score, string description = "")
+        public EvaluatedMove(IGameCommand command, float score, string description = "", string deepReasoning = "")
         {
             Command = command;
             Score = score;
             Description = description;
+            DeepReasoning = deepReasoning;
         }
     }
 
@@ -58,42 +61,46 @@ namespace CardGame.Core.AI.Logic
             _virtualOpponent = new VirtualOpponent(engine.Factory);
         }
 
-        // MODIFIED: This method now returns a list of all considered moves with their scores.
+        // G£ÓWNA METODA: Pobiera najlepsze ruchy z g³êbokim uzasadnieniem
         public List<EvaluatedMove> FindBestMoves(GameState rootState)
         {
-            var initialMoves = _moveGenerator.GenerateLegalMoves(rootState, _botId);
-            var evaluatedMoves = new List<EvaluatedMove>();
+            var legalMoves = _moveGenerator.GenerateLegalMoves(rootState, _botId);
+            var results = new List<EvaluatedMove>();
 
-            foreach (var move in initialMoves)
+            foreach (var move in legalMoves)
             {
-                float moveScore = SimulateMove(rootState, move);
-                evaluatedMoves.Add(new EvaluatedMove(move, moveScore));
+                // Wywo³ujemy symulacjê, która zwraca parê (Wynik, Uzasadnienie)
+                var sim = SimulateMoveWithReasoning(rootState, move);
+                string description = GenerateDescription(move, rootState);
+
+                results.Add(new EvaluatedMove(move, sim.Score, description, sim.Reasoning));
             }
-            
-            // Return all evaluated moves, sorted from best to worst.
-            return evaluatedMoves.OrderByDescending(m => m.Score).ToList();
+
+            return results.OrderByDescending(r => r.Score).ToList();
         }
 
-        private float SimulateMove(GameState rootState, IGameCommand move)
+        private (float Score, string Reasoning) SimulateMoveWithReasoning(GameState rootState, IGameCommand move)
         {
-            var beam = new List<SimulationNode>();
             var simulator = new GameEngine(rootState, _engineTemplate.Rng.Seed);
             var result = simulator.ExecuteCommand(move);
 
-            // If the move is invalid or leads to no state change, penalize it heavily.
-            if (result.NewState == rootState && !(move is EndPhaseCommand)) 
+            // Kara za ruchy "puste" (zablokowane przez silnik)
+            if (result.NewState == rootState && !(move is EndPhaseCommand))
+                return (-1000000f, "Ruch nielegalny/zablokowany");
+
+            var stateAfterAction = result.NewState;
+
+            // Projekcja walki: Jeœli ruch koñczy fazê, symulujemy Combat do skutku
+            if (stateAfterAction.CurrentPhase == GamePhase.Combat)
             {
-                 return float.MinValue;
+                var combatResult = simulator.ExecuteCommand(new EndPhaseCommand(stateAfterAction.ActivePlayerId));
+                stateAfterAction = combatResult.NewState;
             }
 
-            // For EndPhase, we must simulate the opponent's best response.
-            if (move is EndPhaseCommand)
-            {
-                var outcome = SimulateAndFindWorstOutcomeForBot(result.NewState);
-                return outcome.Score;
-            }
-
-            beam.Add(new SimulationNode(result.NewState, move, _strategy.Evaluate(result.NewState, _botId)));
+            // --- Inicjalizacja Beam Search ---
+            var beam = new List<SimulationNode> {
+                new SimulationNode(stateAfterAction, move, _strategy.Evaluate(stateAfterAction, _botId))
+            };
 
             for (int depth = 1; depth < MaxDepth; depth++)
             {
@@ -101,17 +108,64 @@ namespace CardGame.Core.AI.Logic
                 foreach (var node in beam)
                 {
                     bool isBotTurn = node.State.ActivePlayerId == _botId;
+
+                    // Minimax: Szukamy najlepszego dla nas lub zak³adamy najgorsze od przeciwnika
                     var outcome = isBotTurn
                         ? SimulateAndFindBestOutcomeForBot(node.State)
                         : SimulateAndFindWorstOutcomeForBot(node.State);
-                    
+
                     nextCandidates.Add(new SimulationNode(outcome.State, node.InitialMove, outcome.Score));
                 }
+
+                if (!nextCandidates.Any()) break;
                 beam = nextCandidates.OrderByDescending(n => n.Score).Take(BeamWidth).ToList();
-                if (!beam.Any()) break;
             }
 
-            return beam.Any() ? beam.Average(n => n.Score) : _strategy.Evaluate(result.NewState, _botId);
+            var bestNode = beam.OrderByDescending(n => n.Score).FirstOrDefault();
+            if (bestNode == null) return (_strategy.Evaluate(stateAfterAction, _botId), "Analiza powierzchowna");
+
+            // Generowanie opisu zysków na podstawie porównania stanu startowego i koñcowego symulacji
+            string deepReasoning = GenerateDeepReasoning(rootState, bestNode.State);
+
+            return (bestNode.Score, deepReasoning);
+        }
+
+        private string GenerateDeepReasoning(GameState start, GameState end)
+        {
+            var pStart = start.GetPlayer(_botId);
+            var pEnd = end.GetPlayer(_botId);
+            var eStart = start.GetOpponent(_botId);
+            var eEnd = end.GetOpponent(_botId);
+
+            List<string> gains = new List<string>();
+
+            // Bilans kart
+            int cardDiff = pEnd.Hand.Count - pStart.Hand.Count;
+            if (cardDiff > 0) gains.Add($"+{cardDiff} karty");
+            else if (cardDiff < 0) gains.Add($"{cardDiff} kart");
+
+            // Bilans HP wrogiego bohatera
+            int dmgDealt = eStart.Health - eEnd.Health;
+            if (dmgDealt > 0) gains.Add($"{dmgDealt} dmg w wroga");
+
+            // Bilans jednostek
+            int myUnitsEnd = end.Board.GetAllUnits().Count(u => u.OwnerPlayerId == _botId);
+            int myUnitsStart = start.Board.GetAllUnits().Count(u => u.OwnerPlayerId == _botId);
+            int enUnitsEnd = end.Board.GetAllUnits().Count(u => u.OwnerPlayerId != _botId);
+            int enUnitsStart = start.Board.GetAllUnits().Count(u => u.OwnerPlayerId != _botId);
+
+            int myDiff = myUnitsEnd - myUnitsStart;
+            int enDiff = enUnitsStart - enUnitsEnd;
+
+            if (myDiff != 0) gains.Add(myDiff > 0 ? $"+{myDiff} jedn." : $"{myDiff} jedn.");
+            if (enDiff > 0) gains.Add($"Zabite: {enDiff}");
+
+            // Marki
+            int marksEnd = end.Board.GetAllUnits().Count(u => u.OwnerPlayerId != _botId && u.CurrentStats.Keywords.Contains(Keyword.Marked));
+            if (marksEnd > 0) gains.Add($"Marki: {marksEnd}");
+
+            if (gains.Count == 0) return "Stabilizacja pozycji";
+            return "WIZJA: " + string.Join(", ", gains);
         }
 
         private (GameState State, float Score) SimulateAndFindBestOutcomeForBot(GameState currentState)
@@ -120,7 +174,7 @@ namespace CardGame.Core.AI.Logic
             float bestScore = float.MinValue;
             GameState bestState = currentState;
 
-            foreach (var move in moves)
+            foreach (var move in moves.Take(5)) // Top 5 dla wydajnoœci
             {
                 var simulator = new GameEngine(currentState, _engineTemplate.Rng.Seed);
                 var result = simulator.ExecuteCommand(move);
@@ -133,7 +187,6 @@ namespace CardGame.Core.AI.Logic
                     bestState = result.NewState;
                 }
             }
-
             return (bestState, bestScore == float.MinValue ? _strategy.Evaluate(currentState, _botId) : bestScore);
         }
 
@@ -144,41 +197,52 @@ namespace CardGame.Core.AI.Logic
             var enemyMoves = _moveGenerator.GenerateLegalMoves(stateWithPhantomHand, activePlayerId);
 
             float worstScoreForBot = float.MaxValue;
-            GameState worstStateForBot = currentState; 
+            GameState worstStateForBot = currentState;
 
             bool moveFound = false;
-
-            // Increased simulation width for opponent's turn to be more cautious
-            foreach (var enemyMove in enemyMoves.OrderByDescending(m => _strategy.Evaluate(new GameEngine(stateWithPhantomHand, _engineTemplate.Rng.Seed).ExecuteCommand(m).NewState, 3- _botId)).Take(7))
+            foreach (var enemyMove in enemyMoves.Take(5))
             {
                 var simulator = new GameEngine(stateWithPhantomHand, _engineTemplate.Rng.Seed);
                 var result = simulator.ExecuteCommand(enemyMove);
-                
-                GameState resultingState = result.NewState;
 
-                if (enemyMove is EndPhaseCommand)
-                {
-                    resultingState = resultingState.With(activePlayerId: _botId);
-                }
-
-                if (resultingState == stateWithPhantomHand && !(enemyMove is EndPhaseCommand))
+                if (result.NewState == stateWithPhantomHand && !(enemyMove is EndPhaseCommand))
                     continue;
 
                 moveFound = true;
-                float currentScore = _strategy.Evaluate(resultingState, _botId);
+                float currentScore = _strategy.Evaluate(result.NewState, _botId);
                 if (currentScore < worstScoreForBot)
                 {
                     worstScoreForBot = currentScore;
-                    worstStateForBot = resultingState;
+                    worstStateForBot = result.NewState;
                 }
             }
 
             if (!moveFound)
-            {
-                worstScoreForBot = _strategy.Evaluate(currentState.With(activePlayerId: _botId), _botId);
-            }
+                worstScoreForBot = _strategy.Evaluate(currentState, _botId);
 
             return (worstStateForBot, worstScoreForBot);
+        }
+
+        private string GenerateDescription(IGameCommand move, GameState state)
+        {
+            if (move is PlayUnitCommand pu)
+            {
+                var card = state.GetPlayer(_botId).Hand.FirstOrDefault(c => c.InstanceId == pu.CardInstanceId);
+                if (card == null) return "Wystawienie jednostki";
+                if (card.Definition.Id == "4") return "MARK: Namierzenie";
+                if (card.Definition.Id == "12") return "SACR: Paliwo (Cat)";
+                if (card.CurrentStats.Keywords.Contains(Keyword.SplashDamage)) return "POS: Splash-Value";
+                return $"Graj {card.Definition.Name}";
+            }
+            if (move is PlaySpellCommand ps)
+            {
+                var card = state.GetPlayer(_botId).Hand.FirstOrDefault(c => c.InstanceId == ps.CardInstanceId);
+                return $"CZAR: {card?.Definition.Name ?? "Magia"}";
+            }
+            if (move is SelectTargetCommand) return "INTERAKCJA: Celowanie";
+            if (move is EndPhaseCommand) return "PAS: Koniec fazy";
+
+            return move.GetType().Name;
         }
     }
 }
