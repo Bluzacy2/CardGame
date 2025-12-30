@@ -1,137 +1,180 @@
 using CardGame.Core.AI.Interfaces;
 using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Logic;
 using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CardGame.Core.AI.Strategies
 {
     public class StandardStrategy : IAIStrategy
     {
-        private const float HealthWeight = 1.5f;
-        private const float BoardPresenceWeight = 2.5f;
-        private const float HandPotentialWeight = 0.7f;
-        private const float TempoWeight = -0.2f;
+        // Wagi bazowe
+        private const float HealthWeight = 22.0f;
+        private const float BoardWeight = 35.0f;
+        private const float HandValueWeight = 18.0f;
+        private const float EfficiencyWeight = 8.0f; // Obni¿ona, by pozwoliæ na oszczêdzanie
+        private const float ThreatPenaltyWeight = 45.0f; // Kara za nara¿enie kluczowej jednostki
 
         public float Evaluate(GameState state, int botPlayerId)
         {
             var bot = state.GetPlayer(botPlayerId);
             var enemy = state.GetOpponent(botPlayerId);
 
-            float score = 0;
+            // 1. ABSOLUTNE PRIORYTETY (LETHAL / DEFEAT)
+            if (enemy.Health <= 0) return 3000000f;
+            if (bot.Health <= 0) return -3000000f;
 
-            float healthScore = (bot.Health - enemy.Health) * HealthWeight;
-            if (bot.Health < 10)
+            float score = 10000.0f;
+
+            // 2. IDENTYFIKACJA STRATEGII
+            bool isSacStrat = bot.Hand.Any(IsSacrificeCard) ||
+                              state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && IsSacrificeCard(u));
+            bool isMarkStrat = bot.Hand.Any(IsMarkCard) ||
+                               state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && IsMarkCard(u));
+
+            // 3. ZASOBY - Oszczêdzanie Blood ma sens, jeœli symulacja widzi przysz³e korzyœci
+            float bloodPenalty = bot.CurrentBlood * EfficiencyWeight;
+            float futurePotential = EvaluateFuturePotential(state, botPlayerId, isSacStrat);
+
+            // Jeœli futurePotential jest wysoki (mamy combo), bloodPenalty zostanie zniwelowane
+            score -= (bloodPenalty - futurePotential);
+
+            // 4. ¯YCIE BOHATERA (Panic Mode poni¿ej 12 HP)
+            score += (bot.Health - enemy.Health) * HealthWeight;
+            if (bot.Health < 12) score -= (15 - bot.Health) * 35.0f;
+            if (enemy.Health < 5) score += 200.0f; // Focus na wykoñczenie
+
+            // 5. PLANSZA I ZAGRO¯ENIA (Threat Assessment)
+            var myUnits = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == botPlayerId).ToList();
+            var enemyUnits = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId != botPlayerId).ToList();
+            bool hasGerard = myUnits.Any(u => u.Definition.Name.Contains("Gerard"));
+
+            foreach (var unit in myUnits)
             {
-                healthScore *= (20 - bot.Health) / 5.0f;
+                // Ocena si³y jednostki
+                score += EvaluateUnit(unit, state, botPlayerId, hasGerard, isSacStrat) * BoardWeight;
+                // SNIPER LOGIC: Czy kluczowa jednostka zginie od razu?
+                score += EvaluateThreats(unit, state, botPlayerId);
             }
-            score += healthScore;
 
-            float boardScore = 0;
-            for (int lane = 0; lane < state.Board.Lines.Count; lane++)
+            foreach (var unit in enemyUnits)
             {
-                var botUnit = GetUnitAt(state, bot.PlayerId, lane);
-                var enemyUnit = GetUnitAt(state, enemy.PlayerId, lane);
-
-                float botUnitPower = EvaluateUnitPower(botUnit, enemyUnit, state, lane);
-                float enemyUnitPower = EvaluateUnitPower(enemyUnit, botUnit, state, lane);
-
-                boardScore += (botUnitPower - enemyUnitPower);
+                score -= EvaluateUnit(unit, state, botPlayerId, false, false) * (BoardWeight * 1.25f);
             }
-            score += boardScore * BoardPresenceWeight;
 
-            score += EvaluateHandPotential(bot, state) * HandPotentialWeight;
+            // 6. RÊKA - Karty to opcje, które kosztuj¹
+            foreach (var card in bot.Hand)
+            {
+                score += EvaluateCardInHand(card, enemyUnits, bot.CurrentBlood, isMarkStrat, isSacStrat) * HandValueWeight;
+            }
 
-            score += (bot.MaxBlood - bot.CurrentBlood) * TempoWeight;
+            // 7. BLOKADA PASYWNOŒCI (Wymuszanie gry, gdy nie ma planu oszczêdzania)
+            if (state.ActivePlayerId == botPlayerId && bot.CurrentBlood > 0)
+            {
+                bool hasPlayable = bot.Hand.Any(c => c.CurrentStats.BloodCost <= bot.CurrentBlood);
+                // Jeœli staæ nas na ruch, a nie mamy na rêce combo (futurePotential), pasowanie jest karane
+                if (hasPlayable && futurePotential < 30.0f)
+                    score -= 500.0f;
+            }
 
             return score;
         }
 
-        private float EvaluateUnitPower(CardInstance? unit, CardInstance? opponent, GameState state, int lane)
+        private float EvaluateUnit(CardInstance u, GameState state, int botId, bool hasGerard, bool isSac)
         {
-            if (unit == null) return 0;
-            if (unit.CurrentStats.Keywords.Contains(Keyword.Stunned)) return 0;
+            var s = u.CurrentStats;
+            float val = (s.Attack * 2.8f) + (s.Health * 1.5f);
 
-            float power = 0;
-            int effectiveHealth = unit.CurrentStats.Health;
-            power += unit.CurrentStats.Attack;
-
-            if (unit.CurrentStats.Keywords.Contains(Keyword.Armored) && opponent != null) effectiveHealth += 1;
-            if (unit.CurrentStats.Keywords.Contains(Keyword.Armor2) && opponent != null) effectiveHealth += 2;
-
-            if (unit.CurrentStats.Keywords.Contains(Keyword.SplashDamage))
+            // Synergie statusów
+            if (s.Keywords.Contains(Keyword.Marked))
             {
-                int splashValue = unit.Definition.BaseStats.KeywordParams.GetValueOrDefault(Keyword.SplashDamage, 1);
-                int neighborCount = CountAdjacentEnemies(lane, unit.OwnerPlayerId, state);
-                power += splashValue * neighborCount * 1.5f;
+                if (u.OwnerPlayerId == botId) val -= 55.0f; // Bycie oznaczonym to wyrok
+                else val += hasGerard ? 75.0f : 25.0f; // Wróg z mark¹ to zasób
             }
 
-            if (unit.CurrentStats.Keywords.Contains(Keyword.DoubleStrike)) power += unit.CurrentStats.Attack;
-            if (unit.CurrentStats.Keywords.Contains(Keyword.SoulGuard) && !unit.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted)) power += (unit.CurrentStats.Attack + effectiveHealth) * 0.8f;
-            if (unit.CurrentStats.Keywords.Contains(Keyword.Unkillable)) power += (unit.Definition.BaseStats.Attack + unit.Definition.BaseStats.Health) * 0.5f - unit.Definition.BaseStats.BloodCost;
+            // Splash Damage i pozycjonowanie
+            if (s.Keywords.Contains(Keyword.SplashDamage))
+            {
+                val += 15.0f; // Bazowy bonus za keyword
+                // Solver w BotSolverze sprawdzi realne trafienia, tutaj dajemy wagê ogóln¹
+            }
 
-            power += effectiveHealth;
-            return power;
+            if (s.Keywords.Contains(Keyword.Unkillable)) val += 35.0f;
+            if (s.Keywords.Contains(Keyword.SoulGuard)) val += 20.0f;
+            if (s.Keywords.Contains(Keyword.Stunned)) val *= 0.15f;
+
+            // Specyficzne dla Sacrifice (Sommelier, Cat)
+            if (isSac && (u.Definition.Id == "1" || u.Definition.Id == "12")) val += 10.0f;
+
+            return val;
         }
 
-        private float EvaluateHandPotential(PlayerState botPlayer, GameState state)
+        private float EvaluateThreats(CardInstance u, GameState state, int botId)
         {
-            float handScore = 0;
-            var enemyUnits = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId != botPlayer.PlayerId).ToList();
+            float penalty = 0;
+            var opp = state.GetOpponent(botId);
 
-            foreach (var card in botPlayer.Hand)
+            // Jeœli jednostka jest kluczowa dla silnika gry i ma ma³o HP (krucha)
+            // Id 24: Gerard, Id 5: Queen of Cards, Id 36: Death
+            bool isKeyUnit = (u.Definition.Id == "24" || u.Definition.Id == "5" || u.Definition.Id == "36");
+
+            if (isKeyUnit && u.CurrentStats.Health <= 3)
             {
-                if (card.CurrentStats.CostType == ResourceType.Blood && card.CurrentStats.BloodCost > botPlayer.CurrentBlood)
+                // Sprawdzamy potencja³ przeciwnika (Deck Tracking)
+                // Czy przeciwnik ma jeszcze Glocki (Id 7) w talii lub rêce?
+                bool oppHasRemoval = opp.Hand.Count > 0 || opp.DrawPile.Any(c => c.Definition.Id == "7");
+
+                if (oppHasRemoval)
                 {
-                    handScore -= 2.0f;
-                }
-
-                if (card.Definition.Type == CardType.Spell)
-                {
-                    var spellAction = card.Definition.Effects.FirstOrDefault()?.Actions.FirstOrDefault();
-                    if (spellAction == null) continue;
-
-                    switch (spellAction.Type)
-                    {
-                        case ActionType.DealDamage:
-                            if (spellAction.Target == TargetType.TargetEnemyUnit && enemyUnits.Any())
-                            {
-                                float bestOutcome = 0;
-                                foreach (var enemy in enemyUnits)
-                                {
-                                    if (spellAction.Amount >= enemy.CurrentStats.Health)
-                                    {
-                                        float outcome = EvaluateUnitPower(enemy, null, state, -1) * 1.2f;
-                                        if (outcome > bestOutcome) bestOutcome = outcome;
-                                    }
-                                }
-                                handScore += bestOutcome;
-                            }
-                            break;
-
-                        case ActionType.DrawCard:
-                            handScore += spellAction.Amount * 1.5f;
-                            break;
-                    }
+                    penalty -= ThreatPenaltyWeight; // Bot bêdzie ba³ siê wystawiæ Gerarda bez ochrony
                 }
             }
-            return handScore;
+
+            return penalty;
         }
 
-        private CardInstance? GetUnitAt(GameState state, int playerId, int lane)
-        { 
-            if (lane < 0 || lane >= state.Board.Lines.Count) return null;
-            var line = state.Board.Lines[lane];
-            return playerId == 1 ? line.Player1Unit : line.Player2Unit;
-        }
-
-        private int CountAdjacentEnemies(int lane, int ownerId, GameState state)
+        private float EvaluateFuturePotential(GameState state, int botId, bool isSac)
         {
-            int count = 0;
-            int opponentId = 3 - ownerId;
-            if (lane > 0 && GetUnitAt(state, opponentId, lane - 1) != null) count++;
-            if (lane < state.Board.Lines.Count - 1 && GetUnitAt(state, opponentId, lane + 1) != null) count++;
-            return count;
+            var p = state.GetPlayer(botId);
+            float potential = 0;
+
+            // Premiujemy trzymanie potê¿nego combo na rêce zamiast wyrzucania kart pojedynczo
+            if (isSac)
+            {
+                bool hasBear = p.Hand.Any(c => c.Definition.Id == "10");
+                bool hasCat = p.Hand.Any(c => c.Definition.Id == "12");
+                if (hasBear && hasCat) potential += 60.0f; // Pozwala botowi oszczêdziæ krew na turê z combo
+            }
+
+            return potential;
         }
+
+        private float EvaluateCardInHand(CardInstance card, List<CardInstance> enemyUnits, int currentBlood, bool isMark, bool isSac)
+        {
+            float val = 1.0f;
+
+            // Skalowanie wartoœci wzglêdem aktualnej many
+            if (card.CurrentStats.BloodCost <= currentBlood) val += 1.5f;
+
+            // Synergie archetypów
+            if (isMark && IsMarkCard(card)) val += 2.0f;
+            if (isSac && IsSacrificeCard(card)) val += 2.0f;
+
+            // Wartoœæ czarów reaktywnych
+            if (card.Definition.Type == CardType.Spell)
+            {
+                if (card.Definition.Id == "7" && enemyUnits.Any(u => u.CurrentStats.Health <= 3)) val += 3.0f;
+                if (card.Definition.Id == "31" && enemyUnits.Any(u => u.CurrentStats.Attack > 4)) val += 4.0f; // Silence
+            }
+
+            return val;
+        }
+
+        private bool IsMarkCard(CardInstance c) => new[] { "4", "32", "24", "25", "26" }.Contains(c.Definition.Id);
+        private bool IsSacrificeCard(CardInstance c) => new[] { "10", "12", "3", "9", "900", "1" }.Contains(c.Definition.Id);
     }
 }
