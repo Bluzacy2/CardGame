@@ -20,7 +20,7 @@ using CardGame.Core.Commands.Implementations;
 
 namespace CardGame.ConsoleApp
 {
-    public static class BalanceAITester
+    public static class AIBattleRunnerIII
     {
         private static readonly Queue<string> _displayLogs = new();
         private static List<EvaluatedMove> _lastThoughts = new List<EvaluatedMove>();
@@ -34,17 +34,19 @@ namespace CardGame.ConsoleApp
         public static async Task RunAsync()
         {
             Console.Clear();
-            Console.WriteLine("=== SYSTEM TESTOWY AI ===");
-            Console.WriteLine("1. Tryb Nadzoru (Krok po kroku - Spacja)");
+            Console.WriteLine("=== ARCHITEKT RUND: AI BATTLE RUNNER III ===");
+            Console.WriteLine("1. Tryb Nadzoru (Krok po kroku - Spacja/Dowolny)");
             Console.WriteLine("2. Tryb Auto (Szybka symulacja - tylko Logi)");
+            Console.Write("\nWybierz tryb: ");
+
             var modeKey = Console.ReadKey(true);
             _isAutoMode = modeKey.KeyChar == '2';
 
             CardLibrary.Instance.Clear();
             CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
 
-            _sessionLogPath = $"session_audit_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
-            File.WriteAllText(_sessionLogPath, $"=== START SESJI TESTOWEJ AI ({(_isAutoMode ? "AUTO" : "NADZÓR")}): {DateTime.Now} ===\n\n");
+            _sessionLogPath = $"audit_3.0_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+            File.WriteAllText(_sessionLogPath, $"=== START SESJI MÓZG 3.0 ({(_isAutoMode ? "AUTO" : "NADZÓR")}): {DateTime.Now} ===\n\n");
 
             while (true)
             {
@@ -52,21 +54,30 @@ namespace CardGame.ConsoleApp
                 var rng = new DeterministicRng(new Random().Next());
                 var factory = new CardFactory(CardLibrary.Instance, rng);
 
+                // Naprzemienne przypisywanie decków dla balansu testów
                 bool p1IsCtrl = _gamesPlayed % 2 == 0;
-                var engine = new GameEngine(GameState.Initial(1, CreateDeck(factory, 1, p1IsCtrl), CreateDeck(factory, 2, !p1IsCtrl), rng), rng.Seed);
+                var deck1 = CreateDeck(factory, 1, p1IsCtrl);
+                var deck2 = CreateDeck(factory, 2, !p1IsCtrl);
+
+                var engine = new GameEngine(GameState.Initial(1, deck1, deck2, rng), rng.Seed);
+
+                // Oba boty używają nowej StandardStrategy (Mózg 3.0)
                 var ai1 = new AIPlayerController(engine, 1, new StandardStrategy());
                 var ai2 = new AIPlayerController(engine, 2, new StandardStrategy());
 
-                LogToAudit($"\n--- MECZ NR {_gamesPlayed + 1} | P1: {(p1IsCtrl ? "CONTROL" : "SACR")} vs P2: {(!p1IsCtrl ? "CONTROL" : "SACR")} ---");
+                LogToAudit($"\n--- MECZ NR {_gamesPlayed + 1} | P1: {(p1IsCtrl ? "CONTROL" : "SACRIFICE")} vs P2: {(!p1IsCtrl ? "CONTROL" : "SACRIFICE")} ---");
 
                 while (!engine.IsGameOver)
                 {
                     var state = engine.CurrentState;
                     UpdateLogs(engine);
 
+                    // Decyzje bota podejmujemy tylko w fazach aktywnych (nie Mulligan/Combat)
                     if (state.CurrentPhase != GamePhase.Mulligan && state.CurrentPhase != GamePhase.Combat)
                     {
                         var activeAI = state.ActivePlayerId == 1 ? ai1 : ai2;
+
+                        // Tutaj odpala się Long-Horizon Planning (MaxDepth 5 + Action Chaining)
                         _lastThoughts = activeAI.Solver.FindBestMoves(state);
 
                         DrawUI(state, p1IsCtrl);
@@ -75,14 +86,15 @@ namespace CardGame.ConsoleApp
                         {
                             var key = Console.ReadKey(true);
                             if (key.Key == ConsoleKey.Escape) return;
-                            if (key.Key == ConsoleKey.A) LogToAudit("\n--- RĘCZNY ZRZUT STANU ---\n" + _matchAudit.ToString());
+                            if (key.Key == ConsoleKey.A) LogToAudit("\n--- RĘCZNY ZRZUT STANU AUDYTU ---\n" + _matchAudit.ToString());
                         }
                         else
                         {
-                            await Task.Delay(50); // Małe opóźnienie w trybie auto, by UI "migało" postępem
+                            await Task.Delay(50); // Krótkie opóźnienie, by UI nadążyło się odświeżać
                         }
                     }
 
+                    // Logika procesowa
                     if (state.CurrentPhase == GamePhase.Mulligan)
                     {
                         PerformMulligan(engine, 1, p1IsCtrl);
@@ -90,27 +102,37 @@ namespace CardGame.ConsoleApp
                     }
                     else if (state.CurrentPhase == GamePhase.Combat)
                     {
+                        // Automatyczne przejście fazy walki
                         engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
-                        if (!_isAutoMode) await Task.Delay(200);
+                        if (!_isAutoMode) await Task.Delay(300);
                     }
                     else
                     {
                         var best = _lastThoughts.FirstOrDefault();
                         if (best != null)
                         {
-                            LogToAudit($"[T{state.TurnNumber} P{state.ActivePlayerId}] {FormatCmdDetailed(best.Command, state)} | Score: {best.Score:F1} | {best.DeepReasoning}");
+                            // Logujemy "Wizję" bota do pliku
+                            var p1 = state.PlayerA;
+                            var p2 = state.PlayerB;
+                            string bloodStatus = $"[P1 Blood: {p1.CurrentBlood}/{p1.MaxBlood} | P2 Blood: {p2.CurrentBlood}/{p2.MaxBlood}]";
+                            LogToAudit($"{bloodStatus}");
+                            LogToAudit($"[R{state.TurnNumber} P{state.ActivePlayerId} Faza: {state.CurrentPhase}] Ruch: {FormatCmdDetailed(best.Command, state)} | Score: {best.Score:F1} | {best.DeepReasoning}");
                             engine.ExecuteCommand(best.Command);
                         }
-                        else engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
+                        else
+                        {
+                            engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
+                        }
                     }
                 }
 
+                // Podsumowanie meczu
                 if (engine.WinnerId == 1) _p1Wins++; else if (engine.WinnerId == 2) _p2Wins++;
-                LogToAudit($"MECZ ZAKOŃCZONY. ZWYCIĘZCA: P{engine.WinnerId ?? 0} | WYNIK: P1:{_p1Wins} P2:{_p2Wins}\n" + new string('=', 60));
+                LogToAudit($"KONIEC MECZU. ZWYCIĘZCA: P{engine.WinnerId ?? 0} | TOTAL: P1:{_p1Wins} P2:{_p2Wins}\n" + new string('=', 80));
 
                 _gamesPlayed++;
                 DrawUI(engine.CurrentState, p1IsCtrl);
-                await Task.Delay(_isAutoMode ? 500 : 2000);
+                await Task.Delay(_isAutoMode ? 1000 : 3000);
             }
         }
 
@@ -125,24 +147,21 @@ namespace CardGame.ConsoleApp
             StringBuilder sb = new StringBuilder();
             Console.SetCursorPosition(0, 0);
 
-            // TurnNumber w CombatPhaseState rośnie co walkę, więc TurnNumber = RoundNumber
-            int roundNum = s.TurnNumber;
-            // Fazy w rundzie: 1. UnitOnly, 2. UnitAndAction, 3. ActionOnly. Combat to "podsumowanie".
             string phaseName = s.CurrentPhase switch
             {
                 GamePhase.UnitOnly => "1/3 (JEDNOSTKI)",
                 GamePhase.UnitAndAction => "2/3 (MIESZANA)",
                 GamePhase.ActionOnly => "3/3 (AKCJE)",
-                GamePhase.Combat => "WALKA",
-                _ => s.CurrentPhase.ToString()
+                GamePhase.Combat => "ROZLICZANIE WALKI",
+                _ => s.CurrentPhase.ToString().ToUpper()
             };
 
             string p1Tag = p1IsCtrl ? "CONTROL" : "SACRIFICE";
             string p2Tag = !p1IsCtrl ? "CONTROL" : "SACRIFICE";
             string activeTag = s.ActivePlayerId == 1 ? $"P1 [{p1Tag}]" : $"P2 [{p2Tag}]";
 
-            string headL = $" RUNDA: {roundNum} | FAZA: {phaseName} | AKTYWNY: {activeTag}";
-            string headR = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ] | MODE: {(_isAutoMode ? "AUTO" : "STEP")} ";
+            string headL = $" RUNDA: {s.TurnNumber} | FAZA: {phaseName} | AKTYWNY: {activeTag}";
+            string headR = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ] | LOG: {Path.GetFileName(_sessionLogPath)} ";
 
             sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
             sb.AppendLine("║ " + headL.PadRight(UI_WIDTH - headR.Length - 4) + headR + "║");
@@ -177,7 +196,7 @@ namespace CardGame.ConsoleApp
             res.Add($" [ GRACZ P1 | HP: {s.PlayerA.Health,2} | KREW: {s.PlayerA.CurrentBlood}/{s.PlayerA.MaxBlood} ]");
             res.AddRange(WrapHand(s.PlayerA.Hand, "P1"));
             res.Add(new string('-', 104));
-            res.Add(" DZIENNIK ZDARZEŃ (LOG SESJI: " + Path.GetFileName(_sessionLogPath) + ")");
+            res.Add(" DZIENNIK ZDARZEŃ:");
             res.AddRange(_displayLogs.Reverse().Take(8).Select(x => " " + x));
             return res.ToArray();
         }
@@ -233,10 +252,10 @@ namespace CardGame.ConsoleApp
 
         private static string[] RenderBrain(GameState s)
         {
-            var res = new List<string> { $"   MYŚLI BOTA P{s.ActivePlayerId}", "------------------------" };
+            var res = new List<string> { $"   MYŚLI BOTA P{s.ActivePlayerId} (MÓZG 3.0)", "------------------------" };
             if (s.CurrentPhase == GamePhase.Combat) { res.Add(" [AUTO] Walka..."); return res.ToArray(); }
 
-            foreach (var t in _lastThoughts.Take(15))
+            foreach (var t in _lastThoughts.Take(12))
             {
                 string prefix = t == _lastThoughts.First() ? ">>" : "  ";
                 res.Add($"{prefix} {t.Description.PadRight(24)} | {t.Score:F0}");
@@ -281,7 +300,6 @@ namespace CardGame.ConsoleApp
             var p = e.CurrentState.GetPlayer(pid);
             var rej = p.Hand.Where(c => (ctrl && c.CurrentStats.BloodCost > 2) || (!ctrl && c.CurrentStats.BloodCost > 4)).Select(c => c.InstanceId).ToList();
             e.ExecuteCommand(new ConfirmMulliganCommand(pid, rej));
-            LogToAudit($"[MULLIGAN] P{pid} wymienił {rej.Count} kart.");
         }
 
         private static List<CardInstance> CreateDeck(CardFactory f, int id, bool ctrl)
