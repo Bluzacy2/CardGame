@@ -12,6 +12,7 @@ using System.Linq;
 namespace CardGame.Core.AI.Logic
 {
     // --- KLASY POMOCNICZE (DTO) ---
+    // Definiujemy je tutaj, aby by³y widoczne dla BotSolvera i reszty projektu w tym namespace.
 
     public class EvaluatedMove
     {
@@ -43,7 +44,7 @@ namespace CardGame.Core.AI.Logic
         }
     }
 
-    // --- G£ÓWNA KLASA SOLVERA (Architekt Rund) ---
+    // --- G£ÓWNA KLASA SOLVERA (Mózg 3.1) ---
 
     public class BotSolver
     {
@@ -53,8 +54,9 @@ namespace CardGame.Core.AI.Logic
         private readonly VirtualOpponent _virtualOpponent;
         private readonly int _botId;
 
-        private const int BeamWidth = 4; // Wê¿szy ze wzglêdu na du¿¹ g³êbokoœæ (CPU)
-        private const int MaxDepth = 5;  // Przewiduje ca³¹ rundê i reakcje wroga
+        // Parametry Beam Search
+        private const int BeamWidth = 4; // Szerokoœæ wi¹zki (ile najlepszych scenariuszy œledzimy)
+        private const int MaxDepth = 5;  // G³êbokoœæ (ile ruchów w przód, wliczaj¹c reakcje wroga)
 
         public BotSolver(GameEngine engine, int botId, IAIStrategy strategy)
         {
@@ -72,12 +74,14 @@ namespace CardGame.Core.AI.Logic
 
             foreach (var move in legalMoves)
             {
-                // Uruchamiamy now¹ symulacjê ca³orundow¹
+                // Uruchamiamy symulacjê dla ka¿dego legalnego ruchu
                 var sim = SimulateRoundWithReasoning(rootState, move);
                 string desc = GenerateDescription(move, rootState);
+
                 results.Add(new EvaluatedMove(move, sim.Score, desc, sim.Reasoning));
             }
 
+            // Sortujemy malej¹co po wyniku
             return results.OrderByDescending(r => r.Score).ToList();
         }
 
@@ -85,13 +89,15 @@ namespace CardGame.Core.AI.Logic
         {
             var simulator = new GameEngine(rootState, _engineTemplate.Rng.Seed);
 
-            // 1. ACTION CHAINING: Wykonaj ruch i od razu za³atw ewentualne targetowanie
+            // 1. ACTION CHAINING: Wykonaj ruch. Jeœli wymaga celu, dobierz go w tej samej klatce.
+            //    To zapobiega marnowaniu "g³êbokoœci" na techniczne klikniêcia.
             GameState state = ExecuteFullAction(simulator, firstMove);
 
+            // Jeœli ruch zosta³ zablokowany przez silnik (nielegalny), dajemy karê.
             if (state == rootState && !(firstMove is EndPhaseCommand))
-                return (-3000000f, "Blokada logiczna / Ruch nielegalny");
+                return (-3000000f, "Ruch nielegalny");
 
-            // 2. BEAM SEARCH (G³êbokie planowanie)
+            // 2. BEAM SEARCH: Symulacja drzewiasta
             var beam = new List<SimulationNode> {
                 new SimulationNode(state, firstMove, _strategy.Evaluate(state, _botId))
             };
@@ -101,32 +107,41 @@ namespace CardGame.Core.AI.Logic
                 var nextCandidates = new List<SimulationNode>();
                 foreach (var node in beam)
                 {
+                    // Sprawdzamy czyja tura w symulacji
                     bool isBotTurn = node.State.ActivePlayerId == _botId;
 
-                    // Jeœli tura bota -> szukaj optymalizacji zasobów
-                    // Jeœli tura wroga -> VirtualOpponent wstrzykuje Phantom Hand (Deck Tracking)
+                    // Minimax:
+                    // - Jeœli nasza tura: szukamy ruchu, który maksymalizuje nasz wynik (BestOutcome).
+                    // - Jeœli tura wroga: zak³adamy, ¿e wróg zagra tak, by nas zniszczyæ (WorstOutcome).
+                    //   U¿ywamy tu VirtualOpponent z Deck Trackingiem.
                     var outcome = isBotTurn
                         ? SimulateAndFindBestOutcomeForBot(node.State)
                         : SimulateAndFindWorstOutcomeForBot(node.State);
 
                     nextCandidates.Add(new SimulationNode(outcome.State, node.InitialMove, outcome.Score));
                 }
+
                 if (!nextCandidates.Any()) break;
 
+                // Zawê¿amy poszukiwania do najlepszych kandydatów (Beam Width)
                 beam = nextCandidates.OrderByDescending(n => n.Score).Take(BeamWidth).ToList();
             }
 
-            // 3. PROJEKCJA KOÑCOWA: Rozliczamy walkê, jeœli symulacja tam nie dotar³a
+            // Wybieramy najlepszy stan koñcowy z ca³ej symulacji
             var best = beam.OrderByDescending(n => n.Score).First();
             GameState finalState = best.State;
 
+            // 3. PROJEKCJA WALKI (Force Combat)
+            // Jeœli symulacja skoñczy³a siê w œrodku rundy (nie dotar³a do nowej tury),
+            // musimy wymusiæ symulacjê walki, aby zobaczyæ, czy jednostki prze¿yj¹.
             if (finalState.CurrentPhase != GamePhase.Combat && finalState.TurnNumber == rootState.TurnNumber)
             {
-                // Wymuszamy przejœcie do Combat i rozliczenie walki, by widzieæ "Wizjê" planszy po hitach
                 var endSim = new GameEngine(finalState, _engineTemplate.Rng.Seed);
+                // Komenda EndPhase w CombatPhaseState automatycznie wyzwala logikê walki
                 finalState = endSim.ExecuteCommand(new EndPhaseCommand(finalState.ActivePlayerId)).NewState;
             }
 
+            // Generujemy opis "Wizji" na podstawie ró¿nicy stanu pocz¹tkowego i koñcowego
             return (best.Score, GenerateDeepReasoning(rootState, finalState));
         }
 
@@ -136,12 +151,18 @@ namespace CardGame.Core.AI.Logic
             float bestScore = float.MinValue;
             GameState bestState = currentState;
 
+            // Optymalizacja: Sprawdzamy tylko 6 pierwszych (logicznych) ruchów wewn¹trz symulacji
             foreach (var move in moves.Take(6))
             {
                 var sim = new GameEngine(currentState, _engineTemplate.Rng.Seed);
                 var resState = ExecuteFullAction(sim, move);
                 float score = _strategy.Evaluate(resState, _botId);
-                if (score > bestScore) { bestScore = score; bestState = resState; }
+
+                if (score > bestScore)
+                {
+                    bestScore = score;
+                    bestState = resState;
+                }
             }
             return (bestState, bestScore);
         }
@@ -149,44 +170,49 @@ namespace CardGame.Core.AI.Logic
         private (GameState State, float Score) SimulateAndFindWorstOutcomeForBot(GameState currentState)
         {
             var oppId = currentState.ActivePlayerId;
-            // U¿ywamy ulepszonego VirtualOpponent z Deck Trackingiem
+
+            // Wstrzykujemy "Realistyczn¹ Rêkê" przeciwnikowi (na podstawie tego, co zosta³o mu w talii)
             var stateWithPhantom = _virtualOpponent.InjectRealisticPhantomHand(currentState, oppId);
             var enemyMoves = _moveGenerator.GenerateLegalMoves(stateWithPhantom, oppId);
 
             float worstForBot = float.MaxValue;
             GameState worstState = currentState;
 
-            // Przeciwnik w symulacji zachowuje siê jak "Snajper"
+            // Zak³adamy, ¿e przeciwnik jest m¹dry i wybierze ruch najgorszy dla nas
             foreach (var move in enemyMoves.Take(6))
             {
                 var sim = new GameEngine(stateWithPhantom, _engineTemplate.Rng.Seed);
                 var resState = ExecuteFullAction(sim, move);
 
                 float score = _strategy.Evaluate(resState, _botId);
-                if (score < worstForBot) { worstForBot = score; worstState = resState; }
+                if (score < worstForBot)
+                {
+                    worstForBot = score;
+                    worstState = resState;
+                }
             }
             return (worstState, worstForBot);
         }
 
         /// <summary>
-        /// Realizuje mechanikê Action Chaining. Jeœli ruch wymaga wyboru celu, 
-        /// solver natychmiast symuluje najlepszy wybór celu w tej samej klatce.
+        /// Wykonuje ruch i automatycznie rozwi¹zuje wszelkie interakcje (wybór celu).
+        /// Pozwala botowi traktowaæ "Zagraj Czar + Wybierz Cel" jako jedn¹ decyzjê.
         /// </summary>
         private GameState ExecuteFullAction(GameEngine engine, IGameCommand cmd)
         {
-            var startState = engine.CurrentState;
-            var result = engine.ExecuteCommand(cmd);
-            var state = result.NewState;
+            var state = engine.ExecuteCommand(cmd).NewState;
             int safety = 0;
 
-            // Obs³uga pêtli targetowania (np. zagranie czaru -> wybór celu)
+            // Pêtla obs³uguj¹ca wieloetapowe zagrania (np. wybór celu)
             while (state.PendingInteraction != null && safety++ < 5)
             {
                 var targets = _moveGenerator.GenerateLegalMoves(state, _botId);
                 if (!targets.Any()) break;
 
+                // Wybieramy cel, który daje najlepszy natychmiastowy wynik
                 IGameCommand bestT = targets.First();
                 float bestV = float.MinValue;
+
                 foreach (var t in targets.Take(5))
                 {
                     var test = new GameEngine(state, _engineTemplate.Rng.Seed).ExecuteCommand(t).NewState;
@@ -206,11 +232,20 @@ namespace CardGame.Core.AI.Logic
             if (eE.Health <= 0) return "!!! LETHAL IN SIGHT !!!";
 
             List<string> r = new List<string>();
-            int cD = pE.Hand.Count - pS.Hand.Count; if (cD != 0) r.Add($"Cards:{(cD > 0 ? "+" : "")}{cD}");
-            int hD = eS.Health - eE.Health; if (hD > 0) r.Add($"EnemyDmg:{hD}");
 
-            if (pE.CurrentBlood > 0) r.Add($"Save:{pE.CurrentBlood}B");
+            // Bilans kart
+            int cD = pE.Hand.Count - pS.Hand.Count;
+            if (cD != 0) r.Add($"Cards:{(cD > 0 ? "+" : "")}{cD}");
 
+            // Obra¿enia w bohatera
+            int hD = eS.Health - eE.Health;
+            if (hD > 0) r.Add($"EnemyDmg:{hD}");
+
+            // Oszczêdzone zasoby (tylko jeœli jesteœmy w tej samej rundzie)
+            if (pE.CurrentBlood > 0 && start.TurnNumber == end.TurnNumber)
+                r.Add($"Save:{pE.CurrentBlood}B");
+
+            // Bilans jednostek (zabite vs stracone)
             int kills = start.Board.GetAllUnits().Count(u => u.OwnerPlayerId != _botId) -
                         end.Board.GetAllUnits().Count(u => u.OwnerPlayerId != _botId);
             if (kills > 0) r.Add($"Kills:{kills}");
@@ -223,20 +258,24 @@ namespace CardGame.Core.AI.Logic
             if (move is PlayUnitCommand pu)
             {
                 var card = state.GetPlayer(_botId).Hand.FirstOrDefault(c => c.InstanceId == pu.CardInstanceId);
-                if (card == null) return "Summoning Unit";
+                if (card == null) return "Summon Unit";
 
-                // Opisy strategiczne pod UI
+                // Kontekstowe opisy dla UI
                 if (card.Definition.Id == "24") return "STRAT: Gerard Precision";
                 if (card.Definition.Id == "4") return "STRAT: Focus Fire (Mark)";
                 if (card.Definition.Id == "12") return "SACR: Fuel Setup (Cat)";
                 if (card.Definition.Id == "10") return "SACR: Absorb stats (Bear)";
-
+                var targetName = "Cel nieznany";
+                if (pu.SelectedTargetId.HasValue)
+                {
+                    targetName = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == pu.SelectedTargetId)?.Definition.Name ?? "Brak";
+                }
                 return $"Play {card.Definition.Name}";
             }
             if (move is PlaySpellCommand ps)
             {
                 var card = state.GetPlayer(_botId).Hand.FirstOrDefault(c => c.InstanceId == ps.CardInstanceId);
-                if (card?.Definition.Id == "900") return "COMBO: Recycle Death Trigger";
+                if (card?.Definition.Id == "900") return "COMBO: Recycle Unit";
                 return $"Cast {card?.Definition.Name ?? "Spell"}";
             }
             return move is EndPhaseCommand ? "PAS: Manage Resources" : move.GetType().Name;

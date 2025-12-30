@@ -34,19 +34,17 @@ namespace CardGame.ConsoleApp
         public static async Task RunAsync()
         {
             Console.Clear();
-            Console.WriteLine("=== ARCHITEKT RUND: AI BATTLE RUNNER III ===");
-            Console.WriteLine("1. Tryb Nadzoru (Krok po kroku - Spacja/Dowolny)");
+            Console.WriteLine("=== ARCHITEKT RUND: AI BATTLE RUNNER III (v3.1) ===");
+            Console.WriteLine("1. Tryb Nadzoru (Krok po kroku - Spacja)");
             Console.WriteLine("2. Tryb Auto (Szybka symulacja - tylko Logi)");
-            Console.Write("\nWybierz tryb: ");
-
             var modeKey = Console.ReadKey(true);
             _isAutoMode = modeKey.KeyChar == '2';
 
             CardLibrary.Instance.Clear();
             CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
 
-            _sessionLogPath = $"audit_3.0_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
-            File.WriteAllText(_sessionLogPath, $"=== START SESJI MÓZG 3.0 ({(_isAutoMode ? "AUTO" : "NADZÓR")}): {DateTime.Now} ===\n\n");
+            _sessionLogPath = $"audit_3.1_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+            File.WriteAllText(_sessionLogPath, $"=== START SESJI MÓZG 3.1 ({(_isAutoMode ? "AUTO" : "NADZÓR")}): {DateTime.Now} ===\n\n");
 
             while (true)
             {
@@ -54,14 +52,11 @@ namespace CardGame.ConsoleApp
                 var rng = new DeterministicRng(new Random().Next());
                 var factory = new CardFactory(CardLibrary.Instance, rng);
 
-                // Naprzemienne przypisywanie decków dla balansu testów
                 bool p1IsCtrl = _gamesPlayed % 2 == 0;
                 var deck1 = CreateDeck(factory, 1, p1IsCtrl);
                 var deck2 = CreateDeck(factory, 2, !p1IsCtrl);
 
                 var engine = new GameEngine(GameState.Initial(1, deck1, deck2, rng), rng.Seed);
-
-                // Oba boty używają nowej StandardStrategy (Mózg 3.0)
                 var ai1 = new AIPlayerController(engine, 1, new StandardStrategy());
                 var ai2 = new AIPlayerController(engine, 2, new StandardStrategy());
 
@@ -72,12 +67,9 @@ namespace CardGame.ConsoleApp
                     var state = engine.CurrentState;
                     UpdateLogs(engine);
 
-                    // Decyzje bota podejmujemy tylko w fazach aktywnych (nie Mulligan/Combat)
                     if (state.CurrentPhase != GamePhase.Mulligan && state.CurrentPhase != GamePhase.Combat)
                     {
                         var activeAI = state.ActivePlayerId == 1 ? ai1 : ai2;
-
-                        // Tutaj odpala się Long-Horizon Planning (MaxDepth 5 + Action Chaining)
                         _lastThoughts = activeAI.Solver.FindBestMoves(state);
 
                         DrawUI(state, p1IsCtrl);
@@ -86,15 +78,9 @@ namespace CardGame.ConsoleApp
                         {
                             var key = Console.ReadKey(true);
                             if (key.Key == ConsoleKey.Escape) return;
-                            if (key.Key == ConsoleKey.A) LogToAudit("\n--- RĘCZNY ZRZUT STANU AUDYTU ---\n" + _matchAudit.ToString());
-                        }
-                        else
-                        {
-                            await Task.Delay(50); // Krótkie opóźnienie, by UI nadążyło się odświeżać
                         }
                     }
 
-                    // Logika procesowa
                     if (state.CurrentPhase == GamePhase.Mulligan)
                     {
                         PerformMulligan(engine, 1, p1IsCtrl);
@@ -102,37 +88,45 @@ namespace CardGame.ConsoleApp
                     }
                     else if (state.CurrentPhase == GamePhase.Combat)
                     {
-                        // Automatyczne przejście fazy walki
                         engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
-                        if (!_isAutoMode) await Task.Delay(300);
+                        if (!_isAutoMode) await Task.Delay(200);
                     }
                     else
                     {
                         var best = _lastThoughts.FirstOrDefault();
                         if (best != null)
                         {
-                            // Logujemy "Wizję" bota do pliku
+                            // --- AUDYT ZASOBÓW (Namierzanie błędów many) ---
                             var p1 = state.PlayerA;
                             var p2 = state.PlayerB;
-                            string bloodStatus = $"[P1 Blood: {p1.CurrentBlood}/{p1.MaxBlood} | P2 Blood: {p2.CurrentBlood}/{p2.MaxBlood}]";
-                            LogToAudit($"{bloodStatus}");
-                            LogToAudit($"[R{state.TurnNumber} P{state.ActivePlayerId} Faza: {state.CurrentPhase}] Ruch: {FormatCmdDetailed(best.Command, state)} | Score: {best.Score:F1} | {best.DeepReasoning}");
+                            string bloodStatus = $"[ZASOBY] P1 Blood: {p1.CurrentBlood}/{p1.MaxBlood} | P2 Blood: {p2.CurrentBlood}/{p2.MaxBlood}";
+                            LogToAudit(bloodStatus);
+
+                            string logEntry = $"[R{state.TurnNumber} P{state.ActivePlayerId} F{state.CurrentPhase}] Ruch: {FormatCmdDetailed(best.Command, state)} | Score: {best.Score:F1} | {best.DeepReasoning}";
+                            LogToAudit(logEntry);
+
                             engine.ExecuteCommand(best.Command);
                         }
-                        else
-                        {
-                            engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
-                        }
+                        else engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
                     }
+
+                    if (_isAutoMode) await Task.Delay(10);
                 }
 
-                // Podsumowanie meczu
+                // Poprawione raportowanie zwycięzcy (Remisy P0)
+                string winnerName = engine.WinnerId switch
+                {
+                    1 => "GRACZ P1",
+                    2 => "GRACZ P2",
+                    _ => "REMIS (P0)"
+                };
+
                 if (engine.WinnerId == 1) _p1Wins++; else if (engine.WinnerId == 2) _p2Wins++;
-                LogToAudit($"KONIEC MECZU. ZWYCIĘZCA: P{engine.WinnerId ?? 0} | TOTAL: P1:{_p1Wins} P2:{_p2Wins}\n" + new string('=', 80));
+                LogToAudit($"MECZ ZAKOŃCZONY. ZWYCIĘZCA: {winnerName} | WYNIK: P1:{_p1Wins} P2:{_p2Wins}\n" + new string('=', 80));
 
                 _gamesPlayed++;
                 DrawUI(engine.CurrentState, p1IsCtrl);
-                await Task.Delay(_isAutoMode ? 1000 : 3000);
+                await Task.Delay(_isAutoMode ? 500 : 2000);
             }
         }
 
@@ -152,16 +146,14 @@ namespace CardGame.ConsoleApp
                 GamePhase.UnitOnly => "1/3 (JEDNOSTKI)",
                 GamePhase.UnitAndAction => "2/3 (MIESZANA)",
                 GamePhase.ActionOnly => "3/3 (AKCJE)",
-                GamePhase.Combat => "ROZLICZANIE WALKI",
-                _ => s.CurrentPhase.ToString().ToUpper()
+                GamePhase.Combat => "WALKA",
+                _ => s.CurrentPhase.ToString()
             };
 
             string p1Tag = p1IsCtrl ? "CONTROL" : "SACRIFICE";
             string p2Tag = !p1IsCtrl ? "CONTROL" : "SACRIFICE";
-            string activeTag = s.ActivePlayerId == 1 ? $"P1 [{p1Tag}]" : $"P2 [{p2Tag}]";
-
-            string headL = $" RUNDA: {s.TurnNumber} | FAZA: {phaseName} | AKTYWNY: {activeTag}";
-            string headR = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ] | LOG: {Path.GetFileName(_sessionLogPath)} ";
+            string headL = $" RUNDA: {s.TurnNumber} | FAZA: {phaseName} | AKTYWNY: P{s.ActivePlayerId}";
+            string headR = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ] | MODE: {(_isAutoMode ? "AUTO" : "STEP")} ";
 
             sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
             sb.AppendLine("║ " + headL.PadRight(UI_WIDTH - headR.Length - 4) + headR + "║");
@@ -196,7 +188,7 @@ namespace CardGame.ConsoleApp
             res.Add($" [ GRACZ P1 | HP: {s.PlayerA.Health,2} | KREW: {s.PlayerA.CurrentBlood}/{s.PlayerA.MaxBlood} ]");
             res.AddRange(WrapHand(s.PlayerA.Hand, "P1"));
             res.Add(new string('-', 104));
-            res.Add(" DZIENNIK ZDARZEŃ:");
+            res.Add(" DZIENNIK ZDARZEŃ (LOG: " + Path.GetFileName(_sessionLogPath) + ")");
             res.AddRange(_displayLogs.Reverse().Take(8).Select(x => " " + x));
             return res.ToArray();
         }
@@ -207,17 +199,11 @@ namespace CardGame.ConsoleApp
             var cards = hand.Select(c => $"({c.CurrentStats.BloodCost}){c.Definition.Name}").ToList();
             var result = new List<string>();
             string currentLine = prefix;
-
-            if (cards.Count == 0) { result.Add(prefix + "PUSTA]"); return result; }
-
+            if (!cards.Any()) { result.Add(prefix + "PUSTA]"); return result; }
             for (int i = 0; i < cards.Count; i++)
             {
                 string part = cards[i] + (i == cards.Count - 1 ? "" : ", ");
-                if ((currentLine + part).Length > 98)
-                {
-                    result.Add(currentLine);
-                    currentLine = "           " + part;
-                }
+                if ((currentLine + part).Length > 98) { result.Add(currentLine); currentLine = "           " + part; }
                 else currentLine += part;
             }
             result.Add(currentLine + "]");
@@ -241,43 +227,31 @@ namespace CardGame.ConsoleApp
         };
 
         private static string Center(string t, int w) => t.Length > w ? t.Substring(0, w) : t.PadLeft((w + t.Length) / 2).PadRight(w);
-
         private static string Stats(CardInstance? u)
         {
             if (u == null) return "                 ";
-            string status = u.CurrentStats.Keywords.Contains(Keyword.Marked) ? "!!" : "  ";
-            if (u.IsSilenced) status = "S!";
-            return $"ATK:{u.CurrentStats.Attack,-2} HP:{u.CurrentStats.Health,-2} {status}";
+            string kw = u.CurrentStats.Keywords.Contains(Keyword.Marked) ? "!!" : (u.IsSilenced ? "S!" : "  ");
+            return $"ATK:{u.CurrentStats.Attack,-2} HP:{u.CurrentStats.Health,-2} {kw}";
         }
 
         private static string[] RenderBrain(GameState s)
         {
-            var res = new List<string> { $"   MYŚLI BOTA P{s.ActivePlayerId} (MÓZG 3.0)", "------------------------" };
+            var res = new List<string> { $"   MYŚLI BOTA P{s.ActivePlayerId} (MÓZG 3.1)", "------------------------" };
             if (s.CurrentPhase == GamePhase.Combat) { res.Add(" [AUTO] Walka..."); return res.ToArray(); }
-
             foreach (var t in _lastThoughts.Take(12))
             {
                 string prefix = t == _lastThoughts.First() ? ">>" : "  ";
                 res.Add($"{prefix} {t.Description.PadRight(24)} | {t.Score:F0}");
-                if (t == _lastThoughts.First() && !string.IsNullOrEmpty(t.DeepReasoning))
-                {
-                    res.Add($"   L {t.DeepReasoning}");
-                    res.Add("");
-                }
+                if (t == _lastThoughts.First()) { res.Add($"   L {t.DeepReasoning}"); res.Add(""); }
             }
             return res.ToArray();
         }
 
         private static string FormatCmdDetailed(IGameCommand? c, GameState s)
         {
-            if (c == null) return "...";
             if (c is PlayUnitCommand pu) return $"Graj {s.GetPlayer(pu.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == pu.CardInstanceId)?.Definition.Name} (L{pu.TargetLineIndex + 1})";
             if (c is PlaySpellCommand ps) return $"Czar: {s.GetPlayer(ps.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == ps.CardInstanceId)?.Definition.Name}";
-            if (c is SelectTargetCommand st)
-            {
-                var target = s.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == st.TargetId);
-                return $"Cel: {target?.Definition.Name ?? "Bohater"}";
-            }
+            if (c is SelectTargetCommand st) return $"Cel: {s.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == st.TargetId)?.Definition.Name ?? "Bohater"}";
             return "PAS (Koniec)";
         }
 
