@@ -11,11 +11,19 @@ namespace CardGame.Core.Cards.Logic
     {
         public static bool Check(EffectData effect, IGameEvent gameEvent, GameState state, int sourceCardId)
         {
-            var source = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceCardId)
+            CardInstance? source = null;
+            if (gameEvent is UnitDiedEvent ude && ude.Unit.InstanceId == sourceCardId)
+                source = ude.Unit;
+            else if (gameEvent is UnitSacrificedEvent use && use.Unit.InstanceId == sourceCardId)
+                source = use.Unit;
+            else
+                source = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceCardId)
                       ?? state.PlayerA.Hand.Concat(state.PlayerB.Hand).FirstOrDefault(c => c.InstanceId == sourceCardId)
-                      ?? state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceCardId);
+                      ?? state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceCardId)
+                      ?? state.PlayerA.DiscardPile.Concat(state.PlayerB.DiscardPile).FirstOrDefault(c => c.InstanceId == sourceCardId);
 
             if (source == null) return false;
+
             if (source.IsSilenced && effect.Trigger != TriggerType.OnPlayed) return false;
 
             if (effect.Condition != null && !EvaluateCondition(effect.Condition, gameEvent, state, source))
@@ -29,7 +37,7 @@ namespace CardGame.Core.Cards.Logic
                     return gameEvent is CardPlayedEvent cpe && cpe.Card.InstanceId == sourceCardId;
 
                 case TriggerType.OnDeath:
-                    return gameEvent is UnitDiedEvent ude && ude.Unit.InstanceId == sourceCardId;
+                    return gameEvent is UnitDiedEvent udde && udde.Unit.InstanceId == sourceCardId;
 
                 case TriggerType.OnKill:
                     return gameEvent is UnitDiedEvent uk && uk.KillerInstanceId == sourceCardId;

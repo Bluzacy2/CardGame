@@ -2,7 +2,6 @@
 using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.State.Models;
-using CardGame.Core.Cards.Logic;
 using System;
 using System.Linq;
 
@@ -14,82 +13,54 @@ namespace CardGame.Core.AI.Strategies
         {
             var bot = state.GetPlayer(botPlayerId);
             var enemy = state.GetOpponent(botPlayerId);
-            float score = 1000.0f;
 
-            // 1. ZASOBY - Bot chce wydać CurrentBlood, by nie marnować tury
-            float bloodToSpend = bot.CurrentBlood;
-            score -= (bloodToSpend * 15.0f);
+            // --- KLUCZOWA POPRAWKA: DETEKCJA KOŃCA GRY ---
+            if (bot.Health <= 0) return -1000000f; // Przegrana to absolutne dno
+            if (enemy.Health <= 0) return 1000000f; // Wygrana to absolutny priorytet
 
-            // 2. ŻYCIE - Kluczowe przy końcówkach
-            score += (bot.Health - enemy.Health) * 10.0f;
-            if (bot.Health < 12) score -= (15 - bot.Health) * 12.0f;
+            float score = 2000.0f;
 
-            // 3. PLANSZA - ANALIZA LINII I SPLASH DAMAGE
+            // 1. MANA
+            float spentBlood = bot.MaxBlood - bot.CurrentBlood;
+            score += spentBlood * 20.0f;
+
+            // 2. ŻYCIE (Bardzo wysoka waga przetrwania)
+            score += bot.Health * 50.0f;
+            score -= enemy.Health * 30.0f;
+
+            // 3. PLANSZA
             bool hasGerard = state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && u.Definition.Name.Contains("Gerard"));
 
-            for (int i = 0; i < 4; i++)
+            foreach (var line in state.Board.Lines)
             {
-                var line = state.Board.Lines[i];
                 var my = (botPlayerId == 1) ? line.Player1Unit : line.Player2Unit;
                 var en = (botPlayerId == 1) ? line.Player2Unit : line.Player1Unit;
 
-                score += EvaluateUnitPresence(my, en, i, state, hasGerard, true) * 20.0f;
-                score -= EvaluateUnitPresence(en, my, i, state, false, false) * 22.0f;
+                score += ScoreUnit(my, en, hasGerard, true) * 25.0f;
+                score -= ScoreUnit(en, my, false, false) * 35.0f; // Wrogowie są teraz "drożsi" (bot chce ich zabijać)
             }
 
-            // 4. RĘKA - Kara za zapchanie i bonus za synergię
-            score += bot.Hand.Count * 5.0f;
-            if (bot.Hand.Count >= 8) score -= 150.0f;
-
-            // 5. BLOKADA POMIJANIA TURY
+            // 4. KARA ZA PASS (Gdy grozi śmierć lub mamy ruchy)
             if (state.ActivePlayerId == botPlayerId && bot.CurrentBlood > 0)
             {
                 if (bot.Hand.Any(c => c.CurrentStats.BloodCost <= bot.CurrentBlood))
-                    score -= 100.0f; // Kara za PASS gdy nas stać na ruch
+                    score -= 500.0f;
             }
 
             return score;
         }
 
-        private float EvaluateUnitPresence(CardInstance? u, CardInstance? opp, int lineIdx, GameState state, bool playerHasGerard, bool isFriendly)
+        private float ScoreUnit(CardInstance? u, CardInstance? opp, bool g, bool f)
         {
             if (u == null) return 0;
             var s = u.CurrentStats;
-            float val = (s.Attack * 2.5f) + s.Health;
 
-            // --- LOGIKA SPLASH DAMAGE ---
-            if (s.Keywords.Contains(Keyword.SplashDamage))
-            {
-                int splashPower = 1;
-                if (u.Definition.BaseStats.KeywordParams.TryGetValue(Keyword.SplashDamage, out int p)) splashPower = p;
+            // POPRAWKA: Atak wroga jest groźniejszy niż jego HP (priorytet dla Glocka)
+            float val = f ? (s.Attack * 3.0f + s.Health * 2.0f)
+                          : (s.Attack * 6.0f + s.Health * 1.5f);
 
-                int actualHits = 0;
-                foreach (int neighbor in new[] { lineIdx - 1, lineIdx + 1 })
-                {
-                    if (neighbor >= 0 && neighbor < 4)
-                    {
-                        var nLine = state.Board.Lines[neighbor];
-                        var potentialVictim = (u.OwnerPlayerId == 1) ? nLine.Player2Unit : nLine.Player1Unit;
-                        if (potentialVictim != null) actualHits++;
-                    }
-                }
-                // Wyższa wartość na liniach 1 i 2 (środek planszy)
-                val += (actualHits * splashPower * 2.0f);
-                if (lineIdx == 1 || lineIdx == 2) val += 5.0f;
-            }
-
-            // Analiza walki (Trade analysis)
-            if (opp != null)
-            {
-                bool iDie = s.Health <= opp.CurrentStats.Attack;
-                bool enemyDies = opp.CurrentStats.Health <= s.Attack;
-                if (iDie && !enemyDies) val -= 25.0f; // Fatalny ruch (oddanie jednostki za nic)
-                if (!iDie && enemyDies) val += 15.0f; // Świetny ruch
-            }
-
-            if (s.Keywords.Contains(Keyword.Marked)) val += isFriendly ? -40 : (playerHasGerard ? 50 : 15);
-            if (s.Keywords.Contains(Keyword.Stunned)) val *= 0.1f;
-            if (s.Keywords.Contains(Keyword.Unkillable)) val += 15.0f;
+            if (s.Keywords.Contains(Keyword.Marked)) val += f ? -50 : (g ? 100 : 30);
+            if (s.Keywords.Contains(Keyword.Unkillable)) val += 20;
 
             return val;
         }

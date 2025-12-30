@@ -18,13 +18,18 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             {
                 try
                 {
-                    var tokenCard = context.Factory.CreateCard(action.ValueParam, targets.TargetPlayer.PlayerId);
-                  
-                    return state.UpdatePlayer(targets.TargetPlayer.WithCardAddedToHand(tokenCard));
+                    int pid = targets.TargetPlayer.PlayerId;
+                    var tokenCard = context.Factory.CreateCard(action.ValueParam, pid);
+
+                    var freshPlayer = state.GetPlayer(pid);
+
+                   
+                    return state.UpdatePlayer(freshPlayer.WithCardAddedToHand(tokenCard));
+
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"[BŁĄD] AddCard: {ex.Message}");
+                    Console.WriteLine($"[BŁĄD] AddCardToHandHandler: {ex.Message}");
                 }
             }
             return state;

@@ -38,23 +38,27 @@
   },
 
   {
-    "Id": 3,
-    "Name": "Bone Sommelier",
-    "Type": "Unit",
-    "Subtypes": [ "Monster" ],
-    "Cost": 1,
-    "Attack": 1,
-    "Health": 3,
-    "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
-    "Effects": [
-      {
-        "Trigger": "OnDeath",
-        "Actions": [
-          { "Type": "AddCardToHand", "Target": "Self", "ValueParam": 900 }
-        ]
-      }
-    ]
-  },
+  "Id": 3,
+  "Name": "Bone Sommelier",
+  "Type": "Unit",
+  "Subtypes": [ "Monster" ],
+  "Cost": 1,
+  "Attack": 1,
+  "Health": 3,
+  "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
+  "Effects": [
+    {
+      "Trigger": "OnDeath",
+      "Actions": [ 
+        {
+          "Type": "AddCardToHand",
+          "Target": "FriendlyHero",
+          "ValueParam": 900
+        }
+      ]
+    }
+  ]
+},
 
   {
     "Id": 4,

@@ -1,193 +1,6 @@
 ﻿
 
 ========================================
-FILE: EffectTargetResolver.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\EffectTargetResolver.cs
-========================================
-using System;
-using System.Linq;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Events;
-using CardGame.Core.Cards.Models;
-using System.Collections.Generic;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.Cards.Logic
-{
-    public class EffectTargets
-    {
-        public PlayerState? TargetPlayer;
-        public List<CardInstance> UnitTargets { get; set; } = new();
-        public CardInstance? TargetUnit => UnitTargets.FirstOrDefault();
-    }
-
-    public static class EffectTargetResolver
-    {
-        public static EffectTargets Resolve(TargetType type, GameState state, IGameEvent contextEvent, int sourceCardId)
-        {
-            var result = new EffectTargets();
-            int ownerId = GetOwner(state, sourceCardId);
-            int opponentId = (ownerId == 1) ? 2 : 1;
-
-            switch (type)
-            {
-                case TargetType.SelectedTarget:
-                case TargetType.TargetEnemyUnit:
-                case TargetType.TargetFriendlyUnit:
-                case TargetType.OtherFriendlyUnits:
-                    int? targetId = null;
-
-                    if (contextEvent is TargetSelectedEvent tse)
-                        targetId = tse.SelectedTargetId;
-                    else if (contextEvent is CardPlayedEvent cpe)
-                        targetId = cpe.SelectedTargetId;
-                    else if (contextEvent is StatusAppliedEvent sae)
-                        targetId = sae.TargetUnitId;
-                    else if (contextEvent is UnitDamagedEvent ude)
-                        targetId = ude.Unit?.InstanceId ?? ude.Source?.InstanceId;
-                    else if (contextEvent is UnitDiedEvent udied)
-                        targetId = udied.Unit.InstanceId;
-
-                    if (targetId.HasValue)
-                    {
-                        if (type == TargetType.OtherFriendlyUnits && targetId.Value == sourceCardId)
-                            return result;
-
-                        var tUnit = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == targetId.Value);
-                        if (tUnit != null)
-                        {
-                            bool isValid = true;
-                            if (type == TargetType.TargetFriendlyUnit && tUnit.OwnerPlayerId != ownerId) isValid = false;
-                            if (type == TargetType.OtherFriendlyUnits && tUnit.OwnerPlayerId != ownerId) isValid = false;
-                            if (type == TargetType.TargetEnemyUnit && tUnit.OwnerPlayerId != opponentId) isValid = false;
-
-                            if (isValid) result.UnitTargets.Add(tUnit);
-                        }
-                    }
-                    break;
-
-                case TargetType.FriendlyHero:
-                    result.TargetPlayer = state.GetPlayer(ownerId);
-                    break;
-                case TargetType.EnemyHero:
-                    result.TargetPlayer = state.GetPlayer(opponentId);
-                    break;
-                case TargetType.Choice:
-                    result.TargetPlayer = state.GetPlayer(ownerId);
-                    break;
-                case TargetType.AllUnitsOnBoard:
-                    result.UnitTargets.AddRange(state.Board.GetAllUnits());
-                    break;
-                case TargetType.AllEnemyUnits:
-                    result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == opponentId));
-                    break;
-                case TargetType.AllFriendlyUnits:
-                    result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == ownerId));
-                    break;
-
-                case TargetType.Self:
-                    // Szukamy karty w dowolnej strefie
-                    var self = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceCardId) ??
-                               state.PlayerA.Hand.Concat(state.PlayerB.Hand).FirstOrDefault(c => c.InstanceId == sourceCardId) ??
-                               state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceCardId) ??
-                               state.PlayerA.DiscardPile.Concat(state.PlayerB.DiscardPile).FirstOrDefault(c => c.InstanceId == sourceCardId);
-
-                    if (self != null) result.UnitTargets.Add(self);
-                    // KLUCZOWA POPRAWKA: Self musi zwracać TargetPlayer, by akcje typu DrawCard/Summon wiedziały czyja to ręka/talia
-                    result.TargetPlayer = state.GetPlayer(ownerId);
-                    break;
-            }
-            return result;
-        }
-
-        public static List<CardInstance> GetPotentialTargets(TargetType type, GameState state, int sourceCardId)
-        {
-            int ownerId = GetOwner(state, sourceCardId);
-            int opponentId = (ownerId == 1) ? 2 : 1;
-            var allUnits = state.Board.GetAllUnits();
-
-            return type switch
-            {
-                TargetType.TargetEnemyUnit => allUnits.Where(u => u.OwnerPlayerId == opponentId).ToList(),
-                // Double Agent Fix: rzucający nie widzi siebie jako celu do auto-wyboru
-                TargetType.TargetFriendlyUnit => allUnits.Where(u => u.OwnerPlayerId == ownerId && u.InstanceId != sourceCardId).ToList(),
-                TargetType.OtherFriendlyUnits => allUnits.Where(u => u.OwnerPlayerId == ownerId && u.InstanceId != sourceCardId).ToList(),
-                TargetType.SelectedTarget => allUnits.Where(u => u.InstanceId != sourceCardId).ToList(),
-                _ => new List<CardInstance>()
-            };
-        }
-
-        private static int GetOwner(GameState state, int instanceId)
-        {
-            // Sprawdzanie planszy
-            var unit = state.Board.GetAllUnits().FirstOrDefault(x => x.InstanceId == instanceId);
-            if (unit != null) return unit.OwnerPlayerId;
-
-            // Sprawdzanie stosu czarów
-            var spell = state.SpellStack.FirstOrDefault(x => x.InstanceId == instanceId);
-            if (spell != null) return spell.OwnerPlayerId;
-
-            // Sprawdzanie rąk
-            if (state.PlayerA.Hand.Any(x => x.InstanceId == instanceId)) return 1;
-            if (state.PlayerB.Hand.Any(x => x.InstanceId == instanceId)) return 2;
-
-            // Sprawdzanie cmentarzy (ważne dla efektów typu OnSacrificed/OnDeath)
-            if (state.PlayerA.DiscardPile.Any(x => x.InstanceId == instanceId)) return 1;
-            if (state.PlayerB.DiscardPile.Any(x => x.InstanceId == instanceId)) return 2;
-
-            return state.ActivePlayerId;
-        }
-    }
-}
-
-
-========================================
-FILE: PlayValidator.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\PlayValidator.cs
-========================================
-using System.Linq;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.Cards.Logic
-{
-    public static class PlayValidator
-    {
-        public static bool CanPlay(CardInstance card, GameState state, int playerId)
-        {
-            var player = state.GetPlayer(playerId);
-            if (!player.CanPlayCard(card.CurrentStats.BloodCost)) return false;
-
-            if (card.Definition.Type == CardType.Unit)
-            {
-                return state.Board.Lines.Any(l => l.IsSlotEmpty(playerId));
-            }
-
-            if (card.Definition.Type == CardType.Spell)
-            {
-                var onPlayedEffect = card.Definition.Effects.FirstOrDefault(e => e.Trigger == TriggerType.OnPlayed);
-                if (onPlayedEffect != null)
-                {
-                    var firstManualAction = onPlayedEffect.Actions.FirstOrDefault(a => IsManualTarget(a.Target) || a.Target == TargetType.SelectedTarget);
-                    if (firstManualAction != null)
-                    {
-                        var typeToCheck = firstManualAction.Target == TargetType.SelectedTarget ? onPlayedEffect.Targeting : firstManualAction.Target;
-                        if (!EffectTargetResolver.GetPotentialTargets(typeToCheck, state, card.InstanceId).Any()) return false;
-                    }
-                }
-            }
-            return true;
-        }
-
-        private static bool IsManualTarget(TargetType t) =>
-            t == TargetType.SelectedTarget || t == TargetType.TargetEnemyUnit || t == TargetType.TargetFriendlyUnit || t == TargetType.OtherFriendlyUnits;
-    }
-}
-
-
-========================================
 FILE: TriggerLogic.cs
 PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\TriggerLogic.cs
 ========================================
@@ -204,11 +17,19 @@ namespace CardGame.Core.Cards.Logic
     {
         public static bool Check(EffectData effect, IGameEvent gameEvent, GameState state, int sourceCardId)
         {
-            var source = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceCardId)
+            CardInstance? source = null;
+            if (gameEvent is UnitDiedEvent ude && ude.Unit.InstanceId == sourceCardId)
+                source = ude.Unit;
+            else if (gameEvent is UnitSacrificedEvent use && use.Unit.InstanceId == sourceCardId)
+                source = use.Unit;
+            else
+                source = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceCardId)
                       ?? state.PlayerA.Hand.Concat(state.PlayerB.Hand).FirstOrDefault(c => c.InstanceId == sourceCardId)
-                      ?? state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceCardId);
+                      ?? state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceCardId)
+                      ?? state.PlayerA.DiscardPile.Concat(state.PlayerB.DiscardPile).FirstOrDefault(c => c.InstanceId == sourceCardId);
 
             if (source == null) return false;
+
             if (source.IsSilenced && effect.Trigger != TriggerType.OnPlayed) return false;
 
             if (effect.Condition != null && !EvaluateCondition(effect.Condition, gameEvent, state, source))
@@ -222,7 +43,7 @@ namespace CardGame.Core.Cards.Logic
                     return gameEvent is CardPlayedEvent cpe && cpe.Card.InstanceId == sourceCardId;
 
                 case TriggerType.OnDeath:
-                    return gameEvent is UnitDiedEvent ude && ude.Unit.InstanceId == sourceCardId;
+                    return gameEvent is UnitDiedEvent udde && udde.Unit.InstanceId == sourceCardId;
 
                 case TriggerType.OnKill:
                     return gameEvent is UnitDiedEvent uk && uk.KillerInstanceId == sourceCardId;
@@ -468,10 +289,13 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
             }
             var returnedCard = unit.MoveAndReset();
 
-            var owner = state.GetPlayer(unit.OwnerPlayerId);
-
-            state = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToHand(returnedCard));
           
+            int pid = unit.OwnerPlayerId;
+            var owner = state.GetPlayer(pid);
+
+         
+            state = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToHand(returnedCard));
+
             return true;
         }
     }
@@ -1568,6 +1392,7 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\Triggers\Tri
 using CardGame.Core.Application;
 using CardGame.Core.Cards.Components.Implementations;
 using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
 using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
@@ -1599,8 +1424,8 @@ namespace CardGame.Core.Events.Triggers
 
                 foreach (var type in types)
                 {
-                    // Budujemy mapę na NAJŚWIEŻSZYM stanie (to rozwiązuje WomboCombo)
-                    var map = BuildTriggerMap(workingState);
+                 
+                    var map = BuildTriggerMap(workingState, evt);
                     if (!map.TryGetValue(type, out var sources)) continue;
 
                     foreach (var source in sources)
@@ -1621,29 +1446,60 @@ namespace CardGame.Core.Events.Triggers
 
         private bool IsStillValid(GameState s, SourceInfo info)
         {
+            if (info.Effect.Trigger == TriggerType.OnDeath || info.Effect.Trigger == TriggerType.OnSacrificed)
+                return true;
             if (info.Zone == EffectZone.Board) return s.Board.GetAllUnits().Any(u => u.InstanceId == info.Id);
             if (info.Zone == EffectZone.Hand) return s.PlayerA.Hand.Concat(s.PlayerB.Hand).Any(c => c.InstanceId == info.Id);
             return true;
         }
 
-        private Dictionary<TriggerType, List<SourceInfo>> BuildTriggerMap(GameState s)
+        private Dictionary<TriggerType, List<SourceInfo>> BuildTriggerMap(GameState s, IGameEvent currentEvt)
         {
             var map = new Dictionary<TriggerType, List<SourceInfo>>();
-            var all = s.Board.GetAllUnits().Select(u => (u, EffectZone.Board))
-                .Concat(s.PlayerA.Hand.Concat(s.PlayerB.Hand).Select(c => (c, EffectZone.Hand)))
-                .Concat(s.SpellStack.Select(sp => (sp, EffectZone.Any)));
 
-            foreach (var (card, zone) in all)
+          
+            var all = s.Board.GetAllUnits().Select(u => (u, zone: EffectZone.Board))
+        
+                .Concat(s.PlayerA.Hand.Concat(s.PlayerB.Hand).Select(c => (c, zone: EffectZone.Hand)))
+      
+                .Concat(s.SpellStack.Select(sp => (sp, zone: EffectZone.Any)));
+           
+            if (currentEvt is UnitDiedEvent ude)
+            {
+                all = all.Append((ude.Unit, zone: EffectZone.Graveyard));
+            }
+            else if (currentEvt is UnitSacrificedEvent use)
+            {
+                all = all.Append((use.Unit, zone: EffectZone.Graveyard));
+            }
+
+            foreach (var (card, currentZone) in all)
             {
                 foreach (var effect in card.Definition.Effects)
                 {
-                    if (effect.Trigger == TriggerType.OnPlayed || effect.Zone == EffectZone.Any || effect.Zone == zone)
+                   
+                    bool zoneMatches = effect.Zone == currentZone || effect.Zone == EffectZone.Any;
+
+                 
+                    bool isDeathRelatedTrigger = effect.Trigger == TriggerType.OnDeath ||
+                                                 effect.Trigger == TriggerType.OnSacrificed;
+
+                    bool shouldInclude = effect.Trigger == TriggerType.OnPlayed || 
+                                         zoneMatches ||
+                                         (isDeathRelatedTrigger && currentZone == EffectZone.Graveyard);
+
+                    if (shouldInclude)
                     {
-                        if (!map.ContainsKey(effect.Trigger)) map[effect.Trigger] = new List<SourceInfo>();
-                        map[effect.Trigger].Add(new SourceInfo(card.InstanceId, effect, zone));
+                        if (!map.ContainsKey(effect.Trigger))
+                        {
+                            map[effect.Trigger] = new List<SourceInfo>();
+                        }
+
+                        map[effect.Trigger].Add(new SourceInfo(card.InstanceId, effect, currentZone));
                     }
                 }
             }
+
             return map;
         }
 
@@ -1976,3 +1832,285 @@ namespace CardGame.Core.GameRules.Damage.Modifiers
     }
 }
 
+
+
+========================================
+FILE: DeathResolver.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Death\DeathResolver.cs
+========================================
+using System;
+using System.Linq;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+using CardGame.Core.Events;
+using CardGame.Core.Application;
+
+namespace CardGame.Core.GameRules.Death
+{
+    public class DeathResolver
+    {
+        public GameState ResolveDeaths(GameState state, EventBus eventBus, GameContext context)
+        {
+            var workingState = state;
+            bool changed = true;
+
+            while (changed)
+            {
+                changed = false;
+                var allUnits = workingState.Board.GetAllUnits();
+
+                
+                var unitToKill = allUnits.FirstOrDefault(u => u.CurrentStats.Health <= 0);
+
+                if (unitToKill != null)
+                {
+                    int lineIndex = -1;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitToKill.InstanceId ||
+                            workingState.Board.Lines[i].Player2Unit?.InstanceId == unitToKill.InstanceId)
+                        {
+                            lineIndex = i;
+                            break;
+                        }
+                    }
+
+                    if (context.Keywords.TryPreventDeath(ref workingState, unitToKill, context))
+                    {
+
+                        changed = true;
+                        continue;
+                    }
+
+                 
+                    var history = eventBus.GetHistory().ToList();
+                    var lastDmg = history.OfType<UnitDamagedEvent>()
+                        .LastOrDefault(e => e.Unit?.InstanceId == unitToKill.InstanceId && e.Source != null);
+
+                    workingState = KillInstantly(workingState, unitToKill, lineIndex, eventBus, lastDmg?.Source?.InstanceId);
+                    changed = true;
+                }
+            }
+            return workingState;
+        }
+
+        public GameState KillInstantly(GameState state, CardInstance unit, int lineIndex, EventBus events, int? killerId)
+        {
+            var board = state.Board;
+            for (int i = 0; i < 4; i++)
+            {
+                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 1, null);
+                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 2, null);
+            }
+
+            var owner = state.GetPlayer(unit.OwnerPlayerId);
+            var newState = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
+
+            events.Publish(new UnitDiedEvent(unit, lineIndex, killerId));
+            return newState;
+        }
+    }
+}
+
+
+========================================
+FILE: NetworkCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\NetworkCommand.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer
+{
+    internal class NetworkCommand
+    {
+    }
+}
+
+
+
+========================================
+FILE: CommandQueue.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\Synchronization\CommandQueue.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer.Synchronization
+{
+    internal class CommandQueue
+    {
+    }
+}
+
+
+
+========================================
+FILE: LockstepManager.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\Synchronization\LockstepManager.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer.Synchronization
+{
+    internal class LockstepManager
+    {
+    }
+}
+
+
+
+========================================
+FILE: ISaveStrategy.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Saves\Interfaces\ISaveStrategy.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Saves.Interfaces
+{
+    internal interface ISaveStrategy
+    {
+    }
+}
+
+
+
+========================================
+FILE: SaveData.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Saves\Models\SaveData.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Saves.Models
+{
+    internal class SaveData
+    {
+    }
+}
+
+
+
+========================================
+FILE: GamePhase.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Enums\GamePhase.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.State.Enums
+{
+    public enum GamePhase
+    {
+        None,       // Faza nieokreślona lub początkowa
+        Mulligan,   // Pierwsza faza gry - Mulligan & Dobieranie kart
+        UnitOnly, // Faza grania Unitów
+        UnitAndAction, // Faza grania Unitów i Akcji
+        ActionOnly, // Faza grania tylko Akcji
+        Combat, // Faza walki
+        EndTurn    // Faza kończenia tury
+    }
+}
+
+
+
+========================================
+FILE: BoardState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\BoardState.cs
+========================================
+using CardGame.Core.Cards.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.State.Models
+{
+    public class BoardState
+    {
+        public IReadOnlyList<Line> Lines { get; }
+        public BoardState(IEnumerable<Line> lines)
+        {
+            Lines = new List<Line>(lines);
+        }
+
+        public static BoardState Empty()
+        {
+            var emptyLines = new List<Line>();
+            for (int i = 0; i < 4; i++)
+            {
+                emptyLines.Add(Line.Empty(i));
+            }
+            return new BoardState(emptyLines);
+        }
+
+        public BoardState WithUnitPlacedAt(int lineIndex, int playerId, CardInstance? unit)
+        {
+            var newLines = new List<Line>(Lines);
+            var oldLine = newLines[lineIndex];
+            var newLine = oldLine.WithUnitPlaced(playerId, unit);
+            newLines[lineIndex] = newLine;
+            return new BoardState(newLines);
+        }
+
+        public List<CardInstance> GetAllUnits()
+        {
+            var list = new List<CardInstance>();
+            foreach (var line in Lines)
+            {
+                if (line.Player1Unit != null) list.Add(line.Player1Unit);
+                if (line.Player2Unit != null) list.Add(line.Player2Unit);
+            }
+            return list;
+        }
+
+        public BoardState UpdateUnit(CardInstance updatedUnit)
+        {
+            if (updatedUnit == null) return this;
+
+            var newLines = new List<Line>();
+            bool found = false;
+
+            foreach (var line in Lines)
+            {
+                if (line.Player1Unit?.InstanceId == updatedUnit.InstanceId)
+                {
+                    newLines.Add(line.WithUnitPlaced(1, updatedUnit));
+                    found = true;
+                }
+                else if (line.Player2Unit?.InstanceId == updatedUnit.InstanceId)
+                {
+                    newLines.Add(line.WithUnitPlaced(2, updatedUnit));
+                    found = true;
+                }
+                else
+                {
+                    newLines.Add(line);
+                }
+            }
+
+            return found ? new BoardState(newLines) : this;
+        }
+    }
+}

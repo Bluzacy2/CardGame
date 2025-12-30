@@ -1,6 +1,7 @@
 ﻿using CardGame.Core.Application;
 using CardGame.Core.Cards.Components.Implementations;
 using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
 using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
@@ -32,8 +33,8 @@ namespace CardGame.Core.Events.Triggers
 
                 foreach (var type in types)
                 {
-                    // Budujemy mapę na NAJŚWIEŻSZYM stanie (to rozwiązuje WomboCombo)
-                    var map = BuildTriggerMap(workingState);
+                 
+                    var map = BuildTriggerMap(workingState, evt);
                     if (!map.TryGetValue(type, out var sources)) continue;
 
                     foreach (var source in sources)
@@ -54,29 +55,60 @@ namespace CardGame.Core.Events.Triggers
 
         private bool IsStillValid(GameState s, SourceInfo info)
         {
+            if (info.Effect.Trigger == TriggerType.OnDeath || info.Effect.Trigger == TriggerType.OnSacrificed)
+                return true;
             if (info.Zone == EffectZone.Board) return s.Board.GetAllUnits().Any(u => u.InstanceId == info.Id);
             if (info.Zone == EffectZone.Hand) return s.PlayerA.Hand.Concat(s.PlayerB.Hand).Any(c => c.InstanceId == info.Id);
             return true;
         }
 
-        private Dictionary<TriggerType, List<SourceInfo>> BuildTriggerMap(GameState s)
+        private Dictionary<TriggerType, List<SourceInfo>> BuildTriggerMap(GameState s, IGameEvent currentEvt)
         {
             var map = new Dictionary<TriggerType, List<SourceInfo>>();
-            var all = s.Board.GetAllUnits().Select(u => (u, EffectZone.Board))
-                .Concat(s.PlayerA.Hand.Concat(s.PlayerB.Hand).Select(c => (c, EffectZone.Hand)))
-                .Concat(s.SpellStack.Select(sp => (sp, EffectZone.Any)));
 
-            foreach (var (card, zone) in all)
+          
+            var all = s.Board.GetAllUnits().Select(u => (u, zone: EffectZone.Board))
+        
+                .Concat(s.PlayerA.Hand.Concat(s.PlayerB.Hand).Select(c => (c, zone: EffectZone.Hand)))
+      
+                .Concat(s.SpellStack.Select(sp => (sp, zone: EffectZone.Any)));
+           
+            if (currentEvt is UnitDiedEvent ude)
+            {
+                all = all.Append((ude.Unit, zone: EffectZone.Graveyard));
+            }
+            else if (currentEvt is UnitSacrificedEvent use)
+            {
+                all = all.Append((use.Unit, zone: EffectZone.Graveyard));
+            }
+
+            foreach (var (card, currentZone) in all)
             {
                 foreach (var effect in card.Definition.Effects)
                 {
-                    if (effect.Trigger == TriggerType.OnPlayed || effect.Zone == EffectZone.Any || effect.Zone == zone)
+                   
+                    bool zoneMatches = effect.Zone == currentZone || effect.Zone == EffectZone.Any;
+
+                 
+                    bool isDeathRelatedTrigger = effect.Trigger == TriggerType.OnDeath ||
+                                                 effect.Trigger == TriggerType.OnSacrificed;
+
+                    bool shouldInclude = effect.Trigger == TriggerType.OnPlayed || 
+                                         zoneMatches ||
+                                         (isDeathRelatedTrigger && currentZone == EffectZone.Graveyard);
+
+                    if (shouldInclude)
                     {
-                        if (!map.ContainsKey(effect.Trigger)) map[effect.Trigger] = new List<SourceInfo>();
-                        map[effect.Trigger].Add(new SourceInfo(card.InstanceId, effect, zone));
+                        if (!map.ContainsKey(effect.Trigger))
+                        {
+                            map[effect.Trigger] = new List<SourceInfo>();
+                        }
+
+                        map[effect.Trigger].Add(new SourceInfo(card.InstanceId, effect, currentZone));
                     }
                 }
             }
+
             return map;
         }
 

@@ -589,10 +589,12 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\BalanceAITest
 ========================================
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CardGame.Core.AI;
+using CardGame.Core.AI.Logic;
 using CardGame.Core.AI.Strategies;
 using CardGame.Core.Application;
 using CardGame.Core.Cards.Data;
@@ -602,272 +604,226 @@ using CardGame.Core.State.Models;
 using CardGame.Core.State.Enums;
 using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Commands.Implementations;
 
 namespace CardGame.ConsoleApp
 {
     public static class BalanceAITester
     {
         private static readonly Queue<string> _displayLogs = new();
-        private const int MaxLogLines = 12;
+        private static List<EvaluatedMove> _lastThoughts = new List<EvaluatedMove>();
         private static int _eventsSeenSoFar = 0;
-        private const int UI_WIDTH = 114;
-
-        // --- STATYSTYKI SESJI ---
-        private static int _p1Wins = 0;
-        private static int _p2Wins = 0;
-        private static int _gamesPlayed = 0;
+        private const int UI_WIDTH = 158;
+        private static StringBuilder _fullAudit = new StringBuilder();
+        private static int _p1Wins = 0, _p2Wins = 0, _gamesPlayed = 0;
 
         public static async Task RunAsync()
         {
             Console.Clear();
-            Console.CursorVisible = false;
-            Console.OutputEncoding = Encoding.UTF8;
+            // Ładowanie biblioteki raz na sesję, by uniknąć błędów ID
+            CardLibrary.Instance.Clear();
+            CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
 
-            // PĘTLA NIESKOŃCZONEJ SYMULACJI
             while (true)
             {
-                // 1. RESET STANU PRZED NOWĄ GRĄ
-                _displayLogs.Clear();
-                _eventsSeenSoFar = 0;
-                _displayLogs.Enqueue($"=== ROZPOCZĘTO GRĘ NR {_gamesPlayed + 1} ===");
-
-                CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
+                _fullAudit.Clear(); _displayLogs.Clear(); _eventsSeenSoFar = 0;
                 var rng = new DeterministicRng(new Random().Next());
                 var factory = new CardFactory(CardLibrary.Instance, rng);
 
-                // 2. TWORZENIE TALII (Control vs Sacrifice)
-                var deckA = CreateDeckForBot(factory, 1, true);  // Talia 1
-                var deckB = CreateDeckForBot(factory, 2, false); // Talia 2
+                bool p1IsCtrl = _gamesPlayed % 2 == 0;
+                var deck1 = CreateDeck(factory, 1, p1IsCtrl);
+                var deck2 = CreateDeck(factory, 2, !p1IsCtrl);
 
-                // 3. NAPRZEMIENNY START
-                int startingPlayer = (_gamesPlayed % 2 == 0) ? 1 : 2;
-                var state = GameState.Initial(startingPlayer, deckA, deckB, rng);
-                var engine = new GameEngine(state, rng.Seed);
+                var engine = new GameEngine(GameState.Initial(1, deck1, deck2, rng), rng.Seed);
+                var ai1 = new AIPlayerController(engine, 1, new BalanceStrategy());
+                var ai2 = new AIPlayerController(engine, 2, new BalanceStrategy());
 
-                var ai1 = new AIPlayerController(engine, 1, new StandardStrategy());
-                var ai2 = new AIPlayerController(engine, 2, new StandardStrategy());
-
-                ai1.StartAutoPlay();
-                ai2.StartAutoPlay();
-
-                // 4. PĘTLA POJEDYNCZEJ GRY
                 while (!engine.IsGameOver)
                 {
-                    var allEvents = engine.Events.GetGlobalHistory().ToList();
+                    var state = engine.CurrentState;
+                    UpdateLogs(engine);
 
-                    if (allEvents.Count > _eventsSeenSoFar)
+                    if (state.CurrentPhase != GamePhase.Mulligan && state.CurrentPhase != GamePhase.Combat)
                     {
-                        for (int i = _eventsSeenSoFar; i < allEvents.Count; i++)
-                        {
-                            string? logText = ParseEventToText(allEvents[i], engine.CurrentState);
-                            if (logText != null)
-                            {
-                                _displayLogs.Enqueue(logText);
-                                while (_displayLogs.Count > MaxLogLines) _displayLogs.Dequeue();
+                        var activeAI = state.ActivePlayerId == 1 ? ai1 : ai2;
+                        _lastThoughts = activeAI.Solver.FindBestMoves(state);
+                        DrawUI(state, p1IsCtrl);
 
-                                DrawNuclearUI(engine.CurrentState);
-                                await Task.Delay(200); // Szybsze tempo dla ciągłej symulacji
-                            }
-                        }
-                        _eventsSeenSoFar = allEvents.Count;
+                        var key = Console.ReadKey(true);
+                        if (key.Key == ConsoleKey.Escape) return;
+                        if (key.Key == ConsoleKey.A) File.WriteAllText($"audit_game_{_gamesPlayed}.txt", _fullAudit.ToString());
                     }
 
-                    DrawNuclearUI(engine.CurrentState);
-                    await Task.Delay(50);
-
-                    // Wyjście awaryjne klawiszem ESC
-                    if (Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape)
+                    if (state.CurrentPhase == GamePhase.Mulligan)
                     {
-                        Console.CursorVisible = true;
-                        return;
+                        PerformMulligan(engine, 1, p1IsCtrl); PerformMulligan(engine, 2, !p1IsCtrl);
+                    }
+                    else if (state.CurrentPhase == GamePhase.Combat)
+                    {
+                        engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
+                        await Task.Delay(150);
+                    }
+                    else
+                    {
+                        var best = _lastThoughts.FirstOrDefault();
+                        if (best != null)
+                        {
+                            _fullAudit.AppendLine($"[T{state.TurnNumber}] P{state.ActivePlayerId}: {FormatCmdDetailed(best.Command, state)}");
+                            engine.ExecuteCommand(best.Command);
+                        }
+                        else engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
                     }
                 }
-
-                // 5. KONIEC GRY - AKTUALIZACJA STATYSTYK
-                if (engine.WinnerId == 1) _p1Wins++;
-                else if (engine.WinnerId == 2) _p2Wins++;
+                if (engine.WinnerId == 1) _p1Wins++; else if (engine.WinnerId == 2) _p2Wins++;
                 _gamesPlayed++;
-
-                DrawNuclearUI(engine.CurrentState);
-
-                // Krótka prezentacja wyniku końcowego gry przed restartem
                 await Task.Delay(2000);
             }
         }
 
-        private static void DrawNuclearUI(GameState state)
+        private static void DrawUI(GameState s, bool p1IsCtrl)
         {
             StringBuilder sb = new StringBuilder();
             Console.SetCursorPosition(0, 0);
 
-            int roundNum = (state.TurnNumber + 1) / 2;
+            int roundNum = (s.TurnNumber + 3) / 4;
+            int phaseIdx = s.CurrentPhase switch { GamePhase.UnitOnly => 1, GamePhase.UnitAndAction => 2, GamePhase.ActionOnly => 3, GamePhase.Combat => 4, _ => 0 };
 
-            // --- MODYFIKACJA NAGŁÓWKA (Wynik po prawej) ---
-            string scoreInfo = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ]";
-            string headerLeft = $" RUNDA: {roundNum} | FAZA: {state.CurrentPhase} | AKTYWNY: P{state.ActivePlayerId}";
+            string p1Tag = p1IsCtrl ? "CTRL" : "SACR";
+            string p2Tag = !p1IsCtrl ? "CTRL" : "SACR";
+            string activeTag = s.ActivePlayerId == 1 ? $"P1 [{p1Tag}]" : $"P2 [{p2Tag}]";
 
-            // Składanie paska z wyrównaniem do prawej
-            int spaces = (UI_WIDTH - 2) - headerLeft.Length - scoreInfo.Length;
-            string headerInfo = headerLeft + new string(' ', Math.Max(0, spaces)) + scoreInfo;
+            string headL = $" RUNDA: {roundNum} | FAZA: {phaseIdx}/4 ({s.CurrentPhase}) | AKTYWNY: {activeTag}";
+            string headR = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ] ";
 
             sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
-            sb.AppendLine("║" + headerInfo + "║");
-            sb.AppendLine("╠" + new string('═', UI_WIDTH - 2) + "╣");
+            sb.AppendLine("║ " + headL.PadRight(UI_WIDTH - headR.Length - 4) + headR + "║");
+            sb.AppendLine("╠" + new string('═', 106) + "╦" + new string('═', UI_WIDTH - 109) + "╣");
 
-            // --- GRACZ 2 ---
-            string p2Info = $" [ ENEMY P2 ]  HP: {state.PlayerB.Health,2} | Blood: {state.PlayerB.CurrentBlood,2}/{state.PlayerB.MaxBlood,2} ";
-            var (p2Hand1, p2Hand2) = GetHandDisplayStrings(state.PlayerB);
-            sb.AppendLine("║" + CenterText(p2Info, UI_WIDTH - 2) + "║");
-            sb.AppendLine("║" + CenterText(p2Hand1, UI_WIDTH - 2) + "║");
-            sb.AppendLine("║" + CenterText(p2Hand2, UI_WIDTH - 2) + "║");
-            sb.AppendLine("║" + new string(' ', UI_WIDTH - 2) + "║");
+            string[] left = RenderBoard(s);
+            string[] right = RenderBrain(s);
 
-            // --- PLANSZA ---
-            for (int row = 0; row < 11; row++)
+            for (int i = 0; i < 40; i++)
             {
-                string lineRow = "║     ";
-                for (int col = 0; col < 4; col++)
-                {
-                    lineRow += GetRowSegment(row, state.Board.Lines[col]).PadRight(26);
-                }
-                sb.AppendLine(lineRow.PadRight(UI_WIDTH - 1) + "║");
+                string l = i < left.Length ? left[i] : "";
+                string r = i < right.Length ? right[i] : "";
+                sb.AppendLine($"║ {l.PadRight(104)} ║ {r.PadRight(UI_WIDTH - 111)} ║");
             }
-
-            // --- GRACZ 1 ---
-            sb.AppendLine("║" + new string(' ', UI_WIDTH - 2) + "║");
-            string p1Info = $" [ FRIEND P1 ]  HP: {state.PlayerA.Health,2} | Blood: {state.PlayerA.CurrentBlood,2}/{state.PlayerA.MaxBlood,2} ";
-            var (p1Hand1, p1Hand2) = GetHandDisplayStrings(state.PlayerA);
-            sb.AppendLine("║" + CenterText(p1Info, UI_WIDTH - 2) + "║");
-            sb.AppendLine("║" + CenterText(p1Hand1, UI_WIDTH - 2) + "║");
-            sb.AppendLine("║" + CenterText(p1Hand2, UI_WIDTH - 2) + "║");
-
-            // --- LOGI ---
-            sb.AppendLine("╠" + new string('═', UI_WIDTH - 2) + "╣");
-            sb.AppendLine("║  DZIENNIK ZDARZEŃ:".PadRight(UI_WIDTH - 1) + "║");
-
-            int displayed = 0;
-            foreach (var log in _displayLogs)
-            {
-                sb.AppendLine("║  » " + log.PadRight(UI_WIDTH - 7) + "║");
-                displayed++;
-            }
-            for (int i = 0; i < (MaxLogLines - displayed); i++)
-                sb.AppendLine("║".PadRight(UI_WIDTH - 1) + "║");
-
-            sb.AppendLine("╚" + new string('═', UI_WIDTH - 2) + "╝");
-
+            sb.AppendLine("╚" + new string('═', 106) + "╩" + new string('═', UI_WIDTH - 109) + "╝");
             Console.Write(sb.ToString());
         }
 
-        private static List<CardInstance> CreateDeckForBot(CardFactory factory, int ownerId, bool isControlDeck)
+        private static string[] RenderBoard(GameState s)
         {
-            var deck = new List<CardInstance>();
-            int[] controlIds = { 4, 32, 24, 25, 37, 21, 6, 31, 15, 7 };
-            int[] sacrificeIds = { 12, 10, 11, 3, 9, 1, 2, 5, 16, 14 };
-
-            int[] selectedIds = isControlDeck ? controlIds : sacrificeIds;
-
-            foreach (var id in selectedIds)
+            var res = new List<string>();
+            res.Add($" [ GRACZ P2 | HP: {s.PlayerB.Health,2} | KREW: {s.PlayerB.CurrentBlood}/{s.PlayerB.MaxBlood} ]");
+            res.AddRange(WrapHand(s.PlayerB.Hand, "P2"));
+            res.Add("");
+            for (int r = 0; r < 11; r++)
             {
-                for (int i = 0; i < 3; i++)
+                string row = "  ";
+                for (int c = 0; c < 4; c++) row += GetRowSegment(r, s.Board.Lines[c]).PadRight(25);
+                res.Add(row);
+            }
+            res.Add("");
+            res.Add($" [ GRACZ P1 | HP: {s.PlayerA.Health,2} | KREW: {s.PlayerA.CurrentBlood}/{s.PlayerA.MaxBlood} ]");
+            res.AddRange(WrapHand(s.PlayerA.Hand, "P1"));
+            res.Add(new string('-', 104));
+            res.Add(" DZIENNIK ZDARZEŃ:");
+            res.AddRange(_displayLogs.Reverse().Take(8).Select(x => " " + x));
+            return res.ToArray();
+        }
+
+        private static List<string> WrapHand(IReadOnlyList<CardInstance> hand, string pId)
+        {
+            string prefix = $" Ręka {pId}: [";
+            var cards = hand.Select(c => $"({c.CurrentStats.BloodCost}){c.Definition.Name}").ToList();
+            var result = new List<string>();
+            string currentLine = prefix;
+
+            for (int i = 0; i < cards.Count; i++)
+            {
+                string part = cards[i] + (i == cards.Count - 1 ? "" : ", ");
+                if ((currentLine + part).Length > 98)
                 {
-                    deck.Add(factory.CreateCard(id, ownerId));
+                    result.Add(currentLine);
+                    currentLine = "           " + part;
                 }
+                else currentLine += part;
             }
-            return deck;
+            result.Add(currentLine + "]");
+            return result;
         }
 
-        // --- RESZTA METOD (ParseEventToText, GetHandDisplayStrings, itp.) BEZ ZMIAN ---
-        private static string? ParseEventToText(IGameEvent evt, GameState state)
+        private static string GetRowSegment(int row, Line line) => row switch
         {
-            if (evt is StatusAppliedEvent sae)
+            0 => "┌───────────────────┐",
+            1 => $"│ {Center(line.Player2Unit?.Definition.Name ?? "[ WOLNE ]", 17)} │",
+            2 => $"│ {Stats(line.Player2Unit)} │",
+            3 => "└───────────────────┘",
+            4 => "         ┃          ",
+            5 => "         VS         ",
+            6 => "         ┃          ",
+            7 => "┌───────────────────┐",
+            8 => $"│ {Center(line.Player1Unit?.Definition.Name ?? "[ WOLNE ]", 17)} │",
+            9 => $"│ {Stats(line.Player1Unit)} │",
+            10 => "└───────────────────┘",
+            _ => ""
+        };
+
+        private static string Center(string t, int w) => t.Length > w ? t.Substring(0, w) : t.PadLeft((w + t.Length) / 2).PadRight(w);
+        private static string Stats(CardInstance? u) => u == null ? "                 " : $"ATK:{u.CurrentStats.Attack,-2} HP:{u.CurrentStats.Health,-2} {(u.CurrentStats.Keywords.Contains(Keyword.Marked) ? "!!" : "  ")}";
+
+        private static string[] RenderBrain(GameState s)
+        {
+            var res = new List<string> { $"   MÓZG P{s.ActivePlayerId}", "------------------------" };
+            foreach (var t in _lastThoughts.Take(25))
             {
-                var target = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sae.TargetUnitId);
-                string name = target?.Definition.Name ?? $"Jedn.{sae.TargetUnitId}";
-                return $"[STATUS] {sae.Status.ToString().ToUpper()} nałożony na {name}";
+                res.Add($"{(t == _lastThoughts.First() ? ">>" : "  ")} {FormatCmdDetailed(t.Command, s).PadRight(24)} | {t.Score:F0}");
             }
-            if (evt is UnitDamagedEvent ude)
+            return res.ToArray();
+        }
+
+        private static string FormatCmdDetailed(IGameCommand? c, GameState s)
+        {
+            if (c == null) return "...";
+            if (c is PlayUnitCommand pu) return $"{s.GetPlayer(pu.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == pu.CardInstanceId)?.Definition.Name} na L{pu.TargetLineIndex+1}";
+            if (c is PlaySpellCommand ps) return $"Czar: {s.GetPlayer(ps.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == ps.CardInstanceId)?.Definition.Name}";
+            if (c is SelectTargetCommand st)
             {
-                string src = ude.Source?.Definition.Name ?? "Efekt";
-                string target = ude.Unit?.Definition.Name ?? "BOHATER";
-                if (ude.Source == null && ude.Amount == 1) return $"[BURN] Ogień parzy {target} za 1 DMG";
-                if (ude.Source != null && ude.Source.CurrentStats.Keywords.Contains(Keyword.SplashDamage))
-                    return $"[SPLASH] {src} rani sąsiedni cel: {target} ({ude.Amount} DMG)";
-                return $"[DMG] {src} zadaje {ude.Amount} DMG -> {target}";
+                var target = s.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == st.TargetId);
+                return $"Cel: {target?.Definition.Name ?? "Bohater"}";
             }
-            if (evt is UnitDiedEvent ud)
+            return "KONIEC TURY";
+        }
+
+        private static void UpdateLogs(GameEngine e)
+        {
+            var all = e.Events.GetGlobalHistory().ToList();
+            for (int i = _eventsSeenSoFar; i < all.Count; i++)
             {
-                string killerInfo = ud.KillerInstanceId.HasValue ? $" przez Jedn.{ud.KillerInstanceId}" : "";
-                return $"[ŚMIERĆ] {ud.Unit.Definition.Name} ginie{killerInfo}";
+                var evt = all[i];
+                if (evt is UnitDamagedEvent d) _displayLogs.Enqueue($"> {(d.Source?.Definition.Name ?? "Efekt")} bije {(d.Unit?.Definition.Name ?? "Bohater")} za {d.Amount}");
+                else if (evt is CardPlayedEvent cp) _displayLogs.Enqueue($"> P{cp.PlayerId} gra {cp.Card.Definition.Name}");
+                else if (evt is UnitDiedEvent dd) _displayLogs.Enqueue($"> {dd.Unit.Definition.Name} zniszczony");
+                if (_displayLogs.Count > 15) _displayLogs.Dequeue();
             }
-            if (evt is UnitSacrificedEvent us) return $"[OFIARA] {us.Unit.Definition.Name} został złożony w ofierze";
-            if (evt is CardPlayedEvent cpe) return $"[AKCJA] P{cpe.PlayerId} zagrywa {cpe.Card.Definition.Name}";
-            if (evt is CardDrawnEvent cde) return $"[TALIA] Gracz {cde.PlayerId} dobrał kartę";
-            if (evt is TurnStartedEvent tse) return $"--- TURA GRACZA {tse.ActivePlayerId} ---";
-            if (evt is PreLineCombatEvent ple) return $"[WALKA] Rozliczanie linii {ple.LineIndex}...";
-            if (evt is TargetSelectedEvent tse2) return $"[INTERAKCJA] Wybrano cel ID: {tse2.SelectedTargetId}";
-            if (evt is GameOverEvent goe) return $"!!! KONIEC GRY: ZWYCIĘZCA P{goe.WinnerId} !!!";
-            return null;
+            _eventsSeenSoFar = all.Count;
         }
 
-        private static (string line1, string line2) GetHandDisplayStrings(PlayerState player)
+        private static void PerformMulligan(GameEngine e, int pid, bool ctrl)
         {
-            if (player.Hand.Count == 0) return ("[ RĘKA PUSTA ]", "");
-            var cardStrings = player.Hand.Select(c => $"({c.CurrentStats.BloodCost}) {c.Definition.Name}").ToList();
-            string fullString = string.Join(", ", cardStrings);
-            int maxLineLen = UI_WIDTH - 12;
-            if (fullString.Length <= maxLineLen) return ("[ " + fullString + " ]", "");
-            int cardsInFirstLine = 0;
-            string currentLine = "";
-            for (int i = 0; i < cardStrings.Count; i++)
-            {
-                string nextPart = (currentLine == "" ? "" : ", ") + cardStrings[i];
-                if ((currentLine + nextPart).Length > maxLineLen) { cardsInFirstLine = i; break; }
-                currentLine += nextPart;
-            }
-            string l1 = "[ " + string.Join(", ", cardStrings.Take(cardsInFirstLine)) + ",";
-            string l2 = "  " + string.Join(", ", cardStrings.Skip(cardsInFirstLine)) + " ]";
-            return (l1, l2);
+            var p = e.CurrentState.GetPlayer(pid);
+            var rej = p.Hand.Where(c => (ctrl && c.CurrentStats.BloodCost > 2) || (!ctrl && c.CurrentStats.BloodCost > 4)).Select(c => c.InstanceId).ToList();
+            e.ExecuteCommand(new ConfirmMulliganCommand(pid, rej));
         }
 
-        private static string GetRowSegment(int row, Line line)
+        private static List<CardInstance> CreateDeck(CardFactory f, int id, bool ctrl)
         {
-            return row switch
-            {
-                0 => "╭────────────────────╮",
-                1 => RenderUnitName(line.Player2Unit),
-                2 => RenderUnitStats(line.Player2Unit),
-                3 => "╰────────────────────╯",
-                4 => "          ┃           ",
-                5 => "          VS          ",
-                6 => "          ┃           ",
-                7 => "╭────────────────────╮",
-                8 => RenderUnitName(line.Player1Unit),
-                9 => RenderUnitStats(line.Player1Unit),
-                10 => "╰────────────────────╯",
-                _ => ""
-            };
-        }
-
-        private static string RenderUnitName(CardInstance? u)
-        {
-            if (u == null) return "│      [ WOLNE ]     │";
-            string name = u.Definition.Name.Length > 16 ? u.Definition.Name.Substring(0, 16) : u.Definition.Name;
-            return $"│ {name,-18} │";
-        }
-
-        private static string RenderUnitStats(CardInstance? u)
-        {
-            if (u == null) return "│                    │";
-            string sil = u.IsSilenced ? "S!" : (u.CurrentStats.Keywords.Contains(Keyword.Stunned) ? "Zz" : "  ");
-            return $"│ ATK:{u.CurrentStats.Attack,-2}  HP:{u.CurrentStats.Health,-2}  {sil} │";
-        }
-
-        private static string CenterText(string text, int width)
-        {
-            if (string.IsNullOrEmpty(text)) return new string(' ', width);
-            int leftPadding = (width - text.Length) / 2;
-            return text.PadLeft(Math.Max(0, leftPadding) + text.Length).PadRight(width);
+            int[] ids = ctrl ? new[] { 4, 32, 24, 25, 26, 17, 6, 31, 15, 7 } : new[] { 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3 }; // { 12, 10, 11, 3, 9, 1, 2, 5, 18, 14 };
+            var d = new List<CardInstance>();
+            foreach (var cid in ids) for (int i = 0; i < 3; i++) d.Add(f.CreateCard(cid, id));
+            return d;
         }
     }
 }
@@ -1316,23 +1272,27 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\ca
   },
 
   {
-    "Id": 3,
-    "Name": "Bone Sommelier",
-    "Type": "Unit",
-    "Subtypes": [ "Monster" ],
-    "Cost": 1,
-    "Attack": 1,
-    "Health": 3,
-    "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
-    "Effects": [
-      {
-        "Trigger": "OnDeath",
-        "Actions": [
-          { "Type": "AddCardToHand", "Target": "Self", "ValueParam": 900 }
-        ]
-      }
-    ]
-  },
+  "Id": 3,
+  "Name": "Bone Sommelier",
+  "Type": "Unit",
+  "Subtypes": [ "Monster" ],
+  "Cost": 1,
+  "Attack": 1,
+  "Health": 3,
+  "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
+  "Effects": [
+    {
+      "Trigger": "OnDeath",
+      "Actions": [ 
+        {
+          "Type": "AddCardToHand",
+          "Target": "FriendlyHero",
+          "ValueParam": 900
+        }
+      ]
+    }
+  ]
+},
 
   {
     "Id": 4,
@@ -2105,3 +2065,193 @@ namespace CardGame.Core.AI.Interfaces
     }
 }
 
+
+
+========================================
+FILE: BotSolver.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\BotSolver.cs
+========================================
+using CardGame.Core.AI.Interfaces;
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.State.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.AI.Logic
+{
+    // NEW CLASS: Represents a move that has been evaluated by the AI.
+    public class EvaluatedMove
+    {
+        public IGameCommand Command { get; }
+        public float Score { get; }
+        public string Description { get; }
+
+        public EvaluatedMove(IGameCommand command, float score, string description = "")
+        {
+            Command = command;
+            Score = score;
+            Description = description;
+        }
+    }
+
+    public class SimulationNode
+    {
+        public GameState State { get; }
+        public IGameCommand? InitialMove { get; }
+        public float Score { get; }
+
+        public SimulationNode(GameState state, IGameCommand? initialMove, float score)
+        {
+            State = state;
+            InitialMove = initialMove;
+            Score = score;
+        }
+    }
+
+    public class BotSolver
+    {
+        private readonly GameEngine _engineTemplate;
+        private readonly MoveGenerator _moveGenerator;
+        private readonly IAIStrategy _strategy;
+        private readonly VirtualOpponent _virtualOpponent;
+        private readonly int _botId;
+
+        private const int BeamWidth = 5;
+        private const int MaxDepth = 3;
+
+        public BotSolver(GameEngine engine, int botId, IAIStrategy strategy)
+        {
+            _engineTemplate = engine;
+            _botId = botId;
+            _strategy = strategy;
+            _moveGenerator = new MoveGenerator();
+            _virtualOpponent = new VirtualOpponent(engine.Factory);
+        }
+
+        // MODIFIED: This method now returns a list of all considered moves with their scores.
+        public List<EvaluatedMove> FindBestMoves(GameState rootState)
+        {
+            var initialMoves = _moveGenerator.GenerateLegalMoves(rootState, _botId);
+            var evaluatedMoves = new List<EvaluatedMove>();
+
+            foreach (var move in initialMoves)
+            {
+                float moveScore = SimulateMove(rootState, move);
+                evaluatedMoves.Add(new EvaluatedMove(move, moveScore));
+            }
+            
+            // Return all evaluated moves, sorted from best to worst.
+            return evaluatedMoves.OrderByDescending(m => m.Score).ToList();
+        }
+
+        private float SimulateMove(GameState rootState, IGameCommand move)
+        {
+            var beam = new List<SimulationNode>();
+            var simulator = new GameEngine(rootState, _engineTemplate.Rng.Seed);
+            var result = simulator.ExecuteCommand(move);
+
+            // If the move is invalid or leads to no state change, penalize it heavily.
+            if (result.NewState == rootState && !(move is EndPhaseCommand)) 
+            {
+                 return float.MinValue;
+            }
+
+            // For EndPhase, we must simulate the opponent's best response.
+            if (move is EndPhaseCommand)
+            {
+                var outcome = SimulateAndFindWorstOutcomeForBot(result.NewState);
+                return outcome.Score;
+            }
+
+            beam.Add(new SimulationNode(result.NewState, move, _strategy.Evaluate(result.NewState, _botId)));
+
+            for (int depth = 1; depth < MaxDepth; depth++)
+            {
+                var nextCandidates = new List<SimulationNode>();
+                foreach (var node in beam)
+                {
+                    bool isBotTurn = node.State.ActivePlayerId == _botId;
+                    var outcome = isBotTurn
+                        ? SimulateAndFindBestOutcomeForBot(node.State)
+                        : SimulateAndFindWorstOutcomeForBot(node.State);
+                    
+                    nextCandidates.Add(new SimulationNode(outcome.State, node.InitialMove, outcome.Score));
+                }
+                beam = nextCandidates.OrderByDescending(n => n.Score).Take(BeamWidth).ToList();
+                if (!beam.Any()) break;
+            }
+
+            return beam.Any() ? beam.Average(n => n.Score) : _strategy.Evaluate(result.NewState, _botId);
+        }
+
+        private (GameState State, float Score) SimulateAndFindBestOutcomeForBot(GameState currentState)
+        {
+            var moves = _moveGenerator.GenerateLegalMoves(currentState, _botId);
+            float bestScore = float.MinValue;
+            GameState bestState = currentState;
+
+            foreach (var move in moves)
+            {
+                var simulator = new GameEngine(currentState, _engineTemplate.Rng.Seed);
+                var result = simulator.ExecuteCommand(move);
+                if (result.NewState == currentState && !(move is EndPhaseCommand)) continue;
+
+                float score = _strategy.Evaluate(result.NewState, _botId);
+                if (score > bestScore)
+                {
+                    bestScore = score;
+                    bestState = result.NewState;
+                }
+            }
+
+            return (bestState, bestScore == float.MinValue ? _strategy.Evaluate(currentState, _botId) : bestScore);
+        }
+
+        private (GameState State, float Score) SimulateAndFindWorstOutcomeForBot(GameState currentState)
+        {
+            var activePlayerId = currentState.ActivePlayerId;
+            var stateWithPhantomHand = _virtualOpponent.InjectPhantomHand(currentState, activePlayerId);
+            var enemyMoves = _moveGenerator.GenerateLegalMoves(stateWithPhantomHand, activePlayerId);
+
+            float worstScoreForBot = float.MaxValue;
+            GameState worstStateForBot = currentState; 
+
+            bool moveFound = false;
+
+            // Increased simulation width for opponent's turn to be more cautious
+            foreach (var enemyMove in enemyMoves.OrderByDescending(m => _strategy.Evaluate(new GameEngine(stateWithPhantomHand, _engineTemplate.Rng.Seed).ExecuteCommand(m).NewState, 3- _botId)).Take(7))
+            {
+                var simulator = new GameEngine(stateWithPhantomHand, _engineTemplate.Rng.Seed);
+                var result = simulator.ExecuteCommand(enemyMove);
+                
+                GameState resultingState = result.NewState;
+
+                if (enemyMove is EndPhaseCommand)
+                {
+                    resultingState = resultingState.With(activePlayerId: _botId);
+                }
+
+                if (resultingState == stateWithPhantomHand && !(enemyMove is EndPhaseCommand))
+                    continue;
+
+                moveFound = true;
+                float currentScore = _strategy.Evaluate(resultingState, _botId);
+                if (currentScore < worstScoreForBot)
+                {
+                    worstScoreForBot = currentScore;
+                    worstStateForBot = resultingState;
+                }
+            }
+
+            if (!moveFound)
+            {
+                worstScoreForBot = _strategy.Evaluate(currentState.With(activePlayerId: _botId), _botId);
+            }
+
+            return (worstStateForBot, worstScoreForBot);
+        }
+    }
+}

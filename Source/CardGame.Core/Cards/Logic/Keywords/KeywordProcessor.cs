@@ -46,13 +46,13 @@ namespace CardGame.Core.Cards.Logic.Keywords
             return workingState;
         }
 
-        public bool TryPreventDeath(ref GameState state, CardInstance unit, GameContext context)
+        public bool TryPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
         {
             foreach (var keyword in unit.CurrentStats.Keywords)
             {
                 if (_handlers.TryGetValue(keyword, out var handler))
                 {
-                    if (handler.OnPreventDeath(ref state, unit, context))
+                    if (handler.OnPreventDeath(ref state, unit, context, isSacrifice))
                         return true;
                 }
             }

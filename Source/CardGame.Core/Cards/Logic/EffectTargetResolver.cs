@@ -21,7 +21,7 @@ namespace CardGame.Core.Cards.Logic
         public static EffectTargets Resolve(TargetType type, GameState state, IGameEvent contextEvent, int sourceCardId)
         {
             var result = new EffectTargets();
-            int ownerId = GetOwner(state, sourceCardId);
+            int ownerId = GetOwner(state, sourceCardId, contextEvent);
             int opponentId = (ownerId == 1) ? 2 : 1;
 
             switch (type)
@@ -45,10 +45,16 @@ namespace CardGame.Core.Cards.Logic
 
                     if (targetId.HasValue)
                     {
+                        var tUnit = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == targetId.Value);
+                        if (tUnit == null && (type == TargetType.Self || type == TargetType.SelectedTarget))
+                        {
+                            tUnit = state.PlayerA.DiscardPile.FirstOrDefault(u => u.InstanceId == targetId.Value)
+                                  ?? state.PlayerB.DiscardPile.FirstOrDefault(u => u.InstanceId == targetId.Value);
+                        }
                         if (type == TargetType.OtherFriendlyUnits && targetId.Value == sourceCardId)
                             return result;
 
-                        var tUnit = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == targetId.Value);
+                       
                         if (tUnit != null)
                         {
                             bool isValid = true;
@@ -81,14 +87,14 @@ namespace CardGame.Core.Cards.Logic
                     break;
 
                 case TargetType.Self:
-                    // Szukamy karty w dowolnej strefie
+                  
                     var self = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceCardId) ??
                                state.PlayerA.Hand.Concat(state.PlayerB.Hand).FirstOrDefault(c => c.InstanceId == sourceCardId) ??
                                state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceCardId) ??
                                state.PlayerA.DiscardPile.Concat(state.PlayerB.DiscardPile).FirstOrDefault(c => c.InstanceId == sourceCardId);
 
                     if (self != null) result.UnitTargets.Add(self);
-                    // KLUCZOWA POPRAWKA: Self musi zwracać TargetPlayer, by akcje typu DrawCard/Summon wiedziały czyja to ręka/talia
+              
                     result.TargetPlayer = state.GetPlayer(ownerId);
                     break;
             }
@@ -104,7 +110,6 @@ namespace CardGame.Core.Cards.Logic
             return type switch
             {
                 TargetType.TargetEnemyUnit => allUnits.Where(u => u.OwnerPlayerId == opponentId).ToList(),
-                // Double Agent Fix: rzucający nie widzi siebie jako celu do auto-wyboru
                 TargetType.TargetFriendlyUnit => allUnits.Where(u => u.OwnerPlayerId == ownerId && u.InstanceId != sourceCardId).ToList(),
                 TargetType.OtherFriendlyUnits => allUnits.Where(u => u.OwnerPlayerId == ownerId && u.InstanceId != sourceCardId).ToList(),
                 TargetType.SelectedTarget => allUnits.Where(u => u.InstanceId != sourceCardId).ToList(),
@@ -112,23 +117,22 @@ namespace CardGame.Core.Cards.Logic
             };
         }
 
-        private static int GetOwner(GameState state, int instanceId)
+        private static int GetOwner(GameState state, int instanceId, IGameEvent? contextEvent = null)
         {
-            // Sprawdzanie planszy
+           
+            if (contextEvent is UnitDiedEvent ude && ude.Unit.InstanceId == instanceId)
+                return ude.Unit.OwnerPlayerId;
+            if (contextEvent is UnitSacrificedEvent use && use.Unit.InstanceId == instanceId)
+                return use.Unit.OwnerPlayerId;
+
+          
             var unit = state.Board.GetAllUnits().FirstOrDefault(x => x.InstanceId == instanceId);
             if (unit != null) return unit.OwnerPlayerId;
 
-            // Sprawdzanie stosu czarów
-            var spell = state.SpellStack.FirstOrDefault(x => x.InstanceId == instanceId);
-            if (spell != null) return spell.OwnerPlayerId;
-
-            // Sprawdzanie rąk
-            if (state.PlayerA.Hand.Any(x => x.InstanceId == instanceId)) return 1;
-            if (state.PlayerB.Hand.Any(x => x.InstanceId == instanceId)) return 2;
-
-            // Sprawdzanie cmentarzy (ważne dla efektów typu OnSacrificed/OnDeath)
-            if (state.PlayerA.DiscardPile.Any(x => x.InstanceId == instanceId)) return 1;
-            if (state.PlayerB.DiscardPile.Any(x => x.InstanceId == instanceId)) return 2;
+            if (state.PlayerA.Hand.Any(x => x.InstanceId == instanceId) ||
+                state.PlayerA.DiscardPile.Any(x => x.InstanceId == instanceId)) return 1;
+            if (state.PlayerB.Hand.Any(x => x.InstanceId == instanceId) ||
+                state.PlayerB.DiscardPile.Any(x => x.InstanceId == instanceId)) return 2;
 
             return state.ActivePlayerId;
         }

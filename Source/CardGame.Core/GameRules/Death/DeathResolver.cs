@@ -18,7 +18,6 @@ namespace CardGame.Core.GameRules.Death
             {
                 changed = false;
                 var allUnits = workingState.Board.GetAllUnits();
-                // Szukamy pierwszej jednostki, która powinna umrzeć
                 var unitToKill = allUnits.FirstOrDefault(u => u.CurrentStats.Health <= 0);
 
                 if (unitToKill != null)
@@ -34,19 +33,17 @@ namespace CardGame.Core.GameRules.Death
                         }
                     }
 
+                    // --- DETEKCJA POŚWIĘCENIA ---
                     var history = eventBus.GetHistory().ToList();
+                    bool isSacrifice = history.OfType<UnitSacrificedEvent>()
+                        .Any(e => e.Unit.InstanceId == unitToKill.InstanceId);
 
-                    // Sprawdzamy, czy śmierć nie jest wynikiem poświęcenia (Sacrifice)
-                    bool isSacrifice = history.Any(e => e is UnitSacrificedEvent sac && sac.Unit.InstanceId == unitToKill.InstanceId);
-
-                    // Próba zapobieżenia śmierci (np. Soul Guard), o ile nie jest to poświęcenie
-                    if (!isSacrifice && context.Keywords.TryPreventDeath(ref workingState, unitToKill, context))
+                    if (context.Keywords.TryPreventDeath(ref workingState, unitToKill, context, isSacrifice))
                     {
                         changed = true;
                         continue;
                     }
 
-                    // Znajdujemy zabójcę, przeszukując historię zadanych obrażeń tej jednostce
                     var lastDmg = history.OfType<UnitDamagedEvent>()
                         .LastOrDefault(e => e.Unit?.InstanceId == unitToKill.InstanceId && e.Source != null);
 
@@ -71,7 +68,6 @@ namespace CardGame.Core.GameRules.Death
             var owner = state.GetPlayer(unit.OwnerPlayerId);
             var newState = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
 
-            // Wysyłamy informację o śmierci wraz z ID zabójcy (killerId)
             events.Publish(new UnitDiedEvent(unit, lineIndex, killerId));
             return newState;
         }

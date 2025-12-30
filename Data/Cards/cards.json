@@ -11,7 +11,7 @@
     "Effects": [
       {
         "Trigger": "OnDeath",
-        "Action": {
+        "Actions": {
           "Type": "AddCardToHand", 
           "Target": "Self", 
           "ValueParam": 900 

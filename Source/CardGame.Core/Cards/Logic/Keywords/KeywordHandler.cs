@@ -23,7 +23,7 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
         }
         public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
         public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
-        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context) => false;
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice) => false;
     }
 
     public class MarkedHandler : IKeywordHandler
@@ -32,7 +32,7 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
         public int OnModifyDamageTaken(int amount, DamageContext context) => amount * 2;
         public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
         public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
-        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c) => false;
+        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c, bool isSacrifice) => false;
     }
 
     public class SplashDamageHandler : IKeywordHandler
@@ -61,7 +61,7 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
             return workingState;
         }
         public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
-        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c) => false;
+        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c, bool isSacrifice) => false;
     }
 
     public class BurnSourceHandler : IKeywordHandler
@@ -75,7 +75,7 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
             return state.UpdateBoard(state.Board.UpdateUnit(burnedVictim));
         }
         public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
-        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c) => false;
+        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c, bool isSacrifice) => false;
     }
 
     public class BurningHandler : IKeywordHandler
@@ -89,7 +89,7 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
             context.Events.Publish(new UnitDamagedEvent(unit, 1, null));
             return state.UpdateBoard(state.Board.UpdateUnit(damagedUnit));
         }
-        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c) => false;
+        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c, bool isSacrifice) => false;
     }
 
     public class SoulGuardHandler : IKeywordHandler
@@ -98,8 +98,11 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
         public int OnModifyDamageTaken(int a, DamageContext c) => a;
         public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
         public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
-        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context)
+
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
         {
+            if (isSacrifice) return false;
+
             if (unit.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted)) return false;
             int damageToSet = Math.Max(0, unit.MaxHealth - 1);
             var survivedUnit = unit.WithDamage(damageToSet).AddPermanentBuff(new CardStats(0, 0, 0, new[] { Keyword.SoulGuardDepleted }));
@@ -115,9 +118,8 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
         public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
         public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
 
-        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context)
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
         {
-
             var board = state.Board;
             for (int i = 0; i < 4; i++)
             {
@@ -127,20 +129,19 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
                     board = board.WithUnitPlacedAt(i, 2, null);
             }
             var returnedCard = unit.MoveAndReset();
-
-            var owner = state.GetPlayer(unit.OwnerPlayerId);
-
+            int pid = unit.OwnerPlayerId;
+            var owner = state.GetPlayer(pid);
             state = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToHand(returnedCard));
-          
             return true;
         }
     }
+
     public class StunnedHandler : IKeywordHandler
     {
         public Keyword Type => Keyword.Stunned;
         public int OnModifyDamageTaken(int a, DamageContext c) => a;
         public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
         public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
-        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c) => false;
+        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c, bool isSacrifice) => false;
     }
 }

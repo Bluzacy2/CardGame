@@ -1,196 +1,6 @@
 ﻿
 
 ========================================
-FILE: BotSolver.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\BotSolver.cs
-========================================
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.Application;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.State.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CardGame.Core.AI.Logic
-{
-    // NEW CLASS: Represents a move that has been evaluated by the AI.
-    public class EvaluatedMove
-    {
-        public IGameCommand Command { get; }
-        public float Score { get; }
-        public string Description { get; }
-
-        public EvaluatedMove(IGameCommand command, float score, string description = "")
-        {
-            Command = command;
-            Score = score;
-            Description = description;
-        }
-    }
-
-    public class SimulationNode
-    {
-        public GameState State { get; }
-        public IGameCommand? InitialMove { get; }
-        public float Score { get; }
-
-        public SimulationNode(GameState state, IGameCommand? initialMove, float score)
-        {
-            State = state;
-            InitialMove = initialMove;
-            Score = score;
-        }
-    }
-
-    public class BotSolver
-    {
-        private readonly GameEngine _engineTemplate;
-        private readonly MoveGenerator _moveGenerator;
-        private readonly IAIStrategy _strategy;
-        private readonly VirtualOpponent _virtualOpponent;
-        private readonly int _botId;
-
-        private const int BeamWidth = 5;
-        private const int MaxDepth = 3;
-
-        public BotSolver(GameEngine engine, int botId, IAIStrategy strategy)
-        {
-            _engineTemplate = engine;
-            _botId = botId;
-            _strategy = strategy;
-            _moveGenerator = new MoveGenerator();
-            _virtualOpponent = new VirtualOpponent(engine.Factory);
-        }
-
-        // MODIFIED: This method now returns a list of all considered moves with their scores.
-        public List<EvaluatedMove> FindBestMoves(GameState rootState)
-        {
-            var initialMoves = _moveGenerator.GenerateLegalMoves(rootState, _botId);
-            var evaluatedMoves = new List<EvaluatedMove>();
-
-            foreach (var move in initialMoves)
-            {
-                float moveScore = SimulateMove(rootState, move);
-                evaluatedMoves.Add(new EvaluatedMove(move, moveScore));
-            }
-            
-            // Return all evaluated moves, sorted from best to worst.
-            return evaluatedMoves.OrderByDescending(m => m.Score).ToList();
-        }
-
-        private float SimulateMove(GameState rootState, IGameCommand move)
-        {
-            var beam = new List<SimulationNode>();
-            var simulator = new GameEngine(rootState, _engineTemplate.Rng.Seed);
-            var result = simulator.ExecuteCommand(move);
-
-            // If the move is invalid or leads to no state change, penalize it heavily.
-            if (result.NewState == rootState && !(move is EndPhaseCommand)) 
-            {
-                 return float.MinValue;
-            }
-
-            // For EndPhase, we must simulate the opponent's best response.
-            if (move is EndPhaseCommand)
-            {
-                var outcome = SimulateAndFindWorstOutcomeForBot(result.NewState);
-                return outcome.Score;
-            }
-
-            beam.Add(new SimulationNode(result.NewState, move, _strategy.Evaluate(result.NewState, _botId)));
-
-            for (int depth = 1; depth < MaxDepth; depth++)
-            {
-                var nextCandidates = new List<SimulationNode>();
-                foreach (var node in beam)
-                {
-                    bool isBotTurn = node.State.ActivePlayerId == _botId;
-                    var outcome = isBotTurn
-                        ? SimulateAndFindBestOutcomeForBot(node.State)
-                        : SimulateAndFindWorstOutcomeForBot(node.State);
-                    
-                    nextCandidates.Add(new SimulationNode(outcome.State, node.InitialMove, outcome.Score));
-                }
-                beam = nextCandidates.OrderByDescending(n => n.Score).Take(BeamWidth).ToList();
-                if (!beam.Any()) break;
-            }
-
-            return beam.Any() ? beam.Average(n => n.Score) : _strategy.Evaluate(result.NewState, _botId);
-        }
-
-        private (GameState State, float Score) SimulateAndFindBestOutcomeForBot(GameState currentState)
-        {
-            var moves = _moveGenerator.GenerateLegalMoves(currentState, _botId);
-            float bestScore = float.MinValue;
-            GameState bestState = currentState;
-
-            foreach (var move in moves)
-            {
-                var simulator = new GameEngine(currentState, _engineTemplate.Rng.Seed);
-                var result = simulator.ExecuteCommand(move);
-                if (result.NewState == currentState && !(move is EndPhaseCommand)) continue;
-
-                float score = _strategy.Evaluate(result.NewState, _botId);
-                if (score > bestScore)
-                {
-                    bestScore = score;
-                    bestState = result.NewState;
-                }
-            }
-
-            return (bestState, bestScore == float.MinValue ? _strategy.Evaluate(currentState, _botId) : bestScore);
-        }
-
-        private (GameState State, float Score) SimulateAndFindWorstOutcomeForBot(GameState currentState)
-        {
-            var activePlayerId = currentState.ActivePlayerId;
-            var stateWithPhantomHand = _virtualOpponent.InjectPhantomHand(currentState, activePlayerId);
-            var enemyMoves = _moveGenerator.GenerateLegalMoves(stateWithPhantomHand, activePlayerId);
-
-            float worstScoreForBot = float.MaxValue;
-            GameState worstStateForBot = currentState; 
-
-            bool moveFound = false;
-
-            // Increased simulation width for opponent's turn to be more cautious
-            foreach (var enemyMove in enemyMoves.OrderByDescending(m => _strategy.Evaluate(new GameEngine(stateWithPhantomHand, _engineTemplate.Rng.Seed).ExecuteCommand(m).NewState, 3- _botId)).Take(7))
-            {
-                var simulator = new GameEngine(stateWithPhantomHand, _engineTemplate.Rng.Seed);
-                var result = simulator.ExecuteCommand(enemyMove);
-                
-                GameState resultingState = result.NewState;
-
-                if (enemyMove is EndPhaseCommand)
-                {
-                    resultingState = resultingState.With(activePlayerId: _botId);
-                }
-
-                if (resultingState == stateWithPhantomHand && !(enemyMove is EndPhaseCommand))
-                    continue;
-
-                moveFound = true;
-                float currentScore = _strategy.Evaluate(resultingState, _botId);
-                if (currentScore < worstScoreForBot)
-                {
-                    worstScoreForBot = currentScore;
-                    worstStateForBot = resultingState;
-                }
-            }
-
-            if (!moveFound)
-            {
-                worstScoreForBot = _strategy.Evaluate(currentState.With(activePlayerId: _botId), _botId);
-            }
-
-            return (worstStateForBot, worstScoreForBot);
-        }
-    }
-}
-
-
-========================================
 FILE: MoveGenerator.cs
 PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\MoveGenerator.cs
 ========================================
@@ -307,6 +117,80 @@ namespace CardGame.Core.AI.Logic
             }
 
             return state.UpdatePlayer(newEnemyState);
+        }
+    }
+}
+
+
+========================================
+FILE: BalanceStrategy.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Strategies\BalanceStrategy.cs
+========================================
+using CardGame.Core.AI.Interfaces;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+using System;
+using System.Linq;
+
+namespace CardGame.Core.AI.Strategies
+{
+    public class BalanceStrategy : IAIStrategy
+    {
+        public float Evaluate(GameState state, int botPlayerId)
+        {
+            var bot = state.GetPlayer(botPlayerId);
+            var enemy = state.GetOpponent(botPlayerId);
+
+            // --- KLUCZOWA POPRAWKA: DETEKCJA KOŃCA GRY ---
+            if (bot.Health <= 0) return -1000000f; // Przegrana to absolutne dno
+            if (enemy.Health <= 0) return 1000000f; // Wygrana to absolutny priorytet
+
+            float score = 2000.0f;
+
+            // 1. MANA
+            float spentBlood = bot.MaxBlood - bot.CurrentBlood;
+            score += spentBlood * 20.0f;
+
+            // 2. ŻYCIE (Bardzo wysoka waga przetrwania)
+            score += bot.Health * 50.0f;
+            score -= enemy.Health * 30.0f;
+
+            // 3. PLANSZA
+            bool hasGerard = state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && u.Definition.Name.Contains("Gerard"));
+
+            foreach (var line in state.Board.Lines)
+            {
+                var my = (botPlayerId == 1) ? line.Player1Unit : line.Player2Unit;
+                var en = (botPlayerId == 1) ? line.Player2Unit : line.Player1Unit;
+
+                score += ScoreUnit(my, en, hasGerard, true) * 25.0f;
+                score -= ScoreUnit(en, my, false, false) * 35.0f; // Wrogowie są teraz "drożsi" (bot chce ich zabijać)
+            }
+
+            // 4. KARA ZA PASS (Gdy grozi śmierć lub mamy ruchy)
+            if (state.ActivePlayerId == botPlayerId && bot.CurrentBlood > 0)
+            {
+                if (bot.Hand.Any(c => c.CurrentStats.BloodCost <= bot.CurrentBlood))
+                    score -= 500.0f;
+            }
+
+            return score;
+        }
+
+        private float ScoreUnit(CardInstance? u, CardInstance? opp, bool g, bool f)
+        {
+            if (u == null) return 0;
+            var s = u.CurrentStats;
+
+            // POPRAWKA: Atak wroga jest groźniejszy niż jego HP (priorytet dla Glocka)
+            float val = f ? (s.Attack * 3.0f + s.Health * 2.0f)
+                          : (s.Attack * 6.0f + s.Health * 1.5f);
+
+            if (s.Keywords.Contains(Keyword.Marked)) val += f ? -50 : (g ? 100 : 30);
+            if (s.Keywords.Contains(Keyword.Unkillable)) val += 20;
+
+            return val;
         }
     }
 }
@@ -1011,13 +895,18 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             {
                 try
                 {
-                    var tokenCard = context.Factory.CreateCard(action.ValueParam, targets.TargetPlayer.PlayerId);
-                  
-                    return state.UpdatePlayer(targets.TargetPlayer.WithCardAddedToHand(tokenCard));
+                    int pid = targets.TargetPlayer.PlayerId;
+                    var tokenCard = context.Factory.CreateCard(action.ValueParam, pid);
+
+                    var freshPlayer = state.GetPlayer(pid);
+
+                   
+                    return state.UpdatePlayer(freshPlayer.WithCardAddedToHand(tokenCard));
+
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"[BŁĄD] AddCard: {ex.Message}");
+                    Console.WriteLine($"[BŁĄD] AddCardToHandHandler: {ex.Message}");
                 }
             }
             return state;
@@ -2004,3 +1893,194 @@ namespace CardGame.Core.Cards.Factories
     }
 }
 
+
+
+========================================
+FILE: EffectTargetResolver.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\EffectTargetResolver.cs
+========================================
+using System;
+using System.Linq;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Events;
+using CardGame.Core.Cards.Models;
+using System.Collections.Generic;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Cards.Logic
+{
+    public class EffectTargets
+    {
+        public PlayerState? TargetPlayer;
+        public List<CardInstance> UnitTargets { get; set; } = new();
+        public CardInstance? TargetUnit => UnitTargets.FirstOrDefault();
+    }
+
+    public static class EffectTargetResolver
+    {
+        public static EffectTargets Resolve(TargetType type, GameState state, IGameEvent contextEvent, int sourceCardId)
+        {
+            var result = new EffectTargets();
+            int ownerId = GetOwner(state, sourceCardId, contextEvent);
+            int opponentId = (ownerId == 1) ? 2 : 1;
+
+            switch (type)
+            {
+                case TargetType.SelectedTarget:
+                case TargetType.TargetEnemyUnit:
+                case TargetType.TargetFriendlyUnit:
+                case TargetType.OtherFriendlyUnits:
+                    int? targetId = null;
+
+                    if (contextEvent is TargetSelectedEvent tse)
+                        targetId = tse.SelectedTargetId;
+                    else if (contextEvent is CardPlayedEvent cpe)
+                        targetId = cpe.SelectedTargetId;
+                    else if (contextEvent is StatusAppliedEvent sae)
+                        targetId = sae.TargetUnitId;
+                    else if (contextEvent is UnitDamagedEvent ude)
+                        targetId = ude.Unit?.InstanceId ?? ude.Source?.InstanceId;
+                    else if (contextEvent is UnitDiedEvent udied)
+                        targetId = udied.Unit.InstanceId;
+
+                    if (targetId.HasValue)
+                    {
+                        var tUnit = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == targetId.Value);
+                        if (tUnit == null && (type == TargetType.Self || type == TargetType.SelectedTarget))
+                        {
+                            tUnit = state.PlayerA.DiscardPile.FirstOrDefault(u => u.InstanceId == targetId.Value)
+                                  ?? state.PlayerB.DiscardPile.FirstOrDefault(u => u.InstanceId == targetId.Value);
+                        }
+                        if (type == TargetType.OtherFriendlyUnits && targetId.Value == sourceCardId)
+                            return result;
+
+                       
+                        if (tUnit != null)
+                        {
+                            bool isValid = true;
+                            if (type == TargetType.TargetFriendlyUnit && tUnit.OwnerPlayerId != ownerId) isValid = false;
+                            if (type == TargetType.OtherFriendlyUnits && tUnit.OwnerPlayerId != ownerId) isValid = false;
+                            if (type == TargetType.TargetEnemyUnit && tUnit.OwnerPlayerId != opponentId) isValid = false;
+
+                            if (isValid) result.UnitTargets.Add(tUnit);
+                        }
+                    }
+                    break;
+
+                case TargetType.FriendlyHero:
+                    result.TargetPlayer = state.GetPlayer(ownerId);
+                    break;
+                case TargetType.EnemyHero:
+                    result.TargetPlayer = state.GetPlayer(opponentId);
+                    break;
+                case TargetType.Choice:
+                    result.TargetPlayer = state.GetPlayer(ownerId);
+                    break;
+                case TargetType.AllUnitsOnBoard:
+                    result.UnitTargets.AddRange(state.Board.GetAllUnits());
+                    break;
+                case TargetType.AllEnemyUnits:
+                    result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == opponentId));
+                    break;
+                case TargetType.AllFriendlyUnits:
+                    result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == ownerId));
+                    break;
+
+                case TargetType.Self:
+                  
+                    var self = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceCardId) ??
+                               state.PlayerA.Hand.Concat(state.PlayerB.Hand).FirstOrDefault(c => c.InstanceId == sourceCardId) ??
+                               state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceCardId) ??
+                               state.PlayerA.DiscardPile.Concat(state.PlayerB.DiscardPile).FirstOrDefault(c => c.InstanceId == sourceCardId);
+
+                    if (self != null) result.UnitTargets.Add(self);
+              
+                    result.TargetPlayer = state.GetPlayer(ownerId);
+                    break;
+            }
+            return result;
+        }
+
+        public static List<CardInstance> GetPotentialTargets(TargetType type, GameState state, int sourceCardId)
+        {
+            int ownerId = GetOwner(state, sourceCardId);
+            int opponentId = (ownerId == 1) ? 2 : 1;
+            var allUnits = state.Board.GetAllUnits();
+
+            return type switch
+            {
+                TargetType.TargetEnemyUnit => allUnits.Where(u => u.OwnerPlayerId == opponentId).ToList(),
+                TargetType.TargetFriendlyUnit => allUnits.Where(u => u.OwnerPlayerId == ownerId && u.InstanceId != sourceCardId).ToList(),
+                TargetType.OtherFriendlyUnits => allUnits.Where(u => u.OwnerPlayerId == ownerId && u.InstanceId != sourceCardId).ToList(),
+                TargetType.SelectedTarget => allUnits.Where(u => u.InstanceId != sourceCardId).ToList(),
+                _ => new List<CardInstance>()
+            };
+        }
+
+        private static int GetOwner(GameState state, int instanceId, IGameEvent? contextEvent = null)
+        {
+           
+            if (contextEvent is UnitDiedEvent ude && ude.Unit.InstanceId == instanceId)
+                return ude.Unit.OwnerPlayerId;
+            if (contextEvent is UnitSacrificedEvent use && use.Unit.InstanceId == instanceId)
+                return use.Unit.OwnerPlayerId;
+
+          
+            var unit = state.Board.GetAllUnits().FirstOrDefault(x => x.InstanceId == instanceId);
+            if (unit != null) return unit.OwnerPlayerId;
+
+            if (state.PlayerA.Hand.Any(x => x.InstanceId == instanceId) ||
+                state.PlayerA.DiscardPile.Any(x => x.InstanceId == instanceId)) return 1;
+            if (state.PlayerB.Hand.Any(x => x.InstanceId == instanceId) ||
+                state.PlayerB.DiscardPile.Any(x => x.InstanceId == instanceId)) return 2;
+
+            return state.ActivePlayerId;
+        }
+    }
+}
+
+
+========================================
+FILE: PlayValidator.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\PlayValidator.cs
+========================================
+using System.Linq;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Cards.Logic
+{
+    public static class PlayValidator
+    {
+        public static bool CanPlay(CardInstance card, GameState state, int playerId)
+        {
+            var player = state.GetPlayer(playerId);
+            if (!player.CanPlayCard(card.CurrentStats.BloodCost)) return false;
+
+            if (card.Definition.Type == CardType.Unit)
+            {
+                return state.Board.Lines.Any(l => l.IsSlotEmpty(playerId));
+            }
+
+            if (card.Definition.Type == CardType.Spell)
+            {
+                var onPlayedEffect = card.Definition.Effects.FirstOrDefault(e => e.Trigger == TriggerType.OnPlayed);
+                if (onPlayedEffect != null)
+                {
+                    var firstManualAction = onPlayedEffect.Actions.FirstOrDefault(a => IsManualTarget(a.Target) || a.Target == TargetType.SelectedTarget);
+                    if (firstManualAction != null)
+                    {
+                        var typeToCheck = firstManualAction.Target == TargetType.SelectedTarget ? onPlayedEffect.Targeting : firstManualAction.Target;
+                        if (!EffectTargetResolver.GetPotentialTargets(typeToCheck, state, card.InstanceId).Any()) return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private static bool IsManualTarget(TargetType t) =>
+            t == TargetType.SelectedTarget || t == TargetType.TargetEnemyUnit || t == TargetType.TargetFriendlyUnit || t == TargetType.OtherFriendlyUnits;
+    }
+}

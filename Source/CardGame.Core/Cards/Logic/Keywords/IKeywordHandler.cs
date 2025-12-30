@@ -12,6 +12,7 @@ namespace CardGame.Core.Cards.Logic.Keywords
         int OnModifyDamageTaken(int amount, DamageContext context);
         GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIdx, GameContext context);
         GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context);
-        bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context);
+        // Zaktualizowana sygnatura
+        bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice);
     }
 }

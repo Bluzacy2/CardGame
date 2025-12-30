@@ -1,292 +1,6 @@
 ﻿
 
 ========================================
-FILE: DeathResolver.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Death\DeathResolver.cs
-========================================
-using System;
-using System.Linq;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.State.Models;
-using CardGame.Core.Events;
-using CardGame.Core.Application;
-
-namespace CardGame.Core.GameRules.Death
-{
-    public class DeathResolver
-    {
-        public GameState ResolveDeaths(GameState state, EventBus eventBus, GameContext context)
-        {
-            var workingState = state;
-            bool changed = true;
-
-            while (changed)
-            {
-                changed = false;
-                var allUnits = workingState.Board.GetAllUnits();
-                // Szukamy pierwszej jednostki, która powinna umrzeć
-                var unitToKill = allUnits.FirstOrDefault(u => u.CurrentStats.Health <= 0);
-
-                if (unitToKill != null)
-                {
-                    int lineIndex = -1;
-                    for (int i = 0; i < 4; i++)
-                    {
-                        if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitToKill.InstanceId ||
-                            workingState.Board.Lines[i].Player2Unit?.InstanceId == unitToKill.InstanceId)
-                        {
-                            lineIndex = i;
-                            break;
-                        }
-                    }
-
-                    var history = eventBus.GetHistory().ToList();
-
-                    // Sprawdzamy, czy śmierć nie jest wynikiem poświęcenia (Sacrifice)
-                    bool isSacrifice = history.Any(e => e is UnitSacrificedEvent sac && sac.Unit.InstanceId == unitToKill.InstanceId);
-
-                    // Próba zapobieżenia śmierci (np. Soul Guard), o ile nie jest to poświęcenie
-                    if (!isSacrifice && context.Keywords.TryPreventDeath(ref workingState, unitToKill, context))
-                    {
-                        changed = true;
-                        continue;
-                    }
-
-                    // Znajdujemy zabójcę, przeszukując historię zadanych obrażeń tej jednostce
-                    var lastDmg = history.OfType<UnitDamagedEvent>()
-                        .LastOrDefault(e => e.Unit?.InstanceId == unitToKill.InstanceId && e.Source != null);
-
-                    workingState = KillInstantly(workingState, unitToKill, lineIndex, eventBus, lastDmg?.Source?.InstanceId);
-                    changed = true;
-                }
-            }
-            return workingState;
-        }
-
-        public GameState KillInstantly(GameState state, CardInstance unit, int lineIndex, EventBus events, int? killerId)
-        {
-            var board = state.Board;
-            for (int i = 0; i < 4; i++)
-            {
-                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId)
-                    board = board.WithUnitPlacedAt(i, 1, null);
-                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
-                    board = board.WithUnitPlacedAt(i, 2, null);
-            }
-
-            var owner = state.GetPlayer(unit.OwnerPlayerId);
-            var newState = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
-
-            // Wysyłamy informację o śmierci wraz z ID zabójcy (killerId)
-            events.Publish(new UnitDiedEvent(unit, lineIndex, killerId));
-            return newState;
-        }
-    }
-}
-
-
-========================================
-FILE: NetworkCommand.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\NetworkCommand.cs
-========================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CardGame.Core.Multiplayer
-{
-    internal class NetworkCommand
-    {
-    }
-}
-
-
-
-========================================
-FILE: CommandQueue.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\Synchronization\CommandQueue.cs
-========================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CardGame.Core.Multiplayer.Synchronization
-{
-    internal class CommandQueue
-    {
-    }
-}
-
-
-
-========================================
-FILE: LockstepManager.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\Synchronization\LockstepManager.cs
-========================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CardGame.Core.Multiplayer.Synchronization
-{
-    internal class LockstepManager
-    {
-    }
-}
-
-
-
-========================================
-FILE: ISaveStrategy.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Saves\Interfaces\ISaveStrategy.cs
-========================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CardGame.Core.Saves.Interfaces
-{
-    internal interface ISaveStrategy
-    {
-    }
-}
-
-
-
-========================================
-FILE: SaveData.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Saves\Models\SaveData.cs
-========================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CardGame.Core.Saves.Models
-{
-    internal class SaveData
-    {
-    }
-}
-
-
-
-========================================
-FILE: GamePhase.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Enums\GamePhase.cs
-========================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CardGame.Core.State.Enums
-{
-    public enum GamePhase
-    {
-        None,       // Faza nieokreślona lub początkowa
-        Mulligan,   // Pierwsza faza gry - Mulligan & Dobieranie kart
-        UnitOnly, // Faza grania Unitów
-        UnitAndAction, // Faza grania Unitów i Akcji
-        ActionOnly, // Faza grania tylko Akcji
-        Combat, // Faza walki
-        EndTurn    // Faza kończenia tury
-    }
-}
-
-
-
-========================================
-FILE: BoardState.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\BoardState.cs
-========================================
-using CardGame.Core.Cards.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CardGame.Core.State.Models
-{
-    public class BoardState
-    {
-        public IReadOnlyList<Line> Lines { get; }
-        public BoardState(IEnumerable<Line> lines)
-        {
-            Lines = new List<Line>(lines);
-        }
-
-        public static BoardState Empty()
-        {
-            var emptyLines = new List<Line>();
-            for (int i = 0; i < 4; i++)
-            {
-                emptyLines.Add(Line.Empty(i));
-            }
-            return new BoardState(emptyLines);
-        }
-
-        public BoardState WithUnitPlacedAt(int lineIndex, int playerId, CardInstance? unit)
-        {
-            var newLines = new List<Line>(Lines);
-            var oldLine = newLines[lineIndex];
-            var newLine = oldLine.WithUnitPlaced(playerId, unit);
-            newLines[lineIndex] = newLine;
-            return new BoardState(newLines);
-        }
-
-        public List<CardInstance> GetAllUnits()
-        {
-            var list = new List<CardInstance>();
-            foreach (var line in Lines)
-            {
-                if (line.Player1Unit != null) list.Add(line.Player1Unit);
-                if (line.Player2Unit != null) list.Add(line.Player2Unit);
-            }
-            return list;
-        }
-
-        public BoardState UpdateUnit(CardInstance updatedUnit)
-        {
-            if (updatedUnit == null) return this;
-
-            var newLines = new List<Line>();
-            bool found = false;
-
-            foreach (var line in Lines)
-            {
-                if (line.Player1Unit?.InstanceId == updatedUnit.InstanceId)
-                {
-                    newLines.Add(line.WithUnitPlaced(1, updatedUnit));
-                    found = true;
-                }
-                else if (line.Player2Unit?.InstanceId == updatedUnit.InstanceId)
-                {
-                    newLines.Add(line.WithUnitPlaced(2, updatedUnit));
-                    found = true;
-                }
-                else
-                {
-                    newLines.Add(line);
-                }
-            }
-
-            return found ? new BoardState(newLines) : this;
-        }
-    }
-}
-
-
-========================================
 FILE: GameState.cs
 PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\GameState.cs
 ========================================
@@ -813,35 +527,36 @@ using CardGame.Core.StateMachine.Interfaces;
 
 namespace CardGame.Core.StateMachine.Phases
 {
-    public class CombatPhaseState : CardGame.Core.StateMachine.Interfaces.IPhaseState
+    public class CombatPhaseState : IPhaseState
     {
-        public CardGame.Core.State.Enums.GamePhase PhaseType => CardGame.Core.State.Enums.GamePhase.Combat;
-        public bool IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand command, CardGame.Core.State.Models.GameState state) => command is CardGame.Core.Commands.Implementations.EndPhaseCommand;
-        public bool ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState state) => true;
+        public GamePhase PhaseType => GamePhase.Combat;
+        public bool IsCommandAllowed(IGameCommand command, GameState state) => command is CardGame.Core.Commands.Implementations.EndPhaseCommand;
+        public bool ShouldEndPhaseAutomatically(GameState state) => true;
 
-        public CardGame.Core.State.Models.GameState ProcessEndPhase(CardGame.Core.State.Models.GameState currentState, CardGame.Core.Events.EventBus eventBus, CardGame.Core.Application.GameContext context)
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
         {
-            var orchestrator = new CardGame.Core.Combat.CombatOrchestrator();
+            var orchestrator = new CombatOrchestrator();
             var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState, eventBus, context);
 
-            // Logika statusów (Burning itp.)
             var workingState = stateAfterCombat;
             foreach (var unit in workingState.Board.GetAllUnits())
                 workingState = context.Keywords.ProcessRoundEnd(workingState, unit, context);
-            workingState = new CardGame.Core.GameRules.Death.DeathResolver().ResolveDeaths(workingState, eventBus, context);
 
-            // Nowa runda
+            workingState = new DeathResolver().ResolveDeaths(workingState, eventBus, context);
+
             int nextRoundStarter = 3 - currentState.RoundStartingPlayerId;
             int nextTurnNumber = currentState.TurnNumber + 1;
-            int manaLimit = (nextTurnNumber + 1) / 2;
 
-            // TU I TYLKO TU: Obaj dobierają karty i Starter dostaje refill many
-            var pA = workingState.PlayerA.WithTurnStartBlood(manaLimit, nextRoundStarter == 1).WithCardDrawn(eventBus);
-            var pB = workingState.PlayerB.WithTurnStartBlood(manaLimit, nextRoundStarter == 2).WithCardDrawn(eventBus);
+
+            int manaLimit = nextTurnNumber;
+
+          
+            var pA = workingState.PlayerA.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
+            var pB = workingState.PlayerB.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
 
             return workingState.With(
                 turnNumber: nextTurnNumber,
-                currentPhase: CardGame.Core.State.Enums.GamePhase.UnitOnly,
+                currentPhase: GamePhase.UnitOnly,
                 activePlayerId: nextRoundStarter,
                 roundStartingPlayerId: nextRoundStarter,
                 playerA: pA,
@@ -1753,6 +1468,277 @@ namespace CardGame.Tests
             engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.ActionOnly);
             engine.ExecuteCommand(new PlaySpellCommand(1, cake.InstanceId));
             Assert.Contains(engine.CurrentState.PlayerB.Hand, c => c.Definition.Name == "Exploding Fruitcake");
+        }
+    }
+}
+
+
+========================================
+FILE: NewCardsPt3.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\NewCardsPt3.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using Xunit;
+
+namespace CardGame.Tests
+{
+    public class NewMechanicsPt3Tests
+    {
+        private string GetJson() => @"[
+            { ""Id"": 31, ""Name"": ""Silence"", ""Type"": ""Spell"", ""Cost"": 2,
+              ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""Silence"", ""Target"": ""TargetEnemyUnit"" } ] } ] },
+            { ""Id"": 33, ""Name"": ""Mouse"", ""Type"": ""Unit"", ""Attack"": 5, ""Health"": 10, ""Keywords"": [""Stunned""] },
+            { ""Id"": 34, ""Name"": ""MaidMask"", ""Type"": ""Unit"", ""Attack"": 3, ""Health"": 1, ""Keywords"": [""SoulGuard""] },
+            { ""Id"": 36, ""Name"": ""Death"", ""Type"": ""Unit"", ""Attack"": 3, ""Health"": 3,
+              ""Effects"": [ { ""Trigger"": ""OnFriendlyUnitDied"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Target"": ""EnemyHero"", ""Amount"": 3 } ] } ] },
+            { ""Id"": 99, ""Name"": ""Victim"", ""Type"": ""Unit"", ""Attack"": 1, ""Health"": 1 }
+        ]";
+
+        [Fact]
+        public void Silence_ShouldRemoveSoulGuard_AndBonusStats()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetJson());
+            var victim = engine.Factory.CreateCard(34, 2);
+            var buffedVictim = victim.AddPermanentBuff(new CardGame.Core.Cards.Models.CardStats(2, 2, 0));
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 2, buffedVictim));
+
+            var silence = engine.Factory.CreateCard(31, 1);
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(silence));
+
+            // --- KLUCZOWA POPRAWKA: Zmiana fazy na taką, która pozwala na czary ---
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.ActionOnly);
+
+            engine.ExecuteCommand(new PlaySpellCommand(1, silence.InstanceId, selectedTargetId: victim.InstanceId));
+
+            var silencedUnit = engine.CurrentState.Board.Lines[0].Player2Unit!;
+
+            // Jeśli faza jest poprawna, te asercje sprawdzą realne działanie uciszenia
+            Assert.True(silencedUnit.IsSilenced);
+            Assert.Equal(3, silencedUnit.CurrentStats.Attack);
+            Assert.DoesNotContain(Keyword.SoulGuard, silencedUnit.CurrentStats.Keywords);
+        }
+
+        [Fact]
+        public void Death_ShouldPingHero_WhenFriendlyUnitDies()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetJson());
+            var death = engine.Factory.CreateCard(36, 1);
+            var ally = engine.Factory.CreateCard(99, 1);
+            var enemy = engine.Factory.CreateCard(99, 2);
+            var blocker = engine.Factory.CreateCard(99, 2); // NOWE: Blokuje atak Death
+
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board
+                .WithUnitPlacedAt(0, 1, death)
+                .WithUnitPlacedAt(0, 2, blocker) // Death bije w blokera, nie w Hero
+                .WithUnitPlacedAt(1, 1, ally)
+                .WithUnitPlacedAt(1, 2, enemy));
+
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.Combat);
+            engine.ExecuteCommand(new EndPhaseCommand(1));
+
+            // Ally (P1) ginie -> Death (P1) zadaje 3 dmg w P2. Expected: 30 - 3 = 27.
+            Assert.Equal(27, engine.CurrentState.PlayerB.Health);
+        }
+
+        [Fact]
+        public void StartingStun_ShouldWorkOnMouse()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetJson());
+            var mouse = engine.Factory.CreateCard(33, 1);
+            var victim = engine.Factory.CreateCard(99, 2);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, mouse).WithUnitPlacedAt(0, 2, victim));
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.Combat);
+
+            // ACT: Rozliczamy walkę
+            engine.ExecuteCommand(new EndPhaseCommand(1));
+
+            Assert.NotNull(engine.CurrentState.Board.Lines[0].Player2Unit);
+            var mouseAfter = engine.CurrentState.Board.Lines[0].Player1Unit!;
+            Assert.DoesNotContain(Keyword.Stunned, mouseAfter.CurrentStats.Keywords);
+        }
+    }
+}
+
+
+========================================
+FILE: OnDeathTriggerFix.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\OnDeathTriggerFix.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using Xunit;
+
+namespace CardGame.Tests
+{
+    public class DeathTriggersFullTests
+    {
+        private string GetDeathMechanicsJson() => @"[
+          {
+            ""Id"": 1, ""Name"": ""Bone Sommelier"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+            ""Effects"": [ { ""Trigger"": ""OnDeath"", ""Actions"": [ { ""Type"": ""AddCardToHand"", ""Target"": ""FriendlyHero"", ""ValueParam"": 900 } ] } ]
+          },
+          {
+            ""Id"": 2, ""Name"": ""Mokke"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 2,
+            ""Effects"": [ { ""Trigger"": ""OnDeath"", ""Actions"": [ { ""Type"": ""Heal"", ""Target"": ""FriendlyHero"", ""Amount"": 3 } ] } ]
+          },
+          {
+            ""Id"": 3, ""Name"": ""BoomBots"", ""Type"": ""Unit"", ""Cost"": 1, ""Attack"": 1, ""Health"": 1,
+            ""Effects"": [ { ""Trigger"": ""OnDeath"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Target"": ""EnemyHero"", ""Amount"": 2 } ] } ]
+          },
+          {
+            ""Id"": 900, ""Name"": ""The Alluring Goblet"", ""Type"": ""Spell"", ""Cost"": 1,
+            ""Effects"": [ {
+                ""Trigger"": ""OnPlayed"", ""Targeting"": ""TargetFriendlyUnit"", 
+                ""Actions"": [ 
+                    { ""Type"": ""ApplyStatus"", ""Target"": ""SelectedTarget"", ""StatusKeyword"": ""Unkillable"" },
+                    { ""Type"": ""DestroyUnit"", ""Target"": ""SelectedTarget"" }
+                ]
+            } ]
+          },
+          { ""Id"": 99, ""Name"": ""Executioner"", ""Type"": ""Spell"", ""Cost"": 0, 
+            ""Effects"": [ { ""Trigger"": ""OnPlayed"", ""Actions"": [ { ""Type"": ""DealDamage"", ""Target"": ""TargetEnemyUnit"", ""Amount"": 10 } ] } ] }
+        ]";
+
+        [Fact]
+        public void BoneSommelier_Death_GivesGobletToCorrectPlayer()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetDeathMechanicsJson());
+            var sommelier = engine.Factory.CreateCard(1, 1); // P1
+            var killer = engine.Factory.CreateCard(99, 2);    // P2
+
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, sommelier));
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerB.WithCardAddedToHand(killer));
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.ActionOnly);
+
+            // P2 zabija jednostkę P1
+            engine.ExecuteCommand(new PlaySpellCommand(2, killer.InstanceId, sommelier.InstanceId));
+
+            // Bone Sommelier (P1) umiera -> Goblet powinien trafić do P1
+            Assert.Contains(engine.CurrentState.PlayerA.Hand, c => c.Definition.Id == "900");
+            Assert.DoesNotContain(engine.CurrentState.PlayerB.Hand, c => c.Definition.Id == "900");
+        }
+
+        [Fact]
+        public void Mokke_Death_HealsFriendlyHero()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetDeathMechanicsJson());
+            var mokke = engine.Factory.CreateCard(2, 1);
+
+            // P1 ma 10 HP
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.With(health: 10));
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, mokke));
+
+            // Symulujemy śmierć przez obrażenia (np. z walki lub efektu)
+            var deadMokke = mokke.TakeDamage(10);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.UpdateUnit(deadMokke));
+
+            // Wywołujemy silnik, aby sprzątnął zwłoki i odpalił triggery
+            engine.ExecuteCommand(new EndPhaseCommand(1));
+
+            Assert.Equal(13, engine.CurrentState.PlayerA.Health);
+        }
+
+        [Fact]
+        public void BoomBots_Death_DamagesEnemyHero()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetDeathMechanicsJson());
+            var bot = engine.Factory.CreateCard(3, 1); // Gracz 1
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, bot));
+
+            // Zabijamy bota
+            var deadBot = bot.TakeDamage(5);
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.UpdateUnit(deadBot));
+            engine.ExecuteCommand(new EndPhaseCommand(1));
+
+            // Gracz 2 powinien stracić 2 HP (30 -> 28)
+            Assert.Equal(28, engine.CurrentState.PlayerB.Health);
+        }
+
+        [Fact]
+        public void AlluringGoblet_Combo_ReturnsUnitToHand()
+        {
+            var engine = TestHelpers.CreateEngineWithCards(GetDeathMechanicsJson());
+            var unit = engine.Factory.CreateCard(2, 1); // Mokke
+            var goblet = engine.Factory.CreateCard(900, 1);
+
+            engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, unit));
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(goblet));
+            engine.CurrentState = engine.CurrentState.With(currentPhase: GamePhase.ActionOnly);
+
+            // Zagranie Goblet na Mokke
+            // Mechanika: ApplyStatus(Unkillable) -> DestroyUnit -> Trigger Unkillable(MoveToHand)
+            engine.ExecuteCommand(new PlaySpellCommand(1, goblet.InstanceId, unit.InstanceId));
+
+            // Jednostka powinna zniknąć z planszy i wrócić do ręki
+            Assert.Null(engine.CurrentState.Board.Lines[0].Player1Unit);
+            Assert.Contains(engine.CurrentState.PlayerA.Hand, c => c.InstanceId == unit.InstanceId);
+
+            // Ponieważ Mokke "zginął" (mimo że wrócił do ręki), jego OnDeath też powinien się odpalić!
+            Assert.Equal(30, engine.CurrentState.PlayerA.Health); // 30 + 3 z Mokke
+        }
+    }
+}
+
+
+========================================
+FILE: TestHelpers.cs
+PATH: C:\Users\bluza\Documents\CardGame\Tests\CardGame.Tests\TestHelpers.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using System.Collections.Generic;
+using System.IO;
+
+namespace CardGame.Tests
+{
+    public static class TestHelpers
+    {
+        public static GameEngine CreateEngineWithCards(string jsonContent, int seed = 1)
+        {
+            string tempFile = Path.GetTempFileName();
+            File.WriteAllText(tempFile, jsonContent);
+
+            try
+            {
+                CardLibrary.Instance.Clear();
+                CardLibrary.Instance.LoadFromJson(tempFile);
+            }
+            finally { }
+
+            var rng = new DeterministicRng(seed);
+            var factory = new CardFactory(CardLibrary.Instance, rng);
+
+            // Ustawienie początkowe zasobów (Używamy WithResourceChanged)
+            var pA = PlayerState.Initial(1, new List<CardInstance>())
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .With(health: 30);
+
+            var pB = PlayerState.Initial(2, new List<CardInstance>())
+                .WithResourceChanged(ResourceType.Blood, 10, 10)
+                .With(health: 30);
+
+            var board = BoardState.Empty();
+            var state = new GameState(1, GamePhase.UnitOnly, 1, board, pA, pB);
+
+            return new GameEngine(state, seed);
+        }
+
+        public static CardInstance CreateCard(GameEngine engine, int id, int ownerId)
+        {
+            return engine.Factory.CreateCard(id, ownerId);
         }
     }
 }
