@@ -1,9 +1,8 @@
 ﻿using CardGame.Core.AI.Interfaces;
 using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
 using CardGame.Core.Cards.Models;
-using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
+using CardGame.Core.Cards.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,19 +26,29 @@ namespace CardGame.Core.AI.Strategies
             // 1. IDENTYFIKACJA STRATEGII (Na podstawie kart na stole i w ręce)
             bool isMarkStrategy = bot.Hand.Any(c => IsMarkCard(c)) || state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && IsMarkCard(u));
             bool isSacrificeStrategy = bot.Hand.Any(c => IsSacrificeCard(c)) || state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && IsSacrificeCard(u));
-
+            bool isAggroMood = unitCount > spellCount; // Jeśli mam więcej jednostek, chcę spamić
             // 2. ZASOBY I TEMPO
             float bloodUsage = bot.MaxBlood - bot.CurrentBlood;
             score += bloodUsage * ResourceEfficiencyWeight;
 
             // Kara za trzymanie zbyt wielu kart (overdraw risk / brak tempa)
             if (bot.Hand.Count > 6) score -= 20.0f;
-
+                // Jeśli mam nastroj kontrolny, wydawanie jest ryzykowne (+5)
             // 3. ŻYCIE BOHATERA (Nieliniowe - panika poniżej 10 HP)
             float hpDiff = bot.Health - enemy.Health;
             score += hpDiff * HealthWeight;
             if (bot.Health < 10) score -= (10 - bot.Health) * 30.0f;
             if (enemy.Health < 5) score += 100.0f; // Blisko wygranej!
+            else
+            {
+                score += spentBlood * 25.0f; // W późniejszych fazach zawsze chcemy wydać wszystko
+            }
+
+            // 3. ŻYCIE
+            score += (bot.Health - enemy.Health) * 10.0f;
+
+            // 4. PLANSZA - ANALIZA LINII I SPLASH DAMAGE
+            bool hasGerard = state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && u.Definition.Name.Contains("Gerard"));
 
             // 4. ANALIZA PLANSZY
             var myUnits = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == botPlayerId).ToList();
@@ -47,29 +56,24 @@ namespace CardGame.Core.AI.Strategies
 
             bool hasGerard = myUnits.Any(u => u.Definition.Name.Contains("Gerard"));
 
-            for (int i = 0; i < 4; i++)
+            // 4. RĘKA - Kara za zapchanie i bonus za synergię
+            score += bot.Hand.Count * 5.0f;
+            if (bot.Hand.Count >= 8) score -= 150.0f;
+
+            // 5. BLOKADA POMIJANIA TURY
+            if (state.ActivePlayerId == botPlayerId && bot.CurrentBlood > 0)
             {
+                if (bot.Hand.Any(c => c.CurrentStats.BloodCost <= bot.CurrentBlood))
+                    score -= 100.0f; // Kara za PASS gdy nas stać na ruch
+            }
+
                 var line = state.Board.Lines[i];
                 var my = (botPlayerId == 1) ? line.Player1Unit : line.Player2Unit;
                 var en = (botPlayerId == 1) ? line.Player2Unit : line.Player1Unit;
-
+        private float EvaluateUnit(CardInstance? u, CardInstance? opp, int lineIdx, GameState state, bool hasGerard, bool isFriendly, bool isMarkStrat, bool isSacStrat)
                 score += EvaluateUnit(my, en, i, state, hasGerard, true, isMarkStrategy, isSacrificeStrategy) * BoardWeight;
                 score -= EvaluateUnit(en, my, i, state, false, false, false, false) * (BoardWeight * 1.1f);
             }
-
-            // 5. POTENCJAŁ RĘKI (Karty to nie tylko punkty, to opcje)
-            foreach (var card in bot.Hand)
-            {
-                score += EvaluateCardInHand(card, enemyUnits, isMarkStrategy, isSacrificeStrategy) * HandValueWeight;
-            }
-
-            return score;
-        }
-
-        private float EvaluateUnit(CardInstance? u, CardInstance? opp, int lineIdx, GameState state, bool hasGerard, bool isFriendly, bool isMarkStrat, bool isSacStrat)
-        {
-            if (u == null) return 0;
-            var s = u.CurrentStats;
 
             // Podstawa: Siła ognia + wytrzymałość
             float val = (s.Attack * 1.8f) + (s.Health * 1.2f);
@@ -84,45 +88,56 @@ namespace CardGame.Core.AI.Strategies
                 if (isFriendly) val -= 25.0f; // Bycie oznaczonym to ogromne ryzyko
                 else val += hasGerard ? 45.0f : 15.0f; // Przeciwnik z marką to cel/zasób
             }
-
-            // Splash Damage (Pozycjonowanie)
-            if (s.Keywords.Contains(Keyword.SplashDamage))
-            {
-                int targets = CountSplashTargets(u, lineIdx, state);
-                val += (targets * 10.0f) + 5.0f;
-            }
-
-            // Przeżywalność (Combat Projection Lite)
-            if (opp != null)
-            {
-                bool iDie = s.Health <= opp.CurrentStats.Attack;
-                bool heDies = opp.CurrentStats.Health <= s.Attack;
-
-                if (iDie && !heDies) val -= 20.0f; // Zły trade
-                if (!iDie && heDies) val += 15.0f; // Dobry trade
-                if (s.Keywords.Contains(Keyword.Stunned)) val *= 0.3f; // Ogłuszony jest prawie bezużyteczny w tej turze
-            }
-
-            return val;
+            // 5. RĘKA
+            score += bot.Hand.Count * 10.0f;
+            return score;
         }
-
-        private float EvaluateCardInHand(CardInstance card, List<CardInstance> enemyUnits, bool isMarkStrat, bool isSacStrat)
-        {
-            float val = 1.0f;
-
-            // Bonusy za synergię z archetypem
-            if (isMarkStrat && IsMarkCard(card)) val += 1.5f;
-            if (isSacStrat && IsSacrificeCard(card)) val += 1.5f;
-
+                int splashPower = 1;
+                if (u.Definition.BaseStats.KeywordParams.TryGetValue(Keyword.SplashDamage, out int p)) splashPower = p;
+            if (u == null) return 0;
+                int actualHits = 0;
+                foreach (int neighbor in new[] { lineIdx - 1, lineIdx + 1 })
+                {
+                    if (neighbor >= 0 && neighbor < 4)
+                    {
+                        var nLine = state.Board.Lines[neighbor];
+                        var potentialVictim = (u.OwnerPlayerId == 1) ? nLine.Player2Unit : nLine.Player1Unit;
+                        if (potentialVictim != null) actualHits++;
+                    }
+                }
+                // Wyższa wartość na liniach 1 i 2 (środek planszy)
+                val += (actualHits * splashPower * 2.0f);
+                if (lineIdx == 1 || lineIdx == 2) val += 5.0f;
+            }
+                        if (potentialVictim != null) targetsHit++;
+            // Analiza walki (Trade analysis)
+            if (opp != null)
             // Skalowanie czarów ofensywnych (np. Glock-17)
             if (card.Definition.Type == CardType.Spell && card.Definition.Effects.Any(e => e.Actions.Any(a => a.Type == ActionType.DealDamage)))
-            {
+
+                bool iDie = s.Health <= opp.CurrentStats.Attack;
+                bool enemyDies = opp.CurrentStats.Health <= s.Attack;
+                if (iDie && !enemyDies) val -= 25.0f; // Fatalny ruch (oddanie jednostki za nic)
+                if (!iDie && enemyDies) val += 15.0f; // Świetny ruch
                 // Jeśli wróg ma jednostki, czar niszczący ma dużą wartość
                 if (enemyUnits.Any(u => u.CurrentStats.Health <= 3)) val += 2.0f;
-            }
 
+                // Bonus za samo "dobre pozycjonowanie" (środkowe linie dają potencjał na 2 cele)
+            if (s.Keywords.Contains(Keyword.Marked)) val += isFriendly ? -40 : (playerHasGerard ? 50 : 15);
+            if (s.Keywords.Contains(Keyword.Stunned)) val *= 0.1f;
+            if (s.Keywords.Contains(Keyword.Unkillable)) val += 15.0f;
             // Unkillable jest zawsze dobre jako inwestycja
             if (card.CurrentStats.Keywords.Contains(Keyword.Unkillable)) val += 2.5f;
+            // Analiza walki
+            if (opp != null)
+            {
+                if (s.Health <= opp.CurrentStats.Attack && opp.CurrentStats.Health > s.Attack) val -= 15.0f;
+                if (opp.CurrentStats.Health <= s.Attack && s.Health > opp.CurrentStats.Attack) val += 10.0f;
+            }
+
+            if (s.Keywords.Contains(Keyword.Marked)) val += f ? -30 : (g ? 40 : 10);
+            if (s.Keywords.Contains(Keyword.Stunned)) val *= 0.1f;
+            if (s.Keywords.Contains(Keyword.Unkillable)) val += 15.0f;
 
             return val;
         }
