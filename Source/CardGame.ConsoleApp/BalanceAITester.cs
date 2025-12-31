@@ -54,8 +54,10 @@ namespace CardGame.ConsoleApp
 
                 bool p1IsCtrl = _gamesPlayed % 2 == 0;
                 var engine = new GameEngine(GameState.Initial(1, CreateDeck(factory, 1, p1IsCtrl), CreateDeck(factory, 2, !p1IsCtrl), rng), rng.Seed);
-                var ai1 = new AIPlayerController(engine, 1, new StandardStrategy());
-                var ai2 = new AIPlayerController(engine, 2, new StandardStrategy());
+
+                // POPRAWKA 1: Dodano AISolverType.BeamSearch
+                var ai1 = new AIPlayerController(engine, 1, new StandardStrategy(), AISolverType.BeamSearch);
+                var ai2 = new AIPlayerController(engine, 2, new StandardStrategy(), AISolverType.BeamSearch);
 
                 LogToAudit($"\n--- MECZ NR {_gamesPlayed + 1} | P1: {(p1IsCtrl ? "CONTROL" : "SACR")} vs P2: {(!p1IsCtrl ? "CONTROL" : "SACR")} ---");
 
@@ -67,7 +69,9 @@ namespace CardGame.ConsoleApp
                     if (state.CurrentPhase != GamePhase.Mulligan && state.CurrentPhase != GamePhase.Combat)
                     {
                         var activeAI = state.ActivePlayerId == 1 ? ai1 : ai2;
-                        _lastThoughts = activeAI.Solver.FindBestMoves(state);
+
+                        // POPRAWKA 2: Zmieniono .Solver na .BeamSolver
+                        _lastThoughts = activeAI.BeamSolver.FindBestMoves(state);
 
                         DrawUI(state, p1IsCtrl);
 
@@ -79,7 +83,7 @@ namespace CardGame.ConsoleApp
                         }
                         else
                         {
-                            await Task.Delay(50); // Małe opóźnienie w trybie auto, by UI "migało" postępem
+                            await Task.Delay(50);
                         }
                     }
 
@@ -114,6 +118,8 @@ namespace CardGame.ConsoleApp
             }
         }
 
+        // ... Reszta metod prywatnych bez zmian (LogToAudit, DrawUI, itd.) ...
+        // Skopiuj resztę metod z oryginalnego pliku BalanceAITester.cs jeśli ich tu nie wkleiłem
         private static void LogToAudit(string message)
         {
             _matchAudit.AppendLine(message);
@@ -124,10 +130,7 @@ namespace CardGame.ConsoleApp
         {
             StringBuilder sb = new StringBuilder();
             Console.SetCursorPosition(0, 0);
-
-            // TurnNumber w CombatPhaseState rośnie co walkę, więc TurnNumber = RoundNumber
             int roundNum = s.TurnNumber;
-            // Fazy w rundzie: 1. UnitOnly, 2. UnitAndAction, 3. ActionOnly. Combat to "podsumowanie".
             string phaseName = s.CurrentPhase switch
             {
                 GamePhase.UnitOnly => "1/3 (JEDNOSTKI)",
@@ -136,21 +139,16 @@ namespace CardGame.ConsoleApp
                 GamePhase.Combat => "WALKA",
                 _ => s.CurrentPhase.ToString()
             };
-
             string p1Tag = p1IsCtrl ? "CONTROL" : "SACRIFICE";
             string p2Tag = !p1IsCtrl ? "CONTROL" : "SACRIFICE";
             string activeTag = s.ActivePlayerId == 1 ? $"P1 [{p1Tag}]" : $"P2 [{p2Tag}]";
-
             string headL = $" RUNDA: {roundNum} | FAZA: {phaseName} | AKTYWNY: {activeTag}";
             string headR = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ] | MODE: {(_isAutoMode ? "AUTO" : "STEP")} ";
-
             sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
             sb.AppendLine("║ " + headL.PadRight(UI_WIDTH - headR.Length - 4) + headR + "║");
             sb.AppendLine("╠" + new string('═', 106) + "╦" + new string('═', UI_WIDTH - 109) + "╣");
-
             string[] left = RenderBoard(s);
             string[] right = RenderBrain(s);
-
             for (int i = 0; i < 40; i++)
             {
                 string l = i < left.Length ? left[i] : "";
@@ -160,7 +158,6 @@ namespace CardGame.ConsoleApp
             sb.AppendLine("╚" + new string('═', 106) + "╩" + new string('═', UI_WIDTH - 109) + "╝");
             Console.Write(sb.ToString());
         }
-
         private static string[] RenderBoard(GameState s)
         {
             var res = new List<string>();
@@ -181,30 +178,20 @@ namespace CardGame.ConsoleApp
             res.AddRange(_displayLogs.Reverse().Take(8).Select(x => " " + x));
             return res.ToArray();
         }
-
         private static List<string> WrapHand(IReadOnlyList<CardInstance> hand, string pId)
         {
             string prefix = $" Ręka {pId}: [";
             var cards = hand.Select(c => $"({c.CurrentStats.BloodCost}){c.Definition.Name}").ToList();
             var result = new List<string>();
             string currentLine = prefix;
-
             if (cards.Count == 0) { result.Add(prefix + "PUSTA]"); return result; }
-
             for (int i = 0; i < cards.Count; i++)
             {
                 string part = cards[i] + (i == cards.Count - 1 ? "" : ", ");
-                if ((currentLine + part).Length > 98)
-                {
-                    result.Add(currentLine);
-                    currentLine = "           " + part;
-                }
-                else currentLine += part;
+                if ((currentLine + part).Length > 98) { result.Add(currentLine); currentLine = "           " + part; } else currentLine += part;
             }
-            result.Add(currentLine + "]");
-            return result;
+            result.Add(currentLine + "]"); return result;
         }
-
         private static string GetRowSegment(int row, Line line) => row switch
         {
             0 => "┌───────────────────┐",
@@ -220,9 +207,7 @@ namespace CardGame.ConsoleApp
             10 => "└───────────────────┘",
             _ => ""
         };
-
         private static string Center(string t, int w) => t.Length > w ? t.Substring(0, w) : t.PadLeft((w + t.Length) / 2).PadRight(w);
-
         private static string Stats(CardInstance? u)
         {
             if (u == null) return "                 ";
@@ -230,38 +215,26 @@ namespace CardGame.ConsoleApp
             if (u.IsSilenced) status = "S!";
             return $"ATK:{u.CurrentStats.Attack,-2} HP:{u.CurrentStats.Health,-2} {status}";
         }
-
         private static string[] RenderBrain(GameState s)
         {
             var res = new List<string> { $"   MYŚLI BOTA P{s.ActivePlayerId}", "------------------------" };
             if (s.CurrentPhase == GamePhase.Combat) { res.Add(" [AUTO] Walka..."); return res.ToArray(); }
-
             foreach (var t in _lastThoughts.Take(15))
             {
                 string prefix = t == _lastThoughts.First() ? ">>" : "  ";
                 res.Add($"{prefix} {t.Description.PadRight(24)} | {t.Score:F0}");
-                if (t == _lastThoughts.First() && !string.IsNullOrEmpty(t.DeepReasoning))
-                {
-                    res.Add($"   L {t.DeepReasoning}");
-                    res.Add("");
-                }
+                if (t == _lastThoughts.First() && !string.IsNullOrEmpty(t.DeepReasoning)) { res.Add($"   L {t.DeepReasoning}"); res.Add(""); }
             }
             return res.ToArray();
         }
-
         private static string FormatCmdDetailed(IGameCommand? c, GameState s)
         {
             if (c == null) return "...";
             if (c is PlayUnitCommand pu) return $"Graj {s.GetPlayer(pu.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == pu.CardInstanceId)?.Definition.Name} (L{pu.TargetLineIndex + 1})";
             if (c is PlaySpellCommand ps) return $"Czar: {s.GetPlayer(ps.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == ps.CardInstanceId)?.Definition.Name}";
-            if (c is SelectTargetCommand st)
-            {
-                var target = s.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == st.TargetId);
-                return $"Cel: {target?.Definition.Name ?? "Bohater"}";
-            }
+            if (c is SelectTargetCommand st) { var target = s.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == st.TargetId); return $"Cel: {target?.Definition.Name ?? "Bohater"}"; }
             return "PAS (Koniec)";
         }
-
         private static void UpdateLogs(GameEngine e)
         {
             var all = e.Events.GetGlobalHistory().ToList();
@@ -275,7 +248,6 @@ namespace CardGame.ConsoleApp
             }
             _eventsSeenSoFar = all.Count;
         }
-
         private static void PerformMulligan(GameEngine e, int pid, bool ctrl)
         {
             var p = e.CurrentState.GetPlayer(pid);
@@ -283,10 +255,9 @@ namespace CardGame.ConsoleApp
             e.ExecuteCommand(new ConfirmMulliganCommand(pid, rej));
             LogToAudit($"[MULLIGAN] P{pid} wymienił {rej.Count} kart.");
         }
-
         private static List<CardInstance> CreateDeck(CardFactory f, int id, bool ctrl)
         {
-            int[] ids = ctrl ? new[] { 4, 32, 24, 25, 26, 17, 6, 31, 15, 7 } : new[] { 12, 10, 11, 3, 9, 1, 2, 5, 18, 14 }; // { 12, 10, 11, 3, 9, 1, 2, 5, 18, 14 };
+            int[] ids = ctrl ? new[] { 4, 32, 24, 25, 26, 17, 6, 31, 15, 7 } : new[] { 12, 10, 11, 3, 9, 1, 2, 5, 18, 14 };
             var d = new List<CardInstance>();
             foreach (var cid in ids) for (int i = 0; i < 3; i++) d.Add(f.CreateCard(cid, id));
             return d;

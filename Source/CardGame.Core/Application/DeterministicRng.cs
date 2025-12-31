@@ -16,6 +16,11 @@ namespace CardGame.Core.Application
         {
             return _random.Next(minValue, maxValue);
         }
+        public int NextMAX(int maxValue)
+        {
+            return _random.Next(maxValue);
+        }
+
 
         public int NextId()
         {

@@ -9,7 +9,7 @@ using CardGame.Core.State.Models;
 
 namespace CardGame.Core.AI.Logic
 {
-    internal class MoveGenerator
+    public class MoveGenerator
     {
         public List<IGameCommand> GenerateLegalMoves(GameState state, int playerId)
         {

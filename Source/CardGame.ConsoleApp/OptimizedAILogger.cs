@@ -33,8 +33,8 @@ namespace CardGame.ConsoleApp
             var deckB = CreateHighlanderDeck(factory, 2, 30);
             var state = GameState.Initial(1, deckA, deckB, rng);
             var engine = new GameEngine(state, rng.Seed);
-            var controller1 = new AIPlayerController(engine, 1, new StandardStrategy());
-            var controller2 = new AIPlayerController(engine, 2, new StandardStrategy());
+            var controller1 = new AIPlayerController(engine, 1, new StandardStrategy(), AISolverType.BeamSearch);
+            var controller2 = new AIPlayerController(engine, 2, new StandardStrategy(), AISolverType.BeamSearch);
             int eventsSeenSoFar = 0;
 
             // 2. MAIN GAME LOOP
@@ -54,8 +54,8 @@ namespace CardGame.ConsoleApp
                 Console.WriteLine($"\n--- ROUND {roundNum} | PHASE: {currentState.CurrentPhase} | ACTIVE: P{currentState.ActivePlayerId} | P1 HP: {currentState.PlayerA.Health}, P2 HP: {currentState.PlayerB.Health} ---");
                 
                 var activeController = currentState.ActivePlayerId == 1 ? controller1 : controller2;
-                
-                var evaluatedMoves = activeController.Solver.FindBestMoves(currentState);
+
+                var evaluatedMoves = activeController.BeamSolver.FindBestMoves(currentState);
 
                 if (!evaluatedMoves.Any())
                 {

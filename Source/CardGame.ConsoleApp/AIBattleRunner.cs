@@ -35,8 +35,8 @@ namespace CardGame.ConsoleApp
 
             var engine = new GameEngine(state, rng.Seed);
 
-            var ai1 = new AIPlayerController(engine, 1, new StandardStrategy());
-            var ai2 = new AIPlayerController(engine, 2, new StandardStrategy());
+            var ai1 = new AIPlayerController(engine, 1, new StandardStrategy(), AISolverType.BeamSearch);
+            var ai2 = new AIPlayerController(engine, 2, new StandardStrategy(), AISolverType.BeamSearch);
 
             Console.WriteLine($"Seed Gry: {rng.Seed}");
             Console.WriteLine("Startuje symulację...\n");

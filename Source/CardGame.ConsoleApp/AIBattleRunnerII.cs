@@ -44,9 +44,8 @@ namespace CardGame.ConsoleApp
 
             var state = GameState.Initial(1, deckA, deckB, rng);
             var engine = new GameEngine(state, rng.Seed);
-
-            var ai1 = new AIPlayerController(engine, 1, new StandardStrategy());
-            var ai2 = new AIPlayerController(engine, 2, new StandardStrategy());
+            var ai1 = new AIPlayerController(engine, 1, new StandardStrategy(), AISolverType.BeamSearch);
+            var ai2 = new AIPlayerController(engine, 2, new StandardStrategy(), AISolverType.BeamSearch);
 
             ai1.StartAutoPlay();
             ai2.StartAutoPlay();
