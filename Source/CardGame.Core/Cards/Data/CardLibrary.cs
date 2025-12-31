@@ -81,5 +81,10 @@ namespace CardGame.Core.Cards.Data
                 data.Keywords,
                 data.Effects);
         }
+        public int[] GetAllIds()
+        {
+            return _cards.Keys.ToArray();
+        }
     }
+
 }

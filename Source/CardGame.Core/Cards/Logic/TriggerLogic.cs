@@ -73,6 +73,10 @@ namespace CardGame.Core.Cards.Logic
 
                 case TriggerType.OnDamagTaken:
                     return gameEvent is UnitDamagedEvent udt && udt.Unit?.InstanceId == sourceCardId;
+                case TriggerType.OnFriendlyActionPlayed:
+                    return gameEvent is CardPlayedEvent ccpe &&
+                           ccpe.PlayerId == myOwnerId &&
+                           ccpe.Card.Definition.Type == CardType.Spell;
 
                 default:
                     return false;
@@ -117,6 +121,11 @@ namespace CardGame.Core.Cards.Logic
                     else if (gameEvent is UnitDiedEvent ud) subject = ud.Unit;
                     else if (gameEvent is CardPlayedEvent cp) subject = cp.Card;
                     return subject != null && subject.Definition.Subtypes.Contains(cond.TargetParam);
+
+                case ConditionType.HasSubtypeOnBoard:
+                    return state.Board.GetAllUnits()
+                        .Any(u => u.OwnerPlayerId == myOwnerId &&
+                                  u.Definition.Subtypes.Contains(cond.TargetParam));
 
                 default:
                     return true;

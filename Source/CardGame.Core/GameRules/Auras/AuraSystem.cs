@@ -13,6 +13,12 @@ namespace CardGame.Core.GameRules.Auras
             var workingState = currentState;
             var allUnits = workingState.Board.GetAllUnits();
 
+            int p1Discount = allUnits.Count(u => u.OwnerPlayerId == 1 && u.Definition.Id == "45" && !u.IsSilenced);
+            int p2Discount = allUnits.Count(u => u.OwnerPlayerId == 2 && u.Definition.Id == "45" && !u.IsSilenced);
+
+            workingState = UpdateHandDiscounts(workingState, 1, p1Discount);
+            workingState = UpdateHandDiscounts(workingState, 2, p2Discount);
+
             var map = new Dictionary<int, List<Keyword>>();
             foreach (var src in allUnits)
             {
@@ -64,6 +70,26 @@ namespace CardGame.Core.GameRules.Auras
                 TargetType.AllUnitsOnBoard => u.ToList(),
                 _ => new List<CardInstance>()
             };
+        }
+
+        private GameState UpdateHandDiscounts(GameState s, int pid, int discount)
+        {
+            var player = s.GetPlayer(pid);
+            bool changed = false;
+            var newHand = new List<CardInstance>();
+
+            foreach (var card in player.Hand)
+            {
+                int targetDiscount = (card.Definition.Type == CardType.Spell) ? discount : 0;
+                if (card.CostReduction != targetDiscount)
+                {
+                    card.CostReduction = targetDiscount;
+                    changed = true;
+                }
+                newHand.Add(card);
+            }
+
+            return changed ? s.UpdatePlayer(player.With(hand: newHand)) : s;
         }
     }
 }

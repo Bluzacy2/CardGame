@@ -7,7 +7,7 @@
     {
         None, Armored, Armor2, DoubleStrike, SoulGuard, Unkillable,
         Marked, SoulGuardDepleted, Burning, SplashDamage, BurnSource,
-        Stunned
+        Stunned, Flying
     }
 
     public enum TriggerType
@@ -16,7 +16,7 @@
         WhileOnBoard, OnFriendlyUnitDied, OnSacrificed, Passive,
         OnOtherUnitSacrificed, OnKill, OnOpponentCardDrawn,
         OnDamagedEnemyUnit, OnStatusApplied, OnPreCombatLine,
-        OnDamagedEnemyHero, OnFriendlyCardDrawn
+        OnDamagedEnemyHero, OnFriendlyCardDrawn, OnFriendlyActionPlayed
     }
 
     public enum ActionType
@@ -26,16 +26,19 @@
         ModifyGlobalBuff, DrawCard, SacrificeUnit, AbsorbStats,
         ShuffleDeck, ReturnToHand, TutorCard, DrawFromDiscard,
         BonusAttack, HealToFull, MoveRight, GiveToOpponent,
-        Silence
+        Silence, AddResource, MakeAUnit
     }
 
     public enum TargetType
     {
         Self, TargetEnemyUnit, TargetFriendlyUnit, AllEnemyUnits,
         AllFriendlyUnits, EnemyHero, FriendlyHero, SelectedTarget,
-        OtherFriendlyUnits, AdjacentEnemyUnits, AllUnitsOnBoard, Choice
+        OtherFriendlyUnits, AdjacentEnemyUnits, AllUnitsOnBoard, Choice,
+
+        EmptyLane,
+        RandomEmptyLane
     }
 
-    public enum ConditionType { None, And, Or, IsEnemy, IsUnit, IsType, IsStatus, IsSubtype, IsSelf }
+    public enum ConditionType { None, And, Or, IsEnemy, IsUnit, IsType, IsStatus, IsSubtype, IsSelf, HasSubtypeOnBoard }
     public enum EffectZone { Board, Hand, Graveyard, Any }
 }

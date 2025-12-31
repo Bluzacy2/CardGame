@@ -19,11 +19,11 @@ namespace CardGame.Core.AI
         public readonly BotSolver Solver;
         private bool _isRunning = false;
 
-        public AIPlayerController(GameEngine gameEngine, int botPlayerId, IAIStrategy? strategy = null)
+        public AIPlayerController(GameEngine gameEngine, int botPlayerId, IAIStrategy? strategy = null, int beamWidth = 4, int maxDepth = 5)
         {
             _gameEngine = gameEngine;
             BotPlayerId = botPlayerId;
-            Solver = new BotSolver(_gameEngine, BotPlayerId, strategy ?? new StandardStrategy());
+            Solver = new BotSolver(_gameEngine, BotPlayerId, strategy ?? new StandardStrategy(), beamWidth, maxDepth);
         }
 
         public async void StartAutoPlay()

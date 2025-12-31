@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using CardGame.Core.AI;
 using CardGame.Core.AI.Logic;
@@ -17,52 +18,107 @@ using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Commands.Implementations;
+using CardGame.ConsoleApp.Evolution;
 
 namespace CardGame.ConsoleApp
 {
-    public static class AIBattleRunnerIII
+    public static class AIvsEvolutionRunner
     {
         private static readonly Queue<string> _displayLogs = new();
         private static List<EvaluatedMove> _lastThoughts = new List<EvaluatedMove>();
         private static int _eventsSeenSoFar = 0;
         private const int UI_WIDTH = 158;
-        private static StringBuilder _matchAudit = new StringBuilder();
         private static int _p1Wins = 0, _p2Wins = 0, _gamesPlayed = 0;
-        private static string _sessionLogPath = "";
         private static bool _isAutoMode = false;
 
         public static async Task RunAsync()
         {
             Console.Clear();
-            Console.WriteLine("=== ARCHITECT OF ROUNDS: AI BATTLE RUNNER III (v3.1) ===");
-            Console.WriteLine("1. Overwatch Mode (Step-by-step - Space)");
-            Console.WriteLine("2. Auto Mode (Fast simulation - Logs only)");
+            var hof = new HallOfFame();
+            hof.Load();
+
+            string masterPath = "best_bot_dna.json";
+            GeneticIndividual globalMaster = null;
+            if (File.Exists(masterPath))
+            {
+                globalMaster = JsonSerializer.Deserialize<GeneticIndividual>(File.ReadAllText(masterPath));
+            }
+
+            var selectableBots = new List<GeneticIndividual>();
+
+            if (globalMaster != null)
+            {
+                var masterEntry = globalMaster.Clone();
+                masterEntry.Id = "MASTER";
+                masterEntry.Wins = globalMaster.Wins;
+                masterEntry.GamesPlayed = globalMaster.GamesPlayed;
+                masterEntry.Fitness = globalMaster.Fitness;
+                masterEntry.Generation = globalMaster.Generation;
+                selectableBots.Add(masterEntry);
+            }
+
+            foreach (var champ in hof.Champions.Where(c => c != null))
+            {
+                bool isDuplicate = false;
+                if (globalMaster != null)
+                {
+                    float diff = 0;
+                    for (int i = 0; i < globalMaster.StrategyDNA.Length; i++)
+                        diff += Math.Abs(globalMaster.StrategyDNA[i] - champ.StrategyDNA[i]);
+                    if (diff < 0.01f) isDuplicate = true;
+                }
+                if (!isDuplicate) selectableBots.Add(champ);
+            }
+
+            if (!selectableBots.Any())
+            {
+                Console.WriteLine("ERROR: No evolved bots found to test.");
+                await Task.Delay(3000);
+                return;
+            }
+
+            Console.WriteLine("╔══════════════════════════════════════════════════════╗");
+            Console.WriteLine("║        MIRROR ARENA: EVO STRATEGY VS STANDARD        ║");
+            Console.WriteLine("║      (Both bots will play with the evolved deck)     ║");
+            Console.WriteLine("╚══════════════════════════════════════════════════════╝");
+            for (int i = 0; i < selectableBots.Count; i++)
+            {
+                var b = selectableBots[i];
+                string label = b.Id == "MASTER" ? "GLOBAL MASTER" : $"CHAMPION [{b.Id}]";
+                Console.WriteLine($"{i + 1}. {label.PadRight(18)} | Gen: {b.Generation,-4} | Fit: {b.Fitness:F0}");
+            }
+            Console.Write("\nSelect Brain to Test (1-" + selectableBots.Count + "): ");
+
+            int choice;
+            if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > selectableBots.Count)
+                choice = 1;
+
+            var selectedBot = selectableBots[choice - 1];
+
+            Console.Clear();
+            Console.WriteLine($"PREPARING MIRROR MATCH: [{selectedBot.Id}] Deck vs [{selectedBot.Id}] Deck");
+            Console.WriteLine("1. Overwatch Mode (Step-by-step)");
+            Console.WriteLine("2. Auto Mode (Fast simulation)");
             var modeKey = Console.ReadKey(true);
             _isAutoMode = modeKey.KeyChar == '2';
 
-            CardLibrary.Instance.Clear();
             CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
-
-            _sessionLogPath = $"audit_3.1_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
-            File.WriteAllText(_sessionLogPath, $"=== START SESSION BRAIN 3.1 ({(_isAutoMode ? "AUTO" : "OVERWATCH")}): {DateTime.Now} ===\n\n");
 
             while (true)
             {
-                _matchAudit.Clear(); _displayLogs.Clear(); _eventsSeenSoFar = 0;
+                _displayLogs.Clear(); _eventsSeenSoFar = 0;
                 var rng = new DeterministicRng(new Random().Next());
                 var factory = new CardFactory(CardLibrary.Instance, rng);
 
-                bool p1IsCtrl = _gamesPlayed % 2 == 0;
-                var deck1 = CreateDeck(factory, 1, p1IsCtrl);
-                var deck2 = CreateDeck(factory, 2, !p1IsCtrl);
+                // MIRROR DECK SETUP: Both players get the EXACT SAME evolved deck
+                var deck1 = selectedBot.DeckDNA.Select(id => factory.CreateCard(id, 1)).ToList();
+                var deck2 = selectedBot.DeckDNA.Select(id => factory.CreateCard(id, 2)).ToList();
 
                 var engine = new GameEngine(GameState.Initial(1, deck1, deck2, rng), rng.Seed);
 
-                // Initialize High Quality Solvers (Depth 5)
-                var solver1 = new BotSolver(engine, 1, new StandardStrategy(), beamWidth: 4, maxDepth: 5);
+                // BRAIN SETUP: Evolved DNA vs Hardcoded Logic
+                var solver1 = new BotSolver(engine, 1, new EvolvableStrategy(selectedBot.StrategyDNA), beamWidth: 4, maxDepth: 5);
                 var solver2 = new BotSolver(engine, 2, new StandardStrategy(), beamWidth: 4, maxDepth: 5);
-
-                LogToAudit($"\n--- MATCH NO {_gamesPlayed + 1} | P1: {(p1IsCtrl ? "CONTROL" : "SACRIFICE")} vs P2: {(!p1IsCtrl ? "CONTROL" : "SACRIFICE")} ---");
 
                 while (!engine.IsGameOver)
                 {
@@ -73,71 +129,38 @@ namespace CardGame.ConsoleApp
                     {
                         var activeSolver = state.ActivePlayerId == 1 ? solver1 : solver2;
                         _lastThoughts = activeSolver.FindBestMoves(state);
-
-                        DrawUI(state, p1IsCtrl);
-
-                        if (!_isAutoMode)
-                        {
-                            var key = Console.ReadKey(true);
-                            if (key.Key == ConsoleKey.Escape) return;
-                        }
+                        DrawUI(state, selectedBot.Id);
+                        if (!_isAutoMode) { var k = Console.ReadKey(true); if (k.Key == ConsoleKey.Escape) return; }
                     }
 
                     if (state.CurrentPhase == GamePhase.Mulligan)
                     {
-                        PerformMulligan(engine, 1, p1IsCtrl);
-                        PerformMulligan(engine, 2, !p1IsCtrl);
+                        engine.ExecuteCommand(new ConfirmMulliganCommand(1, new()));
+                        engine.ExecuteCommand(new ConfirmMulliganCommand(2, new()));
                     }
                     else if (state.CurrentPhase == GamePhase.Combat)
                     {
                         engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
-                        if (!_isAutoMode) await Task.Delay(200);
                     }
                     else
                     {
                         var best = _lastThoughts.FirstOrDefault();
-                        if (best != null)
-                        {
-                            // --- RESOURCE AUDIT ---
-                            var p1 = state.PlayerA;
-                            var p2 = state.PlayerB;
-                            string bloodStatus = $"[RESOURCES] P1 Blood: {p1.CurrentBlood}/{p1.MaxBlood} | P2 Blood: {p2.CurrentBlood}/{p2.MaxBlood}";
-                            LogToAudit(bloodStatus);
-
-                            string logEntry = $"[R{state.TurnNumber} P{state.ActivePlayerId} F{state.CurrentPhase}] Action: {FormatCmdDetailed(best.Command, state)} | Score: {best.Score:F1} | {best.DeepReasoning}";
-                            LogToAudit(logEntry);
-
-                            engine.ExecuteCommand(best.Command);
-                        }
+                        if (best != null) engine.ExecuteCommand(best.Command);
                         else engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
                     }
-
-                    if (_isAutoMode) await Task.Delay(10);
+                    if (_isAutoMode) await Task.Delay(50);
                 }
 
-                string winnerName = engine.WinnerId switch
-                {
-                    1 => "PLAYER P1",
-                    2 => "PLAYER P2",
-                    _ => "DRAW (P0)"
-                };
-
                 if (engine.WinnerId == 1) _p1Wins++; else if (engine.WinnerId == 2) _p2Wins++;
-                LogToAudit($"MATCH FINISHED. WINNER: {winnerName} | SCORE: P1:{_p1Wins} P2:{_p2Wins}\n" + new string('=', 80));
+                DrawUI(engine.CurrentState, selectedBot.Id);
 
-                _gamesPlayed++;
-                DrawUI(engine.CurrentState, p1IsCtrl);
-                await Task.Delay(_isAutoMode ? 500 : 2000);
+                Console.SetCursorPosition(0, 44);
+                Console.WriteLine(CenterText(" --- MATCH OVER --- ", UI_WIDTH));
+                await Task.Delay(2000);
             }
         }
 
-        private static void LogToAudit(string message)
-        {
-            _matchAudit.AppendLine(message);
-            File.AppendAllText(_sessionLogPath, message + "\n");
-        }
-
-        private static void DrawUI(GameState s, bool p1IsCtrl)
+        private static void DrawUI(GameState s, string botId)
         {
             StringBuilder sb = new StringBuilder();
             Console.SetCursorPosition(0, 0);
@@ -151,8 +174,10 @@ namespace CardGame.ConsoleApp
                 _ => s.CurrentPhase.ToString().ToUpper()
             };
 
-            string headL = $" ROUND: {s.TurnNumber} | PHASE: {phaseName} | ACTIVE: P{s.ActivePlayerId}";
-            string headR = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ] | MODE: {(_isAutoMode ? "AUTO" : "STEP")} ";
+            string activeLabel = s.ActivePlayerId == 1 ? "EVO BRAIN" : "STD BRAIN";
+            string headL = $" ROUND: {s.TurnNumber} | PHASE: {phaseName} | ACTIVE: {activeLabel}";
+            // Zmieniono nagłówek, aby podkreślić Mirror Match
+            string headR = $"[ MIRROR MATCH: {botId} DECK ] | EVO P1: {_p1Wins} | STD P2: {_p2Wins} ";
 
             sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
             sb.AppendLine("║ " + headL.PadRight(UI_WIDTH - headR.Length - 4) + headR + "║");
@@ -161,13 +186,13 @@ namespace CardGame.ConsoleApp
             string[] left = RenderBoard(s);
             string[] right = RenderBrain(s);
 
-            for (int i = 0; i < 40; i++)
+            for (int i = 0; i < 42; i++)
             {
                 string l = i < left.Length ? left[i] : "";
                 string r = i < right.Length ? right[i] : "";
                 string leftPart = l.PadRight(104).Substring(0, 104);
                 string rightPart = r.PadRight(UI_WIDTH - 111).Substring(0, UI_WIDTH - 111);
-                sb.AppendLine($"║ {l.PadRight(104)} ║ {r.PadRight(UI_WIDTH - 111)} ║");
+                sb.AppendLine($"║ {leftPart} ║ {rightPart} ║");
             }
             sb.AppendLine("╚" + new string('═', 106) + "╩" + new string('═', UI_WIDTH - 109) + "╝");
             Console.Write(sb.ToString());
@@ -176,7 +201,7 @@ namespace CardGame.ConsoleApp
         private static string[] RenderBoard(GameState s)
         {
             var res = new List<string>();
-            res.Add($" [ PLAYER P2 | HP: {s.PlayerB.Health,2} | BLOOD: {s.PlayerB.CurrentBlood}/{s.PlayerB.MaxBlood} ]");
+            res.Add($" [ PLAYER P2 (STANDARD STRATEGY) | HP: {s.PlayerB.Health,2} | BLOOD: {s.PlayerB.CurrentBlood}/{s.PlayerB.MaxBlood} ]");
             res.AddRange(WrapHand(s.PlayerB.Hand, "P2"));
             res.Add("");
             for (int r = 0; r < 11; r++)
@@ -186,10 +211,10 @@ namespace CardGame.ConsoleApp
                 res.Add(row);
             }
             res.Add("");
-            res.Add($" [ PLAYER P1 | HP: {s.PlayerA.Health,2} | BLOOD: {s.PlayerA.CurrentBlood}/{s.PlayerA.MaxBlood} ]");
+            res.Add($" [ PLAYER P1 (EVOLVED DNA) | HP: {s.PlayerA.Health,2} | BLOOD: {s.PlayerA.CurrentBlood}/{s.PlayerA.MaxBlood} ]");
             res.AddRange(WrapHand(s.PlayerA.Hand, "P1"));
             res.Add(new string('-', 104));
-            res.Add(" EVENT LOG (LOG: " + Path.GetFileName(_sessionLogPath) + ")");
+            res.Add(" EVENT LOG:");
             res.AddRange(_displayLogs.Reverse().Take(8).Select(x => " " + x));
             return res.ToArray();
         }
@@ -199,43 +224,17 @@ namespace CardGame.ConsoleApp
             string prefix = $" Hand {pId}: [";
             var cards = hand.Select(c => $"({c.CurrentStats.BloodCost}){c.Definition.Name}").ToList();
             var result = new List<string>();
-
             string firstLine = prefix;
-            string secondLine = "";
-
-            if (!cards.Any())
-            {
-                result.Add(firstLine + "EMPTY]");
-                result.Add(""); 
-                return result;
-            }
-
             int splitAt = -1;
+            if (!cards.Any()) { result.Add(firstLine + "EMPTY]"); result.Add(""); return result; }
             for (int i = 0; i < cards.Count; i++)
             {
                 string part = cards[i] + (i == cards.Count - 1 ? "" : ", ");
-                if ((firstLine + part).Length > 95) 
-                {
-                    splitAt = i;
-                    break;
-                }
+                if ((firstLine + part).Length > 95) { splitAt = i; break; }
                 firstLine += part;
             }
-
-            if (splitAt == -1)
-            {
-                
-                result.Add(firstLine + "]");
-                result.Add(""); 
-            }
-            else
-            {
-              
-                result.Add(firstLine);
-                secondLine = "           " + string.Join(", ", cards.Skip(splitAt)) + "]";
-                result.Add(secondLine);
-            }
-
+            if (splitAt == -1) { result.Add(firstLine + "]"); result.Add(""); }
+            else { result.Add(firstLine); result.Add("           " + string.Join(", ", cards.Skip(splitAt)) + "]"); }
             return result;
         }
 
@@ -265,37 +264,18 @@ namespace CardGame.ConsoleApp
 
         private static string[] RenderBrain(GameState s)
         {
-            var res = new List<string> { $"   BOT THOUGHTS P{s.ActivePlayerId} (BRAIN 3.1)", "------------------------" };
+            string botName = s.ActivePlayerId == 1 ? "EVO" : "STD";
+            var res = new List<string> { $"   BOT THOUGHTS [{botName}]", "------------------------" };
             if (s.CurrentPhase == GamePhase.Combat) { res.Add(" [AUTO] Combat simulation..."); return res.ToArray(); }
-
             foreach (var t in _lastThoughts.Take(12))
             {
                 string prefix = t == _lastThoughts.First() ? ">>" : "  ";
-
-              
-                string scoreStr = Math.Abs(t.Score) > 1000000 ? (t.Score > 0 ? "WIN" : "LOSE") : t.Score.ToString("F0");
-
-              
-                string desc = t.Description.Length > 22 ? t.Description.Substring(0, 22) : t.Description;
-
-                res.Add($"{prefix} {desc.PadRight(22)} | {scoreStr.PadLeft(6)}");
-
-                if (t == _lastThoughts.First())
-                {
-                    string reason = t.DeepReasoning.Length > 35 ? t.DeepReasoning.Substring(0, 35) : t.DeepReasoning;
-                    res.Add($"   L {reason}");
-                    res.Add("");
-                }
+                string scoreStr = Math.Abs(t.Score) > 1000000 ? (t.Score > 0 ? "LETHAL" : "DEFEAT") : t.Score.ToString("F0");
+                string desc = t.Description.Length > 22 ? t.Description.Substring(0, 21) + "…" : t.Description;
+                res.Add($"{prefix} {desc.PadRight(22)} | {scoreStr.PadLeft(7)}");
+                if (t == _lastThoughts.First()) { res.Add($"   L {t.DeepReasoning}"); res.Add(""); }
             }
             return res.ToArray();
-        }
-
-        private static string FormatCmdDetailed(IGameCommand? c, GameState s)
-        {
-            if (c is PlayUnitCommand pu) return $"Play {s.GetPlayer(pu.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == pu.CardInstanceId)?.Definition.Name} (L{pu.TargetLineIndex + 1})";
-            if (c is PlaySpellCommand ps) return $"Spell: {s.GetPlayer(ps.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == ps.CardInstanceId)?.Definition.Name}";
-            if (c is SelectTargetCommand st) return $"Target: {s.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == st.TargetId)?.Definition.Name ?? "Hero"}";
-            return "PASS (End Phase)";
         }
 
         private static void UpdateLogs(GameEngine e)
@@ -312,19 +292,11 @@ namespace CardGame.ConsoleApp
             _eventsSeenSoFar = all.Count;
         }
 
-        private static void PerformMulligan(GameEngine e, int pid, bool ctrl)
+        private static string CenterText(string text, int width)
         {
-            var p = e.CurrentState.GetPlayer(pid);
-            var rej = p.Hand.Where(c => (ctrl && c.CurrentStats.BloodCost > 2) || (!ctrl && c.CurrentStats.BloodCost > 4)).Select(c => c.InstanceId).ToList();
-            e.ExecuteCommand(new ConfirmMulliganCommand(pid, rej));
-        }
-
-        private static List<CardInstance> CreateDeck(CardFactory f, int id, bool ctrl)
-        {
-            int[] ids = ctrl ? new[] { 4, 32, 26, 24, 25, 31, 7, 21, 15, 13 } : new[] { 12, 3, 6, 10, 11, 36, 9, 18, 1, 5 };
-            var d = new List<CardInstance>();
-            foreach (var cid in ids) for (int i = 0; i < 3; i++) d.Add(f.CreateCard(cid, id));
-            return d;
+            if (text.Length >= width) return text.Substring(0, width);
+            int leftPadding = (width - text.Length) / 2;
+            return new string(' ', leftPadding) + text + new string(' ', width - text.Length - leftPadding);
         }
     }
 }

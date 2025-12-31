@@ -17,6 +17,16 @@ namespace CardGame.Core.GameRules.Battle
         public GameState ResolveCombatDuel(GameState state, CardInstance u1, CardInstance u2, int lineIdx, EventBus events, GameContext context)
         {
             var workingState = state;
+            bool u1Flying = u1.CurrentStats.Keywords.Contains(Keyword.Flying);
+            bool u2Flying = u2.CurrentStats.Keywords.Contains(Keyword.Flying);
+
+            
+            if (u1Flying != u2Flying)
+            {        
+                workingState = ResolveBonusStrike(workingState, u1, null, lineIdx, events, context);        
+                workingState = ResolveBonusStrike(workingState, u2, null, lineIdx, events, context);
+                return workingState;
+            }
 
             bool u1Stunned = u1.CurrentStats.Keywords.Contains(Keyword.Stunned);
             bool u2Stunned = u2.CurrentStats.Keywords.Contains(Keyword.Stunned);

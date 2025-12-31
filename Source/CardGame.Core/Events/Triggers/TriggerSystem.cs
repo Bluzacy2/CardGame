@@ -115,8 +115,8 @@ namespace CardGame.Core.Events.Triggers
         private List<TriggerType> GetRelevantTriggerTypes(IGameEvent evt)
         {
             var t = new List<TriggerType>();
-            if (evt is CardPlayedEvent) t.Add(TriggerType.OnPlayed);
-            if (evt is UnitDiedEvent) { t.Add(TriggerType.OnDeath); t.Add(TriggerType.OnFriendlyUnitDied); t.Add(TriggerType.OnKill); }
+            if (evt is CardPlayedEvent) { t.Add(TriggerType.OnPlayed); t.Add(TriggerType.OnFriendlyActionPlayed); }
+                if (evt is UnitDiedEvent) { t.Add(TriggerType.OnDeath); t.Add(TriggerType.OnFriendlyUnitDied); t.Add(TriggerType.OnKill); }
             if (evt is UnitSacrificedEvent) { t.Add(TriggerType.OnSacrificed); t.Add(TriggerType.OnOtherUnitSacrificed); t.Add(TriggerType.OnFriendlyUnitDied); }
             if (evt is UnitDamagedEvent) { t.Add(TriggerType.OnDamagTaken); t.Add(TriggerType.OnDamagedEnemyUnit); t.Add(TriggerType.OnDamagedEnemyHero); }
             if (evt is TurnStartedEvent) t.Add(TriggerType.OnTurnStart);

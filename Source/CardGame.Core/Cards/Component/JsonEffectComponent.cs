@@ -66,13 +66,11 @@ namespace CardGame.Core.Cards.Components.Implementations
 
             var resolved = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);
 
-            // Jeśli cel został ustalony automatycznie (np. Hero lub Self)
             if (resolved.UnitTargets.Any() || resolved.TargetPlayer != null)
             {
                 return context.ActionRegistry.GetHandler(action.Type).Execute(state.With(clearPending: true), context, action, resolved, _sourceId, evt);
             }
 
-            // Celowanie manualne
             if (IsManualTarget(targetType))
             {
                 var potential = EffectTargetResolver.GetPotentialTargets(targetType, state, _sourceId);
@@ -89,8 +87,10 @@ namespace CardGame.Core.Cards.Components.Implementations
                 return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, actionIdx, targetType));
             }
 
-            return context.ActionRegistry.GetHandler(action.Type).Execute(state, context, action, resolved, _sourceId, evt);
+            //return context.ActionRegistry.GetHandler(action.Type).Execute(state, context, action, resolved, _sourceId, evt);
+            return context.ActionRegistry.GetHandler(action.Type).Execute(state.With(clearPending: true), context, action, resolved, _sourceId, evt);
         }
+
 
         private bool IsManualTarget(TargetType t) =>
             t == TargetType.SelectedTarget || t == TargetType.TargetEnemyUnit || t == TargetType.TargetFriendlyUnit || t == TargetType.OtherFriendlyUnits;

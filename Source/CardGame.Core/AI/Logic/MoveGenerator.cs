@@ -20,16 +20,25 @@ namespace CardGame.Core.AI.Logic
             if (state.PendingInteraction != null)
             {
                 var pending = state.PendingInteraction;
+                if (pending.RequiredTargetType == TargetType.EmptyLane)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (state.Board.Lines[i].IsSlotEmpty(playerId))
+                            moves.Add(new SelectTargetCommand(playerId, i));
+                    }
+                    return moves;
+                }
 
                 if (pending.RequiredTargetType == TargetType.Choice)
                 {
-                   
+
                     for (int i = 0; i < pending.Options.Count; i++)
                         moves.Add(new SelectTargetCommand(playerId, i));
                 }
                 else
                 {
-                  
+
                     var targets = EffectTargetResolver.GetPotentialTargets(pending.RequiredTargetType, state, pending.SourceCardInstanceId);
                     foreach (var t in targets)
                         moves.Add(new SelectTargetCommand(playerId, t.InstanceId));

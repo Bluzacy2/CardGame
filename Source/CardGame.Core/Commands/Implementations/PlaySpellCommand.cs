@@ -30,7 +30,7 @@ namespace CardGame.Core.Commands.Implementations
 
             if (!PlayValidator.CanPlay(card, currentState, PlayerId))
             {
-                Console.WriteLine($"[BLOKADA] Nie można zagrać czaru {card.Definition.Name}.");
+                //Console.WriteLine($"[BLOKADA] Nie można zagrać czaru {card.Definition.Name}.");
                 return currentState;
             }
 

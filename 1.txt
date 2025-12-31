@@ -17,7 +17,7 @@ PATH: C:\Users\bluza\Documents\CardGame\Data\Cards\cards.json
     "Effects": [
       {
         "Trigger": "OnDeath",
-        "Action": {
+        "Actions": {
           "Type": "AddCardToHand", 
           "Target": "Self", 
           "ValueParam": 900 
@@ -584,6 +584,342 @@ namespace CardGame.ConsoleApp
 
 
 ========================================
+FILE: AIBattleRunnerIII.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\AIBattleRunnerIII.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CardGame.Core.AI;
+using CardGame.Core.AI.Logic;
+using CardGame.Core.AI.Strategies;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Factories;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+using CardGame.Core.State.Enums;
+using CardGame.Core.Events;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Commands.Implementations;
+
+namespace CardGame.ConsoleApp
+{
+    public static class AIBattleRunnerIII
+    {
+        private static readonly Queue<string> _displayLogs = new();
+        private static List<EvaluatedMove> _lastThoughts = new List<EvaluatedMove>();
+        private static int _eventsSeenSoFar = 0;
+        private const int UI_WIDTH = 158;
+        private static StringBuilder _matchAudit = new StringBuilder();
+        private static int _p1Wins = 0, _p2Wins = 0, _gamesPlayed = 0;
+        private static string _sessionLogPath = "";
+        private static bool _isAutoMode = false;
+
+        public static async Task RunAsync()
+        {
+            Console.Clear();
+            Console.WriteLine("=== ARCHITECT OF ROUNDS: AI BATTLE RUNNER III (v3.1) ===");
+            Console.WriteLine("1. Overwatch Mode (Step-by-step - Space)");
+            Console.WriteLine("2. Auto Mode (Fast simulation - Logs only)");
+            var modeKey = Console.ReadKey(true);
+            _isAutoMode = modeKey.KeyChar == '2';
+
+            CardLibrary.Instance.Clear();
+            CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
+
+            _sessionLogPath = $"audit_3.1_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+            File.WriteAllText(_sessionLogPath, $"=== START SESSION BRAIN 3.1 ({(_isAutoMode ? "AUTO" : "OVERWATCH")}): {DateTime.Now} ===\n\n");
+
+            while (true)
+            {
+                _matchAudit.Clear(); _displayLogs.Clear(); _eventsSeenSoFar = 0;
+                var rng = new DeterministicRng(new Random().Next());
+                var factory = new CardFactory(CardLibrary.Instance, rng);
+
+                bool p1IsCtrl = _gamesPlayed % 2 == 0;
+                var deck1 = CreateDeck(factory, 1, p1IsCtrl);
+                var deck2 = CreateDeck(factory, 2, !p1IsCtrl);
+
+                var engine = new GameEngine(GameState.Initial(1, deck1, deck2, rng), rng.Seed);
+
+                // Initialize High Quality Solvers (Depth 5)
+                var solver1 = new BotSolver(engine, 1, new StandardStrategy(), beamWidth: 4, maxDepth: 5);
+                var solver2 = new BotSolver(engine, 2, new StandardStrategy(), beamWidth: 4, maxDepth: 5);
+
+                LogToAudit($"\n--- MATCH NO {_gamesPlayed + 1} | P1: {(p1IsCtrl ? "CONTROL" : "SACRIFICE")} vs P2: {(!p1IsCtrl ? "CONTROL" : "SACRIFICE")} ---");
+
+                while (!engine.IsGameOver)
+                {
+                    var state = engine.CurrentState;
+                    UpdateLogs(engine);
+
+                    if (state.CurrentPhase != GamePhase.Mulligan && state.CurrentPhase != GamePhase.Combat)
+                    {
+                        var activeSolver = state.ActivePlayerId == 1 ? solver1 : solver2;
+                        _lastThoughts = activeSolver.FindBestMoves(state);
+
+                        DrawUI(state, p1IsCtrl);
+
+                        if (!_isAutoMode)
+                        {
+                            var key = Console.ReadKey(true);
+                            if (key.Key == ConsoleKey.Escape) return;
+                        }
+                    }
+
+                    if (state.CurrentPhase == GamePhase.Mulligan)
+                    {
+                        PerformMulligan(engine, 1, p1IsCtrl);
+                        PerformMulligan(engine, 2, !p1IsCtrl);
+                    }
+                    else if (state.CurrentPhase == GamePhase.Combat)
+                    {
+                        engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
+                        if (!_isAutoMode) await Task.Delay(200);
+                    }
+                    else
+                    {
+                        var best = _lastThoughts.FirstOrDefault();
+                        if (best != null)
+                        {
+                            // --- RESOURCE AUDIT ---
+                            var p1 = state.PlayerA;
+                            var p2 = state.PlayerB;
+                            string bloodStatus = $"[RESOURCES] P1 Blood: {p1.CurrentBlood}/{p1.MaxBlood} | P2 Blood: {p2.CurrentBlood}/{p2.MaxBlood}";
+                            LogToAudit(bloodStatus);
+
+                            string logEntry = $"[R{state.TurnNumber} P{state.ActivePlayerId} F{state.CurrentPhase}] Action: {FormatCmdDetailed(best.Command, state)} | Score: {best.Score:F1} | {best.DeepReasoning}";
+                            LogToAudit(logEntry);
+
+                            engine.ExecuteCommand(best.Command);
+                        }
+                        else engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
+                    }
+
+                    if (_isAutoMode) await Task.Delay(10);
+                }
+
+                string winnerName = engine.WinnerId switch
+                {
+                    1 => "PLAYER P1",
+                    2 => "PLAYER P2",
+                    _ => "DRAW (P0)"
+                };
+
+                if (engine.WinnerId == 1) _p1Wins++; else if (engine.WinnerId == 2) _p2Wins++;
+                LogToAudit($"MATCH FINISHED. WINNER: {winnerName} | SCORE: P1:{_p1Wins} P2:{_p2Wins}\n" + new string('=', 80));
+
+                _gamesPlayed++;
+                DrawUI(engine.CurrentState, p1IsCtrl);
+                await Task.Delay(_isAutoMode ? 500 : 2000);
+            }
+        }
+
+        private static void LogToAudit(string message)
+        {
+            _matchAudit.AppendLine(message);
+            File.AppendAllText(_sessionLogPath, message + "\n");
+        }
+
+        private static void DrawUI(GameState s, bool p1IsCtrl)
+        {
+            StringBuilder sb = new StringBuilder();
+            Console.SetCursorPosition(0, 0);
+
+            string phaseName = s.CurrentPhase switch
+            {
+                GamePhase.UnitOnly => "1/3 (UNITS)",
+                GamePhase.UnitAndAction => "2/3 (MIXED)",
+                GamePhase.ActionOnly => "3/3 (ACTIONS)",
+                GamePhase.Combat => "COMBAT",
+                _ => s.CurrentPhase.ToString().ToUpper()
+            };
+
+            string headL = $" ROUND: {s.TurnNumber} | PHASE: {phaseName} | ACTIVE: P{s.ActivePlayerId}";
+            string headR = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ] | MODE: {(_isAutoMode ? "AUTO" : "STEP")} ";
+
+            sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
+            sb.AppendLine("║ " + headL.PadRight(UI_WIDTH - headR.Length - 4) + headR + "║");
+            sb.AppendLine("╠" + new string('═', 106) + "╦" + new string('═', UI_WIDTH - 109) + "╣");
+
+            string[] left = RenderBoard(s);
+            string[] right = RenderBrain(s);
+
+            for (int i = 0; i < 40; i++)
+            {
+                string l = i < left.Length ? left[i] : "";
+                string r = i < right.Length ? right[i] : "";
+                string leftPart = l.PadRight(104).Substring(0, 104);
+                string rightPart = r.PadRight(UI_WIDTH - 111).Substring(0, UI_WIDTH - 111);
+                sb.AppendLine($"║ {l.PadRight(104)} ║ {r.PadRight(UI_WIDTH - 111)} ║");
+            }
+            sb.AppendLine("╚" + new string('═', 106) + "╩" + new string('═', UI_WIDTH - 109) + "╝");
+            Console.Write(sb.ToString());
+        }
+
+        private static string[] RenderBoard(GameState s)
+        {
+            var res = new List<string>();
+            res.Add($" [ PLAYER P2 | HP: {s.PlayerB.Health,2} | BLOOD: {s.PlayerB.CurrentBlood}/{s.PlayerB.MaxBlood} ]");
+            res.AddRange(WrapHand(s.PlayerB.Hand, "P2"));
+            res.Add("");
+            for (int r = 0; r < 11; r++)
+            {
+                string row = "  ";
+                for (int c = 0; c < 4; c++) row += GetRowSegment(r, s.Board.Lines[c]).PadRight(25);
+                res.Add(row);
+            }
+            res.Add("");
+            res.Add($" [ PLAYER P1 | HP: {s.PlayerA.Health,2} | BLOOD: {s.PlayerA.CurrentBlood}/{s.PlayerA.MaxBlood} ]");
+            res.AddRange(WrapHand(s.PlayerA.Hand, "P1"));
+            res.Add(new string('-', 104));
+            res.Add(" EVENT LOG (LOG: " + Path.GetFileName(_sessionLogPath) + ")");
+            res.AddRange(_displayLogs.Reverse().Take(8).Select(x => " " + x));
+            return res.ToArray();
+        }
+
+        private static List<string> WrapHand(IReadOnlyList<CardInstance> hand, string pId)
+        {
+            string prefix = $" Hand {pId}: [";
+            var cards = hand.Select(c => $"({c.CurrentStats.BloodCost}){c.Definition.Name}").ToList();
+            var result = new List<string>();
+
+            string firstLine = prefix;
+            string secondLine = "";
+
+            if (!cards.Any())
+            {
+                result.Add(firstLine + "EMPTY]");
+                result.Add(""); 
+                return result;
+            }
+
+            int splitAt = -1;
+            for (int i = 0; i < cards.Count; i++)
+            {
+                string part = cards[i] + (i == cards.Count - 1 ? "" : ", ");
+                if ((firstLine + part).Length > 95) 
+                {
+                    splitAt = i;
+                    break;
+                }
+                firstLine += part;
+            }
+
+            if (splitAt == -1)
+            {
+                
+                result.Add(firstLine + "]");
+                result.Add(""); 
+            }
+            else
+            {
+              
+                result.Add(firstLine);
+                secondLine = "           " + string.Join(", ", cards.Skip(splitAt)) + "]";
+                result.Add(secondLine);
+            }
+
+            return result;
+        }
+
+        private static string GetRowSegment(int row, Line line) => row switch
+        {
+            0 => "┌───────────────────┐",
+            1 => $"│ {Center(line.Player2Unit?.Definition.Name ?? "[ EMPTY ]", 17)} │",
+            2 => $"│ {Stats(line.Player2Unit)} │",
+            3 => "└───────────────────┘",
+            4 => "         ┃          ",
+            5 => "         VS         ",
+            6 => "         ┃          ",
+            7 => "┌───────────────────┐",
+            8 => $"│ {Center(line.Player1Unit?.Definition.Name ?? "[ EMPTY ]", 17)} │",
+            9 => $"│ {Stats(line.Player1Unit)} │",
+            10 => "└───────────────────┘",
+            _ => ""
+        };
+
+        private static string Center(string t, int w) => t.Length > w ? t.Substring(0, w) : t.PadLeft((w + t.Length) / 2).PadRight(w);
+        private static string Stats(CardInstance? u)
+        {
+            if (u == null) return "                 ";
+            string kw = u.CurrentStats.Keywords.Contains(Keyword.Marked) ? "!!" : (u.IsSilenced ? "S!" : "  ");
+            return $"ATK:{u.CurrentStats.Attack,-2} HP:{u.CurrentStats.Health,-2} {kw}";
+        }
+
+        private static string[] RenderBrain(GameState s)
+        {
+            var res = new List<string> { $"   BOT THOUGHTS P{s.ActivePlayerId} (BRAIN 3.1)", "------------------------" };
+            if (s.CurrentPhase == GamePhase.Combat) { res.Add(" [AUTO] Combat simulation..."); return res.ToArray(); }
+
+            foreach (var t in _lastThoughts.Take(12))
+            {
+                string prefix = t == _lastThoughts.First() ? ">>" : "  ";
+
+              
+                string scoreStr = Math.Abs(t.Score) > 1000000 ? (t.Score > 0 ? "WIN" : "LOSE") : t.Score.ToString("F0");
+
+              
+                string desc = t.Description.Length > 22 ? t.Description.Substring(0, 22) : t.Description;
+
+                res.Add($"{prefix} {desc.PadRight(22)} | {scoreStr.PadLeft(6)}");
+
+                if (t == _lastThoughts.First())
+                {
+                    string reason = t.DeepReasoning.Length > 35 ? t.DeepReasoning.Substring(0, 35) : t.DeepReasoning;
+                    res.Add($"   L {reason}");
+                    res.Add("");
+                }
+            }
+            return res.ToArray();
+        }
+
+        private static string FormatCmdDetailed(IGameCommand? c, GameState s)
+        {
+            if (c is PlayUnitCommand pu) return $"Play {s.GetPlayer(pu.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == pu.CardInstanceId)?.Definition.Name} (L{pu.TargetLineIndex + 1})";
+            if (c is PlaySpellCommand ps) return $"Spell: {s.GetPlayer(ps.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == ps.CardInstanceId)?.Definition.Name}";
+            if (c is SelectTargetCommand st) return $"Target: {s.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == st.TargetId)?.Definition.Name ?? "Hero"}";
+            return "PASS (End Phase)";
+        }
+
+        private static void UpdateLogs(GameEngine e)
+        {
+            var all = e.Events.GetGlobalHistory().ToList();
+            for (int i = _eventsSeenSoFar; i < all.Count; i++)
+            {
+                var evt = all[i];
+                if (evt is UnitDamagedEvent d) _displayLogs.Enqueue($"> {(d.Source?.Definition.Name ?? "Effect")} hits {(d.Unit?.Definition.Name ?? "Hero")} for {d.Amount}");
+                else if (evt is CardPlayedEvent cp) _displayLogs.Enqueue($"> P{cp.PlayerId} plays {cp.Card.Definition.Name}");
+                else if (evt is UnitDiedEvent dd) _displayLogs.Enqueue($"> {dd.Unit.Definition.Name} died");
+                if (_displayLogs.Count > 15) _displayLogs.Dequeue();
+            }
+            _eventsSeenSoFar = all.Count;
+        }
+
+        private static void PerformMulligan(GameEngine e, int pid, bool ctrl)
+        {
+            var p = e.CurrentState.GetPlayer(pid);
+            var rej = p.Hand.Where(c => (ctrl && c.CurrentStats.BloodCost > 2) || (!ctrl && c.CurrentStats.BloodCost > 4)).Select(c => c.InstanceId).ToList();
+            e.ExecuteCommand(new ConfirmMulliganCommand(pid, rej));
+        }
+
+        private static List<CardInstance> CreateDeck(CardFactory f, int id, bool ctrl)
+        {
+            int[] ids = ctrl ? new[] { 4, 32, 26, 24, 25, 31, 7, 21, 15, 13 } : new[] { 12, 3, 6, 10, 11, 36, 9, 18, 1, 5 };
+            var d = new List<CardInstance>();
+            foreach (var cid in ids) for (int i = 0; i < 3; i++) d.Add(f.CreateCard(cid, id));
+            return d;
+        }
+    }
+}
+
+
+========================================
 FILE: BalanceAITester.cs
 PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\BalanceAITester.cs
 ========================================
@@ -615,29 +951,38 @@ namespace CardGame.ConsoleApp
         private static List<EvaluatedMove> _lastThoughts = new List<EvaluatedMove>();
         private static int _eventsSeenSoFar = 0;
         private const int UI_WIDTH = 158;
-        private static StringBuilder _fullAudit = new StringBuilder();
+        private static StringBuilder _matchAudit = new StringBuilder();
         private static int _p1Wins = 0, _p2Wins = 0, _gamesPlayed = 0;
+        private static string _sessionLogPath = "";
+        private static bool _isAutoMode = false;
 
         public static async Task RunAsync()
         {
             Console.Clear();
-            // Ładowanie biblioteki raz na sesję, by uniknąć błędów ID
+            Console.WriteLine("=== SYSTEM TESTOWY AI ===");
+            Console.WriteLine("1. Tryb Nadzoru (Krok po kroku - Spacja)");
+            Console.WriteLine("2. Tryb Auto (Szybka symulacja - tylko Logi)");
+            var modeKey = Console.ReadKey(true);
+            _isAutoMode = modeKey.KeyChar == '2';
+
             CardLibrary.Instance.Clear();
             CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
 
+            _sessionLogPath = $"session_audit_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+            File.WriteAllText(_sessionLogPath, $"=== START SESJI TESTOWEJ AI ({(_isAutoMode ? "AUTO" : "NADZÓR")}): {DateTime.Now} ===\n\n");
+
             while (true)
             {
-                _fullAudit.Clear(); _displayLogs.Clear(); _eventsSeenSoFar = 0;
+                _matchAudit.Clear(); _displayLogs.Clear(); _eventsSeenSoFar = 0;
                 var rng = new DeterministicRng(new Random().Next());
                 var factory = new CardFactory(CardLibrary.Instance, rng);
 
                 bool p1IsCtrl = _gamesPlayed % 2 == 0;
-                var deck1 = CreateDeck(factory, 1, p1IsCtrl);
-                var deck2 = CreateDeck(factory, 2, !p1IsCtrl);
+                var engine = new GameEngine(GameState.Initial(1, CreateDeck(factory, 1, p1IsCtrl), CreateDeck(factory, 2, !p1IsCtrl), rng), rng.Seed);
+                var ai1 = new AIPlayerController(engine, 1, new StandardStrategy());
+                var ai2 = new AIPlayerController(engine, 2, new StandardStrategy());
 
-                var engine = new GameEngine(GameState.Initial(1, deck1, deck2, rng), rng.Seed);
-                var ai1 = new AIPlayerController(engine, 1, new BalanceStrategy());
-                var ai2 = new AIPlayerController(engine, 2, new BalanceStrategy());
+                LogToAudit($"\n--- MECZ NR {_gamesPlayed + 1} | P1: {(p1IsCtrl ? "CONTROL" : "SACR")} vs P2: {(!p1IsCtrl ? "CONTROL" : "SACR")} ---");
 
                 while (!engine.IsGameOver)
                 {
@@ -648,37 +993,56 @@ namespace CardGame.ConsoleApp
                     {
                         var activeAI = state.ActivePlayerId == 1 ? ai1 : ai2;
                         _lastThoughts = activeAI.Solver.FindBestMoves(state);
+
                         DrawUI(state, p1IsCtrl);
 
-                        var key = Console.ReadKey(true);
-                        if (key.Key == ConsoleKey.Escape) return;
-                        if (key.Key == ConsoleKey.A) File.WriteAllText($"audit_game_{_gamesPlayed}.txt", _fullAudit.ToString());
+                        if (!_isAutoMode)
+                        {
+                            var key = Console.ReadKey(true);
+                            if (key.Key == ConsoleKey.Escape) return;
+                            if (key.Key == ConsoleKey.A) LogToAudit("\n--- RĘCZNY ZRZUT STANU ---\n" + _matchAudit.ToString());
+                        }
+                        else
+                        {
+                            await Task.Delay(50); // Małe opóźnienie w trybie auto, by UI "migało" postępem
+                        }
                     }
 
                     if (state.CurrentPhase == GamePhase.Mulligan)
                     {
-                        PerformMulligan(engine, 1, p1IsCtrl); PerformMulligan(engine, 2, !p1IsCtrl);
+                        PerformMulligan(engine, 1, p1IsCtrl);
+                        PerformMulligan(engine, 2, !p1IsCtrl);
                     }
                     else if (state.CurrentPhase == GamePhase.Combat)
                     {
                         engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
-                        await Task.Delay(150);
+                        if (!_isAutoMode) await Task.Delay(200);
                     }
                     else
                     {
                         var best = _lastThoughts.FirstOrDefault();
                         if (best != null)
                         {
-                            _fullAudit.AppendLine($"[T{state.TurnNumber}] P{state.ActivePlayerId}: {FormatCmdDetailed(best.Command, state)}");
+                            LogToAudit($"[T{state.TurnNumber} P{state.ActivePlayerId}] {FormatCmdDetailed(best.Command, state)} | Score: {best.Score:F1} | {best.DeepReasoning}");
                             engine.ExecuteCommand(best.Command);
                         }
                         else engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
                     }
                 }
+
                 if (engine.WinnerId == 1) _p1Wins++; else if (engine.WinnerId == 2) _p2Wins++;
+                LogToAudit($"MECZ ZAKOŃCZONY. ZWYCIĘZCA: P{engine.WinnerId ?? 0} | WYNIK: P1:{_p1Wins} P2:{_p2Wins}\n" + new string('=', 60));
+
                 _gamesPlayed++;
-                await Task.Delay(2000);
+                DrawUI(engine.CurrentState, p1IsCtrl);
+                await Task.Delay(_isAutoMode ? 500 : 2000);
             }
+        }
+
+        private static void LogToAudit(string message)
+        {
+            _matchAudit.AppendLine(message);
+            File.AppendAllText(_sessionLogPath, message + "\n");
         }
 
         private static void DrawUI(GameState s, bool p1IsCtrl)
@@ -686,15 +1050,24 @@ namespace CardGame.ConsoleApp
             StringBuilder sb = new StringBuilder();
             Console.SetCursorPosition(0, 0);
 
-            int roundNum = (s.TurnNumber + 3) / 4;
-            int phaseIdx = s.CurrentPhase switch { GamePhase.UnitOnly => 1, GamePhase.UnitAndAction => 2, GamePhase.ActionOnly => 3, GamePhase.Combat => 4, _ => 0 };
+            // TurnNumber w CombatPhaseState rośnie co walkę, więc TurnNumber = RoundNumber
+            int roundNum = s.TurnNumber;
+            // Fazy w rundzie: 1. UnitOnly, 2. UnitAndAction, 3. ActionOnly. Combat to "podsumowanie".
+            string phaseName = s.CurrentPhase switch
+            {
+                GamePhase.UnitOnly => "1/3 (JEDNOSTKI)",
+                GamePhase.UnitAndAction => "2/3 (MIESZANA)",
+                GamePhase.ActionOnly => "3/3 (AKCJE)",
+                GamePhase.Combat => "WALKA",
+                _ => s.CurrentPhase.ToString()
+            };
 
-            string p1Tag = p1IsCtrl ? "CTRL" : "SACR";
-            string p2Tag = !p1IsCtrl ? "CTRL" : "SACR";
+            string p1Tag = p1IsCtrl ? "CONTROL" : "SACRIFICE";
+            string p2Tag = !p1IsCtrl ? "CONTROL" : "SACRIFICE";
             string activeTag = s.ActivePlayerId == 1 ? $"P1 [{p1Tag}]" : $"P2 [{p2Tag}]";
 
-            string headL = $" RUNDA: {roundNum} | FAZA: {phaseIdx}/4 ({s.CurrentPhase}) | AKTYWNY: {activeTag}";
-            string headR = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ] ";
+            string headL = $" RUNDA: {roundNum} | FAZA: {phaseName} | AKTYWNY: {activeTag}";
+            string headR = $"[ WINS P1: {_p1Wins} | P2: {_p2Wins} ] | MODE: {(_isAutoMode ? "AUTO" : "STEP")} ";
 
             sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
             sb.AppendLine("║ " + headL.PadRight(UI_WIDTH - headR.Length - 4) + headR + "║");
@@ -729,7 +1102,7 @@ namespace CardGame.ConsoleApp
             res.Add($" [ GRACZ P1 | HP: {s.PlayerA.Health,2} | KREW: {s.PlayerA.CurrentBlood}/{s.PlayerA.MaxBlood} ]");
             res.AddRange(WrapHand(s.PlayerA.Hand, "P1"));
             res.Add(new string('-', 104));
-            res.Add(" DZIENNIK ZDARZEŃ:");
+            res.Add(" DZIENNIK ZDARZEŃ (LOG SESJI: " + Path.GetFileName(_sessionLogPath) + ")");
             res.AddRange(_displayLogs.Reverse().Take(8).Select(x => " " + x));
             return res.ToArray();
         }
@@ -740,6 +1113,8 @@ namespace CardGame.ConsoleApp
             var cards = hand.Select(c => $"({c.CurrentStats.BloodCost}){c.Definition.Name}").ToList();
             var result = new List<string>();
             string currentLine = prefix;
+
+            if (cards.Count == 0) { result.Add(prefix + "PUSTA]"); return result; }
 
             for (int i = 0; i < cards.Count; i++)
             {
@@ -772,14 +1147,29 @@ namespace CardGame.ConsoleApp
         };
 
         private static string Center(string t, int w) => t.Length > w ? t.Substring(0, w) : t.PadLeft((w + t.Length) / 2).PadRight(w);
-        private static string Stats(CardInstance? u) => u == null ? "                 " : $"ATK:{u.CurrentStats.Attack,-2} HP:{u.CurrentStats.Health,-2} {(u.CurrentStats.Keywords.Contains(Keyword.Marked) ? "!!" : "  ")}";
+
+        private static string Stats(CardInstance? u)
+        {
+            if (u == null) return "                 ";
+            string status = u.CurrentStats.Keywords.Contains(Keyword.Marked) ? "!!" : "  ";
+            if (u.IsSilenced) status = "S!";
+            return $"ATK:{u.CurrentStats.Attack,-2} HP:{u.CurrentStats.Health,-2} {status}";
+        }
 
         private static string[] RenderBrain(GameState s)
         {
-            var res = new List<string> { $"   MÓZG P{s.ActivePlayerId}", "------------------------" };
-            foreach (var t in _lastThoughts.Take(25))
+            var res = new List<string> { $"   MYŚLI BOTA P{s.ActivePlayerId}", "------------------------" };
+            if (s.CurrentPhase == GamePhase.Combat) { res.Add(" [AUTO] Walka..."); return res.ToArray(); }
+
+            foreach (var t in _lastThoughts.Take(15))
             {
-                res.Add($"{(t == _lastThoughts.First() ? ">>" : "  ")} {FormatCmdDetailed(t.Command, s).PadRight(24)} | {t.Score:F0}");
+                string prefix = t == _lastThoughts.First() ? ">>" : "  ";
+                res.Add($"{prefix} {t.Description.PadRight(24)} | {t.Score:F0}");
+                if (t == _lastThoughts.First() && !string.IsNullOrEmpty(t.DeepReasoning))
+                {
+                    res.Add($"   L {t.DeepReasoning}");
+                    res.Add("");
+                }
             }
             return res.ToArray();
         }
@@ -787,14 +1177,14 @@ namespace CardGame.ConsoleApp
         private static string FormatCmdDetailed(IGameCommand? c, GameState s)
         {
             if (c == null) return "...";
-            if (c is PlayUnitCommand pu) return $"{s.GetPlayer(pu.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == pu.CardInstanceId)?.Definition.Name} na L{pu.TargetLineIndex+1}";
+            if (c is PlayUnitCommand pu) return $"Graj {s.GetPlayer(pu.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == pu.CardInstanceId)?.Definition.Name} (L{pu.TargetLineIndex + 1})";
             if (c is PlaySpellCommand ps) return $"Czar: {s.GetPlayer(ps.PlayerId).Hand.FirstOrDefault(x => x.InstanceId == ps.CardInstanceId)?.Definition.Name}";
             if (c is SelectTargetCommand st)
             {
                 var target = s.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == st.TargetId);
                 return $"Cel: {target?.Definition.Name ?? "Bohater"}";
             }
-            return "KONIEC TURY";
+            return "PAS (Koniec)";
         }
 
         private static void UpdateLogs(GameEngine e)
@@ -805,7 +1195,7 @@ namespace CardGame.ConsoleApp
                 var evt = all[i];
                 if (evt is UnitDamagedEvent d) _displayLogs.Enqueue($"> {(d.Source?.Definition.Name ?? "Efekt")} bije {(d.Unit?.Definition.Name ?? "Bohater")} za {d.Amount}");
                 else if (evt is CardPlayedEvent cp) _displayLogs.Enqueue($"> P{cp.PlayerId} gra {cp.Card.Definition.Name}");
-                else if (evt is UnitDiedEvent dd) _displayLogs.Enqueue($"> {dd.Unit.Definition.Name} zniszczony");
+                else if (evt is UnitDiedEvent dd) _displayLogs.Enqueue($"> {dd.Unit.Definition.Name} zginął");
                 if (_displayLogs.Count > 15) _displayLogs.Dequeue();
             }
             _eventsSeenSoFar = all.Count;
@@ -816,11 +1206,12 @@ namespace CardGame.ConsoleApp
             var p = e.CurrentState.GetPlayer(pid);
             var rej = p.Hand.Where(c => (ctrl && c.CurrentStats.BloodCost > 2) || (!ctrl && c.CurrentStats.BloodCost > 4)).Select(c => c.InstanceId).ToList();
             e.ExecuteCommand(new ConfirmMulliganCommand(pid, rej));
+            LogToAudit($"[MULLIGAN] P{pid} wymienił {rej.Count} kart.");
         }
 
         private static List<CardInstance> CreateDeck(CardFactory f, int id, bool ctrl)
         {
-            int[] ids = ctrl ? new[] { 4, 32, 24, 25, 26, 17, 6, 31, 15, 7 } : new[] { 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3 }; // { 12, 10, 11, 3, 9, 1, 2, 5, 18, 14 };
+            int[] ids = ctrl ? new[] { 4, 32, 24, 25, 26, 17, 6, 31, 15, 7 } : new[] { 12, 10, 11, 3, 9, 1, 2, 5, 18, 14 }; // { 12, 10, 11, 3, 9, 1, 2, 5, 18, 14 };
             var d = new List<CardInstance>();
             foreach (var cid in ids) for (int i = 0; i < 3; i++) d.Add(f.CreateCard(cid, id));
             return d;
@@ -840,6 +1231,8 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\CardGame.Cons
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<ServerGarbageCollection>true</ServerGarbageCollection>
+	<ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
   </PropertyGroup>
 
   <ItemGroup>
@@ -1161,6 +1554,8 @@ namespace CardGame.ConsoleApp
 FILE: Program.cs
 PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Program.cs
 ========================================
+using CardGame.ConsoleApp.Evolution;
+using CardGame.Core.Cards.Data;
 using System;
 using System.Threading.Tasks;
 
@@ -1172,21 +1567,116 @@ namespace CardGame.ConsoleApp
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            while (true)
+            // Initialization
+            try
+            {
+                CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
+                Console.WriteLine($"[SYSTEM] Cards loaded: {CardLibrary.Instance.GetAllIds().Length}");
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"[CRITICAL ERROR] Failed to load cards: {ex.Message}");
+                Console.ResetColor();
+                return;
+            }
+
+            bool exitApp = false;
+            while (!exitApp)
             {
                 Console.Clear();
-                Console.WriteLine("=== CARD GAME ENGINE CLI ===");
-                Console.WriteLine("1. Uruchom Testy Mechanik (Unit Tests)");
-                Console.WriteLine("2. Uruchom SymulacjÄ™ Bitwy (AI vs AI)");
-                Console.WriteLine("3. Uruchom SymulacjÄ™ Bitwy (AI vs AI) v2");
-                Console.WriteLine("4. PÄ™tla Symulacji Bitwy (Balance AI Tester)");
-                Console.WriteLine("5. Zoptymalizowana Symulacja (Optimized AI Logger)");
-                Console.WriteLine("6. WyjĹ›cie");
-                Console.Write("\nWybierz opcjÄ™: ");
+                Console.WriteLine("================================================");
+                Console.WriteLine("           CARD GAME ENGINE - MASTER CLI        ");
+                Console.WriteLine("================================================");
+                Console.WriteLine("1. STANDARD BATTLE (AI v3.1 - High Quality)");
+                Console.WriteLine("2. EVOLUTION CENTER (Training & Master Matches)");
+                Console.WriteLine("3. LEGACY & DEBUG TOOLS (Old versions & Tests)");
+                Console.WriteLine("------------------------------------------------");
+                Console.WriteLine("0. Exit Application");
+                Console.WriteLine("================================================");
+                Console.Write("\nSelect option: ");
 
-                var key = Console.ReadKey();
-                Console.WriteLine();
+                var key = Console.ReadKey(true);
+                switch (key.KeyChar)
+                {
+                    case '1':
+                        await AIBattleRunnerIII.RunAsync();
+                        break;
+                    case '2':
+                        await ShowEvolutionMenu();
+                        break;
+                    case '3':
+                        await ShowLegacyMenu();
+                        break;
+                    case '0':
+                        exitApp = true;
+                        break;
+                }
+            }
+        }
 
+        static async Task ShowEvolutionMenu()
+        {
+            bool back = false;
+            while (!back)
+            {
+                Console.Clear();
+                Console.WriteLine("================================================");
+                Console.WriteLine("             AI EVOLUTION CENTER                ");
+                Console.WriteLine("================================================");
+                Console.WriteLine("1. RUN EVOLUTION TRAINING (Generate DNA)");
+                Console.WriteLine("2. MASTER VS STANDARD (Test best_bot_dna.json)");
+                Console.WriteLine("3. VIEW MASTER BOT STATISTICS (DNA & Deck)"); 
+                Console.WriteLine("------------------------------------------------");
+                Console.WriteLine("0. Back to Main Menu");
+                Console.WriteLine("================================================");
+                Console.Write("\nSelect evolution tool: ");
+
+                var key = Console.ReadKey(true);
+                switch (key.KeyChar)
+                {
+                    case '1':
+                        Console.Write("\nHow many generations to simulate? ");
+                        if (int.TryParse(Console.ReadLine(), out int gCount))
+                        {
+                            var runner = new EvolutionRunner();
+                            await runner.RunEvolutionAsync(gCount);
+                        }
+                        Pause();
+                        break;
+                    case '2':
+                        await AIvsEvolutionRunner.RunAsync();
+                        break;
+                    case '3':
+                        EvoBotViewer.ViewBestBot(); 
+                        break;
+                    case '0':
+                        back = true;
+                        break;
+                }
+            }
+        }
+
+        static async Task ShowLegacyMenu()
+        {
+            bool back = false;
+            while (!back)
+            {
+                Console.Clear();
+                Console.WriteLine("================================================");
+                Console.WriteLine("            LEGACY & DEBUG TOOLS                ");
+                Console.WriteLine("================================================");
+                Console.WriteLine("1. Unit Mechanics Tests (Unit Tests)");
+                Console.WriteLine("2. AI Battle v1 (Original)");
+                Console.WriteLine("3. AI Battle v2 (Nuclear UI Prototype)");
+                Console.WriteLine("4. Balance AI Tester (Long-term simulation)");
+                Console.WriteLine("5. Optimized AI Logger (Debug Panel)");
+                Console.WriteLine("------------------------------------------------");
+                Console.WriteLine("0. Back to Main Menu");
+                Console.WriteLine("================================================");
+                Console.Write("\nSelect legacy tool: ");
+
+                var key = Console.ReadKey(true);
                 switch (key.KeyChar)
                 {
                     case '1':
@@ -1209,11 +1699,8 @@ namespace CardGame.ConsoleApp
                         await OptimizedAILogger.RunAsync();
                         Pause();
                         break;
-                    case '6':
-                        return;
-                    default:
-                        Console.WriteLine("Nieznana opcja.");
-                        await Task.Delay(1000);
+                    case '0':
+                        back = true;
                         break;
                 }
             }
@@ -1221,1037 +1708,8 @@ namespace CardGame.ConsoleApp
 
         static void Pause()
         {
-            Console.WriteLine("\nNaciĹ›nij dowolny klawisz, aby wrĂłciÄ‡ do menu...");
-            Console.ReadKey();
-        }
-    }
-}
-
-
-========================================
-FILE: cards.json
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\cards.json
-========================================
-[
-  {
-    "Id": 1,
-    "Name": "Mokke",
-    "Type": "Unit",
-    "Subtypes": [ "Animal" ],
-    "Cost": 1,
-    "Attack": 1,
-    "Health": 2,
-    "Description": "When Destroyed: Heal Your Hero for 3 HP.",
-    "Effects": [
-      {
-        "Trigger": "OnDeath",
-        "Actions": [
-          { "Type": "Heal", "Target": "FriendlyHero", "Amount": 3 }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 2,
-    "Name": "BoomBots",
-    "Type": "Unit",
-    "Subtypes": [ "Mech" ],
-    "Cost": 1,
-    "Attack": 1,
-    "Health": 3,
-    "Description": "When Destroyed: Do 2 Damage to the Enemy Hero.",
-    "Effects": [
-      {
-        "Trigger": "OnDeath",
-        "Actions": [
-          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
-        ]
-      }
-    ]
-  },
-
-  {
-  "Id": 3,
-  "Name": "Bone Sommelier",
-  "Type": "Unit",
-  "Subtypes": [ "Monster" ],
-  "Cost": 1,
-  "Attack": 1,
-  "Health": 3,
-  "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
-  "Effects": [
-    {
-      "Trigger": "OnDeath",
-      "Actions": [ 
-        {
-          "Type": "AddCardToHand",
-          "Target": "FriendlyHero",
-          "ValueParam": 900
-        }
-      ]
-    }
-  ]
-},
-
-  {
-    "Id": 4,
-    "Name": "Informer",
-    "Type": "Unit",
-    "Subtypes": [ "Human" ],
-    "Cost": 1,
-    "Attack": 1,
-    "Health": 2,
-    "Description": "When Played: Mark an Enemy Unit.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Actions": [
-          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 5,
-    "Name": "Queen of Cards",
-    "Type": "Unit",
-    "Subtypes": [ "Noble" ],
-    "Cost": 3,
-    "Attack": 2,
-    "Health": 4,
-    "Description": "Draw a card when a friendly unit dies.",
-    "Effects": [
-      {
-        "Trigger": "OnFriendlyUnitDied",
-        "Actions": [
-          { "Type": "DrawCard", "Target": "FriendlyHero" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 6,
-    "Name": "Radio Demon",
-    "Type": "Unit",
-    "Subtypes": [ "Demon" ],
-    "Cost": 5,
-    "Attack": 2,
-    "Health": 2,
-    "Description": "Give all friendly units +1/+1 (Global).",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Actions": [
-          { "Type": "ModifyGlobalBuff", "Target": "FriendlyHero", "BuffAtk": 1, "BuffHp": 1 }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 7,
-    "Name": "Glock-17",
-    "Type": "Spell",
-    "Cost": 2,
-    "Description": "Deal 3 damage to an enemy.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Actions": [
-          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 3 }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 8,
-    "Name": "Crusader",
-    "Type": "Unit",
-    "Cost": 2,
-    "Attack": 2,
-    "Health": 3,
-    "Keywords": [ "Armored" ], 
-    "Description": "Armored."
-  },
-
-  {
-    "Id": 9,
-    "Name": "Corpse Eater",
-    "Type": "Unit",
-    "Subtypes": [ "Monster" ],
-    "Cost": 3,
-    "Attack": 3,
-    "Health": 1,
-    "Description": "While in Hand: When Friendly dies, play this.",
-    "Effects": [
-      {
-        "Trigger": "OnFriendlyUnitDied",
-        "Zone": "Hand",
-        "Actions": [
-          { "Type": "SummonUnit", "Target": "Self" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 10,
-    "Name": "Polar Bear",
-    "Type": "Unit",
-    "Subtypes": [ "Animal" ],
-    "Cost": 2,
-    "Attack": 2,
-    "Health": 3,
-    "Description": "When Played: Sacrifice a Unit to absorb its stats.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Targeting": "OtherFriendlyUnits",
-        "Actions": [
-          { "Type": "AbsorbStats", "Target": "SelectedTarget" },
-          { "Type": "SacrificeUnit", "Target": "SelectedTarget" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 11,
-    "Name": "The Creature",
-    "Type": "Unit",
-    "Subtypes": [ "Monster" ],
-    "Cost": 7,
-    "Attack": 7,
-    "Health": 7,
-    "Keywords": [ "Unkillable" ],
-    "Description": "While In Hand: Costs 1 less whenever you sacrifice a unit.",
-    "Effects": [
-      {
-        "Trigger": "OnOtherUnitSacrificed",
-        "Zone": "Hand",
-        "Actions": [
-          { "Type": "BuffStats", "Target": "Self", "Amount": -1 }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 12,
-    "Name": "Black Cat",
-    "Type": "Unit",
-    "Subtypes": ["Animal"],
-    "Cost": 0,
-    "Attack": 1,
-    "Health": 1,
-    "Description": "When Sacrificed: Return to Hand instead.",
-    "Effects": [
-      {
-        "Trigger": "OnSacrificed",
-        "Zone": "Board", 
-        "Actions": [ { "Type": "ReturnToHand", "Target": "Self" } ]
-      }
-    ]
-  },
-
-  {
-    "Id": 13,
-    "Name": "Critical Thinking",
-    "Type": "Spell",
-    "Cost": 1,
-    "Description": "Pick a Card from Deck, Draw it, Shuffle.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Actions": [
-          { "Type": "TutorCard", "Target": "Self" },
-          { "Type": "ShuffleDeck", "Target": "Self" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 14,
-    "Name": "Survivalist",
-    "Type": "Unit",
-    "Cost": 4,
-    "Attack": 2,
-    "Health": 3,
-    "Description": "While In Play: Other Friendly Units get SoulGuard.",
-    "Effects": [
-      {
-        "Trigger": "Passive",
-        "Zone": "Board",
-        "Actions": [ 
-          { "Type": "ApplyStatus", "Target": "OtherFriendlyUnits", "StatusKeyword": "SoulGuard" } 
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 15,
-    "Name": "Expectancy",
-    "Type": "Spell",
-    "Cost": 2,
-    "Description": "Draw 2 from Deck OR Discard.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Targeting": "Choice",
-        "ChoiceLabels": ["Draw 2 from Deck", "Draw 2 from Discard"],
-        "Actions": [
-          { "Type": "DrawCard", "Amount": 2 },
-          { "Type": "DrawFromDiscard", "Amount": 2 }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 16,
-    "Name": "HellFire",
-    "Type": "Spell",
-    "Cost": 4,
-    "Description": "Deal 3 Damage and Apply Burning to All Units on Board.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Actions": [
-          { "Type": "DealDamage", "Target": "AllUnitsOnBoard", "Amount": 3 },
-          { "Type": "ApplyStatus", "Target": "AllUnitsOnBoard", "StatusKeyword": "Burning" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 17,
-    "Name": "Megumin",
-    "Type": "Unit",
-    "Subtypes": [ "Mercenary" ],
-    "Cost": 4,
-    "Attack": 3,
-    "Health": 1,
-    "Keywords": [ "SplashDamage", "BurnSource" ],
-    "KeywordParams": {
-      "SplashDamage": 3
-    },
-    "Description": "Splash Damage 3. Burn 1."
-  },
-
-  {
-    "Id": 18,
-    "Name": "Final Mission",
-    "Type": "Spell",
-    "Cost": 1,
-    "Description": "Sacrifice a Friendly Unit to deal 4 damage to an Enemy Unit.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Actions": [
-          { "Type": "SacrificeUnit", "Target": "TargetFriendlyUnit" },
-          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 4 }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 19,
-    "Name": "Nepotism",
-    "Type": "Spell",
-    "Cost": 2,
-    "Description": "A Friendly Unit does a Bonus Attack.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Actions": [
-          { "Type": "BonusAttack", "Target": "TargetFriendlyUnit" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 20,
-    "Name": "Genie",
-    "Type": "Unit",
-    "Subtypes": [ "Mystical" ],
-    "Cost": 4,
-    "Attack": 3,
-    "Health": 3,
-    "Description": "When Played: Choose a Unit and return it to hand.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Targeting": "SelectedTarget",
-        "Actions": [
-          { "Type": "ReturnToHand", "Target": "SelectedTarget" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 21,
-    "Name": "Juggernaut",
-    "Type": "Unit",
-    "Subtypes": [ "Machine" ],
-    "Cost": 4,
-    "Attack": 4,
-    "Health": 2,
-    "Keywords": [ "Armored" ],
-    "KeywordParams": { "Armored": 2 },
-    "Description": "Armored 2. When dealing damage to a unit: Deal 2 to Enemy Hero.",
-    "Effects": [
-      {
-        "Trigger": "OnDamagedEnemyUnit",
-        "Actions": [
-          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 22,
-    "Name": "QuickDraw Gun Man",
-    "Type": "Unit",
-    "Cost": 1,
-    "Attack": 1,
-    "Health": 3,
-    "Description": "Whenever Enemy Hero draws a card: Deal 1 damage to them.",
-    "Effects": [
-      {
-        "Trigger": "OnOpponentCardDrawn",
-        "Actions": [
-          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 1 }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 23,
-    "Name": "FireAxe Man",
-    "Type": "Unit",
-    "Subtypes": [ "Monster" ],
-    "Cost": 5,
-    "Attack": 4,
-    "Health": 6,
-    "Description": "When this unit kills an enemy: Heal to full and +2 HP.",
-    "Effects": [
-      {
-        "Trigger": "OnKill",
-        "Actions": [
-          { "Type": "HealToFull", "Target": "Self" },
-          { "Type": "BuffStats", "Target": "Self", "BuffHp": 2 }
-        ]
-      }
-    ]
-  },
-
-  {
-  "Id": 24, 
-  "Name": "Gerard from Rivia",
-  "Type": "Unit",
-  "Subtypes": [ "Mercenary" ],
-  "Cost": 5,
-  "Attack": 5,
-  "Health": 5,
-  "Effects": [
-    {
-      "Trigger": "OnStatusApplied",
-      "Condition": {
-        "Condition": "And",
-        "SubConditions": [
-          { "Condition": "IsStatus", "TargetParam": "Marked" },
-          { "Condition": "IsEnemy" } 
-        ]
-      },
-      "Actions": [ { "Type": "BonusAttack", "Target": "Self" } ]
-    }
-  ]
-},
-
-  {
-  "Id": 25,
-  "Name": "Bounty Hunter",
-  "Type": "Unit",
-  "Subtypes": [ "Mercenary" ],
-  "Cost": 3,
-  "Attack": 3,
-  "Health": 3,
-  "Description": "When an Enemy is Marked: Stun it.",
-  "Effects": [
-    {
-      "Trigger": "OnStatusApplied",
-      "Condition": {
-        "Condition": "And",
-        "SubConditions": [
-          { "Condition": "IsStatus", "TargetParam": "Marked" },
-          { "Condition": "IsEnemy" }
-        ]
-      },
-      "Actions": [
-        { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Stunned" }
-      ]
-    }
-  ]
-  },
-
-  {
-    "Id": 26,
-    "Name": "Occultist",
-    "Type": "Unit",
-    "Subtypes": [ "Mercenary" ],
-    "Cost": 4,
-    "Attack": 2,
-    "Health": 3,
-    "Description": "Before Combat in this lane: Mark an Enemy Unit.",
-    "Effects": [
-      {
-        "Trigger": "OnPreCombatLine",
-        "Actions": [
-          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 27,
-    "Name": "Raiding Raptor",
-    "Type": "Unit",
-    "Subtypes": [ "Monster" ],
-    "Cost": 3,
-    "Attack": 1,
-    "Health": 4,
-    "Description": "Hit Hero: Draw. You Draw: +1 Atk.",
-    "Effects": [
-      {
-        "Trigger": "OnDamagedEnemyHero",
-        "Actions": [ { "Type": "DrawCard", "Target": "FriendlyHero" } ]
-      },
-      {
-        "Trigger": "OnFriendlyCardDrawn",
-        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1 } ]
-      }
-    ]
-  },
-
-  {
-    "Id": 28,
-    "Name": "Exploding Fruitcake",
-    "Type": "Spell",
-    "Cost": 2,
-    "Description": "6 Dmg to enemy. Opponent gains this.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Actions": [
-          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 6 },
-          { "Type": "GiveToOpponent", "Target": "Self" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 29,
-    "Name": "Blighteinstein",
-    "Type": "Unit",
-    "Subtypes": [ "Monster" ],
-    "Cost": 5,
-    "Attack": 5,
-    "Health": 6,
-    "Description": "On Kill: Move Right.",
-    "Effects": [
-      {
-        "Trigger": "OnKill",
-        "Actions": [ { "Type": "MoveRight", "Target": "Self" } ]
-      }
-    ]
-  },
-
-  {
-    "Id": 30,
-    "Name": "SharkCannon",
-    "Type": "Unit",
-    "Cost": 5,
-    "Attack": 0,
-    "Health": 7,
-    "Description": "Before Combat here: 5 Dmg to Enemy Hero.",
-    "Effects": [
-      {
-        "Trigger": "OnPreCombatLine",
-        "Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 5 } ]
-      }
-    ]
-  },
-  {
-    "Id": 31,
-    "Name": "Silence",
-    "Type": "Spell",
-    "Cost": 2,
-    "Description": "Enemy Unit loses all Bonus Stats, Keywords and Passive Abilities.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Actions": [ { "Type": "Silence", "Target": "TargetEnemyUnit" } ]
-      }
-    ]
-  },
-
-  {
-    "Id": 32,
-    "Name": "Marked for Death",
-    "Type": "Spell",
-    "Cost": 1,
-    "Description": "Mark an Enemy Unit. Draw a Card.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Actions": [ 
-          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" },
-          { "Type": "DrawCard", "Target": "FriendlyHero" }
-        ]
-      }
-    ]
-  },
-
-  {
-    "Id": 33,
-    "Name": "Mouse",
-    "Type": "Unit",
-    "Subtypes": [ "Machine" ],
-    "Cost": 5,
-    "Attack": 5,
-    "Health": 10,
-    "Keywords": [ "Stunned" ],
-    "Description": "Stunned."
-  },
-
-  {
-    "Id": 34,
-    "Name": "MaidMask",
-    "Type": "Unit",
-    "Cost": 2,
-    "Attack": 3,
-    "Health": 1,
-    "Keywords": [ "SoulGuard" ],
-    "Description": "SoulGuard."
-  },
-
-  {
-    "Id": 35,
-    "Name": "Cathulli Captain",
-    "Type": "Unit",
-    "Subtypes": [ "Monster" ],
-    "Cost": 2,
-    "Attack": 2,
-    "Health": 2,
-    "Description": "When a Friendly Monster Unit hurts Enemy Hero that unit gets +1/+1.",
-    "Effects": [
-      {
-        "Trigger": "OnDamagedEnemyHero",
-        "Condition": { "Condition": "IsSubtype", "TargetParam": "Monster" },
-        "Actions": [ { "Type": "BuffStats", "Target": "SelectedTarget", "BuffAtk": 1, "BuffHp": 1 } ]
-      }
-    ]
-  },
-
-  {
-    "Id": 36,
-    "Name": "Death",
-    "Type": "Unit",
-    "Subtypes": [ "Monster" ],
-    "Cost": 5,
-    "Attack": 3,
-    "Health": 3,
-    "Keywords": [ "SoulGuard" ],
-    "Description": "Whenever a Friendly Unit is Destroyed: Deal 3 damage to the Enemy Hero. SoulGuard.",
-    "Effects": [
-      {
-        "Trigger": "OnFriendlyUnitDied",
-        "Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 3 } ]
-      }
-    ]
-  },
-
-  {
-  "Id": 37,
-  "Name": "Archer",
-  "Type": "Unit",
-  "Subtypes": ["Mercenary"],
-  "Cost": 2, "Attack": 1, "Health": 4,
-  "Description": "Before Combat Here: Apply Burning to an Enemy Unit.",
-  "Effects": [
-    {
-      "Trigger": "OnPreCombatLine",
-      "Actions": [
-        { 
-          "Type": "ApplyStatus", 
-          "Target": "TargetEnemyUnit", 
-          "StatusKeyword": "Burning" 
-        }
-      ]
-    }
-  ]
-},
-
-{
-    "Id": 900,
-    "Name": "The Alluring Goblet",
-    "Type": "Spell",
-    "Cost": 1,
-    "Description": "Make a unit Unkillable, then destroy it.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Targeting": "TargetFriendlyUnit",
-        "Actions": [
-          { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Unkillable" },
-          { "Type": "DestroyUnit", "Target": "SelectedTarget" }
-        ]
-      }
-    ]
- }
-]
-
-
-========================================
-FILE: starter_deck.json
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Decks\starter_deck.json
-========================================
-{
-  "Id": "starter_deck",
-  "Name": "Talia Testowa",
-  "Description": "Zawiera wszystkie mechaniki.",
-  "CardIds": [
-    1, 
-    2, 
-    3, 
-    4, 
-    5,
-    7  
-  ]
-}
-
-
-========================================
-FILE: CardGame.Core.csproj
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\CardGame.Core.csproj
-========================================
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-</Project>
-
-
-
-========================================
-FILE: AIPlayerController.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\AIPlayerController.cs
-========================================
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.AI.Strategies;
-using CardGame.Core.Application;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-using CardGame.Core.AI.Logic;
-
-namespace CardGame.Core.AI
-{
-    public class AIPlayerController
-    {
-        public int BotPlayerId { get; }
-        private readonly GameEngine _gameEngine;
-        public readonly BotSolver Solver;
-        private bool _isRunning = false;
-
-        public AIPlayerController(GameEngine gameEngine, int botPlayerId, IAIStrategy? strategy = null)
-        {
-            _gameEngine = gameEngine;
-            BotPlayerId = botPlayerId;
-            Solver = new BotSolver(_gameEngine, BotPlayerId, strategy ?? new StandardStrategy());
-        }
-
-        public async void StartAutoPlay()
-        {
-            if (_isRunning) return;
-            _isRunning = true;
-
-            while (!_gameEngine.IsGameOver)
-            {
-                var state = _gameEngine.CurrentState;
-
-                if (state.CurrentPhase == GamePhase.Mulligan)
-                {
-                    if (!state.PlayersReady.Contains(BotPlayerId))
-                    {
-                        _gameEngine.ExecuteCommand(new ConfirmMulliganCommand(BotPlayerId, new System.Collections.Generic.List<int>()));
-                    }
-                    await Task.Delay(100);
-                    continue;
-                }
-
-                if (state.ActivePlayerId == BotPlayerId)
-                {
-                    await Task.Delay(500); // Wait a bit before making a move
-                    
-                    var evaluatedMoves = Solver.FindBestMoves(state);
-
-                    if (evaluatedMoves.Any())
-                    {
-                        var bestCommand = evaluatedMoves.First().Command;
-                        var result = _gameEngine.ExecuteCommand(bestCommand);
-
-                        // Safeguard: if the best move did nothing, end the phase.
-                        if (result.NewState == state && !(bestCommand is EndPhaseCommand))
-                        {
-                            _gameEngine.ExecuteCommand(new EndPhaseCommand(BotPlayerId));
-                        }
-                    }
-                    else
-                    {
-                        // If AI finds no valid moves, just end the phase.
-                        _gameEngine.ExecuteCommand(new EndPhaseCommand(BotPlayerId));
-                    }
-                }
-                else
-                {
-                    await Task.Delay(100);
-                }
-            }
-            _isRunning = false;
-        }
-    }
-}
-
-
-========================================
-FILE: IAIStrategy.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Interfaces\IAIStrategy.cs
-========================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.AI.Interfaces
-{
-    public interface IAIStrategy
-    {
-        float Evaluate(GameState state, int botPlayerId);
-    }
-}
-
-
-
-========================================
-FILE: BotSolver.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\BotSolver.cs
-========================================
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.Application;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.State.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CardGame.Core.AI.Logic
-{
-    // NEW CLASS: Represents a move that has been evaluated by the AI.
-    public class EvaluatedMove
-    {
-        public IGameCommand Command { get; }
-        public float Score { get; }
-        public string Description { get; }
-
-        public EvaluatedMove(IGameCommand command, float score, string description = "")
-        {
-            Command = command;
-            Score = score;
-            Description = description;
-        }
-    }
-
-    public class SimulationNode
-    {
-        public GameState State { get; }
-        public IGameCommand? InitialMove { get; }
-        public float Score { get; }
-
-        public SimulationNode(GameState state, IGameCommand? initialMove, float score)
-        {
-            State = state;
-            InitialMove = initialMove;
-            Score = score;
-        }
-    }
-
-    public class BotSolver
-    {
-        private readonly GameEngine _engineTemplate;
-        private readonly MoveGenerator _moveGenerator;
-        private readonly IAIStrategy _strategy;
-        private readonly VirtualOpponent _virtualOpponent;
-        private readonly int _botId;
-
-        private const int BeamWidth = 5;
-        private const int MaxDepth = 3;
-
-        public BotSolver(GameEngine engine, int botId, IAIStrategy strategy)
-        {
-            _engineTemplate = engine;
-            _botId = botId;
-            _strategy = strategy;
-            _moveGenerator = new MoveGenerator();
-            _virtualOpponent = new VirtualOpponent(engine.Factory);
-        }
-
-        // MODIFIED: This method now returns a list of all considered moves with their scores.
-        public List<EvaluatedMove> FindBestMoves(GameState rootState)
-        {
-            var initialMoves = _moveGenerator.GenerateLegalMoves(rootState, _botId);
-            var evaluatedMoves = new List<EvaluatedMove>();
-
-            foreach (var move in initialMoves)
-            {
-                float moveScore = SimulateMove(rootState, move);
-                evaluatedMoves.Add(new EvaluatedMove(move, moveScore));
-            }
-            
-            // Return all evaluated moves, sorted from best to worst.
-            return evaluatedMoves.OrderByDescending(m => m.Score).ToList();
-        }
-
-        private float SimulateMove(GameState rootState, IGameCommand move)
-        {
-            var beam = new List<SimulationNode>();
-            var simulator = new GameEngine(rootState, _engineTemplate.Rng.Seed);
-            var result = simulator.ExecuteCommand(move);
-
-            // If the move is invalid or leads to no state change, penalize it heavily.
-            if (result.NewState == rootState && !(move is EndPhaseCommand)) 
-            {
-                 return float.MinValue;
-            }
-
-            // For EndPhase, we must simulate the opponent's best response.
-            if (move is EndPhaseCommand)
-            {
-                var outcome = SimulateAndFindWorstOutcomeForBot(result.NewState);
-                return outcome.Score;
-            }
-
-            beam.Add(new SimulationNode(result.NewState, move, _strategy.Evaluate(result.NewState, _botId)));
-
-            for (int depth = 1; depth < MaxDepth; depth++)
-            {
-                var nextCandidates = new List<SimulationNode>();
-                foreach (var node in beam)
-                {
-                    bool isBotTurn = node.State.ActivePlayerId == _botId;
-                    var outcome = isBotTurn
-                        ? SimulateAndFindBestOutcomeForBot(node.State)
-                        : SimulateAndFindWorstOutcomeForBot(node.State);
-                    
-                    nextCandidates.Add(new SimulationNode(outcome.State, node.InitialMove, outcome.Score));
-                }
-                beam = nextCandidates.OrderByDescending(n => n.Score).Take(BeamWidth).ToList();
-                if (!beam.Any()) break;
-            }
-
-            return beam.Any() ? beam.Average(n => n.Score) : _strategy.Evaluate(result.NewState, _botId);
-        }
-
-        private (GameState State, float Score) SimulateAndFindBestOutcomeForBot(GameState currentState)
-        {
-            var moves = _moveGenerator.GenerateLegalMoves(currentState, _botId);
-            float bestScore = float.MinValue;
-            GameState bestState = currentState;
-
-            foreach (var move in moves)
-            {
-                var simulator = new GameEngine(currentState, _engineTemplate.Rng.Seed);
-                var result = simulator.ExecuteCommand(move);
-                if (result.NewState == currentState && !(move is EndPhaseCommand)) continue;
-
-                float score = _strategy.Evaluate(result.NewState, _botId);
-                if (score > bestScore)
-                {
-                    bestScore = score;
-                    bestState = result.NewState;
-                }
-            }
-
-            return (bestState, bestScore == float.MinValue ? _strategy.Evaluate(currentState, _botId) : bestScore);
-        }
-
-        private (GameState State, float Score) SimulateAndFindWorstOutcomeForBot(GameState currentState)
-        {
-            var activePlayerId = currentState.ActivePlayerId;
-            var stateWithPhantomHand = _virtualOpponent.InjectPhantomHand(currentState, activePlayerId);
-            var enemyMoves = _moveGenerator.GenerateLegalMoves(stateWithPhantomHand, activePlayerId);
-
-            float worstScoreForBot = float.MaxValue;
-            GameState worstStateForBot = currentState; 
-
-            bool moveFound = false;
-
-            // Increased simulation width for opponent's turn to be more cautious
-            foreach (var enemyMove in enemyMoves.OrderByDescending(m => _strategy.Evaluate(new GameEngine(stateWithPhantomHand, _engineTemplate.Rng.Seed).ExecuteCommand(m).NewState, 3- _botId)).Take(7))
-            {
-                var simulator = new GameEngine(stateWithPhantomHand, _engineTemplate.Rng.Seed);
-                var result = simulator.ExecuteCommand(enemyMove);
-                
-                GameState resultingState = result.NewState;
-
-                if (enemyMove is EndPhaseCommand)
-                {
-                    resultingState = resultingState.With(activePlayerId: _botId);
-                }
-
-                if (resultingState == stateWithPhantomHand && !(enemyMove is EndPhaseCommand))
-                    continue;
-
-                moveFound = true;
-                float currentScore = _strategy.Evaluate(resultingState, _botId);
-                if (currentScore < worstScoreForBot)
-                {
-                    worstScoreForBot = currentScore;
-                    worstStateForBot = resultingState;
-                }
-            }
-
-            if (!moveFound)
-            {
-                worstScoreForBot = _strategy.Evaluate(currentState.With(activePlayerId: _botId), _botId);
-            }
-
-            return (worstStateForBot, worstScoreForBot);
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey(true);
         }
     }
 }

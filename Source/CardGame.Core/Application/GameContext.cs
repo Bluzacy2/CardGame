@@ -69,6 +69,8 @@ namespace CardGame.Core.Application
             ActionRegistry.Register(new GiveToOpponentHandler());
 
             ActionRegistry.Register(new SilenceHandler());
+            ActionRegistry.Register(new AddResourceHandler());
+            ActionRegistry.Register(new MakeAUnitHandler());
         }
     }
 }
