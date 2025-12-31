@@ -1,3 +1,32 @@
-# Godot 4+ specific ignores
+# --- Visual Studio & .NET ---
+.vs/
+[Oo]bj/
+[Bb]in/
+*.user
+*.suo
+*.pdb
+*.cache
+*.dll
+*.exe
+
+# --- Godot 4.x ---
+# Folder cache Godota (bardzo ważne, żeby to ignorować!)
 .godot/
 /android/
+# Pliki eksportu
+*.pck
+*.zip
+
+# Mono / C# builds specific to Godot
+.mono/
+data_*/
+mono_crash.*.json
+
+# --- MacOS / Windows junk ---
+.DS_Store
+Thumbs.db
+
+# --- Card Game Specific ---
+# Jeśli masz jakieś lokalne pliki saveów, których nie chcesz w repo
+*.save
+logs/
