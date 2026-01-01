@@ -13,13 +13,13 @@ namespace CardGame.Tests
         {
             // ARRANGE
             var json = @"[
-                { ""Id"": 45, ""Name"": ""Tea Maid"", ""Type"": ""Unit"", ""Attack"": 2, ""Health"": 4 },
+                { ""Id"": 46, ""Name"": ""Tea Maid"", ""Type"": ""Unit"", ""Attack"": 2, ""Health"": 4 },
                 { ""Id"": 7, ""Name"": ""Glock-17"", ""Type"": ""Spell"", ""Cost"": 2 }
             ]";
             var engine = TestHelpers.CreateEngineWithCards(json);
             var f = engine.Factory;
 
-            var maid = f.CreateCard(45, 1);
+            var maid = f.CreateCard(46, 1);
             var spell = f.CreateCard(7, 1);
 
             engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA.WithCardAddedToHand(spell));
@@ -72,7 +72,7 @@ namespace CardGame.Tests
         {
             // ARRANGE
             var json = @"[
-        { ""Id"": 45, ""Name"": ""Tea Maid"", ""Type"": ""Unit"", ""Attack"": 2, ""Health"": 2 },
+        { ""Id"": 46, ""Name"": ""Tea Maid"", ""Type"": ""Unit"", ""Attack"": 2, ""Health"": 2 },
         { ""Id"": 7, ""Name"": ""BigSpell"", ""Type"": ""Spell"", ""Cost"": 3 }
     ]";
             var engine = TestHelpers.CreateEngineWithCards(json);
@@ -88,13 +88,13 @@ namespace CardGame.Tests
             Assert.Equal(3, engine.CurrentState.PlayerA.Hand.First().CurrentStats.BloodCost);
 
             // 2. STACKOWANIE: Wystawiamy pierwszą Maid
-            var maid1 = f.CreateCard(45, 1);
+            var maid1 = f.CreateCard(46, 1);
             engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(0, 1, maid1));
             engine.CurrentState = auraSystem.RecalculateAuras(engine.CurrentState);
             Assert.Equal(2, engine.CurrentState.PlayerA.Hand.First().CurrentStats.BloodCost);
 
             // Wystawiamy drugą Maid
-            var maid2 = f.CreateCard(45, 1);
+            var maid2 = f.CreateCard(46, 1);
             engine.CurrentState = engine.CurrentState.UpdateBoard(engine.CurrentState.Board.WithUnitPlacedAt(1, 1, maid2));
             engine.CurrentState = auraSystem.RecalculateAuras(engine.CurrentState);
 

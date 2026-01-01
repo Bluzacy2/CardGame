@@ -215,8 +215,8 @@ namespace CardGame.Core.AI.Strategies
                     uVal += (u.PermanentBuffs.Attack + u.PermanentBuffs.Health) * DNA[49];
                 }
 
-                // Specyficzne dla Combo: Tea Maid (ID 45)
-                if (isFriendly && u.Definition.Id == "45") uVal += 60.0f * comboFactor;
+                // Specyficzne dla Combo: Tea Maid (ID 46)
+                if (isFriendly && u.Definition.Id == "46") uVal += 60.0f * comboFactor;
 
                 score += isFriendly ? uVal : -uVal;
             }
