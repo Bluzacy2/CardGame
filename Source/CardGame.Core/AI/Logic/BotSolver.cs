@@ -166,20 +166,29 @@ namespace CardGame.Core.AI.Logic
 
         private GameState ExecuteFullAction(GameEngine engine, IGameCommand cmd)
         {
-            var state = engine.ExecuteCommand(cmd).NewState;
+            var result = engine.ExecuteCommand(cmd);
+            var state = result.NewState;
+
             int safety = 0;
-            while (state.PendingInteraction != null && safety++ < 5)
+            // ZMNIEJSZONO LIMIT: max 8 interakcji na akcjê (np. wybór celu), by ubiæ pêtle 0-cost
+            while (state.PendingInteraction != null && safety++ < 8)
             {
                 var targets = _moveGenerator.GenerateLegalMoves(state, _botId);
-                if (!targets.Any()) break;
+                if (!targets.Any())
+                {
+                    state = state.With(clearPending: true);
+                    break;
+                }
 
                 IGameCommand bestT = targets.First();
                 float bestV = float.MinValue;
 
-                foreach (var t in targets.Take(5))
+                // Ograniczamy liczbê rozwa¿anych celów dla wydajnoœci
+                foreach (var t in targets.Take(4))
                 {
-                    var test = new GameEngine(state, _engineTemplate.Rng.Seed).ExecuteCommand(t).NewState;
-                    float v = _strategy.Evaluate(test, _botId);
+                    var testEngine = new GameEngine(state, _engineTemplate.Rng.Seed);
+                    var testState = testEngine.ExecuteCommand(t).NewState;
+                    float v = _strategy.Evaluate(testState, _botId);
                     if (v > bestV) { bestV = v; bestT = t; }
                 }
                 state = engine.ExecuteCommand(bestT).NewState;

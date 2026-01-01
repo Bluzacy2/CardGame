@@ -78,6 +78,7 @@ namespace CardGame.Core.Cards.Logic
                            ccpe.PlayerId == myOwnerId &&
                            ccpe.Card.Definition.Type == CardType.Spell;
 
+
                 default:
                     return false;
             }
@@ -120,7 +121,10 @@ namespace CardGame.Core.Cards.Logic
                     if (gameEvent is UnitDamagedEvent ude2) subject = ude2.Source;
                     else if (gameEvent is UnitDiedEvent ud) subject = ud.Unit;
                     else if (gameEvent is CardPlayedEvent cp) subject = cp.Card;
+                    else if (gameEvent is UnitSacrificedEvent use) subject = use.Unit;
                     return subject != null && subject.Definition.Subtypes.Contains(cond.TargetParam);
+                case ConditionType.Not:
+                    return !cond.SubConditions.Any(c => EvaluateCondition(c, gameEvent, state, source));
 
                 case ConditionType.HasSubtypeOnBoard:
                     return state.Board.GetAllUnits()

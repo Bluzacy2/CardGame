@@ -11,16 +11,15 @@ namespace CardGame.ConsoleApp
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            // Initialization
             try
             {
                 CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
-                Console.WriteLine($"[SYSTEM] Cards loaded: {CardLibrary.Instance.GetAllIds().Length}");
+                Console.WriteLine($"[SYSTEM] Karty za³adowane: {CardLibrary.Instance.GetAllIds().Length}");
             }
             catch (Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"[CRITICAL ERROR] Failed to load cards: {ex.Message}");
+                Console.WriteLine($"[CRITICAL ERROR] B³¹d ³adowania kart: {ex.Message}");
                 Console.ResetColor();
                 return;
             }
@@ -38,23 +37,15 @@ namespace CardGame.ConsoleApp
                 Console.WriteLine("------------------------------------------------");
                 Console.WriteLine("0. Exit Application");
                 Console.WriteLine("================================================");
-                Console.Write("\nSelect option: ");
+                Console.Write("\nWybierz opcjê: ");
 
                 var key = Console.ReadKey(true);
                 switch (key.KeyChar)
                 {
-                    case '1':
-                        await AIBattleRunnerIII.RunAsync();
-                        break;
-                    case '2':
-                        await ShowEvolutionMenu();
-                        break;
-                    case '3':
-                        await ShowLegacyMenu();
-                        break;
-                    case '0':
-                        exitApp = true;
-                        break;
+                    case '1': await AIBattleRunnerIII.RunAsync(); break;
+                    case '2': await ShowEvolutionMenu(); break;
+                    case '3': await ShowLegacyMenu(); break;
+                    case '0': exitApp = true; break;
                 }
             }
         }
@@ -68,35 +59,26 @@ namespace CardGame.ConsoleApp
                 Console.WriteLine("================================================");
                 Console.WriteLine("             AI EVOLUTION CENTER                ");
                 Console.WriteLine("================================================");
-                Console.WriteLine("1. RUN EVOLUTION TRAINING (Generate DNA)");
-                Console.WriteLine("2. MASTER VS STANDARD (Test best_bot_dna.json)");
-                Console.WriteLine("3. VIEW MASTER BOT STATISTICS (DNA & Deck)"); 
+                Console.WriteLine("1. URUCHOM EWOLUCJÊ CI¥G£¥ (Trening DNA)");
+                Console.WriteLine("2. MASTER VS STANDARD (Testuj best_bot_dna.json)");
+                Console.WriteLine("3. STATYSTYKI MASTER BOTA (DNA & Deck)");
+                Console.WriteLine("4. ANALIZA META (Usage & WinRate)");
                 Console.WriteLine("------------------------------------------------");
-                Console.WriteLine("0. Back to Main Menu");
+                Console.WriteLine("0. Powrót do menu g³ównego");
                 Console.WriteLine("================================================");
-                Console.Write("\nSelect evolution tool: ");
+                Console.Write("\nWybierz narzêdzie ewolucji: ");
 
                 var key = Console.ReadKey(true);
                 switch (key.KeyChar)
                 {
                     case '1':
-                        Console.Write("\nHow many generations to simulate? ");
-                        if (int.TryParse(Console.ReadLine(), out int gCount))
-                        {
-                            var runner = new EvolutionRunner();
-                            await runner.RunEvolutionAsync(gCount);
-                        }
-                        Pause();
+                        var runner = new EvolutionRunner();
+                        await runner.RunEvolutionAsync(); // Brak parametrów, pêtla nieskoñczona
                         break;
-                    case '2':
-                        await AIvsEvolutionRunner.RunAsync();
-                        break;
-                    case '3':
-                        EvoBotViewer.ViewBestBot(); 
-                        break;
-                    case '0':
-                        back = true;
-                        break;
+                    case '2': await AIvsEvolutionRunner.RunAsync(); break;
+                    case '3': EvoBotViewer.ViewBestBot(); break;
+                    case '4': CardMetaViewer.ViewMeta(); break;
+                    case '0': back = true; break;
                 }
             }
         }
@@ -108,52 +90,31 @@ namespace CardGame.ConsoleApp
             {
                 Console.Clear();
                 Console.WriteLine("================================================");
-                Console.WriteLine("            LEGACY & DEBUG TOOLS                ");
+                Console.WriteLine("            NARZÊDZIA DEBUG & LEGACY            ");
                 Console.WriteLine("================================================");
-                Console.WriteLine("1. Unit Mechanics Tests (Unit Tests)");
+                Console.WriteLine("1. Testy mechanik (Unit Tests)");
                 Console.WriteLine("2. AI Battle v1 (Original)");
-                Console.WriteLine("3. AI Battle v2 (Nuclear UI Prototype)");
-                Console.WriteLine("4. Balance AI Tester (Long-term simulation)");
+                Console.WriteLine("3. AI Battle v2 (Nuclear UI)");
+                Console.WriteLine("4. Balance AI Tester (Long-term)");
                 Console.WriteLine("5. Optimized AI Logger (Debug Panel)");
                 Console.WriteLine("------------------------------------------------");
-                Console.WriteLine("0. Back to Main Menu");
+                Console.WriteLine("0. Powrót");
                 Console.WriteLine("================================================");
-                Console.Write("\nSelect legacy tool: ");
+                Console.Write("\nWybierz narzêdzie: ");
 
                 var key = Console.ReadKey(true);
                 switch (key.KeyChar)
                 {
-                    case '1':
-                        MechanicsTester.Run();
-                        Pause();
-                        break;
-                    case '2':
-                        await AIBattleRunner.RunAsync();
-                        Pause();
-                        break;
-                    case '3':
-                        await AIBattleRunnerII.RunAsync();
-                        Pause();
-                        break;
-                    case '4':
-                        await BalanceAITester.RunAsync();
-                        Pause();
-                        break;
-                    case '5':
-                        await OptimizedAILogger.RunAsync();
-                        Pause();
-                        break;
-                    case '0':
-                        back = true;
-                        break;
+                    case '1': MechanicsTester.Run(); Pause(); break;
+                    case '2': await AIBattleRunner.RunAsync(); Pause(); break;
+                    case '3': await AIBattleRunnerII.RunAsync(); Pause(); break;
+                    case '4': await BalanceAITester.RunAsync(); Pause(); break;
+                    case '5': await OptimizedAILogger.RunAsync(); Pause(); break;
+                    case '0': back = true; break;
                 }
             }
         }
 
-        static void Pause()
-        {
-            Console.WriteLine("\nPress any key to continue...");
-            Console.ReadKey(true);
-        }
+        static void Pause() { Console.WriteLine("\nNaciœnij dowolny klawisz..."); Console.ReadKey(true); }
     }
 }

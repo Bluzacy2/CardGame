@@ -39,6 +39,6 @@
         RandomEmptyLane
     }
 
-    public enum ConditionType { None, And, Or, IsEnemy, IsUnit, IsType, IsStatus, IsSubtype, IsSelf, HasSubtypeOnBoard }
+    public enum ConditionType { None, And, Or, IsEnemy, IsUnit, IsType, IsStatus, IsSubtype, IsSelf, HasSubtypeOnBoard, Not }
     public enum EffectZone { Board, Hand, Graveyard, Any }
 }

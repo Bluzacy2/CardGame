@@ -16,7 +16,24 @@ namespace CardGame.Core.AI.Logic
             var moves = new List<IGameCommand>();
             var player = state.GetPlayer(playerId);
 
-           
+            if (state.CurrentPhase == GamePhase.Mulligan)
+            {
+                if (state.PlayersReady.Contains(playerId)) return moves;
+
+                var hand = player.Hand;
+                int count = hand.Count;
+                for (int i = 0; i < (1 << count); i++)
+                {
+                    var rejectedIds = new List<int>();
+                    for (int j = 0; j < count; j++)
+                    {
+                        if ((i & (1 << j)) != 0) rejectedIds.Add(hand[j].InstanceId);
+                    }
+                    moves.Add(new ConfirmMulliganCommand(playerId, rejectedIds));
+                }
+                return moves;
+            }
+
             if (state.PendingInteraction != null)
             {
                 var pending = state.PendingInteraction;
@@ -32,13 +49,11 @@ namespace CardGame.Core.AI.Logic
 
                 if (pending.RequiredTargetType == TargetType.Choice)
                 {
-
                     for (int i = 0; i < pending.Options.Count; i++)
                         moves.Add(new SelectTargetCommand(playerId, i));
                 }
                 else
                 {
-
                     var targets = EffectTargetResolver.GetPotentialTargets(pending.RequiredTargetType, state, pending.SourceCardInstanceId);
                     foreach (var t in targets)
                         moves.Add(new SelectTargetCommand(playerId, t.InstanceId));
@@ -46,7 +61,6 @@ namespace CardGame.Core.AI.Logic
                 return moves;
             }
 
-         
             if (state.CurrentPhase == GamePhase.UnitOnly || state.CurrentPhase == GamePhase.UnitAndAction)
             {
                 foreach (var card in player.Hand.Where(c => c.Definition.Type == CardType.Unit))
@@ -61,6 +75,7 @@ namespace CardGame.Core.AI.Logic
                     }
                 }
             }
+
             if (state.CurrentPhase == GamePhase.ActionOnly || state.CurrentPhase == GamePhase.UnitAndAction)
             {
                 foreach (var card in player.Hand.Where(c => c.Definition.Type == CardType.Spell))
@@ -70,7 +85,6 @@ namespace CardGame.Core.AI.Logic
                 }
             }
 
-          
             moves.Add(new EndPhaseCommand(playerId));
             return moves;
         }
