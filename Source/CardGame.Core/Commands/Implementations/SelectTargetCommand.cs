@@ -22,9 +22,8 @@ namespace CardGame.Core.Commands.Implementations
         public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
         {
             var pending = currentState.PendingInteraction;
-            if (pending == null) throw new InvalidOperationException("Gra nie oczekuje na wybór celu!");
+            if (pending == null) return currentState;
 
-            // ZMIANA: Szukamy źródła na stosie (SpellStack) zamiast w ActiveSpell
             var sourceCard = currentState.SpellStack.FirstOrDefault(s => s.InstanceId == pending.SourceCardInstanceId)
                           ?? currentState.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
                           ?? currentState.PlayerA.Hand.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
@@ -32,9 +31,14 @@ namespace CardGame.Core.Commands.Implementations
                           ?? currentState.PlayerA.DiscardPile.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
                           ?? currentState.PlayerB.DiscardPile.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId);
 
-            if (sourceCard == null) throw new Exception("Nie znaleziono źródła efektu.");
+            if (sourceCard == null) return currentState.With(clearPending: true);
 
-            var effectData = sourceCard.Definition.Effects[pending.EffectIndex];
+            int effectCount = sourceCard.Definition.Effects.Count;
+            if (effectCount == 0) return currentState.With(clearPending: true);
+
+            int safeIndex = Math.Clamp(pending.EffectIndex, 0, effectCount - 1);
+
+            var effectData = sourceCard.Definition.Effects[safeIndex];
             var selectionEvent = new TargetSelectedEvent(PlayerId, pending.SourceCardInstanceId, TargetId);
             var component = new JsonEffectComponent(effectData, sourceCard.InstanceId, pending.EffectIndex);
 

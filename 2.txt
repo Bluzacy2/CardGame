@@ -49,8 +49,8 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\ca
   "Type": "Unit",
   "Subtypes": [ "Monster" ],
   "Cost": 1,
-  "Attack": 1,
-  "Health": 3,
+  "Attack": 2,
+  "Health": 2,
   "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
   "Effects": [
     {
@@ -559,7 +559,7 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\ca
     "Type": "Unit",
     "Cost": 5,
     "Attack": 0,
-    "Health": 7,
+    "Health": 6,
     "Description": "Before Combat here: 5 Dmg to Enemy Hero.",
     "Effects": [
       {
@@ -572,7 +572,7 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\ca
     "Id": 31,
     "Name": "Silence",
     "Type": "Spell",
-    "Cost": 2,
+    "Cost": 1,
     "Description": "Enemy Unit loses all Bonus Stats, Keywords and Passive Abilities.",
     "Effects": [
       {
@@ -684,7 +684,7 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\ca
     "Name": "Tumblr Man",
     "Type": "Unit",
     "Subtypes": ["Monster"],
-    "Cost": 1, "Attack": 4, "Health": 2,
+    "Cost": 1, "Attack": 3, "Health": 1,
     "Keywords": ["Burning"]
   },
 
@@ -714,7 +714,6 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\ca
     "Effects": [{
       "Trigger": "OnSacrificed",
       "Actions": [
-        { "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 1 },
         { "Type": "AddResource", "Target": "FriendlyHero", "Amount": 1 }
       ]
     }]
@@ -725,7 +724,7 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\ca
     "Name": "Pegasus",
     "Type": "Unit",
     "Subtypes": ["Animal", "Mytical"],
-    "Cost": 3, "Attack": 3, "Health": 2,
+    "Cost": 3, "Attack": 3, "Health": 1,
     "Keywords": ["Flying"],
     "Effects": [{
       "Trigger": "OnPlayed",
@@ -737,7 +736,7 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\ca
     "Name": "Soldat",
     "Type": "Unit",
     "Subtypes": ["Mercenary"],
-    "Cost": 1, "Attack": 1, "Health": 1,
+    "Cost": 1, "Attack": 2, "Health": 2,
     "Description": "When Played: If you have a Machine on Board, gain +2/+2.",
     "Effects": [
       {
@@ -758,19 +757,78 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\ca
     "Name": "Evo Ghost",
     "Type": "Unit",
     "Subtypes": ["Monster"],
-    "Cost": 4, "Attack": 3, "Health": 3,
-    "Description": "When this Hurts the Enemy Hero: Make 1/1 Souldiers in Adjacent Lanes.",
+    "Cost": 4, "Attack": 3, "Health": 2,
+    "Description": "On Death: Make 1/1 Souldiers in Adjacent Lanes.",
     "Effects": [
       {
-        "Trigger": "OnDamagedEnemyHero",
-        "Condition": { "Condition": "IsSelf" },
+        "Trigger": "OnDeath",
         "Actions": [
-          { 
-            "Type": "MakeAUnit", 
-            "ValueParam": 901, 
-            "StringParam": "AdjacentLanes" 
-          }
+          { "Type": "MakeAUnit", "ValueParam": 901, "StringParam": "AdjacentLanes" }
         ]
+      }
+    ]
+  },
+  {
+    "Id": 44,
+    "Name": "Machine Bomber",
+    "Type": "Unit",
+    "Subtypes": ["Machine"],
+    "Cost": 1, "Attack": 1, "Health": 2,
+    "Keywords": ["SplashDamage"],
+    "KeywordParams": { "SplashDamage": 1 },
+    "Description": "Splash Damage 1."
+  },
+  {
+  "Id": 45,
+  "Name": "Dagger Throw",
+  "Type": "Spell",
+  "Cost": 1,
+  "Description": "Deal 2 damage to an Enemy Unit or Enemy Hero.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "Choice",
+      "ChoiceLabels": ["Target Enemy Unit", "Enemy Hero"],
+      "Actions": [
+        {
+          "Type": "DealDamage",
+          "Target": "TargetEnemyUnit",
+          "Amount": 2
+        },
+        {
+          "Type": "DealDamage",
+          "Target": "EnemyHero",
+          "Amount": 2
+        }
+      ]
+    }
+  ]
+},
+
+{
+    "Id": 46,
+    "Name": "Tea Maid",
+    "Type": "Unit",
+    "Cost": 3, "Attack": 2, "Health": 4,
+    "Description": "While in Play: Your Spells cost 1 less."
+  },
+
+  {
+    "Id": 47,
+    "Name": "Rustler",
+    "Type": "Unit",
+    "Subtypes": ["Mercenary"],
+    "Cost": 8, "Attack": 6, "Health": 6,
+    "Description": "Costs 1 less for each Spell played. On Played: Bonus Attack.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [{ "Type": "BonusAttack", "Target": "Self" }]
+      },
+      {
+        "Trigger": "OnFriendlyActionPlayed",
+        "Zone": "Hand",
+        "Actions": [{ "Type": "BuffStats", "Target": "Self", "Amount": -1 }] 
       }
     ]
   },
@@ -883,6 +941,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using CardGame.Core.AI;
 using CardGame.Core.AI.Logic;
+using CardGame.Core.AI.Logic.Mcts;
 using CardGame.Core.AI.Strategies;
 using CardGame.Core.Application;
 using CardGame.Core.Cards.Data;
@@ -913,6 +972,7 @@ namespace CardGame.ConsoleApp
             var hof = new HallOfFame();
             hof.Load();
 
+            // 1. Load candidates
             string masterPath = "best_bot_dna.json";
             GeneticIndividual globalMaster = null;
             if (File.Exists(masterPath))
@@ -921,7 +981,6 @@ namespace CardGame.ConsoleApp
             }
 
             var selectableBots = new List<GeneticIndividual>();
-
             if (globalMaster != null)
             {
                 var masterEntry = globalMaster.Clone();
@@ -948,13 +1007,14 @@ namespace CardGame.ConsoleApp
 
             if (!selectableBots.Any())
             {
-                Console.WriteLine("ERROR: No bots found.");
+                Console.WriteLine("ERROR: No evolved bots found.");
                 await Task.Delay(3000);
                 return;
             }
 
+            // 2. Selection Menus
             Console.WriteLine("╔══════════════════════════════════════════════════════╗");
-            Console.WriteLine("║            EVOLUTION ARENA: SELECT BOT               ║");
+            Console.WriteLine("║            EVOLUTION ARENA: SELECT BRAIN             ║");
             Console.WriteLine("╚══════════════════════════════════════════════════════╝");
             for (int i = 0; i < selectableBots.Count; i++)
             {
@@ -962,21 +1022,20 @@ namespace CardGame.ConsoleApp
                 string label = b.Id == "MASTER" ? "GLOBAL MASTER" : $"CHAMPION [{b.Id}]";
                 Console.WriteLine($"{i + 1}. {label.PadRight(18)} | Gen: {b.Generation,-4} | Fit: {b.Fitness:F0}");
             }
-            Console.Write("\nSelect Opponent (1-" + selectableBots.Count + "): ");
+            Console.Write("\nSelect Evolved Brain (1-" + selectableBots.Count + "): ");
+            int brainIdx = int.TryParse(Console.ReadLine(), out int bi) ? bi - 1 : 0;
+            var selectedBot = selectableBots[Math.Clamp(brainIdx, 0, selectableBots.Count - 1)];
 
-            int choice;
-            if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > selectableBots.Count)
-                choice = 1;
-
-            var selectedBot = selectableBots[choice - 1];
+            Console.WriteLine("\nChoose P2 (Standard Strategy) Algorithm:");
+            Console.WriteLine("1. Beam Search (Original)");
+            Console.WriteLine("2. MCTS (Monte Carlo Tree Search)");
+            var algoKey = Console.ReadKey(true).KeyChar;
+            bool p2UsesMcts = algoKey == '2';
 
             Console.Clear();
-            _isAutoMode = false; // Default
-            Console.WriteLine($"PREPARING: {selectedBot.Id} vs STANDARD STRATEGY");
             Console.WriteLine("1. Overwatch Mode (Step-by-step)");
             Console.WriteLine("2. Auto Mode (Fast simulation)");
-            var modeKey = Console.ReadKey(true);
-            _isAutoMode = modeKey.KeyChar == '2';
+            _isAutoMode = Console.ReadKey(true).KeyChar == '2';
 
             CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
 
@@ -986,14 +1045,17 @@ namespace CardGame.ConsoleApp
                 var rng = new DeterministicRng(new Random().Next());
                 var factory = new CardFactory(CardLibrary.Instance, rng);
 
+                // Mirror Deck: Both use the evolved bot's deck
                 var deck1 = selectedBot.DeckDNA.Select(id => factory.CreateCard(id, 1)).ToList();
-                int[] controlIds = { 4, 32, 26, 24, 25, 31, 7, 21, 15, 13 };
-                var deck2 = new List<CardInstance>();
-                foreach (var cid in controlIds) for (int i = 0; i < 3; i++) deck2.Add(factory.CreateCard(cid, 2));
+                var deck2 = selectedBot.DeckDNA.Select(id => factory.CreateCard(id, 2)).ToList();
 
                 var engine = new GameEngine(GameState.Initial(1, deck1, deck2, rng), rng.Seed);
+
+                // Solvers
                 var solver1 = new BotSolver(engine, 1, new EvolvableStrategy(selectedBot.StrategyDNA), beamWidth: 4, maxDepth: 5);
-                var solver2 = new BotSolver(engine, 2, new StandardStrategy(), beamWidth: 4, maxDepth: 5);
+
+                BotSolver solver2_Beam = p2UsesMcts ? null : new BotSolver(engine, 2, new StandardStrategy(), beamWidth: 4, maxDepth: 5);
+                MctsSolver solver2_Mcts = p2UsesMcts ? new MctsSolver(engine, 2, new StandardStrategy()) : null;
 
                 while (!engine.IsGameOver)
                 {
@@ -1002,9 +1064,24 @@ namespace CardGame.ConsoleApp
 
                     if (state.CurrentPhase != GamePhase.Mulligan && state.CurrentPhase != GamePhase.Combat)
                     {
-                        var activeSolver = state.ActivePlayerId == 1 ? solver1 : solver2;
-                        _lastThoughts = activeSolver.FindBestMoves(state);
-                        DrawUI(state, selectedBot.Id);
+                        if (state.ActivePlayerId == 1)
+                        {
+                            _lastThoughts = solver1.FindBestMoves(state);
+                        }
+                        else
+                        {
+                            if (p2UsesMcts)
+                            {
+                                var mctsMove = solver2_Mcts.FindBestMove(state, thinkingTimeMs: _isAutoMode ? 200 : 1000);
+                                _lastThoughts = new List<EvaluatedMove> { mctsMove };
+                            }
+                            else
+                            {
+                                _lastThoughts = solver2_Beam.FindBestMoves(state);
+                            }
+                        }
+
+                        DrawUI(state, selectedBot.Id, p2UsesMcts);
                         if (!_isAutoMode) { var k = Console.ReadKey(true); if (k.Key == ConsoleKey.Escape) return; }
                     }
 
@@ -1023,45 +1100,41 @@ namespace CardGame.ConsoleApp
                         if (best != null) engine.ExecuteCommand(best.Command);
                         else engine.ExecuteCommand(new EndPhaseCommand(state.ActivePlayerId));
                     }
-                    if (_isAutoMode) await Task.Delay(50);
+                    if (_isAutoMode) await Task.Delay(20);
                 }
 
                 if (engine.WinnerId == 1) _p1Wins++; else if (engine.WinnerId == 2) _p2Wins++;
-                DrawUI(engine.CurrentState, selectedBot.Id);
+                DrawUI(engine.CurrentState, selectedBot.Id, p2UsesMcts);
+                _gamesPlayed++;
                 await Task.Delay(2000);
             }
         }
 
-        private static void DrawUI(GameState s, string botId)
+        private static void DrawUI(GameState s, string botId, bool p2Mcts)
         {
             StringBuilder sb = new StringBuilder();
             Console.SetCursorPosition(0, 0);
 
-            string phaseName = s.CurrentPhase switch
-            {
-                GamePhase.UnitOnly => "1/3 (UNITS)",
-                GamePhase.UnitAndAction => "2/3 (MIXED)",
-                GamePhase.ActionOnly => "3/3 (ACTIONS)",
-                GamePhase.Combat => "COMBAT",
-                _ => s.CurrentPhase.ToString().ToUpper()
-            };
+            string phaseName = s.CurrentPhase.ToString().ToUpper();
+            string p1Tag = "EVO BRAIN";
+            string p2Tag = p2Mcts ? "STD (MCTS)" : "STD (BEAM)";
+            string activeLabel = s.ActivePlayerId == 1 ? p1Tag : p2Tag;
 
-            // ACTIVE: Zmieniono P1/P2 na EVO/STD
-            string activeLabel = s.ActivePlayerId == 1 ? "EVO CHAMPION" : "STANDARD BOT";
             string headL = $" ROUND: {s.TurnNumber} | PHASE: {phaseName} | ACTIVE: {activeLabel}";
-            string headR = $"[ EVO ({botId}) P1: {_p1Wins} | STANDARD P2: {_p2Wins} ] | MODE: {(_isAutoMode ? "AUTO" : "STEP")} ";
+            string headR = $"[ MIRROR: {botId} DECK ] | EVO P1: {_p1Wins} | STD P2: {_p2Wins} ";
 
             sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
             sb.AppendLine("║ " + headL.PadRight(UI_WIDTH - headR.Length - 4) + headR + "║");
             sb.AppendLine("╠" + new string('═', 106) + "╦" + new string('═', UI_WIDTH - 109) + "╣");
 
-            string[] left = RenderBoard(s);
-            string[] right = RenderBrain(s);
+            string[] left = RenderBoard(s, p1Tag, p2Tag);
+            string[] right = RenderBrain(s, s.ActivePlayerId == 1 ? "EVO" : "STD");
 
             for (int i = 0; i < 42; i++)
             {
                 string l = i < left.Length ? left[i] : "";
                 string r = i < right.Length ? right[i] : "";
+
                 string leftPart = l.PadRight(104).Substring(0, 104);
                 string rightPart = r.PadRight(UI_WIDTH - 111).Substring(0, UI_WIDTH - 111);
                 sb.AppendLine($"║ {leftPart} ║ {rightPart} ║");
@@ -1070,10 +1143,10 @@ namespace CardGame.ConsoleApp
             Console.Write(sb.ToString());
         }
 
-        private static string[] RenderBoard(GameState s)
+        private static string[] RenderBoard(GameState s, string p1T, string p2T)
         {
             var res = new List<string>();
-            res.Add($" [ PLAYER P2 (STANDARD BOT) | HP: {s.PlayerB.Health,2} | BLOOD: {s.PlayerB.CurrentBlood}/{s.PlayerB.MaxBlood} ]");
+            res.Add($" [ PLAYER P2 ({p2T}) | HP: {s.PlayerB.Health,2} | BLOOD: {s.PlayerB.CurrentBlood}/{s.PlayerB.MaxBlood} ]");
             res.AddRange(WrapHand(s.PlayerB.Hand, "P2"));
             res.Add("");
             for (int r = 0; r < 11; r++)
@@ -1083,7 +1156,7 @@ namespace CardGame.ConsoleApp
                 res.Add(row);
             }
             res.Add("");
-            res.Add($" [ PLAYER P1 (EVO CHAMPION) | HP: {s.PlayerA.Health,2} | BLOOD: {s.PlayerA.CurrentBlood}/{s.PlayerA.MaxBlood} ]");
+            res.Add($" [ PLAYER P1 ({p1T}) | HP: {s.PlayerA.Health,2} | BLOOD: {s.PlayerA.CurrentBlood}/{s.PlayerA.MaxBlood} ]");
             res.AddRange(WrapHand(s.PlayerA.Hand, "P1"));
             res.Add(new string('-', 104));
             res.Add(" EVENT LOG:");
@@ -1134,20 +1207,17 @@ namespace CardGame.ConsoleApp
             return $"ATK:{u.CurrentStats.Attack,-2} HP:{u.CurrentStats.Health,-2} {kw}";
         }
 
-        private static string[] RenderBrain(GameState s)
+        private static string[] RenderBrain(GameState s, string name)
         {
-            // Zmieniono P1/P2 na EVO/STD
-            string botName = s.ActivePlayerId == 1 ? "EVO" : "STD";
-            var res = new List<string> { $"   BOT THOUGHTS [{botName}]", "------------------------" };
-
+            var res = new List<string> { $"   BOT THOUGHTS [{name}]", "------------------------" };
             if (s.CurrentPhase == GamePhase.Combat) { res.Add(" [AUTO] Combat simulation..."); return res.ToArray(); }
             foreach (var t in _lastThoughts.Take(12))
             {
                 string prefix = t == _lastThoughts.First() ? ">>" : "  ";
-                string scoreStr = Math.Abs(t.Score) > 1000000 ? (t.Score > 0 ? "LETHAL" : "DEFEAT") : t.Score.ToString("F0");
+                string scoreStr = Math.Abs(t.Score) > 1000000 ? (t.Score > 0 ? "LETHAL" : "DEFEAT") : t.Score.ToString("F1");
                 string desc = t.Description.Length > 22 ? t.Description.Substring(0, 21) + "…" : t.Description;
                 res.Add($"{prefix} {desc.PadRight(22)} | {scoreStr.PadLeft(7)}");
-                if (t == _lastThoughts.First()) { res.Add($"   L {t.DeepReasoning}"); res.Add(""); }
+                if (t == _lastThoughts.First()) { res.Add($"   L {Truncate(t.DeepReasoning, 35)}"); res.Add(""); }
             }
             return res.ToArray();
         }
@@ -1166,11 +1236,194 @@ namespace CardGame.ConsoleApp
             _eventsSeenSoFar = all.Count;
         }
 
+        private static string Truncate(string s, int max) => s.Length <= max ? s : s.Substring(0, max - 1) + "…";
         private static string CenterText(string text, int width)
         {
             if (text.Length >= width) return text.Substring(0, width);
             int leftPadding = (width - text.Length) / 2;
             return new string(' ', leftPadding) + text + new string(' ', width - text.Length - leftPadding);
+        }
+    }
+}
+
+
+========================================
+FILE: CardAnalytics.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\CardAnalytics.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using CardGame.Core.Cards.Data;
+
+namespace CardGame.ConsoleApp.Evolution
+{
+    public class CardAnalytics
+    {
+        public class CardEntry
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public int DecksCount { get; set; }
+            public int TotalCopies { get; set; }
+            public int TotalWins { get; set; }
+            public int TotalGames { get; set; }
+
+            public float WinRate => TotalGames == 0 ? 0 : (float)TotalWins / TotalGames;
+            public float UsageRate => DecksCount / 100f;
+            public float AvgDensity => DecksCount == 0 ? 0 : (float)TotalCopies / DecksCount;
+        }
+
+        public static void ProcessAndSave(List<GeneticIndividual> population, int generation)
+        {
+            var allIds = CardLibrary.Instance.GetAllIds();
+            var report = new Dictionary<int, CardEntry>();
+
+            foreach (var bot in population)
+            {
+                var uniqueInDeck = bot.DeckDNA.Distinct();
+                foreach (var cardId in uniqueInDeck)
+                {
+                    if (!report.ContainsKey(cardId))
+                    {
+                        var def = CardLibrary.Instance.GetCard(cardId);
+                        report[cardId] = new CardEntry { Id = cardId, Name = def.Name };
+                    }
+
+                    var entry = report[cardId];
+                    entry.DecksCount++;
+                    entry.TotalCopies += bot.DeckDNA.Count(id => id == cardId);
+                    entry.TotalGames += bot.GamesPlayed;
+                    entry.TotalWins += bot.Wins;
+                }
+            }
+
+            var sortedReport = report.Values
+                .OrderByDescending(r => r.WinRate)
+                .ThenByDescending(r => r.UsageRate)
+                .ToList();
+
+            string json = JsonSerializer.Serialize(sortedReport, new JsonSerializerOptions { WriteIndented = true });
+            if (!Directory.Exists("Analytics")) Directory.CreateDirectory("Analytics");
+            File.WriteAllText($"Analytics/current_meta.json", json);
+            File.WriteAllText($"Analytics/gen_{generation}.json", json);
+        }
+    }
+}
+
+
+========================================
+FILE: CardMetaViewer.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\CardMetaViewer.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using CardGame.Core.Cards.Data;
+
+namespace CardGame.ConsoleApp.Evolution
+{
+    public static class CardMetaViewer
+    {
+        private const int UI_WIDTH = 158;
+        private enum SortMode { WinRate, Usage, Density, Games }
+        private static SortMode _currentSort = SortMode.WinRate;
+
+        public static void ViewMeta()
+        {
+            string path = "Analytics/current_meta.json";
+            if (!File.Exists(path))
+            {
+                Console.WriteLine("No analytics data found. Run evolution for at least 10 generations!");
+                Console.ReadKey();
+                return;
+            }
+
+            bool running = true;
+            while (running)
+            {
+                var data = JsonSerializer.Deserialize<List<CardAnalytics.CardEntry>>(File.ReadAllText(path));
+                Console.Clear();
+                DrawUI(data);
+
+                var key = Console.ReadKey(true);
+                switch (key.KeyChar)
+                {
+                    case '1': _currentSort = SortMode.WinRate; break;
+                    case '2': _currentSort = SortMode.Usage; break;
+                    case '3': _currentSort = SortMode.Density; break;
+                    case '4': _currentSort = SortMode.Games; break;
+                    case (char)27: running = false; break; // ESC
+                }
+            }
+        }
+
+        private static void DrawUI(List<CardAnalytics.CardEntry> data)
+        {
+            // Sortowanie danych
+            IEnumerable<CardAnalytics.CardEntry> sorted = _currentSort switch
+            {
+                SortMode.WinRate => data.OrderByDescending(d => d.WinRate),
+                SortMode.Usage => data.OrderByDescending(d => d.UsageRate),
+                SortMode.Density => data.OrderByDescending(d => d.AvgDensity),
+                SortMode.Games => data.OrderByDescending(d => d.TotalGames),
+                _ => data
+            };
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
+            sb.AppendLine("║" + CenterText("CARD META ANALYTICS - POPULATION INSIGHTS", UI_WIDTH - 2) + "║");
+
+            string sortInfo = $"[ SORTING BY: {_currentSort.ToString().ToUpper()} ]";
+            sb.AppendLine("║" + CenterText(sortInfo, UI_WIDTH - 2) + "║");
+
+            sb.AppendLine("╠" + new string('═', 6) + "╦" + new string('═', 25) + "╦" + new string('═', 15) + "╦" + new string('═', 15) + "╦" + new string('═', 15) + "╦" + new string('═', 20) + "╦" + new string('═', UI_WIDTH - 105) + "╣");
+            sb.AppendLine("║  ID  ║ NAME                    ║ WIN RATE      ║ USAGE RATE    ║ AVG DENSITY   ║ WINS / GAMES       ║ PERFORMANCE TAG      ║");
+            sb.AppendLine("╠" + new string('═', 6) + "╬" + new string('═', 25) + "╬" + new string('═', 15) + "╬" + new string('═', 15) + "╬" + new string('═', 15) + "╬" + new string('═', 20) + "╬" + new string('═', UI_WIDTH - 105) + "╣");
+
+            foreach (var card in sorted.Take(30)) // Pokaż top 30 kart
+            {
+                string id = card.Id.ToString().PadRight(4);
+                string name = Truncate(card.Name, 23).PadRight(23);
+                string wr = $"{(card.WinRate * 100):F1}%".PadRight(13);
+                string usage = $"{(card.UsageRate * 100):F1}%".PadRight(13);
+                string dens = $"{card.AvgDensity:F2}".PadRight(13);
+                string stats = $"{card.TotalWins} / {card.TotalGames}".PadRight(18);
+                string tag = GetPerformanceTag(card);
+
+                sb.AppendLine($"║ {id} ║ {name} ║ {wr} ║ {usage} ║ {dens} ║ {stats} ║ {tag.PadRight(UI_WIDTH - 107)} ║");
+            }
+
+            sb.AppendLine("╚" + new string('═', 6) + "╩" + new string('═', 25) + "╩" + new string('═', 15) + "╩" + new string('═', 15) + "╩" + new string('═', 15) + "╩" + new string('═', 20) + "╩" + new string('═', UI_WIDTH - 105) + "╝");
+
+            Console.Write(sb.ToString());
+            Console.WriteLine(CenterText("[1] Sort WR | [2] Sort Usage | [3] Sort Density | [4] Sort Games | [ESC] Back", UI_WIDTH));
+        }
+
+        private static string GetPerformanceTag(CardAnalytics.CardEntry card)
+        {
+            if (card.UsageRate > 0.8 && card.WinRate > 0.55) return "!!! OVERPOWERED !!!";
+            if (card.UsageRate > 0.7) return "Meta Staple";
+            if (card.WinRate > 0.6) return "Hidden Gem";
+            if (card.UsageRate < 0.1 && card.WinRate < 0.4) return "Buff Candidate";
+            if (card.UsageRate > 0.5 && card.WinRate < 0.45) return "Noob Trap";
+            return "Balanced";
+        }
+
+        private static string Truncate(string value, int maxChars)
+        {
+            return value.Length <= maxChars ? value : value.Substring(0, maxChars - 3) + "...";
+        }
+
+        private static string CenterText(string text, int width)
+        {
+            int leftPadding = (width - text.Length) / 2;
+            return new string(' ', Math.Max(0, leftPadding)) + text + new string(' ', Math.Max(0, width - text.Length - leftPadding));
         }
     }
 }
@@ -1332,6 +1585,15 @@ namespace CardGame.ConsoleApp.Evolution
         public const int Line1_Priority = 101;
         public const int Line2_Priority = 102;
         public const int Line3_Priority = 103;
+
+        public const int FlyingUtility = 104;         
+        public const int ResourceGainValue = 105;     
+        public const int TokenSynergyWeight = 106; 
+        public const int PresenceOfMachineBonus = 107;
+
+        public const int Combo_Bias = 108;
+
+        public const int TOTAL_GENES = 109;
     }
 }
 
@@ -1556,11 +1818,27 @@ namespace CardGame.ConsoleApp
 
         private static string GetStrategyTag(GeneticIndividual bot)
         {
-            float aggro = bot.StrategyDNA[DNA.Aggro_Bias];
-            float control = bot.StrategyDNA[DNA.Control_Bias];
-            if (aggro > control && aggro > 3.0f) return "Aggro";
-            if (control > aggro && control > 3.0f) return "Control";
-            return "Balanced";
+           
+            var biases = new Dictionary<string, float>
+    {
+        { "Aggro", bot.StrategyDNA[DNA.Aggro_Bias] },
+        { "Control", bot.StrategyDNA[DNA.Control_Bias] },
+        { "Tempo", bot.StrategyDNA[DNA.Tempo_Bias] },
+        { "Combo", bot.StrategyDNA[DNA.Combo_Bias] },
+        { "Burn", bot.StrategyDNA[DNA.Burn_Bias] },
+        { "Midrange", bot.StrategyDNA[DNA.Midrange_Bias] }
+    };
+
+          
+            var topBias = biases.OrderByDescending(kv => kv.Value).First();
+
+           
+            float avg = biases.Values.Average();
+            bool isBalanced = biases.Values.All(v => Math.Abs(v - avg) < 0.8f);
+
+            if (isBalanced) return "Balanced";
+
+            return topBias.Key;
         }
 
         private class GeneInfo { public string Name; public float Value; }
@@ -1586,53 +1864,74 @@ namespace CardGame.ConsoleApp.Evolution
         private const string FilePath = "hall_of_fame.json";
         public List<GeneticIndividual> Champions { get; private set; } = new();
         private const float SimilarityLimit = 0.85f;
+        private const int GenerationGracePeriod = 100; // Po tylu genach rekord staje się "przestarzały"
 
-        public void ProcessPopulation(List<GeneticIndividual> currentGenSorted)
+        public void ProcessPopulation(List<GeneticIndividual> currentGenSorted, int currentGen)
         {
             Load();
             if (Champions.Count == 0) InitializeEmptySlots();
 
-            var candidates = currentGenSorted.Take(30).ToList();
+            var top50 = currentGenSorted.Take(50).ToList();
 
-            UpdateSlot(0, candidates[0]);
+            // Slot 0: APEX (Bezwzględnie najsilniejszy - tu trzymamy absolutny rekord)
+            UpdateSlot(0, top50[0], currentGen, forceAbsolute: true);
 
-            var bestAggro = candidates.OrderByDescending(c => c.StrategyDNA[DNA.Aggro_Bias] * c.Fitness).First();
-            UpdateSlot(1, bestAggro);
+            // Slot 1: AGGRO
+            var bestAggro = top50.Where(c => GetSafeDNA(c, DNA.Aggro_Bias) > GetSafeDNA(c, DNA.Control_Bias) + 0.5f)
+                                 .OrderByDescending(c => c.Fitness).FirstOrDefault();
+            if (bestAggro != null) UpdateSlot(1, bestAggro, currentGen);
 
-            var bestControl = candidates.OrderByDescending(c => c.StrategyDNA[DNA.Control_Bias] * c.Fitness).First();
-            UpdateSlot(2, bestControl);
+            // Slot 2: CONTROL
+            var bestControl = top50.Where(c => GetSafeDNA(c, DNA.Control_Bias) > GetSafeDNA(c, DNA.Aggro_Bias) + 0.5f)
+                                   .OrderByDescending(c => c.Fitness).FirstOrDefault();
+            if (bestControl != null) UpdateSlot(2, bestControl, currentGen);
 
-            var bestSynergy = candidates.OrderByDescending(c =>
-                (c.StrategyDNA[DNA.MonsterAffinity] + c.StrategyDNA[DNA.MarkedOnEnemyValue]) * c.Fitness).First();
-            UpdateSlot(3, bestSynergy);
+            // Slot 3: COMBO
+            var bestCombo = top50.OrderByDescending(c => GetSafeDNA(c, DNA.Combo_Bias)).FirstOrDefault();
+            if (bestCombo != null) UpdateSlot(3, bestCombo, currentGen);
 
-            var outlier = candidates.OrderByDescending(c => CalculateDistanceToGroup(c, Champions)).First();
-            UpdateSlot(4, outlier);
+            // Slot 4: THE STRATEGIC OUTLIER
+            var outlier = top50.OrderByDescending(c => CalculateDistanceToGroup(c, Champions)).First();
+            UpdateSlot(4, outlier, currentGen);
 
             Save();
         }
 
-        private void UpdateSlot(int slotIndex, GeneticIndividual candidate)
+        private void UpdateSlot(int slotIndex, GeneticIndividual candidate, int currentGen, bool forceAbsolute = false)
         {
-            if (Champions[slotIndex] == null || candidate.Fitness > Champions[slotIndex].Fitness)
+            var currentChamp = Champions[slotIndex];
+
+            if (currentChamp == null)
             {
-                if (slotIndex > 0)
+                Champions[slotIndex] = candidate;
+                return;
+            }
+
+            bool shouldReplace = false;
+
+         
+            if (candidate.Fitness >= currentChamp.Fitness)
+            {
+                shouldReplace = true;
+            }
+            else if (!forceAbsolute && (currentGen - currentChamp.Generation) > GenerationGracePeriod)
+            {
+                if (candidate.Fitness > currentChamp.Fitness * 0.85f) shouldReplace = true;
+            }
+
+            if (shouldReplace)
+            {
+                for (int i = 0; i < slotIndex; i++)
                 {
-                    for (int i = 0; i < slotIndex; i++)
-                    {
-                        if (CalculateSimilarity(candidate, Champions[i]) > SimilarityLimit) return;
-                    }
+                    if (Champions[i] != null && CalculateSimilarity(candidate, Champions[i]) > SimilarityLimit)
+                        return;
                 }
                 Champions[slotIndex] = candidate;
             }
         }
 
-        private void InitializeEmptySlots()
-        {
-            while (Champions.Count < 5) Champions.Add(null);
-        }
-
-        private float CalculateAvgCost(GeneticIndividual bot) => (float)bot.DeckDNA.Average(id => CardLibrary.Instance.GetCard(id).Cost);
+        private void InitializeEmptySlots() { while (Champions.Count < 5) Champions.Add(null); }
+        private float GetSafeDNA(GeneticIndividual bot, int index) => (index < bot.StrategyDNA.Length) ? bot.StrategyDNA[index] : 0f;
 
         private float CalculateDistanceToGroup(GeneticIndividual bot, List<GeneticIndividual> group)
         {
@@ -1652,7 +1951,7 @@ namespace CardGame.ConsoleApp.Evolution
 
             float dnaDiff = 0;
             int[] keyGenes = { DNA.Aggro_Bias, DNA.Control_Bias, DNA.MonsterAffinity, DNA.AdjacencyBonus };
-            foreach (int i in keyGenes) dnaDiff += Math.Abs(a.StrategyDNA[i] - b.StrategyDNA[i]);
+            foreach (int i in keyGenes) dnaDiff += Math.Abs(GetSafeDNA(a, i) - GetSafeDNA(b, i));
             float dnaSim = 1.0f - Math.Clamp(dnaDiff / 20.0f, 0, 1);
 
             return (deckSim * 0.6f) + (dnaSim * 0.4f);
@@ -1663,10 +1962,14 @@ namespace CardGame.ConsoleApp.Evolution
         {
             if (File.Exists(FilePath))
             {
-                var loaded = JsonSerializer.Deserialize<List<GeneticIndividual>>(File.ReadAllText(FilePath));
-                Champions = loaded ?? new List<GeneticIndividual>();
-                while (Champions.Count < 5) Champions.Add(null);
+                try
+                {
+                    var loaded = JsonSerializer.Deserialize<List<GeneticIndividual>>(File.ReadAllText(FilePath));
+                    Champions = loaded ?? new List<GeneticIndividual>();
+                }
+                catch { Champions = new List<GeneticIndividual>(); }
             }
+            while (Champions.Count < 5) Champions.Add(null);
         }
     }
 }
@@ -1753,475 +2056,3 @@ namespace CardGame.ConsoleApp.Evolution
         }
     }
 }
-
-
-========================================
-FILE: EvolutionRunner.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\EvolutionRunner.cs
-========================================
-using CardGame.Core.AI.Logic;
-using CardGame.Core.AI.Strategies;
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
-using System.IO;
-
-namespace CardGame.ConsoleApp.Evolution
-{
-    public class EvolutionRunner
-    {
-        private List<GeneticIndividual> _population = new();
-        private readonly EvolutionLeague _league = new();
-        private readonly HallOfFame _hof = new();
-        private const int PopulationSize = 100;
-        private static readonly ThreadLocal<Random> _threadRng = new(() => new Random());
-        private int[] _collectibleCardIds;
-
-        public async Task RunEvolutionAsync(int generations)
-        {
-            Console.Clear();
-            if (CardLibrary.Instance.GetAllIds().Length == 0)
-                CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
-
-            LoadCollectibleIds();
-            InitializePopulation();
-            _hof.Load();
-
-            string bestBotPath = "best_bot_dna.json";
-            float highestFitnessEver = -1000000;
-
-            if (File.Exists(bestBotPath))
-            {
-                try
-                {
-                    var currentBest = JsonSerializer.Deserialize<GeneticIndividual>(File.ReadAllText(bestBotPath));
-                    highestFitnessEver = currentBest.Fitness;
-                }
-                catch { }
-            }
-
-            var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount };
-
-            for (int g = 1; g <= generations; g++)
-            {
-                int currentDepth = (g < 10) ? 2 : (g < 30 ? 3 : 4);
-                ResetStats();
-
-                //Parallel.For(0, _population.Count, parallelOptions, i =>
-                //{
-                //    var localRng = _threadRng.Value;
-                //    var subject = _population[i];
-
-                //    for (int m = 0; m < 5; m++)
-                //    {
-                //        var opponent = (localRng.NextDouble() < 0.2)
-                //            ? (_league.GetRandomLegend() ?? _population[localRng.Next(_population.Count)])
-                //            : _population[localRng.Next(_population.Count)];
-
-                //        if (subject == opponent) continue;
-
-                //        var result = SimulateFastMatchWithFitness(subject, opponent, currentDepth);
-
-                //        lock (subject)
-                //        {
-                //            subject.GamesPlayed++;
-                //            subject.Fitness += result.p1Score;
-                //            if (result.winner == 1) subject.Wins++;
-                //        }
-                //        lock (opponent)
-                //        {
-                //            opponent.GamesPlayed++;
-                //            opponent.Fitness += result.p2Score;
-                //            if (result.winner == 2) opponent.Wins++;
-                //        }
-                //    }
-                //});
-                Parallel.For(0, _population.Count, parallelOptions, i =>
-                {
-                    var localRng = _threadRng.Value;
-                    var subject = _population[i];
-
-                    for (int m = 0; m < 5; m++)
-                    {
-                        GeneticIndividual opponent;
-
-                       
-                        if (i < 20 && _hof.Champions.Count > 2 && _hof.Champions[2] != null)
-                            opponent = _hof.Champions[2]; 
-                        else if (i < 40 && _hof.Champions.Count > 3 && _hof.Champions[3] != null)
-                            opponent = _hof.Champions[3]; 
-                        else
-                        {
-                            opponent = (localRng.NextDouble() < 0.3)
-                                ? (_league.GetRandomLegend() ?? _population[localRng.Next(_population.Count)])
-                                : _population[localRng.Next(_population.Count)];
-                        }
-
-                        if (subject == opponent) continue;
-                        var result = SimulateFastMatchWithFitness(subject, opponent, currentDepth);
-
-                        lock (subject)
-                        {
-                            subject.GamesPlayed++;
-                            subject.Fitness += result.p1Score;
-                            if (result.winner == 1) subject.Wins++;
-                        }
-                        lock (opponent)
-                        {
-                            opponent.GamesPlayed++;
-                            opponent.Fitness += result.p2Score;
-                            if (result.winner == 2) opponent.Wins++;
-                        }
-                    }
-                });
-
-                var sorted = _population.OrderByDescending(x => x.Fitness).ToList();
-                if (sorted.Count == 0) continue;
-
-                var bestInGen = sorted.First();
-                Console.WriteLine($"[GEN {g}] Depth: {currentDepth} | Top WR: {bestInGen.WinRate:P0} ({bestInGen.Wins}/{bestInGen.GamesPlayed}) | Fit: {bestInGen.Fitness:F0}");
-
-                if (bestInGen.Fitness > highestFitnessEver)
-                {
-                    highestFitnessEver = bestInGen.Fitness;
-                    File.WriteAllText(bestBotPath, JsonSerializer.Serialize(bestInGen, new JsonSerializerOptions { WriteIndented = true }));
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"[!] NEW RECORD: {bestInGen.Id} (WR: {bestInGen.WinRate:P1})");
-                    Console.ResetColor();
-                }
-
-                _league.AddChampion(bestInGen);
-                _hof.ProcessPopulation(sorted);
-
-                float avgAggro = _population.Average(p => p.StrategyDNA[DNA.Aggro_Bias]);
-                EvolutionLogger.Log(g, bestInGen, avgAggro, 0);
-
-                _population = BreedTournament(sorted, g);
-                SaveFullPopulation();
-            }
-        }
-
-        private void LoadCollectibleIds()
-        {
-            _collectibleCardIds = CardLibrary.Instance.GetAllIds().Where(id => id < 900).ToArray();
-        }
-
-        private void LegalizeDeck(int[] deck, Random rng)
-        {
-            var counts = new Dictionary<int, int>();
-            for (int i = 0; i < 30; i++)
-            {
-                int id = deck[i];
-                if (id >= 900 || (counts.ContainsKey(id) && counts[id] >= 3))
-                {
-                    int replacement;
-                    do { replacement = _collectibleCardIds[rng.Next(_collectibleCardIds.Length)]; }
-                    while (counts.ContainsKey(replacement) && counts[replacement] >= 3);
-                    deck[i] = replacement;
-                    id = replacement;
-                }
-                if (!counts.ContainsKey(id)) counts[id] = 0;
-                counts[id]++;
-            }
-        }
-
-        private void InitializePopulation()
-        {
-            string path = "EvolutionData/current_population.json";
-            if (File.Exists(path))
-            {
-                try
-                {
-                    var data = JsonSerializer.Deserialize<List<GeneticIndividual>>(File.ReadAllText(path));
-                    if (data != null && data.Count > 0) { _population = data; return; }
-                }
-                catch { }
-            }
-
-            var localRng = _threadRng.Value;
-            for (int i = 0; i < PopulationSize; i++)
-            {
-                float[] dna = new float[104];
-                for (int j = 0; j < 104; j++) dna[j] = (float)(localRng.NextDouble() * 5.0);
-                int[] deck = new int[30];
-                for (int j = 0; j < 30; j++) deck[j] = _collectibleCardIds[localRng.Next(_collectibleCardIds.Length)];
-                LegalizeDeck(deck, localRng);
-                _population.Add(new GeneticIndividual(dna, deck, 0));
-            }
-        }
-
-        private (int winner, float p1Score, float p2Score) SimulateFastMatchWithFitness(GeneticIndividual p1, GeneticIndividual p2, int depth)
-        {
-            var localRng = _threadRng.Value;
-            var seed = localRng.Next();
-            var rng = new DeterministicRng(seed);
-            var factory = new CardGame.Core.Cards.Factories.CardFactory(CardLibrary.Instance, rng);
-
-            var deck1 = p1.DeckDNA.Select(id => factory.CreateCard(id, 1)).ToList();
-            var deck2 = p2.DeckDNA.Select(id => factory.CreateCard(id, 2)).ToList();
-
-            var engine = new GameEngine(GameState.Initial(1, deck1, deck2, rng), seed);
-            var s1 = new BotSolver(engine, 1, new EvolvableStrategy(p1.StrategyDNA), beamWidth: 2, maxDepth: depth);
-            var s2 = new BotSolver(engine, 2, new EvolvableStrategy(p2.StrategyDNA), beamWidth: 2, maxDepth: depth);
-
-            int moves = 0;
-            const int MoveLimit = 500;
-            int p1Fatigue = 0; int p2Fatigue = 0;
-
-            while (!engine.IsGameOver && moves < MoveLimit)
-            {
-                moves++;
-                var state = engine.CurrentState;
-                if (state.PlayerA.DrawPile.Count == 0 && state.PlayerA.Hand.Count == 0) p1Fatigue += 100;
-                if (state.PlayerB.DrawPile.Count == 0 && state.PlayerB.Hand.Count == 0) p2Fatigue += 100;
-
-                var activeId = state.ActivePlayerId;
-                var solver = activeId == 1 ? s1 : s2;
-                var best = solver.FindBestMoves(state).FirstOrDefault();
-                if (best != null) engine.ExecuteCommand(best.Command);
-                else engine.ExecuteCommand(new EndPhaseCommand(activeId));
-            }
-
-            var s = engine.CurrentState;
-            float p1Score = ((30 - s.PlayerB.Health) * 50) + (s.PlayerA.Health * 10) + (s.PlayerA.Hand.Count * 20);
-            float p2Score = ((30 - s.PlayerA.Health) * 50) + (s.PlayerB.Health * 10) + (s.PlayerB.Hand.Count * 20);
-            p1Score -= p1Fatigue; p2Score -= p2Fatigue;
-
-            int winner = 0;
-            if (engine.WinnerId.HasValue)
-            {
-                winner = engine.WinnerId.Value;
-                if (winner == 1) p1Score += 10000; else p2Score += 10000;
-            }
-            else
-            {
-                float p1Power = CalculateLateGamePower(s, 1);
-                float p2Power = CalculateLateGamePower(s, 2);
-                if (p1Power > p2Power) { winner = 1; p1Score += 3000; }
-                else if (p2Power > p1Power) { winner = 2; p2Score += 3000; }
-                else { winner = localRng.Next(1, 3); if (winner == 1) p1Score += 3000; else p2Score += 3000; }
-            }
-            return (winner, p1Score, p2Score);
-        }
-
-        private float CalculateLateGamePower(GameState state, int playerId)
-        {
-            var p = state.GetPlayer(playerId);
-            var units = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == playerId).ToList();
-            float board = units.Sum(u => u.CurrentStats.Attack * 3.0f + u.CurrentStats.Health * 1.0f);
-            float resources = p.Hand.Count * 20.0f + p.DrawPile.Count * 5.0f;
-            return board + resources + p.Health;
-        }
-
-        private List<GeneticIndividual> BreedTournament(List<GeneticIndividual> sorted, int gen)
-        {
-            var next = new List<GeneticIndividual>();
-            var localRng = _threadRng.Value;
-            for (int i = 0; i < 5; i++) next.Add(sorted[i].Clone());
-            while (next.Count < PopulationSize)
-            {
-                var pA = TournamentSelect(sorted, 3, localRng);
-                var pB = TournamentSelect(sorted, 3, localRng);
-                float[] childDNA = new float[104];
-                for (int i = 0; i < 104; i++) childDNA[i] = localRng.NextDouble() > 0.5 ? pA.StrategyDNA[i] : pB.StrategyDNA[i];
-                int[] childDeck = new int[30];
-                for (int i = 0; i < 30; i++) childDeck[i] = localRng.NextDouble() > 0.5 ? pA.DeckDNA[i] : pB.DeckDNA[i];
-                if (localRng.NextDouble() < 0.2) childDNA[localRng.Next(104)] += (float)(localRng.NextDouble() * 1.2 - 0.6);
-                if (localRng.NextDouble() < 0.05) childDeck[localRng.Next(30)] = _collectibleCardIds[localRng.Next(_collectibleCardIds.Length)];
-                LegalizeDeck(childDeck, localRng);
-                next.Add(new GeneticIndividual(childDNA, childDeck, gen));
-            }
-            return next;
-        }
-
-        private GeneticIndividual TournamentSelect(List<GeneticIndividual> pool, int size, Random rng)
-        {
-            GeneticIndividual best = null;
-            for (int i = 0; i < size; i++)
-            {
-                var contestant = pool[rng.Next(pool.Count)];
-                if (best == null || contestant.Fitness > best.Fitness) best = contestant;
-            }
-            return best;
-        }
-
-        private void ResetStats() { foreach (var i in _population) { i.Wins = 0; i.GamesPlayed = 0; i.Fitness = 0; } }
-        private void SaveFullPopulation()
-        {
-            if (!Directory.Exists("EvolutionData")) Directory.CreateDirectory("EvolutionData");
-            File.WriteAllText("EvolutionData/current_population.json", JsonSerializer.Serialize(_population));
-        }
-    }
-}
-
-
-========================================
-FILE: GeneticIndividual.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\GeneticIndividual.cs
-========================================
-using System.Text.Json.Serialization;
-
-public class GeneticIndividual
-{
-    public string Id { get; set; }
-    public float[] StrategyDNA { get; set; }
-    public int[] DeckDNA { get; set; }
-    public int Wins { get; set; }
-    public int GamesPlayed { get; set; }
-    public float Fitness { get; set; } // NOWE: Sumaryczna ocena bota
-    public int Generation { get; set; }
-
-    [JsonIgnore]
-    public float WinRate => GamesPlayed == 0 ? 0 : (float)Wins / GamesPlayed;
-
-    public GeneticIndividual() { Id = Guid.NewGuid().ToString().Substring(0, 8); }
-
-    public GeneticIndividual(float[] strategyDNA, int[] deckDNA, int generation)
-    {
-        Id = Guid.NewGuid().ToString().Substring(0, 8);
-        StrategyDNA = strategyDNA;
-        DeckDNA = deckDNA;
-        Generation = generation;
-    }
-
-    public GeneticIndividual Clone()
-    {
-        return new GeneticIndividual((float[])StrategyDNA.Clone(), (int[])DeckDNA.Clone(), Generation)
-        {
-            Id = Guid.NewGuid().ToString().Substring(0, 8), // Nowy ID dla potomka
-            Wins = 0,
-            GamesPlayed = 0,
-            Fitness = 0
-        };
-    }
-}
-
-
-========================================
-FILE: CardGame.Core.csproj
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\CardGame.Core.csproj
-========================================
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-</Project>
-
-
-
-========================================
-FILE: AIPlayerController.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\AIPlayerController.cs
-========================================
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.AI.Strategies;
-using CardGame.Core.Application;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-using CardGame.Core.AI.Logic;
-
-namespace CardGame.Core.AI
-{
-    public class AIPlayerController
-    {
-        public int BotPlayerId { get; }
-        private readonly GameEngine _gameEngine;
-        public readonly BotSolver Solver;
-        private bool _isRunning = false;
-
-        public AIPlayerController(GameEngine gameEngine, int botPlayerId, IAIStrategy? strategy = null, int beamWidth = 4, int maxDepth = 5)
-        {
-            _gameEngine = gameEngine;
-            BotPlayerId = botPlayerId;
-            Solver = new BotSolver(_gameEngine, BotPlayerId, strategy ?? new StandardStrategy(), beamWidth, maxDepth);
-        }
-
-        public async void StartAutoPlay()
-        {
-            if (_isRunning) return;
-            _isRunning = true;
-
-            while (!_gameEngine.IsGameOver)
-            {
-                var state = _gameEngine.CurrentState;
-
-                if (state.CurrentPhase == GamePhase.Mulligan)
-                {
-                    if (!state.PlayersReady.Contains(BotPlayerId))
-                    {
-                        _gameEngine.ExecuteCommand(new ConfirmMulliganCommand(BotPlayerId, new System.Collections.Generic.List<int>()));
-                    }
-                    await Task.Delay(100);
-                    continue;
-                }
-
-                if (state.ActivePlayerId == BotPlayerId)
-                {
-                    await Task.Delay(500); // Wait a bit before making a move
-                    
-                    var evaluatedMoves = Solver.FindBestMoves(state);
-
-                    if (evaluatedMoves.Any())
-                    {
-                        var bestCommand = evaluatedMoves.First().Command;
-                        var result = _gameEngine.ExecuteCommand(bestCommand);
-
-                        // Safeguard: if the best move did nothing, end the phase.
-                        if (result.NewState == state && !(bestCommand is EndPhaseCommand))
-                        {
-                            _gameEngine.ExecuteCommand(new EndPhaseCommand(BotPlayerId));
-                        }
-                    }
-                    else
-                    {
-                        // If AI finds no valid moves, just end the phase.
-                        _gameEngine.ExecuteCommand(new EndPhaseCommand(BotPlayerId));
-                    }
-                }
-                else
-                {
-                    await Task.Delay(100);
-                }
-            }
-            _isRunning = false;
-        }
-    }
-}
-
-
-========================================
-FILE: IAIStrategy.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Interfaces\IAIStrategy.cs
-========================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.AI.Interfaces
-{
-    public interface IAIStrategy
-    {
-        float Evaluate(GameState state, int botPlayerId);
-    }
-}
-

@@ -55,7 +55,10 @@ namespace CardGame.Core.Events.Triggers
 
         private bool IsStillValid(GameState s, SourceInfo info)
         {
-            if (info.Effect.Trigger == TriggerType.OnDeath || info.Effect.Trigger == TriggerType.OnSacrificed)
+            if (info.Effect.Trigger == TriggerType.OnDeath ||
+                info.Effect.Trigger == TriggerType.OnSacrificed ||
+                info.Effect.Trigger == TriggerType.OnOtherUnitSacrificed || 
+                info.Effect.Trigger == TriggerType.OnFriendlyUnitDied)    
                 return true;
             if (info.Zone == EffectZone.Board) return s.Board.GetAllUnits().Any(u => u.InstanceId == info.Id);
             if (info.Zone == EffectZone.Hand) return s.PlayerA.Hand.Concat(s.PlayerB.Hand).Any(c => c.InstanceId == info.Id);

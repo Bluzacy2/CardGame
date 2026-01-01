@@ -36,6 +36,10 @@ namespace CardGame.Core.AI.Strategies
             // Natychmiastowe stany końca gry
             if (enemy.Health <= 0 && bot.Health > 0) return 10000000f;
             if (bot.Health <= 0) return -10000000f;
+            if (state.CurrentPhase == GamePhase.Mulligan)
+            {
+                return EvaluateMulliganHand(state.GetPlayer(botId));
+            }
 
             // Archetypy i wagi nastroju
             float aggroFactor = DNA[65] * (bot.Health > 15 ? 1.0f : DNA[90]);
@@ -57,6 +61,35 @@ namespace CardGame.Core.AI.Strategies
             totalScore += totalDiscounts * 25.0f * comboFactor;
 
             return totalScore;
+        }
+        private float EvaluateMulliganHand(PlayerState player)
+        {
+            float score = 0;
+            foreach (var card in player.Hand)
+            {
+                bool isUnit = card.Definition.Type == CardType.Unit;
+                float cost = card.CurrentStats.BloodCost;
+
+                // Gen 71: Preferencja niskiego kosztu jednostek na start
+                // DNA[71] to idealny koszt. Im dalej karta od tego kosztu, tym gorzej.
+                if (isUnit)
+                {
+                    if (cost <= DNA[71]) score += 1000f; // Bardzo chcemy jednostki 1-2 dropy
+                    else score -= (cost - DNA[71]) * 500f; // Kara za "cegły" na ręce
+                }
+                else // Spelle
+                {
+                    // Gen 72: Czy bot lubi trzymać czary?
+                    score += DNA[72] * 200f;
+                    // Czary zazwyczaj chcemy odrzucić, chyba że są bardzo tanie
+                    if (cost > 2) score -= 1000f;
+                }
+
+                // Gen 73: Czy karta jest częścią combo? (np. Black Cat dla decku Sacrifice)
+                if (new[] { "12", "3", "10" }.Contains(card.Definition.Id))
+                    score += DNA[73] * 300f;
+            }
+            return score;
         }
 
         private float EvaluateMacroEconomy(GameState state, PlayerState bot, PlayerState enemy, float valueFactor, float comboFactor)
@@ -168,7 +201,10 @@ namespace CardGame.Core.AI.Strategies
                 // Podtypy i synergie (NOWE: DNA[107] dla Maszyn)
                 if (u.Definition.Subtypes.Contains("Monster")) uVal += DNA[27];
                 if (u.Definition.Subtypes.Contains("Mercenary")) uVal += DNA[28];
+                if (u.Definition.Subtypes.Contains("Animal")) uVal += DNA[29];
                 if (u.Definition.Subtypes.Contains("Machine")) uVal += DNA[30] + DNA[107];
+                if (u.Definition.Subtypes.Contains("Human")) uVal += DNA[31];
+                if (u.Definition.Subtypes.Contains("Demon")) uVal += DNA[32];
 
                 // NOWE: Token Synergy (Gen 106)
                 if (u.Definition.Id == "901" || u.Definition.Id == "500") uVal += DNA[106];
@@ -179,8 +215,8 @@ namespace CardGame.Core.AI.Strategies
                     uVal += (u.PermanentBuffs.Attack + u.PermanentBuffs.Health) * DNA[49];
                 }
 
-                // Specyficzne dla Combo: Tea Maid (ID 45)
-                if (isFriendly && u.Definition.Id == "45") uVal += 60.0f * comboFactor;
+                // Specyficzne dla Combo: Tea Maid (ID 46)
+                if (isFriendly && u.Definition.Id == "46") uVal += 60.0f * comboFactor;
 
                 score += isFriendly ? uVal : -uVal;
             }

@@ -1,6 +1,570 @@
 ﻿
 
 ========================================
+FILE: EvolutionRunner.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\EvolutionRunner.cs
+========================================
+using CardGame.Core.AI.Interfaces;
+using CardGame.Core.AI.Logic;
+using CardGame.Core.AI.Logic.Mcts;
+using CardGame.Core.AI.Strategies;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace CardGame.ConsoleApp.Evolution
+{
+    public class EvolutionRunner
+    {
+        private List<GeneticIndividual> _population = new();
+        private readonly HallOfFame _hof = new();
+        private const int PopulationSize = 100;
+        private static readonly ThreadLocal<Random> _threadRng = new(() => new Random());
+        private int[] _collectibleCardIds;
+        private int _stagnationTimer = 0;
+        private const int StagnationThreshold = 20; // Szybsza rotacja
+        private float _masterDecayFactor = 1.0f;
+
+        public async Task RunEvolutionAsync()
+        {
+            Console.Clear();
+            CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
+            LoadCollectibleIds();
+            InitializePopulation();
+            _hof.Load();
+
+            string bestBotPath = "best_bot_dna.json";
+            float highestFitnessEver = -1000000;
+            GeneticIndividual currentMaster = null;
+
+            if (File.Exists(bestBotPath))
+            {
+                try
+                {
+                    currentMaster = JsonSerializer.Deserialize<GeneticIndividual>(File.ReadAllText(bestBotPath));
+                    highestFitnessEver = currentMaster.Fitness;
+                }
+                catch { }
+            }
+
+            var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount };
+            int g = 1;
+            bool shouldStop = false;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("=== EVOLUTION V16.0 (SELF-PLAY CO-EVOLUTION) ===");
+            Console.WriteLine("Mode: Bots are tested against MCTS-enhanced Master DNA");
+            Console.ResetColor();
+
+            while (!shouldStop)
+            {
+                ResetStats();
+
+                if (_stagnationTimer > 10) _masterDecayFactor -= 0.04f;
+
+                // 1. FAZA: MECZE W POPULACJI
+                Parallel.For(0, _population.Count, parallelOptions, i =>
+                {
+                    var localRng = _threadRng.Value;
+                    var subject = _population[i];
+                    var champions = _hof.Champions.Where(c => c != null).ToList();
+
+                    for (int m = 0; m < 6; m++)
+                    {
+                        GeneticIndividual opponent;
+                        if (m < 2 && champions.Count > 0)
+                            opponent = champions[localRng.Next(champions.Count)];
+                        else
+                            opponent = _population[localRng.Next(PopulationSize)];
+
+                        if (subject.Id == opponent.Id) continue;
+
+                        int startId = (m % 2 == 0) ? 1 : 2;
+                        var result = SimulateFastMatchWithFitness(subject, opponent, 3, 4, startId);
+
+                        lock (subject)
+                        {
+                            subject.GamesPlayed++;
+                            float score = (startId == 1) ? result.p1Score : result.p2Score;
+
+                            if (champions.Count > 0)
+                            {
+                                float sim = CalculateSimilarity(subject, champions[0]);
+                                score *= (1.0f - (sim * 0.25f)); // Kara za kopiowanie Mastera
+                            }
+
+                            subject.Fitness += score;
+                            if ((startId == 1 && result.winner == 1) || (startId == 2 && result.winner == 2))
+                                subject.Wins++;
+                        }
+                    }
+                });
+
+                // 2. FAZA: EGZAMIN PRZECIWKO MCTS-MASTEROWI (Koewolucja)
+                var topTier = _population.OrderByDescending(x => x.Fitness).Take(12).ToList();
+                Console.WriteLine($" >> [GEN {g}] Co-evolutionary MCTS Testing...");
+
+                Parallel.ForEach(topTier, parallelOptions, (elite) =>
+                {
+                    for (int test = 0; test < 2; test++)
+                    {
+                        // Używamy DNA obecnego Mastera do sterowania logiką MCTS!
+                        var res = RunCoEvolutionaryMctsTest(elite, currentMaster, 120);
+                        lock (elite)
+                        {
+                            elite.Fitness += (res.score * 15.0f);
+                            if (res.won)
+                            {
+                                elite.Wins += 3;
+                                elite.Fitness += 600000f;
+                            }
+                        }
+                    }
+                });
+
+                var sorted = _population.OrderByDescending(x => x.Fitness).ToList();
+                _hof.ProcessPopulation(sorted, g);
+                var best = sorted[0];
+
+                Console.WriteLine($"[GEN {g}] WR:{best.WinRate:P0} | Fit:{best.Fitness:F0} | Stag:{_stagnationTimer}");
+
+                if (best.Fitness > (highestFitnessEver * _masterDecayFactor) + 1200)
+                {
+                    highestFitnessEver = best.Fitness;
+                    _stagnationTimer = 0;
+                    _masterDecayFactor = 1.0f;
+                    currentMaster = best; // Nowy Master staje się nowym egzaminatorem
+                    File.WriteAllText(bestBotPath, JsonSerializer.Serialize(best, new JsonSerializerOptions { WriteIndented = true }));
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($" [!] NEW EVOLUTIONARY MASTER: {best.Id} (Algorithm Updated)");
+                    Console.ResetColor();
+                }
+                else _stagnationTimer++;
+
+                if (g % 10 == 0) CardAnalytics.ProcessAndSave(sorted, g);
+                _population = BreedTournament(sorted, g, _stagnationTimer);
+                SaveFullPopulation();
+
+                while (Console.KeyAvailable) { if (Console.ReadKey(true).Key == ConsoleKey.Enter) shouldStop = true; }
+                g++;
+            }
+        }
+
+        private float CalculateSimilarity(GeneticIndividual a, GeneticIndividual b)
+        {
+            var setA = a.DeckDNA.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
+            var setB = b.DeckDNA.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
+            float shared = 0;
+            foreach (var id in setA.Keys) if (setB.ContainsKey(id)) shared += Math.Min(setA[id], setB[id]);
+            return shared / 30f;
+        }
+
+        private (bool won, float score) RunCoEvolutionaryMctsTest(GeneticIndividual b, GeneticIndividual master, int time)
+        {
+            var seed = new Random().Next();
+            var rng = new DeterministicRng(seed);
+            var factory = new CardGame.Core.Cards.Factories.CardFactory(CardLibrary.Instance, rng);
+            var engine = new GameEngine(GameState.Initial(1, b.DeckDNA.Select(id => factory.CreateCard(id, 1)).ToList(), b.DeckDNA.Select(id => factory.CreateCard(id, 2)).ToList(), rng), seed);
+
+            var s1 = new BotSolver(engine, 1, new EvolvableStrategy(b.StrategyDNA), 5, 4);
+
+            // Jeśli mamy Mastera, MCTS używa jego strategii. Jeśli nie (start gry), używa Standardu.
+            IAIStrategy masterHeuristic = (master != null) ? new EvolvableStrategy(master.StrategyDNA) : new StandardStrategy();
+            var s2 = new MctsSolver(engine, 2, masterHeuristic);
+
+            int moves = 0;
+            while (!engine.IsGameOver && moves++ < 300)
+            {
+                var cur = engine.CurrentState;
+                if (cur.CurrentPhase == GamePhase.Mulligan) { engine.ExecuteCommand(new ConfirmMulliganCommand(cur.ActivePlayerId, new())); continue; }
+                if (cur.ActivePlayerId == 1)
+                {
+                    var best = s1.FindBestMoves(cur).FirstOrDefault();
+                    if (best != null) engine.ExecuteCommand(best.Command);
+                    else engine.ExecuteCommand(new EndPhaseCommand(1));
+                }
+                else
+                {
+                    var bestMcts = s2.FindBestMove(cur, time);
+                    engine.ExecuteCommand(bestMcts.Command);
+                }
+            }
+            var s = engine.CurrentState;
+            float fit = (30 - s.PlayerB.Health) * 350f + s.PlayerA.Health * 120f + s.PlayerA.Hand.Count * 180f;
+            return (engine.WinnerId == 1, fit);
+        }
+
+        private (int winner, float p1Score, float p2Score) SimulateFastMatchWithFitness(GeneticIndividual b1, GeneticIndividual b2, int depth, int beam, int startId)
+        {
+            var seed = _threadRng.Value.Next();
+            var rng = new DeterministicRng(seed);
+            var factory = new CardGame.Core.Cards.Factories.CardFactory(CardLibrary.Instance, rng);
+            var engine = new GameEngine(GameState.Initial(startId, b1.DeckDNA.Select(id => factory.CreateCard(id, 1)).ToList(), b2.DeckDNA.Select(id => factory.CreateCard(id, 2)).ToList(), rng), seed);
+            var s1 = new BotSolver(engine, 1, new EvolvableStrategy(b1.StrategyDNA), beam, depth);
+            var s2 = new BotSolver(engine, 2, new EvolvableStrategy(b2.StrategyDNA), beam, depth);
+            int moves = 0;
+            while (!engine.IsGameOver && moves++ < 350)
+            {
+                var cur = engine.CurrentState;
+                int actorId = cur.ActivePlayerId;
+                if (cur.CurrentPhase == GamePhase.Mulligan)
+                {
+                    if (cur.PlayersReady.Contains(1) && !cur.PlayersReady.Contains(2)) actorId = 2;
+                    else if (cur.PlayersReady.Contains(2) && !cur.PlayersReady.Contains(1)) actorId = 1;
+                }
+                var solver = actorId == 1 ? s1 : s2;
+                var best = solver.FindBestMoves(cur).FirstOrDefault();
+                if (best != null)
+                {
+                    if (engine.ExecuteCommand(best.Command).NewState == cur)
+                    {
+                        if (cur.CurrentPhase == GamePhase.Mulligan) engine.ExecuteCommand(new ConfirmMulliganCommand(actorId, new List<int>()));
+                        else engine.ExecuteCommand(new EndPhaseCommand(actorId));
+                    }
+                }
+                else engine.ExecuteCommand(new EndPhaseCommand(actorId));
+            }
+            var fs = engine.CurrentState;
+            float Calc(PlayerState p, PlayerState o, BoardState b) => (30 - o.Health) * 220f + p.Health * 70f + b.GetAllUnits().Where(u => u.OwnerPlayerId == p.PlayerId).Sum(u => u.CurrentStats.Attack + u.CurrentStats.Health) * 45f + p.Hand.Count * 110f;
+            float p1S = Calc(fs.PlayerA, fs.PlayerB, fs.Board);
+            float p2S = Calc(fs.PlayerB, fs.PlayerA, fs.Board);
+            if (engine.WinnerId == 1) p1S += 120000f;
+            else if (engine.WinnerId == 2) p2S += 120000f;
+            else { if (p1S > p2S) p1S += 15000f; else p2S += 15000f; }
+            return (engine.WinnerId ?? 0, p1S, p2S);
+        }
+
+        private List<GeneticIndividual> BreedTournament(List<GeneticIndividual> sorted, int gen, int stag)
+        {
+            var next = new List<GeneticIndividual>();
+            var localRng = _threadRng.Value;
+            int eliteCount = (stag > 8) ? 1 : 4;
+            for (int i = 0; i < eliteCount; i++) next.Add(sorted[i].Clone());
+            while (next.Count < 22) next.Add(CreateRandomIndividual(gen));
+            while (next.Count < PopulationSize)
+            {
+                var pA = TournamentSelect(sorted, 8, localRng);
+                var pB = TournamentSelect(sorted, 8, localRng);
+                float[] dna = new float[DNA.TOTAL_GENES];
+                float w = (float)localRng.NextDouble();
+                for (int i = 0; i < DNA.TOTAL_GENES; i++)
+                {
+                    // Mikro-mutacja dynamiczna zależna od stagnacji
+                    float drift = (stag > 10) ? 3.0f : 1.2f;
+                    dna[i] = Math.Clamp((pA.StrategyDNA[i] * w) + (pB.StrategyDNA[i] * (1f - w)) + (localRng.NextDouble() < 0.15 ? (float)(localRng.NextDouble() * drift - (drift / 2)) : 0), 0, 10);
+                }
+                int[] childDeck = new int[30];
+                int[] deckA = pA.DeckDNA.OrderBy(x => x).ToArray();
+                int[] deckB = pB.DeckDNA.OrderBy(x => x).ToArray();
+                for (int i = 0; i < 30; i++) childDeck[i] = localRng.NextDouble() > 0.5 ? deckA[i] : deckB[i];
+                if (localRng.NextDouble() < (stag > 8 ? 0.65 : 0.15))
+                {
+                    int ch = (stag > 8) ? 22 : 4;
+                    for (int j = 0; j < ch; j++)
+                    {
+                        int slot = localRng.Next(30);
+                        if (localRng.NextDouble() < 0.35) childDeck[slot] = childDeck[localRng.Next(30)];
+                        else childDeck[slot] = _collectibleCardIds[localRng.Next(_collectibleCardIds.Length)];
+                    }
+                }
+                LegalizeDeck(childDeck, localRng);
+                next.Add(new GeneticIndividual(dna, childDeck, gen));
+            }
+            return next;
+        }
+
+        private GeneticIndividual CreateRandomIndividual(int gen)
+        {
+            float[] dna = new float[DNA.TOTAL_GENES];
+            for (int j = 0; j < DNA.TOTAL_GENES; j++) dna[j] = (float)(_threadRng.Value.NextDouble() * 10.0);
+            int[] deck = new int[30];
+            for (int j = 0; j < 30; j++) deck[j] = _collectibleCardIds[_threadRng.Value.Next(_collectibleCardIds.Length)];
+            LegalizeDeck(deck, _threadRng.Value);
+            return new GeneticIndividual(dna, deck, gen);
+        }
+
+        private GeneticIndividual TournamentSelect(List<GeneticIndividual> pool, int size, Random rng)
+        {
+            GeneticIndividual best = null;
+            for (int i = 0; i < size; i++)
+            {
+                var c = pool[rng.Next(pool.Count)];
+                if (best == null || c.Fitness > best.Fitness) best = c;
+            }
+            return best;
+        }
+
+        private void InitializePopulation()
+        {
+            string path = "EvolutionData/current_population.json";
+            if (File.Exists(path))
+            {
+                try
+                {
+                    var data = JsonSerializer.Deserialize<List<GeneticIndividual>>(File.ReadAllText(path));
+                    if (data != null && data.Count == PopulationSize) { _population = data; return; }
+                }
+                catch { }
+            }
+            _population.Clear();
+            for (int i = 0; i < PopulationSize; i++) _population.Add(CreateRandomIndividual(0));
+        }
+
+        private void LoadCollectibleIds() => _collectibleCardIds = CardLibrary.Instance.GetAllIds().Where(id => id < 900).ToArray();
+
+        private void LegalizeDeck(int[] deck, Random rng)
+        {
+            var counts = new Dictionary<int, int>();
+            for (int i = 0; i < 30; i++)
+            {
+                int id = deck[i];
+                if (id >= 900 || (counts.ContainsKey(id) && counts[id] >= 3))
+                {
+                    int r;
+                    do { r = _collectibleCardIds[rng.Next(_collectibleCardIds.Length)]; } while (counts.ContainsKey(r) && counts[r] >= 3);
+                    deck[i] = id = r;
+                }
+                if (!counts.ContainsKey(id)) counts[id] = 0; counts[id]++;
+            }
+        }
+
+        private void ResetStats() { foreach (var i in _population) { i.Wins = 0; i.GamesPlayed = 0; i.Fitness = 0; } }
+        private void SaveFullPopulation()
+        {
+            if (!Directory.Exists("EvolutionData")) Directory.CreateDirectory("EvolutionData");
+            File.WriteAllText("EvolutionData/current_population.json", JsonSerializer.Serialize(_population));
+        }
+    }
+}
+
+
+========================================
+FILE: GeneticIndividual.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\GeneticIndividual.cs
+========================================
+using System;
+using System.Text.Json.Serialization;
+
+namespace CardGame.ConsoleApp.Evolution // <--- DODANO BRAKUJĄCY NAMESPACE
+{
+    public class GeneticIndividual
+    {
+        public string Id { get; set; }
+        public float[] StrategyDNA { get; set; }
+        public int[] DeckDNA { get; set; }
+        public int Wins { get; set; }
+        public int GamesPlayed { get; set; }
+        public float Fitness { get; set; }
+        public int Generation { get; set; }
+
+        [JsonIgnore]
+        public float WinRate => GamesPlayed == 0 ? 0 : (float)Wins / GamesPlayed;
+
+        public GeneticIndividual() { Id = Guid.NewGuid().ToString().Substring(0, 8); }
+
+        public GeneticIndividual(float[] strategyDNA, int[] deckDNA, int generation)
+        {
+            Id = Guid.NewGuid().ToString().Substring(0, 8);
+            StrategyDNA = strategyDNA;
+            DeckDNA = deckDNA;
+            Generation = generation;
+        }
+
+        public GeneticIndividual Clone()
+        {
+            return new GeneticIndividual((float[])StrategyDNA.Clone(), (int[])DeckDNA.Clone(), Generation)
+            {
+                Id = Guid.NewGuid().ToString().Substring(0, 8),
+                Wins = 0,
+                GamesPlayed = 0,
+                Fitness = 0
+            };
+        }
+    }
+}
+
+
+========================================
+FILE: CardGame.Core.csproj
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\CardGame.Core.csproj
+========================================
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
+
+
+
+========================================
+FILE: AIPlayerController.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\AIPlayerController.cs
+========================================
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using CardGame.Core.AI.Interfaces;
+using CardGame.Core.AI.Strategies;
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.AI.Logic;
+using CardGame.Core.AI.Logic.Mcts; // Upewnij się, że masz ten namespace
+
+namespace CardGame.Core.AI
+{
+    public enum AISolverType
+    {
+        BeamSearch, // Stary, szybki solver heurystyczny
+        MCTS        // Nowy, zaawansowany solver Monte Carlo
+    }
+
+    public class AIPlayerController
+    {
+        public int BotPlayerId { get; }
+        private readonly GameEngine _gameEngine;
+
+        // Dwa solvery - używamy jednego w zależności od konfiguracji
+        public readonly BotSolver BeamSolver;
+        private readonly MctsSolver _mctsSolver;
+
+        private readonly AISolverType _solverType;
+        private bool _isRunning = false;
+
+        public AIPlayerController(GameEngine gameEngine, int botPlayerId, IAIStrategy strategy, AISolverType solverType)
+        {
+            _gameEngine = gameEngine;
+            BotPlayerId = botPlayerId;
+            _solverType = solverType;
+
+            // Inicjalizacja obu (lub leniwa inicjalizacja, ale tu dla uproszczenia oba)
+            // Beam Search: Width 4, Depth 5 (standardowe ustawienia)
+            BeamSolver = new BotSolver(_gameEngine, BotPlayerId, strategy, beamWidth: 4, maxDepth: 5);
+
+            // MCTS używa tej samej strategii do oceny liści
+            _mctsSolver = new MctsSolver(_gameEngine, BotPlayerId, strategy);
+        }
+
+        public async void StartAutoPlay()
+        {
+            if (_isRunning) return;
+            _isRunning = true;
+
+            while (!_gameEngine.IsGameOver)
+            {
+                var state = _gameEngine.CurrentState;
+
+                // 1. FAZA MULLIGAN (Wymiana kart)
+                if (state.CurrentPhase == GamePhase.Mulligan)
+                {
+                    if (!state.PlayersReady.Contains(BotPlayerId))
+                    {
+                        // Tu można dodać logikę inteligentnego mulliganu w przyszłości
+                        _gameEngine.ExecuteCommand(new ConfirmMulliganCommand(BotPlayerId, new System.Collections.Generic.List<int>()));
+                    }
+                    await Task.Delay(100);
+                    continue;
+                }
+
+                // 2. TURA BOTA
+                if (state.ActivePlayerId == BotPlayerId)
+                {
+                    // Symulacja czasu myślenia (ważne dla UX)
+                    await Task.Delay(500);
+
+                    IGameCommand bestCommand = null;
+                    string moveLog = "";
+
+                    // --- WYBÓR ALGORYTMU ---
+                    if (_solverType == AISolverType.MCTS)
+                    {
+                        // MCTS: Myśli przez 1.5 sekundy
+                        var bestMove = _mctsSolver.FindBestMove(state, thinkingTimeMs: 1500);
+                        bestCommand = bestMove.Command;
+                        moveLog = $"[MCTS] Score: {bestMove.Score:F2} | {bestMove.DeepReasoning}";
+                    }
+                    else
+                    {
+                        // BEAM SEARCH (Stary): Działa natychmiastowo
+                        var evaluatedMoves = BeamSolver.FindBestMoves(state);
+                        if (evaluatedMoves.Any())
+                        {
+                            var best = evaluatedMoves.First();
+                            bestCommand = best.Command;
+                            moveLog = $"[BEAM] Score: {best.Score:F0} | {best.Description}";
+                        }
+                        else
+                        {
+                            bestCommand = new EndPhaseCommand(BotPlayerId);
+                            moveLog = "[BEAM] Brak ruchów -> EndPhase";
+                        }
+                    }
+
+                    // --- WYKONANIE RUCHU ---
+                    Console.WriteLine($"[P{BotPlayerId}] {moveLog}"); // Logowanie do konsoli (opcjonalne)
+
+                    var result = _gameEngine.ExecuteCommand(bestCommand);
+
+                    // Zabezpieczenie: Jeśli ruch nic nie zmienił (nielegalny/błąd) i nie jest to EndPhase, wymuś koniec tury
+                    // Zapobiega nieskończonym pętlom, gdy bot próbuje zagrać kartę, której nie może.
+                    if (result.NewState == state && !(bestCommand is EndPhaseCommand))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"[CRITICAL] Bot P{BotPlayerId} utknął! Wymuszam koniec tury.");
+                        Console.ResetColor();
+                        _gameEngine.ExecuteCommand(new EndPhaseCommand(BotPlayerId));
+                    }
+                }
+                else
+                {
+                    // Tura przeciwnika - czekaj
+                    await Task.Delay(100);
+                }
+            }
+            _isRunning = false;
+        }
+    }
+}
+
+
+========================================
+FILE: IAIStrategy.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Interfaces\IAIStrategy.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.AI.Interfaces
+{
+    public interface IAIStrategy
+    {
+        float Evaluate(GameState state, int botPlayerId);
+    }
+}
+
+
+
+========================================
 FILE: BotSolver.cs
 PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\BotSolver.cs
 ========================================
@@ -172,20 +736,29 @@ namespace CardGame.Core.AI.Logic
 
         private GameState ExecuteFullAction(GameEngine engine, IGameCommand cmd)
         {
-            var state = engine.ExecuteCommand(cmd).NewState;
+            var result = engine.ExecuteCommand(cmd);
+            var state = result.NewState;
+
             int safety = 0;
-            while (state.PendingInteraction != null && safety++ < 5)
+            // ZMNIEJSZONO LIMIT: max 8 interakcji na akcję (np. wybór celu), by ubić pętle 0-cost
+            while (state.PendingInteraction != null && safety++ < 8)
             {
                 var targets = _moveGenerator.GenerateLegalMoves(state, _botId);
-                if (!targets.Any()) break;
+                if (!targets.Any())
+                {
+                    state = state.With(clearPending: true);
+                    break;
+                }
 
                 IGameCommand bestT = targets.First();
                 float bestV = float.MinValue;
 
-                foreach (var t in targets.Take(5))
+                // Ograniczamy liczbę rozważanych celów dla wydajności
+                foreach (var t in targets.Take(4))
                 {
-                    var test = new GameEngine(state, _engineTemplate.Rng.Seed).ExecuteCommand(t).NewState;
-                    float v = _strategy.Evaluate(test, _botId);
+                    var testEngine = new GameEngine(state, _engineTemplate.Rng.Seed);
+                    var testState = testEngine.ExecuteCommand(t).NewState;
+                    float v = _strategy.Evaluate(testState, _botId);
                     if (v > bestV) { bestV = v; bestT = t; }
                 }
                 state = engine.ExecuteCommand(bestT).NewState;
@@ -243,14 +816,31 @@ using CardGame.Core.State.Models;
 
 namespace CardGame.Core.AI.Logic
 {
-    internal class MoveGenerator
+    public class MoveGenerator
     {
         public List<IGameCommand> GenerateLegalMoves(GameState state, int playerId)
         {
             var moves = new List<IGameCommand>();
             var player = state.GetPlayer(playerId);
 
-           
+            if (state.CurrentPhase == GamePhase.Mulligan)
+            {
+                if (state.PlayersReady.Contains(playerId)) return moves;
+
+                var hand = player.Hand;
+                int count = hand.Count;
+                for (int i = 0; i < (1 << count); i++)
+                {
+                    var rejectedIds = new List<int>();
+                    for (int j = 0; j < count; j++)
+                    {
+                        if ((i & (1 << j)) != 0) rejectedIds.Add(hand[j].InstanceId);
+                    }
+                    moves.Add(new ConfirmMulliganCommand(playerId, rejectedIds));
+                }
+                return moves;
+            }
+
             if (state.PendingInteraction != null)
             {
                 var pending = state.PendingInteraction;
@@ -266,13 +856,11 @@ namespace CardGame.Core.AI.Logic
 
                 if (pending.RequiredTargetType == TargetType.Choice)
                 {
-
                     for (int i = 0; i < pending.Options.Count; i++)
                         moves.Add(new SelectTargetCommand(playerId, i));
                 }
                 else
                 {
-
                     var targets = EffectTargetResolver.GetPotentialTargets(pending.RequiredTargetType, state, pending.SourceCardInstanceId);
                     foreach (var t in targets)
                         moves.Add(new SelectTargetCommand(playerId, t.InstanceId));
@@ -280,7 +868,6 @@ namespace CardGame.Core.AI.Logic
                 return moves;
             }
 
-         
             if (state.CurrentPhase == GamePhase.UnitOnly || state.CurrentPhase == GamePhase.UnitAndAction)
             {
                 foreach (var card in player.Hand.Where(c => c.Definition.Type == CardType.Unit))
@@ -295,6 +882,7 @@ namespace CardGame.Core.AI.Logic
                     }
                 }
             }
+
             if (state.CurrentPhase == GamePhase.ActionOnly || state.CurrentPhase == GamePhase.UnitAndAction)
             {
                 foreach (var card in player.Hand.Where(c => c.Definition.Type == CardType.Spell))
@@ -304,13 +892,11 @@ namespace CardGame.Core.AI.Logic
                 }
             }
 
-          
             moves.Add(new EndPhaseCommand(playerId));
             return moves;
         }
     }
 }
-
 
 
 ========================================
@@ -394,6 +980,334 @@ namespace CardGame.Core.AI.Logic
         }
     }
 }   
+
+
+========================================
+FILE: MctsNode.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\MCTS\MctsNode.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.AI.Logic.Mcts
+{
+    public class MctsNode
+    {
+        public GameState State { get; }
+        public MctsNode? Parent { get; }
+        public IGameCommand? MoveEntered { get; } // Ruch, który doprowadził do tego stanu
+        public int PlayerIdJustMoved { get; } // Gracz, który wykonał ruch
+        public List<MctsNode> Children { get; } = new();
+        public List<IGameCommand> UntriedMoves { get; private set; }
+
+        public int Visits { get; private set; }
+        public double Score { get; private set; } // Skumulowany wynik (dla gracza z punktu widzenia korzenia)
+
+        public MctsNode(GameState state, MctsNode? parent, IGameCommand? move, int playerIdJustMoved, MoveGenerator moveGenerator)
+        {
+            State = state;
+            Parent = parent;
+            MoveEntered = move;
+            PlayerIdJustMoved = playerIdJustMoved;
+
+            // Generujemy możliwe ruchy dla gracza, który MA TERAZ RUCH w stanie State
+            UntriedMoves = moveGenerator.GenerateLegalMoves(state, state.ActivePlayerId);
+        }
+
+        public bool IsFullyExpanded => UntriedMoves.Count == 0;
+        public bool IsTerminal => State.PlayerA.Health <= 0 || State.PlayerB.Health <= 0;
+
+        public void Update(double result)
+        {
+            Visits++;
+            Score += result;
+        }
+
+        // UCT (Upper Confidence Bound for Trees) - wzór na wybór najlepszego dziecka
+        public MctsNode GetBestChild(double explorationParameter = 1.41)
+        {
+            // Sortujemy, żeby znaleźć ten z największą wartością UCT
+            return Children.OrderByDescending(child =>
+            {
+                // Ważne: Jeśli to była tura przeciwnika, wynik jest odwrotny dla nas
+                double exploitation = child.Score / child.Visits;
+                double exploration = explorationParameter * Math.Sqrt(Math.Log(Visits) / child.Visits);
+                return exploitation + exploration;
+            }).First();
+        }
+    }
+}
+
+
+========================================
+FILE: MctsSolver.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\MCTS\MctsSolver.cs
+========================================
+using CardGame.Core.AI.Interfaces;
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+
+namespace CardGame.Core.AI.Logic.Mcts
+{
+    public class MctsSolver
+    {
+        private readonly GameEngine _engineTemplate;
+        private readonly int _botId;
+        private readonly MoveGenerator _moveGenerator;
+        private readonly VirtualOpponent _virtualOpponent;
+        private readonly IAIStrategy _heuristic;
+        private readonly DeterministicRng _rng;
+
+        // Głębokość symulacji - im głębiej, tym dokładniej, ale wolniej. 20 to solidny kompromis.
+        private const int SIMULATION_DEPTH = 20;
+        // Stała eksploracji - 1.41 (pierwiastek z 2) to teoretyczne optimum.
+        private const double EXPLORATION_CONSTANT = 1.4142;
+
+        public MctsSolver(GameEngine engine, int botId, IAIStrategy heuristic)
+        {
+            _engineTemplate = engine;
+            _botId = botId;
+            _heuristic = heuristic;
+            _moveGenerator = new MoveGenerator();
+            _virtualOpponent = new VirtualOpponent(engine.Factory);
+            _rng = new DeterministicRng(new Random().Next());
+        }
+
+        public EvaluatedMove FindBestMove(GameState rootState, int thinkingTimeMs = 1500)
+        {
+            // 1. Determinization: Zakładamy konkretną (choć zgadywaną) rękę przeciwnika
+            int oppId = rootState.ActivePlayerId == 1 ? 2 : 1;
+            GameState determinizedState = _virtualOpponent.InjectRealisticPhantomHand(rootState, oppId);
+
+            var rootNode = new MctsNode(determinizedState, null, null, _botId, _moveGenerator);
+            var timer = Stopwatch.StartNew();
+            int iterations = 0;
+
+            // 2. Główna pętla MCTS
+            while (timer.ElapsedMilliseconds < thinkingTimeMs)
+            {
+                // A. Selection: Zjazd w dół drzewa do liścia
+                MctsNode node = Select(rootNode);
+
+                // B. Expansion: Dodanie nowego węzła, jeśli gra się nie skończyła
+                if (!node.IsTerminal && !node.IsFullyExpanded)
+                {
+                    node = Expand(node);
+                }
+
+                // C. Simulation (Rollout): Szybka, losowa gra do końca (lub do głębokości)
+                double result = Simulate(node.State);
+
+                // D. Backpropagation: Aktualizacja statystyk w górę drzewa
+                Backpropagate(node, result);
+
+                iterations++;
+            }
+
+            // 3. Wybór ruchu: Najczęściej odwiedzany węzeł jest najbardziej "zaufany"
+            var bestChild = rootNode.Children.OrderByDescending(c => c.Visits).FirstOrDefault();
+
+            if (bestChild == null || bestChild.MoveEntered == null)
+            {
+                return new EvaluatedMove(new EndPhaseCommand(_botId), -999, "Panic Skip");
+            }
+
+            // Statystyka dla człowieka
+            float winProb = (float)(bestChild.Score / bestChild.Visits);
+            string reasoning = $"MCTS: {iterations} iters | WinChance: {winProb:P1} (Visits: {bestChild.Visits})";
+
+            return new EvaluatedMove(bestChild.MoveEntered, winProb, "MCTS Choice", reasoning);
+        }
+
+        private MctsNode Select(MctsNode node)
+        {
+            // Idziemy w głąb dopóki węzeł ma dzieci i jest w pełni rozwinięty (ma dzieci dla wszystkich ruchów)
+            while (!node.IsTerminal && node.IsFullyExpanded && node.Children.Count > 0)
+            {
+                node = node.GetBestChild(EXPLORATION_CONSTANT);
+            }
+            return node;
+        }
+
+        private MctsNode Expand(MctsNode node)
+        {
+            // Wybieramy losowy ruch z listy nierozpatrzonych
+            var move = node.UntriedMoves[_rng.Next(0, node.UntriedMoves.Count)];
+            node.UntriedMoves.Remove(move);
+
+            // Symulujemy ten ruch na kopii silnika
+            var engine = new GameEngine(node.State, _engineTemplate.Rng.Seed);
+            var result = engine.ExecuteCommand(move);
+            var newState = result.NewState;
+
+            // --- SAFETY BREAK: Obsługa PendingInteraction (np. wybór celu) ---
+            int safety = 0;
+            while (newState.PendingInteraction != null && safety++ < 15)
+            {
+                var legalTargets = _moveGenerator.GenerateLegalMoves(newState, newState.ActivePlayerId);
+                if (!legalTargets.Any()) break;
+
+                // Wybieramy losowy cel
+                var randomTarget = legalTargets[_rng.Next(0, legalTargets.Count)];
+                var subResult = engine.ExecuteCommand(randomTarget);
+
+                // Jeśli stan się nie zmienił (zakleszczenie), przerywamy
+                if (subResult.NewState == newState) break;
+                newState = subResult.NewState;
+            }
+
+            // Tworzymy nowy węzeł. Ważne: zapisujemy KTO wykonał ten ruch.
+            var childNode = new MctsNode(newState, node, move, node.State.ActivePlayerId, _moveGenerator);
+            node.Children.Add(childNode);
+            return childNode;
+        }
+
+        private double Simulate(GameState initialState)
+        {
+            var currentState = initialState;
+            // Używamy losowego seeda w symulacji, żeby każda była inna
+            var engine = new GameEngine(currentState, _rng.Next(0,int.MaxValue));
+            int depth = 0;
+
+            while (!IsGameOver(currentState) && depth < SIMULATION_DEPTH)
+            {
+                var moves = _moveGenerator.GenerateLegalMoves(currentState, currentState.ActivePlayerId);
+                if (moves.Count == 0) break;
+
+                // --- OPTYMALIZACJA "KILLER MOVE" ---
+                // Jeśli mamy ruch wygrywający (Lethal), ZAWSZE go wybieramy.
+                // To uczy bota wykańczania przeciwnika i unikania śmierci.
+                var lethalMove = FindLethalMove(currentState, moves);
+
+                IGameCommand selectedMove;
+                if (lethalMove != null)
+                {
+                    selectedMove = lethalMove;
+                }
+                else
+                {
+                    // Heurystyka Epsilon-Greedy:
+                    // 80% szans na zagranie czegoś sensownego (nie-EndPhase), 20% na cokolwiek.
+                    // To zapobiega sytuacji, gdzie bot w symulacji ciągle pasuje.
+                    if (_rng.Next(0, 10) < 8 && moves.Any(m => m is not EndPhaseCommand))
+                    {
+                        var activeMoves = moves.Where(m => m is not EndPhaseCommand).ToList();
+                        selectedMove = activeMoves[_rng.Next(0, activeMoves.Count)];
+                    }
+                    else
+                    {
+                        selectedMove = moves[_rng.Next(0, moves.Count)];
+                    }
+                }
+
+                var result = engine.ExecuteCommand(selectedMove);
+                currentState = result.NewState;
+
+                // --- SAFETY BREAK w Symulacji ---
+                int safety = 0;
+                while (currentState.PendingInteraction != null && safety++ < 15)
+                {
+                    var targets = _moveGenerator.GenerateLegalMoves(currentState, currentState.ActivePlayerId);
+                    if (!targets.Any()) break;
+
+                    var rndTarget = targets[_rng.Next(0, targets.Count)];
+                    var subResult = engine.ExecuteCommand(rndTarget);
+
+                    if (subResult.NewState == currentState) break;
+                    currentState = subResult.NewState;
+                }
+
+                depth++;
+            }
+
+            // OCENA STANU KOŃCOWEGO
+            // Zwracamy wynik z perspektywy BOTA (_botId)
+            // 1.0 = Bot Wygrał / 0.0 = Bot Przegrał
+            if (IsGameOver(currentState))
+            {
+                if (currentState.PlayerA.Health <= 0 && _botId == 2) return 1.0;
+                if (currentState.PlayerB.Health <= 0 && _botId == 1) return 1.0;
+                return 0.0; // Przegrana
+            }
+
+            // Jeśli gra się nie skończyła, używamy heurystyki z DNA
+            float heuristicScore = _heuristic.Evaluate(currentState, _botId);
+
+            // Sigmoida spłaszcza wynik (np. -5000 do +5000) do zakresu (0.0 do 1.0)
+            // Dzielnik 4000.0f "rozciąga" czułość - bot rozróżni małą przewagę od dużej.
+            return Sigmoid(heuristicScore / 4000.0f);
+        }
+
+        private void Backpropagate(MctsNode node, double result)
+        {
+            // result = wynik z perspektywy GŁÓWNEGO BOTA (_botId)
+            // 1.0 = Bot wygrywa, 0.0 = Bot przegrywa
+
+            MctsNode? temp = node;
+            while (temp != null)
+            {
+                // LOGIKA NEGAMAX / MINMAX:
+                // Każdy węzeł przechowuje statystykę "Jak dobry był ten ruch dla gracza, który go wykonał?"
+
+                double valueForNodeOwner;
+
+                if (temp.PlayerIdJustMoved == _botId)
+                {
+                    // Jeśli to był nasz ruch, i wynik jest dobry (1.0), to super.
+                    valueForNodeOwner = result;
+                }
+                else
+                {
+                    // Jeśli to był ruch PRZECIWNIKA, i wynik jest dobry dla NAS (1.0),
+                    // to znaczy, że ten ruch był tragiczny dla przeciwnika (0.0).
+                    valueForNodeOwner = 1.0 - result;
+                }
+
+                temp.Update(valueForNodeOwner);
+                temp = temp.Parent;
+            }
+        }
+
+        // --- Helpery ---
+
+        private IGameCommand? FindLethalMove(GameState s, List<IGameCommand> moves)
+        {
+            // Prosta heurystyka: Sprawdź, czy atakując Hero można wygrać w tym ruchu
+            // Nie symulujemy tutaj całego silnika (za wolno), tylko szybkie sprawdzenie.
+
+            // Jeśli to faza ataku
+            if (s.CurrentPhase == GamePhase.Combat) return null;
+
+            int enemyHp = s.GetOpponent(s.ActivePlayerId).Health;
+
+            // Szukamy czaru zadającego obrażenia (bardzo uproszczone)
+            foreach (var m in moves)
+            {
+                if (m is PlaySpellCommand psc)
+                {
+                    // Tutaj można dodać logikę sprawdzającą, czy karta to np. Fireball w Hero
+                    // Wymagałoby dostępu do definicji karty.
+                    // Dla wydajności w tym przykładzie pomijam głęboką analizę kart.
+                }
+            }
+            return null;
+        }
+
+        private bool IsGameOver(GameState s) => s.PlayerA.Health <= 0 || s.PlayerB.Health <= 0;
+
+        private double Sigmoid(double value) => 1.0 / (1.0 + Math.Exp(-value));
+    }
+}
 
 
 ========================================
@@ -603,7 +1517,17 @@ namespace CardGame.Core.AI.Strategies
 
         public EvolvableStrategy(float[] genes)
         {
-            DNA = genes ?? new float[104];
+            // Zabezpieczenie rozmiaru DNA (aktualizacja do 109 genów)
+            if (genes != null && genes.Length < 109)
+            {
+                var newDna = new float[109];
+                Array.Copy(genes, newDna, genes.Length);
+                DNA = newDna;
+            }
+            else
+            {
+                DNA = genes ?? new float[109];
+            }
         }
 
         public float Evaluate(GameState state, int botId)
@@ -611,37 +1535,86 @@ namespace CardGame.Core.AI.Strategies
             var bot = state.GetPlayer(botId);
             var enemy = state.GetOpponent(botId);
 
+            // Natychmiastowe stany końca gry
             if (enemy.Health <= 0 && bot.Health > 0) return 10000000f;
             if (bot.Health <= 0) return -10000000f;
+            if (state.CurrentPhase == GamePhase.Mulligan)
+            {
+                return EvaluateMulliganHand(state.GetPlayer(botId));
+            }
 
+            // Archetypy i wagi nastroju
             float aggroFactor = DNA[65] * (bot.Health > 15 ? 1.0f : DNA[90]);
             float controlFactor = DNA[66];
             float tempoFactor = DNA[67];
             float valueFactor = DNA[68];
+            float comboFactor = DNA[108]; // NOWY GEN
 
             float totalScore = 0f;
 
-            totalScore += EvaluateMacroEconomy(state, bot, enemy, valueFactor);
+            // Główna analiza
+            totalScore += EvaluateMacroEconomy(state, bot, enemy, valueFactor, comboFactor);
             totalScore += EvaluateBoardGeometry(state, botId, tempoFactor);
-            totalScore += EvaluateUnitsAndSynergies(state, botId, aggroFactor, controlFactor);
+            totalScore += EvaluateUnitsAndSynergies(state, botId, aggroFactor, controlFactor, comboFactor);
             totalScore += EvaluateForecasting(state, bot, enemy);
+
+            // Specyficzna punktacja dla Combo: Premia za zniżki kosztów w ręku
+            float totalDiscounts = bot.Hand.Sum(c => c.CostReduction);
+            totalScore += totalDiscounts * 25.0f * comboFactor;
 
             return totalScore;
         }
-
-        private float EvaluateMacroEconomy(GameState state, PlayerState bot, PlayerState enemy, float valueFactor)
+        private float EvaluateMulliganHand(PlayerState player)
         {
             float score = 0;
+            foreach (var card in player.Hand)
+            {
+                bool isUnit = card.Definition.Type == CardType.Unit;
+                float cost = card.CurrentStats.BloodCost;
+
+                // Gen 71: Preferencja niskiego kosztu jednostek na start
+                // DNA[71] to idealny koszt. Im dalej karta od tego kosztu, tym gorzej.
+                if (isUnit)
+                {
+                    if (cost <= DNA[71]) score += 1000f; // Bardzo chcemy jednostki 1-2 dropy
+                    else score -= (cost - DNA[71]) * 500f; // Kara za "cegły" na ręce
+                }
+                else // Spelle
+                {
+                    // Gen 72: Czy bot lubi trzymać czary?
+                    score += DNA[72] * 200f;
+                    // Czary zazwyczaj chcemy odrzucić, chyba że są bardzo tanie
+                    if (cost > 2) score -= 1000f;
+                }
+
+                // Gen 73: Czy karta jest częścią combo? (np. Black Cat dla decku Sacrifice)
+                if (new[] { "12", "3", "10" }.Contains(card.Definition.Id))
+                    score += DNA[73] * 300f;
+            }
+            return score;
+        }
+
+        private float EvaluateMacroEconomy(GameState state, PlayerState bot, PlayerState enemy, float valueFactor, float comboFactor)
+        {
+            float score = 0;
+
+            // Życie bohatera
             float selfHpValue = bot.Health * DNA[0];
-            if (bot.Health < 10) selfHpValue *= DNA[2];
+            if (bot.Health < 10) selfHpValue *= DNA[2]; // Panic threshold
             score += selfHpValue;
 
             float enemyHpLoss = (30 - enemy.Health) * DNA[1];
-            if (enemy.Health < 10) enemyHpLoss *= DNA[3];
+            if (enemy.Health < 10) enemyHpLoss *= DNA[3]; // Lethal fever
             score += enemyHpLoss;
 
-            score += bot.Hand.Count * DNA[6] * valueFactor;
-            if (bot.Hand.Count >= 7) score -= DNA[7];
+            // Wartość kart na ręce (wzmocniona przez Combo)
+            float handValueMultiplier = 1.0f + (comboFactor * 0.5f);
+            score += bot.Hand.Count * DNA[6] * valueFactor * handValueMultiplier;
+
+            if (bot.Hand.Count >= 7) score -= DNA[7]; // Overdraw risk
+
+            // Ekonomia zasobów (Gen 105 - ResourceGainValue)
+            score += bot.CurrentBlood * DNA[105];
 
             if (state.ActivePlayerId == bot.PlayerId)
             {
@@ -651,6 +1624,7 @@ namespace CardGame.Core.AI.Strategies
                 score -= unusedBloodPenalty;
             }
 
+            // Finishery w talii
             float finishersInDeck = bot.DrawPile.Count(c => c.CurrentStats.Attack >= 5);
             score += finishersInDeck * DNA[46] * DNA[48];
 
@@ -670,17 +1644,18 @@ namespace CardGame.Core.AI.Strategies
 
                 if (myU != null)
                 {
-                    if (enU == null) score += DNA[12];
-                    if (line.Index == 0 || line.Index == 3) score += DNA[78];
-                    if (HasNeighbor(state, line.Index, botId)) score += DNA[14];
+                    if (enU == null) score += DNA[12]; // Empty lane bonus
+                    if (line.Index == 0 || line.Index == 3) score += DNA[78]; // Corner value
+                    if (HasNeighbor(state, line.Index, botId)) score += DNA[14]; // Adjacency
 
+                    // Priorytety linii (Geny 100-103)
                     score += myU.CurrentStats.Attack * DNA[100 + line.Index];
                 }
             }
             return score;
         }
 
-        private float EvaluateUnitsAndSynergies(GameState state, int botId, float aggroFactor, float controlFactor)
+        private float EvaluateUnitsAndSynergies(GameState state, int botId, float aggroFactor, float controlFactor, float comboFactor)
         {
             float score = 0;
             var units = state.Board.GetAllUnits();
@@ -692,6 +1667,7 @@ namespace CardGame.Core.AI.Strategies
                 float uVal = 0;
                 int lineIdx = GetLineIndex(state, u.InstanceId);
 
+                // Bazowe statystyki z uwzględnieniem archetypów
                 if (isFriendly)
                 {
                     uVal += s.Attack * DNA[8] * aggroFactor;
@@ -705,30 +1681,41 @@ namespace CardGame.Core.AI.Strategies
                     if (lineIdx != -1) uVal += s.Attack * DNA[100 + lineIdx];
                 }
 
+                // Keywordy i statusy
                 if (s.Keywords.Contains(Keyword.Marked))
                 {
-                    bool hasGerard = state.Board.GetAllUnits().Any(x => x.OwnerPlayerId == botId && x.Definition.Id == "24");
                     float markBonus = isFriendly ? -DNA[16] : DNA[15];
-                    if (!isFriendly && hasGerard) markBonus *= 1.5f;
                     uVal += markBonus;
                 }
 
                 if (s.Keywords.Contains(Keyword.Unkillable)) uVal += DNA[18];
                 if (s.Keywords.Contains(Keyword.SoulGuard)) uVal += DNA[19];
+
+                // NOWE: Flying (Gen 104)
+                if (s.Keywords.Contains(Keyword.Flying)) uVal += DNA[104] * 2.0f;
+
                 if (s.Keywords.Contains(Keyword.SplashDamage) && lineIdx != -1)
                 {
                     int neighborCount = CountEnemyNeighbors(state, lineIdx, botId);
                     uVal += neighborCount * DNA[22];
                 }
 
+                // Podtypy i synergie (NOWE: DNA[107] dla Maszyn)
                 if (u.Definition.Subtypes.Contains("Monster")) uVal += DNA[27];
                 if (u.Definition.Subtypes.Contains("Mercenary")) uVal += DNA[28];
-                if (u.Definition.Subtypes.Contains("Machine")) uVal += DNA[30];
+                if (u.Definition.Subtypes.Contains("Machine")) uVal += DNA[30] + DNA[107];
 
+                // NOWE: Token Synergy (Gen 106)
+                if (u.Definition.Id == "901" || u.Definition.Id == "500") uVal += DNA[106];
+
+                // Buff stałe (Gen 49)
                 if (u.PermanentBuffs.Attack > 0 || u.PermanentBuffs.Health > 0)
                 {
                     uVal += (u.PermanentBuffs.Attack + u.PermanentBuffs.Health) * DNA[49];
                 }
+
+                // Specyficzne dla Combo: Tea Maid (ID 45)
+                if (isFriendly && u.Definition.Id == "45") uVal += 60.0f * comboFactor;
 
                 score += isFriendly ? uVal : -uVal;
             }
@@ -739,21 +1726,22 @@ namespace CardGame.Core.AI.Strategies
         private float EvaluateForecasting(GameState state, PlayerState bot, PlayerState enemy)
         {
             float score = 0;
+            // Przewidywanie AoE wroga
             if (state.Board.GetAllUnits().Count(u => u.OwnerPlayerId == bot.PlayerId) >= 3)
             {
-                if (enemy.MaxBlood >= 4) score -= DNA[85];
+                if (enemy.MaxBlood >= 4) score -= DNA[85]; // Fear of Hellfire
             }
 
-            score -= enemy.Hand.Count * DNA[44];
+            score -= enemy.Hand.Count * DNA[44]; // Enemy hand size fear
 
+            // Ryzyko Bluffu
             if (enemy.CurrentBlood > 0 && state.ActivePlayerId == bot.PlayerId)
                 score -= DNA[81];
 
-            int enemyMercs = enemy.DiscardPile.Count(c => c.Definition.Subtypes.Contains("Mercenary"));
-            if (enemyMercs > 2) score *= (1.0f - (DNA[83] / 1000f));
-
             return score;
         }
+
+        // --- HELPERY GEOMETRYCZNE ---
 
         private int GetLineIndex(GameState s, int id)
         {
@@ -803,1221 +1791,6 @@ namespace CardGame.Core.AI.Strategies
         {
             // Zwraca losową wartość - bot będzie nieprzewidywalny i chaotyczny
             return (float)_rand.NextDouble() * 100f;
-        }
-    }
-}
-
-
-========================================
-FILE: StandardStrategy.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Strategies\StandardStrategy.cs
-========================================
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CardGame.Core.AI.Strategies
-{
-    public class StandardStrategy : IAIStrategy
-    {
-        // --- KONFIGURACJA WAG ---
-        private const float HealthWeight = 25.0f;
-        private const float BoardWeight = 45.0f;
-        private const float HandValueWeight = 20.0f;
-        private const float EfficiencyWeight = 10.0f;
-        private const float ThreatPenaltyWeight = 30.0f; // Zmniejszone z 50.0f
-
-        public float Evaluate(GameState state, int botPlayerId)
-        {
-            var bot = state.GetPlayer(botPlayerId);
-            var enemy = state.GetOpponent(botPlayerId);
-
-            // 1. ABSOLUTNE PRIORYTETY
-            if (enemy.Health <= 0 && bot.Health > 0) return 3000000f; // Lethal
-            if (bot.Health <= 0) return -3000000f; // Porażka
-            if (bot.Health <= 0 && enemy.Health <= 0) return 0f; // Remis
-
-            float score = 10000.0f;
-
-            // 2. IDENTYFIKACJA STOŁU I SYTUACJI
-            var myUnits = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == botPlayerId).ToList();
-            var enemyUnits = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId != botPlayerId).ToList();
-
-            bool hasGerard = myUnits.Any(u => u.Definition.Name.Contains("Gerard"));
-            bool isSacStrat = bot.Hand.Any(IsSacrificeCard) || myUnits.Any(IsSacrificeCard);
-            bool isMarkStrat = bot.Hand.Any(IsMarkCard) || myUnits.Any(IsMarkCard);
-
-            // 3. EFEKTYWNOŚĆ ZASOBÓW
-            // Karzemy za niewydaną krew, chyba że mamy plan na combo
-            score -= (bot.CurrentBlood * EfficiencyWeight);
-            score += EvaluateRealizablePotential(state, botPlayerId, isSacStrat, isMarkStrat);
-
-            // 4. ŻYCIE BOHATERA
-            score += (bot.Health - enemy.Health) * HealthWeight;
-            if (bot.Health < 12) score -= (15 - bot.Health) * 45.0f; // Panic Mode
-
-            // 5. PLANSZA I KILL PRIORITY
-            foreach (var unit in myUnits)
-            {
-                score += EvaluateFriendlyUnit(unit, state, hasGerard, isSacStrat, true) * BoardWeight;
-
-                // Sprawdzamy, czy nie wystawiliśmy kluczowej jednostki na pewną śmierć
-                if (IsHighValueTarget(unit)) score += EvaluateSafety(unit, state, botPlayerId);
-            }
-
-            foreach (var unit in enemyUnits)
-            {
-                // Kill Priority: Im groźniejszy wróg, tym większa "ulga" (bonus) gdy zginie w symulacji
-                float threat = CalculateEnemyThreat(unit);
-
-                // Jeśli jednostka żyje, odejmujemy punkty (zagrożenie).
-                // Jeśli zginęła (HP<=0), threat wynosi 0, co oznacza zysk względem stanu, gdzie ona żyje.
-                if (unit.CurrentStats.Health > 0)
-                {
-                    score -= threat * (BoardWeight * 1.3f);
-                }
-            }
-
-            // 6. RĘKA (BEZ KARY ZA MAŁĄ ILOŚĆ KART)
-            // Bot ma grać tym co ma. Oceniamy tylko jakość kart w kontekście stołu.
-            foreach (var card in bot.Hand)
-            {
-                score += EvaluateCardInHand(card, enemyUnits, myUnits, bot.CurrentBlood) * HandValueWeight;
-            }
-
-            // 7. ANTI-LOAFING (Blokada pasywności)
-            // Jeśli bot ma manę i karty, a nic nie robi -> kara.
-            if (state.ActivePlayerId == botPlayerId && bot.CurrentBlood > 0)
-            {
-                bool hasPlayable = bot.Hand.Any(c => c.CurrentStats.BloodCost <= bot.CurrentBlood);
-                if (hasPlayable)
-                {
-                    score -= 400.0f;
-                }
-            }
-
-            return Math.Clamp(score, -4000000f, 4000000f);
-        }
-
-        private float EvaluateFriendlyUnit(CardInstance u, GameState state, bool hasGerard, bool isSac, bool isFriendly)
-        {
-            var s = u.CurrentStats;
-            float val = (s.Attack * 3.0f) + (s.Health * 2.0f);
-
-            // --- FRIENDLY FIRE FIX ---
-            if (s.Health <= 0)
-            {
-                if (IsFodder(u)) val += 40.0f; // Poświęcenie jest dobre
-                else val -= 250.0f; // Strata ważnej jednostki to duży błąd
-            }
-            else if (u.DamageTaken > 0)
-            {
-                val -= (u.DamageTaken * 12.0f);
-            }
-
-            // --- STATUSY ---
-            if (s.Keywords.Contains(Keyword.Marked)) val -= 40.0f;
-            if (s.Keywords.Contains(Keyword.Unkillable)) val += 40.0f;
-            if (s.Keywords.Contains(Keyword.SoulGuard)) val += 20.0f;
-
-            // --- SPLASH POSITIONING (Z BalanceStrategy) ---
-            if (s.Keywords.Contains(Keyword.SplashDamage))
-            {
-                // Bonus za środek planszy (linie 1 i 2), gdzie splash ma max zasięg
-                int lineIdx = GetLineIndex(state, u.InstanceId);
-                if (lineIdx == 1 || lineIdx == 2) val += 15.0f;
-            }
-
-            // Bonus dla decku Sacrifice
-            if (isSac && IsFodder(u)) val += 15.0f;
-
-            return val;
-        }
-
-        private float CalculateEnemyThreat(CardInstance u)
-        {
-            // --- KILL PRIORITY SYSTEM ---
-            var s = u.CurrentStats;
-            float threat = (s.Attack * 3.5f) + (s.Health * 2.0f);
-
-            // 1. ENGINE THREAT (Najwyższy priorytet - zabij to!)
-            if (IsHighValueTarget(u)) threat += 200.0f;
-
-            // 2. MARK UTILITY (Naprawa logiki Markowania)
-            if (s.Keywords.Contains(Keyword.Marked))
-            {
-                // Marka na jednostce 1 HP jest bezużyteczna (chyba że dla triggera)
-                // Marka na jednostce > 3 HP jest bardzo cenna.
-                if (s.Health <= 1) threat -= 10.0f; // Zmniejszamy priorytet, to "overkill"
-                else threat += (s.Health * 10.0f);   // Zwiększamy priorytet, bo łatwiej zabić
-            }
-
-            if (s.Keywords.Contains(Keyword.SplashDamage)) threat += 50.0f;
-
-            return threat;
-        }
-
-        private float EvaluateSafety(CardInstance u, GameState state, int botId)
-        {
-            // Jeśli wystawiamy kluczową jednostkę, a ona ma mało życia
-            if (u.CurrentStats.Health <= 3)
-            {
-                var opp = state.GetOpponent(botId);
-                // Kara, jeśli wróg ma zasoby na kontrę
-                if (opp.Hand.Count > 0 && opp.MaxBlood >= 2)
-                {
-                    return -ThreatPenaltyWeight;
-                }
-            }
-            return 0.0f;
-        }
-
-        private float EvaluateCardInHand(CardInstance card, List<CardInstance> enemyUnits, List<CardInstance> myUnits, int currentBlood)
-        {
-            float val = 1.0f;
-
-            // Karta "grywalna" teraz jest cenniejsza (Tempo)
-            if (card.CurrentStats.BloodCost <= currentBlood) val += 3.0f;
-
-            // --- CONTEXTUAL SPELLS ---
-            if (card.Definition.Type == CardType.Spell)
-            {
-                // Glock: Cenniejszy, gdy jest cel, który można zabić (Kill Priority)
-                if (card.Definition.Id == "7")
-                {
-                    bool hasHighValueTarget = enemyUnits.Any(u => IsHighValueTarget(u) || (u.CurrentStats.Health <= 3 && u.CurrentStats.Attack >= 4));
-                    val += hasHighValueTarget ? 8.0f : 0.0f;
-                }
-
-                // Buffs: Cenniejsze, gdy mamy stół
-                if (card.Definition.Effects.Any(e => e.Actions.Any(a => a.Type == ActionType.BuffStats)))
-                {
-                    val += (myUnits.Count > 0) ? 5.0f : -5.0f;
-                }
-            }
-
-            // Jednostki są cenniejsze przy pustym stole
-            if (card.Definition.Type == CardType.Unit && myUnits.Count == 0) val += 10.0f;
-
-            return val;
-        }
-
-        private float EvaluateRealizablePotential(GameState state, int botId, bool isSac, bool isMark)
-        {
-            var bot = state.GetPlayer(botId);
-            float potential = 0;
-            int nextTurnMana = bot.MaxBlood + 1;
-
-            // Combo: Sacrifice
-            bool hasBear = bot.Hand.Any(c => c.Definition.Id == "10");
-            bool hasFuel = bot.Hand.Any(c => c.Definition.Id == "12");
-            if (isSac && hasBear && hasFuel && nextTurnMana >= 3)
-            {
-                potential += 80.0f;
-            }
-
-            // Combo: Mark Execution (Gerard + Marki)
-            // Jeśli mamy Gerarda, marki na stole wroga są aktywem
-            if (isMark && bot.Hand.Any(c => c.Definition.Id == "24"))
-            {
-                int markedEnemies = state.Board.GetAllUnits().Count(u => u.OwnerPlayerId != botId && u.CurrentStats.Keywords.Contains(Keyword.Marked));
-                potential += (markedEnemies * 40.0f);
-            }
-
-            return potential;
-        }
-
-        // --- HELPERY ---
-        private int GetLineIndex(GameState s, int unitId)
-        {
-            for (int i = 0; i < 4; i++)
-                if (!s.Board.Lines[i].IsSlotEmpty(1) && s.Board.Lines[i].Player1Unit.InstanceId == unitId) return i;
-                else if (!s.Board.Lines[i].IsSlotEmpty(2) && s.Board.Lines[i].Player2Unit.InstanceId == unitId) return i;
-            return -1;
-        }
-
-        private bool IsHighValueTarget(CardInstance u) => new[] { "24", "5", "36", "14", "6", "23" }.Contains(u.Definition.Id);
-        private bool IsFodder(CardInstance c) => new[] { "12", "3", "1", "900" }.Contains(c.Definition.Id);
-        private bool IsSacrificeCard(CardInstance c) => new[] { "10", "12", "3", "9", "900", "1" }.Contains(c.Definition.Id);
-        private bool IsMarkCard(CardInstance c) => new[] { "4", "32", "24", "25", "26" }.Contains(c.Definition.Id);
-    }
-}
-
-
-========================================
-FILE: DeterministicRng.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Application\DeterministicRng.cs
-========================================
-using System;
-
-namespace CardGame.Core.Application
-{
-    public class DeterministicRng
-    {
-        private readonly Random _random;
-        public int Seed { get; }
-
-        public DeterministicRng(int seed)
-        {
-            Seed = seed;
-            _random = new Random(seed);
-        }
-        public int Next(int minValue, int maxValue)
-        {
-            return _random.Next(minValue, maxValue);
-        }
-
-        public int NextId()
-        {
-            return _random.Next(100000, 999999);
-        }
-    }
-}
-
-
-
-========================================
-FILE: ExecutionResult.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Application\ExecutionResult.cs
-========================================
-using System.Collections.Generic;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.Application
-{
-    public class ExecutionResult
-    {
-        public GameState NewState { get; }
-        public IReadOnlyList<IGameEvent> EventsHappened { get; }
-
-        public ExecutionResult(GameState newState, IEnumerable<IGameEvent> events)
-        {
-            NewState = newState;
-            EventsHappened = new List<IGameEvent>(events);
-        }
-    }
-}
-
-
-========================================
-FILE: GameContext.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Application\GameContext.cs
-========================================
-using CardGame.Core.Cards.Components.Actions;
-using CardGame.Core.Cards.Components.Actions.Handlers;
-using CardGame.Core.Cards.Factories;
-using CardGame.Core.Cards.Logic.Keywords;
-using CardGame.Core.Cards.Logic.Keywords.Handlers;
-using CardGame.Core.Events;
-using CardGame.Core.GameRules.Battle;
-using CardGame.Core.GameRules.Damage;
-using CardGame.Core.GameRules.Death;
-
-namespace CardGame.Core.Application
-{
-    public class GameContext
-    {
-        public CardFactory Factory { get; }
-        public DeterministicRng Rng { get; }
-        public EventBus Events { get; }
-        public DamageCalculator DamageCalculator { get; }
-        public ActionHandlerRegistry ActionRegistry { get; }
-        public KeywordProcessor Keywords { get; }
-        public BattleService Battle { get; }
-        public DeathResolver Death { get; }
-
-        public GameContext(CardFactory factory, DeterministicRng rng, EventBus events)
-        {
-            Factory = factory;
-            Rng = rng;
-            Events = events;
-
-            Keywords = new KeywordProcessor();
-            Keywords.RegisterHandler(new ArmoredHandler());
-            Keywords.RegisterHandler(new MarkedHandler());
-            Keywords.RegisterHandler(new SplashDamageHandler());
-            Keywords.RegisterHandler(new BurnSourceHandler());
-            Keywords.RegisterHandler(new BurningHandler());
-            Keywords.RegisterHandler(new SoulGuardHandler());
-            Keywords.RegisterHandler(new UnkillableHandler());
-            Keywords.RegisterHandler(new StunnedHandler());
-
-            DamageCalculator = new DamageCalculator(this);
-            Battle = new BattleService();
-            Death = new DeathResolver();
-            ActionRegistry = new ActionHandlerRegistry();
-
-            RegisterActionHandlers();
-        }
-
-        private void RegisterActionHandlers()
-        {
-            ActionRegistry.Register(new DealDamageHandler());
-            ActionRegistry.Register(new HealHandler());
-            ActionRegistry.Register(new BuffStatsHandler());
-            ActionRegistry.Register(new ApplyStatusHandler());
-            ActionRegistry.Register(new AbsorbStatsHandler());
-            ActionRegistry.Register(new ModifyGlobalBuffHandler());
-            ActionRegistry.Register(new AddCardToHandHandler());
-            ActionRegistry.Register(new DrawCardHandler());
-            ActionRegistry.Register(new ShuffleDeckHandler());
-            ActionRegistry.Register(new TutorCardHandler());
-            ActionRegistry.Register(new DestroyUnitHandler());
-            ActionRegistry.Register(new SacrificeUnitHandler());
-            ActionRegistry.Register(new SummonUnitHandler());
-            ActionRegistry.Register(new ReturnToHandHandler());
-            ActionRegistry.Register(new DrawFromDiscardHandler());
-
-            ActionRegistry.Register(new BonusAttackHandler());
-            ActionRegistry.Register(new HealToFullHandler());
-            ActionRegistry.Register(new MoveRightHandler());
-            ActionRegistry.Register(new GiveToOpponentHandler());
-
-            ActionRegistry.Register(new SilenceHandler());
-            ActionRegistry.Register(new AddResourceHandler());
-            ActionRegistry.Register(new MakeAUnitHandler());
-        }
-    }
-}
-
-
-========================================
-FILE: GameEngine.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Application\GameEngine.cs
-========================================
-using CardGame.Core.Cards.Factories;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.Events;
-using CardGame.Core.Events.Triggers;
-using CardGame.Core.GameRules.Auras;
-using CardGame.Core.GameRules.Death;
-using CardGame.Core.State.Models;
-using CardGame.Core.StateMachine;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CardGame.Core.Application
-{
-    public class GameEngine
-    {
-        public GameState CurrentState { get; set; }
-        public bool IsGameOver { get; private set; }
-        public int? WinnerId { get; private set; }
-        public EventBus Events { get; }
-        public CardFactory Factory { get; }
-        public DeterministicRng Rng { get; }
-
-        private readonly GameContext _gameContext;
-        private readonly GameStateMachine _stateMachine;
-        private readonly TriggerSystem _triggerSystem;
-        private readonly DeathResolver _deathResolver;
-        private readonly AuraSystem _auraSystem;
-        private float _interactionTimer = 0f;
-
-        public GameEngine(GameState initialState, int seed = 0)
-        {
-            CurrentState = initialState;
-            Events = new EventBus();
-            Rng = new DeterministicRng(seed);
-            Factory = new CardFactory(CardGame.Core.Cards.Data.CardLibrary.Instance, Rng);
-            _gameContext = new GameContext(Factory, Rng, Events);
-            _stateMachine = new GameStateMachine();
-            _triggerSystem = new TriggerSystem();
-            _deathResolver = new DeathResolver();
-            _auraSystem = new AuraSystem();
-            CurrentState = _auraSystem.RecalculateAuras(CurrentState);
-        }
-
-        public ExecutionResult ExecuteCommand(IGameCommand command)
-        {
-            // Czyści krótką historię komendy, by silnik nie widział zdarzeń z poprzedniej tury
-            Events.ClearHistory();
-
-            if (IsGameOver) return new ExecutionResult(CurrentState, new List<CardGame.Core.Events.Interfaces.IGameEvent>());
-
-            var logic = _stateMachine.GetStateForPhase(CurrentState.CurrentPhase);
-            if (!logic.IsCommandAllowed(command, CurrentState))
-                return new ExecutionResult(CurrentState, new List<CardGame.Core.Events.Interfaces.IGameEvent>());
-
-            GameState newState = command.Execute(CurrentState, Events, _gameContext);
-            _interactionTimer = 0f;
-
-            bool phaseFinished = command is CardGame.Core.Commands.Implementations.EndPhaseCommand || logic.ShouldEndPhaseAutomatically(newState);
-
-            while (phaseFinished)
-            {
-                var currentLogic = _stateMachine.GetStateForPhase(newState.CurrentPhase);
-                newState = currentLogic.ProcessEndPhase(newState, Events, _gameContext);
-
-                var nextLogic = _stateMachine.GetStateForPhase(newState.CurrentPhase);
-                phaseFinished = nextLogic.ShouldEndPhaseAutomatically(newState);
-
-                if (CheckGameOver(newState)) break;
-            }
-
-            int safety = 0;
-            while (safety++ < 100)
-            {
-                var start = newState;
-                newState = _triggerSystem.ProcessEvents(newState, Events, _gameContext);
-                newState = _deathResolver.ResolveDeaths(newState, Events, _gameContext);
-                newState = _auraSystem.RecalculateAuras(newState);
-
-                if (newState.PendingInteraction != null || CheckGameOver(newState)) break;
-                if (!Events.HasEvents && newState.Board == start.Board) break;
-            }
-
-            while (newState.PendingInteraction == null && newState.SpellStack.Any())
-            {
-                var spell = newState.SpellStack.Last();
-                newState = newState.UpdatePlayer(newState.GetPlayer(spell.OwnerPlayerId).WithCardAddedToDiscard(spell))
-                    .With(spellStack: newState.SpellStack.Take(newState.SpellStack.Count - 1));
-            }
-
-            CurrentState = newState;
-            return new ExecutionResult(CurrentState, Events.GetHistory());
-        }
-
-        public void Update(float delta)
-        {
-            if (CurrentState.PendingInteraction == null || IsGameOver) return;
-            _interactionTimer += delta;
-            if (_interactionTimer >= 5.0f)
-            {
-                var pending = CurrentState.PendingInteraction;
-                _interactionTimer = 0f;
-                int tid = (pending.RequiredTargetType == CardGame.Core.Cards.Data.TargetType.Choice) ? 0 :
-                          (CurrentState.Board.GetAllUnits().FirstOrDefault()?.InstanceId ?? 0);
-
-                ExecuteCommand(new CardGame.Core.Commands.Implementations.SelectTargetCommand(CurrentState.ActivePlayerId, tid));
-            }
-        }
-
-        private bool CheckGameOver(GameState s)
-        {
-            bool p1 = s.PlayerA.Health <= 0; bool p2 = s.PlayerB.Health <= 0;
-            if (p1 || p2) { IsGameOver = true; WinnerId = p1 && p2 ? null : (p1 ? 2 : 1); return true; }
-            return false;
-        }
-    }
-}
-
-
-========================================
-FILE: ICardComponent.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\ICardComponent.cs
-========================================
-using System;
-using CardGame.Core.Application;
-using CardGame.Core.State.Models;
-using CardGame.Core.Cards.Factories;
-using CardGame.Core.Events.Interfaces;
-
-
-namespace CardGame.Core.Cards.Component
-{
-    public interface ICardComponent
-    {
-        bool ShouldTrigger(IGameEvent gameEvent, GameState state);
-        GameState Resolve(IGameEvent gameEvent, GameState currentState, GameContext context);
-    }
-}
-
-
-
-========================================
-FILE: JsonEffectComponent.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\JsonEffectComponent.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Events;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-using System.Linq;
-
-namespace CardGame.Core.Cards.Components.Implementations
-{
-    public class JsonEffectComponent
-    {
-        private readonly EffectData _data;
-        private readonly int _sourceId;
-        private readonly int _effectIndex;
-
-        public JsonEffectComponent(EffectData data, int sourceId, int effectIndex = 0)
-        {
-            _data = data;
-            _sourceId = sourceId;
-            _effectIndex = effectIndex;
-        }
-
-        public bool ShouldTrigger(IGameEvent e, GameState s) => TriggerLogic.Check(_data, e, s, _sourceId);
-
-        public GameState Resolve(IGameEvent evt, GameState state, GameContext context)
-        {
-            if (_data.Targeting == TargetType.Choice && !(evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1))
-            {
-                return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, -1, TargetType.Choice, _data.ChoiceLabels));
-            }
-            return ResolveFromIndex(evt, state, context, 0);
-        }
-
-        public GameState ResolveFromIndex(IGameEvent evt, GameState state, GameContext context, int startIndex)
-        {
-            GameState workingState = state.With(clearPending: true);
-
-            // Jeśli wracamy z interakcji wyboru (Choice)
-            if (_data.Targeting == TargetType.Choice && evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1)
-            {
-                int choiceIdx = tse.SelectedTargetId;
-                if (choiceIdx >= 0 && choiceIdx < _data.Actions.Count)
-                {
-                    // Wykonujemy wybraną akcję używając zdarzenia wyboru jako kontekstu
-                    return ExecuteAction(workingState, context, _data.Actions[choiceIdx], evt, choiceIdx);
-                }
-                return workingState;
-            }
-
-            for (int i = startIndex; i < _data.Actions.Count; i++)
-            {
-                workingState = ExecuteAction(workingState, context, _data.Actions[i], evt, i);
-                if (workingState.PendingInteraction != null) return workingState;
-            }
-            return workingState;
-        }
-
-        private GameState ExecuteAction(GameState state, GameContext context, ActionData action, IGameEvent evt, int actionIdx)
-        {
-            var targetType = action.Target;
-            if ((targetType == TargetType.SelectedTarget || targetType == TargetType.Self) && _data.Targeting != TargetType.Self)
-            {
-                targetType = _data.Targeting;
-            }
-
-            var resolved = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);
-
-            if (resolved.UnitTargets.Any() || resolved.TargetPlayer != null)
-            {
-                return context.ActionRegistry.GetHandler(action.Type).Execute(state.With(clearPending: true), context, action, resolved, _sourceId, evt);
-            }
-
-            if (IsManualTarget(targetType))
-            {
-                var potential = EffectTargetResolver.GetPotentialTargets(targetType, state, _sourceId);
-
-                if (potential.Count == 0) return state;
-
-                if (potential.Count == 1)
-                {
-                    var autoEvent = new TargetSelectedEvent(evt.SourcePlayerId, _sourceId, potential[0].InstanceId);
-                    var autoResolved = EffectTargetResolver.Resolve(targetType, state, autoEvent, _sourceId);
-                    return context.ActionRegistry.GetHandler(action.Type).Execute(state.With(clearPending: true), context, action, autoResolved, _sourceId, evt);
-                }
-
-                return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, actionIdx, targetType));
-            }
-
-            //return context.ActionRegistry.GetHandler(action.Type).Execute(state, context, action, resolved, _sourceId, evt);
-            return context.ActionRegistry.GetHandler(action.Type).Execute(state.With(clearPending: true), context, action, resolved, _sourceId, evt);
-        }
-
-
-        private bool IsManualTarget(TargetType t) =>
-            t == TargetType.SelectedTarget || t == TargetType.TargetEnemyUnit || t == TargetType.TargetFriendlyUnit || t == TargetType.OtherFriendlyUnits;
-    }
-}
-
-
-========================================
-FILE: ActionHandlerRegistry.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\ActionHandlerRegistry.cs
-========================================
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using System;
-using System.Collections.Generic;
-
-namespace CardGame.Core.Cards.Components.Actions
-{
-    public class ActionHandlerRegistry
-    {
-        private readonly Dictionary<ActionType, IActionHandler> _handlers = new();
-
-        public void Register(IActionHandler handler)
-        {
-            if (_handlers.ContainsKey(handler.Type))
-            {
-                throw new Exception($"Handler dla akcji {handler.Type} jest już zarejestrowany!");
-            }
-            _handlers[handler.Type] = handler;
-        }
-
-        public IActionHandler GetHandler(ActionType type)
-        {
-            if (_handlers.TryGetValue(type, out var handler))
-            {
-                return handler;
-            }
-            throw new Exception($"Brak zarejestrowanego handlera dla akcji: {type}");
-        }
-    }
-}
-
-
-========================================
-FILE: IActionHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\IActionHandler.cs
-========================================
-using System;
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.State.Models;
-using CardGame.Core.Events.Interfaces;
-
-namespace CardGame.Core.Cards.Component.Actions
-{
-    public interface  IActionHandler
-    {
-        ActionType Type { get; }
-        GameState Execute(
-            GameState state, 
-            GameContext context,
-            ActionData actionData, 
-            EffectTargets targets, 
-            int sourceId,
-            IGameEvent gameEvent
-            );
-    }
-}
-
-
-
-========================================
-FILE: AbsorbStatsHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\AbsorbStatsHandler.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-using System;
-using System.Linq;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class AbsorbStatsHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.AbsorbStats;
-
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-            if (targets.TargetUnit == null) return state;
-
-
-            CardInstance? me = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceId);
-            bool isOnBoard = me != null;
-
-            if (me == null)
-            {
-                me = state.PlayerA.Hand.FirstOrDefault(c => c.InstanceId == sourceId)
-                     ?? state.PlayerB.Hand.FirstOrDefault(c => c.InstanceId == sourceId);
-            }
-
-            if (me != null)
-            {
-                var victimStats = targets.TargetUnit.CurrentStats;
-
-                var buff = new CardStats(victimStats.Attack, victimStats.Health, 0);
-                var biggerMe = me.AddPermanentBuff(buff);
-
-                if (isOnBoard)
-                {
-                    return state.UpdateBoard(state.Board.UpdateUnit(biggerMe));
-                }
-                else
-                {
-                    var owner = state.GetPlayer(biggerMe.OwnerPlayerId);
-                    var newHand = owner.Hand.Select(c => c.InstanceId == sourceId ? biggerMe : c).ToList();
-                    return state.UpdatePlayer(owner.With(hand: newHand));
-                }
-            }
-
-            return state;
-        }
-    }
-}
-
-
-========================================
-FILE: AddCardToHandHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\AddCardToHandHandler.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-using System;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class AddCardToHandHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.AddCardToHand;
-
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-            if (targets.TargetPlayer != null)
-            {
-                try
-                {
-                    int pid = targets.TargetPlayer.PlayerId;
-                    var tokenCard = context.Factory.CreateCard(action.ValueParam, pid);
-
-                    var freshPlayer = state.GetPlayer(pid);
-
-                   
-                    return state.UpdatePlayer(freshPlayer.WithCardAddedToHand(tokenCard));
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"[BŁĄD] AddCardToHandHandler: {ex.Message}");
-                }
-            }
-            return state;
-        }
-    }
-}
-
-
-========================================
-FILE: AddResourceHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\AddResourceHandler.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class AddResourceHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.AddResource;
-
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-         
-            if (targets.TargetPlayer != null)
-            {
-                var player = state.GetPlayer(targets.TargetPlayer.PlayerId);
-           
-                int amount = action.Amount > 0 ? action.Amount : 1;
-                var newPlayer = player.With(currentBlood: player.CurrentBlood + amount);
-
-                return state.UpdatePlayer(newPlayer);
-            }
-            return state;
-        }
-    }
-}
-
-
-========================================
-FILE: ApplyStatusHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\ApplyStatusHandler.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.Events;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-using System;
-using System.Collections.Generic;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class ApplyStatusHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.ApplyStatus;
-
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-            if (targets.TargetUnit != null && action.StatusKeyword.HasValue)
-            {
-                Keyword k = action.StatusKeyword.Value;
-             
-
-                var unitWithStatus = targets.TargetUnit.AddPermanentBuff(new CardStats(0, 0, 0, new List<Keyword> { k }));
-
-                context.Events.Publish(new StatusAppliedEvent(gameEvent.SourcePlayerId, targets.TargetUnit.InstanceId, k));
-
-                return state.UpdateBoard(state.Board.UpdateUnit(unitWithStatus));
-            }
-            return state;
-        }
-    }
-}
-
-
-========================================
-FILE: BuffStatsHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\BuffStatsHandler.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-using System.Linq;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class BuffStatsHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.BuffStats;
-
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-            var workingState = state;
-            foreach (var targetUnit in targets.UnitTargets)
-            {
-                var buffDelta = new CardStats(action.BuffAtk, action.BuffHp, action.Amount);
-                var newUnit = targetUnit.AddPermanentBuff(buffDelta);
-
-                // Pobieramy aktualny stan właściciela
-                var owner = workingState.GetPlayer(newUnit.OwnerPlayerId);
-
-                if (owner.Hand.Any(c => c.InstanceId == newUnit.InstanceId))
-                {
-                    var newHand = owner.Hand.Select(c => c.InstanceId == newUnit.InstanceId ? newUnit : c).ToList();
-                    workingState = workingState.UpdatePlayer(owner.With(hand: newHand));
-                }
-                else
-                {
-                    workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(newUnit));
-                }
-            }
-            return workingState;
-        }
-    }
-}
-
-
-========================================
-FILE: DealDamageHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\DealDamageHandler.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.Events;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.GameRules.Damage;
-using CardGame.Core.State.Models;
-using System.Linq;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class DealDamageHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.DealDamage;
-
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-            CardInstance? sourceCard = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceId)
-               ?? state.PlayerA.Hand.Concat(state.PlayerB.Hand).FirstOrDefault(c => c.InstanceId == sourceId)
-               ?? state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceId);
-
-            if (targets.TargetPlayer != null)
-            {
-                var newPlayer = targets.TargetPlayer.WithDamageTaken(action.Amount);
-
-                context.Events.Publish(new UnitDamagedEvent(null!, action.Amount, sourceCard));
-                return state.UpdatePlayer(newPlayer);
-            }
-
-            var workingState = state;
-            foreach (var targetUnit in targets.UnitTargets)
-            {
-                var dmgContext = new DamageContext(sourceCard, targetUnit, action.Amount, DamageType.Effect);
-                int finalDamage = context.DamageCalculator.CalculateFinalDamage(dmgContext);
-                var damagedUnit = targetUnit.TakeDamage(finalDamage);
-
-                workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(damagedUnit));
-                context.Events.Publish(new UnitDamagedEvent(damagedUnit, finalDamage, sourceCard));
-            }
-
-            return workingState;
-        }
-    }
-}
-
-
-========================================
-FILE: DestroyUnitHanlder.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\DestroyUnitHanlder.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Events;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-using System;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class DestroyUnitHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.DestroyUnit;
-
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-            var workingState = state;
-            foreach (var targetUnit in targets.UnitTargets)
-            {
-             
-                if (targetUnit.OwnerPlayerId == gameEvent.SourcePlayerId)
-                {
-                    context.Events.Publish(new UnitSacrificedEvent(targetUnit, -1));
-                }
-
-             
-                var deadUnit = targetUnit.TakeDamage(99999);
-                workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(deadUnit));
-            }
-
-            return workingState;
-        }
-    }
-}
-
-
-========================================
-FILE: DrawCardHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\DrawCardHandler.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-using System;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class DrawCardHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.DrawCard;
-
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-            if (targets.TargetPlayer != null)
-            {
-                var workingPlayer = targets.TargetPlayer;
-                int amount = action.Amount > 0 ? action.Amount : 1;
-
-             
-
-                for (int i = 0; i < amount; i++)
-                {
-                    workingPlayer = workingPlayer.WithCardDrawn(context.Events);
-                }
-
-                return state.UpdatePlayer(workingPlayer);
-            }
-            return state;
-        }
-    }
-}
-
-
-========================================
-FILE: DrawFromDiscardHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\DrawFromDiscardHandler.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class DrawFromDiscardHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.DrawFromDiscard;
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-            if (targets.TargetPlayer == null) return state;
-            var newPlayer = targets.TargetPlayer.WithCardsDrawnFromDiscard(action.Amount);
-            return state.UpdatePlayer(newPlayer);
-        }
-    }
-}
-
-
-========================================
-FILE: HealHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\HealHandler.cs
-========================================
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-using System;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class HealHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.Heal;
-
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-            if (targets.TargetPlayer != null)
-            {
-                var newPlayer = targets.TargetPlayer.WithHealthRestored(action.Amount);
-              
-                return state.UpdatePlayer(newPlayer);
-            }
-
-            foreach (var unit in targets.UnitTargets)
-            {
-           
-                var healedUnit = unit.Heal(action.Amount);
-
-                state = state.UpdateBoard(state.Board.UpdateUnit(healedUnit));
-
-              
-            }
-
-            return state;
-        }
-    }
-}
-
-
-========================================
-FILE: MakeAUnitHandler.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Component\Actions\Handlers\MakeAUnitHandler.cs
-========================================
-using System.Collections.Generic;
-using System.Linq;
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Component.Actions;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Events;
-using CardGame.Core.Events.Interfaces;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.Cards.Components.Actions.Handlers
-{
-    public class MakeAUnitHandler : IActionHandler
-    {
-        public ActionType Type => ActionType.MakeAUnit;
-
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
-        {
-            // Szukamy właściciela w kolejności: Cel (Player) -> Event -> Aktywny gracz
-            int ownerId = targets.TargetPlayer?.PlayerId ?? gameEvent.SourcePlayerId;
-            if (ownerId == 0) ownerId = state.ActivePlayerId;
-
-            var workingBoard = state.Board;
-            int targetLine = -1;
-
-            // 1. Logika wyboru manualnego
-            if (action.StringParam == "Choose")
-            {
-                if (gameEvent is TargetSelectedEvent tse)
-                    targetLine = tse.SelectedTargetId;
-                else
-                {
-                    // Fallback: jeśli tylko jedno miejsce, bierz je
-                    var free = Enumerable.Range(0, 4).Where(i => workingBoard.Lines[i].IsSlotEmpty(ownerId)).ToList();
-                    if (free.Count == 1) targetLine = free[0];
-                    else return state; // Czekaj na PendingInteraction
-                }
-            }
-            // 2. Logika AdjacentLanes
-            else if (action.StringParam == "AdjacentLanes")
-            {
-                int sourceLine = GetUnitLineContext(state, sourceId, gameEvent);
-                if (sourceLine == -1) return state;
-
-                var nextBoard = workingBoard;
-                foreach (int idx in new[] { sourceLine - 1, sourceLine + 1 })
-                {
-                    if (idx >= 0 && idx < 4 && nextBoard.Lines[idx].IsSlotEmpty(ownerId))
-                    {
-                        var token = context.Factory.CreateCard(action.ValueParam, ownerId);
-                        nextBoard = nextBoard.WithUnitPlacedAt(idx, ownerId, token);
-                    }
-                }
-                return state.UpdateBoard(nextBoard);
-            }
-            // 3. Logika automatów
-            else if (action.StringParam == "Random")
-            {
-                var free = Enumerable.Range(0, 4).Where(i => workingBoard.Lines[i].IsSlotEmpty(ownerId)).ToList();
-                if (free.Any()) targetLine = free[context.Rng.Next(0, free.Count)];
-            }
-            else
-            {
-                // Domyślnie: Pierwsza wolna (First Free)
-                for (int i = 0; i < 4; i++)
-                {
-                    if (workingBoard.Lines[i].IsSlotEmpty(ownerId))
-                    {
-                        targetLine = i;
-                        break;
-                    }
-                }
-            }
-
-            if (targetLine == -1 || targetLine > 3) return state;
-
-            var singleToken = context.Factory.CreateCard(action.ValueParam, ownerId);
-            return state.UpdateBoard(workingBoard.WithUnitPlacedAt(targetLine, ownerId, singleToken));
-        }
-
-        private int GetUnitLineContext(GameState s, int id, IGameEvent e)
-        {
-            if (e is UnitDiedEvent ude) return ude.LineIndex;
-            if (e is UnitSacrificedEvent use) return use.LineIndex;
-            for (int i = 0; i < 4; i++)
-                if (s.Board.Lines[i].Player1Unit?.InstanceId == id || s.Board.Lines[i].Player2Unit?.InstanceId == id) return i;
-            return -1;
         }
     }
 }

@@ -13,8 +13,8 @@ namespace CardGame.Core.GameRules.Auras
             var workingState = currentState;
             var allUnits = workingState.Board.GetAllUnits();
 
-            int p1Discount = allUnits.Count(u => u.OwnerPlayerId == 1 && u.Definition.Id == "45" && !u.IsSilenced);
-            int p2Discount = allUnits.Count(u => u.OwnerPlayerId == 2 && u.Definition.Id == "45" && !u.IsSilenced);
+            int p1Discount = allUnits.Count(u => u.OwnerPlayerId == 1 && u.Definition.Id == "46" && !u.IsSilenced);
+            int p2Discount = allUnits.Count(u => u.OwnerPlayerId == 2 && u.Definition.Id == "46" && !u.IsSilenced);
 
             workingState = UpdateHandDiscounts(workingState, 1, p1Discount);
             workingState = UpdateHandDiscounts(workingState, 2, p2Discount);

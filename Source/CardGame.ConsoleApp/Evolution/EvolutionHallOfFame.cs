@@ -12,58 +12,74 @@ namespace CardGame.ConsoleApp.Evolution
         private const string FilePath = "hall_of_fame.json";
         public List<GeneticIndividual> Champions { get; private set; } = new();
         private const float SimilarityLimit = 0.85f;
+        private const int GenerationGracePeriod = 100; // Po tylu genach rekord staje się "przestarzały"
 
-        public void ProcessPopulation(List<GeneticIndividual> currentGenSorted)
+        public void ProcessPopulation(List<GeneticIndividual> currentGenSorted, int currentGen)
         {
             Load();
             if (Champions.Count == 0) InitializeEmptySlots();
 
             var top50 = currentGenSorted.Take(50).ToList();
 
-            // Slot 0: APEX
-            UpdateSlot(0, top50[0]);
+            // Slot 0: APEX (Bezwzględnie najsilniejszy - tu trzymamy absolutny rekord)
+            UpdateSlot(0, top50[0], currentGen, forceAbsolute: true);
 
             // Slot 1: AGGRO
-            var bestAggro = top50.OrderByDescending(c => GetSafeDNA(c, DNA.Aggro_Bias) * c.Fitness).First();
-            UpdateSlot(1, bestAggro);
+            var bestAggro = top50.Where(c => GetSafeDNA(c, DNA.Aggro_Bias) > GetSafeDNA(c, DNA.Control_Bias) + 0.5f)
+                                 .OrderByDescending(c => c.Fitness).FirstOrDefault();
+            if (bestAggro != null) UpdateSlot(1, bestAggro, currentGen);
 
             // Slot 2: CONTROL
-            var bestControl = top50.OrderByDescending(c => GetSafeDNA(c, DNA.Control_Bias) * c.Fitness).First();
-            UpdateSlot(2, bestControl);
+            var bestControl = top50.Where(c => GetSafeDNA(c, DNA.Control_Bias) > GetSafeDNA(c, DNA.Aggro_Bias) + 0.5f)
+                                   .OrderByDescending(c => c.Fitness).FirstOrDefault();
+            if (bestControl != null) UpdateSlot(2, bestControl, currentGen);
 
             // Slot 3: COMBO
-            var bestCombo = top50.OrderByDescending(c => GetSafeDNA(c, DNA.Combo_Bias) * (1 + c.Fitness)).First();
-            UpdateSlot(3, bestCombo);
+            var bestCombo = top50.OrderByDescending(c => GetSafeDNA(c, DNA.Combo_Bias)).FirstOrDefault();
+            if (bestCombo != null) UpdateSlot(3, bestCombo, currentGen);
 
-            // Slot 4: OUTLIER
+            // Slot 4: THE STRATEGIC OUTLIER
             var outlier = top50.OrderByDescending(c => CalculateDistanceToGroup(c, Champions)).First();
-            UpdateSlot(4, outlier);
+            UpdateSlot(4, outlier, currentGen);
 
             Save();
         }
 
-        private float GetSafeDNA(GeneticIndividual bot, int index)
+        private void UpdateSlot(int slotIndex, GeneticIndividual candidate, int currentGen, bool forceAbsolute = false)
         {
-            if (bot.StrategyDNA == null || index >= bot.StrategyDNA.Length) return 0f;
-            return bot.StrategyDNA[index];
-        }
+            var currentChamp = Champions[slotIndex];
 
-        private void UpdateSlot(int slotIndex, GeneticIndividual candidate)
-        {
-            if (Champions[slotIndex] == null || candidate.Fitness > Champions[slotIndex].Fitness)
+            if (currentChamp == null)
             {
-                if (slotIndex > 0)
+                Champions[slotIndex] = candidate;
+                return;
+            }
+
+            bool shouldReplace = false;
+
+         
+            if (candidate.Fitness >= currentChamp.Fitness)
+            {
+                shouldReplace = true;
+            }
+            else if (!forceAbsolute && (currentGen - currentChamp.Generation) > GenerationGracePeriod)
+            {
+                if (candidate.Fitness > currentChamp.Fitness * 0.85f) shouldReplace = true;
+            }
+
+            if (shouldReplace)
+            {
+                for (int i = 0; i < slotIndex; i++)
                 {
-                    for (int i = 0; i < slotIndex; i++)
-                    {
-                        if (CalculateSimilarity(candidate, Champions[i]) > SimilarityLimit) return;
-                    }
+                    if (Champions[i] != null && CalculateSimilarity(candidate, Champions[i]) > SimilarityLimit)
+                        return;
                 }
                 Champions[slotIndex] = candidate;
             }
         }
 
         private void InitializeEmptySlots() { while (Champions.Count < 5) Champions.Add(null); }
+        private float GetSafeDNA(GeneticIndividual bot, int index) => (index < bot.StrategyDNA.Length) ? bot.StrategyDNA[index] : 0f;
 
         private float CalculateDistanceToGroup(GeneticIndividual bot, List<GeneticIndividual> group)
         {

@@ -43,8 +43,8 @@
   "Type": "Unit",
   "Subtypes": [ "Monster" ],
   "Cost": 1,
-  "Attack": 1,
-  "Health": 3,
+  "Attack": 2,
+  "Health": 2,
   "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
   "Effects": [
     {
@@ -64,7 +64,7 @@
     "Id": 4,
     "Name": "Informer",
     "Type": "Unit",
-    "Subtypes": [ "Human" ],
+    "Subtypes": [ "Human", "Mercenary" ],
     "Cost": 1,
     "Attack": 1,
     "Health": 2,
@@ -83,7 +83,7 @@
     "Id": 5,
     "Name": "Queen of Cards",
     "Type": "Unit",
-    "Subtypes": [ "Noble" ],
+    "Subtypes": [ "Human" ],
     "Cost": 3,
     "Attack": 2,
     "Health": 4,
@@ -137,6 +137,7 @@
     "Id": 8,
     "Name": "Crusader",
     "Type": "Unit",
+    "Subtypes": [ "Human" ],
     "Cost": 2,
     "Attack": 2,
     "Health": 3,
@@ -245,6 +246,7 @@
     "Id": 14,
     "Name": "Survivalist",
     "Type": "Unit",
+    "Subtypes": [ "Human" ],
     "Cost": 4,
     "Attack": 2,
     "Health": 3,
@@ -300,7 +302,7 @@
     "Id": 17,
     "Name": "Megumin",
     "Type": "Unit",
-    "Subtypes": [ "Mercenary" ],
+    "Subtypes": [ "Mercenary", "Human" ],
     "Cost": 4,
     "Attack": 3,
     "Health": 2,
@@ -428,7 +430,7 @@
   "Id": 24, 
   "Name": "Gerard from Rivia",
   "Type": "Unit",
-  "Subtypes": [ "Mercenary" ],
+  "Subtypes": [ "Mercenary", "Human" ],
   "Cost": 5,
   "Attack": 5,
   "Health": 5,
@@ -451,7 +453,7 @@
   "Id": 25,
   "Name": "Bounty Hunter",
   "Type": "Unit",
-  "Subtypes": [ "Mercenary" ],
+  "Subtypes": [ "Mercenary", "Human" ],
   "Cost": 3,
   "Attack": 3,
   "Health": 3,
@@ -477,7 +479,7 @@
     "Id": 26,
     "Name": "Occultist",
     "Type": "Unit",
-    "Subtypes": [ "Mercenary" ],
+    "Subtypes": [ "Mercenary", "Human" ],
     "Cost": 4,
     "Attack": 2,
     "Health": 3,
@@ -551,9 +553,10 @@
     "Id": 30,
     "Name": "SharkCannon",
     "Type": "Unit",
+    "Subtypes": [ "Animal", "Machine"],
     "Cost": 5,
     "Attack": 0,
-    "Health": 7,
+    "Health": 6,
     "Description": "Before Combat here: 5 Dmg to Enemy Hero.",
     "Effects": [
       {
@@ -566,7 +569,7 @@
     "Id": 31,
     "Name": "Silence",
     "Type": "Spell",
-    "Cost": 2,
+    "Cost": 1,
     "Description": "Enemy Unit loses all Bonus Stats, Keywords and Passive Abilities.",
     "Effects": [
       {
@@ -609,6 +612,7 @@
     "Id": 34,
     "Name": "MaidMask",
     "Type": "Unit",
+    "Subtypes": [ "Mercenary" ],
     "Cost": 2,
     "Attack": 3,
     "Health": 1,
@@ -656,7 +660,7 @@
   "Id": 37,
   "Name": "Archer",
   "Type": "Unit",
-  "Subtypes": ["Mercenary"],
+  "Subtypes": [ "Mercenary", "Human" ],
   "Cost": 2, "Attack": 1, "Health": 4,
   "Description": "Before Combat Here: Apply Burning to an Enemy Unit.",
   "Effects": [
@@ -678,7 +682,7 @@
     "Name": "Tumblr Man",
     "Type": "Unit",
     "Subtypes": ["Monster"],
-    "Cost": 1, "Attack": 4, "Health": 2,
+    "Cost": 1, "Attack": 3, "Health": 1,
     "Keywords": ["Burning"]
   },
 
@@ -708,7 +712,6 @@
     "Effects": [{
       "Trigger": "OnSacrificed",
       "Actions": [
-        { "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 1 },
         { "Type": "AddResource", "Target": "FriendlyHero", "Amount": 1 }
       ]
     }]
@@ -718,8 +721,8 @@
     "Id": 41,
     "Name": "Pegasus",
     "Type": "Unit",
-    "Subtypes": ["Animal", "Mytical"],
-    "Cost": 3, "Attack": 3, "Health": 2,
+    "Subtypes": ["Animal", "Mystical"],
+    "Cost": 3, "Attack": 3, "Health": 1,
     "Keywords": ["Flying"],
     "Effects": [{
       "Trigger": "OnPlayed",
@@ -730,8 +733,8 @@
     "Id": 42,
     "Name": "Soldat",
     "Type": "Unit",
-    "Subtypes": ["Mercenary"],
-    "Cost": 1, "Attack": 1, "Health": 1,
+    "Subtypes": ["Mercenary", "Human" ],
+    "Cost": 1, "Attack": 2, "Health": 2,
     "Description": "When Played: If you have a Machine on Board, gain +2/+2.",
     "Effects": [
       {
@@ -752,7 +755,7 @@
     "Name": "Evo Ghost",
     "Type": "Unit",
     "Subtypes": ["Monster"],
-    "Cost": 4, "Attack": 3, "Health": 3,
+    "Cost": 4, "Attack": 3, "Health": 2,
     "Description": "On Death: Make 1/1 Souldiers in Adjacent Lanes.",
     "Effects": [
       {
@@ -804,6 +807,7 @@
     "Id": 46,
     "Name": "Tea Maid",
     "Type": "Unit",
+    "Subtypes": [ "Human" ],
     "Cost": 3, "Attack": 2, "Health": 4,
     "Description": "While in Play: Your Spells cost 1 less."
   },
@@ -813,7 +817,7 @@
     "Name": "Rustler",
     "Type": "Unit",
     "Subtypes": ["Mercenary"],
-    "Cost": 10, "Attack": 5, "Health": 5,
+    "Cost": 8, "Attack": 6, "Health": 6,
     "Description": "Costs 1 less for each Spell played. On Played: Bonus Attack.",
     "Effects": [
       {
@@ -827,6 +831,34 @@
       }
     ]
   },
+  {
+  "Id": 48,
+  "Name": "Vane, Butcher of Vanity",
+  "Type": "Unit",
+  "Subtypes": ["Mercenary", "Human"],
+  "Cost": 3,
+  "Attack": 3,
+  "Health": 3,
+  "Description": "Whenever you Sacrifice a unit: This unit gains +1/+1. If it was a Human, gain +2/+2 instead.",
+  "Effects": [
+    {
+      "Trigger": "OnOtherUnitSacrificed",
+      "Actions": [
+        { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1, "BuffHp": 1 }
+      ]
+    },
+    {
+      "Trigger": "OnOtherUnitSacrificed",
+      "Condition": {
+        "Condition": "IsSubtype",
+        "TargetParam": "Human"
+      },
+      "Actions": [
+        { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1, "BuffHp": 1 }
+      ]
+    }
+  ]
+},
 
 
 {
