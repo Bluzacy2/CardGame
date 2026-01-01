@@ -1,20 +1,114 @@
-[gd_scene load_steps=4 format=3 uid="uid://dohitnkit2tdm"]
+[gd_scene load_steps=5 format=3 uid="uid://dohitnkit2tdm"]
 
 [ext_resource type="Script" uid="uid://brjlv20u4il2w" path="res://GameBootstrap.cs" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://b2cbjoaeymfw0" path="res://Card.tscn" id="2_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://c2ia14ntiwycv" path="res://Line.tscn" id="3_r0du0"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("HandContainer", "BoardContainer")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0du0"]
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("HandContainer", "BoardContainer", "EnemyHandContainer", "EndTurnButton", "PlayerHpLabel", "PlayerManaLabel", "EnemyHpLabel", "EnemyManaLabel")]
 script = ExtResource("1_glv2v")
+HandContainer = NodePath("UI/GameLayer/BottomPanel/HandContainer")
+BoardContainer = NodePath("UI/GameLayer/MiddlePanel/BoardContainer")
+EnemyHandContainer = NodePath("UI/GameLayer/TopPanel/EnemyHandContainer")
+EndTurnButton = NodePath("UI/GameLayer/MiddlePanel/RightSidebar/EndTurnButton")
+PlayerHpLabel = NodePath("UI/GameLayer/BottomPanel/StatsArea/PlayerHP")
+PlayerManaLabel = NodePath("UI/GameLayer/BottomPanel/StatsArea/PlayerMana")
+EnemyHpLabel = NodePath("UI/GameLayer/TopPanel/TopInfo/EnemyHp")
+EnemyManaLabel = NodePath("UI/GameLayer/TopPanel/TopInfo/EnemyMana")
 CardSceneTemplate = ExtResource("2_uu6xs")
 LineSceneTemplate = ExtResource("3_r0du0")
-HandContainer = NodePath("HandContainer")
-BoardContainer = NodePath("BoardContainer")
 
-[node name="HandContainer" type="Node2D" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="BoardContainer" type="VBoxContainer" parent="."]
-offset_left = 530.0
-offset_top = 268.0
-offset_right = 570.0
-offset_bottom = 308.0
+[node name="GameLayer" type="VBoxContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopPanel" type="PanelContainer" parent="UI/GameLayer"]
+custom_minimum_size = Vector2(200, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r0du0")
+
+[node name="TopInfo" type="HBoxContainer" parent="UI/GameLayer/TopPanel"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="EnemyHp" type="Label" parent="UI/GameLayer/TopPanel/TopInfo"]
+layout_mode = 2
+text = "Hp:30
+"
+
+[node name="EnemyMana" type="Label" parent="UI/GameLayer/TopPanel/TopInfo"]
+layout_mode = 2
+text = "Blood:Error"
+
+[node name="EnemyHandContainer" type="HBoxContainer" parent="UI/GameLayer/TopPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="MiddlePanel" type="HBoxContainer" parent="UI/GameLayer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="LeftSpacer" type="Control" parent="UI/GameLayer/MiddlePanel"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="BoardContainer" type="HBoxContainer" parent="UI/GameLayer/MiddlePanel"]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="LineView" parent="UI/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("3_r0du0")]
+layout_mode = 2
+
+[node name="LineView2" parent="UI/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("3_r0du0")]
+layout_mode = 2
+
+[node name="LineView3" parent="UI/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("3_r0du0")]
+layout_mode = 2
+
+[node name="LineView4" parent="UI/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("3_r0du0")]
+layout_mode = 2
+
+[node name="RightSidebar" type="VBoxContainer" parent="UI/GameLayer/MiddlePanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="EndTurnButton" type="Button" parent="UI/GameLayer/MiddlePanel/RightSidebar"]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+text = "Koniec Tury"
+
+[node name="BottomPanel" type="PanelContainer" parent="UI/GameLayer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+
+[node name="StatsArea" type="VBoxContainer" parent="UI/GameLayer/BottomPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerHP" type="Label" parent="UI/GameLayer/BottomPanel/StatsArea"]
+layout_mode = 2
+text = "Hp:20"
+
+[node name="PlayerMana" type="Label" parent="UI/GameLayer/BottomPanel/StatsArea"]
+layout_mode = 2
+text = "Blood:0"
+
+[node name="HandContainer" type="HBoxContainer" parent="UI/GameLayer/BottomPanel"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1

@@ -2,18 +2,29 @@
 
 [ext_resource type="Script" uid="uid://1vspmmetytsu" path="res://LineView.cs" id="1_0lsht"]
 
-[node name="LineView" type="Control" node_paths=PackedStringArray("InfoLabel", "UnitsContainer", "ClickArea")]
-custom_minimum_size = Vector2(600, 100)
+[node name="LineView" type="Control" node_paths=PackedStringArray("InfoLabel", "UnitsContainer")]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 1
 script = ExtResource("1_0lsht")
 InfoLabel = NodePath("InfoLabel")
 UnitsContainer = NodePath("UnitsContainer")
-ClickArea = NodePath("ClickArea")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.24115604, 0.24115604, 0.24115604, 1)
 
 [node name="ClickArea" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -26,12 +37,6 @@ offset_bottom = -547.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 600.0
-offset_bottom = 100.0
-color = Color(0.24115604, 0.24115604, 0.24115604, 1)
-
 [node name="InfoLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 287.0
@@ -40,9 +45,11 @@ offset_right = 327.0
 offset_bottom = 63.0
 vertical_alignment = 1
 
-[node name="UnitsContainer" type="HBoxContainer" parent="."]
+[node name="UnitsContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 40.0
 offset_right = 74.0
 offset_bottom = 80.0
+theme_override_constants/separation = 50
+alignment = 1

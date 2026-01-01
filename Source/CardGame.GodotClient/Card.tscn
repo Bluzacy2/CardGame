@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://o8mwikshwly3" path="res://CardView.cs" id="1_dd2wi"]
 
-[node name="CardView" type="Control" node_paths=PackedStringArray("NameLabel", "CostLabel", "AttackLabel", "HealthLabel")]
+[node name="CardView" type="Control" node_paths=PackedStringArray("NameLabel", "CostLabel", "HpLabel", "AtkLabel", "Background")]
+custom_minimum_size = Vector2(140, 190)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,14 +15,19 @@ grow_vertical = 2
 script = ExtResource("1_dd2wi")
 NameLabel = NodePath("NameLabel")
 CostLabel = NodePath("CostLabel")
-AttackLabel = NodePath("AttackLabel")
-HealthLabel = NodePath("HealthLabel")
+HpLabel = NodePath("HealthLabel")
+AtkLabel = NodePath("AttackLabel")
+Background = NodePath("BackGround")
 
 [node name="BackGround" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 200.0
-color = Color(0.20511743, 0.20511743, 0.20511743, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 0
