@@ -19,6 +19,11 @@ HpLabel = NodePath("HealthLabel")
 AtkLabel = NodePath("AttackLabel")
 Background = NodePath("BackGround")
 
+[node name="HighlightBorder" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="BackGround" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15

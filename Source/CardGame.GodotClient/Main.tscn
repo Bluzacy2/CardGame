@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dohitnkit2tdm"]
+[gd_scene load_steps=6 format=3 uid="uid://dohitnkit2tdm"]
 
 [ext_resource type="Script" uid="uid://brjlv20u4il2w" path="res://GameBootstrap.cs" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://b2cbjoaeymfw0" path="res://Card.tscn" id="2_uu6xs"]
@@ -6,16 +6,27 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0du0"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("HandContainer", "BoardContainer", "EnemyHandContainer", "EndTurnButton", "PlayerHpLabel", "PlayerManaLabel", "EnemyHpLabel", "EnemyManaLabel")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0du0"]
+bg_color = Color(0, 0, 0, 0.6)
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("HandContainer", "BoardContainer", "EnemyHandContainer", "VFXContainer", "EndTurnButton", "NotificationLabel", "TargetingArrow", "PlayerHpLabel", "PlayerManaLabel", "EnemyHpLabel", "EnemyManaLabel", "CancelSpellButton", "NotificationLayer", "MessagePanel", "MessageLabel", "RestartButton")]
 script = ExtResource("1_glv2v")
 HandContainer = NodePath("UI/GameLayer/BottomPanel/HandContainer")
 BoardContainer = NodePath("UI/GameLayer/MiddlePanel/BoardContainer")
 EnemyHandContainer = NodePath("UI/GameLayer/TopPanel/EnemyHandContainer")
+VFXContainer = NodePath("UI/NotificationLayer/VFXContainer")
 EndTurnButton = NodePath("UI/GameLayer/MiddlePanel/RightSidebar/EndTurnButton")
+NotificationLabel = NodePath("UI/NotificationLayer/MessagePanel/VBoxContainer/MessageLabel")
+TargetingArrow = NodePath("UI/TargetingArrow")
 PlayerHpLabel = NodePath("UI/GameLayer/BottomPanel/StatsArea/PlayerHP")
 PlayerManaLabel = NodePath("UI/GameLayer/BottomPanel/StatsArea/PlayerMana")
 EnemyHpLabel = NodePath("UI/GameLayer/TopPanel/TopInfo/EnemyHp")
 EnemyManaLabel = NodePath("UI/GameLayer/TopPanel/TopInfo/EnemyMana")
+CancelSpellButton = NodePath("UI/CancelSpellButton")
+NotificationLayer = NodePath("UI/NotificationLayer")
+MessagePanel = NodePath("UI/NotificationLayer/MessagePanel")
+MessageLabel = NodePath("UI/NotificationLayer/MessagePanel/VBoxContainer/MessageLabel")
+RestartButton = NodePath("UI/NotificationLayer/MessagePanel/VBoxContainer/RestartButton")
 CardSceneTemplate = ExtResource("2_uu6xs")
 LineSceneTemplate = ExtResource("3_r0du0")
 
@@ -87,7 +98,7 @@ alignment = 1
 [node name="EndTurnButton" type="Button" parent="UI/GameLayer/MiddlePanel/RightSidebar"]
 custom_minimum_size = Vector2(120, 60)
 layout_mode = 2
-text = "Koniec Tury"
+text = "Koniec Fazy"
 
 [node name="BottomPanel" type="PanelContainer" parent="UI/GameLayer"]
 custom_minimum_size = Vector2(0, 220)
@@ -112,3 +123,63 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 alignment = 1
+
+[node name="TargetingArrow" type="Line2D" parent="UI"]
+visible = false
+z_index = 100
+default_color = Color(0.74509805, 0.74509805, 0, 1)
+
+[node name="CancelSpellButton" type="Button" parent="UI"]
+custom_minimum_size = Vector2(200, 50)
+offset_left = 960.0
+offset_top = 390.0
+offset_right = 1160.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Anuluj Zaklęcie"
+
+[node name="NotificationLayer" type="Control" parent="UI"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VFXContainer" type="Control" parent="UI/NotificationLayer"]
+z_index = 50
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MessagePanel" type="PanelContainer" parent="UI/NotificationLayer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0du0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/NotificationLayer/MessagePanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MessageLabel" type="Label" parent="UI/NotificationLayer/MessagePanel/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="UI/NotificationLayer/MessagePanel/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Zrestartuj Grę"
