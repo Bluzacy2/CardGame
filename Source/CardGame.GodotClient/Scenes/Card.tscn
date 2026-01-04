@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2cbjoaeymfw0"]
 
-[ext_resource type="Script" uid="uid://o8mwikshwly3" path="res://CardView.cs" id="1_dd2wi"]
+[ext_resource type="Script" uid="uid://o8mwikshwly3" path="res://Scripts/CardView.cs" id="1_pnb5n"]
 
 [node name="CardView" type="Control" node_paths=PackedStringArray("NameLabel", "CostLabel", "HpLabel", "AtkLabel", "Background")]
 custom_minimum_size = Vector2(140, 190)
@@ -12,7 +12,7 @@ offset_right = -1002.0
 offset_bottom = -448.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dd2wi")
+script = ExtResource("1_pnb5n")
 NameLabel = NodePath("NameLabel")
 CostLabel = NodePath("CostLabel")
 HpLabel = NodePath("HealthLabel")

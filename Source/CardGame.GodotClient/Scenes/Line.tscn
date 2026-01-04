@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2ia14ntiwycv"]
 
-[ext_resource type="Script" uid="uid://1vspmmetytsu" path="res://LineView.cs" id="1_0lsht"]
+[ext_resource type="Script" uid="uid://1vspmmetytsu" path="res://Scripts/LineView.cs" id="1_0lsht"]
 
 [node name="LineView" type="Control" node_paths=PackedStringArray("InfoLabel", "UnitsContainer")]
 custom_minimum_size = Vector2(160, 0)

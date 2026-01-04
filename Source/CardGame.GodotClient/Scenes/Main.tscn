@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dohitnkit2tdm"]
 
-[ext_resource type="Script" uid="uid://brjlv20u4il2w" path="res://GameBootstrap.cs" id="1_glv2v"]
-[ext_resource type="Script" uid="uid://rxyqp5ic26n7" path="res://UIManager.cs" id="1_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://b2cbjoaeymfw0" path="res://Card.tscn" id="2_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://c2ia14ntiwycv" path="res://Line.tscn" id="3_r0du0"]
+[ext_resource type="Script" uid="uid://brjlv20u4il2w" path="res://Scripts/GameBootstrap.cs" id="1_rgh2o"]
+[ext_resource type="Script" uid="uid://rxyqp5ic26n7" path="res://Scripts/UIManager.cs" id="2_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://b2cbjoaeymfw0" path="res://Scenes/Card.tscn" id="3_v1gob"]
+[ext_resource type="PackedScene" uid="uid://c2ia14ntiwycv" path="res://Scenes/Line.tscn" id="4_jw32o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0du0"]
 
@@ -11,13 +11,13 @@
 bg_color = Color(0, 0, 0, 0.6)
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("UI")]
-script = ExtResource("1_glv2v")
+script = ExtResource("1_rgh2o")
 UI = NodePath("UIManager")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="UIManager" type="Node" parent="." node_paths=PackedStringArray("HandContainer", "BoardContainer", "EnemyHandContainer", "VFXContainer", "EndTurnButton", "CancelSpellButton", "RestartButton", "TargetingArrow", "PlayerHpLabel", "PlayerManaLabel", "EnemyHpLabel", "EnemyManaLabel", "NotificationLayer", "MessagePanel", "MessageLabel", "MulliganPanel", "MulliganCardsContainer", "ConfirmMulliganButton", "MulliganCounterLabel")]
-script = ExtResource("1_uu6xs")
+script = ExtResource("2_pbw6q")
 HandContainer = NodePath("GameLayer/BottomPanel/HandContainer")
 BoardContainer = NodePath("GameLayer/MiddlePanel/BoardContainer")
 EnemyHandContainer = NodePath("GameLayer/TopPanel/EnemyHandContainer")
@@ -33,8 +33,8 @@ EnemyManaLabel = NodePath("GameLayer/TopPanel/TopInfo/EnemyMana")
 NotificationLayer = NodePath("NotificationLayer")
 MessagePanel = NodePath("NotificationLayer/MessagePanel")
 MessageLabel = NodePath("NotificationLayer/MessagePanel/VBoxContainer/MessageLabel")
-CardSceneTemplate = ExtResource("2_uu6xs")
-LineSceneTemplate = ExtResource("3_r0du0")
+CardSceneTemplate = ExtResource("3_v1gob")
+LineSceneTemplate = ExtResource("4_jw32o")
 MulliganPanel = NodePath("MulliganPanel")
 MulliganCardsContainer = NodePath("MulliganPanel/VBoxContainer/MulliganCardsContainer")
 ConfirmMulliganButton = NodePath("MulliganPanel/VBoxContainer/ConfirmMulliganButton")
@@ -87,16 +87,16 @@ mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="LineView" parent="UIManager/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("3_r0du0")]
+[node name="LineView" parent="UIManager/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("4_jw32o")]
 layout_mode = 2
 
-[node name="LineView2" parent="UIManager/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("3_r0du0")]
+[node name="LineView2" parent="UIManager/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("4_jw32o")]
 layout_mode = 2
 
-[node name="LineView3" parent="UIManager/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("3_r0du0")]
+[node name="LineView3" parent="UIManager/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("4_jw32o")]
 layout_mode = 2
 
-[node name="LineView4" parent="UIManager/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("3_r0du0")]
+[node name="LineView4" parent="UIManager/GameLayer/MiddlePanel/BoardContainer" instance=ExtResource("4_jw32o")]
 layout_mode = 2
 
 [node name="RightSidebar" type="VBoxContainer" parent="UIManager/GameLayer/MiddlePanel"]
