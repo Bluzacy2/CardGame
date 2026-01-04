@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace CardGame.ConsoleApp.Evolution // <--- DODANO BRAKUJĄCY NAMESPACE
+namespace CardGame.ConsoleApp.Evolution.V1_Legacy // <--- DODANO BRAKUJĄCY NAMESPACE
 {
     public class GeneticIndividual
     {
@@ -12,6 +12,7 @@ namespace CardGame.ConsoleApp.Evolution // <--- DODANO BRAKUJĄCY NAMESPACE
         public int GamesPlayed { get; set; }
         public float Fitness { get; set; }
         public int Generation { get; set; }
+        public float DeckNoveltyScore { get; set; }
 
         [JsonIgnore]
         public float WinRate => GamesPlayed == 0 ? 0 : (float)Wins / GamesPlayed;

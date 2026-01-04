@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using CardGame.ConsoleApp.Evolution; // Import do DNA
 using CardGame.Core.AI.Logic;
 using CardGame.Core.AI.Logic.Mcts; // Import do MCTS
 using CardGame.Core.AI.Strategies;
@@ -19,6 +18,7 @@ using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Commands.Implementations;
+using CardGame.ConsoleApp.Evolution.V1_Legacy;
 
 namespace CardGame.ConsoleApp
 {

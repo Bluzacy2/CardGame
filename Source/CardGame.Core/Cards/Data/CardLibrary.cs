@@ -85,6 +85,16 @@ namespace CardGame.Core.Cards.Data
         {
             return _cards.Keys.ToArray();
         }
+        public List<CardData> GetCardsByTraits(Func<CardData, bool> predicate)
+        {
+            return _cards.Values.Where(predicate).ToList();
+        }
+
+        public List<int> GetCardIdsByTraits(Func<CardData, bool> predicate)
+        {
+            return _cards.Values.Where(predicate).Select(c => c.Id).ToList();
+        }
     }
+
 
 }

@@ -1,4 +1,4 @@
-﻿namespace CardGame.ConsoleApp.Evolution
+﻿namespace CardGame.ConsoleApp.Evolution.V1_Legacy
 {
     public static class DNA
     {

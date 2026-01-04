@@ -34,7 +34,20 @@ namespace CardGame.Core.Cards.Logic
             switch (effect.Trigger)
             {
                 case TriggerType.OnPlayed:
-                    return gameEvent is CardPlayedEvent cpe && cpe.Card.InstanceId == sourceCardId;
+                    if (gameEvent is CardPlayedEvent cpe)
+                    {
+                        // 1. Standardowy Battlecry (karta sama wchodzi na stół)
+                        if (cpe.Card.InstanceId == sourceCardId) return true;
+
+                        // 2. REAKCJA: Karta jest na stole i reaguje na zagranie innej karty.
+                        // Little Bob ma w JSON "Zone": "Board" i warunek "Not IsSelf".
+                        // Pozwalamy na trigger tylko jeśli karta ma warunek filtrujący innych (Not IsSelf).
+                        if (effect.Zone == EffectZone.Board && effect.Condition != null && IsListeningToOthers(effect.Condition))
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
 
                 case TriggerType.OnDeath:
                     return gameEvent is UnitDiedEvent udde && udde.Unit.InstanceId == sourceCardId;
@@ -134,6 +147,18 @@ namespace CardGame.Core.Cards.Logic
                 default:
                     return true;
             }
+        }
+        private static bool IsListeningToOthers(ConditionData cond)
+        {
+            // Sprawdzamy czy warunek to "Not IsSelf"
+            if (cond.Condition == ConditionType.Not && cond.SubConditions.Any(s => s.Condition == ConditionType.IsSelf))
+                return true;
+
+            // Przeszukujemy warunki złożone (And/Or)
+            if (cond.Condition == ConditionType.And || cond.Condition == ConditionType.Or)
+                return cond.SubConditions.Any(IsListeningToOthers);
+
+            return false;
         }
     }
 }

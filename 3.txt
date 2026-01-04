@@ -1,16 +1,1549 @@
 ﻿
 
 ========================================
-FILE: EvolutionRunner.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\EvolutionRunner.cs
+FILE: Program.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Core\Program.cs
 ========================================
+using CardGame.ConsoleApp.Evolution.Analytics;
+using CardGame.ConsoleApp.Evolution.V1_Legacy;
+using CardGame.ConsoleApp.Evolution.V2_NewGen;
+using CardGame.Core.Cards.Data;
+using System;
+using System.Threading.Tasks;
+
+namespace CardGame.ConsoleApp.Core
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            try
+            {
+                CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
+                Console.WriteLine($"[SYSTEM] Karty załadowane: {CardLibrary.Instance.GetAllIds().Length}");
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"[CRITICAL ERROR] Błąd ładowania kart: {ex.Message}");
+                Console.ResetColor();
+                return;
+            }
+
+            bool exitApp = false;
+            while (!exitApp)
+            {
+                Console.Clear();
+                Console.WriteLine("================================================");
+                Console.WriteLine("           CARD GAME ENGINE - MASTER CLI        ");
+                Console.WriteLine("================================================");
+                Console.WriteLine("1. STANDARD BATTLE (AI v3.1 - High Quality)");
+                Console.WriteLine("2. EVOLUTION CENTER (Training & Master Matches)");
+                Console.WriteLine("3. LEGACY & DEBUG TOOLS (Old versions & Tests)");
+                Console.WriteLine("------------------------------------------------");
+                Console.WriteLine("0. Exit Application");
+                Console.WriteLine("================================================");
+                Console.Write("\nWybierz opcję: ");
+
+                var key = Console.ReadKey(true);
+                switch (key.KeyChar)
+                {
+                    case '1': await AIBattleRunnerIII.RunAsync(); break;
+                    case '2': await ShowEvolutionMenu(); break;
+                    case '3': await ShowLegacyMenu(); break;
+                    case '0': exitApp = true; break;
+                }
+            }
+        }
+
+        static async Task ShowEvolutionMenu()
+        {
+            bool back = false;
+            while (!back)
+            {
+                Console.Clear();
+                Console.WriteLine("================================================");
+                Console.WriteLine("             AI EVOLUTION CENTER                ");
+                Console.WriteLine("================================================");
+                Console.WriteLine("1. URUCHOM NOWĄ EWOLUCJĘ (V2 - Gatunki i Nowość)");
+                Console.WriteLine("2. MASTER VS STANDARD (Testuj best_bot_dna.json)");
+                Console.WriteLine("3. STATYSTYKI MASTER BOTA (DNA & Deck)");
+                Console.WriteLine("4. ANALIZA META (Usage & WinRate)");
+                Console.WriteLine("------------------------------------------------");
+                Console.WriteLine("0. Powrót do menu głównego");
+                Console.WriteLine("================================================");
+                Console.Write("\nWybierz narzędzie ewolucji: ");
+
+                var key = Console.ReadKey(true);
+                switch (key.KeyChar)
+                {
+                    case '1':
+                        var runnerV2 = new EvolutionRunnerV2();
+                        await runnerV2.RunEvolutionAsync();
+                        break;
+                    case '2': await AIvsEvolutionRunner.RunAsync(); break;
+                    case '3': EvoBotViewer.ViewBestBot(); break;
+                    case '4': CardMetaViewer.ViewMeta(); break;
+                    case '0': back = true; break;
+                }
+            }
+        }
+
+        static async Task ShowLegacyMenu()
+        {
+            bool back = false;
+            while (!back)
+            {
+                Console.Clear();
+                Console.WriteLine("================================================");
+                Console.WriteLine("            NARZĘDZIA DEBUG & LEGACY            ");
+                Console.WriteLine("================================================");
+                Console.WriteLine("1. Testy mechanik (Unit Tests)");
+                Console.WriteLine("2. AI Battle v1 (Original)");
+                Console.WriteLine("3. AI Battle v2 (Nuclear UI)");
+                Console.WriteLine("4. Balance AI Tester (Long-term)");
+                Console.WriteLine("5. Optimized AI Logger (Debug Panel)");
+                Console.WriteLine("6. URUCHOM STARĄ EWOLUCJĘ (V1 - Klasyczna)");
+                Console.WriteLine("------------------------------------------------");
+                Console.WriteLine("0. Powrót");
+                Console.WriteLine("================================================");
+                Console.Write("\nWybierz narzędzie: ");
+
+                var key = Console.ReadKey(true);
+                switch (key.KeyChar)
+                {
+                    case '1': MechanicsTester.Run(); Pause(); break;
+                    case '2': await AIBattleRunner.RunAsync(); Pause(); break;
+                    case '3': await AIBattleRunnerII.RunAsync(); Pause(); break;
+                    case '4': await BalanceAITester.RunAsync(); Pause(); break;
+                    case '5': await OptimizedAILogger.RunAsync(); Pause(); break;
+                    case '6':
+                        var runnerV1 = new EvolutionRunner();
+                        await runnerV1.RunEvolutionAsync();
+                        break;
+                    case '0': back = true; break;
+                }
+            }
+        }
+
+        static void Pause() { Console.WriteLine("\nNaciśnij dowolny klawisz..."); Console.ReadKey(true); }
+    }
+}
+
+
+========================================
+FILE: cards.json
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Cards\cards.json
+========================================
+[
+  {
+    "Id": 1,
+    "Name": "Mokke",
+    "Type": "Unit",
+    "Subtypes": [ "Animal" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 2,
+    "Description": "When Destroyed: Heal Your Hero for 3 HP.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          { "Type": "Heal", "Target": "FriendlyHero", "Amount": 3 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 2,
+    "Name": "BoomBots",
+    "Type": "Unit",
+    "Subtypes": [ "Mech" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "When Destroyed: Do 2 Damage to the Enemy Hero.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+  "Id": 3,
+  "Name": "Bone Sommelier",
+  "Type": "Unit",
+  "Subtypes": [ "Monster" ],
+  "Cost": 1,
+  "Attack": 2,
+  "Health": 1,
+  "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
+  "Effects": [
+    {
+      "Trigger": "OnDeath",
+      "Actions": [ 
+        {
+          "Type": "AddCardToHand",
+          "Target": "FriendlyHero",
+          "ValueParam": 902
+        }
+      ]
+    }
+  ]
+},
+
+  {
+    "Id": 4,
+    "Name": "Informer",
+    "Type": "Unit",
+    "Subtypes": [ "Human", "Mercenary" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "When Played: Mark an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 5,
+    "Name": "Queen of Cards",
+    "Type": "Unit",
+    "Subtypes": [ "Human" ],
+    "Cost": 3,
+    "Attack": 2,
+    "Health": 4,
+    "Description": "Draw a card when a friendly unit dies.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Actions": [
+          { "Type": "DrawCard", "Target": "FriendlyHero" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 6,
+    "Name": "Radio Demon",
+    "Type": "Unit",
+    "Subtypes": [ "Demon" ],
+    "Cost": 5,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "Give all friendly units +1/+1 (Global).",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "ModifyGlobalBuff", "Target": "FriendlyHero", "BuffAtk": 1, "BuffHp": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 7,
+    "Name": "Glock-17",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "Deal 3 damage to an enemy.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 3 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 8,
+    "Name": "Crusader",
+    "Type": "Unit",
+    "Subtypes": [ "Human" ],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 3,
+    "Keywords": [ "Armored" ], 
+    "Description": "Armored."
+  },
+
+  {
+    "Id": 9,
+    "Name": "Corpse Eater",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 3,
+    "Attack": 3,
+    "Health": 1,
+    "Description": "While in Hand: When Friendly dies, play this.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Zone": "Hand",
+        "Actions": [
+          { "Type": "SummonUnit", "Target": "Self" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 10,
+    "Name": "Polar Bear",
+    "Type": "Unit",
+    "Subtypes": [ "Animal" ],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 3,
+    "Description": "When Played: Sacrifice a Unit to absorb its stats.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "OtherFriendlyUnits",
+        "Actions": [
+          { "Type": "AbsorbStats", "Target": "SelectedTarget" },
+          { "Type": "SacrificeUnit", "Target": "SelectedTarget" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 11,
+    "Name": "The Creature",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 7,
+    "Attack": 7,
+    "Health": 7,
+    "Keywords": [ "Unkillable" ],
+    "Description": "While In Hand: Costs 1 less whenever you sacrifice a unit.",
+    "Effects": [
+      {
+        "Trigger": "OnOtherUnitSacrificed",
+        "Zone": "Hand",
+        "Actions": [
+          { "Type": "BuffStats", "Target": "Self", "Amount": -1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 12,
+    "Name": "Black Cat",
+    "Type": "Unit",
+    "Subtypes": ["Animal"],
+    "Cost": 0,
+    "Attack": 1,
+    "Health": 1,
+    "Description": "When Sacrificed: Return to Hand instead.",
+    "Effects": [
+      {
+        "Trigger": "OnSacrificed",
+        "Zone": "Board", 
+        "Actions": [ { "Type": "ReturnToHand", "Target": "Self" } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 13,
+    "Name": "Critical Thinking",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Pick a Card from Deck, Draw it, Shuffle.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "TutorCard", "Target": "Self" },
+          { "Type": "ShuffleDeck", "Target": "Self" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 14,
+    "Name": "Survivalist",
+    "Type": "Unit",
+    "Subtypes": [ "Human" ],
+    "Cost": 4,
+    "Attack": 2,
+    "Health": 3,
+    "Description": "While In Play: Other Friendly Units get SoulGuard.",
+    "Effects": [
+      {
+        "Trigger": "Passive",
+        "Zone": "Board",
+        "Actions": [ 
+          { "Type": "ApplyStatus", "Target": "OtherFriendlyUnits", "StatusKeyword": "SoulGuard" } 
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 15,
+    "Name": "Expectancy",
+    "Type": "Spell",
+    "Cost": 3,
+    "Description": "Draw 2 from Deck OR Discard.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "Choice",
+        "ChoiceLabels": ["Draw 2 from Deck", "Draw 2 from Discard"],
+        "Actions": [
+          { "Type": "DrawCard", "Amount": 2 },
+          { "Type": "DrawFromDiscard", "Amount": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 16,
+    "Name": "HellFire",
+    "Type": "Spell",
+    "Cost": 4,
+    "Description": "Deal 3 Damage and Apply Burning to All Units on Board.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "AllUnitsOnBoard", "Amount": 3 },
+          { "Type": "ApplyStatus", "Target": "AllUnitsOnBoard", "StatusKeyword": "Burning" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 17,
+    "Name": "Megumin",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary", "Human" ],
+    "Cost": 4,
+    "Attack": 3,
+    "Health": 2,
+    "Keywords": [ "SplashDamage", "BurnSource" ],
+    "KeywordParams": {
+      "SplashDamage": 3
+    },
+    "Description": "Splash Damage 3. Burn 1."
+  },
+
+  {
+    "Id": 18,
+    "Name": "Final Mission",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Sacrifice a Friendly Unit to deal 4 damage to an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "SacrificeUnit", "Target": "TargetFriendlyUnit" },
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 4 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 19,
+    "Name": "Nepotism",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "A Friendly Unit does a Bonus Attack.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "BonusAttack", "Target": "TargetFriendlyUnit" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 20,
+    "Name": "Genie",
+    "Type": "Unit",
+    "Subtypes": [ "Mystical" ],
+    "Cost": 4,
+    "Attack": 3,
+    "Health": 3,
+    "Description": "When Played: Choose a Unit and return it to hand.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "SelectedTarget",
+        "Actions": [
+          { "Type": "ReturnToHand", "Target": "SelectedTarget" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 21,
+    "Name": "Juggernaut",
+    "Type": "Unit",
+    "Subtypes": [ "Machine" ],
+    "Cost": 4,
+    "Attack": 4,
+    "Health": 2,
+    "Keywords": [ "Armored" ],
+    "KeywordParams": { "Armored": 2 },
+    "Description": "Armored 2. When dealing damage to a unit: Deal 2 to Enemy Hero.",
+    "Effects": [
+      {
+        "Trigger": "OnDamagedEnemyUnit",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 22,
+    "Name": "QuickDraw Gun Man",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "Whenever Enemy Hero draws a card: Deal 1 damage to them.",
+    "Effects": [
+      {
+        "Trigger": "OnOpponentCardDrawn",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 1 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 23,
+    "Name": "FireAxe Man",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 5,
+    "Attack": 3,
+    "Health": 6,
+    "Description": "When this unit kills an enemy: Heal to full and +2 HP.",
+    "Effects": [
+      {
+        "Trigger": "OnKill",
+        "Actions": [
+          { "Type": "HealToFull", "Target": "Self" },
+          { "Type": "BuffStats", "Target": "Self", "BuffHp": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+  "Id": 24, 
+  "Name": "Gerard from Rivia",
+  "Type": "Unit",
+  "Subtypes": [ "Mercenary", "Human" ],
+  "Cost": 5,
+  "Attack": 5,
+  "Health": 5,
+  "Description": "When an Enemy is Marked: Bonus Attack.",
+  "Effects": [
+    {
+      "Trigger": "OnStatusApplied",
+      "Condition": {
+        "Condition": "And",
+        "SubConditions": [
+          { "Condition": "IsStatus", "TargetParam": "Marked" },
+          { "Condition": "IsEnemy" } 
+        ]
+      },
+      "Actions": [ { "Type": "BonusAttack", "Target": "Self" } ]
+    }
+  ]
+},
+
+  {
+  "Id": 25,
+  "Name": "Bounty Hunter",
+  "Type": "Unit",
+  "Subtypes": [ "Mercenary", "Human" ],
+  "Cost": 3,
+  "Attack": 3,
+  "Health": 3,
+  "Description": "When an Enemy is Marked: Stun it.",
+  "Effects": [
+    {
+      "Trigger": "OnStatusApplied",
+      "Condition": {
+        "Condition": "And",
+        "SubConditions": [
+          { "Condition": "IsStatus", "TargetParam": "Marked" },
+          { "Condition": "IsEnemy" }
+        ]
+      },
+      "Actions": [
+        { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Stunned" }
+      ]
+    }
+  ]
+  },
+
+  {
+    "Id": 26,
+    "Name": "Occultist",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary", "Human" ],
+    "Cost": 4,
+    "Attack": 2,
+    "Health": 3,
+    "Description": "Before Combat in this lane: Mark an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPreCombatLine",
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 27,
+    "Name": "Raiding Raptor",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 3,
+    "Attack": 1,
+    "Health": 4,
+    "Description": "Hit Hero: Draw. You Draw: +1 Atk.",
+    "Effects": [
+      {
+        "Trigger": "OnDamagedEnemyHero",
+        "Actions": [ { "Type": "DrawCard", "Target": "FriendlyHero" } ]
+      },
+      {
+        "Trigger": "OnFriendlyCardDrawn",
+        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1 } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 28,
+    "Name": "Exploding Fruitcake",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "5 Dmg to enemy. Opponent gains this.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 5 },
+          { "Type": "GiveToOpponent", "Target": "Self" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 29,
+    "Name": "Blighteinstein",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 5,
+    "Attack": 5,
+    "Health": 6,
+    "Description": "On Kill: Move Right.",
+    "Effects": [
+      {
+        "Trigger": "OnKill",
+        "Actions": [ { "Type": "MoveRight", "Target": "Self" } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 30,
+    "Name": "SharkCannon",
+    "Type": "Unit",
+    "Subtypes": [ "Animal", "Machine"],
+    "Cost": 5,
+    "Attack": 0,
+    "Health": 6,
+    "Description": "Before Combat here: 5 Dmg to Enemy Hero.",
+    "Effects": [
+      {
+        "Trigger": "OnPreCombatLine",
+        "Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 5 } ]
+      }
+    ]
+  },
+  {
+    "Id": 31,
+    "Name": "Silence",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Enemy Unit loses all Bonus Stats, Keywords and Passive Abilities.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [ { "Type": "Silence", "Target": "TargetEnemyUnit" } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 32,
+    "Name": "Marked for Death",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Mark an Enemy Unit. Draw a Card.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [ 
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" },
+          { "Type": "DrawCard", "Target": "FriendlyHero" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 33,
+    "Name": "Mouse",
+    "Type": "Unit",
+    "Subtypes": [ "Machine" ],
+    "Cost": 5,
+    "Attack": 5,
+    "Health": 8,
+    "Keywords": [ "Stunned" ],
+    "Description": "Stunned."
+  },
+
+  {
+    "Id": 34,
+    "Name": "MaidMask",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary" ],
+    "Cost": 2,
+    "Attack": 3,
+    "Health": 1,
+    "Keywords": [ "SoulGuard" ],
+    "Description": "SoulGuard."
+  },
+
+  {
+    "Id": 35,
+    "Name": "Cathulli Captain",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "When a Friendly Monster Unit hurts Enemy Hero that unit gets +1/+1.",
+    "Effects": [
+      {
+        "Trigger": "OnDamagedEnemyHero",
+        "Condition": { "Condition": "IsSubtype", "TargetParam": "Monster" },
+        "Actions": [ { "Type": "BuffStats", "Target": "SelectedTarget", "BuffAtk": 1, "BuffHp": 1 } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 36,
+    "Name": "Death",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 5,
+    "Attack": 3,
+    "Health": 3,
+    "Keywords": [ "SoulGuard" ],
+    "Description": "Whenever a Friendly Unit is Destroyed: Deal 3 damage to the Enemy Hero. SoulGuard.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 3 } ]
+      }
+    ]
+  },
+
+  {
+  "Id": 37,
+  "Name": "Archer",
+  "Type": "Unit",
+  "Subtypes": [ "Mercenary", "Human" ],
+  "Cost": 2, "Attack": 1, "Health": 4,
+  "Description": "Before Combat Here: Apply Burning to an Enemy Unit.",
+  "Effects": [
+    {
+      "Trigger": "OnPreCombatLine",
+      "Actions": [
+        { 
+          "Type": "ApplyStatus", 
+          "Target": "TargetEnemyUnit", 
+          "StatusKeyword": "Burning" 
+        }
+      ]
+    }
+  ]
+},
+
+{
+    "Id": 38,
+    "Name": "Tumblr Man",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 1, "Attack": 3, "Health": 1,
+    "Keywords": ["Burning"],
+     "Description": "Burning."
+  },
+
+  {
+    "Id": 39,
+    "Name": "Regifter",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 3, "Attack": 2, "Health": 2,
+    "Effects": [{
+      "Trigger": "OnPlayed",
+      "Targeting": "TargetFriendlyUnit",
+      "Actions": [
+        { "Type": "SacrificeUnit", "Target": "SelectedTarget" },
+        { "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 2 },
+        { "Type": "DrawCard", "Target": "EnemyHero", "Amount": 2 }
+      ]
+    }]
+  },
+
+  {
+    "Id": 40,
+    "Name": "Widows Spider",
+    "Type": "Unit",
+    "Subtypes": ["Animal", "Monster"],
+    "Cost": 1, "Attack": 2, "Health": 2,
+    "Effects": [{
+      "Trigger": "OnSacrificed",
+      "Actions": [
+        { "Type": "AddResource", "Target": "FriendlyHero", "Amount": 1 }
+      ]
+    }]
+  },
+
+  {
+    "Id": 41,
+    "Name": "Pegasus",
+    "Type": "Unit",
+    "Subtypes": ["Animal", "Mystical"],
+    "Cost": 3, "Attack": 3, "Health": 1,
+    "Keywords": ["Flying"],
+    "Effects": [{
+      "Trigger": "OnPlayed",
+      "Actions": [{ "Type": "BonusAttack", "Target": "Self" }]
+    }]
+  },
+  {
+    "Id": 42,
+    "Name": "Soldat",
+    "Type": "Unit",
+    "Subtypes": ["Mercenary", "Human" ],
+    "Cost": 1, "Attack": 2, "Health": 2,
+    "Description": "When Played: If you have a Machine on Board, gain +2/+2.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Condition": {
+          "Condition": "HasSubtypeOnBoard",
+          "TargetParam": "Machine"
+        },
+        "Actions": [
+          { "Type": "BuffStats", "Target": "Self", "BuffAtk": 2, "BuffHp": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 43,
+    "Name": "Evo Ghost",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 4, "Attack": 3, "Health": 2,
+    "Description": "On Death: Make 1/1 Souldiers in Adjacent Lanes.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          { "Type": "MakeAUnit", "ValueParam": 901, "StringParam": "AdjacentLanes" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 44,
+    "Name": "Machine Bomber",
+    "Type": "Unit",
+    "Subtypes": ["Machine"],
+    "Cost": 1, "Attack": 1, "Health": 2,
+    "Keywords": ["SplashDamage"],
+    "KeywordParams": { "SplashDamage": 1 },
+    "Description": "Splash Damage 1."
+  },
+  {
+  "Id": 45,
+  "Name": "Dagger Throw",
+  "Type": "Spell",
+  "Cost": 1,
+  "Description": "Deal 2 damage to an Enemy Unit or Enemy Hero.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "Choice",
+      "ChoiceLabels": ["Target Enemy Unit", "Enemy Hero"],
+      "Actions": [
+        {
+          "Type": "DealDamage",
+          "Target": "TargetEnemyUnit",
+          "Amount": 2
+        },
+        {
+          "Type": "DealDamage",
+          "Target": "EnemyHero",
+          "Amount": 2
+        }
+      ]
+    }
+  ]
+},
+
+  {
+  "Id": 46,
+  "Name": "Tea Maid",
+  "Type": "Unit",
+  "Subtypes": [ "Human" ],
+  "Cost": 3,
+  "Attack": 2,
+  "Health": 4,
+  "Description": "While in Play: Your Spells cost 1 less.",
+  "Effects": [
+    {
+      "Trigger": "Passive",
+      "Zone": "Board",
+      "Actions": [
+        {
+          "Type": "BuffStats",
+          "Target": "FriendlySpellsInHand",
+          "Amount": -1 
+        }
+      ]
+    }
+  ]
+},
+
+  {
+    "Id": 47,
+    "Name": "Rustler",
+    "Type": "Unit",
+    "Subtypes": ["Mercenary"],
+    "Cost": 10, "Attack": 6, "Health": 6,
+    "Description": "Costs 1 less for each Spell played. On Played: Bonus Attack.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [{ "Type": "BonusAttack", "Target": "Self" }]
+      },
+      {
+        "Trigger": "OnFriendlyActionPlayed",
+        "Zone": "Hand",
+        "Actions": [{ "Type": "BuffStats", "Target": "Self", "Amount": -1 }] 
+      }
+    ]
+  },
+  {
+  "Id": 48,
+  "Name": "Vane, Butcher of Vanity",
+  "Type": "Unit",
+  "Subtypes": ["Mercenary", "Human"],
+  "Cost": 2,
+  "Attack": 2,
+  "Health": 3,
+  "Description": "Whenever you Sacrifice a unit: This unit gains +1/+1. If it was a Human, gain +2/+2 instead.",
+  "Effects": [
+    {
+      "Trigger": "OnOtherUnitSacrificed",
+      "Actions": [
+        { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1, "BuffHp": 1 }
+      ]
+    },
+    {
+      "Trigger": "OnOtherUnitSacrificed",
+      "Condition": {
+        "Condition": "IsSubtype",
+        "TargetParam": "Human"
+      },
+      "Actions": [
+        { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1, "BuffHp": 1 }
+      ]
+    }
+  ]
+},
+{
+  "Id": 49,
+  "Name": "Rocket Ignorance",
+  "Type": "Spell",
+  "Cost": 4,
+  "Description": "Destroy an Enemy Unit.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Actions": [
+        { 
+          "Type": "DestroyUnit", 
+          "Target": "TargetEnemyUnit" 
+        }
+      ]
+    }
+  ]
+},
+{
+  "Id": 50,
+  "Name": "Diabetic Treat",
+  "Type": "Spell",
+  "Cost": 1,
+  "Description": "Give a Friendly Unit +1/+3.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "TargetFriendlyUnit",
+      "Actions": [
+        { 
+          "Type": "BuffStats", 
+          "Target": "SelectedTarget", 
+          "BuffAtk": 1, 
+          "BuffHp": 3 
+        }
+      ]
+    }
+  ]
+},
+
+
+{
+    "Id": 900,
+    "Name": "The Alluring Goblet",
+    "Type": "Spell",
+    "Subtypes": ["Token"],
+    "Cost": 1,
+    "Description": "Make a unit Unkillable, then destroy it.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "TargetFriendlyUnit",
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Unkillable" },
+          { "Type": "DestroyUnit", "Target": "SelectedTarget" }
+        ]
+      }
+    ]
+ },
+
+ {
+    "Id": 901,
+    "Name": "Souldier",
+    "Type": "Unit",
+    "Subtypes": ["Monster", "Token"],
+    "Cost": 1, "Attack": 1, "Health": 1,
+    "Description": "Two Loyal Souldiers and One Royale Ghost to rule them all."
+  },
+  {
+  "Id": 902,
+  "Name": "The Appetizing Goblet",
+  "Type": "Spell",
+  "Subtypes": ["Token"],
+  "Cost": 0,
+  "Description": "Sacrifice a Friendly Unit.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "TargetFriendlyUnit",
+      "Actions": [
+        { 
+          "Type": "SacrificeUnit", 
+          "Target": "SelectedTarget" 
+        }
+      ]
+    }
+  ]
+}
+]
+
+
+========================================
+FILE: mark.json
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Decks\mark.json
+========================================
+{
+  "Id": "marks",
+  "Name": "Mark of the Wolf",
+  "Description": "Kontrola stołu poprzez oznaczanie celów i precyzyjne egzekucje.",
+  "CardIds": [
+    4, 4, 4,
+    32, 32, 32,
+    26, 26, 26,
+    24, 24, 24,
+    25, 25, 25,
+    31, 31, 31,
+    7, 7, 7,
+    21, 21, 21,
+    15, 15, 15,
+    13, 13, 13
+  ]
+}
+
+
+========================================
+FILE: sacrifice.json
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Decks\sacrifice.json
+========================================
+{
+  "Id": "sacrifice",
+  "Name": "Radio Sacrifice",
+  "Description": "Zalewanie stołu jednostkami i czerpanie korzyści z ich poświęcania.",
+  "CardIds": [
+    12, 12, 12,
+    3, 3, 3,
+    6, 6, 6,
+    10, 10, 10,
+    11, 11, 11,
+    36, 36, 36,
+    9, 9, 9,
+    18, 18, 18,
+    1, 1, 1,
+    5, 5, 5
+  ]
+}
+
+
+========================================
+FILE: starter_deck.json
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Data\Decks\starter_deck.json
+========================================
+{
+  "Id": "starter_deck",
+  "Name": "Talia Testowa",
+  "Description": "Zawiera wszystkie mechaniki.",
+  "CardIds": [
+    1, 
+    2, 
+    3, 
+    4, 
+    5,
+    7  
+  ]
+}
+
+
+========================================
+FILE: CardAnalytics.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\Analytics\CardAnalytics.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using CardGame.ConsoleApp.Evolution.V1_Legacy;
+using CardGame.Core.Cards.Data;
+
+namespace CardGame.ConsoleApp.Evolution.Analytics
+{
+    public class CardAnalytics
+    {
+        public class CardEntry
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public int DecksCount { get; set; }
+            public int TotalCopies { get; set; }
+            public int TotalWins { get; set; }
+            public int TotalGames { get; set; }
+
+            public float WinRate => TotalGames == 0 ? 0 : (float)TotalWins / TotalGames;
+            public float UsageRate => DecksCount / 100f;
+            public float AvgDensity => DecksCount == 0 ? 0 : (float)TotalCopies / DecksCount;
+        }
+
+        public static void ProcessAndSave(List<GeneticIndividual> population, int generation)
+        {
+            var allIds = CardLibrary.Instance.GetAllIds();
+            var report = new Dictionary<int, CardEntry>();
+
+            foreach (var bot in population)
+            {
+                var uniqueInDeck = bot.DeckDNA.Distinct();
+                foreach (var cardId in uniqueInDeck)
+                {
+                    if (!report.ContainsKey(cardId))
+                    {
+                        var def = CardLibrary.Instance.GetCard(cardId);
+                        report[cardId] = new CardEntry { Id = cardId, Name = def.Name };
+                    }
+
+                    var entry = report[cardId];
+                    entry.DecksCount++;
+                    entry.TotalCopies += bot.DeckDNA.Count(id => id == cardId);
+                    entry.TotalGames += bot.GamesPlayed;
+                    entry.TotalWins += bot.Wins;
+                }
+            }
+
+            var sortedReport = report.Values
+                .OrderByDescending(r => r.WinRate)
+                .ThenByDescending(r => r.UsageRate)
+                .ToList();
+
+            string json = JsonSerializer.Serialize(sortedReport, new JsonSerializerOptions { WriteIndented = true });
+            if (!Directory.Exists("Analytics")) Directory.CreateDirectory("Analytics");
+            File.WriteAllText($"Analytics/current_meta.json", json);
+            File.WriteAllText($"Analytics/gen_{generation}.json", json);
+        }
+    }
+}
+
+
+========================================
+FILE: CardMetaViewer.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\Analytics\CardMetaViewer.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using CardGame.Core.Cards.Data;
+
+namespace CardGame.ConsoleApp.Evolution.Analytics
+{
+    public static class CardMetaViewer
+    {
+        private const int UI_WIDTH = 158;
+        private const int PAGE_SIZE = 30; // Ile kart widzimy naraz
+        private enum SortMode { WinRate, Usage, Density, Games }
+        private static SortMode _currentSort = SortMode.WinRate;
+        private static int _scrollOffset = 0;
+
+        public static void ViewMeta()
+        {
+            string path = "Analytics/current_meta.json";
+            if (!File.Exists(path))
+            {
+                Console.WriteLine("No analytics data found. Run evolution for at least 10 generations!");
+                Console.ReadKey();
+                return;
+            }
+
+            bool running = true;
+            while (running)
+            {
+                var data = JsonSerializer.Deserialize<List<CardAnalytics.CardEntry>>(File.ReadAllText(path));
+                if (data == null) return;
+
+                Console.Clear();
+                DrawUI(data);
+
+                var key = Console.ReadKey(true);
+                switch (key.Key)
+                {
+                    case ConsoleKey.D1: _currentSort = SortMode.WinRate; _scrollOffset = 0; break;
+                    case ConsoleKey.D2: _currentSort = SortMode.Usage; _scrollOffset = 0; break;
+                    case ConsoleKey.D3: _currentSort = SortMode.Density; _scrollOffset = 0; break;
+                    case ConsoleKey.D4: _currentSort = SortMode.Games; _scrollOffset = 0; break;
+                    case ConsoleKey.DownArrow:
+                        if (_scrollOffset + PAGE_SIZE < data.Count) _scrollOffset++;
+                        break;
+                    case ConsoleKey.UpArrow:
+                        if (_scrollOffset > 0) _scrollOffset--;
+                        break;
+                    case ConsoleKey.Escape: running = false; break;
+                }
+            }
+        }
+
+        private static void DrawUI(List<CardAnalytics.CardEntry> data)
+        {
+            IEnumerable<CardAnalytics.CardEntry> sorted = _currentSort switch
+            {
+                SortMode.WinRate => data.OrderByDescending(d => d.WinRate),
+                SortMode.Usage => data.OrderByDescending(d => d.UsageRate),
+                SortMode.Density => data.OrderByDescending(d => d.AvgDensity),
+                SortMode.Games => data.OrderByDescending(d => d.TotalGames),
+                _ => data
+            };
+
+            var list = sorted.ToList();
+            var viewPort = list.Skip(_scrollOffset).Take(PAGE_SIZE).ToList();
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
+            sb.AppendLine("║" + CenterText($"CARD META ANALYTICS - SORTED BY {_currentSort.ToString().ToUpper()}", UI_WIDTH - 2) + "║");
+            sb.AppendLine("║" + CenterText($"Showing cards {_scrollOffset + 1} - {Math.Min(_scrollOffset + PAGE_SIZE, list.Count)} of {list.Count}", UI_WIDTH - 2) + "║");
+
+            sb.AppendLine("╠" + new string('═', 6) + "╦" + new string('═', 25) + "╦" + new string('═', 15) + "╦" + new string('═', 15) + "╦" + new string('═', 15) + "╦" + new string('═', 20) + "╦" + new string('═', UI_WIDTH - 105) + "╣");
+            sb.AppendLine("║  ID  ║ NAME                    ║ WIN RATE      ║ USAGE RATE    ║ AVG DENSITY   ║ WINS / GAMES       ║ PERFORMANCE TAG      ║");
+            sb.AppendLine("╠" + new string('═', 6) + "╬" + new string('═', 25) + "╬" + new string('═', 15) + "╬" + new string('═', 15) + "╬" + new string('═', 15) + "╬" + new string('═', 20) + "╬" + new string('═', UI_WIDTH - 105) + "╣");
+
+            foreach (var card in viewPort)
+            {
+                string id = card.Id.ToString().PadRight(4);
+                string name = Truncate(card.Name, 23).PadRight(23);
+                string wr = $"{card.WinRate * 100:F1}%".PadRight(13);
+                string usage = $"{card.UsageRate * 100:F1}%".PadRight(13);
+                string dens = $"{card.AvgDensity:F2}".PadRight(13);
+                string stats = $"{card.TotalWins} / {card.TotalGames}".PadRight(18);
+                string tag = GetPerformanceTag(card);
+
+                sb.AppendLine($"║ {id} ║ {name} ║ {wr} ║ {usage} ║ {dens} ║ {stats} ║ {tag.PadRight(UI_WIDTH - 107)} ║");
+            }
+
+            // Dopełnienie pustymi liniami, jeśli lista jest krótka
+            for (int i = viewPort.Count; i < PAGE_SIZE; i++)
+                sb.AppendLine("║      ║                         ║               ║               ║               ║                    ║                      ║");
+
+            sb.AppendLine("╚" + new string('═', 6) + "╩" + new string('═', 25) + "╩" + new string('═', 15) + "╩" + new string('═', 15) + "╩" + new string('═', 15) + "╩" + new string('═', 20) + "╩" + new string('═', UI_WIDTH - 105) + "╝");
+
+            Console.Write(sb.ToString());
+            Console.WriteLine(CenterText("[1] WinRate | [2] Usage | [3] Density | [4] TotalGames | [UP/DOWN] Scroll | [ESC] Back", UI_WIDTH));
+        }
+
+        private static string GetPerformanceTag(CardAnalytics.CardEntry card)
+        {
+            if (card.UsageRate > 0.6 && card.WinRate > 0.48) return "!!! OVERPOWERED !!!";
+            if (card.UsageRate > 0.5) return "Meta Staple";
+            if (card.WinRate > 0.5) return "Hidden Gem";
+            if (card.UsageRate < 0.1) return "Underplayed";
+            return "Balanced";
+        }
+
+        private static string Truncate(string value, int maxChars) => value.Length <= maxChars ? value : value.Substring(0, maxChars - 3) + "...";
+        private static string CenterText(string text, int width)
+        {
+            int leftPadding = (width - text.Length) / 2;
+            return new string(' ', Math.Max(0, leftPadding)) + text + new string(' ', Math.Max(0, width - text.Length - leftPadding));
+        }
+    }
+}
+
+
+========================================
+FILE: DNA.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\V1_Legacy\DNA.cs
+========================================
+namespace CardGame.ConsoleApp.Evolution.V1_Legacy
+{
+    public static class DNA
+    {
+        // 1-8: Macro Resources
+        public const int SelfHealthWeight = 0;
+        public const int EnemyHealthWeight = 1;
+        public const int HeroPanicThreshold = 2;
+        public const int LethalFeverWeight = 3;
+        public const int BloodEfficiencyWeight = 4;
+        public const int BloodConservationRatio = 5;
+        public const int HandSizeUtility = 6;
+        public const int OverdrawRiskPenalty = 7;
+
+        // 9-15: Stats & Lines
+        public const int FriendlyAtkWeight = 8;
+        public const int FriendlyHpWeight = 9;
+        public const int EnemyAtkWeight = 10;
+        public const int EnemyHpWeight = 11;
+        public const int EmptyLaneBonus = 12;
+        public const int DefensiveBlockingValue = 13;
+        public const int AdjacencyBonus = 14;
+
+        // 16-23: Keywords
+        public const int MarkedOnEnemyValue = 15;
+        public const int MarkedOnSelfPenalty = 16;
+        public const int ArmoredEfficiency = 17;
+        public const int UnkillableValue = 18;
+        public const int SoulGuardValue = 19;
+        public const int StunnedPenalty = 20;
+        public const int BurningPenalty = 21;
+        public const int SplashDamageUtility = 22;
+
+        // 24-27: Phase Logic
+        public const int UnitOnly_Commitment = 23;
+        public const int UnitAndAction_Flexibility = 24;
+        public const int ActionOnly_ReactionWeight = 25;
+        public const int CombatProjectionTrust = 26;
+
+        // 28-33: Subtypes
+        public const int MonsterAffinity = 27;
+        public const int MercenaryAffinity = 28;
+        public const int AnimalAffinity = 29;
+        public const int MachineAffinity = 30;
+        public const int HumanAffinity = 31;
+        public const int DemonAffinity = 32;
+
+        // 34-40: Tactical Actions
+        public const int SacrificeValueThreshold = 33;
+        public const int RecycleComboPreference = 34;
+        public const int SilencePriority_Keywords = 35;
+        public const int SilencePriority_Buffs = 36;
+        public const int GlobalBuffValue = 37;
+        public const int DiscardPileUtility = 38;
+        public const int TutorPriority = 39;
+
+        // 41-44: Psychology & Risk
+        public const int OverkillPenalty = 40;
+        public const int BoardPresenceSafety = 41;
+        public const int VengeanceWeight = 42;
+        public const int PredictiveOpponentFear = 43;
+
+        // 45-49: Deep Info
+        public const int OpponentHandSize_FearFactor = 44;
+        public const int OpponentEmptyHand_Aggression = 45;
+        public const int DeckTracking_FinisherFound = 46;
+        public const int DeckThinning_Utility = 47;
+        public const int LethalProbability_Multiplier = 48;
+
+        // 50-54: Buff Logic
+        public const int Buff_TallStrategy_Weight = 49;
+        public const int Buff_WideStrategy_Weight = 50;
+        public const int Buff_Priority_Unkillable = 51;
+        public const int Buff_Priority_Armored = 52;
+        public const int Buff_Priority_Splash = 53;
+
+        // 55-58: Bonus Attacks
+        public const int BonusAtk_LethalExecution = 54;
+        public const int BonusAtk_FacePressure = 55;
+        public const int BonusAtk_HighAtk_Preference = 56;
+        public const int BonusAtk_TriggerHunting = 57;
+
+        // 59-62: Kill Priority
+        public const int Target_EngineUnit_Priority = 58;
+        public const int Target_FodderUnit_Ignore = 59;
+        public const int Target_HighAtk_LowHP_Snipe = 60;
+        public const int Target_Bodyguard_Breaker = 61;
+
+        // 63-65: Survival
+        public const int Heal_Hero_vs_Unit_Ratio = 62;
+        public const int Save_ValueTarget_Weight = 63;
+        public const int Heal_Efficiency_Bonus = 64;
+
+        // 66-71: Archetype Biases
+        public const int Aggro_Bias = 65;
+        public const int Control_Bias = 66;
+        public const int Tempo_Bias = 67;
+        public const int Value_Bias = 68;
+        public const int Burn_Bias = 69;
+        public const int Midrange_Bias = 70;
+
+        // 72-74: Mulligan
+        public const int Mulligan_KeepUnit_MaxCost = 71;
+        public const int Mulligan_KeepSpell_Priority = 72;
+        public const int Mulligan_ComboPiece_Retention = 73;
+
+        // 75-77: Forecasting
+        public const int Opponent_NextTurn_ManaAwareness = 74;
+        public const int Fatigue_Panic_Factor = 75;
+        public const int WinCondition_Proximity_Greed = 76;
+
+        // 78-80: Geometry
+        public const int Line_Concentration_Preference = 77;
+        public const int L0_L3_Corner_Value = 78;
+        public const int Line_Switching_Urgency = 79;
+
+        // 81-82: Info Warfare
+        public const int Card_Tracking_Probability = 80;
+        public const int Bluff_Resistance = 81;
+
+        // 83-87: Prediction
+        public const int Enemy_Archetype_Sacrifice_Likelihood = 82;
+        public const int Enemy_Archetype_Control_Likelihood = 83;
+        public const int Enemy_Archetype_Aggro_Likelihood = 84;
+        public const int Predict_AoE_Danger_Level = 85;
+        public const int Predict_Silence_Danger_Level = 86;
+
+        // 88-90: Counter-Play
+        public const int Counter_Lethal_Buffer = 87;
+        public const int Counter_Unkillable_Stall = 88;
+        public const int Counter_Mark_Disruption = 89;
+
+        // 91-94: Mental States
+        public const int Desperation_Factor = 90;
+        public const int Dominance_Greed = 91;
+        public const int Bluff_Potential_Value = 92;
+        public const int Tempo_Sacrifice_Tolerance = 93;
+
+        // 95-97: Strategic Burst
+        public const int Line_Depth_Strategic_Value = 94;
+        public const int Resource_Burst_Potential = 95;
+        public const int Draw_vs_Play_Priority = 96;
+
+        // 98-100: Master DNA
+        public const int Complexity_Bias = 97;
+        public const int Win_Condition_Clarity = 98;
+        public const int Adaptive_Learning_Rate = 99;
+
+        public const int Line0_Priority = 100;
+        public const int Line1_Priority = 101;
+        public const int Line2_Priority = 102;
+        public const int Line3_Priority = 103;
+
+        public const int FlyingUtility = 104;         
+        public const int ResourceGainValue = 105;     
+        public const int TokenSynergyWeight = 106; 
+        public const int PresenceOfMachineBonus = 107;
+
+        public const int Combo_Bias = 108;
+
+        public const int TOTAL_GENES = 109;
+    }
+}
+
+
+========================================
+FILE: EvolutionRunner.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\V1_Legacy\EvolutionRunner.cs
+========================================
+using CardGame.ConsoleApp.Core;
+using CardGame.ConsoleApp.Evolution.Analytics;
 using CardGame.Core.AI.Interfaces;
 using CardGame.Core.AI.Logic;
 using CardGame.Core.AI.Logic.Mcts;
 using CardGame.Core.AI.Strategies;
 using CardGame.Core.Application;
 using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Models;
 using CardGame.Core.Commands.Implementations;
 using CardGame.Core.State.Enums;
 using CardGame.Core.State.Models;
@@ -22,7 +1555,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CardGame.ConsoleApp.Evolution
+namespace CardGame.ConsoleApp.Evolution.V1_Legacy
 {
     public class EvolutionRunner
     {
@@ -32,8 +1565,8 @@ namespace CardGame.ConsoleApp.Evolution
         private static readonly ThreadLocal<Random> _threadRng = new(() => new Random());
         private int[] _collectibleCardIds;
         private int _stagnationTimer = 0;
-        private const int StagnationThreshold = 20; // Szybsza rotacja
         private float _masterDecayFactor = 1.0f;
+        private Dictionary<int, float> _usageCache = new();
 
         public async Task RunEvolutionAsync()
         {
@@ -61,16 +1594,18 @@ namespace CardGame.ConsoleApp.Evolution
             int g = 1;
             bool shouldStop = false;
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("=== EVOLUTION V16.0 (SELF-PLAY CO-EVOLUTION) ===");
-            Console.WriteLine("Mode: Bots are tested against MCTS-enhanced Master DNA");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("=== EVOLUTION V16.4 (PRESTIGE ELITE - QUALITY FOCUS) ===");
+            Console.WriteLine("Mode: High-Rigor MCTS Exam & Genetic Polishing");
             Console.ResetColor();
 
             while (!shouldStop)
             {
+                UpdateUsageCache();
                 ResetStats();
 
-                if (_stagnationTimer > 10) _masterDecayFactor -= 0.04f;
+                // Wolniejszy Master Decay (0.01 zamiast 0.05)
+                if (_stagnationTimer > 10) _masterDecayFactor -= 0.01f;
 
                 // 1. FAZA: MECZE W POPULACJI
                 Parallel.For(0, _population.Count, parallelOptions, i =>
@@ -81,54 +1616,56 @@ namespace CardGame.ConsoleApp.Evolution
 
                     for (int m = 0; m < 6; m++)
                     {
-                        GeneticIndividual opponent;
-                        if (m < 2 && champions.Count > 0)
-                            opponent = champions[localRng.Next(champions.Count)];
-                        else
-                            opponent = _population[localRng.Next(PopulationSize)];
+                        GeneticIndividual opponent = m < 2 && champions.Count > 0
+                            ? champions[localRng.Next(champions.Count)]
+                            : _population[localRng.Next(PopulationSize)];
 
                         if (subject.Id == opponent.Id) continue;
 
-                        int startId = (m % 2 == 0) ? 1 : 2;
-                        var result = SimulateFastMatchWithFitness(subject, opponent, 3, 4, startId);
+                        int startId = m % 2 == 0 ? 1 : 2;
+                        var result = SimulateRobustMatch(subject, opponent, 4, 3, startId);
 
                         lock (subject)
                         {
                             subject.GamesPlayed++;
-                            float score = (startId == 1) ? result.p1Score : result.p2Score;
+                            float score = startId == 1 ? result.p1Score : result.p2Score;
 
+                            // Surowsza kara za bycie kopią (Diversity promuje unikalne mózgi)
                             if (champions.Count > 0)
                             {
                                 float sim = CalculateSimilarity(subject, champions[0]);
-                                score *= (1.0f - (sim * 0.25f)); // Kara za kopiowanie Mastera
+                                score *= 1.0f - Math.Max(0, sim - 0.4f) * 0.6f;
                             }
 
                             subject.Fitness += score;
-                            if ((startId == 1 && result.winner == 1) || (startId == 2 && result.winner == 2))
+                            if (startId == 1 && result.winner == 1 || startId == 2 && result.winner == 2)
                                 subject.Wins++;
                         }
                     }
                 });
 
-                // 2. FAZA: EGZAMIN PRZECIWKO MCTS-MASTEROWI (Koewolucja)
+                // 2. FAZA: RYGORYSTYCZNY EGZAMIN MCTS (TOP 12)
                 var topTier = _population.OrderByDescending(x => x.Fitness).Take(12).ToList();
-                Console.WriteLine($" >> [GEN {g}] Co-evolutionary MCTS Testing...");
+                Console.WriteLine($" >> [GEN {g:D3}] MCTS Pentakill Exam (5 trials/bot)...");
 
                 Parallel.ForEach(topTier, parallelOptions, (elite) =>
                 {
-                    for (int test = 0; test < 2; test++)
+                    int mctsTrials = 5; // Więcej prób = wyższa wiarygodność
+                    float totalMctsScore = 0;
+                    int mctsWins = 0;
+
+                    for (int t = 0; t < mctsTrials; t++)
                     {
-                        // Używamy DNA obecnego Mastera do sterowania logiką MCTS!
-                        var res = RunCoEvolutionaryMctsTest(elite, currentMaster, 120);
-                        lock (elite)
-                        {
-                            elite.Fitness += (res.score * 15.0f);
-                            if (res.won)
-                            {
-                                elite.Wins += 3;
-                                elite.Fitness += 600000f;
-                            }
-                        }
+                        var res = RunCoEvolutionaryMctsTest(elite, currentMaster, 160);
+                        totalMctsScore += res.score;
+                        if (res.won) mctsWins++;
+                    }
+
+                    lock (elite)
+                    {
+                        elite.Fitness += totalMctsScore / mctsTrials * 6.0f;
+                        if (mctsWins > 0) elite.Fitness += mctsWins * 40000f;
+                        if (mctsWins == mctsTrials) elite.Fitness += 150000f; // Bonus za wybitną stabilność
                     }
                 });
 
@@ -136,17 +1673,18 @@ namespace CardGame.ConsoleApp.Evolution
                 _hof.ProcessPopulation(sorted, g);
                 var best = sorted[0];
 
-                Console.WriteLine($"[GEN {g}] WR:{best.WinRate:P0} | Fit:{best.Fitness:F0} | Stag:{_stagnationTimer}");
+                Console.WriteLine($"[GEN {g:D3}] Master:{best.Id} | Fit:{best.Fitness,8:F0} | WR:{best.WinRate * 100,4:F1}% | Stag:{_stagnationTimer} | Decay:{_masterDecayFactor:P0}");
 
-                if (best.Fitness > (highestFitnessEver * _masterDecayFactor) + 1200)
+                // Wyższy próg ewolucyjny (+5000 pkt)
+                if (best.Fitness > highestFitnessEver * _masterDecayFactor + 5000)
                 {
                     highestFitnessEver = best.Fitness;
                     _stagnationTimer = 0;
                     _masterDecayFactor = 1.0f;
-                    currentMaster = best; // Nowy Master staje się nowym egzaminatorem
+                    currentMaster = best.Clone();
                     File.WriteAllText(bestBotPath, JsonSerializer.Serialize(best, new JsonSerializerOptions { WriteIndented = true }));
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine($" [!] NEW EVOLUTIONARY MASTER: {best.Id} (Algorithm Updated)");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($" >>> NEW ELITE MASTER: {best.Id} (Fitness Jump) <<< ");
                     Console.ResetColor();
                 }
                 else _stagnationTimer++;
@@ -155,132 +1693,156 @@ namespace CardGame.ConsoleApp.Evolution
                 _population = BreedTournament(sorted, g, _stagnationTimer);
                 SaveFullPopulation();
 
+                await Task.Delay(50);
                 while (Console.KeyAvailable) { if (Console.ReadKey(true).Key == ConsoleKey.Enter) shouldStop = true; }
                 g++;
             }
         }
 
-        private float CalculateSimilarity(GeneticIndividual a, GeneticIndividual b)
+        private (int winner, float p1Score, float p2Score) SimulateRobustMatch(GeneticIndividual b1, GeneticIndividual b2, int beam, int depth, int startId)
         {
-            var setA = a.DeckDNA.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
-            var setB = b.DeckDNA.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
-            float shared = 0;
-            foreach (var id in setA.Keys) if (setB.ContainsKey(id)) shared += Math.Min(setA[id], setB[id]);
-            return shared / 30f;
+            var seed = _threadRng.Value.Next();
+            var rng = new DeterministicRng(seed);
+            var factory = new CardGame.Core.Cards.Factories.CardFactory(CardLibrary.Instance, rng);
+            var engine = new GameEngine(GameState.Initial(startId,
+                b1.DeckDNA.Select(id => factory.CreateCard(id, 1)).ToList(),
+                b2.DeckDNA.Select(id => factory.CreateCard(id, 2)).ToList(), rng), seed);
+
+            var s1 = new BotSolver(engine, 1, new EvolvableStrategy(b1.StrategyDNA), beam, depth);
+            var s2 = new BotSolver(engine, 2, new EvolvableStrategy(b2.StrategyDNA), beam, depth);
+
+            int moves = 0;
+            // Dociąg i Mulligan
+            while (engine.CurrentState.CurrentPhase == GamePhase.Mulligan && moves++ < 10)
+            {
+                if (!engine.CurrentState.PlayersReady.Contains(1)) engine.ExecuteCommand(new ConfirmMulliganCommand(1, new()));
+                if (!engine.CurrentState.PlayersReady.Contains(2)) engine.ExecuteCommand(new ConfirmMulliganCommand(2, new()));
+            }
+
+            int lastTurn = -1; GamePhase lastPhase = GamePhase.None; int stagnantMoves = 0;
+
+            while (!engine.IsGameOver && moves++ < 250)
+            {
+                var cur = engine.CurrentState;
+                if (cur.TurnNumber == lastTurn && cur.CurrentPhase == lastPhase) stagnantMoves++;
+                else { stagnantMoves = 0; lastTurn = cur.TurnNumber; lastPhase = cur.CurrentPhase; }
+                if (stagnantMoves > 12) break;
+
+                var solver = cur.ActivePlayerId == 1 ? s1 : s2;
+                var best = solver.FindBestMoves(cur).FirstOrDefault();
+                if (best?.Command != null) engine.ExecuteCommand(best.Command);
+                else engine.ExecuteCommand(new EndPhaseCommand(cur.ActivePlayerId));
+            }
+
+            var fs = engine.CurrentState;
+            float Calc(PlayerState p, PlayerState o, BoardState b) =>
+                (30 - o.Health) * 220f + p.Health * 70f +
+                b.GetAllUnits().Where(u => u.OwnerPlayerId == p.PlayerId).Sum(u => u.CurrentStats.Attack * 35f + u.CurrentStats.Health * 25f) +
+                p.Hand.Count * 100f;
+
+            float p1S = Calc(fs.PlayerA, fs.PlayerB, fs.Board);
+            float p2S = Calc(fs.PlayerB, fs.PlayerA, fs.Board);
+            if (engine.WinnerId == 1) p1S += 60000f; else if (engine.WinnerId == 2) p2S += 60000f;
+
+            return (engine.WinnerId ?? 0, p1S, p2S);
         }
 
         private (bool won, float score) RunCoEvolutionaryMctsTest(GeneticIndividual b, GeneticIndividual master, int time)
         {
-            var seed = new Random().Next();
+            var seed = _threadRng.Value.Next();
             var rng = new DeterministicRng(seed);
             var factory = new CardGame.Core.Cards.Factories.CardFactory(CardLibrary.Instance, rng);
-            var engine = new GameEngine(GameState.Initial(1, b.DeckDNA.Select(id => factory.CreateCard(id, 1)).ToList(), b.DeckDNA.Select(id => factory.CreateCard(id, 2)).ToList(), rng), seed);
+            var engine = new GameEngine(GameState.Initial(1,
+                b.DeckDNA.Select(id => factory.CreateCard(id, 1)).ToList(),
+                b.DeckDNA.Select(id => factory.CreateCard(id, 2)).ToList(), rng), seed);
 
-            var s1 = new BotSolver(engine, 1, new EvolvableStrategy(b.StrategyDNA), 5, 4);
+            while (engine.CurrentState.CurrentPhase == GamePhase.Mulligan)
+            {
+                engine.ExecuteCommand(new ConfirmMulliganCommand(1, new()));
+                engine.ExecuteCommand(new ConfirmMulliganCommand(2, new()));
+            }
 
-            // Jeśli mamy Mastera, MCTS używa jego strategii. Jeśli nie (start gry), używa Standardu.
-            IAIStrategy masterHeuristic = (master != null) ? new EvolvableStrategy(master.StrategyDNA) : new StandardStrategy();
+            var s1 = new BotSolver(engine, 1, new EvolvableStrategy(b.StrategyDNA), 4, 4);
+            IAIStrategy masterHeuristic = master != null ? new EvolvableStrategy(master.StrategyDNA) : new StandardStrategy();
             var s2 = new MctsSolver(engine, 2, masterHeuristic);
 
             int moves = 0;
-            while (!engine.IsGameOver && moves++ < 300)
+            while (!engine.IsGameOver && moves++ < 150)
             {
                 var cur = engine.CurrentState;
-                if (cur.CurrentPhase == GamePhase.Mulligan) { engine.ExecuteCommand(new ConfirmMulliganCommand(cur.ActivePlayerId, new())); continue; }
                 if (cur.ActivePlayerId == 1)
                 {
                     var best = s1.FindBestMoves(cur).FirstOrDefault();
                     if (best != null) engine.ExecuteCommand(best.Command);
                     else engine.ExecuteCommand(new EndPhaseCommand(1));
                 }
-                else
-                {
-                    var bestMcts = s2.FindBestMove(cur, time);
-                    engine.ExecuteCommand(bestMcts.Command);
-                }
+                else engine.ExecuteCommand(s2.FindBestMove(cur, time).Command);
             }
-            var s = engine.CurrentState;
-            float fit = (30 - s.PlayerB.Health) * 350f + s.PlayerA.Health * 120f + s.PlayerA.Hand.Count * 180f;
+            float fit = (30 - engine.CurrentState.PlayerB.Health) * 350f + engine.CurrentState.PlayerA.Health * 120f;
             return (engine.WinnerId == 1, fit);
-        }
-
-        private (int winner, float p1Score, float p2Score) SimulateFastMatchWithFitness(GeneticIndividual b1, GeneticIndividual b2, int depth, int beam, int startId)
-        {
-            var seed = _threadRng.Value.Next();
-            var rng = new DeterministicRng(seed);
-            var factory = new CardGame.Core.Cards.Factories.CardFactory(CardLibrary.Instance, rng);
-            var engine = new GameEngine(GameState.Initial(startId, b1.DeckDNA.Select(id => factory.CreateCard(id, 1)).ToList(), b2.DeckDNA.Select(id => factory.CreateCard(id, 2)).ToList(), rng), seed);
-            var s1 = new BotSolver(engine, 1, new EvolvableStrategy(b1.StrategyDNA), beam, depth);
-            var s2 = new BotSolver(engine, 2, new EvolvableStrategy(b2.StrategyDNA), beam, depth);
-            int moves = 0;
-            while (!engine.IsGameOver && moves++ < 350)
-            {
-                var cur = engine.CurrentState;
-                int actorId = cur.ActivePlayerId;
-                if (cur.CurrentPhase == GamePhase.Mulligan)
-                {
-                    if (cur.PlayersReady.Contains(1) && !cur.PlayersReady.Contains(2)) actorId = 2;
-                    else if (cur.PlayersReady.Contains(2) && !cur.PlayersReady.Contains(1)) actorId = 1;
-                }
-                var solver = actorId == 1 ? s1 : s2;
-                var best = solver.FindBestMoves(cur).FirstOrDefault();
-                if (best != null)
-                {
-                    if (engine.ExecuteCommand(best.Command).NewState == cur)
-                    {
-                        if (cur.CurrentPhase == GamePhase.Mulligan) engine.ExecuteCommand(new ConfirmMulliganCommand(actorId, new List<int>()));
-                        else engine.ExecuteCommand(new EndPhaseCommand(actorId));
-                    }
-                }
-                else engine.ExecuteCommand(new EndPhaseCommand(actorId));
-            }
-            var fs = engine.CurrentState;
-            float Calc(PlayerState p, PlayerState o, BoardState b) => (30 - o.Health) * 220f + p.Health * 70f + b.GetAllUnits().Where(u => u.OwnerPlayerId == p.PlayerId).Sum(u => u.CurrentStats.Attack + u.CurrentStats.Health) * 45f + p.Hand.Count * 110f;
-            float p1S = Calc(fs.PlayerA, fs.PlayerB, fs.Board);
-            float p2S = Calc(fs.PlayerB, fs.PlayerA, fs.Board);
-            if (engine.WinnerId == 1) p1S += 120000f;
-            else if (engine.WinnerId == 2) p2S += 120000f;
-            else { if (p1S > p2S) p1S += 15000f; else p2S += 15000f; }
-            return (engine.WinnerId ?? 0, p1S, p2S);
         }
 
         private List<GeneticIndividual> BreedTournament(List<GeneticIndividual> sorted, int gen, int stag)
         {
             var next = new List<GeneticIndividual>();
             var localRng = _threadRng.Value;
-            int eliteCount = (stag > 8) ? 1 : 4;
+
+            // ELITYZM (Więcej elit, by szlifować sukcesy)
+            int eliteCount = stag > 8 ? 2 : 6;
             for (int i = 0; i < eliteCount; i++) next.Add(sorted[i].Clone());
-            while (next.Count < 22) next.Add(CreateRandomIndividual(gen));
+
+            // IMIGRANCI (Zawsze potrzebna świeża krew)
+            int immigrants = stag > 5 ? 25 : 10;
+            while (next.Count < eliteCount + immigrants) next.Add(CreateRandomIndividual(gen));
+
             while (next.Count < PopulationSize)
             {
-                var pA = TournamentSelect(sorted, 8, localRng);
-                var pB = TournamentSelect(sorted, 8, localRng);
+                var pA = TournamentSelect(sorted, 10, localRng);
+                var pB = TournamentSelect(sorted, 10, localRng);
                 float[] dna = new float[DNA.TOTAL_GENES];
-                float w = (float)localRng.NextDouble();
+                float weight = (float)localRng.NextDouble();
+
                 for (int i = 0; i < DNA.TOTAL_GENES; i++)
                 {
-                    // Mikro-mutacja dynamiczna zależna od stagnacji
-                    float drift = (stag > 10) ? 3.0f : 1.2f;
-                    dna[i] = Math.Clamp((pA.StrategyDNA[i] * w) + (pB.StrategyDNA[i] * (1f - w)) + (localRng.NextDouble() < 0.15 ? (float)(localRng.NextDouble() * drift - (drift / 2)) : 0), 0, 10);
+                    double roll = localRng.NextDouble();
+                    if (roll < 0.03) // Mutacja ekstremalna (Rzadziej niż wcześniej)
+                        dna[i] = localRng.Next(0, 2) == 0 ? 0.3f : 9.7f;
+                    else if (roll < 0.25) // NOWOŚĆ: Mikro-tuning (Szlifowanie wartości)
+                        dna[i] = Math.Clamp(pA.StrategyDNA[i] * weight + pB.StrategyDNA[i] * (1f - weight) + (float)(localRng.NextDouble() * 0.4 - 0.2), 0, 10);
+                    else // Standardowy Crossover
+                        dna[i] = Math.Clamp(pA.StrategyDNA[i] * weight + pB.StrategyDNA[i] * (1f - weight), 0, 10);
                 }
+
+                // Chunk Crossover dla Decku
                 int[] childDeck = new int[30];
-                int[] deckA = pA.DeckDNA.OrderBy(x => x).ToArray();
-                int[] deckB = pB.DeckDNA.OrderBy(x => x).ToArray();
-                for (int i = 0; i < 30; i++) childDeck[i] = localRng.NextDouble() > 0.5 ? deckA[i] : deckB[i];
-                if (localRng.NextDouble() < (stag > 8 ? 0.65 : 0.15))
+                int split = localRng.Next(5, 25);
+                for (int i = 0; i < 30; i++) childDeck[i] = i < split ? pA.DeckDNA[i] : pB.DeckDNA[i];
+
+                // Mutacja Decku (rzadsza, by nie psuć synergii)
+                if (localRng.NextDouble() < (stag > 6 ? 0.5 : 0.15))
                 {
-                    int ch = (stag > 8) ? 22 : 4;
-                    for (int j = 0; j < ch; j++)
-                    {
-                        int slot = localRng.Next(30);
-                        if (localRng.NextDouble() < 0.35) childDeck[slot] = childDeck[localRng.Next(30)];
-                        else childDeck[slot] = _collectibleCardIds[localRng.Next(_collectibleCardIds.Length)];
-                    }
+                    int changes = stag > 8 ? 8 : 2;
+                    for (int j = 0; j < changes; j++) childDeck[localRng.Next(30)] = _collectibleCardIds[localRng.Next(_collectibleCardIds.Length)];
                 }
                 LegalizeDeck(childDeck, localRng);
                 next.Add(new GeneticIndividual(dna, childDeck, gen));
             }
             return next;
+        }
+
+        private void UpdateUsageCache()
+        {
+            var allCards = _population.SelectMany(p => p.DeckDNA).ToList();
+            if (!allCards.Any()) return;
+            int total = allCards.Count;
+            _usageCache = allCards.GroupBy(id => id).ToDictionary(g => g.Key, g => (float)g.Count() / total);
+        }
+
+        private float CalculateSimilarity(GeneticIndividual a, GeneticIndividual b)
+        {
+            var d1 = a.DeckDNA.OrderBy(x => x).ToArray(); var d2 = b.DeckDNA.OrderBy(x => x).ToArray();
+            int shared = 0; for (int i = 0; i < 30; i++) if (d1[i] == d2[i]) shared++;
+            return shared / 30f;
         }
 
         private GeneticIndividual CreateRandomIndividual(int gen)
@@ -328,10 +1890,9 @@ namespace CardGame.ConsoleApp.Evolution
             for (int i = 0; i < 30; i++)
             {
                 int id = deck[i];
-                if (id >= 900 || (counts.ContainsKey(id) && counts[id] >= 3))
+                if (id >= 900 || counts.ContainsKey(id) && counts[id] >= 3)
                 {
-                    int r;
-                    do { r = _collectibleCardIds[rng.Next(_collectibleCardIds.Length)]; } while (counts.ContainsKey(r) && counts[r] >= 3);
+                    int r; do { r = _collectibleCardIds[rng.Next(_collectibleCardIds.Length)]; } while (counts.ContainsKey(r) && counts[r] >= 3);
                     deck[i] = id = r;
                 }
                 if (!counts.ContainsKey(id)) counts[id] = 0; counts[id]++;
@@ -350,12 +1911,12 @@ namespace CardGame.ConsoleApp.Evolution
 
 ========================================
 FILE: GeneticIndividual.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\GeneticIndividual.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\V1_Legacy\GeneticIndividual.cs
 ========================================
 using System;
 using System.Text.Json.Serialization;
 
-namespace CardGame.ConsoleApp.Evolution // <--- DODANO BRAKUJĄCY NAMESPACE
+namespace CardGame.ConsoleApp.Evolution.V1_Legacy // <--- DODANO BRAKUJĄCY NAMESPACE
 {
     public class GeneticIndividual
     {
@@ -366,6 +1927,7 @@ namespace CardGame.ConsoleApp.Evolution // <--- DODANO BRAKUJĄCY NAMESPACE
         public int GamesPlayed { get; set; }
         public float Fitness { get; set; }
         public int Generation { get; set; }
+        public float DeckNoveltyScore { get; set; }
 
         [JsonIgnore]
         public float WinRate => GamesPlayed == 0 ? 0 : (float)Wins / GamesPlayed;
@@ -389,1408 +1951,6 @@ namespace CardGame.ConsoleApp.Evolution // <--- DODANO BRAKUJĄCY NAMESPACE
                 GamesPlayed = 0,
                 Fitness = 0
             };
-        }
-    }
-}
-
-
-========================================
-FILE: CardGame.Core.csproj
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\CardGame.Core.csproj
-========================================
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-</Project>
-
-
-
-========================================
-FILE: AIPlayerController.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\AIPlayerController.cs
-========================================
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.AI.Strategies;
-using CardGame.Core.Application;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-using CardGame.Core.AI.Logic;
-using CardGame.Core.AI.Logic.Mcts; // Upewnij się, że masz ten namespace
-
-namespace CardGame.Core.AI
-{
-    public enum AISolverType
-    {
-        BeamSearch, // Stary, szybki solver heurystyczny
-        MCTS        // Nowy, zaawansowany solver Monte Carlo
-    }
-
-    public class AIPlayerController
-    {
-        public int BotPlayerId { get; }
-        private readonly GameEngine _gameEngine;
-
-        // Dwa solvery - używamy jednego w zależności od konfiguracji
-        public readonly BotSolver BeamSolver;
-        private readonly MctsSolver _mctsSolver;
-
-        private readonly AISolverType _solverType;
-        private bool _isRunning = false;
-
-        public AIPlayerController(GameEngine gameEngine, int botPlayerId, IAIStrategy strategy, AISolverType solverType)
-        {
-            _gameEngine = gameEngine;
-            BotPlayerId = botPlayerId;
-            _solverType = solverType;
-
-            // Inicjalizacja obu (lub leniwa inicjalizacja, ale tu dla uproszczenia oba)
-            // Beam Search: Width 4, Depth 5 (standardowe ustawienia)
-            BeamSolver = new BotSolver(_gameEngine, BotPlayerId, strategy, beamWidth: 4, maxDepth: 5);
-
-            // MCTS używa tej samej strategii do oceny liści
-            _mctsSolver = new MctsSolver(_gameEngine, BotPlayerId, strategy);
-        }
-
-        public async void StartAutoPlay()
-        {
-            if (_isRunning) return;
-            _isRunning = true;
-
-            while (!_gameEngine.IsGameOver)
-            {
-                var state = _gameEngine.CurrentState;
-
-                // 1. FAZA MULLIGAN (Wymiana kart)
-                if (state.CurrentPhase == GamePhase.Mulligan)
-                {
-                    if (!state.PlayersReady.Contains(BotPlayerId))
-                    {
-                        // Tu można dodać logikę inteligentnego mulliganu w przyszłości
-                        _gameEngine.ExecuteCommand(new ConfirmMulliganCommand(BotPlayerId, new System.Collections.Generic.List<int>()));
-                    }
-                    await Task.Delay(100);
-                    continue;
-                }
-
-                // 2. TURA BOTA
-                if (state.ActivePlayerId == BotPlayerId)
-                {
-                    // Symulacja czasu myślenia (ważne dla UX)
-                    await Task.Delay(500);
-
-                    IGameCommand bestCommand = null;
-                    string moveLog = "";
-
-                    // --- WYBÓR ALGORYTMU ---
-                    if (_solverType == AISolverType.MCTS)
-                    {
-                        // MCTS: Myśli przez 1.5 sekundy
-                        var bestMove = _mctsSolver.FindBestMove(state, thinkingTimeMs: 1500);
-                        bestCommand = bestMove.Command;
-                        moveLog = $"[MCTS] Score: {bestMove.Score:F2} | {bestMove.DeepReasoning}";
-                    }
-                    else
-                    {
-                        // BEAM SEARCH (Stary): Działa natychmiastowo
-                        var evaluatedMoves = BeamSolver.FindBestMoves(state);
-                        if (evaluatedMoves.Any())
-                        {
-                            var best = evaluatedMoves.First();
-                            bestCommand = best.Command;
-                            moveLog = $"[BEAM] Score: {best.Score:F0} | {best.Description}";
-                        }
-                        else
-                        {
-                            bestCommand = new EndPhaseCommand(BotPlayerId);
-                            moveLog = "[BEAM] Brak ruchów -> EndPhase";
-                        }
-                    }
-
-                    // --- WYKONANIE RUCHU ---
-                    Console.WriteLine($"[P{BotPlayerId}] {moveLog}"); // Logowanie do konsoli (opcjonalne)
-
-                    var result = _gameEngine.ExecuteCommand(bestCommand);
-
-                    // Zabezpieczenie: Jeśli ruch nic nie zmienił (nielegalny/błąd) i nie jest to EndPhase, wymuś koniec tury
-                    // Zapobiega nieskończonym pętlom, gdy bot próbuje zagrać kartę, której nie może.
-                    if (result.NewState == state && !(bestCommand is EndPhaseCommand))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"[CRITICAL] Bot P{BotPlayerId} utknął! Wymuszam koniec tury.");
-                        Console.ResetColor();
-                        _gameEngine.ExecuteCommand(new EndPhaseCommand(BotPlayerId));
-                    }
-                }
-                else
-                {
-                    // Tura przeciwnika - czekaj
-                    await Task.Delay(100);
-                }
-            }
-            _isRunning = false;
-        }
-    }
-}
-
-
-========================================
-FILE: IAIStrategy.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Interfaces\IAIStrategy.cs
-========================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.AI.Interfaces
-{
-    public interface IAIStrategy
-    {
-        float Evaluate(GameState state, int botPlayerId);
-    }
-}
-
-
-
-========================================
-FILE: BotSolver.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\BotSolver.cs
-========================================
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.Application;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CardGame.Core.AI.Logic
-{
-    public class EvaluatedMove
-    {
-        public IGameCommand Command { get; }
-        public float Score { get; }
-        public string Description { get; }
-        public string DeepReasoning { get; }
-
-        public EvaluatedMove(IGameCommand command, float score, string description = "", string deepReasoning = "")
-        {
-            Command = command;
-            Score = score;
-            Description = description;
-            DeepReasoning = deepReasoning;
-        }
-    }
-
-    public class SimulationNode
-    {
-        public GameState State { get; }
-        public IGameCommand? InitialMove { get; }
-        public float Score { get; }
-
-        public SimulationNode(GameState state, IGameCommand? initialMove, float score)
-        {
-            State = state;
-            InitialMove = initialMove;
-            Score = score;
-        }
-    }
-
-    public class BotSolver
-    {
-        private readonly GameEngine _engineTemplate;
-        private readonly MoveGenerator _moveGenerator;
-        private readonly IAIStrategy _strategy;
-        private readonly VirtualOpponent _virtualOpponent;
-        private readonly int _botId;
-
-        // Parametry Beam Search (zmienione z const na pola)
-        private readonly int _beamWidth;
-        private readonly int _maxDepth;
-
-        public BotSolver(GameEngine engine, int botId, IAIStrategy strategy, int beamWidth = 4, int maxDepth = 5)
-        {
-            _engineTemplate = engine;
-            _botId = botId;
-            _strategy = strategy;
-            _moveGenerator = new MoveGenerator();
-            _virtualOpponent = new VirtualOpponent(engine.Factory);
-            _beamWidth = beamWidth;
-            _maxDepth = maxDepth;
-        }
-
-        public List<EvaluatedMove> FindBestMoves(GameState rootState)
-        {
-            var legalMoves = _moveGenerator.GenerateLegalMoves(rootState, _botId);
-            var results = new List<EvaluatedMove>();
-
-            foreach (var move in legalMoves)
-            {
-                var sim = SimulateRoundWithReasoning(rootState, move);
-                string desc = GenerateDescription(move, rootState);
-                results.Add(new EvaluatedMove(move, sim.Score, desc, sim.Reasoning));
-            }
-
-            return results.OrderByDescending(r => r.Score).ToList();
-        }
-
-        private (float Score, string Reasoning) SimulateRoundWithReasoning(GameState rootState, IGameCommand firstMove)
-        {
-            var simulator = new GameEngine(rootState, _engineTemplate.Rng.Seed);
-            GameState state = ExecuteFullAction(simulator, firstMove);
-
-            if (state == rootState && !(firstMove is EndPhaseCommand))
-                return (-3000000f, "Ruch nielegalny");
-
-            var beam = new List<SimulationNode> {
-                new SimulationNode(state, firstMove, _strategy.Evaluate(state, _botId))
-            };
-
-            for (int d = 1; d < _maxDepth; d++)
-            {
-                var nextCandidates = new List<SimulationNode>();
-                foreach (var node in beam)
-                {
-                    bool isBotTurn = node.State.ActivePlayerId == _botId;
-                    var outcome = isBotTurn
-                        ? SimulateAndFindBestOutcomeForBot(node.State)
-                        : SimulateAndFindWorstOutcomeForBot(node.State);
-
-                    nextCandidates.Add(new SimulationNode(outcome.State, node.InitialMove, outcome.Score));
-                }
-
-                if (!nextCandidates.Any()) break;
-                beam = nextCandidates.OrderByDescending(n => n.Score).Take(_beamWidth).ToList();
-            }
-
-            var best = beam.OrderByDescending(n => n.Score).First();
-            GameState finalState = best.State;
-
-            if (finalState.CurrentPhase != GamePhase.Combat && finalState.TurnNumber == rootState.TurnNumber)
-            {
-                var endSim = new GameEngine(finalState, _engineTemplate.Rng.Seed);
-                finalState = endSim.ExecuteCommand(new EndPhaseCommand(finalState.ActivePlayerId)).NewState;
-            }
-
-            return (best.Score, GenerateDeepReasoning(rootState, finalState));
-        }
-
-        private (GameState State, float Score) SimulateAndFindBestOutcomeForBot(GameState currentState)
-        {
-            var moves = _moveGenerator.GenerateLegalMoves(currentState, _botId);
-            float bestScore = float.MinValue;
-            GameState bestState = currentState;
-
-            foreach (var move in moves.Take(6))
-            {
-                var sim = new GameEngine(currentState, _engineTemplate.Rng.Seed);
-                var resState = ExecuteFullAction(sim, move);
-                float score = _strategy.Evaluate(resState, _botId);
-
-                if (score > bestScore)
-                {
-                    bestScore = score;
-                    bestState = resState;
-                }
-            }
-            return (bestState, bestScore);
-        }
-
-        private (GameState State, float Score) SimulateAndFindWorstOutcomeForBot(GameState currentState)
-        {
-            var oppId = currentState.ActivePlayerId;
-            var stateWithPhantom = _virtualOpponent.InjectRealisticPhantomHand(currentState, oppId);
-            var enemyMoves = _moveGenerator.GenerateLegalMoves(stateWithPhantom, oppId);
-
-            float worstForBot = float.MaxValue;
-            GameState worstState = currentState;
-
-            foreach (var move in enemyMoves.Take(6))
-            {
-                var sim = new GameEngine(stateWithPhantom, _engineTemplate.Rng.Seed);
-                var resState = ExecuteFullAction(sim, move);
-                float score = _strategy.Evaluate(resState, _botId);
-                if (score < worstForBot)
-                {
-                    worstForBot = score;
-                    worstState = resState;
-                }
-            }
-            return (worstState, worstForBot);
-        }
-
-        private GameState ExecuteFullAction(GameEngine engine, IGameCommand cmd)
-        {
-            var result = engine.ExecuteCommand(cmd);
-            var state = result.NewState;
-
-            int safety = 0;
-            // ZMNIEJSZONO LIMIT: max 8 interakcji na akcję (np. wybór celu), by ubić pętle 0-cost
-            while (state.PendingInteraction != null && safety++ < 8)
-            {
-                var targets = _moveGenerator.GenerateLegalMoves(state, _botId);
-                if (!targets.Any())
-                {
-                    state = state.With(clearPending: true);
-                    break;
-                }
-
-                IGameCommand bestT = targets.First();
-                float bestV = float.MinValue;
-
-                // Ograniczamy liczbę rozważanych celów dla wydajności
-                foreach (var t in targets.Take(4))
-                {
-                    var testEngine = new GameEngine(state, _engineTemplate.Rng.Seed);
-                    var testState = testEngine.ExecuteCommand(t).NewState;
-                    float v = _strategy.Evaluate(testState, _botId);
-                    if (v > bestV) { bestV = v; bestT = t; }
-                }
-                state = engine.ExecuteCommand(bestT).NewState;
-            }
-            return state;
-        }
-
-        private string GenerateDeepReasoning(GameState start, GameState end)
-        {
-            var pS = start.GetPlayer(_botId); var pE = end.GetPlayer(_botId);
-            var eS = start.GetOpponent(_botId); var eE = end.GetOpponent(_botId);
-            if (eE.Health <= 0) return "!!! LETHAL IN SIGHT !!!";
-            List<string> r = new List<string>();
-            int cD = pE.Hand.Count - pS.Hand.Count;
-            if (cD != 0) r.Add($"Cards:{(cD > 0 ? "+" : "")}{cD}");
-            int hD = eS.Health - eE.Health;
-            if (hD > 0) r.Add($"EnemyDmg:{hD}");
-            if (pE.CurrentBlood > 0 && start.TurnNumber == end.TurnNumber) r.Add($"Save:{pE.CurrentBlood}B");
-            int kills = start.Board.GetAllUnits().Count(u => u.OwnerPlayerId != _botId) -
-                        end.Board.GetAllUnits().Count(u => u.OwnerPlayerId != _botId);
-            if (kills > 0) r.Add($"Kills:{kills}");
-            return r.Count == 0 ? "Hold Position" : "WIZJA: " + string.Join(", ", r);
-        }
-
-        private string GenerateDescription(IGameCommand move, GameState state)
-        {
-            if (move is PlayUnitCommand pu)
-            {
-                var card = state.GetPlayer(_botId).Hand.FirstOrDefault(c => c.InstanceId == pu.CardInstanceId);
-                return $"Play {card?.Definition.Name ?? "Unit"}";
-            }
-            if (move is PlaySpellCommand ps)
-            {
-                var card = state.GetPlayer(_botId).Hand.FirstOrDefault(c => c.InstanceId == ps.CardInstanceId);
-                return $"Cast {card?.Definition.Name ?? "Spell"}";
-            }
-            return move is EndPhaseCommand ? "End Turn" : move.GetType().Name;
-        }
-    }
-}
-
-
-========================================
-FILE: MoveGenerator.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\MoveGenerator.cs
-========================================
-using System.Collections.Generic;
-using System.Linq;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.AI.Logic
-{
-    public class MoveGenerator
-    {
-        public List<IGameCommand> GenerateLegalMoves(GameState state, int playerId)
-        {
-            var moves = new List<IGameCommand>();
-            var player = state.GetPlayer(playerId);
-
-            if (state.CurrentPhase == GamePhase.Mulligan)
-            {
-                if (state.PlayersReady.Contains(playerId)) return moves;
-
-                var hand = player.Hand;
-                int count = hand.Count;
-                for (int i = 0; i < (1 << count); i++)
-                {
-                    var rejectedIds = new List<int>();
-                    for (int j = 0; j < count; j++)
-                    {
-                        if ((i & (1 << j)) != 0) rejectedIds.Add(hand[j].InstanceId);
-                    }
-                    moves.Add(new ConfirmMulliganCommand(playerId, rejectedIds));
-                }
-                return moves;
-            }
-
-            if (state.PendingInteraction != null)
-            {
-                var pending = state.PendingInteraction;
-                if (pending.RequiredTargetType == TargetType.EmptyLane)
-                {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        if (state.Board.Lines[i].IsSlotEmpty(playerId))
-                            moves.Add(new SelectTargetCommand(playerId, i));
-                    }
-                    return moves;
-                }
-
-                if (pending.RequiredTargetType == TargetType.Choice)
-                {
-                    for (int i = 0; i < pending.Options.Count; i++)
-                        moves.Add(new SelectTargetCommand(playerId, i));
-                }
-                else
-                {
-                    var targets = EffectTargetResolver.GetPotentialTargets(pending.RequiredTargetType, state, pending.SourceCardInstanceId);
-                    foreach (var t in targets)
-                        moves.Add(new SelectTargetCommand(playerId, t.InstanceId));
-                }
-                return moves;
-            }
-
-            if (state.CurrentPhase == GamePhase.UnitOnly || state.CurrentPhase == GamePhase.UnitAndAction)
-            {
-                foreach (var card in player.Hand.Where(c => c.Definition.Type == CardType.Unit))
-                {
-                    if (PlayValidator.CanPlay(card, state, playerId))
-                    {
-                        for (int i = 0; i < 4; i++)
-                        {
-                            if (state.Board.Lines[i].IsSlotEmpty(playerId))
-                                moves.Add(new PlayUnitCommand(playerId, card.InstanceId, i));
-                        }
-                    }
-                }
-            }
-
-            if (state.CurrentPhase == GamePhase.ActionOnly || state.CurrentPhase == GamePhase.UnitAndAction)
-            {
-                foreach (var card in player.Hand.Where(c => c.Definition.Type == CardType.Spell))
-                {
-                    if (PlayValidator.CanPlay(card, state, playerId))
-                        moves.Add(new PlaySpellCommand(playerId, card.InstanceId));
-                }
-            }
-
-            moves.Add(new EndPhaseCommand(playerId));
-            return moves;
-        }
-    }
-}
-
-
-========================================
-FILE: VirtualOpponent.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\VirtualOpponent.cs
-========================================
-using System.Collections.Generic;
-using System.Linq;
-using CardGame.Core.Cards.Factories;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.AI.Logic
-{
-    public class VirtualOpponent
-    {
-        private readonly CardFactory _factory;
-
-        public VirtualOpponent(CardFactory factory)
-        {
-            _factory = factory;
-        }
-
-        /// <summary>
-        /// Tworzy kopię stanu gry, w której przeciwnik ma w ręce najbardziej prawdopodobne 
-        /// i niebezpieczne karty ze swojej talii. Pozwala to AI przewidzieć "Punish".
-        /// </summary>
-        public GameState InjectRealisticPhantomHand(GameState state, int enemyPlayerId)
-        {
-            var enemy = state.GetPlayer(enemyPlayerId);
-            var phantomCards = new List<CardInstance>();
-
-            // 1. DECK TRACKING: Analizujemy, co zostało w talii przeciwnika.
-            // Bot "pamięta", jakie karty jeszcze nie zostały zagrane.
-            var availableInDeck = enemy.DrawPile
-                .GroupBy(c => c.Definition.Id)
-                .Select(g => g.First())
-                .OrderByDescending(c => EvaluateDangerLevel(c))
-                .Take(2); // Wstrzykujemy 2 najgroźniejsze potencjalne odpowiedzi
-
-            foreach (var cardDef in availableInDeck)
-            {
-                try
-                {
-                    // Tworzymy wirtualną instancję karty na potrzeby symulacji
-                    int id = int.Parse(cardDef.Definition.Id);
-                    phantomCards.Add(_factory.CreateCard(id, enemyPlayerId));
-                }
-                catch { /* Ignoruj błędy parsowania ID */ }
-            }
-
-            // 2. AKTUALIZACJA STANU SYMULACJI
-            var newEnemyState = enemy;
-            foreach (var c in phantomCards)
-            {
-                // Dodajemy karty do ręki przeciwnika w świecie wirtualnym
-                newEnemyState = newEnemyState.WithCardAddedToHand(c);
-            }
-
-            return state.UpdatePlayer(newEnemyState);
-        }
-
-        /// <summary>
-        /// Ocenia, jak bardzo bot powinien bać się konkretnej karty.
-        /// </summary>
-        private int EvaluateDangerLevel(CardInstance c)
-        {
-            string id = c.Definition.Id;
-
-            // Priorytet 1: Czary niszczące/reaktywne (Snajperzy)
-            if (id == "7") return 10;  // Glock-17 (Bezpośrednie obrażenia)
-            if (id == "31") return 9;  // Silence (Niszczy synergie/Unkillable)
-            if (id == "16") return 8;  // HellFire (AoE - czyści stół)
-            if (id == "18") return 7;  // Final Mission (Sacrifice removal)
-
-            // Priorytet 2: Silne jednostki
-            if (c.CurrentStats.Attack >= 5) return 6;
-            if (c.CurrentStats.Keywords.Contains(CardGame.Core.Cards.Data.Keyword.SplashDamage)) return 5;
-
-            return 1; // Reszta kart jest niskim priorytetem
-        }
-    }
-}   
-
-
-========================================
-FILE: MctsNode.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\MCTS\MctsNode.cs
-========================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.AI.Logic.Mcts
-{
-    public class MctsNode
-    {
-        public GameState State { get; }
-        public MctsNode? Parent { get; }
-        public IGameCommand? MoveEntered { get; } // Ruch, który doprowadził do tego stanu
-        public int PlayerIdJustMoved { get; } // Gracz, który wykonał ruch
-        public List<MctsNode> Children { get; } = new();
-        public List<IGameCommand> UntriedMoves { get; private set; }
-
-        public int Visits { get; private set; }
-        public double Score { get; private set; } // Skumulowany wynik (dla gracza z punktu widzenia korzenia)
-
-        public MctsNode(GameState state, MctsNode? parent, IGameCommand? move, int playerIdJustMoved, MoveGenerator moveGenerator)
-        {
-            State = state;
-            Parent = parent;
-            MoveEntered = move;
-            PlayerIdJustMoved = playerIdJustMoved;
-
-            // Generujemy możliwe ruchy dla gracza, który MA TERAZ RUCH w stanie State
-            UntriedMoves = moveGenerator.GenerateLegalMoves(state, state.ActivePlayerId);
-        }
-
-        public bool IsFullyExpanded => UntriedMoves.Count == 0;
-        public bool IsTerminal => State.PlayerA.Health <= 0 || State.PlayerB.Health <= 0;
-
-        public void Update(double result)
-        {
-            Visits++;
-            Score += result;
-        }
-
-        // UCT (Upper Confidence Bound for Trees) - wzór na wybór najlepszego dziecka
-        public MctsNode GetBestChild(double explorationParameter = 1.41)
-        {
-            // Sortujemy, żeby znaleźć ten z największą wartością UCT
-            return Children.OrderByDescending(child =>
-            {
-                // Ważne: Jeśli to była tura przeciwnika, wynik jest odwrotny dla nas
-                double exploitation = child.Score / child.Visits;
-                double exploration = explorationParameter * Math.Sqrt(Math.Log(Visits) / child.Visits);
-                return exploitation + exploration;
-            }).First();
-        }
-    }
-}
-
-
-========================================
-FILE: MctsSolver.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Logic\MCTS\MctsSolver.cs
-========================================
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.Application;
-using CardGame.Core.Commands.Implementations;
-using CardGame.Core.Commands.Interfaces;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-
-namespace CardGame.Core.AI.Logic.Mcts
-{
-    public class MctsSolver
-    {
-        private readonly GameEngine _engineTemplate;
-        private readonly int _botId;
-        private readonly MoveGenerator _moveGenerator;
-        private readonly VirtualOpponent _virtualOpponent;
-        private readonly IAIStrategy _heuristic;
-        private readonly DeterministicRng _rng;
-
-        // Głębokość symulacji - im głębiej, tym dokładniej, ale wolniej. 20 to solidny kompromis.
-        private const int SIMULATION_DEPTH = 20;
-        // Stała eksploracji - 1.41 (pierwiastek z 2) to teoretyczne optimum.
-        private const double EXPLORATION_CONSTANT = 1.4142;
-
-        public MctsSolver(GameEngine engine, int botId, IAIStrategy heuristic)
-        {
-            _engineTemplate = engine;
-            _botId = botId;
-            _heuristic = heuristic;
-            _moveGenerator = new MoveGenerator();
-            _virtualOpponent = new VirtualOpponent(engine.Factory);
-            _rng = new DeterministicRng(new Random().Next());
-        }
-
-        public EvaluatedMove FindBestMove(GameState rootState, int thinkingTimeMs = 1500)
-        {
-            // 1. Determinization: Zakładamy konkretną (choć zgadywaną) rękę przeciwnika
-            int oppId = rootState.ActivePlayerId == 1 ? 2 : 1;
-            GameState determinizedState = _virtualOpponent.InjectRealisticPhantomHand(rootState, oppId);
-
-            var rootNode = new MctsNode(determinizedState, null, null, _botId, _moveGenerator);
-            var timer = Stopwatch.StartNew();
-            int iterations = 0;
-
-            // 2. Główna pętla MCTS
-            while (timer.ElapsedMilliseconds < thinkingTimeMs)
-            {
-                // A. Selection: Zjazd w dół drzewa do liścia
-                MctsNode node = Select(rootNode);
-
-                // B. Expansion: Dodanie nowego węzła, jeśli gra się nie skończyła
-                if (!node.IsTerminal && !node.IsFullyExpanded)
-                {
-                    node = Expand(node);
-                }
-
-                // C. Simulation (Rollout): Szybka, losowa gra do końca (lub do głębokości)
-                double result = Simulate(node.State);
-
-                // D. Backpropagation: Aktualizacja statystyk w górę drzewa
-                Backpropagate(node, result);
-
-                iterations++;
-            }
-
-            // 3. Wybór ruchu: Najczęściej odwiedzany węzeł jest najbardziej "zaufany"
-            var bestChild = rootNode.Children.OrderByDescending(c => c.Visits).FirstOrDefault();
-
-            if (bestChild == null || bestChild.MoveEntered == null)
-            {
-                return new EvaluatedMove(new EndPhaseCommand(_botId), -999, "Panic Skip");
-            }
-
-            // Statystyka dla człowieka
-            float winProb = (float)(bestChild.Score / bestChild.Visits);
-            string reasoning = $"MCTS: {iterations} iters | WinChance: {winProb:P1} (Visits: {bestChild.Visits})";
-
-            return new EvaluatedMove(bestChild.MoveEntered, winProb, "MCTS Choice", reasoning);
-        }
-
-        private MctsNode Select(MctsNode node)
-        {
-            // Idziemy w głąb dopóki węzeł ma dzieci i jest w pełni rozwinięty (ma dzieci dla wszystkich ruchów)
-            while (!node.IsTerminal && node.IsFullyExpanded && node.Children.Count > 0)
-            {
-                node = node.GetBestChild(EXPLORATION_CONSTANT);
-            }
-            return node;
-        }
-
-        private MctsNode Expand(MctsNode node)
-        {
-            // Wybieramy losowy ruch z listy nierozpatrzonych
-            var move = node.UntriedMoves[_rng.Next(0, node.UntriedMoves.Count)];
-            node.UntriedMoves.Remove(move);
-
-            // Symulujemy ten ruch na kopii silnika
-            var engine = new GameEngine(node.State, _engineTemplate.Rng.Seed);
-            var result = engine.ExecuteCommand(move);
-            var newState = result.NewState;
-
-            // --- SAFETY BREAK: Obsługa PendingInteraction (np. wybór celu) ---
-            int safety = 0;
-            while (newState.PendingInteraction != null && safety++ < 15)
-            {
-                var legalTargets = _moveGenerator.GenerateLegalMoves(newState, newState.ActivePlayerId);
-                if (!legalTargets.Any()) break;
-
-                // Wybieramy losowy cel
-                var randomTarget = legalTargets[_rng.Next(0, legalTargets.Count)];
-                var subResult = engine.ExecuteCommand(randomTarget);
-
-                // Jeśli stan się nie zmienił (zakleszczenie), przerywamy
-                if (subResult.NewState == newState) break;
-                newState = subResult.NewState;
-            }
-
-            // Tworzymy nowy węzeł. Ważne: zapisujemy KTO wykonał ten ruch.
-            var childNode = new MctsNode(newState, node, move, node.State.ActivePlayerId, _moveGenerator);
-            node.Children.Add(childNode);
-            return childNode;
-        }
-
-        private double Simulate(GameState initialState)
-        {
-            var currentState = initialState;
-            // Używamy losowego seeda w symulacji, żeby każda była inna
-            var engine = new GameEngine(currentState, _rng.Next(0,int.MaxValue));
-            int depth = 0;
-
-            while (!IsGameOver(currentState) && depth < SIMULATION_DEPTH)
-            {
-                var moves = _moveGenerator.GenerateLegalMoves(currentState, currentState.ActivePlayerId);
-                if (moves.Count == 0) break;
-
-                // --- OPTYMALIZACJA "KILLER MOVE" ---
-                // Jeśli mamy ruch wygrywający (Lethal), ZAWSZE go wybieramy.
-                // To uczy bota wykańczania przeciwnika i unikania śmierci.
-                var lethalMove = FindLethalMove(currentState, moves);
-
-                IGameCommand selectedMove;
-                if (lethalMove != null)
-                {
-                    selectedMove = lethalMove;
-                }
-                else
-                {
-                    // Heurystyka Epsilon-Greedy:
-                    // 80% szans na zagranie czegoś sensownego (nie-EndPhase), 20% na cokolwiek.
-                    // To zapobiega sytuacji, gdzie bot w symulacji ciągle pasuje.
-                    if (_rng.Next(0, 10) < 8 && moves.Any(m => m is not EndPhaseCommand))
-                    {
-                        var activeMoves = moves.Where(m => m is not EndPhaseCommand).ToList();
-                        selectedMove = activeMoves[_rng.Next(0, activeMoves.Count)];
-                    }
-                    else
-                    {
-                        selectedMove = moves[_rng.Next(0, moves.Count)];
-                    }
-                }
-
-                var result = engine.ExecuteCommand(selectedMove);
-                currentState = result.NewState;
-
-                // --- SAFETY BREAK w Symulacji ---
-                int safety = 0;
-                while (currentState.PendingInteraction != null && safety++ < 15)
-                {
-                    var targets = _moveGenerator.GenerateLegalMoves(currentState, currentState.ActivePlayerId);
-                    if (!targets.Any()) break;
-
-                    var rndTarget = targets[_rng.Next(0, targets.Count)];
-                    var subResult = engine.ExecuteCommand(rndTarget);
-
-                    if (subResult.NewState == currentState) break;
-                    currentState = subResult.NewState;
-                }
-
-                depth++;
-            }
-
-            // OCENA STANU KOŃCOWEGO
-            // Zwracamy wynik z perspektywy BOTA (_botId)
-            // 1.0 = Bot Wygrał / 0.0 = Bot Przegrał
-            if (IsGameOver(currentState))
-            {
-                if (currentState.PlayerA.Health <= 0 && _botId == 2) return 1.0;
-                if (currentState.PlayerB.Health <= 0 && _botId == 1) return 1.0;
-                return 0.0; // Przegrana
-            }
-
-            // Jeśli gra się nie skończyła, używamy heurystyki z DNA
-            float heuristicScore = _heuristic.Evaluate(currentState, _botId);
-
-            // Sigmoida spłaszcza wynik (np. -5000 do +5000) do zakresu (0.0 do 1.0)
-            // Dzielnik 4000.0f "rozciąga" czułość - bot rozróżni małą przewagę od dużej.
-            return Sigmoid(heuristicScore / 4000.0f);
-        }
-
-        private void Backpropagate(MctsNode node, double result)
-        {
-            // result = wynik z perspektywy GŁÓWNEGO BOTA (_botId)
-            // 1.0 = Bot wygrywa, 0.0 = Bot przegrywa
-
-            MctsNode? temp = node;
-            while (temp != null)
-            {
-                // LOGIKA NEGAMAX / MINMAX:
-                // Każdy węzeł przechowuje statystykę "Jak dobry był ten ruch dla gracza, który go wykonał?"
-
-                double valueForNodeOwner;
-
-                if (temp.PlayerIdJustMoved == _botId)
-                {
-                    // Jeśli to był nasz ruch, i wynik jest dobry (1.0), to super.
-                    valueForNodeOwner = result;
-                }
-                else
-                {
-                    // Jeśli to był ruch PRZECIWNIKA, i wynik jest dobry dla NAS (1.0),
-                    // to znaczy, że ten ruch był tragiczny dla przeciwnika (0.0).
-                    valueForNodeOwner = 1.0 - result;
-                }
-
-                temp.Update(valueForNodeOwner);
-                temp = temp.Parent;
-            }
-        }
-
-        // --- Helpery ---
-
-        private IGameCommand? FindLethalMove(GameState s, List<IGameCommand> moves)
-        {
-            // Prosta heurystyka: Sprawdź, czy atakując Hero można wygrać w tym ruchu
-            // Nie symulujemy tutaj całego silnika (za wolno), tylko szybkie sprawdzenie.
-
-            // Jeśli to faza ataku
-            if (s.CurrentPhase == GamePhase.Combat) return null;
-
-            int enemyHp = s.GetOpponent(s.ActivePlayerId).Health;
-
-            // Szukamy czaru zadającego obrażenia (bardzo uproszczone)
-            foreach (var m in moves)
-            {
-                if (m is PlaySpellCommand psc)
-                {
-                    // Tutaj można dodać logikę sprawdzającą, czy karta to np. Fireball w Hero
-                    // Wymagałoby dostępu do definicji karty.
-                    // Dla wydajności w tym przykładzie pomijam głęboką analizę kart.
-                }
-            }
-            return null;
-        }
-
-        private bool IsGameOver(GameState s) => s.PlayerA.Health <= 0 || s.PlayerB.Health <= 0;
-
-        private double Sigmoid(double value) => 1.0 / (1.0 + Math.Exp(-value));
-    }
-}
-
-
-========================================
-FILE: BalanceStrategy.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Strategies\BalanceStrategy.cs
-========================================
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Logic;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CardGame.Core.AI.Strategies
-{
-    public class BalanceStrategy : IAIStrategy
-    {
-        // Wagi globalne do łatwego tuningu
-        private const float HealthWeight = 15.0f;
-        private const float BoardWeight = 25.0f;
-        private const float HandValueWeight = 12.0f;
-
-        public float Evaluate(GameState state, int botPlayerId)
-        {
-            var bot = state.GetPlayer(botPlayerId);
-            var enemy = state.GetOpponent(botPlayerId);
-
-            // --- KLUCZOWA POPRAWKA: DETEKCJA KOŃCA GRY (z HEAD) ---
-            if (bot.Health <= 0) return -1000000f; // Przegrana to absolutne dno
-            if (enemy.Health <= 0) return 1000000f; // Wygrana to absolutny priorytet
-
-            float score = 2000.0f; // Baza punktowa
-
-            // --- 1. ANALIZA STRATEGII I NASTROJU ---
-            var hand = bot.Hand;
-            int unitCount = hand.Count(c => c.Definition.Type == CardType.Unit);
-            int spellCount = hand.Count(c => c.Definition.Type == CardType.Spell);
-
-            bool isMarkStrategy = hand.Any(IsMarkCard) || state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && IsMarkCard(u));
-            bool isSacrificeStrategy = hand.Any(IsSacrificeCard) || state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && IsSacrificeCard(u));
-
-            // AggroMood: Jeśli mamy dużo jednostek, gramy ofensywnie
-            bool isAggroMood = unitCount > spellCount;
-
-            // --- 2. ZASOBY I TEMPO ---
-            float spentBlood = bot.MaxBlood - bot.CurrentBlood;
-            if (state.CurrentPhase == GamePhase.UnitOnly)
-            {
-                score += spentBlood * (isAggroMood ? 20.0f : 5.0f);
-            }
-            else
-            {
-                score += spentBlood * 25.0f;
-            }
-
-            // Kara za PASS, gdy stać nas na zagranie czegokolwiek (zwiększona kara z HEAD)
-            if (state.ActivePlayerId == botPlayerId && bot.CurrentBlood > 0)
-            {
-                if (hand.Any(c => c.CurrentStats.BloodCost <= bot.CurrentBlood))
-                    score -= 300.0f;
-            }
-
-            // --- 3. ŻYCIE BOHATERA (Nieliniowe) ---
-            float hpDiff = bot.Health - enemy.Health;
-            score += hpDiff * HealthWeight;
-
-            // Panic Mode: Poniżej 12 HP bot traktuje każdy punkt życia jak skarb
-            if (bot.Health < 12)
-                score -= (15 - bot.Health) * 20.0f;
-
-            // Lethal focus: Jeśli wróg ma mało HP, bot staje się agresywny
-            if (enemy.Health < 5)
-                score += 200.0f;
-
-            // --- 4. PLANSZA (Linie, Splash, Trade Analysis) ---
-            bool hasGerard = state.Board.GetAllUnits().Any(u => u.OwnerPlayerId == botPlayerId && u.Definition.Name.Contains("Gerard"));
-            var enemyUnits = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId != botPlayerId).ToList();
-
-            for (int i = 0; i < 4; i++)
-            {
-                var line = state.Board.Lines[i];
-                var myUnit = (botPlayerId == 1) ? line.Player1Unit : line.Player2Unit;
-                var enUnit = (botPlayerId == 1) ? line.Player2Unit : line.Player1Unit;
-
-                // Sumujemy obecność na planszy (wrogowie są nieco "drożsi", by bot chciał ich usuwać)
-                score += EvaluateUnitPresence(myUnit, enUnit, i, state, hasGerard, true, isMarkStrategy, isSacrificeStrategy) * BoardWeight;
-                score -= EvaluateUnitPresence(enUnit, myUnit, i, state, false, false, false, false) * (BoardWeight * 1.15f);
-            }
-
-            // --- 5. ANALIZA RĘKI (Potencjał opcji) ---
-            foreach (var card in hand)
-            {
-                score += EvaluateCardInHand(card, enemyUnits, isMarkStrategy, isSacrificeStrategy) * HandValueWeight;
-            }
-
-            // Kara za zapchaną rękę (Overdraw risk)
-            if (hand.Count >= 8) score -= 100.0f;
-
-            return score;
-        }
-
-        private float EvaluateUnitPresence(CardInstance? u, CardInstance? opp, int lineIdx, GameState state, bool playerHasGerard, bool isFriendly, bool isMarkStrat, bool isSacStrat)
-        {
-            if (u == null) return 0;
-            var s = u.CurrentStats;
-
-            // Podstawa: Atak (Presja) + HP (Przeżywalność)
-            // Jeśli to wróg, jego atak jest dla nas groźniejszy niż jego HP (priorytet eliminacji)
-            float val = isFriendly
-                ? (s.Attack * 2.5f + s.Health * 1.5f)
-                : (s.Attack * 5.0f + s.Health * 1.5f);
-
-            // Bonus za Splash Damage
-            if (s.Keywords.Contains(Keyword.SplashDamage))
-            {
-                int splashPower = u.Definition.BaseStats.KeywordParams.GetValueOrDefault(Keyword.SplashDamage, 1);
-                int hits = CountSplashTargets(u, lineIdx, state);
-                val += (hits * splashPower * 2.5f);
-            }
-
-            // --- TRADE ANALYSIS ---
-            if (opp != null)
-            {
-                bool iDie = s.Health <= opp.CurrentStats.Attack;
-                bool enemyDies = opp.CurrentStats.Health <= s.Attack;
-
-                if (iDie && !enemyDies) val -= 20.0f; // Fatalny trade
-                if (!iDie && enemyDies) val += 15.0f; // Świetny trade
-            }
-
-            // --- STATUSY I SYNERGIE ---
-            if (s.Keywords.Contains(Keyword.Marked))
-            {
-                if (isFriendly) val -= 40.0f;
-                else val += playerHasGerard ? 60.0f : 20.0f;
-            }
-
-            if (s.Keywords.Contains(Keyword.Stunned)) val *= 0.25f;
-
-            if (s.Keywords.Contains(Keyword.Unkillable)) val += 25.0f;
-
-            if (isSacStrat && (u.Definition.Id == "12" || u.Definition.Id == "3"))
-                val += 15.0f;
-
-            return val;
-        }
-
-        private float EvaluateCardInHand(CardInstance card, List<CardInstance> enemyUnits, bool isMarkStrat, bool isSacStrat)
-        {
-            float val = 1.0f;
-
-            if (isMarkStrat && IsMarkCard(card)) val += 2.0f;
-            if (isSacStrat && IsSacrificeCard(card)) val += 2.0f;
-            if (card.CurrentStats.Keywords.Contains(Keyword.Unkillable)) val += 2.5f;
-
-            if (card.Definition.Type == CardType.Spell && card.Definition.Effects.Any(e => e.Actions.Any(a => a.Type == ActionType.DealDamage)))
-            {
-                if (enemyUnits.Any(u => u.CurrentStats.Health <= 3)) val += 3.0f;
-            }
-
-            return val;
-        }
-
-        private int CountSplashTargets(CardInstance u, int lineIdx, GameState state)
-        {
-            int hits = 0;
-            int opponentId = 3 - u.OwnerPlayerId;
-            foreach (int n in new[] { lineIdx - 1, lineIdx + 1 })
-            {
-                if (n >= 0 && n < 4)
-                {
-                    var neighborLine = state.Board.Lines[n];
-                    var potentialVictim = (opponentId == 1) ? neighborLine.Player1Unit : neighborLine.Player2Unit;
-                    if (potentialVictim != null) hits++;
-                }
-            }
-            return hits;
-        }
-
-        private bool IsMarkCard(CardInstance c) => new[] { "4", "32", "24", "25", "26" }.Contains(c.Definition.Id);
-        private bool IsSacrificeCard(CardInstance c) => new[] { "12", "10", "11", "3", "9" }.Contains(c.Definition.Id);
-    }
-}
-
-
-========================================
-FILE: EvolableStategy.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Strategies\EvolableStategy.cs
-========================================
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.Cards.Data;
-using CardGame.Core.Cards.Models;
-using CardGame.Core.State.Enums;
-using CardGame.Core.State.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CardGame.Core.AI.Strategies
-{
-    public class EvolvableStrategy : IAIStrategy
-    {
-        public float[] DNA { get; }
-
-        public EvolvableStrategy(float[] genes)
-        {
-            // Zabezpieczenie rozmiaru DNA (aktualizacja do 109 genów)
-            if (genes != null && genes.Length < 109)
-            {
-                var newDna = new float[109];
-                Array.Copy(genes, newDna, genes.Length);
-                DNA = newDna;
-            }
-            else
-            {
-                DNA = genes ?? new float[109];
-            }
-        }
-
-        public float Evaluate(GameState state, int botId)
-        {
-            var bot = state.GetPlayer(botId);
-            var enemy = state.GetOpponent(botId);
-
-            // Natychmiastowe stany końca gry
-            if (enemy.Health <= 0 && bot.Health > 0) return 10000000f;
-            if (bot.Health <= 0) return -10000000f;
-            if (state.CurrentPhase == GamePhase.Mulligan)
-            {
-                return EvaluateMulliganHand(state.GetPlayer(botId));
-            }
-
-            // Archetypy i wagi nastroju
-            float aggroFactor = DNA[65] * (bot.Health > 15 ? 1.0f : DNA[90]);
-            float controlFactor = DNA[66];
-            float tempoFactor = DNA[67];
-            float valueFactor = DNA[68];
-            float comboFactor = DNA[108]; // NOWY GEN
-
-            float totalScore = 0f;
-
-            // Główna analiza
-            totalScore += EvaluateMacroEconomy(state, bot, enemy, valueFactor, comboFactor);
-            totalScore += EvaluateBoardGeometry(state, botId, tempoFactor);
-            totalScore += EvaluateUnitsAndSynergies(state, botId, aggroFactor, controlFactor, comboFactor);
-            totalScore += EvaluateForecasting(state, bot, enemy);
-
-            // Specyficzna punktacja dla Combo: Premia za zniżki kosztów w ręku
-            float totalDiscounts = bot.Hand.Sum(c => c.CostReduction);
-            totalScore += totalDiscounts * 25.0f * comboFactor;
-
-            return totalScore;
-        }
-        private float EvaluateMulliganHand(PlayerState player)
-        {
-            float score = 0;
-            foreach (var card in player.Hand)
-            {
-                bool isUnit = card.Definition.Type == CardType.Unit;
-                float cost = card.CurrentStats.BloodCost;
-
-                // Gen 71: Preferencja niskiego kosztu jednostek na start
-                // DNA[71] to idealny koszt. Im dalej karta od tego kosztu, tym gorzej.
-                if (isUnit)
-                {
-                    if (cost <= DNA[71]) score += 1000f; // Bardzo chcemy jednostki 1-2 dropy
-                    else score -= (cost - DNA[71]) * 500f; // Kara za "cegły" na ręce
-                }
-                else // Spelle
-                {
-                    // Gen 72: Czy bot lubi trzymać czary?
-                    score += DNA[72] * 200f;
-                    // Czary zazwyczaj chcemy odrzucić, chyba że są bardzo tanie
-                    if (cost > 2) score -= 1000f;
-                }
-
-                // Gen 73: Czy karta jest częścią combo? (np. Black Cat dla decku Sacrifice)
-                if (new[] { "12", "3", "10" }.Contains(card.Definition.Id))
-                    score += DNA[73] * 300f;
-            }
-            return score;
-        }
-
-        private float EvaluateMacroEconomy(GameState state, PlayerState bot, PlayerState enemy, float valueFactor, float comboFactor)
-        {
-            float score = 0;
-
-            // Życie bohatera
-            float selfHpValue = bot.Health * DNA[0];
-            if (bot.Health < 10) selfHpValue *= DNA[2]; // Panic threshold
-            score += selfHpValue;
-
-            float enemyHpLoss = (30 - enemy.Health) * DNA[1];
-            if (enemy.Health < 10) enemyHpLoss *= DNA[3]; // Lethal fever
-            score += enemyHpLoss;
-
-            // Wartość kart na ręce (wzmocniona przez Combo)
-            float handValueMultiplier = 1.0f + (comboFactor * 0.5f);
-            score += bot.Hand.Count * DNA[6] * valueFactor * handValueMultiplier;
-
-            if (bot.Hand.Count >= 7) score -= DNA[7]; // Overdraw risk
-
-            // Ekonomia zasobów (Gen 105 - ResourceGainValue)
-            score += bot.CurrentBlood * DNA[105];
-
-            if (state.ActivePlayerId == bot.PlayerId)
-            {
-                float unusedBloodPenalty = bot.CurrentBlood * DNA[4];
-                if (state.CurrentPhase == GamePhase.UnitOnly)
-                    unusedBloodPenalty *= DNA[5];
-                score -= unusedBloodPenalty;
-            }
-
-            // Finishery w talii
-            float finishersInDeck = bot.DrawPile.Count(c => c.CurrentStats.Attack >= 5);
-            score += finishersInDeck * DNA[46] * DNA[48];
-
-            return score;
-        }
-
-        private float EvaluateBoardGeometry(GameState state, int botId, float tempoFactor)
-        {
-            float score = 0;
-            int occupiedLines = state.Board.Lines.Count(l => !l.IsSlotEmpty(botId));
-            score += occupiedLines * DNA[77] * tempoFactor;
-
-            foreach (var line in state.Board.Lines)
-            {
-                var myU = botId == 1 ? line.Player1Unit : line.Player2Unit;
-                var enU = botId == 1 ? line.Player2Unit : line.Player1Unit;
-
-                if (myU != null)
-                {
-                    if (enU == null) score += DNA[12]; // Empty lane bonus
-                    if (line.Index == 0 || line.Index == 3) score += DNA[78]; // Corner value
-                    if (HasNeighbor(state, line.Index, botId)) score += DNA[14]; // Adjacency
-
-                    // Priorytety linii (Geny 100-103)
-                    score += myU.CurrentStats.Attack * DNA[100 + line.Index];
-                }
-            }
-            return score;
-        }
-
-        private float EvaluateUnitsAndSynergies(GameState state, int botId, float aggroFactor, float controlFactor, float comboFactor)
-        {
-            float score = 0;
-            var units = state.Board.GetAllUnits();
-
-            foreach (var u in units)
-            {
-                bool isFriendly = u.OwnerPlayerId == botId;
-                var s = u.CurrentStats;
-                float uVal = 0;
-                int lineIdx = GetLineIndex(state, u.InstanceId);
-
-                // Bazowe statystyki z uwzględnieniem archetypów
-                if (isFriendly)
-                {
-                    uVal += s.Attack * DNA[8] * aggroFactor;
-                    uVal += s.Health * DNA[9];
-                    if (lineIdx != -1) uVal += s.Attack * DNA[100 + lineIdx];
-                }
-                else
-                {
-                    uVal += s.Attack * DNA[10] * controlFactor;
-                    uVal += s.Health * DNA[11];
-                    if (lineIdx != -1) uVal += s.Attack * DNA[100 + lineIdx];
-                }
-
-                // Keywordy i statusy
-                if (s.Keywords.Contains(Keyword.Marked))
-                {
-                    float markBonus = isFriendly ? -DNA[16] : DNA[15];
-                    uVal += markBonus;
-                }
-
-                if (s.Keywords.Contains(Keyword.Unkillable)) uVal += DNA[18];
-                if (s.Keywords.Contains(Keyword.SoulGuard)) uVal += DNA[19];
-
-                // NOWE: Flying (Gen 104)
-                if (s.Keywords.Contains(Keyword.Flying)) uVal += DNA[104] * 2.0f;
-
-                if (s.Keywords.Contains(Keyword.SplashDamage) && lineIdx != -1)
-                {
-                    int neighborCount = CountEnemyNeighbors(state, lineIdx, botId);
-                    uVal += neighborCount * DNA[22];
-                }
-
-                // Podtypy i synergie (NOWE: DNA[107] dla Maszyn)
-                if (u.Definition.Subtypes.Contains("Monster")) uVal += DNA[27];
-                if (u.Definition.Subtypes.Contains("Mercenary")) uVal += DNA[28];
-                if (u.Definition.Subtypes.Contains("Machine")) uVal += DNA[30] + DNA[107];
-
-                // NOWE: Token Synergy (Gen 106)
-                if (u.Definition.Id == "901" || u.Definition.Id == "500") uVal += DNA[106];
-
-                // Buff stałe (Gen 49)
-                if (u.PermanentBuffs.Attack > 0 || u.PermanentBuffs.Health > 0)
-                {
-                    uVal += (u.PermanentBuffs.Attack + u.PermanentBuffs.Health) * DNA[49];
-                }
-
-                // Specyficzne dla Combo: Tea Maid (ID 45)
-                if (isFriendly && u.Definition.Id == "45") uVal += 60.0f * comboFactor;
-
-                score += isFriendly ? uVal : -uVal;
-            }
-
-            return score;
-        }
-
-        private float EvaluateForecasting(GameState state, PlayerState bot, PlayerState enemy)
-        {
-            float score = 0;
-            // Przewidywanie AoE wroga
-            if (state.Board.GetAllUnits().Count(u => u.OwnerPlayerId == bot.PlayerId) >= 3)
-            {
-                if (enemy.MaxBlood >= 4) score -= DNA[85]; // Fear of Hellfire
-            }
-
-            score -= enemy.Hand.Count * DNA[44]; // Enemy hand size fear
-
-            // Ryzyko Bluffu
-            if (enemy.CurrentBlood > 0 && state.ActivePlayerId == bot.PlayerId)
-                score -= DNA[81];
-
-            return score;
-        }
-
-        // --- HELPERY GEOMETRYCZNE ---
-
-        private int GetLineIndex(GameState s, int id)
-        {
-            for (int i = 0; i < 4; i++)
-                if (s.Board.Lines[i].Player1Unit?.InstanceId == id || s.Board.Lines[i].Player2Unit?.InstanceId == id) return i;
-            return -1;
-        }
-
-        private bool HasNeighbor(GameState s, int lineIdx, int myId)
-        {
-            foreach (int i in new[] { lineIdx - 1, lineIdx + 1 })
-            {
-                if (i >= 0 && i < 4 && !s.Board.Lines[i].IsSlotEmpty(myId)) return true;
-            }
-            return false;
-        }
-
-        private int CountEnemyNeighbors(GameState s, int lineIdx, int myId)
-        {
-            int oppId = 3 - myId;
-            int count = 0;
-            foreach (int i in new[] { lineIdx - 1, lineIdx + 1 })
-            {
-                if (i >= 0 && i < 4 && !s.Board.Lines[i].IsSlotEmpty(oppId)) count++;
-            }
-            return count;
-        }
-    }
-}
-
-
-========================================
-FILE: RandomStrategy.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\AI\Strategies\RandomStrategy.cs
-========================================
-using System;
-using CardGame.Core.AI.Interfaces;
-using CardGame.Core.State.Models;
-
-namespace CardGame.Core.AI.Strategies
-{
-    public class RandomStrategy : IAIStrategy
-    {
-        private readonly Random _rand = new Random();
-
-        public float Evaluate(GameState state, int botPlayerId)
-        {
-            // Zwraca losową wartość - bot będzie nieprzewidywalny i chaotyczny
-            return (float)_rand.NextDouble() * 100f;
         }
     }
 }

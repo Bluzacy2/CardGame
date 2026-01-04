@@ -16,6 +16,11 @@
   <ItemGroup>
     <Folder Include="Data\Decks\" />
     <Folder Include="Data\Cards\" />
+    <Folder Include="NewGen\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>

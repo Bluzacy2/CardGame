@@ -1,10 +1,4 @@
-﻿
-
-========================================
-FILE: NewGenEvolutionRunner.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Evolution\V2_NewGen\NewGenEvolutionRunner.cs
-========================================
-using CardGame.ConsoleApp.Evolution.Analytics;
+﻿using CardGame.ConsoleApp.Evolution.Analytics;
 using CardGame.Core.AI.Interfaces;
 using CardGame.Core.AI.Logic;
 using CardGame.Core.AI.Strategies;

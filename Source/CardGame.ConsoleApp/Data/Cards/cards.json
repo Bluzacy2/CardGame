@@ -44,7 +44,7 @@
   "Subtypes": [ "Monster" ],
   "Cost": 1,
   "Attack": 2,
-  "Health": 2,
+  "Health": 1,
   "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
   "Effects": [
     {
@@ -53,7 +53,7 @@
         {
           "Type": "AddCardToHand",
           "Target": "FriendlyHero",
-          "ValueParam": 900
+          "ValueParam": 902
         }
       ]
     }
@@ -67,7 +67,7 @@
     "Subtypes": [ "Human", "Mercenary" ],
     "Cost": 1,
     "Attack": 1,
-    "Health": 2,
+    "Health": 3,
     "Description": "When Played: Mark an Enemy Unit.",
     "Effects": [
       {
@@ -172,7 +172,7 @@
     "Subtypes": [ "Animal" ],
     "Cost": 2,
     "Attack": 2,
-    "Health": 3,
+    "Health": 2,
     "Description": "When Played: Sacrifice a Unit to absorb its stats.",
     "Effects": [
       {
@@ -191,7 +191,7 @@
     "Name": "The Creature",
     "Type": "Unit",
     "Subtypes": [ "Monster" ],
-    "Cost": 7,
+    "Cost": 9,
     "Attack": 7,
     "Health": 7,
     "Keywords": [ "Unkillable" ],
@@ -201,7 +201,7 @@
         "Trigger": "OnOtherUnitSacrificed",
         "Zone": "Hand",
         "Actions": [
-          { "Type": "BuffStats", "Target": "Self", "Amount": -2 }
+          { "Type": "BuffStats", "Target": "Self", "Amount": -1 }
         ]
       }
     ]
@@ -266,7 +266,7 @@
     "Id": 15,
     "Name": "Expectancy",
     "Type": "Spell",
-    "Cost": 2,
+    "Cost": 3,
     "Description": "Draw 2 from Deck OR Discard.",
     "Effects": [
       {
@@ -317,7 +317,7 @@
     "Id": 18,
     "Name": "Final Mission",
     "Type": "Spell",
-    "Cost": 1,
+    "Cost": 2,
     "Description": "Sacrifice a Friendly Unit to deal 4 damage to an Enemy Unit.",
     "Effects": [
       {
@@ -412,7 +412,7 @@
     "Type": "Unit",
     "Subtypes": [ "Monster" ],
     "Cost": 5,
-    "Attack": 4,
+    "Attack": 3,
     "Health": 6,
     "Description": "When this unit kills an enemy: Heal to full and +2 HP.",
     "Effects": [
@@ -434,6 +434,7 @@
   "Cost": 5,
   "Attack": 5,
   "Health": 5,
+  "Description": "When an Enemy is Marked: Bonus Attack.",
   "Effects": [
     {
       "Trigger": "OnStatusApplied",
@@ -510,7 +511,7 @@
       },
       {
         "Trigger": "OnFriendlyCardDrawn",
-        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 2 } ]
+        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1 } ]
       }
     ]
   },
@@ -520,12 +521,12 @@
     "Name": "Exploding Fruitcake",
     "Type": "Spell",
     "Cost": 2,
-    "Description": "6 Dmg to enemy. Opponent gains this.",
+    "Description": "5 Dmg to enemy. Opponent gains this.",
     "Effects": [
       {
         "Trigger": "OnPlayed",
         "Actions": [
-          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 6 },
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 5 },
           { "Type": "GiveToOpponent", "Target": "Self" }
         ]
       }
@@ -603,7 +604,7 @@
     "Subtypes": [ "Machine" ],
     "Cost": 5,
     "Attack": 5,
-    "Health": 10,
+    "Health": 8,
     "Keywords": [ "Stunned" ],
     "Description": "Stunned."
   },
@@ -683,7 +684,8 @@
     "Type": "Unit",
     "Subtypes": ["Monster"],
     "Cost": 1, "Attack": 3, "Health": 1,
-    "Keywords": ["Burning"]
+    "Keywords": ["Burning"],
+     "Description": "Burning."
   },
 
   {
@@ -691,14 +693,14 @@
     "Name": "Regifter",
     "Type": "Unit",
     "Subtypes": ["Monster"],
-    "Cost": 2, "Attack": 3, "Health": 2,
+    "Cost": 3, "Attack": 2, "Health": 2,
     "Effects": [{
       "Trigger": "OnPlayed",
       "Targeting": "TargetFriendlyUnit",
       "Actions": [
         { "Type": "SacrificeUnit", "Target": "SelectedTarget" },
-        { "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 2 },
-        { "Type": "DrawCard", "Target": "EnemyHero", "Amount": 2 }
+        { "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 1 },
+        { "Type": "DrawCard", "Target": "EnemyHero", "Amount": 1 }
       ]
     }]
   },
@@ -803,21 +805,36 @@
   ]
 },
 
-{
-    "Id": 46,
-    "Name": "Tea Maid",
-    "Type": "Unit",
-    "Subtypes": [ "Human" ],
-    "Cost": 3, "Attack": 2, "Health": 4,
-    "Description": "While in Play: Your Spells cost 1 less."
-  },
+  {
+  "Id": 46,
+  "Name": "Tea Maid",
+  "Type": "Unit",
+  "Subtypes": [ "Human" ],
+  "Cost": 3,
+  "Attack": 2,
+  "Health": 4,
+  "Description": "While in Play: Your Spells cost 1 less.",
+  "Effects": [
+    {
+      "Trigger": "Passive",
+      "Zone": "Board",
+      "Actions": [
+        {
+          "Type": "BuffStats",
+          "Target": "FriendlySpellsInHand",
+          "Amount": -1 
+        }
+      ]
+    }
+  ]
+},
 
   {
     "Id": 47,
     "Name": "Rustler",
     "Type": "Unit",
     "Subtypes": ["Mercenary"],
-    "Cost": 8, "Attack": 6, "Health": 6,
+    "Cost": 10, "Attack": 6, "Health": 6,
     "Description": "Costs 1 less for each Spell played. On Played: Bonus Attack.",
     "Effects": [
       {
@@ -859,12 +876,246 @@
     }
   ]
 },
+{
+  "Id": 49,
+  "Name": "Rocket Ignorance",
+  "Type": "Spell",
+  "Cost": 5,
+  "Description": "Destroy an Enemy Unit.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Actions": [
+        { 
+          "Type": "DestroyUnit", 
+          "Target": "TargetEnemyUnit" 
+        }
+      ]
+    }
+  ]
+},
+{
+  "Id": 50,
+  "Name": "Diabetic Treat",
+  "Type": "Spell",
+  "Cost": 1,
+  "Description": "Give a Friendly Unit +1/+3.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "TargetFriendlyUnit",
+      "Actions": [
+        { 
+          "Type": "BuffStats", 
+          "Target": "SelectedTarget", 
+          "BuffAtk": 1, 
+          "BuffHp": 3 
+        }
+      ]
+    }
+  ]
+},
+{
+    "Id": 51,
+    "Name": "The Trapper",
+    "Type": "Unit",
+    "Subtypes": ["Monster", "Human"],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "When Played: Gain the Trap.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          {
+            "Type": "AddCardToHand",
+            "Target": "FriendlyHero",
+            "ValueParam": 62
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    "Id": 52,
+    "Name": "Little Bob",
+    "Type": "Unit",
+    "Subtypes": ["Machine"],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 1,
+    "Description": "While in Play: When You play a Machine Unit gain +1/+1.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Condition": {
+          "Condition": "And",
+          "SubConditions": [
+            { "Condition": "IsSubtype", "TargetParam": "Machine" },
+            { "Condition": "Not", "SubConditions": [{ "Condition": "IsSelf" }] }
+          ]
+        },
+        "Zone": "Board",
+        "Actions": [
+          { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1, "BuffHp": 1 }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 53,
+    "Name": "The Curtain Call",
+    "Type": "Spell",
+    "Cost": 7,
+    "Description": "Mark all Enemy Units and then Destroy Them.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          {
+            "Type": "ApplyStatus",
+            "Target": "AllEnemyUnits",
+            "StatusKeyword": "Marked"
+          },
+          {
+            "Type": "DestroyUnit",
+            "Target": "AllEnemyUnits"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 54,
+    "Name": "Thor",
+    "Type": "Unit",
+    "Subtypes": ["Machine", "Mercenary"],
+    "Cost": 4,
+    "Attack": 0,
+    "Health": 4,
+    "Description": "While in Hand: When a Friendly Machine is Destroyed gain +2 ATK.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Zone": "Hand",
+        "Condition": {
+          "Condition": "IsSubtype",
+          "TargetParam": "Machine"
+        },
+        "Actions": [
+          {
+            "Type": "BuffStats",
+            "Target": "Self",
+            "BuffAtk": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 55,
+    "Name": "ZaUm",
+    "Type": "Unit",
+    "Subtypes": ["Machine"],
+    "Cost": 4,
+    "Attack": 4,
+    "Health": 5,
+    "Description": "It does literally nothing."
+  },
+  {
+    "Id": 56,
+    "Name": "Collector",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 7,
+    "Attack": 2,
+    "Health": 6,
+    "Description": "When Played: Summon The Collection (Traces of Sylvian, Almer, Grogorth).",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "MakeAUnit", "ValueParam": 68 },
+          { "Type": "MakeAUnit", "ValueParam": 69 },
+          { "Type": "MakeAUnit", "ValueParam": 70 }
+        ]
+      }
+    ]
+  },
+  {
+  "Id": 57,
+  "Name": "White Mourning",
+  "Type": "Spell",
+  "Cost": 3,
+  "Description": "Silence ALL units on the board.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Actions": [
+        {
+          "Type": "Silence",
+          "Target": "AllUnitsOnBoard"
+        }
+      ]
+    }
+  ]
+},
+{
+    "Id": 58,
+    "Name": "Excision Conjucture",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "Give an Enemy Unit -2/-2.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "TargetEnemyUnit",
+        "Actions": [
+          {
+            "Type": "BuffStats",
+            "Target": "SelectedTarget",
+            "BuffAtk": -2,
+            "BuffHp": -2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 59,
+    "Name": "Gargoyle",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 1,
+    "Attack": 2,
+    "Health": 2,
+    "Keywords": ["Flying"],
+    "Description": "Flying."
+  },
+  {
+    "Id": 60,
+    "Name": "Abraxos Wyvern",
+    "Type": "Unit",
+    "Subtypes": ["Monster", "Animal"],
+    "Cost": 8,
+    "Attack": 6,
+    "Health": 6,
+    "Keywords": ["Flying", "SplashDamage"],
+    "KeywordParams": {
+      "SplashDamage": 6
+    },
+    "Description": "Flying. Splash Damage 6."
+  },
+
 
 
 {
     "Id": 900,
     "Name": "The Alluring Goblet",
     "Type": "Spell",
+    "Subtypes": ["Token"],
     "Cost": 1,
     "Description": "Make a unit Unkillable, then destroy it.",
     "Effects": [
@@ -883,8 +1134,54 @@
     "Id": 901,
     "Name": "Souldier",
     "Type": "Unit",
-    "Subtypes": ["Monster"],
+    "Subtypes": ["Monster", "Token"],
     "Cost": 1, "Attack": 1, "Health": 1,
-    "Description": "A loyal token soldier."
-  }
+    "Description": "Two Loyal Souldiers and One Royale Ghost to rule them all."
+  },
+  {
+  "Id": 902,
+  "Name": "The Appetizing Goblet",
+  "Type": "Spell",
+  "Subtypes": ["Token"],
+  "Cost": 0,
+  "Description": "Sacrifice a Friendly Unit.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "TargetFriendlyUnit",
+      "Actions": [
+        { 
+          "Type": "SacrificeUnit", 
+          "Target": "SelectedTarget" 
+        }
+      ]
+    }
+  ]
+},
+{
+    "Id": 903,
+    "Name": "Trap",
+    "Type": "Unit",
+    "Subtypes": ["Machine", "Token"],
+    "Cost": 1,
+    "Attack": 0,
+    "Health": 1,
+    "Description": "When Destroyed: Stun the Enemy Unit here.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          {
+            "Type": "ApplyStatus",
+            "Target": "TargetEnemyUnit",
+            "StatusKeyword": "Stunned"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 904, "Name": "Traces of Sylvian", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 2, "Health": 2 },
+  { "Id": 905, "Name": "Traces of Almer", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 1, "Health": 3 },
+  { "Id": 906, "Name": "Traces of Grogorth", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 3, "Health": 1 }
 ]
