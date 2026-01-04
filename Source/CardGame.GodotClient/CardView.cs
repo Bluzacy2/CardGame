@@ -15,6 +15,7 @@ public partial class CardView : Control
     [Export] public ColorRect Background;
     [Export] public Control HighlightBorder;
     [Export] public HBoxContainer KeywordContainer;
+    [Export] public Control XOverlay;
 
     public CardInstance MyCardData { get; private set; }
     // NOWE ZDARZENIE
@@ -88,7 +89,13 @@ public partial class CardView : Control
         if (CostLabel != null) CostLabel.Visible = false;
         if (Background != null) Background.Color = new Color(0.3f, 0.15f, 0.05f); // Brązowy
     }
+    public void SetMulliganSelected(bool selected)
+    {
+        if (XOverlay != null) XOverlay.Visible = selected;
 
+        // Opcjonalnie: Przyciemnij kartę
+        Modulate = selected ? new Color(0.6f, 0.6f, 0.6f) : new Color(1, 1, 1);
+    }
     public void SetHighlight(bool active, Color color)
     {
         if (HighlightBorder != null)
