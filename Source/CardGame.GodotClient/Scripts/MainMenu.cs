@@ -6,6 +6,7 @@ public partial class MainMenu : Control
     [Export] public Button PlayButton;
     [Export] public Button DeckEditorButton;
     [Export] public Button QuitButton;
+    [Export] public PackedScene DeckSelectionScene;
 
     // Referencja do sceny gry (żebyśmy mogli ją wczytać)
     [Export] public PackedScene GameScene;
@@ -39,8 +40,8 @@ public partial class MainMenu : Control
 
     private void OnEditorPressed()
     {
-        GD.Print("Edytor talii - wkrótce w Fazie 2!");
-        // Tu później dodamy: GetTree().ChangeSceneToPacked(EditorScene);
+        if (DeckSelectionScene != null)
+            GetTree().ChangeSceneToPacked(DeckSelectionScene);
     }
 
     private void OnQuitPressed()
@@ -48,4 +49,5 @@ public partial class MainMenu : Control
         GD.Print("Wychodzenie z gry...");
         GetTree().Quit();
     }
+        
 }

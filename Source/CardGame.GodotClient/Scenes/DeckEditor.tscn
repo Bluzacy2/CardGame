@@ -1,0 +1,159 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2sbllk8p4xlm"]
+
+[ext_resource type="Script" uid="uid://bubc2h83dahnf" path="res://Scripts/DeckEditor.cs" id="1_370mm"]
+[ext_resource type="PackedScene" uid="uid://b2cbjoaeymfw0" path="res://Scenes/Card.tscn" id="2_ltrq1"]
+[ext_resource type="PackedScene" uid="uid://b0awhxq8s0xsf" path="res://Scenes/CardSlot.tscn" id="3_ocuxc"]
+[ext_resource type="PackedScene" uid="uid://omaj0f3o0gfk" path="res://Scenes/ LibraryCardEntry.tscn" id="4_ltrq1"]
+
+[sub_resource type="Gradient" id="Gradient_ltrq1"]
+colors = PackedColorArray(0.25490198, 0.25490198, 0.25490198, 0, 0.25524214, 0.25524214, 0.25524214, 0.6)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ocuxc"]
+gradient = SubResource("Gradient_ltrq1")
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltrq1"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocuxc"]
+bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i838a"]
+bg_color = Color(0.3137255, 0.3137255, 0.3137255, 1)
+
+[node name="DeckEditor" type="Control" node_paths=PackedStringArray("LibraryGrid", "DeckSlotsGrid", "DeckNameInput", "CardCountLabel", "SaveButton", "ExitButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_370mm")
+LibraryGrid = NodePath("MainLayout/TopPanel/LibraryGrid")
+DeckSlotsGrid = NodePath("MainLayout/BottomPanel/ContentWrapper/DeckSlotsGrid")
+DeckNameInput = NodePath("MainLayout/MiddleBar/DeckNameInput")
+CardCountLabel = NodePath("MainLayout/MiddleBar/CardCountLabel")
+SaveButton = NodePath("MainLayout/MiddleBar/SaveButton")
+ExitButton = NodePath("MainLayout/MiddleBar/ExitButton")
+CardScene = ExtResource("2_ltrq1")
+SlotScene = ExtResource("3_ocuxc")
+LibraryEntryScene = ExtResource("4_ltrq1")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LibraryLabel" type="Label" parent="MainLayout"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Dostępne Karty"
+horizontal_alignment = 1
+
+[node name="TopPanel" type="ScrollContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="LibraryGrid" type="GridContainer" parent="MainLayout/TopPanel"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 30
+columns = 10
+
+[node name="FadeOverlay" type="TextureRect" parent="MainLayout"]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_ocuxc")
+
+[node name="MiddleBar" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="DeckNameInput" type="LineEdit" parent="MainLayout/MiddleBar"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ltrq1")
+text = "Nazwa Talii"
+alignment = 1
+
+[node name="CardCountLabel" type="Label" parent="MainLayout/MiddleBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8666667, 0.4, 1)
+theme_override_font_sizes/font_size = 32
+text = "Karty: 0/30"
+
+[node name="Control" type="Control" parent="MainLayout/MiddleBar"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="MainLayout/MiddleBar"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ocuxc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i838a")
+text = "ZAPISZ"
+
+[node name="ExitButton" type="Button" parent="MainLayout/MiddleBar"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ocuxc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i838a")
+text = "WYJŚCIE"
+
+[node name="DeckLabel" type="Label" parent="MainLayout"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Twoja Talia"
+horizontal_alignment = 1
+
+[node name="BottomPanel" type="ScrollContainer" parent="MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 4
+
+[node name="ContentWrapper" type="VBoxContainer" parent="MainLayout/BottomPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="DeckSlotsGrid" type="GridContainer" parent="MainLayout/BottomPanel/ContentWrapper"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 10
+
+[node name="Control" type="Control" parent="MainLayout/BottomPanel/ContentWrapper"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2

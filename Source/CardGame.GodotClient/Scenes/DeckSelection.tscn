@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgdjicqsv0u34"]
+
+[ext_resource type="Script" uid="uid://cpl5ky8aj3bmg" path="res://Scripts/DeckSelection.cs" id="1_2njus"]
+[ext_resource type="PackedScene" uid="uid://c2sbllk8p4xlm" path="res://Scenes/DeckEditor.tscn" id="2_v66g4"]
+
+[node name="DeckSelection" type="Control" node_paths=PackedStringArray("DeckListContainer", "NewDeckButton", "BackButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2njus")
+DeckListContainer = NodePath("MainLayout/VBox/DeckListScroll/DeckListContainer")
+NewDeckButton = NodePath("MainLayout/VBox/BottomBar/NewDeckButton")
+BackButton = NodePath("MainLayout/VBox/BottomBar/BackButton")
+DeckEditorScene = ExtResource("2_v66g4")
+
+[node name="MainLayout" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBox" type="VBoxContainer" parent="MainLayout"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="MainLayout/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Wybierz Talię"
+horizontal_alignment = 1
+
+[node name="DeckListScroll" type="ScrollContainer" parent="MainLayout/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DeckListContainer" type="VBoxContainer" parent="MainLayout/VBox/DeckListScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="BottomBar" type="HBoxContainer" parent="MainLayout/VBox"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Spacer" type="Control" parent="MainLayout/VBox/BottomBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NewDeckButton" type="Button" parent="MainLayout/VBox/BottomBar"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "STWÓRZ NOWY DECK"
+
+[node name="BackButton" type="Button" parent="MainLayout/VBox/BottomBar"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "WRÓĆ"

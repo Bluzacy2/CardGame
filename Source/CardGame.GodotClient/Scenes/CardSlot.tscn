@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0awhxq8s0xsf"]
+
+[ext_resource type="Script" uid="uid://cj5fmuttob5m2" path="res://Scripts/CardSlot.cs" id="1_enycx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rf3tp"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="CardSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(160, 210)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rf3tp")
+script = ExtResource("1_enycx")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+mouse_filter = 0

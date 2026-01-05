@@ -16,6 +16,7 @@ public partial class CardView : Control
     [Export] public Control HighlightBorder;
     [Export] public HBoxContainer KeywordContainer;
     [Export] public Control XOverlay;
+    [Export] public Label CountBadge;
 
     public CardInstance MyCardData { get; private set; }
     // NOWE ZDARZENIE
@@ -156,5 +157,18 @@ public partial class CardView : Control
         SetDragPreview(preview);
 
         return MyCardData.InstanceId;
+    }
+    public void UpdateCount(int current, int max)
+    {
+        if (CountBadge == null) return;
+
+        CountBadge.Visible = true;
+        CountBadge.Text = $"{current}/{max}";
+
+        // Kolorowanie: Czerwony jeśli limit osiągnięty
+        CountBadge.Modulate = current >= max ? Colors.Red : Colors.White;
+
+        // Opcjonalnie: Przyciemnij kartę jeśli limit osiągnięty
+        Modulate = current >= max ? new Color(0.5f, 0.5f, 0.5f) : Colors.White;
     }
 }

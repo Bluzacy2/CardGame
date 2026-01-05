@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddrqm5d5uburs"]
+[gd_scene load_steps=5 format=3 uid="uid://ddrqm5d5uburs"]
 
 [ext_resource type="Script" uid="uid://dnuppewhgypgv" path="res://Scripts/MainMenu.cs" id="1_tt5f1"]
-[ext_resource type="PackedScene" uid="uid://dohitnkit2tdm" path="res://Scenes/Main.tscn" id="2_853f1"]
+[ext_resource type="PackedScene" uid="uid://bgdjicqsv0u34" path="res://Scenes/DeckSelection.tscn" id="2_8saeu"]
+[ext_resource type="PackedScene" uid="uid://dohitnkit2tdm" path="res://Scenes/Main.tscn" id="3_8saeu"]
 
 [sub_resource type="Theme" id="Theme_bnhvo"]
 
@@ -16,12 +17,17 @@ script = ExtResource("1_tt5f1")
 PlayButton = NodePath("MenuContainer/MenuContainer/PlayButton")
 DeckEditorButton = NodePath("MenuContainer/MenuContainer/DeckEditorButton")
 QuitButton = NodePath("MenuContainer/MenuContainer/QuitButton")
-GameScene = ExtResource("2_853f1")
+DeckSelectionScene = ExtResource("2_8saeu")
+GameScene = ExtResource("3_8saeu")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MenuContainer" type="CenterContainer" parent="."]
 layout_mode = 1
