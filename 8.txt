@@ -1,0 +1,2144 @@
+﻿
+
+========================================
+FILE: KeywordHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\Keywords\KeywordHandler.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events;
+using CardGame.Core.GameRules.Damage;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Cards.Logic.Keywords.Handlers
+{
+    public class ArmoredHandler : IKeywordHandler
+    {
+        public Keyword Type => Keyword.Armored;
+        public int OnModifyDamageTaken(int amount, DamageContext context)
+        {
+            if (context.Type != DamageType.Combat) return amount;
+            int armorValue = 1;
+            if (context.Target.Definition.BaseStats.KeywordParams.TryGetValue(Keyword.Armored, out int val))
+                armorValue = val;
+            return Math.Max(0, amount - armorValue);
+        }
+        public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
+        public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice) => false;
+    }
+
+    public class MarkedHandler : IKeywordHandler
+    {
+        public Keyword Type => Keyword.Marked;
+        public int OnModifyDamageTaken(int amount, DamageContext context) => amount * 2;
+        public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
+        public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
+        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c, bool isSacrifice) => false;
+    }
+
+    public class SplashDamageHandler : IKeywordHandler
+    {
+        public Keyword Type => Keyword.SplashDamage;
+        public int OnModifyDamageTaken(int a, DamageContext c) => a;
+        public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIdx, GameContext context)
+        {
+            if (!attacker.Definition.BaseStats.KeywordParams.TryGetValue(Keyword.SplashDamage, out int dmg)) return state;
+            var workingState = state;
+            int opponentId = attacker.OwnerPlayerId == 1 ? 2 : 1;
+            foreach (int neighbor in new[] { lineIdx - 1, lineIdx + 1 })
+            {
+                if (neighbor >= 0 && neighbor < 4)
+                {
+                    var unit = workingState.Board.Lines[neighbor].IsSlotEmpty(opponentId) ? null :
+                               (opponentId == 1 ? workingState.Board.Lines[neighbor].Player1Unit : workingState.Board.Lines[neighbor].Player2Unit);
+                    if (unit != null)
+                    {
+                        var nextUnit = unit.TakeDamage(dmg);
+                        workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(nextUnit));
+                        context.Events.Publish(new UnitDamagedEvent(nextUnit, dmg, attacker));
+                    }
+                }
+            }
+            return workingState;
+        }
+        public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
+        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c, bool isSacrifice) => false;
+    }
+
+    public class BurnSourceHandler : IKeywordHandler
+    {
+        public Keyword Type => Keyword.BurnSource;
+        public int OnModifyDamageTaken(int a, DamageContext c) => a;
+        public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIdx, GameContext context)
+        {
+            if (victim == null) return state;
+            var burnedVictim = victim.AddPermanentBuff(new CardStats(0, 0, 0, new[] { Keyword.Burning }));
+            return state.UpdateBoard(state.Board.UpdateUnit(burnedVictim));
+        }
+        public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
+        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c, bool isSacrifice) => false;
+    }
+
+    public class BurningHandler : IKeywordHandler
+    {
+        public Keyword Type => Keyword.Burning;
+        public int OnModifyDamageTaken(int a, DamageContext c) => a;
+        public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
+        public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context)
+        {
+            var damagedUnit = unit.TakeDamage(1);
+            context.Events.Publish(new UnitDamagedEvent(unit, 1, null));
+            return state.UpdateBoard(state.Board.UpdateUnit(damagedUnit));
+        }
+        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c, bool isSacrifice) => false;
+    }
+
+    public class SoulGuardHandler : IKeywordHandler
+    {
+        public Keyword Type => Keyword.SoulGuard;
+        public int OnModifyDamageTaken(int a, DamageContext c) => a;
+        public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
+        public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
+
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
+        {
+            if (isSacrifice) return false;
+
+            if (unit.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted)) return false;
+            int damageToSet = Math.Max(0, unit.MaxHealth - 1);
+            var survivedUnit = unit.WithDamage(damageToSet).AddPermanentBuff(new CardStats(0, 0, 0, new[] { Keyword.SoulGuardDepleted }));
+            state = state.UpdateBoard(state.Board.UpdateUnit(survivedUnit));
+            return true;
+        }
+    }
+
+    public class UnkillableHandler : IKeywordHandler
+    {
+        public Keyword Type => Keyword.Unkillable;
+        public int OnModifyDamageTaken(int a, DamageContext c) => a;
+        public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
+        public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
+
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
+        {
+            var board = state.Board;
+            for (int i = 0; i < 4; i++)
+            {
+                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 1, null);
+                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 2, null);
+            }
+            var returnedCard = unit.MoveAndReset();
+            int pid = unit.OwnerPlayerId;
+            var owner = state.GetPlayer(pid);
+            state = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToHand(returnedCard));
+            return true;
+        }
+    }
+
+    public class StunnedHandler : IKeywordHandler
+    {
+        public Keyword Type => Keyword.Stunned;
+        public int OnModifyDamageTaken(int a, DamageContext c) => a;
+        public GameState OnAfterAttack(GameState s, CardInstance a, CardInstance? v, int l, GameContext c) => s;
+        public GameState OnRoundEnd(GameState s, CardInstance u, GameContext c) => s;
+        public bool OnPreventDeath(ref GameState s, CardInstance u, GameContext c, bool isSacrifice) => false;
+    }
+}
+
+
+========================================
+FILE: KeywordProcessor.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\Keywords\KeywordProcessor.cs
+========================================
+using System.Collections.Generic;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.GameRules.Damage;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Cards.Logic.Keywords
+{
+    public class KeywordProcessor
+    {
+        private readonly Dictionary<Keyword, IKeywordHandler> _handlers = new();
+
+        public void RegisterHandler(IKeywordHandler handler) => _handlers[handler.Type] = handler;
+
+        public int ProcessDamageTaken(int amount, DamageContext context)
+        {
+            int finalAmount = amount;
+            foreach (var keyword in context.Target.CurrentStats.Keywords)
+            {
+                if (_handlers.TryGetValue(keyword, out var handler))
+                    finalAmount = handler.OnModifyDamageTaken(finalAmount, context);
+            }
+            return finalAmount;
+        }
+
+        public GameState ProcessPostAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIdx, GameContext context)
+        {
+            var workingState = state;
+            foreach (var keyword in attacker.CurrentStats.Keywords)
+            {
+                if (_handlers.TryGetValue(keyword, out var handler))
+                    workingState = handler.OnAfterAttack(workingState, attacker, victim, lineIdx, context);
+            }
+            return workingState;
+        }
+
+        public GameState ProcessRoundEnd(GameState state, CardInstance unit, GameContext context)
+        {
+            var workingState = state;
+            foreach (var keyword in unit.CurrentStats.Keywords)
+            {
+                if (_handlers.TryGetValue(keyword, out var handler))
+                    workingState = handler.OnRoundEnd(workingState, unit, context);
+            }
+            return workingState;
+        }
+
+        public bool TryPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
+        {
+            foreach (var keyword in unit.CurrentStats.Keywords)
+            {
+                if (_handlers.TryGetValue(keyword, out var handler))
+                {
+                    if (handler.OnPreventDeath(ref state, unit, context, isSacrifice))
+                        return true;
+                }
+            }
+            return false;
+        }
+    }
+}
+
+
+========================================
+FILE: CardDefinition.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Models\CardDefinition.cs
+========================================
+using System.Collections.Generic;
+using CardGame.Core.Cards.Data;
+
+namespace CardGame.Core.Cards.Models
+{
+    public class CardDefinition
+    {
+        public string Id { get; }
+        public string Name { get; }
+        public CardType Type { get; }
+        public IReadOnlyList<string> Subtypes { get; } 
+        public CardStats BaseStats { get; }
+        public IReadOnlyList<Keyword> Keywords { get; }
+        public IReadOnlyList<EffectData> Effects { get; }
+
+        public CardDefinition(
+            string id,
+            string name,
+            CardType type,
+            IEnumerable<string> subtypes, 
+            CardStats baseStats,
+            IEnumerable<Keyword> keywords,
+            IEnumerable<EffectData> effects)
+        {
+            Id = id;
+            Name = name;
+            Type = type;
+            Subtypes = new List<string>(subtypes); 
+            BaseStats = baseStats;
+            Keywords = new List<Keyword>(keywords);
+            Effects = new List<EffectData>(effects);
+        }
+    }
+}
+
+
+========================================
+FILE: CardInstance.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Models\CardInstance.cs
+========================================
+using CardGame.Core.Cards.Data;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.Cards.Models
+{
+    public class CardInstance
+    {
+        public int InstanceId { get; }
+        public int OwnerPlayerId { get; }
+        public CardDefinition Definition { get; }
+        public int DamageTaken { get; }
+        public CardStats PermanentBuffs { get; }
+        public IReadOnlyList<Keyword> AuraKeywords { get; }
+        public IReadOnlyList<Keyword> SuppressedKeywords { get; }
+        public bool IsSilenced { get; }
+        public int CostReduction { get; set; } = 0; //
+
+        public CardStats CurrentStats
+        {
+            get
+            {
+                if (IsSilenced)
+                {
+                    return new CardStats(Definition.BaseStats.Attack, Definition.BaseStats.Health - DamageTaken,
+                        Definition.BaseStats.BloodCost, new List<Keyword>(), new Dictionary<Keyword, int>(), Definition.BaseStats.CostType);
+                }
+                var baseAndPerm = Definition.BaseStats + PermanentBuffs;
+                int finalCost = Math.Max(0, baseAndPerm.BloodCost - CostReduction); // 
+                var combinedKeywords = baseAndPerm.Keywords.Concat(AuraKeywords)
+                    .Where(k => !SuppressedKeywords.Contains(k)).Distinct().ToList();
+                return new CardStats(baseAndPerm.Attack, baseAndPerm.Health - DamageTaken, finalCost, // baseAndPerm.BloodCost
+                    combinedKeywords, new Dictionary<Keyword, int>((Dictionary<Keyword, int>)baseAndPerm.KeywordParams), baseAndPerm.CostType);
+            }
+        }
+
+        public int MaxHealth => IsSilenced ? Definition.BaseStats.Health : (Definition.BaseStats + PermanentBuffs).Health;
+
+        public CardInstance(int instanceId, int playerOwnerId, CardDefinition definition)
+            : this(instanceId, playerOwnerId, definition, 0, new CardStats(0, 0, 0), new List<Keyword>(), new List<Keyword>(), false) { }
+
+        private CardInstance(int instanceId, int playerOwnerId, CardDefinition definition, int damageTaken,
+            CardStats permanentBuffs, IEnumerable<Keyword> auraKeywords, IEnumerable<Keyword> suppressedKeywords, bool isSilenced)
+        {
+            InstanceId = instanceId; OwnerPlayerId = playerOwnerId; Definition = definition; DamageTaken = damageTaken;
+            PermanentBuffs = permanentBuffs; AuraKeywords = auraKeywords?.ToList() ?? new List<Keyword>();
+            SuppressedKeywords = suppressedKeywords?.ToList() ?? new List<Keyword>(); IsSilenced = isSilenced;
+        }
+
+        public CardInstance MoveAndReset() =>
+            new CardInstance(InstanceId, OwnerPlayerId, Definition, 0, new CardStats(0, 0, 0), new List<Keyword>(), new List<Keyword>(), IsSilenced) { CostReduction = 0 };
+
+        public CardInstance WithDamage(int totalDamage) =>
+            new CardInstance(InstanceId, OwnerPlayerId, Definition, totalDamage, PermanentBuffs, AuraKeywords, SuppressedKeywords, IsSilenced);
+
+        public CardInstance TakeDamage(int amount) => WithDamage(DamageTaken + amount);
+        public CardInstance Heal(int amount) => WithDamage(System.Math.Max(0, DamageTaken - amount));
+
+        public CardInstance AddPermanentBuff(CardStats buff) =>
+            IsSilenced ? this : new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, PermanentBuffs + buff, AuraKeywords, SuppressedKeywords, IsSilenced);
+
+        public CardInstance WithAuras(IEnumerable<Keyword> newAuras) =>
+            new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, PermanentBuffs, newAuras, SuppressedKeywords, IsSilenced);
+
+        public CardInstance SuppressKeyword(Keyword keyword)
+        {
+            var newList = new List<Keyword>(SuppressedKeywords);
+            if (!newList.Contains(keyword)) newList.Add(keyword);
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, PermanentBuffs, AuraKeywords, newList, IsSilenced);
+        }
+
+        public CardInstance Silence() =>
+            new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, new CardStats(0, 0, 0), new List<Keyword>(), new List<Keyword>(), true);
+    }
+}
+
+
+========================================
+FILE: CardStats.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Models\CardStats.cs
+========================================
+using CardGame.Core.Cards.Data;
+using System.Collections.Generic;
+
+namespace CardGame.Core.Cards.Models
+{
+    public struct CardStats
+    {
+        public int Attack { get; }
+        public int Health { get; }
+        public int BloodCost { get; } // Zmieniono z Cost na BloodCost
+        public ResourceType CostType { get; }
+
+        public IReadOnlyList<Keyword> Keywords { get; }
+        public IReadOnlyDictionary<Keyword, int> KeywordParams { get; }
+
+        public CardStats(int attack, int health, int bloodCost, ResourceType costType = ResourceType.Blood)
+        {
+            Attack = attack;
+            Health = health;
+            BloodCost = bloodCost;
+            CostType = costType;
+            Keywords = new List<Keyword>();
+            KeywordParams = new Dictionary<Keyword, int>();
+        }
+
+        public CardStats(
+            int attack,
+            int health,
+            int bloodCost,
+            IEnumerable<Keyword>? keywords,
+            Dictionary<Keyword, int>? keywordParams = null,
+            ResourceType costType = ResourceType.Blood)
+        {
+            Attack = attack;
+            Health = health;
+            BloodCost = bloodCost;
+            CostType = costType;
+            Keywords = keywords != null ? new List<Keyword>(keywords) : new List<Keyword>();
+            KeywordParams = new Dictionary<Keyword, int>(keywordParams ?? new Dictionary<Keyword, int>());
+        }
+
+        public CardStats WithKeyword(Keyword keyword)
+        {
+            var newKeywords = new List<Keyword>(Keywords);
+            if (!newKeywords.Contains(keyword)) newKeywords.Add(keyword);
+
+            var newParams = new Dictionary<Keyword, int>();
+            foreach (var kvp in KeywordParams) newParams[kvp.Key] = kvp.Value;
+
+            return new CardStats(Attack, Health, BloodCost, newKeywords, newParams, CostType);
+        }
+
+        public static CardStats operator +(CardStats a, CardStats b)
+        {
+            var combinedKeywords = new List<Keyword>(a.Keywords);
+            foreach (var keyword in b.Keywords)
+            {
+                if (!combinedKeywords.Contains(keyword))
+                {
+                    combinedKeywords.Add(keyword);
+                }
+            }
+            var combinedParams = new Dictionary<Keyword, int>(a.KeywordParams);
+            foreach (var kvp in b.KeywordParams)
+            {
+                if (!combinedParams.ContainsKey(kvp.Key) || kvp.Value > combinedParams[kvp.Key])
+                    combinedParams[kvp.Key] = kvp.Value;
+            }
+
+            return new CardStats(
+                a.Attack + b.Attack,
+                a.Health + b.Health,
+                a.BloodCost + b.BloodCost,
+                combinedKeywords,
+                combinedParams,
+                a.CostType
+            );
+        }
+    }
+}
+
+
+========================================
+FILE: CombatOrchestrator.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Combat\CombatOrchestrator.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Events;
+using CardGame.Core.GameRules.Battle;
+using CardGame.Core.GameRules.Death;
+using CardGame.Core.State.Models;
+using CardGame.Core.Events.Triggers;
+
+namespace CardGame.Core.Combat
+{
+    public class CombatOrchestrator
+    {
+        private readonly BattleService _battleService = new BattleService();
+        private readonly DeathResolver _deathResolver = new DeathResolver();
+        private readonly TriggerSystem _triggerSystem = new TriggerSystem();
+
+        public GameState ResolveCombatPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            var workingState = currentState;
+
+            for (int i = 0; i < 4; i++)
+            {
+                eventBus.Publish(new PreLineCombatEvent(i));
+                workingState = _triggerSystem.ProcessEvents(workingState, eventBus, context);
+                workingState = _deathResolver.ResolveDeaths(workingState, eventBus, context);
+
+                var line = workingState.Board.Lines[i];
+                var u1 = line.Player1Unit;
+                var u2 = line.Player2Unit;
+
+
+                if (u1 != null && u2 != null)
+                    workingState = _battleService.ResolveCombatDuel(workingState, u1, u2, i, eventBus, context);
+                else if (u1 != null)
+                    workingState = _battleService.ResolveBonusStrike(workingState, u1, null, i, eventBus, context);
+                else if (u2 != null)
+                    workingState = _battleService.ResolveBonusStrike(workingState, u2, null, i, eventBus, context);
+
+                workingState = _deathResolver.ResolveDeaths(workingState, eventBus, context);
+                workingState = _triggerSystem.ProcessEvents(workingState, eventBus, context);
+            }
+
+            return workingState;
+        }
+    }
+}
+
+
+========================================
+FILE: ConfirmMulliganCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Commands\Implementations\ConfirmMulliganCommand.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Models;
+using System.Collections.Generic;
+
+namespace CardGame.Core.Commands.Implementations
+{
+    public class ConfirmMulliganCommand : IGameCommand
+    {
+        public int PlayerId { get; }
+        public List<int> RejectedCardIds { get; } // Karty do wymiany
+
+        public ConfirmMulliganCommand(int playerId, List<int> rejectedCardIds)
+        {
+            PlayerId = playerId;
+            RejectedCardIds = rejectedCardIds ?? new List<int>();
+        }
+
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            // 1. Pobierz gracza
+            var player = currentState.GetPlayer(PlayerId);
+
+            // 2. Wykonaj logikę wymiany
+            var newPlayer = player.WithMulliganPerformed(RejectedCardIds);
+
+            // 3. Oznacz gracza jako gotowego w stanie gry
+            var newState = currentState
+                .UpdatePlayer(newPlayer)
+                .MarkPlayerAsReady(PlayerId);
+
+            // Możemy wygenerować event (opcjonalnie)
+            // eventBus.Publish(new MulliganCompletedEvent(PlayerId));
+
+            return newState;
+        }
+    }
+}
+
+
+========================================
+FILE: EndPhaseCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Commands\Implementations\EndPhaseCommand.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Interfaces;
+/* W komendach NIE implementujemy logiki gry, jedynie przekazujemy dla StateMachine informacje co chcemy zrobić.
+ * Logika gry jest implementowana w StateMachine. */
+using CardGame.Core.Events;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace CardGame.Core.Commands.Implementations
+{
+    public class EndPhaseCommand: IGameCommand
+    {
+        public int PlayerId { get; }
+        public EndPhaseCommand(int playerId)
+        {
+            PlayerId = playerId;
+        }
+
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            /* Logika kończenia fazy jest wyjątkiem od reguły. Pozostałe komendy **zazwyczaj** same zmieniają stan gry
+             * poprzez wykonywanie operacji przez samych siebie np. odejmij punkty życia, zagraj kartę itp.
+             * Inaczej jest z kończeniem fazy, gdyż to StateMachine decyduje jak i na jaką fazę przejść dalej.
+             * Przez to zwracamy obecny stan gry i wysyłamy sygnał do StateMachine, że ma zakończyć fazę i przejść
+             * do kolejnej . */
+            return currentState;
+        }
+    }
+}
+
+
+
+========================================
+FILE: PlaySpellCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Commands\Implementations\PlaySpellCommand.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Logic;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Models;
+using System;
+using System.Linq;
+
+namespace CardGame.Core.Commands.Implementations
+{
+    public class PlaySpellCommand : IGameCommand
+    {
+        public int PlayerId { get; }
+        public int CardInstanceId { get; }
+        public int? SelectedTargetId { get; }
+
+        public PlaySpellCommand(int playerId, int cardInstanceId, int? selectedTargetId = null)
+        {
+            PlayerId = playerId;
+            CardInstanceId = cardInstanceId;
+            SelectedTargetId = selectedTargetId;
+        }
+
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            var player = currentState.GetPlayer(PlayerId);
+            var card = player.Hand.FirstOrDefault(c => c.InstanceId == CardInstanceId);
+
+            if (card == null) return currentState;
+
+            if (!PlayValidator.CanPlay(card, currentState, PlayerId))
+            {
+                //Console.WriteLine($"[BLOKADA] Nie można zagrać czaru {card.Definition.Name}.");
+                return currentState;
+            }
+
+            var newPlayer = player.WithBloodSpent(card.CurrentStats.BloodCost)
+                                  .WithCardRemovedFromHand(card);
+
+            var newStack = currentState.SpellStack.ToList();
+            newStack.Add(card);
+
+            var newState = currentState.UpdatePlayer(newPlayer).With(spellStack: newStack);
+            eventBus.Publish(new CardPlayedEvent(PlayerId, card, null, SelectedTargetId));
+
+            return newState;
+        }
+    }
+}
+
+
+========================================
+FILE: PlayUnitCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Commands\Implementations\PlayUnitCommand.cs
+========================================
+using System;
+using System.Linq;
+using CardGame.Core.Events;
+using CardGame.Core.Application;
+using CardGame.Core.State.Models;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Cards.Logic;
+
+namespace CardGame.Core.Commands.Implementations
+{
+    public class PlayUnitCommand : IGameCommand
+    {
+        public int PlayerId { get; }
+        public int CardInstanceId { get; }
+        public int TargetLineIndex { get; }
+        public int? SelectedTargetId { get; }
+
+        public PlayUnitCommand(int playerId, int cardInstanceId, int targetLineIndex, int? selectedTargetId = null)
+        {
+            PlayerId = playerId;
+            CardInstanceId = cardInstanceId;
+            TargetLineIndex = targetLineIndex;
+            SelectedTargetId = selectedTargetId;
+        }
+
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            var playerState = currentState.GetPlayer(PlayerId);
+            var card = playerState.Hand.FirstOrDefault(c => c.InstanceId == CardInstanceId);
+
+            if (card == null) return currentState;
+
+            if (!PlayValidator.CanPlay(card, currentState, PlayerId))
+            {
+                return currentState;
+            }
+
+            if (!currentState.Board.Lines[TargetLineIndex].IsSlotEmpty(PlayerId))
+            {
+                return currentState;
+            }
+
+            var newPlayerState = playerState
+                .WithBloodSpent(card.CurrentStats.BloodCost)
+                .WithCardRemovedFromHand(card);
+
+            var cardToPlay = card.AddPermanentBuff(playerState.GlobalUnitBuffs);
+            var newBoardState = currentState.Board.WithUnitPlacedAt(TargetLineIndex, PlayerId, cardToPlay);
+
+            eventBus.Publish(new CardPlayedEvent(PlayerId, card, TargetLineIndex, SelectedTargetId));
+
+            return currentState.With(
+                playerA: PlayerId == 1 ? newPlayerState : currentState.PlayerA,
+                playerB: PlayerId == 2 ? newPlayerState : currentState.PlayerB,
+                board: newBoardState);
+        }
+    }
+}
+
+
+========================================
+FILE: SelectTargetCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Commands\Implementations\SelectTargetCommand.cs
+========================================
+using System;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Components.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Commands.Implementations
+{
+    public class SelectTargetCommand : IGameCommand
+    {
+        public int PlayerId { get; }
+        public int TargetId { get; }
+
+        public SelectTargetCommand(int playerId, int targetId)
+        {
+            PlayerId = playerId;
+            TargetId = targetId;
+        }
+
+        public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            var pending = currentState.PendingInteraction;
+            if (pending == null) return currentState;
+
+            var sourceCard = currentState.SpellStack.FirstOrDefault(s => s.InstanceId == pending.SourceCardInstanceId)
+                          ?? currentState.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
+                          ?? currentState.PlayerA.Hand.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
+                          ?? currentState.PlayerB.Hand.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
+                          ?? currentState.PlayerA.DiscardPile.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId)
+                          ?? currentState.PlayerB.DiscardPile.FirstOrDefault(u => u.InstanceId == pending.SourceCardInstanceId);
+
+            if (sourceCard == null) return currentState.With(clearPending: true);
+
+            int effectCount = sourceCard.Definition.Effects.Count;
+            if (effectCount == 0) return currentState.With(clearPending: true);
+
+            int safeIndex = Math.Clamp(pending.EffectIndex, 0, effectCount - 1);
+
+            var effectData = sourceCard.Definition.Effects[safeIndex];
+            var selectionEvent = new TargetSelectedEvent(PlayerId, pending.SourceCardInstanceId, TargetId);
+            var component = new JsonEffectComponent(effectData, sourceCard.InstanceId, pending.EffectIndex);
+
+            return (pending.ActionIndex == -1)
+                ? component.Resolve(selectionEvent, currentState, context)
+                : component.ResolveFromIndex(selectionEvent, currentState, context, pending.ActionIndex);
+        }
+    }
+}
+
+
+========================================
+FILE: IGameCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Commands\Interfaces\IGameCommand.cs
+========================================
+using System;
+using CardGame.Core.Events;
+using CardGame.Core.Application;
+using CardGame.Core.State.Models;
+namespace CardGame.Core.Commands.Interfaces
+{
+    public interface IGameCommand
+    {
+       
+        int PlayerId { get; }
+
+       
+        GameState Execute(GameState currentState, EventBus eventBus, GameContext context);
+    }
+}
+
+
+
+========================================
+FILE: DeckRepository.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Decks\DeckRepository.cs
+========================================
+using System;
+
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using CardGame.Core.Decks.Data;
+using System.Collections.Generic;
+
+namespace CardGame.Core.Decks
+{
+    public class DeckRepository
+    {
+        public static DeckRepository Instance { get; } = new DeckRepository();
+        private Dictionary<string, DeckData> _decks = new Dictionary<string, DeckData>();
+
+        public void LoadDecksFromDirectory(string directoryPath)
+        {
+            if (!Directory.Exists(directoryPath))
+            {
+                Console.WriteLine($"[DECK REPO] Folder nie istnieje: {directoryPath}");
+                return;
+            }
+
+            var files = Directory.GetFiles(directoryPath, "*.json");
+            foreach (var file in files)
+            {
+                try
+                {
+                    string json = File.ReadAllText(file);
+                    // Opcja CaseInsensitive pozwala pisać "cardIds" lub "CardIds"
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    var deck = JsonSerializer.Deserialize<DeckData>(json, options);
+
+                    if (deck != null && !string.IsNullOrEmpty(deck.Id))
+                    {
+                        _decks[deck.Id] = deck;
+                        Console.WriteLine($"[DECK REPO] Załadowano talię: {deck.Name} ({deck.CardIds.Count} kart)");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[BŁĄD] Nie udało się wczytać talii z {file}: {ex.Message}");
+                }
+            }
+        }
+
+        public DeckData GetDeck(string deckId)
+        {
+            if (_decks.TryGetValue(deckId, out var deck))
+            {
+                return deck;
+            }
+            throw new Exception($"Nie znaleziono talii o ID: {deckId}");
+        }
+    }
+}
+    
+
+
+
+
+========================================
+FILE: DeckService.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Decks\DeckService.cs
+========================================
+using System;
+
+using CardGame.Core.Decks.Data;
+using System.Collections.Generic;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Cards.Factories;
+
+namespace CardGame.Core.Decks
+{
+    public class DeckService
+    {
+        private readonly DeckRepository _repository;
+        private readonly CardFactory _cardFactory;
+
+        public DeckService(DeckRepository repository, CardFactory cardFactory)
+        {
+            _repository = repository;
+            _cardFactory = cardFactory;
+        }
+
+        // Główna metoda: Daj mi ID talii i gracza, a dam Ci gotową listę kart
+        public List<CardInstance> CreateDeckFromId(string deckId, int ownerId)
+        {
+            var deckData = _repository.GetDeck(deckId);
+            var cardInstances = new List<CardInstance>();
+
+            foreach (int cardDefId in deckData.CardIds)
+            {
+                // Tu używamy naszej fabryki, która nadaje unikalne InstanceID!
+                var card = _cardFactory.CreateCard(cardDefId, ownerId);
+                cardInstances.Add(card);
+            }
+
+            return cardInstances;
+        }
+    }
+}
+
+
+
+
+========================================
+FILE: DeckData.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Decks\Data\DeckData.cs
+========================================
+using System;
+using System.Collections.Generic;
+
+namespace CardGame.Core.Decks.Data
+{
+    public class DeckData
+    {
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+
+        public List<int> CardIds { get; set; } = new List<int>();
+    }
+}
+
+
+========================================
+FILE: CardDrawnEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\CardDrawnEvent.cs
+========================================
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class CardDrawnEvent : IGameEvent
+    {
+        public int PlayerId { get; }
+        public int SourcePlayerId => PlayerId;
+        public CardDrawnEvent(int playerId) => PlayerId = playerId;
+    }
+}
+
+
+========================================
+FILE: CardPlayedEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\CardPlayedEvent.cs
+========================================
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class CardPlayedEvent : IGameEvent
+    {
+        public int PlayerId { get; }
+        public int SourcePlayerId => PlayerId;
+        public CardInstance Card { get; }
+        public int? LineIndex { get; }
+        public int? SelectedTargetId { get; }
+
+        public CardPlayedEvent(int playerId, CardInstance card, int? lineIndex, int? selectedTargetId)
+        {
+            PlayerId = playerId;
+            Card = card;
+            LineIndex = lineIndex;
+            SelectedTargetId = selectedTargetId;
+        }
+    }
+}
+
+
+========================================
+FILE: EventBus.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\EventBus.cs
+========================================
+using CardGame.Core.Events.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.Events
+{
+    public class EventBus
+    {
+        private readonly Queue<IGameEvent> _processingQueue = new Queue<IGameEvent>();
+
+        // Historia tylko dla obecnej komendy/klatki (używana przez DeathResolver)
+        private readonly List<IGameEvent> _commandHistory = new List<IGameEvent>();
+
+        // Cała historia gry od początku (używana przez UI/Runnera)
+        private readonly List<IGameEvent> _globalHistory = new List<IGameEvent>();
+
+        public void Publish(IGameEvent gameEvent)
+        {
+            _processingQueue.Enqueue(gameEvent);
+            _commandHistory.Add(gameEvent);
+            _globalHistory.Add(gameEvent);
+        }
+
+        public bool HasEvents => _processingQueue.Count > 0;
+
+        public IGameEvent Pop()
+        {
+            return _processingQueue.Dequeue();
+        }
+
+        // Metoda dla silnika - czyści tylko krótką historię
+        public void ClearHistory()
+        {
+            _commandHistory.Clear();
+        }
+
+        // Metoda dla DeathResolvera i Triggerów (krótka historia)
+        public IEnumerable<IGameEvent> GetHistory()
+        {
+            return _commandHistory.AsReadOnly();
+        }
+
+        // Metoda dla Runnera/UI (cała historia gry)
+        public IEnumerable<IGameEvent> GetGlobalHistory()
+        {
+            return _globalHistory.AsReadOnly();
+        }
+    }
+}
+
+
+========================================
+FILE: GameOverEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\GameOverEvent.cs
+========================================
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class GameOverEvent : IGameEvent
+    {
+        public int? WinnerId { get; }
+        public int SourcePlayerId => WinnerId ?? 0;
+
+        public GameOverEvent(int? winnerId) => WinnerId = winnerId;
+    }
+}
+
+
+========================================
+FILE: PreLineCombat.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\PreLineCombat.cs
+========================================
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class PreLineCombatEvent : IGameEvent
+    {
+        public int LineIndex { get; }
+        public int SourcePlayerId => 0;
+
+        public PreLineCombatEvent(int lineIndex)
+        {
+            LineIndex = lineIndex;
+        }
+    }
+}
+
+
+========================================
+FILE: StatusAppliedEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\StatusAppliedEvent.cs
+========================================
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class StatusAppliedEvent : IGameEvent
+    {
+        public int TargetUnitId { get; }
+        public Keyword Status { get; }
+        public int SourcePlayerId { get; }
+        public StatusAppliedEvent(int sourcePlayerId, int targetUnitId, Keyword status)
+        {
+            SourcePlayerId = sourcePlayerId;
+            TargetUnitId = targetUnitId;
+            Status = status;
+        }
+    }
+}
+
+
+========================================
+FILE: TargetSelectedEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\TargetSelectedEvent.cs
+========================================
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class TargetSelectedEvent : IGameEvent
+    {
+        public int PlayerId { get; }
+        public int SourcePlayerId => PlayerId;
+        public int SourceCardId { get; }
+        public int SelectedTargetId { get; }
+
+        public TargetSelectedEvent(int playerId, int sourceCardId, int selectedTargetId)
+        {
+            PlayerId = playerId;
+            SourceCardId = sourceCardId;
+            SelectedTargetId = selectedTargetId;
+        }
+    }
+}
+
+
+========================================
+FILE: TurnStartedEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\TurnStartedEvent.cs
+========================================
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class TurnStartedEvent : IGameEvent
+    {
+        public int TurnNumer { get; }
+        public int ActivePlayerId { get; }
+
+        // Implementacja interfejsu: Gracz, którego tura się zaczyna
+        public int SourcePlayerId => ActivePlayerId;
+
+        public TurnStartedEvent(int turnNumer, int activePlayerId)
+        {
+            TurnNumer = turnNumer;
+            ActivePlayerId = activePlayerId;
+        }
+    }
+}
+
+
+========================================
+FILE: UnitDamagedEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\UnitDamagedEvent.cs
+========================================
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class UnitDamagedEvent : IGameEvent
+    {
+        public CardInstance Unit { get; }
+        public int Amount { get; }
+        public CardInstance? Source { get; }
+        public int SourcePlayerId => Source?.OwnerPlayerId ?? Unit.OwnerPlayerId;
+
+        public UnitDamagedEvent(CardInstance unit, int amount, CardInstance? source)
+        {
+            Unit = unit;
+            Amount = amount;
+            Source = source;
+        }
+    }
+}
+
+
+========================================
+FILE: UnitDestroyedEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\UnitDestroyedEvent.cs
+========================================
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class UnitDestroyedEvent : IGameEvent
+    {
+        public CardInstance Unit { get; }
+        public int OwnerId { get; }
+
+        // Implementacja interfejsu
+        public int SourcePlayerId => OwnerId;
+
+        public UnitDestroyedEvent(CardInstance unit, int ownerId)
+        {
+            Unit = unit;
+            OwnerId = ownerId;
+        }
+    }
+}
+
+
+========================================
+FILE: UnitDiedEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\UnitDiedEvent.cs
+========================================
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class UnitDiedEvent : IGameEvent
+    {
+        public CardInstance Unit { get; }
+        public int OwnerId { get; }
+        public int SourcePlayerId => OwnerId;
+        public int LineIndex { get; }
+        public int? KillerInstanceId { get; } // NOWE
+
+        public UnitDiedEvent(CardInstance unit, int lineIndex = -1, int? killerId = null)
+        {
+            Unit = unit;
+            OwnerId = unit.OwnerPlayerId;
+            LineIndex = lineIndex;
+            KillerInstanceId = killerId;
+        }
+    }
+}
+
+
+========================================
+FILE: UnitSacrificedEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\UnitSacrificedEvent.cs
+========================================
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events.Interfaces;
+
+namespace CardGame.Core.Events
+{
+    public class UnitSacrificedEvent : IGameEvent
+    {
+        public CardInstance Unit { get; }
+        public int OwnerId { get; }
+
+     
+        public int SourcePlayerId => OwnerId;
+
+        public int LineIndex { get; }
+
+        public UnitSacrificedEvent(CardInstance unit, int lineIndex)
+        {
+            Unit = unit;
+            OwnerId = unit.OwnerPlayerId;
+            LineIndex = lineIndex;
+        }
+    }
+}
+
+
+========================================
+FILE: IGameEvent.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\Interfaces\IGameEvent.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Events.Interfaces
+{
+    public interface IGameEvent
+    {
+        int SourcePlayerId { get; }
+    }
+}
+
+
+
+========================================
+FILE: TriggerSystem.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Events\Triggers\TriggerSystem.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Components.Implementations;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.Events.Triggers
+{
+    public class TriggerSystem
+    {
+        private class SourceInfo
+        {
+            public int Id;
+            public EffectData Effect;
+            public EffectZone Zone;
+            public SourceInfo(int id, EffectData effect, EffectZone zone) { Id = id; Effect = effect; Zone = zone; }
+        }
+
+        public GameState ProcessEvents(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            var workingState = currentState;
+
+            while (eventBus.HasEvents)
+            {
+                if (workingState.PendingInteraction != null) break;
+
+                var evt = eventBus.Pop();
+                var types = GetRelevantTriggerTypes(evt);
+
+                foreach (var type in types)
+                {
+                 
+                    var map = BuildTriggerMap(workingState, evt);
+                    if (!map.TryGetValue(type, out var sources)) continue;
+
+                    foreach (var source in sources)
+                    {
+                        if (!IsStillValid(workingState, source)) continue;
+
+                        var component = new JsonEffectComponent(source.Effect, source.Id);
+                        if (component.ShouldTrigger(evt, workingState))
+                        {
+                            workingState = component.Resolve(evt, workingState, context);
+                            if (workingState.PendingInteraction != null) return workingState;
+                        }
+                    }
+                }
+            }
+            return workingState;
+        }
+
+        private bool IsStillValid(GameState s, SourceInfo info)
+        {
+            if (info.Effect.Trigger == TriggerType.OnDeath ||
+                info.Effect.Trigger == TriggerType.OnSacrificed ||
+                info.Effect.Trigger == TriggerType.OnOtherUnitSacrificed || 
+                info.Effect.Trigger == TriggerType.OnFriendlyUnitDied)    
+                return true;
+            if (info.Zone == EffectZone.Board) return s.Board.GetAllUnits().Any(u => u.InstanceId == info.Id);
+            if (info.Zone == EffectZone.Hand) return s.PlayerA.Hand.Concat(s.PlayerB.Hand).Any(c => c.InstanceId == info.Id);
+            return true;
+        }
+
+        private Dictionary<TriggerType, List<SourceInfo>> BuildTriggerMap(GameState s, IGameEvent currentEvt)
+        {
+            var map = new Dictionary<TriggerType, List<SourceInfo>>();
+
+          
+            var all = s.Board.GetAllUnits().Select(u => (u, zone: EffectZone.Board))
+        
+                .Concat(s.PlayerA.Hand.Concat(s.PlayerB.Hand).Select(c => (c, zone: EffectZone.Hand)))
+      
+                .Concat(s.SpellStack.Select(sp => (sp, zone: EffectZone.Any)));
+           
+            if (currentEvt is UnitDiedEvent ude)
+            {
+                all = all.Append((ude.Unit, zone: EffectZone.Graveyard));
+            }
+            else if (currentEvt is UnitSacrificedEvent use)
+            {
+                all = all.Append((use.Unit, zone: EffectZone.Graveyard));
+            }
+
+            foreach (var (card, currentZone) in all)
+            {
+                foreach (var effect in card.Definition.Effects)
+                {
+                   
+                    bool zoneMatches = effect.Zone == currentZone || effect.Zone == EffectZone.Any;
+
+                 
+                    bool isDeathRelatedTrigger = effect.Trigger == TriggerType.OnDeath ||
+                                                 effect.Trigger == TriggerType.OnSacrificed;
+
+                    bool shouldInclude = effect.Trigger == TriggerType.OnPlayed || 
+                                         zoneMatches ||
+                                         (isDeathRelatedTrigger && currentZone == EffectZone.Graveyard);
+
+                    if (shouldInclude)
+                    {
+                        if (!map.ContainsKey(effect.Trigger))
+                        {
+                            map[effect.Trigger] = new List<SourceInfo>();
+                        }
+
+                        map[effect.Trigger].Add(new SourceInfo(card.InstanceId, effect, currentZone));
+                    }
+                }
+            }
+
+            return map;
+        }
+
+        private List<TriggerType> GetRelevantTriggerTypes(IGameEvent evt)
+        {
+            var t = new List<TriggerType>();
+            if (evt is CardPlayedEvent) { t.Add(TriggerType.OnPlayed); t.Add(TriggerType.OnFriendlyActionPlayed); }
+                if (evt is UnitDiedEvent) { t.Add(TriggerType.OnDeath); t.Add(TriggerType.OnFriendlyUnitDied); t.Add(TriggerType.OnKill); }
+            if (evt is UnitSacrificedEvent) { t.Add(TriggerType.OnSacrificed); t.Add(TriggerType.OnOtherUnitSacrificed); t.Add(TriggerType.OnFriendlyUnitDied); }
+            if (evt is UnitDamagedEvent) { t.Add(TriggerType.OnDamagTaken); t.Add(TriggerType.OnDamagedEnemyUnit); t.Add(TriggerType.OnDamagedEnemyHero); }
+            if (evt is TurnStartedEvent) t.Add(TriggerType.OnTurnStart);
+            if (evt is CardDrawnEvent) { t.Add(TriggerType.OnOpponentCardDrawn); t.Add(TriggerType.OnFriendlyCardDrawn); }
+            if (evt is StatusAppliedEvent) t.Add(TriggerType.OnStatusApplied);
+            if (evt is PreLineCombatEvent) t.Add(TriggerType.OnPreCombatLine);
+            return t;
+        }
+    }
+}
+
+
+========================================
+FILE: AuraSystem.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Auras\AuraSystem.cs
+========================================
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.GameRules.Auras
+{
+    public class AuraSystem
+    {
+        public GameState RecalculateAuras(GameState currentState)
+        {
+            var workingState = currentState;
+            var allUnits = workingState.Board.GetAllUnits();
+
+            int p1Discount = CalculateHandDiscount(workingState, 1);
+            int p2Discount = CalculateHandDiscount(workingState, 2);
+
+            workingState = UpdateHandDiscounts(workingState, 1, p1Discount);
+            workingState = UpdateHandDiscounts(workingState, 2, p2Discount);
+
+            var map = new Dictionary<int, List<Keyword>>();
+            foreach (var src in allUnits)
+            {
+                if (src.IsSilenced) continue;
+                var passives = src.Definition.Effects.Where(e => e.Trigger == TriggerType.Passive && e.Zone == EffectZone.Board);
+                foreach (var eff in passives)
+                {
+                    foreach (var act in eff.Actions.Where(a => a.Type == ActionType.ApplyStatus && a.StatusKeyword.HasValue))
+                    {
+                        var targets = FindTargets(workingState, src, act.Target);
+                        foreach (var t in targets)
+                        {
+                            if (!map.ContainsKey(t.InstanceId)) map[t.InstanceId] = new List<Keyword>();
+                            map[t.InstanceId].Add(act.StatusKeyword!.Value);
+                        }
+                    }
+                }
+            }
+
+            foreach (var unit in allUnits)
+            {
+                // Zawsze pobieraj najświeższą wersję z aktualizowanego stanu (naprawia Silence)
+                var latestUnit = workingState.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == unit.InstanceId);
+                if (latestUnit == null) continue;
+
+                var targetKw = map.ContainsKey(latestUnit.InstanceId) ? map[latestUnit.InstanceId].Distinct().ToList() : new List<Keyword>();
+                if (latestUnit.IsSilenced) targetKw.Clear();
+
+                if (targetKw.Contains(Keyword.SoulGuard) && latestUnit.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted))
+                    targetKw.Remove(Keyword.SoulGuard);
+
+                if (!latestUnit.AuraKeywords.SequenceEqual(targetKw))
+                {
+                    var updated = latestUnit.WithAuras(targetKw);
+                    workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(updated));
+                }
+            }
+            return workingState;
+        }
+
+        private List<CardInstance> FindTargets(GameState s, CardInstance src, TargetType t)
+        {
+            var u = s.Board.GetAllUnits();
+            return t switch
+            {
+                TargetType.AllFriendlyUnits => u.Where(x => x.OwnerPlayerId == src.OwnerPlayerId).ToList(),
+                TargetType.OtherFriendlyUnits => u.Where(x => x.OwnerPlayerId == src.OwnerPlayerId && x.InstanceId != src.InstanceId).ToList(),
+                TargetType.AllEnemyUnits => u.Where(x => x.OwnerPlayerId != src.OwnerPlayerId).ToList(),
+                TargetType.AllUnitsOnBoard => u.ToList(),
+                _ => new List<CardInstance>()
+            };
+        }
+
+        private GameState UpdateHandDiscounts(GameState s, int pid, int discount)
+        {
+            var player = s.GetPlayer(pid);
+            bool changed = false;
+            var newHand = new List<CardInstance>();
+
+            foreach (var card in player.Hand)
+            {
+                int targetDiscount = (card.Definition.Type == CardType.Spell) ? discount : 0;
+                if (card.CostReduction != targetDiscount)
+                {
+                    card.CostReduction = targetDiscount;
+                    changed = true;
+                }
+                newHand.Add(card);
+            }
+
+            return changed ? s.UpdatePlayer(player.With(hand: newHand)) : s;
+        }
+
+        private int CalculateHandDiscount(GameState state, int playerId)
+        {
+            int totalDiscount = 0;
+            var unitsOnBoard = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == playerId && !u.IsSilenced);
+
+            foreach (var unit in unitsOnBoard)
+            {
+              
+                var passiveDiscounts = unit.Definition.Effects
+                    .Where(e => e.Trigger == TriggerType.Passive && e.Zone == EffectZone.Board);
+
+                foreach (var eff in passiveDiscounts)
+                {
+                 
+                    var discountActions = eff.Actions
+                        .Where(a => a.Type == ActionType.BuffStats && a.Target == TargetType.FriendlySpellsInHand);
+
+                    foreach (var act in discountActions)
+                    {
+                   
+                        totalDiscount += Math.Abs(act.Amount);
+                    }
+                }
+            }
+            return totalDiscount;
+        }
+    }
+}
+
+
+========================================
+FILE: BattleService.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Battle\BattleService.cs
+========================================
+using CardGame.Core.State.Models;
+using CardGame.Core.Events;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.GameRules.Damage;
+using CardGame.Core.GameRules.Death;
+using System;
+using System.Linq;
+
+namespace CardGame.Core.GameRules.Battle
+{
+    public class BattleService
+    {
+        private readonly DeathResolver _deathResolver = new DeathResolver();
+
+        public GameState ResolveCombatDuel(GameState state, CardInstance u1, CardInstance u2, int lineIdx, EventBus events, GameContext context)
+        {
+            var workingState = state;
+            bool u1Flying = u1.CurrentStats.Keywords.Contains(Keyword.Flying);
+            bool u2Flying = u2.CurrentStats.Keywords.Contains(Keyword.Flying);
+
+            
+            if (u1Flying != u2Flying)
+            {        
+                workingState = ResolveBonusStrike(workingState, u1, null, lineIdx, events, context);        
+                workingState = ResolveBonusStrike(workingState, u2, null, lineIdx, events, context);
+                return workingState;
+            }
+
+            bool u1Stunned = u1.CurrentStats.Keywords.Contains(Keyword.Stunned);
+            bool u2Stunned = u2.CurrentStats.Keywords.Contains(Keyword.Stunned);
+
+            // Jeśli jednostka jest oszołomiona, usuwamy Stun (odpoczęła turę), ale nie pozwalamy jej zadać obrażeń w tej rundzie.
+            var activeU1 = u1Stunned ? u1.SuppressKeyword(Keyword.Stunned) : u1;
+            var activeU2 = u2Stunned ? u2.SuppressKeyword(Keyword.Stunned) : u2;
+
+            if (u1Stunned)
+            {
+                workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(activeU1));
+            }
+            if (u2Stunned)
+            {
+                workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(activeU2));      
+            }
+
+            // Obliczamy obrażenia (0 jeśli Stunned)
+            int dmgToU2 = u1Stunned ? 0 : context.DamageCalculator.CalculateFinalDamage(new DamageContext(activeU1, activeU2, activeU1.CurrentStats.Attack, DamageType.Combat));
+            int dmgToU1 = u2Stunned ? 0 : context.DamageCalculator.CalculateFinalDamage(new DamageContext(activeU2, activeU1, activeU2.CurrentStats.Attack, DamageType.Combat));
+
+            var nextU1 = activeU1.TakeDamage(dmgToU1);
+            var nextU2 = activeU2.TakeDamage(dmgToU2);
+
+            workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(nextU1));
+            workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(nextU2));
+
+            // Pobieramy aktualny stan z planszy po zmianach (HP/Statusy)
+            var finalU1 = workingState.Board.Lines[lineIdx].Player1Unit;
+            var finalU2 = workingState.Board.Lines[lineIdx].Player2Unit;
+
+            if (finalU1 != null && finalU2 != null)
+            {
+                if (!u1Stunned) workingState = context.Keywords.ProcessPostAttack(workingState, finalU1, finalU2, lineIdx, context);
+                if (!u2Stunned) workingState = context.Keywords.ProcessPostAttack(workingState, finalU2, finalU1, lineIdx, context);
+            }
+
+            if (dmgToU1 > 0) events.Publish(new UnitDamagedEvent(nextU1, dmgToU1, activeU2));
+            if (dmgToU2 > 0) events.Publish(new UnitDamagedEvent(nextU2, dmgToU2, activeU1));
+
+            return workingState;
+        }
+
+        public GameState ResolveBonusStrike(GameState state, CardInstance attacker, CardInstance? defender, int lineIdx, EventBus events, GameContext context)
+        {
+            if (attacker.CurrentStats.Keywords.Contains(Keyword.Stunned))
+            {
+                var cleanAttacker = attacker.SuppressKeyword(Keyword.Stunned);
+                return state.UpdateBoard(state.Board.UpdateUnit(cleanAttacker));
+            }
+
+            var workingState = state;
+            if (defender != null)
+            {
+                int dmg = context.DamageCalculator.CalculateFinalDamage(new DamageContext(attacker, defender, attacker.CurrentStats.Attack, DamageType.Combat));
+                var nextDefender = defender.TakeDamage(dmg);
+                workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(nextDefender));
+                workingState = context.Keywords.ProcessPostAttack(workingState, attacker, nextDefender, lineIdx, context);
+                events.Publish(new UnitDamagedEvent(nextDefender, dmg, attacker));
+            }
+            else
+            {
+                int dmgValue = attacker.CurrentStats.Attack;
+                var opponent = workingState.GetOpponent(attacker.OwnerPlayerId);
+                workingState = workingState.UpdatePlayer(opponent.WithDamageTaken(dmgValue));
+                workingState = context.Keywords.ProcessPostAttack(workingState, attacker, null, lineIdx, context);
+
+                // Atak na bohatera to specyficzny rodzaj obrażeń - nie celujemy w jednostkę.
+                events.Publish(new UnitDamagedEvent(null!, dmgValue, attacker));
+            }
+            return _deathResolver.ResolveDeaths(workingState, events, context);
+        }
+    }
+}
+
+
+========================================
+FILE: DamageCalculator.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\DamageCalculator.cs
+========================================
+using CardGame.Core.Application;
+using System;
+
+namespace CardGame.Core.GameRules.Damage
+{
+    public class DamageCalculator
+    {
+        private readonly GameContext _context;
+
+        public DamageCalculator(GameContext context)
+        {
+            _context = context;
+        }
+
+        public int CalculateFinalDamage(DamageContext context)
+        {
+            int finalDamage = context.RawAmount;
+
+            finalDamage = _context.Keywords.ProcessDamageTaken(finalDamage, context);
+
+            return Math.Max(0, finalDamage);
+        }
+    }
+}
+
+
+========================================
+FILE: DamageContext.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\DamageContext.cs
+========================================
+using CardGame.Core.Cards.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.GameRules.Damage
+{
+    public class DamageContext
+    {
+        public CardInstance? Source { get; }
+        public CardInstance Target { get; }
+        public int RawAmount { get; }
+        public DamageType Type { get; }
+        public DamageContext(CardInstance? source, CardInstance target, int rawAmount, DamageType type)
+        {
+            Source = source;
+            Target = target;
+            RawAmount = rawAmount;
+            Type = type;
+        }
+    }
+}
+
+
+
+========================================
+FILE: DamageType.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\DamageType.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.GameRules.Damage
+{
+    public enum DamageType
+    {
+        Combat,
+        Action,
+        Effect
+    }
+}
+
+
+
+========================================
+FILE: ArmorModifier.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\Modifiers\ArmorModifier.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.GameRules.Damage.Modifiers
+{
+    internal class ArmorModifier
+    {
+    }
+}
+
+
+
+========================================
+FILE: IDamageModifier.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\Modifiers\IDamageModifier.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.GameRules.Damage.Modifiers
+{
+    internal interface IDamageModifier
+    {
+    }
+}
+
+
+
+========================================
+FILE: MarkedModifier.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\Modifiers\MarkedModifier.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.GameRules.Damage.Modifiers
+{
+    internal class MarkedModifier
+    {
+    }
+}
+
+
+
+========================================
+FILE: DeathResolver.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Death\DeathResolver.cs
+========================================
+using System;
+using System.Linq;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+using CardGame.Core.Events;
+using CardGame.Core.Application;
+
+namespace CardGame.Core.GameRules.Death
+{
+    public class DeathResolver
+    {
+        public GameState ResolveDeaths(GameState state, EventBus eventBus, GameContext context)
+        {
+            var workingState = state;
+            bool changed = true;
+
+            while (changed)
+            {
+                changed = false;
+                var allUnits = workingState.Board.GetAllUnits();
+                var unitToKill = allUnits.FirstOrDefault(u => u.CurrentStats.Health <= 0);
+
+                if (unitToKill != null)
+                {
+                    int lineIndex = -1;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitToKill.InstanceId ||
+                            workingState.Board.Lines[i].Player2Unit?.InstanceId == unitToKill.InstanceId)
+                        {
+                            lineIndex = i;
+                            break;
+                        }
+                    }
+
+                    // --- DETEKCJA POŚWIĘCENIA ---
+                    var history = eventBus.GetHistory().ToList();
+                    bool isSacrifice = history.OfType<UnitSacrificedEvent>()
+                        .Any(e => e.Unit.InstanceId == unitToKill.InstanceId);
+
+                    if (context.Keywords.TryPreventDeath(ref workingState, unitToKill, context, isSacrifice))
+                    {
+                        changed = true;
+                        continue;
+                    }
+
+                    var lastDmg = history.OfType<UnitDamagedEvent>()
+                        .LastOrDefault(e => e.Unit?.InstanceId == unitToKill.InstanceId && e.Source != null);
+
+                    workingState = KillInstantly(workingState, unitToKill, lineIndex, eventBus, lastDmg?.Source?.InstanceId);
+                    changed = true;
+                }
+            }
+            return workingState;
+        }
+
+        public GameState KillInstantly(GameState state, CardInstance unit, int lineIndex, EventBus events, int? killerId)
+        {
+            var board = state.Board;
+            for (int i = 0; i < 4; i++)
+            {
+                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 1, null);
+                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 2, null);
+            }
+
+            var owner = state.GetPlayer(unit.OwnerPlayerId);
+            var newState = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
+
+            events.Publish(new UnitDiedEvent(unit, lineIndex, killerId));
+            return newState;
+        }
+    }
+}
+
+
+========================================
+FILE: NetworkCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\NetworkCommand.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer
+{
+    internal class NetworkCommand
+    {
+    }
+}
+
+
+
+========================================
+FILE: CommandQueue.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\Synchronization\CommandQueue.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer.Synchronization
+{
+    internal class CommandQueue
+    {
+    }
+}
+
+
+
+========================================
+FILE: LockstepManager.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\Synchronization\LockstepManager.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer.Synchronization
+{
+    internal class LockstepManager
+    {
+    }
+}
+
+
+
+========================================
+FILE: ISaveStrategy.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Saves\Interfaces\ISaveStrategy.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Saves.Interfaces
+{
+    internal interface ISaveStrategy
+    {
+    }
+}
+
+
+
+========================================
+FILE: SaveData.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Saves\Models\SaveData.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Saves.Models
+{
+    internal class SaveData
+    {
+    }
+}
+
+
+
+========================================
+FILE: GamePhase.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Enums\GamePhase.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.State.Enums
+{
+    public enum GamePhase
+    {
+        None,       // Faza nieokreślona lub początkowa
+        Mulligan,   // Pierwsza faza gry - Mulligan & Dobieranie kart
+        UnitOnly, // Faza grania Unitów
+        UnitAndAction, // Faza grania Unitów i Akcji
+        ActionOnly, // Faza grania tylko Akcji
+        Combat, // Faza walki
+        EndTurn    // Faza kończenia tury
+    }
+}
+
+
+
+========================================
+FILE: BoardState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\BoardState.cs
+========================================
+using CardGame.Core.Cards.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.State.Models
+{
+    public class BoardState
+    {
+        public IReadOnlyList<Line> Lines { get; }
+        public BoardState(IEnumerable<Line> lines)
+        {
+            Lines = new List<Line>(lines);
+        }
+
+        public static BoardState Empty()
+        {
+            var emptyLines = new List<Line>();
+            for (int i = 0; i < 4; i++)
+            {
+                emptyLines.Add(Line.Empty(i));
+            }
+            return new BoardState(emptyLines);
+        }
+
+        public BoardState WithUnitPlacedAt(int lineIndex, int playerId, CardInstance? unit)
+        {
+            var newLines = new List<Line>(Lines);
+            var oldLine = newLines[lineIndex];
+            var newLine = oldLine.WithUnitPlaced(playerId, unit);
+            newLines[lineIndex] = newLine;
+            return new BoardState(newLines);
+        }
+
+        public List<CardInstance> GetAllUnits()
+        {
+            var list = new List<CardInstance>();
+            foreach (var line in Lines)
+            {
+                if (line.Player1Unit != null) list.Add(line.Player1Unit);
+                if (line.Player2Unit != null) list.Add(line.Player2Unit);
+            }
+            return list;
+        }
+
+        public BoardState UpdateUnit(CardInstance updatedUnit)
+        {
+            if (updatedUnit == null) return this;
+
+            var newLines = new List<Line>();
+            bool found = false;
+
+            foreach (var line in Lines)
+            {
+                if (line.Player1Unit?.InstanceId == updatedUnit.InstanceId)
+                {
+                    newLines.Add(line.WithUnitPlaced(1, updatedUnit));
+                    found = true;
+                }
+                else if (line.Player2Unit?.InstanceId == updatedUnit.InstanceId)
+                {
+                    newLines.Add(line.WithUnitPlaced(2, updatedUnit));
+                    found = true;
+                }
+                else
+                {
+                    newLines.Add(line);
+                }
+            }
+
+            return found ? new BoardState(newLines) : this;
+        }
+    }
+}
+
+
+========================================
+FILE: GameState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\GameState.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Enums;
+
+namespace CardGame.Core.State.Models
+{
+    public class GameState
+    {
+        public int TurnNumber { get; }
+        public GamePhase CurrentPhase { get; }
+        public int ActivePlayerId { get; }
+        public BoardState Board { get; }
+        public PlayerState PlayerA { get; }
+        public PlayerState PlayerB { get; }
+        public IReadOnlyList<int> PlayersReady { get; }
+        public PendingInteraction? PendingInteraction { get; }
+        public IReadOnlyList<CardInstance> SpellStack { get; }
+
+        // Identyfikator gracza, który rozpoczął tę rundę (1 lub 2)
+        public int RoundStartingPlayerId { get; }
+
+        public GameState(
+            int turnNumber,
+            GamePhase currentPhase,
+            int activePlayerId,
+            BoardState board,
+            PlayerState playerA,
+            PlayerState playerB,
+            IEnumerable<int>? playersReady = null,
+            PendingInteraction? pendingInteraction = null,
+            IEnumerable<CardInstance>? spellStack = null,
+            int roundStartingPlayerId = 1)
+        {
+            TurnNumber = turnNumber;
+            CurrentPhase = currentPhase;
+            ActivePlayerId = activePlayerId;
+            Board = board;
+            PlayerA = playerA;
+            PlayerB = playerB;
+            PlayersReady = playersReady != null ? new List<int>(playersReady) : new List<int>();
+            PendingInteraction = pendingInteraction;
+            SpellStack = spellStack != null ? new List<CardInstance>(spellStack) : new List<CardInstance>();
+            RoundStartingPlayerId = roundStartingPlayerId;
+        }
+
+        public static GameState Initial(int startingPlayerId, List<CardInstance> deckA, List<CardInstance> deckB, DeterministicRng rng)
+        {
+            var pA = PlayerState.Initial(1, deckA).WithShuffledDeck(rng);
+            var pB = PlayerState.Initial(2, deckB).WithShuffledDeck(rng);
+
+            for (int i = 0; i < 4; i++) pA = pA.WithCardDrawn();
+            for (int i = 0; i < 4; i++) pB = pB.WithCardDrawn();
+
+            return new GameState(
+                turnNumber: 1,
+                currentPhase: GamePhase.Mulligan,
+                activePlayerId: startingPlayerId,
+                board: BoardState.Empty(),
+                playerA: pA,
+                playerB: pB,
+                roundStartingPlayerId: startingPlayerId
+            );
+        }
+
+        public GameState With(
+            int? turnNumber = null,
+            GamePhase? currentPhase = null,
+            int? activePlayerId = null,
+            BoardState? board = null,
+            PlayerState? playerA = null,
+            PlayerState? playerB = null,
+            IEnumerable<int>? playersReady = null,
+            PendingInteraction? pendingInteraction = null,
+            IEnumerable<CardInstance>? spellStack = null,
+            int? roundStartingPlayerId = null,
+            bool clearPending = false)
+        {
+            return new GameState(
+                turnNumber ?? this.TurnNumber,
+                currentPhase ?? this.CurrentPhase,
+                activePlayerId ?? this.ActivePlayerId,
+                board ?? this.Board,
+                playerA ?? this.PlayerA,
+                playerB ?? this.PlayerB,
+                playersReady ?? this.PlayersReady,
+                clearPending ? null : (pendingInteraction ?? this.PendingInteraction),
+                spellStack ?? this.SpellStack,
+                roundStartingPlayerId ?? this.RoundStartingPlayerId
+            );
+        }
+
+        public GameState MarkPlayerAsReady(int playerId)
+        {
+            var newList = new List<int>(PlayersReady);
+            if (!newList.Contains(playerId)) newList.Add(playerId);
+            return With(playersReady: newList);
+        }
+
+        public PlayerState GetPlayer(int playerId) => playerId == 1 ? PlayerA : PlayerB;
+        public PlayerState GetOpponent(int playerId) => playerId == 1 ? PlayerB : PlayerA;
+        public GameState UpdatePlayer(PlayerState newPlayerState) => newPlayerState.PlayerId == 1 ? With(playerA: newPlayerState) : With(playerB: newPlayerState);
+        public GameState UpdateBoard(BoardState newBoard) => With(board: newBoard);
+    }
+}

@@ -1,4 +1,6 @@
-﻿using CardGame.Core.AI.Interfaces;
+﻿using CardGame.ConsoleApp.Core;
+using CardGame.ConsoleApp.Evolution.Analytics;
+using CardGame.Core.AI.Interfaces;
 using CardGame.Core.AI.Logic;
 using CardGame.Core.AI.Logic.Mcts;
 using CardGame.Core.AI.Strategies;
@@ -15,7 +17,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CardGame.ConsoleApp.Evolution
+namespace CardGame.ConsoleApp.Evolution.V1_Legacy
 {
     public class EvolutionRunner
     {
@@ -76,29 +78,29 @@ namespace CardGame.ConsoleApp.Evolution
 
                     for (int m = 0; m < 6; m++)
                     {
-                        GeneticIndividual opponent = (m < 2 && champions.Count > 0)
+                        GeneticIndividual opponent = m < 2 && champions.Count > 0
                             ? champions[localRng.Next(champions.Count)]
                             : _population[localRng.Next(PopulationSize)];
 
                         if (subject.Id == opponent.Id) continue;
 
-                        int startId = (m % 2 == 0) ? 1 : 2;
+                        int startId = m % 2 == 0 ? 1 : 2;
                         var result = SimulateRobustMatch(subject, opponent, 4, 3, startId);
 
                         lock (subject)
                         {
                             subject.GamesPlayed++;
-                            float score = (startId == 1) ? result.p1Score : result.p2Score;
+                            float score = startId == 1 ? result.p1Score : result.p2Score;
 
                             // Surowsza kara za bycie kopią (Diversity promuje unikalne mózgi)
                             if (champions.Count > 0)
                             {
                                 float sim = CalculateSimilarity(subject, champions[0]);
-                                score *= (1.0f - (Math.Max(0, sim - 0.4f) * 0.6f));
+                                score *= 1.0f - Math.Max(0, sim - 0.4f) * 0.6f;
                             }
 
                             subject.Fitness += score;
-                            if ((startId == 1 && result.winner == 1) || (startId == 2 && result.winner == 2))
+                            if (startId == 1 && result.winner == 1 || startId == 2 && result.winner == 2)
                                 subject.Wins++;
                         }
                     }
@@ -123,8 +125,8 @@ namespace CardGame.ConsoleApp.Evolution
 
                     lock (elite)
                     {
-                        elite.Fitness += (totalMctsScore / mctsTrials) * 6.0f;
-                        if (mctsWins > 0) elite.Fitness += (mctsWins * 40000f);
+                        elite.Fitness += totalMctsScore / mctsTrials * 6.0f;
+                        if (mctsWins > 0) elite.Fitness += mctsWins * 40000f;
                         if (mctsWins == mctsTrials) elite.Fitness += 150000f; // Bonus za wybitną stabilność
                     }
                 });
@@ -133,10 +135,10 @@ namespace CardGame.ConsoleApp.Evolution
                 _hof.ProcessPopulation(sorted, g);
                 var best = sorted[0];
 
-                Console.WriteLine($"[GEN {g:D3}] Master:{best.Id} | Fit:{best.Fitness,8:F0} | WR:{(best.WinRate * 100),4:F1}% | Stag:{_stagnationTimer} | Decay:{_masterDecayFactor:P0}");
+                Console.WriteLine($"[GEN {g:D3}] Master:{best.Id} | Fit:{best.Fitness,8:F0} | WR:{best.WinRate * 100,4:F1}% | Stag:{_stagnationTimer} | Decay:{_masterDecayFactor:P0}");
 
                 // Wyższy próg ewolucyjny (+5000 pkt)
-                if (best.Fitness > (highestFitnessEver * _masterDecayFactor) + 5000)
+                if (best.Fitness > highestFitnessEver * _masterDecayFactor + 5000)
                 {
                     highestFitnessEver = best.Fitness;
                     _stagnationTimer = 0;
@@ -223,7 +225,7 @@ namespace CardGame.ConsoleApp.Evolution
             }
 
             var s1 = new BotSolver(engine, 1, new EvolvableStrategy(b.StrategyDNA), 4, 4);
-            IAIStrategy masterHeuristic = (master != null) ? new EvolvableStrategy(master.StrategyDNA) : new StandardStrategy();
+            IAIStrategy masterHeuristic = master != null ? new EvolvableStrategy(master.StrategyDNA) : new StandardStrategy();
             var s2 = new MctsSolver(engine, 2, masterHeuristic);
 
             int moves = 0;
@@ -248,11 +250,11 @@ namespace CardGame.ConsoleApp.Evolution
             var localRng = _threadRng.Value;
 
             // ELITYZM (Więcej elit, by szlifować sukcesy)
-            int eliteCount = (stag > 8) ? 2 : 6;
+            int eliteCount = stag > 8 ? 2 : 6;
             for (int i = 0; i < eliteCount; i++) next.Add(sorted[i].Clone());
 
             // IMIGRANCI (Zawsze potrzebna świeża krew)
-            int immigrants = (stag > 5) ? 25 : 10;
+            int immigrants = stag > 5 ? 25 : 10;
             while (next.Count < eliteCount + immigrants) next.Add(CreateRandomIndividual(gen));
 
             while (next.Count < PopulationSize)
@@ -268,20 +270,20 @@ namespace CardGame.ConsoleApp.Evolution
                     if (roll < 0.03) // Mutacja ekstremalna (Rzadziej niż wcześniej)
                         dna[i] = localRng.Next(0, 2) == 0 ? 0.3f : 9.7f;
                     else if (roll < 0.25) // NOWOŚĆ: Mikro-tuning (Szlifowanie wartości)
-                        dna[i] = Math.Clamp((pA.StrategyDNA[i] * weight) + (pB.StrategyDNA[i] * (1f - weight)) + (float)(localRng.NextDouble() * 0.4 - 0.2), 0, 10);
+                        dna[i] = Math.Clamp(pA.StrategyDNA[i] * weight + pB.StrategyDNA[i] * (1f - weight) + (float)(localRng.NextDouble() * 0.4 - 0.2), 0, 10);
                     else // Standardowy Crossover
-                        dna[i] = Math.Clamp((pA.StrategyDNA[i] * weight) + (pB.StrategyDNA[i] * (1f - weight)), 0, 10);
+                        dna[i] = Math.Clamp(pA.StrategyDNA[i] * weight + pB.StrategyDNA[i] * (1f - weight), 0, 10);
                 }
 
                 // Chunk Crossover dla Decku
                 int[] childDeck = new int[30];
                 int split = localRng.Next(5, 25);
-                for (int i = 0; i < 30; i++) childDeck[i] = (i < split) ? pA.DeckDNA[i] : pB.DeckDNA[i];
+                for (int i = 0; i < 30; i++) childDeck[i] = i < split ? pA.DeckDNA[i] : pB.DeckDNA[i];
 
                 // Mutacja Decku (rzadsza, by nie psuć synergii)
                 if (localRng.NextDouble() < (stag > 6 ? 0.5 : 0.15))
                 {
-                    int changes = (stag > 8) ? 8 : 2;
+                    int changes = stag > 8 ? 8 : 2;
                     for (int j = 0; j < changes; j++) childDeck[localRng.Next(30)] = _collectibleCardIds[localRng.Next(_collectibleCardIds.Length)];
                 }
                 LegalizeDeck(childDeck, localRng);
@@ -350,7 +352,7 @@ namespace CardGame.ConsoleApp.Evolution
             for (int i = 0; i < 30; i++)
             {
                 int id = deck[i];
-                if (id >= 900 || (counts.ContainsKey(id) && counts[id] >= 3))
+                if (id >= 900 || counts.ContainsKey(id) && counts[id] >= 3)
                 {
                     int r; do { r = _collectibleCardIds[rng.Next(_collectibleCardIds.Length)]; } while (counts.ContainsKey(r) && counts[r] >= 3);
                     deck[i] = id = r;

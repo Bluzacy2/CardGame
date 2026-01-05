@@ -593,7 +593,6 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using CardGame.ConsoleApp.Evolution; // Import do DNA
 using CardGame.Core.AI.Logic;
 using CardGame.Core.AI.Logic.Mcts; // Import do MCTS
 using CardGame.Core.AI.Strategies;
@@ -607,6 +606,7 @@ using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Commands.Implementations;
+using CardGame.ConsoleApp.Evolution.V1_Legacy;
 
 namespace CardGame.ConsoleApp
 {
@@ -1178,6 +1178,11 @@ PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\CardGame.Cons
   <ItemGroup>
     <Folder Include="Data\Decks\" />
     <Folder Include="Data\Cards\" />
+    <Folder Include="NewGen\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1487,126 +1492,280 @@ namespace CardGame.ConsoleApp
 
 
 ========================================
-FILE: Program.cs
-PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\Program.cs
+FILE: EvolvableStrategy.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.ConsoleApp\AI_Integration\EvolvableStrategy.cs
 ========================================
-using CardGame.ConsoleApp.Evolution;
+using CardGame.Core.AI.Interfaces;
 using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
 using System;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace CardGame.ConsoleApp
+namespace CardGame.Core.AI.Strategies
 {
-    class Program
+    public class EvolvableStrategy : IAIStrategy
     {
-        static async Task Main(string[] args)
+        public float[] DNA { get; }
+
+        public EvolvableStrategy(float[] genes)
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-
-            try
+            // Zabezpieczenie rozmiaru DNA (aktualizacja do 109 genów)
+            if (genes != null && genes.Length < 109)
             {
-                CardLibrary.Instance.LoadFromJson("Data/Cards/cards.json");
-                Console.WriteLine($"[SYSTEM] Karty załadowane: {CardLibrary.Instance.GetAllIds().Length}");
+                var newDna = new float[109];
+                Array.Copy(genes, newDna, genes.Length);
+                DNA = newDna;
             }
-            catch (Exception ex)
+            else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"[CRITICAL ERROR] Błąd ładowania kart: {ex.Message}");
-                Console.ResetColor();
-                return;
-            }
-
-            bool exitApp = false;
-            while (!exitApp)
-            {
-                Console.Clear();
-                Console.WriteLine("================================================");
-                Console.WriteLine("           CARD GAME ENGINE - MASTER CLI        ");
-                Console.WriteLine("================================================");
-                Console.WriteLine("1. STANDARD BATTLE (AI v3.1 - High Quality)");
-                Console.WriteLine("2. EVOLUTION CENTER (Training & Master Matches)");
-                Console.WriteLine("3. LEGACY & DEBUG TOOLS (Old versions & Tests)");
-                Console.WriteLine("------------------------------------------------");
-                Console.WriteLine("0. Exit Application");
-                Console.WriteLine("================================================");
-                Console.Write("\nWybierz opcję: ");
-
-                var key = Console.ReadKey(true);
-                switch (key.KeyChar)
-                {
-                    case '1': await AIBattleRunnerIII.RunAsync(); break;
-                    case '2': await ShowEvolutionMenu(); break;
-                    case '3': await ShowLegacyMenu(); break;
-                    case '0': exitApp = true; break;
-                }
+                DNA = genes ?? new float[109];
             }
         }
 
-        static async Task ShowEvolutionMenu()
+        public float Evaluate(GameState state, int botId)
         {
-            bool back = false;
-            while (!back)
-            {
-                Console.Clear();
-                Console.WriteLine("================================================");
-                Console.WriteLine("             AI EVOLUTION CENTER                ");
-                Console.WriteLine("================================================");
-                Console.WriteLine("1. URUCHOM EWOLUCJĘ CIĄGŁĄ (Trening DNA)");
-                Console.WriteLine("2. MASTER VS STANDARD (Testuj best_bot_dna.json)");
-                Console.WriteLine("3. STATYSTYKI MASTER BOTA (DNA & Deck)");
-                Console.WriteLine("4. ANALIZA META (Usage & WinRate)");
-                Console.WriteLine("------------------------------------------------");
-                Console.WriteLine("0. Powrót do menu głównego");
-                Console.WriteLine("================================================");
-                Console.Write("\nWybierz narzędzie ewolucji: ");
+            var bot = state.GetPlayer(botId);
+            var enemy = state.GetOpponent(botId);
 
-                var key = Console.ReadKey(true);
-                switch (key.KeyChar)
-                {
-                    case '1':
-                        var runner = new EvolutionRunner();
-                        await runner.RunEvolutionAsync(); // Brak parametrów, pętla nieskończona
-                        break;
-                    case '2': await AIvsEvolutionRunner.RunAsync(); break;
-                    case '3': EvoBotViewer.ViewBestBot(); break;
-                    case '4': CardMetaViewer.ViewMeta(); break;
-                    case '0': back = true; break;
-                }
+            // Natychmiastowe stany końca gry
+            if (enemy.Health <= 0 && bot.Health > 0) return 10000000f;
+            if (bot.Health <= 0) return -10000000f;
+            if (state.CurrentPhase == GamePhase.Mulligan)
+            {
+                return EvaluateMulliganHand(state.GetPlayer(botId));
             }
+
+            // Archetypy i wagi nastroju
+            float aggroFactor = DNA[65] * (bot.Health > 15 ? 1.0f : DNA[90]);
+            float controlFactor = DNA[66];
+            float tempoFactor = DNA[67];
+            float valueFactor = DNA[68];
+            float comboFactor = DNA[108]; // NOWY GEN
+
+            float totalScore = 0f;
+
+            // Główna analiza
+            totalScore += EvaluateMacroEconomy(state, bot, enemy, valueFactor, comboFactor);
+            totalScore += EvaluateBoardGeometry(state, botId, tempoFactor);
+            totalScore += EvaluateUnitsAndSynergies(state, botId, aggroFactor, controlFactor, comboFactor);
+            totalScore += EvaluateForecasting(state, bot, enemy);
+
+            // Specyficzna punktacja dla Combo: Premia za zniżki kosztów w ręku
+            float totalDiscounts = bot.Hand.Sum(c => c.CostReduction);
+            totalScore += totalDiscounts * 25.0f * comboFactor;
+
+            return totalScore;
+        }
+        private float EvaluateMulliganHand(PlayerState player)
+        {
+            float score = 0;
+            foreach (var card in player.Hand)
+            {
+                bool isUnit = card.Definition.Type == CardType.Unit;
+                float cost = card.CurrentStats.BloodCost;
+
+                // Gen 71: Preferencja niskiego kosztu jednostek na start
+                // DNA[71] to idealny koszt. Im dalej karta od tego kosztu, tym gorzej.
+                if (isUnit)
+                {
+                    if (cost <= DNA[71]) score += 1000f; // Bardzo chcemy jednostki 1-2 dropy
+                    else score -= (cost - DNA[71]) * 500f; // Kara za "cegły" na ręce
+                }
+                else // Spelle
+                {
+                    // Gen 72: Czy bot lubi trzymać czary?
+                    score += DNA[72] * 200f;
+                    // Czary zazwyczaj chcemy odrzucić, chyba że są bardzo tanie
+                    if (cost > 2) score -= 1000f;
+                }
+
+                // Gen 73: Czy karta jest częścią combo? (np. Black Cat dla decku Sacrifice)
+                if (new[] { "12", "3", "10" }.Contains(card.Definition.Id))
+                    score += DNA[73] * 300f;
+            }
+            return score;
         }
 
-        static async Task ShowLegacyMenu()
+        private float EvaluateMacroEconomy(GameState state, PlayerState bot, PlayerState enemy, float valueFactor, float comboFactor)
         {
-            bool back = false;
-            while (!back)
-            {
-                Console.Clear();
-                Console.WriteLine("================================================");
-                Console.WriteLine("            NARZĘDZIA DEBUG & LEGACY            ");
-                Console.WriteLine("================================================");
-                Console.WriteLine("1. Testy mechanik (Unit Tests)");
-                Console.WriteLine("2. AI Battle v1 (Original)");
-                Console.WriteLine("3. AI Battle v2 (Nuclear UI)");
-                Console.WriteLine("4. Balance AI Tester (Long-term)");
-                Console.WriteLine("5. Optimized AI Logger (Debug Panel)");
-                Console.WriteLine("------------------------------------------------");
-                Console.WriteLine("0. Powrót");
-                Console.WriteLine("================================================");
-                Console.Write("\nWybierz narzędzie: ");
+            float score = 0;
 
-                var key = Console.ReadKey(true);
-                switch (key.KeyChar)
-                {
-                    case '1': MechanicsTester.Run(); Pause(); break;
-                    case '2': await AIBattleRunner.RunAsync(); Pause(); break;
-                    case '3': await AIBattleRunnerII.RunAsync(); Pause(); break;
-                    case '4': await BalanceAITester.RunAsync(); Pause(); break;
-                    case '5': await OptimizedAILogger.RunAsync(); Pause(); break;
-                    case '0': back = true; break;
-                }
+            // Życie bohatera
+            float selfHpValue = bot.Health * DNA[0];
+            if (bot.Health < 10) selfHpValue *= DNA[2]; // Panic threshold
+            score += selfHpValue;
+
+            float enemyHpLoss = (30 - enemy.Health) * DNA[1];
+            if (enemy.Health < 10) enemyHpLoss *= DNA[3]; // Lethal fever
+            score += enemyHpLoss;
+
+            // Wartość kart na ręce (wzmocniona przez Combo)
+            float handValueMultiplier = 1.0f + (comboFactor * 0.5f);
+            score += bot.Hand.Count * DNA[6] * valueFactor * handValueMultiplier;
+
+            if (bot.Hand.Count >= 7) score -= DNA[7]; // Overdraw risk
+
+            // Ekonomia zasobów (Gen 105 - ResourceGainValue)
+            score += bot.CurrentBlood * DNA[105];
+
+            if (state.ActivePlayerId == bot.PlayerId)
+            {
+                float unusedBloodPenalty = bot.CurrentBlood * DNA[4];
+                if (state.CurrentPhase == GamePhase.UnitOnly)
+                    unusedBloodPenalty *= DNA[5];
+                score -= unusedBloodPenalty;
             }
+
+            // Finishery w talii
+            float finishersInDeck = bot.DrawPile.Count(c => c.CurrentStats.Attack >= 5);
+            score += finishersInDeck * DNA[46] * DNA[48];
+
+            return score;
         }
 
-        static void Pause() { Console.WriteLine("\nNaciśnij dowolny klawisz..."); Console.ReadKey(true); }
+        private float EvaluateBoardGeometry(GameState state, int botId, float tempoFactor)
+        {
+            float score = 0;
+            int occupiedLines = state.Board.Lines.Count(l => !l.IsSlotEmpty(botId));
+            score += occupiedLines * DNA[77] * tempoFactor;
+
+            foreach (var line in state.Board.Lines)
+            {
+                var myU = botId == 1 ? line.Player1Unit : line.Player2Unit;
+                var enU = botId == 1 ? line.Player2Unit : line.Player1Unit;
+
+                if (myU != null)
+                {
+                    if (enU == null) score += DNA[12]; // Empty lane bonus
+                    if (line.Index == 0 || line.Index == 3) score += DNA[78]; // Corner value
+                    if (HasNeighbor(state, line.Index, botId)) score += DNA[14]; // Adjacency
+
+                    // Priorytety linii (Geny 100-103)
+                    score += myU.CurrentStats.Attack * DNA[100 + line.Index];
+                }
+            }
+            return score;
+        }
+
+        private float EvaluateUnitsAndSynergies(GameState state, int botId, float aggroFactor, float controlFactor, float comboFactor)
+        {
+            float score = 0;
+            var units = state.Board.GetAllUnits();
+
+            foreach (var u in units)
+            {
+                bool isFriendly = u.OwnerPlayerId == botId;
+                var s = u.CurrentStats;
+                float uVal = 0;
+                int lineIdx = GetLineIndex(state, u.InstanceId);
+
+                // Bazowe statystyki z uwzględnieniem archetypów
+                if (isFriendly)
+                {
+                    uVal += s.Attack * DNA[8] * aggroFactor;
+                    uVal += s.Health * DNA[9];
+                    if (lineIdx != -1) uVal += s.Attack * DNA[100 + lineIdx];
+                }
+                else
+                {
+                    uVal += s.Attack * DNA[10] * controlFactor;
+                    uVal += s.Health * DNA[11];
+                    if (lineIdx != -1) uVal += s.Attack * DNA[100 + lineIdx];
+                }
+
+                // Keywordy i statusy
+                if (s.Keywords.Contains(Keyword.Marked))
+                {
+                    float markBonus = isFriendly ? -DNA[16] : DNA[15];
+                    uVal += markBonus;
+                }
+
+                if (s.Keywords.Contains(Keyword.Unkillable)) uVal += DNA[18];
+                if (s.Keywords.Contains(Keyword.SoulGuard)) uVal += DNA[19];
+
+                // NOWE: Flying (Gen 104)
+                if (s.Keywords.Contains(Keyword.Flying)) uVal += DNA[104] * 2.0f;
+
+                if (s.Keywords.Contains(Keyword.SplashDamage) && lineIdx != -1)
+                {
+                    int neighborCount = CountEnemyNeighbors(state, lineIdx, botId);
+                    uVal += neighborCount * DNA[22];
+                }
+
+                // Podtypy i synergie (NOWE: DNA[107] dla Maszyn)
+                if (u.Definition.Subtypes.Contains("Monster")) uVal += DNA[27];
+                if (u.Definition.Subtypes.Contains("Mercenary")) uVal += DNA[28];
+                if (u.Definition.Subtypes.Contains("Animal")) uVal += DNA[29];
+                if (u.Definition.Subtypes.Contains("Machine")) uVal += DNA[30] + DNA[107];
+                if (u.Definition.Subtypes.Contains("Human")) uVal += DNA[31];
+                if (u.Definition.Subtypes.Contains("Demon")) uVal += DNA[32];
+
+                // NOWE: Token Synergy (Gen 106)
+                if (u.Definition.Id == "901" || u.Definition.Id == "500") uVal += DNA[106];
+
+                // Buff stałe (Gen 49)
+                if (u.PermanentBuffs.Attack > 0 || u.PermanentBuffs.Health > 0)
+                {
+                    uVal += (u.PermanentBuffs.Attack + u.PermanentBuffs.Health) * DNA[49];
+                }
+
+                // Specyficzne dla Combo: Tea Maid (ID 46)
+                if (isFriendly && u.Definition.Id == "46") uVal += 60.0f * comboFactor;
+
+                score += isFriendly ? uVal : -uVal;
+            }
+
+            return score;
+        }
+
+        private float EvaluateForecasting(GameState state, PlayerState bot, PlayerState enemy)
+        {
+            float score = 0;
+            // Przewidywanie AoE wroga
+            if (state.Board.GetAllUnits().Count(u => u.OwnerPlayerId == bot.PlayerId) >= 3)
+            {
+                if (enemy.MaxBlood >= 4) score -= DNA[85]; // Fear of Hellfire
+            }
+
+            score -= enemy.Hand.Count * DNA[44]; // Enemy hand size fear
+
+            // Ryzyko Bluffu
+            if (enemy.CurrentBlood > 0 && state.ActivePlayerId == bot.PlayerId)
+                score -= DNA[81];
+
+            return score;
+        }
+
+        // --- HELPERY GEOMETRYCZNE ---
+
+        private int GetLineIndex(GameState s, int id)
+        {
+            for (int i = 0; i < 4; i++)
+                if (s.Board.Lines[i].Player1Unit?.InstanceId == id || s.Board.Lines[i].Player2Unit?.InstanceId == id) return i;
+            return -1;
+        }
+
+        private bool HasNeighbor(GameState s, int lineIdx, int myId)
+        {
+            foreach (int i in new[] { lineIdx - 1, lineIdx + 1 })
+            {
+                if (i >= 0 && i < 4 && !s.Board.Lines[i].IsSlotEmpty(myId)) return true;
+            }
+            return false;
+        }
+
+        private int CountEnemyNeighbors(GameState s, int lineIdx, int myId)
+        {
+            int oppId = 3 - myId;
+            int count = 0;
+            foreach (int i in new[] { lineIdx - 1, lineIdx + 1 })
+            {
+                if (i >= 0 && i < 4 && !s.Board.Lines[i].IsSlotEmpty(oppId)) count++;
+            }
+            return count;
+        }
     }
 }

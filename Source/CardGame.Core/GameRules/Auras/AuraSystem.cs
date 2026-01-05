@@ -13,8 +13,8 @@ namespace CardGame.Core.GameRules.Auras
             var workingState = currentState;
             var allUnits = workingState.Board.GetAllUnits();
 
-            int p1Discount = allUnits.Count(u => u.OwnerPlayerId == 1 && u.Definition.Id == "46" && !u.IsSilenced);
-            int p2Discount = allUnits.Count(u => u.OwnerPlayerId == 2 && u.Definition.Id == "46" && !u.IsSilenced);
+            int p1Discount = CalculateHandDiscount(workingState, 1);
+            int p2Discount = CalculateHandDiscount(workingState, 2);
 
             workingState = UpdateHandDiscounts(workingState, 1, p1Discount);
             workingState = UpdateHandDiscounts(workingState, 2, p2Discount);
@@ -90,6 +90,33 @@ namespace CardGame.Core.GameRules.Auras
             }
 
             return changed ? s.UpdatePlayer(player.With(hand: newHand)) : s;
+        }
+
+        private int CalculateHandDiscount(GameState state, int playerId)
+        {
+            int totalDiscount = 0;
+            var unitsOnBoard = state.Board.GetAllUnits().Where(u => u.OwnerPlayerId == playerId && !u.IsSilenced);
+
+            foreach (var unit in unitsOnBoard)
+            {
+              
+                var passiveDiscounts = unit.Definition.Effects
+                    .Where(e => e.Trigger == TriggerType.Passive && e.Zone == EffectZone.Board);
+
+                foreach (var eff in passiveDiscounts)
+                {
+                 
+                    var discountActions = eff.Actions
+                        .Where(a => a.Type == ActionType.BuffStats && a.Target == TargetType.FriendlySpellsInHand);
+
+                    foreach (var act in discountActions)
+                    {
+                   
+                        totalDiscount += Math.Abs(act.Amount);
+                    }
+                }
+            }
+            return totalDiscount;
         }
     }
 }

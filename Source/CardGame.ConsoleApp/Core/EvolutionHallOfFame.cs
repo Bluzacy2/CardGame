@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using CardGame.ConsoleApp.Evolution.V1_Legacy;
 using CardGame.Core.Cards.Data;
 
-namespace CardGame.ConsoleApp.Evolution
+namespace CardGame.ConsoleApp.Core
 {
     public class HallOfFame
     {
@@ -62,7 +63,7 @@ namespace CardGame.ConsoleApp.Evolution
             {
                 shouldReplace = true;
             }
-            else if (!forceAbsolute && (currentGen - currentChamp.Generation) > GenerationGracePeriod)
+            else if (!forceAbsolute && currentGen - currentChamp.Generation > GenerationGracePeriod)
             {
                 if (candidate.Fitness > currentChamp.Fitness * 0.85f) shouldReplace = true;
             }
@@ -79,7 +80,7 @@ namespace CardGame.ConsoleApp.Evolution
         }
 
         private void InitializeEmptySlots() { while (Champions.Count < 5) Champions.Add(null); }
-        private float GetSafeDNA(GeneticIndividual bot, int index) => (index < bot.StrategyDNA.Length) ? bot.StrategyDNA[index] : 0f;
+        private float GetSafeDNA(GeneticIndividual bot, int index) => index < bot.StrategyDNA.Length ? bot.StrategyDNA[index] : 0f;
 
         private float CalculateDistanceToGroup(GeneticIndividual bot, List<GeneticIndividual> group)
         {
@@ -102,7 +103,7 @@ namespace CardGame.ConsoleApp.Evolution
             foreach (int i in keyGenes) dnaDiff += Math.Abs(GetSafeDNA(a, i) - GetSafeDNA(b, i));
             float dnaSim = 1.0f - Math.Clamp(dnaDiff / 20.0f, 0, 1);
 
-            return (deckSim * 0.6f) + (dnaSim * 0.4f);
+            return deckSim * 0.6f + dnaSim * 0.4f;
         }
 
         public void Save() => File.WriteAllText(FilePath, JsonSerializer.Serialize(Champions.Where(c => c != null).ToList(), new JsonSerializerOptions { WriteIndented = true }));

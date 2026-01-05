@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using CardGame.ConsoleApp.Evolution.V1_Legacy;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 
-namespace CardGame.ConsoleApp.Evolution
+namespace CardGame.ConsoleApp.Core
 {
     public class EvolutionLeague
     {
@@ -30,7 +31,7 @@ namespace CardGame.ConsoleApp.Evolution
         public GeneticIndividual GetRandomLegend()
         {
             if (!_legends.Any()) return null;
-            return _legends[new System.Random().Next(_legends.Count)];
+            return _legends[new Random().Next(_legends.Count)];
         }
 
         private void LoadLegends()

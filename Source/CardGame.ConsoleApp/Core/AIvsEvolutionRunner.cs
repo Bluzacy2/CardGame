@@ -20,8 +20,9 @@ using CardGame.Core.Events.Interfaces;
 using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.Commands.Implementations;
 using CardGame.ConsoleApp.Evolution;
+using CardGame.ConsoleApp.Evolution.V1_Legacy;
 
-namespace CardGame.ConsoleApp
+namespace CardGame.ConsoleApp.Core
 {
     public static class AIvsEvolutionRunner
     {
@@ -269,7 +270,7 @@ namespace CardGame.ConsoleApp
         private static string Stats(CardInstance? u)
         {
             if (u == null) return "                 ";
-            string kw = u.CurrentStats.Keywords.Contains(Keyword.Marked) ? "!!" : (u.IsSilenced ? "S!" : "  ");
+            string kw = u.CurrentStats.Keywords.Contains(Keyword.Marked) ? "!!" : u.IsSilenced ? "S!" : "  ";
             return $"ATK:{u.CurrentStats.Attack,-2} HP:{u.CurrentStats.Health,-2} {kw}";
         }
 
@@ -280,7 +281,7 @@ namespace CardGame.ConsoleApp
             foreach (var t in _lastThoughts.Take(12))
             {
                 string prefix = t == _lastThoughts.First() ? ">>" : "  ";
-                string scoreStr = Math.Abs(t.Score) > 1000000 ? (t.Score > 0 ? "LETHAL" : "DEFEAT") : t.Score.ToString("F1");
+                string scoreStr = Math.Abs(t.Score) > 1000000 ? t.Score > 0 ? "LETHAL" : "DEFEAT" : t.Score.ToString("F1");
                 string desc = t.Description.Length > 22 ? t.Description.Substring(0, 21) + "…" : t.Description;
                 res.Add($"{prefix} {desc.PadRight(22)} | {scoreStr.PadLeft(7)}");
                 if (t == _lastThoughts.First()) { res.Add($"   L {Truncate(t.DeepReasoning, 35)}"); res.Add(""); }
@@ -294,7 +295,7 @@ namespace CardGame.ConsoleApp
             for (int i = _eventsSeenSoFar; i < all.Count; i++)
             {
                 var evt = all[i];
-                if (evt is UnitDamagedEvent d) _displayLogs.Enqueue($"> {(d.Source?.Definition.Name ?? "Effect")} hits {(d.Unit?.Definition.Name ?? "Hero")} for {d.Amount}");
+                if (evt is UnitDamagedEvent d) _displayLogs.Enqueue($"> {d.Source?.Definition.Name ?? "Effect"} hits {d.Unit?.Definition.Name ?? "Hero"} for {d.Amount}");
                 else if (evt is CardPlayedEvent cp) _displayLogs.Enqueue($"> P{cp.PlayerId} plays {cp.Card.Definition.Name}");
                 else if (evt is UnitDiedEvent dd) _displayLogs.Enqueue($"> {dd.Unit.Definition.Name} died");
                 if (_displayLogs.Count > 15) _displayLogs.Dequeue();

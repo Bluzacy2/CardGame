@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using CardGame.ConsoleApp.Evolution.V1_Legacy;
 using CardGame.Core.Cards.Data;
 
-namespace CardGame.ConsoleApp.Evolution
+namespace CardGame.ConsoleApp.Evolution.Analytics
 {
     public class CardAnalytics
     {

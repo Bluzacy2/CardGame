@@ -26,14 +26,16 @@
         ModifyGlobalBuff, DrawCard, SacrificeUnit, AbsorbStats,
         ShuffleDeck, ReturnToHand, TutorCard, DrawFromDiscard,
         BonusAttack, HealToFull, MoveRight, GiveToOpponent,
-        Silence, AddResource, MakeAUnit
+        Silence, AddResource, MakeAUnit, MoveLeft
     }
 
     public enum TargetType
     {
         Self, TargetEnemyUnit, TargetFriendlyUnit, AllEnemyUnits,
         AllFriendlyUnits, EnemyHero, FriendlyHero, SelectedTarget,
-        OtherFriendlyUnits, AdjacentEnemyUnits, AllUnitsOnBoard, Choice,
+        OtherFriendlyUnits, AdjacentEnemyUnits, AllUnitsOnBoard, Choice, 
+        
+        FriendlySpellsInHand,
 
         EmptyLane,
         RandomEmptyLane

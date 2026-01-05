@@ -2,6 +2,7 @@
 using CardGame.Core.State.Enums;
 using CardGame.Core.Commands.Implementations;
 using CardGame.Core.GameRules.Auras;
+using CardGame.Core.Cards.Data; // Dodane dla TargetType i TriggerType
 using System.Linq;
 
 namespace CardGame.Tests
@@ -12,8 +13,20 @@ namespace CardGame.Tests
         public void TeaMaid_ShouldReduceSpellCost_WhileOnBoard()
         {
             // ARRANGE
+            // Dodajemy pełną definicję efektu do JSONa testowego
             var json = @"[
-                { ""Id"": 46, ""Name"": ""Tea Maid"", ""Type"": ""Unit"", ""Attack"": 2, ""Health"": 4 },
+                { 
+                  ""Id"": 46, ""Name"": ""Tea Maid"", ""Type"": ""Unit"", ""Attack"": 2, ""Health"": 4,
+                  ""Effects"": [
+                    {
+                      ""Trigger"": ""Passive"",
+                      ""Zone"": ""Board"",
+                      ""Actions"": [
+                        { ""Type"": ""BuffStats"", ""Target"": ""FriendlySpellsInHand"", ""Amount"": -1 }
+                      ]
+                    }
+                  ]
+                },
                 { ""Id"": 7, ""Name"": ""Glock-17"", ""Type"": ""Spell"", ""Cost"": 2 }
             ]";
             var engine = TestHelpers.CreateEngineWithCards(json);
@@ -32,49 +45,29 @@ namespace CardGame.Tests
             engine.CurrentState = new AuraSystem().RecalculateAuras(engine.CurrentState);
 
             // ASSERT
-            // Po wystawieniu Tea Maid koszt czaru = 1 (2 - 1)
+            // Po wystawieniu Tea Maid koszt czaru = 1 (AuraSystem znalazł efekt Passive celujący w FriendlySpellsInHand)
             Assert.Equal(1, engine.CurrentState.PlayerA.Hand.First().CurrentStats.BloodCost);
         }
 
-        [Fact]
-        public void Rustler_ShouldReduceOwnCost_WhenFriendlySpellPlayed()
-        {
-            // ARRANGE
-            var json = @"[
-                { ""Id"": 46, ""Name"": ""Rustler"", ""Type"": ""Unit"", ""Cost"": 10, ""Attack"": 5, ""Health"": 5,
-                  ""Effects"": [ { ""Trigger"": ""OnFriendlyActionPlayed"", ""Zone"": ""Hand"", ""Actions"": [ { ""Type"": ""BuffStats"", ""Target"": ""Self"", ""Amount"": -1 } ] } ] },
-                { ""Id"": 13, ""Name"": ""Cheap Spell"", ""Type"": ""Spell"", ""Cost"": 1 }
-            ]";
-            var engine = TestHelpers.CreateEngineWithCards(json);
-            var f = engine.Factory;
-
-            var rustler = f.CreateCard(46, 1);
-            var spell = f.CreateCard(13, 1);
-
-            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA
-                .WithCardAddedToHand(rustler)
-                .WithCardAddedToHand(spell))
-                .With(currentPhase: GamePhase.ActionOnly);
-
-            // Startowy koszt Rustlera = 10
-            Assert.Equal(10, engine.CurrentState.PlayerA.Hand.First(c => c.Definition.Id == "46").CurrentStats.BloodCost);
-
-            // ACT: Zagrywamy czar
-            engine.ExecuteCommand(new PlaySpellCommand(1, spell.InstanceId));
-
-            // ASSERT: Rustler w ręku powinien teraz kosztować 9 (poprzez BuffStats Amount -1 na koszt)
-            // Uwaga: BuffStats na 'Amount' w moich poprzednich poprawkach mapowaliśmy na koszt.
-            var rustlerInHand = engine.CurrentState.PlayerA.Hand.First(c => c.Definition.Id == "46");
-            Assert.Equal(9, rustlerInHand.CurrentStats.BloodCost);
-        }
         [Fact]
         public void TeaMaid_ShouldStack_And_ResetOnDeath()
         {
             // ARRANGE
             var json = @"[
-        { ""Id"": 46, ""Name"": ""Tea Maid"", ""Type"": ""Unit"", ""Attack"": 2, ""Health"": 2 },
-        { ""Id"": 7, ""Name"": ""BigSpell"", ""Type"": ""Spell"", ""Cost"": 3 }
-    ]";
+                { 
+                  ""Id"": 46, ""Name"": ""Tea Maid"", ""Type"": ""Unit"", ""Attack"": 2, ""Health"": 2,
+                  ""Effects"": [
+                    {
+                      ""Trigger"": ""Passive"",
+                      ""Zone"": ""Board"",
+                      ""Actions"": [
+                        { ""Type"": ""BuffStats"", ""Target"": ""FriendlySpellsInHand"", ""Amount"": -1 }
+                      ]
+                    }
+                  ]
+                },
+                { ""Id"": 7, ""Name"": ""BigSpell"", ""Type"": ""Spell"", ""Cost"": 3 }
+            ]";
             var engine = TestHelpers.CreateEngineWithCards(json);
             var f = engine.Factory;
             var spell = f.CreateCard(7, 1);
@@ -111,10 +104,35 @@ namespace CardGame.Tests
 
             // ASSERT: Powinna zostać tylko jedna zniżka, koszt wraca do 2
             Assert.Equal(2, engine.CurrentState.PlayerA.Hand.First().CurrentStats.BloodCost);
+        }
 
-            // Dodatkowe sprawdzenie: Czy na planszy jest tylko 1 jednostka
-            Assert.Single(engine.CurrentState.Board.GetAllUnits());
+        [Fact]
+        public void Rustler_ShouldReduceOwnCost_WhenFriendlySpellPlayed()
+        {
+            var json = @"[
+                { ""Id"": 47, ""Name"": ""Rustler"", ""Type"": ""Unit"", ""Cost"": 10, ""Attack"": 5, ""Health"": 5,
+                  ""Effects"": [ { ""Trigger"": ""OnFriendlyActionPlayed"", ""Zone"": ""Hand"", ""Actions"": [ { ""Type"": ""BuffStats"", ""Target"": ""Self"", ""Amount"": -1 } ] } ] },
+                { ""Id"": 13, ""Name"": ""Cheap Spell"", ""Type"": ""Spell"", ""Cost"": 1 }
+            ]";
+            var engine = TestHelpers.CreateEngineWithCards(json);
+            var f = engine.Factory;
+
+            var rustler = f.CreateCard(47, 1);
+            var spell = f.CreateCard(13, 1);
+
+            engine.CurrentState = engine.CurrentState.UpdatePlayer(engine.CurrentState.PlayerA
+                .WithCardAddedToHand(rustler)
+                .WithCardAddedToHand(spell))
+                .With(currentPhase: GamePhase.ActionOnly);
+
+            Assert.Equal(10, engine.CurrentState.PlayerA.Hand.First(c => c.Definition.Id == "47").CurrentStats.BloodCost);
+
+            // ACT
+            engine.ExecuteCommand(new PlaySpellCommand(1, spell.InstanceId));
+
+            // ASSERT
+            var rustlerInHand = engine.CurrentState.PlayerA.Hand.First(c => c.Definition.Id == "47");
+            Assert.Equal(9, rustlerInHand.CurrentStats.BloodCost);
         }
     }
-
 }

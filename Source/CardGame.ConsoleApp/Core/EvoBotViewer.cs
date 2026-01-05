@@ -5,10 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using CardGame.ConsoleApp.Evolution;
+using CardGame.ConsoleApp.Evolution.V1_Legacy;
 using CardGame.Core.Cards.Data;
 
-namespace CardGame.ConsoleApp
+namespace CardGame.ConsoleApp.Core
 {
     public static class EvoBotViewer
     {
@@ -100,7 +100,7 @@ namespace CardGame.ConsoleApp
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("╔" + new string('═', UI_WIDTH - 2) + "╗");
 
-            string winRateStr = bot.GamesPlayed > 0 ? $"{(bot.WinRate * 100):F1}%" : "N/A";
+            string winRateStr = bot.GamesPlayed > 0 ? $"{bot.WinRate * 100:F1}%" : "N/A";
             string statsHeader = $" BOT PROFILE - ID: {bot.Id} | GEN: {bot.Generation} | WR: {winRateStr} ({bot.Wins}/{bot.GamesPlayed}) | FIT: {bot.Fitness:F0} ";
 
             sb.AppendLine("║" + CenterText(statsHeader, UI_WIDTH - 2) + "║");
@@ -120,7 +120,7 @@ namespace CardGame.ConsoleApp
                 .GroupBy(id => id)
                 .Select(g => {
                     var def = CardLibrary.Instance.GetCard(g.Key);
-                    return new { Name = def.Name, Cost = def.Cost, Count = g.Count() };
+                    return new { def.Name, def.Cost, Count = g.Count() };
                 })
                 .OrderBy(c => c.Cost).ThenBy(c => c.Name)
                 .Select(c => $"[{c.Cost}] {c.Name} x{c.Count}").ToList();
@@ -154,7 +154,7 @@ namespace CardGame.ConsoleApp
                     if (sideIdx < _allViewableBots.Count)
                     {
                         var sideBot = _allViewableBots[sideIdx];
-                        bool isCurrent = (sideBot.Id == bot.Id); // Podświetlenie aktualnie wybranego
+                        bool isCurrent = sideBot.Id == bot.Id; // Podświetlenie aktualnie wybranego
 
                         if ((i - 2) % 2 == 0)
                         {

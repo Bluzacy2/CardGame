@@ -1,9 +1,11 @@
-using CardGame.ConsoleApp.Evolution;
+using CardGame.ConsoleApp.Evolution.Analytics;
+using CardGame.ConsoleApp.Evolution.V1_Legacy;
+using CardGame.ConsoleApp.Evolution.V2_NewGen;
 using CardGame.Core.Cards.Data;
 using System;
 using System.Threading.Tasks;
 
-namespace CardGame.ConsoleApp
+namespace CardGame.ConsoleApp.Core
 {
     class Program
     {
@@ -59,7 +61,7 @@ namespace CardGame.ConsoleApp
                 Console.WriteLine("================================================");
                 Console.WriteLine("             AI EVOLUTION CENTER                ");
                 Console.WriteLine("================================================");
-                Console.WriteLine("1. URUCHOM EWOLUCJÊ CI¥G£¥ (Trening DNA)");
+                Console.WriteLine("1. URUCHOM NOW¥ EWOLUCJÊ (V2 - Gatunki i Nowoœæ)");
                 Console.WriteLine("2. MASTER VS STANDARD (Testuj best_bot_dna.json)");
                 Console.WriteLine("3. STATYSTYKI MASTER BOTA (DNA & Deck)");
                 Console.WriteLine("4. ANALIZA META (Usage & WinRate)");
@@ -72,8 +74,8 @@ namespace CardGame.ConsoleApp
                 switch (key.KeyChar)
                 {
                     case '1':
-                        var runner = new EvolutionRunner();
-                        await runner.RunEvolutionAsync(); // Brak parametrów, pêtla nieskoñczona
+                        var runnerV2 = new EvolutionRunnerV2();
+                        await runnerV2.RunEvolutionAsync();
                         break;
                     case '2': await AIvsEvolutionRunner.RunAsync(); break;
                     case '3': EvoBotViewer.ViewBestBot(); break;
@@ -97,6 +99,7 @@ namespace CardGame.ConsoleApp
                 Console.WriteLine("3. AI Battle v2 (Nuclear UI)");
                 Console.WriteLine("4. Balance AI Tester (Long-term)");
                 Console.WriteLine("5. Optimized AI Logger (Debug Panel)");
+                Console.WriteLine("6. URUCHOM STAR¥ EWOLUCJÊ (V1 - Klasyczna)");
                 Console.WriteLine("------------------------------------------------");
                 Console.WriteLine("0. Powrót");
                 Console.WriteLine("================================================");
@@ -110,6 +113,10 @@ namespace CardGame.ConsoleApp
                     case '3': await AIBattleRunnerII.RunAsync(); Pause(); break;
                     case '4': await BalanceAITester.RunAsync(); Pause(); break;
                     case '5': await OptimizedAILogger.RunAsync(); Pause(); break;
+                    case '6':
+                        var runnerV1 = new EvolutionRunner();
+                        await runnerV1.RunEvolutionAsync();
+                        break;
                     case '0': back = true; break;
                 }
             }

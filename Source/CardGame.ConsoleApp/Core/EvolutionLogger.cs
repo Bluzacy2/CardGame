@@ -1,7 +1,8 @@
-﻿using System;
+﻿using CardGame.ConsoleApp.Evolution.V1_Legacy;
+using System;
 using System.IO;
 
-namespace CardGame.ConsoleApp.Evolution
+namespace CardGame.ConsoleApp.Core
 {
     public static class EvolutionLogger
     {

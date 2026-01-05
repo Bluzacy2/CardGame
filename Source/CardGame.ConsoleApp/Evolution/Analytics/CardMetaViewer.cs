@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using CardGame.Core.Cards.Data;
 
-namespace CardGame.ConsoleApp.Evolution
+namespace CardGame.ConsoleApp.Evolution.Analytics
 {
     public static class CardMetaViewer
     {
@@ -80,8 +80,8 @@ namespace CardGame.ConsoleApp.Evolution
             {
                 string id = card.Id.ToString().PadRight(4);
                 string name = Truncate(card.Name, 23).PadRight(23);
-                string wr = $"{(card.WinRate * 100):F1}%".PadRight(13);
-                string usage = $"{(card.UsageRate * 100):F1}%".PadRight(13);
+                string wr = $"{card.WinRate * 100:F1}%".PadRight(13);
+                string usage = $"{card.UsageRate * 100:F1}%".PadRight(13);
                 string dens = $"{card.AvgDensity:F2}".PadRight(13);
                 string stats = $"{card.TotalWins} / {card.TotalGames}".PadRight(18);
                 string tag = GetPerformanceTag(card);
