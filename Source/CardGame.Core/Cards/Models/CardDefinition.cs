@@ -7,6 +7,7 @@ namespace CardGame.Core.Cards.Models
     {
         public string Id { get; }
         public string Name { get; }
+        public string Description { get; }
         public CardType Type { get; }
         public IReadOnlyList<string> Subtypes { get; } 
         public CardStats BaseStats { get; }
@@ -16,6 +17,7 @@ namespace CardGame.Core.Cards.Models
         public CardDefinition(
             string id,
             string name,
+            string description,
             CardType type,
             IEnumerable<string> subtypes, 
             CardStats baseStats,
@@ -24,6 +26,7 @@ namespace CardGame.Core.Cards.Models
         {
             Id = id;
             Name = name;
+            Description = description;
             Type = type;
             Subtypes = new List<string>(subtypes); 
             BaseStats = baseStats;

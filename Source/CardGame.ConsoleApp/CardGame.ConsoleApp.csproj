@@ -10,13 +10,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="NewGen\**" />
+    <EmbeddedResource Remove="NewGen\**" />
+    <None Remove="NewGen\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CardGame.Core\CardGame.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\Decks\" />
     <Folder Include="Data\Cards\" />
-    <Folder Include="NewGen\" />
+    <Folder Include="Evolution\Ev\Core\Evolution\" />
+    <Folder Include="Evolution\Ev\Core\Genetics\" />
+    <Folder Include="Evolution\Ev\Core\Models\" />
+    <Folder Include="Evolution\Ev\Game\Analysis\" />
+    <Folder Include="Evolution\Ev\Game\Simulation\" />
+    <Folder Include="Evolution\Ev\Analytics\" />
+    <Folder Include="Evolution\Ev\Persistance\" />
   </ItemGroup>
 
   <ItemGroup>

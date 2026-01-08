@@ -14,7 +14,7 @@ namespace CardGame.Core.Cards.Models
         public IReadOnlyList<Keyword> AuraKeywords { get; }
         public IReadOnlyList<Keyword> SuppressedKeywords { get; }
         public bool IsSilenced { get; }
-        public int CostReduction { get; set; } = 0; //
+        public int CostReduction { get; } // Setter removed - immutable!
 
         public CardStats CurrentStats
         {
@@ -26,10 +26,10 @@ namespace CardGame.Core.Cards.Models
                         Definition.BaseStats.BloodCost, new List<Keyword>(), new Dictionary<Keyword, int>(), Definition.BaseStats.CostType);
                 }
                 var baseAndPerm = Definition.BaseStats + PermanentBuffs;
-                int finalCost = Math.Max(0, baseAndPerm.BloodCost - CostReduction); // 
+                int finalCost = Math.Max(0, baseAndPerm.BloodCost - CostReduction);
                 var combinedKeywords = baseAndPerm.Keywords.Concat(AuraKeywords)
                     .Where(k => !SuppressedKeywords.Contains(k)).Distinct().ToList();
-                return new CardStats(baseAndPerm.Attack, baseAndPerm.Health - DamageTaken, finalCost, // baseAndPerm.BloodCost
+                return new CardStats(baseAndPerm.Attack, baseAndPerm.Health - DamageTaken, finalCost,
                     combinedKeywords, new Dictionary<Keyword, int>((Dictionary<Keyword, int>)baseAndPerm.KeywordParams), baseAndPerm.CostType);
             }
         }
@@ -37,39 +37,59 @@ namespace CardGame.Core.Cards.Models
         public int MaxHealth => IsSilenced ? Definition.BaseStats.Health : (Definition.BaseStats + PermanentBuffs).Health;
 
         public CardInstance(int instanceId, int playerOwnerId, CardDefinition definition)
-            : this(instanceId, playerOwnerId, definition, 0, new CardStats(0, 0, 0), new List<Keyword>(), new List<Keyword>(), false) { }
+            : this(instanceId, playerOwnerId, definition, 0, new CardStats(0, 0, 0),
+                  new List<Keyword>(), new List<Keyword>(), false, 0)
+        { }
 
         private CardInstance(int instanceId, int playerOwnerId, CardDefinition definition, int damageTaken,
-            CardStats permanentBuffs, IEnumerable<Keyword> auraKeywords, IEnumerable<Keyword> suppressedKeywords, bool isSilenced)
+            CardStats permanentBuffs, IEnumerable<Keyword> auraKeywords, IEnumerable<Keyword> suppressedKeywords,
+            bool isSilenced, int costReduction)
         {
-            InstanceId = instanceId; OwnerPlayerId = playerOwnerId; Definition = definition; DamageTaken = damageTaken;
-            PermanentBuffs = permanentBuffs; AuraKeywords = auraKeywords?.ToList() ?? new List<Keyword>();
-            SuppressedKeywords = suppressedKeywords?.ToList() ?? new List<Keyword>(); IsSilenced = isSilenced;
+            InstanceId = instanceId;
+            OwnerPlayerId = playerOwnerId;
+            Definition = definition;
+            DamageTaken = damageTaken;
+            PermanentBuffs = permanentBuffs;
+            AuraKeywords = auraKeywords?.ToList() ?? new List<Keyword>();
+            SuppressedKeywords = suppressedKeywords?.ToList() ?? new List<Keyword>();
+            IsSilenced = isSilenced;
+            CostReduction = costReduction;
         }
 
         public CardInstance MoveAndReset() =>
-            new CardInstance(InstanceId, OwnerPlayerId, Definition, 0, new CardStats(0, 0, 0), new List<Keyword>(), new List<Keyword>(), IsSilenced) { CostReduction = 0 };
+            new CardInstance(InstanceId, OwnerPlayerId, Definition, 0, new CardStats(0, 0, 0),
+                new List<Keyword>(), new List<Keyword>(), IsSilenced, 0);
 
         public CardInstance WithDamage(int totalDamage) =>
-            new CardInstance(InstanceId, OwnerPlayerId, Definition, totalDamage, PermanentBuffs, AuraKeywords, SuppressedKeywords, IsSilenced);
+            new CardInstance(InstanceId, OwnerPlayerId, Definition, totalDamage, PermanentBuffs,
+                AuraKeywords, SuppressedKeywords, IsSilenced, CostReduction);
 
         public CardInstance TakeDamage(int amount) => WithDamage(DamageTaken + amount);
+
         public CardInstance Heal(int amount) => WithDamage(System.Math.Max(0, DamageTaken - amount));
 
         public CardInstance AddPermanentBuff(CardStats buff) =>
-            IsSilenced ? this : new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, PermanentBuffs + buff, AuraKeywords, SuppressedKeywords, IsSilenced);
+            IsSilenced ? this : new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken,
+                PermanentBuffs + buff, AuraKeywords, SuppressedKeywords, IsSilenced, CostReduction);
 
         public CardInstance WithAuras(IEnumerable<Keyword> newAuras) =>
-            new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, PermanentBuffs, newAuras, SuppressedKeywords, IsSilenced);
+            new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, PermanentBuffs,
+                newAuras, SuppressedKeywords, IsSilenced, CostReduction);
+
+        public CardInstance WithCostReduction(int costReduction) =>
+            new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, PermanentBuffs,
+                AuraKeywords, SuppressedKeywords, IsSilenced, costReduction);
 
         public CardInstance SuppressKeyword(Keyword keyword)
         {
             var newList = new List<Keyword>(SuppressedKeywords);
             if (!newList.Contains(keyword)) newList.Add(keyword);
-            return new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, PermanentBuffs, AuraKeywords, newList, IsSilenced);
+            return new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken,
+                PermanentBuffs, AuraKeywords, newList, IsSilenced, CostReduction);
         }
 
         public CardInstance Silence() =>
-            new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken, new CardStats(0, 0, 0), new List<Keyword>(), new List<Keyword>(), true);
+            new CardInstance(InstanceId, OwnerPlayerId, Definition, DamageTaken,
+                new CardStats(0, 0, 0), new List<Keyword>(), new List<Keyword>(), true, 0);
     }
 }

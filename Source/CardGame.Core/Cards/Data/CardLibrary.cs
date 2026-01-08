@@ -75,6 +75,7 @@ namespace CardGame.Core.Cards.Data
             return new CardDefinition(
                 data.Id.ToString(),
                 data.Name,
+                data.Description,
                 data.Type,
                 data.Subtypes,
                 new CardStats(data.Attack, data.Health, data.Cost, data.Keywords, data.KeywordParams, data.CostType),

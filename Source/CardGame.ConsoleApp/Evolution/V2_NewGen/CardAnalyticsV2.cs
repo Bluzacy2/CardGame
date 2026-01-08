@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -133,12 +134,55 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                     .ToList();
             }
 
+            // 6. TOP DECKI - z sortowaniem według kosztu
+            analytics.TopDecks = GetTopDecks(population.Take(Math.Min(5, population.Count)).ToList());
+
             // Zapisz
             fileName ??= $"EvolutionData/Analytics/gen_{generation:D4}.json";
             SaveToFile(analytics, fileName);
 
             // Wypisz podsumowanie
             PrintSummary(analytics);
+        }
+
+        private static List<DeckInfo> GetTopDecks(List<EvolvableIndividual> topIndividuals)
+        {
+            var deckInfos = new List<DeckInfo>();
+
+            foreach (var ind in topIndividuals)
+            {
+                var rng = new Random();
+                var deck = ind.Dna.BuildDeck(CardLibrary.Instance.GetAllIds()
+                    .Where(id => id < 900).ToArray(), rng);
+
+                // Grupuj karty według ID i zbierz informacje o koszcie
+                var cardGroups = deck
+                    .GroupBy(c => c)
+                    .Select(g => new DeckCardInfo
+                    {
+                        CardId = g.Key,
+                        Name = GetCardName(g.Key),
+                        Cost = GetCardCost(g.Key),
+                        Count = g.Count()
+                    })
+                    .OrderBy(c => c.Cost)  // Sortuj według kosztu rosnąco
+                    .ThenBy(c => c.Name)  // Potem według nazwy
+                    .ToList();
+
+                // Oblicz średni koszt decku
+                float avgCost = cardGroups.Sum(c => c.Cost * c.Count) / (float)deck.Length;
+
+                deckInfos.Add(new DeckInfo
+                {
+                    IndividualId = ind.Id,
+                    Fitness = ind.CompositeFitness,
+                    Archetype = ind.Dna.ClassifyArchetype(),
+                    Cards = cardGroups,
+                    AverageCost = avgCost
+                });
+            }
+
+            return deckInfos;
         }
 
         private static Dictionary<string, List<CardStatistic>> GetTopCardsByArchetype(
@@ -341,6 +385,19 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
             }
         }
 
+        private static int GetCardCost(int cardId)
+        {
+            try
+            {
+                var card = CardLibrary.Instance.GetCard(cardId);
+                return card.Cost;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         private static void SaveToFile(CardAnalyticsData data, string fileName)
         {
             try
@@ -408,6 +465,29 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                     Console.WriteLine($"     Games: {card.GamesPlayed} | Use Rate: {card.UseRate:F1}% | Avg copies: {card.AverageDensity:F2}");
                 }
             }
+
+            // Top decki z sortowaniem według kosztu
+            if (data.TopDecks != null && data.TopDecks.Any())
+            {
+                Console.WriteLine("\nTop decks (formatted by cost):");
+                for (int i = 0; i < Math.Min(3, data.TopDecks.Count); i++)
+                {
+                    var deck = data.TopDecks[i];
+                    Console.WriteLine($"  Deck {i + 1} (ID: {deck.IndividualId}, Fitness: {deck.Fitness:F0}, Archetype: {deck.Archetype}):");
+                    
+                    var cardsByCost = deck.Cards
+                        .GroupBy(c => c.Cost)
+                        .OrderBy(g => g.Key);
+                    
+                    foreach (var costGroup in cardsByCost)
+                    {
+                        var cardsList = costGroup.Select(c => $"{c.Name} x{c.Count}");
+                        Console.WriteLine($"    [{costGroup.Key}] {string.Join(", ", cardsList)}");
+                    }
+                    
+                    Console.WriteLine($"    Average cost: {deck.AverageCost:F2}");
+                }
+            }
         }
 
         // Metoda do generowania raportu CSV (łatwy do importu do Excel)
@@ -450,13 +530,11 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
             try
             {
                 var lines = new List<string>();
-                // 1. Switch header to Semicolons
                 lines.Add("CardId;CardName;UseRate(%);DeckCount;TotalDecks;AvgCopiesPerDeck;WinRate(%);Games;Wins;TotalCopies");
 
                 foreach (var stat in cardStats.Values.OrderByDescending(s => s.UseRate))
                 {
-                    // 2. Use string.Format with InvariantCulture to force dots (.) instead of commas (,)
-                    // 3. Use Semicolons (;) as the separator
+                    // Use the correct property names that now exist
                     string line = string.Format(System.Globalization.CultureInfo.InvariantCulture,
                         "{0};\"{1}\";{2:F2};{3};{4};{5:F2};{6:F2};{7};{8};{9}",
                         stat.CardId,
@@ -466,8 +544,8 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                         stat.TotalDecks,
                         stat.AverageDensity,
                         stat.WinRate * 100,
-                        stat.GamesWithCard,
-                        stat.WinsWithCard,
+                        stat.GamesWithCard,     
+                        stat.WinsWithCard,     
                         stat.TotalCopiesInPopulation);
 
                     lines.Add(line);
@@ -484,7 +562,7 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
             }
         }
 
-        // Metoda do generowania podsumowania mety (format tekstowy)
+        // Metoda do generowania podsumowania mety (format tekstowy) z deckami sortowanymi według kosztu
         public static void GenerateMetaReport(List<EvolvableIndividual> population, int generation,
                                              Dictionary<int, CardStatsEnhanced> cardStats = null)
         {
@@ -503,19 +581,46 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                 {
                     var bot = top5[i];
                     report.Add($"{i + 1}. ID:{bot.Id} | Archetype:{bot.Dna.ClassifyArchetype()} | Fitness:{bot.CompositeFitness:F0}");
-
-                    // Dodaj statystyki decku
+                    
+                    // Dodaj statystyki decku z posortowanymi kartami według kosztu
                     var rng = new Random();
                     var deck = bot.Dna.BuildDeck(CardLibrary.Instance.GetAllIds()
                         .Where(id => id < 900).ToArray(), rng);
-
-                    var cardCounts = deck.GroupBy(c => c)
-                        .Select(g => $"{GetCardName(g.Key)} x{g.Count()}")
-                        .OrderByDescending(x => x);
-
-                    report.Add($"   Deck ({deck.Length} cards): {string.Join(", ", cardCounts.Take(8))}");
-                    if (cardCounts.Count() > 8)
-                        report.Add($"   ... and {cardCounts.Count() - 8} more cards");
+                    
+                    // Grupuj karty według ID i zbierz informacje o koszcie
+                    var cardGroups = deck
+                        .GroupBy(c => c)
+                        .Select(g => new
+                        {
+                            CardId = g.Key,
+                            CardName = GetCardName(g.Key),
+                            Cost = GetCardCost(g.Key),
+                            Count = g.Count()
+                        })
+                        .OrderBy(c => c.Cost)  // Sortuj według kosztu rosnąco
+                        .ThenBy(c => c.CardName)  // Potem według nazwy
+                        .ToList();
+                    
+                    // Grupuj karty według kosztu dla lepszej czytelności
+                    var cardsByCost = cardGroups
+                        .GroupBy(c => c.Cost)
+                        .OrderBy(g => g.Key);
+                    
+                    report.Add($"   Deck ({deck.Length} cards):");
+                    
+                    foreach (var costGroup in cardsByCost)
+                    {
+                        var cardsInCost = costGroup.Select(c => $"{c.CardName} x{c.Count}");
+                        report.Add($"   [{costGroup.Key}] {string.Join(", ", cardsInCost)}");
+                    }
+                    
+                    // Dodaj średni koszt decku
+                    if (cardGroups.Any())
+                    {
+                        float avgCost = cardGroups.Sum(c => c.Cost * c.Count) / (float)deck.Length;
+                        report.Add($"   Average cost: {avgCost:F2}");
+                    }
+                    
                     report.Add("");
                 }
 
@@ -613,6 +718,7 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
         public Dictionary<string, List<CardStatistic>> TopCardsByArchetype { get; set; } = new();
         public List<CardSynergy> CardSynergies { get; set; } = new();
         public List<WinRateCardStat> BestWinRateCards { get; set; } = new();
+        public List<DeckInfo> TopDecks { get; set; } = new(); // Nowe pole
     }
 
     public class CardStatistic
@@ -658,5 +764,22 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
         public int GamesPlayed { get; set; }
         public double UseRate { get; set; }
         public double AverageDensity { get; set; }
+    }
+
+    public class DeckInfo
+    {
+        public int IndividualId { get; set; }
+        public float Fitness { get; set; }
+        public string Archetype { get; set; }
+        public List<DeckCardInfo> Cards { get; set; } = new();
+        public float AverageCost { get; set; }
+    }
+
+    public class DeckCardInfo
+    {
+        public int CardId { get; set; }
+        public string Name { get; set; }
+        public int Cost { get; set; }
+        public int Count { get; set; }
     }
 }

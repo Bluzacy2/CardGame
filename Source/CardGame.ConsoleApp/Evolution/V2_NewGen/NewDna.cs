@@ -3,6 +3,7 @@ using CardGame.Core.Cards.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 
 namespace CardGame.ConsoleApp.Evolution.V2_NewGen
 {
@@ -154,17 +155,18 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
         public static NewDna Crossover(NewDna parent1, NewDna parent2, Random rng)
         {
             var childGenes = new float[TOTAL_GENES];
+         
             int crossoverPoint = rng.Next(TOTAL_GENES);
 
             for (int i = 0; i < TOTAL_GENES; i++)
             {
-                childGenes[i] = i < crossoverPoint ? parent1.Genes[i] : parent2.Genes[i];
+         
+                if (rng.NextDouble() < 0.5)
+                    childGenes[i] = parent1.Genes[i];
+                else
+                    childGenes[i] = parent2.Genes[i];
 
-                if (rng.NextDouble() < 0.3)
-                {
-                    float perturbation = (float)(rng.NextDouble() * 0.5 - 0.25);
-                    childGenes[i] = Math.Clamp(childGenes[i] + perturbation, 0, 10);
-                }
+             
             }
 
             return new NewDna(childGenes);
@@ -172,7 +174,8 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
 
         public void Mutate(Random rng, int stagnationCounter)
         {
-            float mutationRate = Math.Min(0.3f, 0.05f + stagnationCounter * 0.01f);
+            // ZWIĘKSZONA MUTACJA: Im większy stagnationCounter, tym większa mutacja
+            float mutationRate = Math.Min(0.5f, 0.1f + stagnationCounter * 0.02f);
 
             for (int i = 0; i < TOTAL_GENES; i++)
             {
@@ -180,10 +183,22 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                 {
                     float roll = (float)rng.NextDouble();
 
-                    if (roll < 0.3f)
+                    if (roll < 0.4f)
+                    {
+                        // Mała perturbacja
                         Genes[i] = Math.Clamp(Genes[i] + (float)(rng.NextDouble() * 2 - 1), 0, 10);
-                    else if (roll < 0.6f)
+                    }
+                    else if (roll < 0.7f)
+                    {
+                        // Losowa wartość
                         Genes[i] = (float)(rng.NextDouble() * 10);
+                    }
+                    else
+                    {
+                        // Duża zmiana (przesunięcie o 3 w losowym kierunku)
+                        float shift = (float)(rng.NextDouble() * 6 - 3);
+                        Genes[i] = Math.Clamp(Genes[i] + shift, 0, 10);
+                    }
                 }
             }
         }
@@ -272,7 +287,7 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
         }
 
         // ========== ULEPSZONE BUDOWANIE TALII ==========
-        public int[] BuildDeck(int[] cardPool, Random rng)
+        public int[] BuildDeck(int[] cardPool, Random rng, Dictionary<int, CardStatsEnhanced> stats = null)
         {
             const int DECK_SIZE = 30;
             const int MAX_COPIES_PER_CARD = 3;
@@ -280,30 +295,26 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
             var deck = new List<int>();
             var cardLibrary = CardLibrary.Instance;
 
-            // Krok 1: Oceń wszystkie karty (bez szumu na początku)
             var scoredCards = new Dictionary<int, (float baseScore, CardData data)>();
             foreach (int cardId in cardPool)
             {
                 try
                 {
                     var cardData = cardLibrary.GetCard(cardId);
+                    // ScoreCard teraz zwraca Efficiency (Value / Cost)
                     float baseScore = ScoreCard(cardData);
                     scoredCards[cardId] = (baseScore, cardData);
                 }
                 catch { }
             }
 
-            // Krok 2: ITERACYJNE DODAWANIE KART Z UWZGLĘDNIENIEM JUŻ WYBRANYCH
             var counts = new Dictionary<int, int>();
             var deckCardData = new List<CardData>();
 
             for (int i = 0; i < DECK_SIZE; i++)
             {
-                // Oblicz aktualne potrzeby decku (curve, synergy)
                 var deckAnalysis = AnalyzeCurrentDeck(deckCardData);
-
-                // Wybierz najlepszą kartę uwzględniając już wybrane
-                var bestChoice = SelectBestCardForDeck(scoredCards, counts, deckCardData, deckAnalysis, rng);
+                var bestChoice = SelectBestCardForDeck(scoredCards, counts, deckCardData, deckAnalysis, rng, stats);
 
                 if (bestChoice.cardId > 0)
                 {
@@ -313,7 +324,6 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                 }
                 else
                 {
-                    // Dodaj losową kartę jeśli nie znaleziono dobrej
                     int randomCardId = cardPool[rng.Next(cardPool.Length)];
                     if (!counts.ContainsKey(randomCardId) || counts[randomCardId] < MAX_COPIES_PER_CARD)
                     {
@@ -323,22 +333,23 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                     }
                 }
             }
-
-            // Krok 3: Wymieszaj talie
-            deck = deck.OrderBy(x => rng.Next()).ToList();
-
-            return deck.ToArray();
+            return deck.OrderBy(x => rng.Next()).ToArray();
         }
 
+        // 2. WYBÓR KONKRETNEJ KARTY DO DECKU
         private (int cardId, float score) SelectBestCardForDeck(
             Dictionary<int, (float baseScore, CardData data)> scoredCards,
             Dictionary<int, int> counts,
             List<CardData> currentDeck,
             DeckAnalysis analysis,
-            Random rng)
+            Random rng,
+            Dictionary<int, CardStatsEnhanced> stats)
         {
             const int MAX_COPIES = 3;
             var candidates = new List<(int cardId, float score)>();
+
+            float controlStyle = Genes[STYLE_CONTROL] / 10f;
+            float intuition = Genes[LOGIC_PROBABILITY_COGNITION] / 10f;
 
             foreach (var kvp in scoredCards)
             {
@@ -346,77 +357,88 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                 var cardData = kvp.Value.data;
                 float baseScore = kvp.Value.baseScore;
 
-                // Sprawdź limit kopii
                 int currentCopies = counts.GetValueOrDefault(cardId, 0);
-                if (currentCopies >= MAX_COPIES)
-                    continue;
+                if (currentCopies >= MAX_COPIES) continue;
 
-                // Oblicz wagę dla tej kopii (zależna od archetypu i już posiadanych kopii)
+                // Waga kopii zależna od DNA
                 float copyWeight = CalculateCopyWeight(currentCopies + 1);
-
-                // Oceniaj kartę w kontekście całego decku
                 float contextualScore = baseScore * copyWeight;
 
-                // Bonus/kara za curve
-                float curveAdjustment = CalculateCurveAdjustment(cardData, analysis);
-                contextualScore += curveAdjustment;
+                // Dynamiczna kara za drogie karty (Control boi się ich mniej)
+                if (cardData.Cost >= 5)
+                {
+                    float heavyPenaltyBase = 15f * (1.1f - controlStyle);
+                    float currentHeavyCount = currentDeck.Count(c => c.Cost >= 5);
+                    contextualScore -= (currentHeavyCount * heavyPenaltyBase);
+                }
 
-                // Bonus za synergię z już wybranymi kartami
-                float synergyBonus = CalculateSynergyBonus(cardData, currentDeck);
-                contextualScore += synergyBonus;
+                // Użycie Snapshotu Statystyk (zamrożone dane z poprzedniej gen)
+                if (stats != null && stats.TryGetValue(cardId, out var stat))
+                {
+                    if (stat.GamesWithCard > 20)
+                    {
+                        float wrOffset = stat.WinRate - 0.50f;
+                        contextualScore += (wrOffset * 500f * intuition);
 
-                // Bonus za spójność archetypu
-                float archetypeBonus = CalculateArchetypeBonus(cardData);
-                contextualScore += archetypeBonus;
+                        if (stat.UseRate > 0.80f)
+                            contextualScore *= (0.7f + (0.3f * controlStyle));
+                    }
+                    else { contextualScore += 40f; } // Bonus za eksplorację nowości
+                }
 
-                // Dodaj losowość (±15%)
-                float noise = 1.0f + (float)(rng.NextDouble() * 0.3 - 0.15);
+                contextualScore += CalculateCurveAdjustment(cardData, analysis);
+                contextualScore += CalculateSynergyBonus(cardData, currentDeck);
+
+                // Kontrolowany szum 10%
+                float noise = 1.0f + (float)(rng.NextDouble() * 0.2 - 0.1);
                 contextualScore *= noise;
 
                 candidates.Add((cardId, contextualScore));
             }
 
-            if (!candidates.Any())
-                return (0, 0);
-
-            // Wybierz najlepszą kartę (z losowością dla top 3)
-            var topCandidates = candidates.OrderByDescending(c => c.score).Take(3).ToList();
-            return topCandidates[rng.Next(topCandidates.Count)];
+            if (!candidates.Any()) return (0, 0);
+            var sorted = candidates.OrderByDescending(c => c.score).Take(3).ToList();
+            return sorted[rng.Next(sorted.Count)];
         }
 
         private float CalculateCopyWeight(int copyNumber)
         {
-            string archetype = ClassifyArchetype();
+            if (copyNumber == 1) return 1.0f; // Pierwsza kopia zawsze super
 
-            // Aggro chce więcej kopii, Control mniej
-            return archetype switch
-            {
-                "Aggro" => copyNumber == 1 ? 1.0f : (copyNumber == 2 ? 0.85f : 0.7f),
-                "Control" => copyNumber == 1 ? 1.0f : (copyNumber == 2 ? 0.7f : 0.4f),
-                "Combo" => copyNumber == 1 ? 1.0f : (copyNumber == 2 ? 0.9f : 0.8f),
-                "Midrange" => copyNumber == 1 ? 1.0f : (copyNumber == 2 ? 0.8f : 0.6f),
-                "Sacrifice" => copyNumber == 1 ? 1.0f : (copyNumber == 2 ? 0.75f : 0.5f),
-                _ => copyNumber == 1 ? 1.0f : (copyNumber == 2 ? 0.7f : 0.4f)
-            };
+            // Pobieramy geny
+            float aggroStyle = Genes[STYLE_AGGRO] / 10f;
+            float comboStyle = Genes[STYLE_COMBO] / 10f;
+            float controlStyle = Genes[STYLE_CONTROL] / 10f;
+
+            // Aggro i Combo potrzebują powtarzalności (3 kopie są kluczowe)
+            // Control woli "toolbox" (więcej różnych kart na różne sytuacje, mniej kopii tych samych)
+            float consistencyPreference = (aggroStyle * 0.4f) + (comboStyle * 0.6f) - (controlStyle * 0.3f);
+
+            // Bazowy spadek wartości dla kolejnych kopii
+            float drop = (copyNumber == 2) ? 0.2f : 0.4f;
+
+            // Korygujemy spadek przez preferencje bota
+            // Jeśli consistencyPreference jest wysokie, drop będzie mniejszy (czyli 2 i 3 kopia będą mocniejsze)
+            float adjustedDrop = Math.Clamp(drop - (consistencyPreference * 0.25f), 0.05f, 0.8f);
+
+            return 1.0f - adjustedDrop;
         }
 
         private float CalculateCurveAdjustment(CardData card, DeckAnalysis analysis)
         {
-            string archetype = ClassifyArchetype();
-            float idealAvgCost = GetIdealAverageCost(archetype);
+            float curvePreference = Genes[LOGIC_MANA_CURVE_BIAS] / 10f;
+            float targetAvgCost = 4.5f - (curvePreference * 2.7f);
 
-            // Przewidywany średni koszt po dodaniu tej karty
             float predictedAvgCost = (analysis.totalCost + card.Cost) / (analysis.cardCount + 1);
-            float deviation = Math.Abs(predictedAvgCost - idealAvgCost);
+            float deviation = Math.Abs(predictedAvgCost - targetAvgCost);
 
-            // Kara za zaburzanie curve
-            float penalty = -deviation * 3.0f;
+        
+            float buildingProgress = analysis.cardCount / 30f;
+            float penaltyWeight = 5.0f * buildingProgress;
 
-            // Dodatkowa kara jeśli deck ma już zły curve
-            if (analysis.cardCount >= 15 && deviation > 1.0f)
-                penalty *= 2.0f;
+            return -deviation * penaltyWeight;
 
-            return penalty;
+         
         }
 
         private float CalculateSynergyBonus(CardData card, List<CardData> currentDeck)
@@ -444,7 +466,7 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                     e.Condition?.SubConditions?.Any(sc => sc.Condition == ConditionType.IsStatus && sc.TargetParam == "Marked") == true) == true;
 
                 if ((hasMarkEffect && hasMarkPayoff) || (hasMarkPayoff && hasMarkEffect))
-                    bonus += 30.0f * Genes[KEYWORD_MARKED_FOCUS] * 0.1f;
+                    bonus += 80.0f * Genes[KEYWORD_MARKED_FOCUS] * 0.1f;
 
                 // Sacrifice synergy
                 bool isSacrificeActivator = card.Effects?.Any(e =>
@@ -453,7 +475,7 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                     e.Trigger == TriggerType.OnSacrificed || e.Trigger == TriggerType.OnOtherUnitSacrificed) == true;
 
                 if ((isSacrificeActivator && hasSacrificePayoff) || (hasSacrificePayoff && isSacrificeActivator))
-                    bonus += 40.0f * Genes[TRIGGER_SACRIFICE_VISION] * 0.1f;
+                    bonus += 100.0f * Genes[TRIGGER_SACRIFICE_VISION] * 0.1f;
 
                 // Draw synergy (karty które benefit z draw)
                 bool givesDraw = card.Effects?.Any(e =>
@@ -637,54 +659,49 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
         // ========== ULEPSZONY SCORING KART ==========
         private float ScoreCard(CardData card)
         {
-            float score = 0;
-
-            // KOSZT - użyj łagodniejszej funkcji
-            float costPref = Genes[LOGIC_MANA_CURVE_BIAS] / 10.0f;
-            float idealCost = 10.0f * (1.0f - costPref);
-            float costDiff = Math.Abs(card.Cost - idealCost);
-            // Używamy funkcji kwadratowej (x² * 0.5) zamiast liniowej (x * 5.0)
-            score -= costDiff * costDiff * 0.5f;
+            float rawValue = 0;
 
             if (card.Type == CardType.Unit)
             {
-                // STATYSTYKI zależne od archetypu
-                // Aggro ceni atak, Control ceni health
-                float aggroValue = card.Attack * (1.0f + (5 - Math.Min(card.Cost, 5)) * 0.2f);
-                float controlValue = card.Health * (1.0f + Math.Min(card.Cost, 5) * 0.1f);
+                float aggroWeight = Genes[STYLE_AGGRO] / 10f;
+                float controlWeight = Genes[STYLE_CONTROL] / 10f;
+                float midrangeWeight = Genes[STYLE_MIDRANGE] / 10f;
 
-                score += aggroValue * Genes[STYLE_AGGRO] * 0.25f;
-                score += controlValue * Genes[STYLE_CONTROL] * 0.25f;
+                rawValue += (card.Attack * 10f * aggroWeight);
+                rawValue += (card.Health * 8f * controlWeight);
 
-                // Midrange ceni zrównoważone statystyki
                 float statBalance = Math.Abs(card.Attack - card.Health);
-                score -= statBalance * Genes[STYLE_MIDRANGE] * 0.15f;
+                rawValue -= (statBalance * 5f * midrangeWeight);
 
-                // KEYWORDS
                 if (card.Keywords != null)
                 {
-                    foreach (var keyword in card.Keywords)
-                        score += ScoreKeyword(keyword.ToString());
+                    foreach (var kw in card.Keywords)
+                    {
+                        int param = 1;
+                        if (card.KeywordParams != null && card.KeywordParams.TryGetValue(kw, out int pValue))
+                            param = pValue;
+                        rawValue += ScoreKeyword(kw.ToString(), param);
+                    }
                 }
             }
             else if (card.Type == CardType.Spell)
             {
-                // Spelle - Control i Combo je cenią
-                score += Genes[STYLE_CONTROL] * 2.5f;
-                score += Genes[STYLE_COMBO] * 3.0f;
+                float spellAffinity = (Genes[STYLE_CONTROL] + Genes[STYLE_COMBO] + Genes[STYLE_BURN]) / 30f;
+                rawValue += (30f * spellAffinity);
             }
 
-            // EFFECTS - oceniamy wszystkie efekty
             if (card.Effects != null)
             {
                 foreach (var effect in card.Effects)
-                    score += ScoreEffect(effect);
+                    rawValue += ScoreEffect(effect);
             }
 
-            return score;
+            // VALUE / COST (Wydajność) - Klucz do optymalizacji decku
+            return rawValue / (card.Cost + 1);
         }
 
-        private float ScoreKeyword(string keyword)
+
+        private float ScoreKeyword(string keyword, int paramValue)
         {
             var keywordMapping = new Dictionary<string, int>
             {
@@ -694,14 +711,19 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                 ["SoulGuard"] = KEYWORD_SOULGUARD_STICKINESS,
                 ["Unkillable"] = KEYWORD_UNKILLABLE_RECURSION,
                 ["BurnSource"] = KEYWORD_BURNSOURCE_AGGRESSION,
-                ["Stunned"] = KEYWORD_STUN_DENIAL
+                ["Stunned"] = KEYWORD_STUN_DENIAL,
+                ["Marked"] = KEYWORD_MARKED_FOCUS
             };
 
             if (keywordMapping.TryGetValue(keyword, out int geneIndex))
-                return Genes[geneIndex] * 1.5f; // Zmniejszone z 2.0f
+            {
+                // DNA * Wartość Keywordu (np. Splash 6 daje 6x większy bonus niż Splash 1)
+                return (Genes[geneIndex] * 4f) * paramValue;
+            }
 
-            return 0;
+            return 5f * paramValue;
         }
+
 
         private float ScoreEffect(EffectData effect)
         {
@@ -715,30 +737,172 @@ namespace CardGame.ConsoleApp.Evolution.V2_NewGen
                 [TriggerType.OnKill] = TRIGGER_COMBAT_STRATEGY,
                 [TriggerType.OnPreCombatLine] = TRIGGER_COMBAT_STRATEGY,
                 [TriggerType.OnFriendlyUnitDied] = TRIGGER_DEATH_STRATEGY,
-                [TriggerType.OnOtherUnitSacrificed] = TRIGGER_SACRIFICE_VISION
+                [TriggerType.OnOtherUnitSacrificed] = TRIGGER_SACRIFICE_VISION,
+                [TriggerType.OnStatusApplied] = TRIGGER_SETUP_RECOGNITION,
+                [TriggerType.OnFriendlyActionPlayed] = TRIGGER_SETUP_RECOGNITION,
+                [TriggerType.OnDamagedEnemyHero] = STYLE_AGGRO,
+                [TriggerType.OnFriendlyCardDrawn] = LOGIC_HAND_SIZE_OPTIMIZATION
             };
 
             if (triggerMapping.TryGetValue(effect.Trigger, out int geneIndex))
-                score += Genes[geneIndex] * 2.0f; // Zmniejszone z 3.0f
-
+                score += Genes[geneIndex] * 2.5f;
             if (effect.Actions != null)
             {
                 foreach (var action in effect.Actions)
                 {
-                    if (action.Type == ActionType.DealDamage && action.Target == TargetType.EnemyHero)
-                        score += Genes[TARGETING_FACE_VS_BOARD_BIAS] * 1.5f; // Zmniejszone
-                    else if (action.Type == ActionType.DrawCard)
-                        score += Genes[LOGIC_HAND_SIZE_OPTIMIZATION] * 1.5f;
-                    else if (action.Type == ActionType.SacrificeUnit)
-                        score += Genes[TARGETING_FRIENDLY_SACRIFICE_VALUE] * 2.0f;
-                    else if (action.Type == ActionType.TutorCard)
-                        score += Genes[LOGIC_TUTOR_PRECISION] * 2.5f;
-                    else if (action.Type == ActionType.BuffStats)
-                        score += (action.BuffAtk + action.BuffHp) * 3.0f;
+                    score += EvaluateIndividualAction(action);
                 }
             }
 
             return score;
+        }
+        private float ScoreStatusKeyword(Keyword? keyword)
+        {
+            if (keyword == null) return 0;
+
+            return keyword switch
+            {
+                Keyword.Marked => Genes[KEYWORD_MARKED_FOCUS] * 4f,
+                Keyword.Stunned => (11f - Genes[KEYWORD_STUN_DENIAL]) * 5f,
+                Keyword.SoulGuard => Genes[KEYWORD_SOULGUARD_STICKINESS] * 4f,
+                Keyword.Unkillable => Genes[KEYWORD_UNKILLABLE_RECURSION] * 5f,
+                Keyword.Flying => Genes[KEYWORD_FLYING_VALUE] * 3f,
+                Keyword.Burning => 20f,
+                _ => 15f
+            };
+        }
+
+        private float EvaluateIndividualAction(ActionData action)
+        {
+            float actionScore = 0;
+
+            switch (action.Type)
+            {
+                case ActionType.DealDamage:
+                    if (action.Target == TargetType.EnemyHero)
+                        actionScore += Genes[TARGETING_FACE_VS_BOARD_BIAS] * 2.5f;
+                    else if (action.Target == TargetType.AllEnemyUnits || action.Target == TargetType.AllUnitsOnBoard)
+                        actionScore += action.Amount * Genes[TARGETING_AOE_SYMMETRY_TOLERANCE] * 4f;
+                    else
+                        actionScore += action.Amount * 3f; // Standardowy dmg w jednostkę
+                    break;
+
+                case ActionType.DrawCard:
+                    actionScore += action.Amount * Genes[LOGIC_HAND_SIZE_OPTIMIZATION] * 3f;
+                    break;
+
+                case ActionType.DrawFromDiscard:
+                    actionScore += action.Amount * Genes[LOGIC_DISCARD_PILE_RECYCLE] * 4f;
+                    break;
+
+                case ActionType.TutorCard:
+                    actionScore += Genes[LOGIC_TUTOR_PRECISION] * 5f;
+                    break;
+
+                case ActionType.BuffStats:
+                    // NIUANS: Rozróżnienie między buffem statystyk a modyfikacją kosztu
+                    if (action.Amount < 0) // ZNIŻKI (np. Tea Maid, The Creature)
+                    {
+                        if (action.Target == TargetType.FriendlySpellsInHand || action.Target == TargetType.Self)
+                            actionScore += Math.Abs(action.Amount) * Genes[LOGIC_STRATEGY_COST_REDUCTION] * 6f;
+                    }
+                    else if (action.Amount > 0) // PODATKI (np. Anti Matter DragonFriend)
+                    {
+                        if (action.Target == TargetType.EnemySpellsInHand)
+                            actionScore += action.Amount * Genes[STYLE_CONTROL] * 4f; // Control kocha utrudniać życie
+                    }
+                    else // Standardowe +1/+1 (np. Radio Demon, Vane)
+                    {
+                        float statValue = (action.BuffAtk * 1.5f) + (action.BuffHp * 1.0f);
+                        actionScore += statValue * 3f;
+                    }
+                    break;
+
+                case ActionType.ApplyStatus:
+                    actionScore += ScoreStatusKeyword(action.StatusKeyword);
+                    break;
+
+                case ActionType.Silence:
+                    // Bardzo ważne dla kart typu "Silence" (Id: 31) i "White Mourning" (Id: 57)
+                    actionScore += Genes[TARGETING_STATUS_PHILOSOPHY] * 5f;
+                    if (action.Target == TargetType.AllUnitsOnBoard) actionScore *= 1.5f;
+                    break;
+
+                case ActionType.DestroyUnit:
+                    // Obsługuje "Rocket Ignorance" (Id: 49) i "The Curtain Call" (Id: 53)
+                    actionScore += Genes[TRIGGER_DESTRUCTION_PREFERENCE] * 6f;
+                    if (action.Target == TargetType.AllEnemyUnits) actionScore *= 2f;
+                    break;
+
+                case ActionType.SacrificeUnit:
+                    actionScore += Genes[TARGETING_FRIENDLY_SACRIFICE_VALUE] * 4f;
+                    break;
+
+                case ActionType.Heal:
+                case ActionType.HealToFull:
+                    // Obsługuje "Mokke" (Id: 1) i "FireAxe Man" (Id: 23)
+                    actionScore += Genes[LIFE_HEAL_PRIORITY_HERO] * 3.5f;
+                    break;
+
+                case ActionType.SummonUnit:
+                case ActionType.MakeAUnit:
+                    // Obsługuje "Collector" (Id: 56) i "Evo Ghost" (Id: 43)
+                    // Jeśli karta przywołuje konkretne ID (np. 904, 905), dajemy bonus za "Body"
+                    actionScore += 25f;
+                    if (action.StringParam == "AdjacentLanes") actionScore += 15f; // Bonus za szerokość boardu
+                    break;
+
+                case ActionType.AddCardToHand:
+                    // Obsługuje "Bone Sommelier" (Id: 3) i "The Trapper" (Id: 51)
+                    actionScore += 20f + Genes[LOGIC_REACTION_FROM_HAND_SENSE] * 2f;
+                    break;
+
+                case ActionType.BonusAttack:
+                    // Kluczowe dla "Nepotism" (Id: 19) i "Gerard" (Id: 24)
+                    actionScore += Genes[KEYWORD_BONUS_ATTACK_VALUE] * 5f;
+                    break;
+
+                case ActionType.AbsorbStats:
+                    // Unikalne dla "Polar Bear" (Id: 10)
+                    actionScore += 45f * (Genes[STYLE_MIDRANGE] / 5f);
+                    break;
+
+                case ActionType.MoveRight:
+                case ActionType.MoveLeft:
+                    actionScore += Genes[BOARD_MOVEMENT_VALUE_SENSE] * 4f;
+                    break;
+
+                case ActionType.ModifyGlobalBuff:
+                    // Bardzo silne dla "Radio Demon" (Id: 6)
+                    actionScore += (action.BuffAtk + action.BuffHp) * 40f;
+                    break;
+
+                case ActionType.GiveToOpponent:
+                    // Kara/Bonus dla "Exploding Fruitcake" (Id: 28)
+                    actionScore -= Genes[LOGIC_GIVING_RESOURCES_PENALTY] * 12f;
+                    break;
+
+                case ActionType.AddResource:
+                    // Obsługuje "Widows Spider" (Id: 40) - daje krew/manę
+                    actionScore += 35f * (Genes[LOGIC_MANA_CURVE_BIAS] / 5f);
+                    break;
+
+                case ActionType.ReturnToHand:
+                    // Obsługuje "Genie" (Id: 20) i "Black Cat" (Id: 12)
+                    actionScore += 25f * (Genes[LOGIC_REACTION_FROM_HAND_SENSE] / 5f);
+                    break;
+
+                case ActionType.ShuffleDeck:
+                    // Obsługuje "Critical Thinking" (Id: 13) - zapobiega fatydze, odświeża deck
+                    actionScore += 5f;
+                    break;
+
+                default:
+                    actionScore += 10f;
+                    break;
+            }
+
+            return actionScore;
         }
 
         // ========== POMOCNICZE ==========

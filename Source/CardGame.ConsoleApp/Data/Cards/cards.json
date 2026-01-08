@@ -6,7 +6,7 @@
     "Subtypes": [ "Animal" ],
     "Cost": 1,
     "Attack": 1,
-    "Health": 2,
+    "Health": 3,
     "Description": "When Destroyed: Heal Your Hero for 3 HP.",
     "Effects": [
       {
@@ -22,7 +22,7 @@
     "Id": 2,
     "Name": "BoomBots",
     "Type": "Unit",
-    "Subtypes": [ "Mech" ],
+    "Subtypes": [ "Machine" ],
     "Cost": 1,
     "Attack": 1,
     "Health": 3,
@@ -102,10 +102,10 @@
     "Id": 6,
     "Name": "Radio Demon",
     "Type": "Unit",
-    "Subtypes": [ "Demon" ],
+    "Subtypes": [ "Demon", "Monster" ],
     "Cost": 5,
-    "Attack": 2,
-    "Health": 2,
+    "Attack": 3,
+    "Health": 3,
     "Description": "Give all friendly units +1/+1 (Global).",
     "Effects": [
       {
@@ -150,7 +150,7 @@
     "Name": "Corpse Eater",
     "Type": "Unit",
     "Subtypes": [ "Monster" ],
-    "Cost": 3,
+    "Cost": 2,
     "Attack": 3,
     "Health": 1,
     "Description": "While in Hand: When Friendly dies, play this.",
@@ -191,9 +191,9 @@
     "Name": "The Creature",
     "Type": "Unit",
     "Subtypes": [ "Monster" ],
-    "Cost": 9,
-    "Attack": 7,
-    "Health": 7,
+    "Cost": 8,
+    "Attack": 8,
+    "Health": 8,
     "Keywords": [ "Unkillable" ],
     "Description": "While In Hand: Costs 1 less whenever you sacrifice a unit.",
     "Effects": [
@@ -229,7 +229,7 @@
     "Id": 13,
     "Name": "Critical Thinking",
     "Type": "Spell",
-    "Cost": 1,
+    "Cost": 2,
     "Description": "Pick a Card from Deck, Draw it, Shuffle.",
     "Effects": [
       {
@@ -249,7 +249,7 @@
     "Subtypes": [ "Human" ],
     "Cost": 4,
     "Attack": 2,
-    "Health": 3,
+    "Health": 4,
     "Description": "While In Play: Other Friendly Units get SoulGuard.",
     "Effects": [
       {
@@ -411,9 +411,9 @@
     "Name": "FireAxe Man",
     "Type": "Unit",
     "Subtypes": [ "Monster" ],
-    "Cost": 5,
-    "Attack": 3,
-    "Health": 6,
+    "Cost": 4,
+    "Attack": 4,
+    "Health": 4,
     "Description": "When this unit kills an enemy: Heal to full and +2 HP.",
     "Effects": [
       {
@@ -433,7 +433,7 @@
   "Subtypes": [ "Mercenary", "Human" ],
   "Cost": 5,
   "Attack": 5,
-  "Health": 5,
+  "Health": 6,
   "Description": "When an Enemy is Marked: Bonus Attack.",
   "Effects": [
     {
@@ -455,9 +455,9 @@
   "Name": "Bounty Hunter",
   "Type": "Unit",
   "Subtypes": [ "Mercenary", "Human" ],
-  "Cost": 3,
-  "Attack": 3,
-  "Health": 3,
+  "Cost": 2,
+  "Attack": 1,
+  "Health": 5,
   "Description": "When an Enemy is Marked: Stun it.",
   "Effects": [
     {
@@ -483,7 +483,7 @@
     "Subtypes": [ "Mercenary", "Human" ],
     "Cost": 4,
     "Attack": 2,
-    "Health": 3,
+    "Health": 4,
     "Description": "Before Combat in this lane: Mark an Enemy Unit.",
     "Effects": [
       {
@@ -501,9 +501,9 @@
     "Type": "Unit",
     "Subtypes": [ "Monster" ],
     "Cost": 3,
-    "Attack": 1,
+    "Attack": 2,
     "Health": 4,
-    "Description": "Hit Hero: Draw. You Draw: +1 Atk.",
+    "Description": "Hit Hero: Draw. You Draw: +2 Atk.",
     "Effects": [
       {
         "Trigger": "OnDamagedEnemyHero",
@@ -511,7 +511,7 @@
       },
       {
         "Trigger": "OnFriendlyCardDrawn",
-        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1 } ]
+        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 2 } ]
       }
     ]
   },
@@ -540,7 +540,7 @@
     "Subtypes": [ "Monster" ],
     "Cost": 5,
     "Attack": 5,
-    "Health": 6,
+    "Health": 7,
     "Description": "On Kill: Move Right.",
     "Effects": [
       {
@@ -557,7 +557,7 @@
     "Subtypes": [ "Animal", "Machine"],
     "Cost": 5,
     "Attack": 0,
-    "Health": 6,
+    "Health": 7,
     "Description": "Before Combat here: 5 Dmg to Enemy Hero.",
     "Effects": [
       {
@@ -570,7 +570,7 @@
     "Id": 31,
     "Name": "Silence",
     "Type": "Spell",
-    "Cost": 1,
+    "Cost": 2,
     "Description": "Enemy Unit loses all Bonus Stats, Keywords and Passive Abilities.",
     "Effects": [
       {
@@ -602,9 +602,9 @@
     "Name": "Mouse",
     "Type": "Unit",
     "Subtypes": [ "Machine" ],
-    "Cost": 5,
-    "Attack": 5,
-    "Health": 8,
+    "Cost": 4,
+    "Attack": 4,
+    "Health": 7,
     "Keywords": [ "Stunned" ],
     "Description": "Stunned."
   },
@@ -683,7 +683,7 @@
     "Name": "Tumblr Man",
     "Type": "Unit",
     "Subtypes": ["Monster"],
-    "Cost": 1, "Attack": 3, "Health": 1,
+    "Cost": 1, "Attack": 4, "Health": 1,
     "Keywords": ["Burning"],
      "Description": "Burning."
   },
@@ -724,7 +724,7 @@
     "Name": "Pegasus",
     "Type": "Unit",
     "Subtypes": ["Animal", "Mystical"],
-    "Cost": 3, "Attack": 3, "Health": 1,
+    "Cost": 3, "Attack": 3, "Health": 2,
     "Keywords": ["Flying"],
     "Effects": [{
       "Trigger": "OnPlayed",
@@ -811,8 +811,8 @@
   "Type": "Unit",
   "Subtypes": [ "Human" ],
   "Cost": 3,
-  "Attack": 2,
-  "Health": 4,
+  "Attack": 1,
+  "Health": 5,
   "Description": "While in Play: Your Spells cost 1 less.",
   "Effects": [
     {
@@ -833,8 +833,8 @@
     "Id": 47,
     "Name": "Rustler",
     "Type": "Unit",
-    "Subtypes": ["Mercenary"],
-    "Cost": 10, "Attack": 6, "Health": 6,
+    "Subtypes": ["Mercenary", "Human"],
+    "Cost": 9, "Attack": 6, "Health": 6,
     "Description": "Costs 1 less for each Spell played. On Played: Bonus Attack.",
     "Effects": [
       {
@@ -931,7 +931,7 @@
           {
             "Type": "AddCardToHand",
             "Target": "FriendlyHero",
-            "ValueParam": 62
+            "ValueParam": 903
           }
         ]
       }
@@ -945,7 +945,7 @@
     "Subtypes": ["Machine"],
     "Cost": 1,
     "Attack": 1,
-    "Health": 1,
+    "Health": 2,
     "Description": "While in Play: When You play a Machine Unit gain +1/+1.",
     "Effects": [
       {
@@ -968,7 +968,7 @@
     "Id": 53,
     "Name": "The Curtain Call",
     "Type": "Spell",
-    "Cost": 7,
+    "Cost": 9,
     "Description": "Mark all Enemy Units and then Destroy Them.",
     "Effects": [
       {
@@ -994,7 +994,7 @@
     "Subtypes": ["Machine", "Mercenary"],
     "Cost": 4,
     "Attack": 0,
-    "Health": 4,
+    "Health": 6,
     "Description": "While in Hand: When a Friendly Machine is Destroyed gain +2 ATK.",
     "Effects": [
       {
@@ -1019,17 +1019,19 @@
     "Name": "ZaUm",
     "Type": "Unit",
     "Subtypes": ["Machine"],
-    "Cost": 4,
-    "Attack": 4,
+    "Cost": 6,
+    "Attack": 3,
     "Health": 5,
-    "Description": "It does literally nothing."
+    "Keywords": ["SoulGuard", "Unkillable", "Armored", "Flying"],
+    "KeywordParams": { "Armored": 2 },
+    "Description": "SoulGuard. Unkillable. Armored. Flying."
   },
   {
     "Id": 56,
     "Name": "Collector",
     "Type": "Unit",
     "Subtypes": ["Monster"],
-    "Cost": 7,
+    "Cost": 6,
     "Attack": 2,
     "Health": 6,
     "Description": "When Played: Summon The Collection (Traces of Sylvian, Almer, Grogorth).",
@@ -1037,9 +1039,9 @@
       {
         "Trigger": "OnPlayed",
         "Actions": [
-          { "Type": "MakeAUnit", "ValueParam": 68 },
-          { "Type": "MakeAUnit", "ValueParam": 69 },
-          { "Type": "MakeAUnit", "ValueParam": 70 }
+          { "Type": "MakeAUnit", "ValueParam": 904 },
+          { "Type": "MakeAUnit", "ValueParam": 905 },
+          { "Type": "MakeAUnit", "ValueParam": 906 }
         ]
       }
     ]
@@ -1048,7 +1050,7 @@
   "Id": 57,
   "Name": "White Mourning",
   "Type": "Spell",
-  "Cost": 3,
+  "Cost": 4,
   "Description": "Silence ALL units on the board.",
   "Effects": [
     {
@@ -1063,26 +1065,26 @@
   ]
 },
 {
-    "Id": 58,
-    "Name": "Excision Conjucture",
-    "Type": "Spell",
-    "Cost": 2,
-    "Description": "Give an Enemy Unit -2/-2.",
-    "Effects": [
-      {
-        "Trigger": "OnPlayed",
-        "Targeting": "TargetEnemyUnit",
-        "Actions": [
-          {
-            "Type": "BuffStats",
-            "Target": "SelectedTarget",
-            "BuffAtk": -2,
-            "BuffHp": -2
-          }
-        ]
-      }
-    ]
-  },
+  "Id": 58,
+  "Name": "Excision Conjucture",
+  "Type": "Spell",
+  "Cost": 2,
+  "Description": "Give all Enemy Units -1/-1.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "AllEnemyUnits",
+      "Actions": [
+        {
+          "Type": "BuffStats",
+          "Target": "AllEnemyUnits",
+          "BuffAtk": -1,
+          "BuffHp": -1
+        }
+      ]
+    }
+  ]
+},
   {
     "Id": 59,
     "Name": "Gargoyle",
@@ -1096,17 +1098,30 @@
   },
   {
     "Id": 60,
-    "Name": "Abraxos Wyvern",
+    "Name": "Anti Matter DragonFriend",
     "Type": "Unit",
     "Subtypes": ["Monster", "Animal"],
     "Cost": 8,
     "Attack": 6,
     "Health": 6,
-    "Keywords": ["Flying", "SplashDamage"],
+    "Keywords": ["SplashDamage"],
     "KeywordParams": {
-      "SplashDamage": 6
+      "SplashDamage": 3
     },
-    "Description": "Flying. Splash Damage 6."
+    "Description": "Splash Damage 3.",
+    "Effects": [
+    {
+      "Trigger": "Passive",
+      "Zone": "Board",
+      "Actions": [
+        {
+          "Type": "BuffStats",
+          "Target": "EnemySpellsInHand",
+          "Amount": 6
+        }
+      ]
+    }
+  ]
   },
 
 
@@ -1163,7 +1178,7 @@
     "Name": "Trap",
     "Type": "Unit",
     "Subtypes": ["Machine", "Token"],
-    "Cost": 1,
+    "Cost": 0,
     "Attack": 0,
     "Health": 1,
     "Description": "When Destroyed: Stun the Enemy Unit here.",
@@ -1181,7 +1196,7 @@
     ]
   },
   {
-    "Id": 904, "Name": "Traces of Sylvian", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 2, "Health": 2 },
-  { "Id": 905, "Name": "Traces of Almer", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 1, "Health": 3 },
-  { "Id": 906, "Name": "Traces of Grogorth", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 3, "Health": 1 }
+    "Id": 904, "Name": "Traces of Sylvian", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 3, "Health": 4 },
+  { "Id": 905, "Name": "Traces of Almer", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 4, "Health": 2 },
+  { "Id": 906, "Name": "Traces of Grogorth", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 5, "Health": 1 }
 ]

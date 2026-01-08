@@ -35,7 +35,7 @@
         AllFriendlyUnits, EnemyHero, FriendlyHero, SelectedTarget,
         OtherFriendlyUnits, AdjacentEnemyUnits, AllUnitsOnBoard, Choice, 
         
-        FriendlySpellsInHand,
+        FriendlySpellsInHand, EnemySpellsInHand,
 
         EmptyLane,
         RandomEmptyLane
