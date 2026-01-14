@@ -1,40 +1,40 @@
 [
   {
-	"Id": 1,
-	"Name": "Mokke",
-	"Type": "Unit",
-	"Subtypes": [ "Animal" ],
-	"Cost": 1,
-	"Attack": 1,
-	"Health": 2,
-	"Description": "When Destroyed: Heal Your Hero for 3 HP.",
-	"Effects": [
-	  {
-		"Trigger": "OnDeath",
-		"Actions": [
-		  { "Type": "Heal", "Target": "FriendlyHero", "Amount": 3 }
-		]
-	  }
-	]
+    "Id": 1,
+    "Name": "Mokke",
+    "Type": "Unit",
+    "Subtypes": [ "Animal" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "When Destroyed: Heal Your Hero for 3 HP.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          { "Type": "Heal", "Target": "FriendlyHero", "Amount": 3 }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 2,
-	"Name": "BoomBots",
-	"Type": "Unit",
-	"Subtypes": [ "Mech" ],
-	"Cost": 1,
-	"Attack": 1,
-	"Health": 3,
-	"Description": "When Destroyed: Do 2 Damage to the Enemy Hero.",
-	"Effects": [
-	  {
-		"Trigger": "OnDeath",
-		"Actions": [
-		  { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
-		]
-	  }
-	]
+    "Id": 2,
+    "Name": "BoomBots",
+    "Type": "Unit",
+    "Subtypes": [ "Machine" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "When Destroyed: Do 2 Damage to the Enemy Hero.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
+        ]
+      }
+    ]
   },
 
   {
@@ -43,407 +43,410 @@
   "Type": "Unit",
   "Subtypes": [ "Monster" ],
   "Cost": 1,
-  "Attack": 1,
-  "Health": 3,
+  "Attack": 2,
+  "Health": 1,
   "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
   "Effects": [
-	{
-	  "Trigger": "OnDeath",
-	  "Actions": [ 
-		{
-		  "Type": "AddCardToHand",
-		  "Target": "FriendlyHero",
-		  "ValueParam": 900
-		}
-	  ]
-	}
+    {
+      "Trigger": "OnDeath",
+      "Actions": [ 
+        {
+          "Type": "AddCardToHand",
+          "Target": "FriendlyHero",
+          "ValueParam": 902
+        }
+      ]
+    }
   ]
 },
 
   {
-	"Id": 4,
-	"Name": "Informer",
-	"Type": "Unit",
-	"Subtypes": [ "Human" ],
-	"Cost": 1,
-	"Attack": 1,
-	"Health": 2,
-	"Description": "When Played: Mark an Enemy Unit.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [
-		  { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" }
-		]
-	  }
-	]
+    "Id": 4,
+    "Name": "Informer",
+    "Type": "Unit",
+    "Subtypes": [ "Human", "Mercenary" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "When Played: Mark an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 5,
-	"Name": "Queen of Cards",
-	"Type": "Unit",
-	"Subtypes": [ "Noble" ],
-	"Cost": 3,
-	"Attack": 2,
-	"Health": 4,
-	"Description": "Draw a card when a friendly unit dies.",
-	"Effects": [
-	  {
-		"Trigger": "OnFriendlyUnitDied",
-		"Actions": [
-		  { "Type": "DrawCard", "Target": "FriendlyHero" }
-		]
-	  }
-	]
+    "Id": 5,
+    "Name": "Queen of Cards",
+    "Type": "Unit",
+    "Subtypes": [ "Human" ],
+    "Cost": 3,
+    "Attack": 2,
+    "Health": 4,
+    "Description": "Draw a card when a friendly unit dies.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Actions": [
+          { "Type": "DrawCard", "Target": "FriendlyHero" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 6,
-	"Name": "Radio Demon",
-	"Type": "Unit",
-	"Subtypes": [ "Demon" ],
-	"Cost": 5,
-	"Attack": 2,
-	"Health": 2,
-	"Description": "Give all friendly units +1/+1 (Global).",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [
-		  { "Type": "ModifyGlobalBuff", "Target": "FriendlyHero", "BuffAtk": 1, "BuffHp": 1 }
-		]
-	  }
-	]
+    "Id": 6,
+    "Name": "Radio Demon",
+    "Type": "Unit",
+    "Subtypes": [ "Demon", "Monster" ],
+    "Cost": 5,
+    "Attack": 3,
+    "Health": 3,
+    "Description": "Give all friendly units +1/+1 (Global).",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "ModifyGlobalBuff", "Target": "FriendlyHero", "BuffAtk": 1, "BuffHp": 1 }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 7,
-	"Name": "Glock-17",
-	"Type": "Spell",
-	"Cost": 2,
-	"Description": "Deal 3 damage to an enemy.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [
-		  { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 3 }
-		]
-	  }
-	]
+    "Id": 7,
+    "Name": "Glock-17",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "Deal 3 damage to an enemy.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 3 }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 8,
-	"Name": "Crusader",
-	"Type": "Unit",
-	"Cost": 2,
-	"Attack": 2,
-	"Health": 3,
-	"Keywords": [ "Armored" ], 
-	"Description": "Armored."
+    "Id": 8,
+    "Name": "Crusader",
+    "Type": "Unit",
+    "Subtypes": [ "Human" ],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 3,
+    "Keywords": [ "Armored" ], 
+    "Description": "Armored."
   },
 
   {
-	"Id": 9,
-	"Name": "Corpse Eater",
-	"Type": "Unit",
-	"Subtypes": [ "Monster" ],
-	"Cost": 3,
-	"Attack": 3,
-	"Health": 1,
-	"Description": "While in Hand: When Friendly dies, play this.",
-	"Effects": [
-	  {
-		"Trigger": "OnFriendlyUnitDied",
-		"Zone": "Hand",
-		"Actions": [
-		  { "Type": "SummonUnit", "Target": "Self" }
-		]
-	  }
-	]
+    "Id": 9,
+    "Name": "Corpse Eater",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 2,
+    "Attack": 3,
+    "Health": 1,
+    "Description": "While in Hand: When Friendly dies, play this.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Zone": "Hand",
+        "Actions": [
+          { "Type": "SummonUnit", "Target": "Self" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 10,
-	"Name": "Polar Bear",
-	"Type": "Unit",
-	"Subtypes": [ "Animal" ],
-	"Cost": 2,
-	"Attack": 2,
-	"Health": 3,
-	"Description": "When Played: Sacrifice a Unit to absorb its stats.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Targeting": "OtherFriendlyUnits",
-		"Actions": [
-		  { "Type": "AbsorbStats", "Target": "SelectedTarget" },
-		  { "Type": "SacrificeUnit", "Target": "SelectedTarget" }
-		]
-	  }
-	]
+    "Id": 10,
+    "Name": "Polar Bear",
+    "Type": "Unit",
+    "Subtypes": [ "Animal" ],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 3,
+    "Description": "When Played: Sacrifice a Unit to absorb its stats.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "OtherFriendlyUnits",
+        "Actions": [
+          { "Type": "AbsorbStats", "Target": "SelectedTarget" },
+          { "Type": "SacrificeUnit", "Target": "SelectedTarget" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 11,
-	"Name": "The Creature",
-	"Type": "Unit",
-	"Subtypes": [ "Monster" ],
-	"Cost": 7,
-	"Attack": 7,
-	"Health": 7,
-	"Keywords": [ "Unkillable" ],
-	"Description": "While In Hand: Costs 1 less whenever you sacrifice a unit.",
-	"Effects": [
-	  {
-		"Trigger": "OnOtherUnitSacrificed",
-		"Zone": "Hand",
-		"Actions": [
-		  { "Type": "BuffStats", "Target": "Self", "Amount": -2 }
-		]
-	  }
-	]
+    "Id": 11,
+    "Name": "The Creature",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 8,
+    "Attack": 8,
+    "Health": 8,
+    "Keywords": [ "Unkillable" ],
+    "Description": "While In Hand: Costs 1 less whenever you sacrifice a unit.",
+    "Effects": [
+      {
+        "Trigger": "OnOtherUnitSacrificed",
+        "Zone": "Hand",
+        "Actions": [
+          { "Type": "BuffStats", "Target": "Self", "Amount": -1 }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 12,
-	"Name": "Black Cat",
-	"Type": "Unit",
-	"Subtypes": ["Animal"],
-	"Cost": 0,
-	"Attack": 1,
-	"Health": 1,
-	"Description": "When Sacrificed: Return to Hand instead.",
-	"Effects": [
-	  {
-		"Trigger": "OnSacrificed",
-		"Zone": "Board", 
-		"Actions": [ { "Type": "ReturnToHand", "Target": "Self" } ]
-	  }
-	]
+    "Id": 12,
+    "Name": "Black Cat",
+    "Type": "Unit",
+    "Subtypes": ["Animal"],
+    "Cost": 0,
+    "Attack": 1,
+    "Health": 1,
+    "Description": "When Sacrificed: Return to Hand instead.",
+    "Effects": [
+      {
+        "Trigger": "OnSacrificed",
+        "Zone": "Board", 
+        "Actions": [ { "Type": "ReturnToHand", "Target": "Self" } ]
+      }
+    ]
   },
 
   {
-	"Id": 13,
-	"Name": "Critical Thinking",
-	"Type": "Spell",
-	"Cost": 1,
-	"Description": "Pick a Card from Deck, Draw it, Shuffle.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [
-		  { "Type": "TutorCard", "Target": "Self" },
-		  { "Type": "ShuffleDeck", "Target": "Self" }
-		]
-	  }
-	]
+    "Id": 13,
+    "Name": "Critical Thinking",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "Pick a Card from Deck, Draw it, Shuffle.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "TutorCard", "Target": "Self" },
+          { "Type": "ShuffleDeck", "Target": "Self" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 14,
-	"Name": "Survivalist",
-	"Type": "Unit",
-	"Cost": 4,
-	"Attack": 2,
-	"Health": 3,
-	"Description": "While In Play: Other Friendly Units get SoulGuard.",
-	"Effects": [
-	  {
-		"Trigger": "Passive",
-		"Zone": "Board",
-		"Actions": [ 
-		  { "Type": "ApplyStatus", "Target": "OtherFriendlyUnits", "StatusKeyword": "SoulGuard" } 
-		]
-	  }
-	]
+    "Id": 14,
+    "Name": "Survivalist",
+    "Type": "Unit",
+    "Subtypes": [ "Human" ],
+    "Cost": 4,
+    "Attack": 2,
+    "Health": 4,
+    "Description": "While In Play: Other Friendly Units get SoulGuard.",
+    "Effects": [
+      {
+        "Trigger": "Passive",
+        "Zone": "Board",
+        "Actions": [ 
+          { "Type": "ApplyStatus", "Target": "OtherFriendlyUnits", "StatusKeyword": "SoulGuard" } 
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 15,
-	"Name": "Expectancy",
-	"Type": "Spell",
-	"Cost": 2,
-	"Description": "Draw 2 from Deck OR Discard.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Targeting": "Choice",
-		"ChoiceLabels": ["Draw 2 from Deck", "Draw 2 from Discard"],
-		"Actions": [
-		  { "Type": "DrawCard", "Amount": 2 },
-		  { "Type": "DrawFromDiscard", "Amount": 2 }
-		]
-	  }
-	]
+    "Id": 15,
+    "Name": "Expectancy",
+    "Type": "Spell",
+    "Cost": 3,
+    "Description": "Draw 2 from Deck OR Discard.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "Choice",
+        "ChoiceLabels": ["Draw 2 from Deck", "Draw 2 from Discard"],
+        "Actions": [
+          { "Type": "DrawCard", "Amount": 2 },
+          { "Type": "DrawFromDiscard", "Amount": 2 }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 16,
-	"Name": "HellFire",
-	"Type": "Spell",
-	"Cost": 4,
-	"Description": "Deal 3 Damage and Apply Burning to All Units on Board.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [
-		  { "Type": "DealDamage", "Target": "AllUnitsOnBoard", "Amount": 3 },
-		  { "Type": "ApplyStatus", "Target": "AllUnitsOnBoard", "StatusKeyword": "Burning" }
-		]
-	  }
-	]
+    "Id": 16,
+    "Name": "HellFire",
+    "Type": "Spell",
+    "Cost": 4,
+    "Description": "Deal 3 Damage and Apply Burning to All Units on Board.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "AllUnitsOnBoard", "Amount": 3 },
+          { "Type": "ApplyStatus", "Target": "AllUnitsOnBoard", "StatusKeyword": "Burning" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 17,
-	"Name": "Megumin",
-	"Type": "Unit",
-	"Subtypes": [ "Mercenary" ],
-	"Cost": 4,
-	"Attack": 3,
-	"Health": 2,
-	"Keywords": [ "SplashDamage", "BurnSource" ],
-	"KeywordParams": {
-	  "SplashDamage": 3
-	},
-	"Description": "Splash Damage 3. Burn 1."
+    "Id": 17,
+    "Name": "Megumin",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary", "Human" ],
+    "Cost": 4,
+    "Attack": 3,
+    "Health": 2,
+    "Keywords": [ "SplashDamage", "BurnSource" ],
+    "KeywordParams": {
+      "SplashDamage": 3
+    },
+    "Description": "Splash Damage 3. Burn 1."
   },
 
   {
-	"Id": 18,
-	"Name": "Final Mission",
-	"Type": "Spell",
-	"Cost": 1,
-	"Description": "Sacrifice a Friendly Unit to deal 4 damage to an Enemy Unit.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [
-		  { "Type": "SacrificeUnit", "Target": "TargetFriendlyUnit" },
-		  { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 4 }
-		]
-	  }
-	]
+    "Id": 18,
+    "Name": "Final Mission",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "Sacrifice a Friendly Unit to deal 4 damage to an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "SacrificeUnit", "Target": "TargetFriendlyUnit" },
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 4 }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 19,
-	"Name": "Nepotism",
-	"Type": "Spell",
-	"Cost": 2,
-	"Description": "A Friendly Unit does a Bonus Attack.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [
-		  { "Type": "BonusAttack", "Target": "TargetFriendlyUnit" }
-		]
-	  }
-	]
+    "Id": 19,
+    "Name": "Nepotism",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "A Friendly Unit does a Bonus Attack.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "BonusAttack", "Target": "TargetFriendlyUnit" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 20,
-	"Name": "Genie",
-	"Type": "Unit",
-	"Subtypes": [ "Mystical" ],
-	"Cost": 4,
-	"Attack": 3,
-	"Health": 3,
-	"Description": "When Played: Choose a Unit and return it to hand.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Targeting": "SelectedTarget",
-		"Actions": [
-		  { "Type": "ReturnToHand", "Target": "SelectedTarget" }
-		]
-	  }
-	]
+    "Id": 20,
+    "Name": "Genie",
+    "Type": "Unit",
+    "Subtypes": [ "Mystical" ],
+    "Cost": 4,
+    "Attack": 3,
+    "Health": 3,
+    "Description": "When Played: Choose a Unit and return it to hand.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "SelectedTarget",
+        "Actions": [
+          { "Type": "ReturnToHand", "Target": "SelectedTarget" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 21,
-	"Name": "Juggernaut",
-	"Type": "Unit",
-	"Subtypes": [ "Machine" ],
-	"Cost": 4,
-	"Attack": 4,
-	"Health": 2,
-	"Keywords": [ "Armored" ],
-	"KeywordParams": { "Armored": 2 },
-	"Description": "Armored 2. When dealing damage to a unit: Deal 2 to Enemy Hero.",
-	"Effects": [
-	  {
-		"Trigger": "OnDamagedEnemyUnit",
-		"Actions": [
-		  { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
-		]
-	  }
-	]
+    "Id": 21,
+    "Name": "Juggernaut",
+    "Type": "Unit",
+    "Subtypes": [ "Machine" ],
+    "Cost": 4,
+    "Attack": 4,
+    "Health": 2,
+    "Keywords": [ "Armored" ],
+    "KeywordParams": { "Armored": 2 },
+    "Description": "Armored 2. When dealing damage to a unit: Deal 2 to Enemy Hero.",
+    "Effects": [
+      {
+        "Trigger": "OnDamagedEnemyUnit",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 22,
-	"Name": "QuickDraw Gun Man",
-	"Type": "Unit",
-	"Subtypes": [ "Monster" ],
-	"Cost": 1,
-	"Attack": 1,
-	"Health": 3,
-	"Description": "Whenever Enemy Hero draws a card: Deal 1 damage to them.",
-	"Effects": [
-	  {
-		"Trigger": "OnOpponentCardDrawn",
-		"Actions": [
-		  { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 1 }
-		]
-	  }
-	]
+    "Id": 22,
+    "Name": "QuickDraw Gun Man",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 3,
+    "Description": "Whenever Enemy Hero draws a card: Deal 1 damage to them.",
+    "Effects": [
+      {
+        "Trigger": "OnOpponentCardDrawn",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 1 }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 23,
-	"Name": "FireAxe Man",
-	"Type": "Unit",
-	"Subtypes": [ "Monster" ],
-	"Cost": 5,
-	"Attack": 4,
-	"Health": 6,
-	"Description": "When this unit kills an enemy: Heal to full and +2 HP.",
-	"Effects": [
-	  {
-		"Trigger": "OnKill",
-		"Actions": [
-		  { "Type": "HealToFull", "Target": "Self" },
-		  { "Type": "BuffStats", "Target": "Self", "BuffHp": 2 }
-		]
-	  }
-	]
+    "Id": 23,
+    "Name": "FireAxe Man",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 4,
+    "Attack": 4,
+    "Health": 4,
+    "Description": "When this unit kills an enemy: Heal to full and +2 HP.",
+    "Effects": [
+      {
+        "Trigger": "OnKill",
+        "Actions": [
+          { "Type": "HealToFull", "Target": "Self" },
+          { "Type": "BuffStats", "Target": "Self", "BuffHp": 2 }
+        ]
+      }
+    ]
   },
 
   {
   "Id": 24, 
   "Name": "Gerard from Rivia",
   "Type": "Unit",
-  "Subtypes": [ "Mercenary" ],
+  "Subtypes": [ "Mercenary", "Human" ],
   "Cost": 5,
   "Attack": 5,
-  "Health": 5,
+  "Health": 6,
+  "Description": "When an Enemy is Marked: Bonus Attack.",
   "Effects": [
-	{
-	  "Trigger": "OnStatusApplied",
-	  "Condition": {
-		"Condition": "And",
-		"SubConditions": [
-		  { "Condition": "IsStatus", "TargetParam": "Marked" },
-		  { "Condition": "IsEnemy" } 
-		]
-	  },
-	  "Actions": [ { "Type": "BonusAttack", "Target": "Self" } ]
-	}
+    {
+      "Trigger": "OnStatusApplied",
+      "Condition": {
+        "Condition": "And",
+        "SubConditions": [
+          { "Condition": "IsStatus", "TargetParam": "Marked" },
+          { "Condition": "IsEnemy" } 
+        ]
+      },
+      "Actions": [ { "Type": "BonusAttack", "Target": "Self" } ]
+    }
   ]
 },
 
@@ -451,327 +454,329 @@
   "Id": 25,
   "Name": "Bounty Hunter",
   "Type": "Unit",
-  "Subtypes": [ "Mercenary" ],
-  "Cost": 3,
-  "Attack": 3,
-  "Health": 3,
+  "Subtypes": [ "Mercenary", "Human" ],
+  "Cost": 2,
+  "Attack": 1,
+  "Health": 5,
   "Description": "When an Enemy is Marked: Stun it.",
   "Effects": [
-	{
-	  "Trigger": "OnStatusApplied",
-	  "Condition": {
-		"Condition": "And",
-		"SubConditions": [
-		  { "Condition": "IsStatus", "TargetParam": "Marked" },
-		  { "Condition": "IsEnemy" }
-		]
-	  },
-	  "Actions": [
-		{ "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Stunned" }
-	  ]
-	}
+    {
+      "Trigger": "OnStatusApplied",
+      "Condition": {
+        "Condition": "And",
+        "SubConditions": [
+          { "Condition": "IsStatus", "TargetParam": "Marked" },
+          { "Condition": "IsEnemy" }
+        ]
+      },
+      "Actions": [
+        { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Stunned" }
+      ]
+    }
   ]
   },
 
   {
-	"Id": 26,
-	"Name": "Occultist",
-	"Type": "Unit",
-	"Subtypes": [ "Mercenary" ],
-	"Cost": 4,
-	"Attack": 2,
-	"Health": 3,
-	"Description": "Before Combat in this lane: Mark an Enemy Unit.",
-	"Effects": [
-	  {
-		"Trigger": "OnPreCombatLine",
-		"Actions": [
-		  { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" }
-		]
-	  }
-	]
+    "Id": 26,
+    "Name": "Occultist",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary", "Human" ],
+    "Cost": 4,
+    "Attack": 2,
+    "Health": 4,
+    "Description": "Before Combat in this lane: Mark an Enemy Unit.",
+    "Effects": [
+      {
+        "Trigger": "OnPreCombatLine",
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 27,
-	"Name": "Raiding Raptor",
-	"Type": "Unit",
-	"Subtypes": [ "Monster" ],
-	"Cost": 3,
-	"Attack": 1,
-	"Health": 4,
-	"Description": "Hit Hero: Draw. You Draw: +1 Atk.",
-	"Effects": [
-	  {
-		"Trigger": "OnDamagedEnemyHero",
-		"Actions": [ { "Type": "DrawCard", "Target": "FriendlyHero" } ]
-	  },
-	  {
-		"Trigger": "OnFriendlyCardDrawn",
-		"Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 2 } ]
-	  }
-	]
+    "Id": 27,
+    "Name": "Raiding Raptor",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 3,
+    "Attack": 2,
+    "Health": 4,
+    "Description": "Hit Hero: Draw. You Draw: +2 Atk.",
+    "Effects": [
+      {
+        "Trigger": "OnDamagedEnemyHero",
+        "Actions": [ { "Type": "DrawCard", "Target": "FriendlyHero" } ]
+      },
+      {
+        "Trigger": "OnFriendlyCardDrawn",
+        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 2 } ]
+      }
+    ]
   },
 
   {
-	"Id": 28,
-	"Name": "Exploding Fruitcake",
-	"Type": "Spell",
-	"Cost": 2,
-	"Description": "6 Dmg to enemy. Opponent gains this.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [
-		  { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 6 },
-		  { "Type": "GiveToOpponent", "Target": "Self" }
-		]
-	  }
-	]
+    "Id": 28,
+    "Name": "Exploding Fruitcake",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "5 Dmg to enemy. Opponent gains this.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 5 },
+          { "Type": "GiveToOpponent", "Target": "Self" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 29,
-	"Name": "Blighteinstein",
-	"Type": "Unit",
-	"Subtypes": [ "Monster" ],
-	"Cost": 5,
-	"Attack": 5,
-	"Health": 6,
-	"Description": "On Kill: Move Right.",
-	"Effects": [
-	  {
-		"Trigger": "OnKill",
-		"Actions": [ { "Type": "MoveRight", "Target": "Self" } ]
-	  }
-	]
+    "Id": 29,
+    "Name": "Blighteinstein",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 5,
+    "Attack": 5,
+    "Health": 7,
+    "Description": "On Kill: Move Right.",
+    "Effects": [
+      {
+        "Trigger": "OnKill",
+        "Actions": [ { "Type": "MoveRight", "Target": "Self" } ]
+      }
+    ]
   },
 
   {
-	"Id": 30,
-	"Name": "SharkCannon",
-	"Type": "Unit",
-	"Cost": 5,
-	"Attack": 0,
-	"Health": 7,
-	"Description": "Before Combat here: 5 Dmg to Enemy Hero.",
-	"Effects": [
-	  {
-		"Trigger": "OnPreCombatLine",
-		"Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 5 } ]
-	  }
-	]
+    "Id": 30,
+    "Name": "SharkCannon",
+    "Type": "Unit",
+    "Subtypes": [ "Animal", "Machine"],
+    "Cost": 5,
+    "Attack": 0,
+    "Health": 7,
+    "Description": "Before Combat here: 5 Dmg to Enemy Hero.",
+    "Effects": [
+      {
+        "Trigger": "OnPreCombatLine",
+        "Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 5 } ]
+      }
+    ]
   },
   {
-	"Id": 31,
-	"Name": "Silence",
-	"Type": "Spell",
-	"Cost": 2,
-	"Description": "Enemy Unit loses all Bonus Stats, Keywords and Passive Abilities.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [ { "Type": "Silence", "Target": "TargetEnemyUnit" } ]
-	  }
-	]
-  },
-
-  {
-	"Id": 32,
-	"Name": "Marked for Death",
-	"Type": "Spell",
-	"Cost": 1,
-	"Description": "Mark an Enemy Unit. Draw a Card.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [ 
-		  { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" },
-		  { "Type": "DrawCard", "Target": "FriendlyHero" }
-		]
-	  }
-	]
+    "Id": 31,
+    "Name": "Silence",
+    "Type": "Spell",
+    "Cost": 2,
+    "Description": "Enemy Unit loses all Bonus Stats, Keywords and Passive Abilities.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [ { "Type": "Silence", "Target": "TargetEnemyUnit" } ]
+      }
+    ]
   },
 
   {
-	"Id": 33,
-	"Name": "Mouse",
-	"Type": "Unit",
-	"Subtypes": [ "Machine" ],
-	"Cost": 5,
-	"Attack": 5,
-	"Health": 10,
-	"Keywords": [ "Stunned" ],
-	"Description": "Stunned."
+    "Id": 32,
+    "Name": "Marked for Death",
+    "Type": "Spell",
+    "Cost": 1,
+    "Description": "Mark an Enemy Unit. Draw a Card.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [ 
+          { "Type": "ApplyStatus", "Target": "TargetEnemyUnit", "StatusKeyword": "Marked" },
+          { "Type": "DrawCard", "Target": "FriendlyHero" }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 34,
-	"Name": "MaidMask",
-	"Type": "Unit",
-	"Cost": 2,
-	"Attack": 3,
-	"Health": 1,
-	"Keywords": [ "SoulGuard" ],
-	"Description": "SoulGuard."
+    "Id": 33,
+    "Name": "Mouse",
+    "Type": "Unit",
+    "Subtypes": [ "Machine" ],
+    "Cost": 4,
+    "Attack": 4,
+    "Health": 7,
+    "Keywords": [ "Stunned" ],
+    "Description": "Stunned."
   },
 
   {
-	"Id": 35,
-	"Name": "Cathulli Captain",
-	"Type": "Unit",
-	"Subtypes": [ "Monster" ],
-	"Cost": 2,
-	"Attack": 2,
-	"Health": 2,
-	"Description": "When a Friendly Monster Unit hurts Enemy Hero that unit gets +1/+1.",
-	"Effects": [
-	  {
-		"Trigger": "OnDamagedEnemyHero",
-		"Condition": { "Condition": "IsSubtype", "TargetParam": "Monster" },
-		"Actions": [ { "Type": "BuffStats", "Target": "SelectedTarget", "BuffAtk": 1, "BuffHp": 1 } ]
-	  }
-	]
+    "Id": 34,
+    "Name": "MaidMask",
+    "Type": "Unit",
+    "Subtypes": [ "Mercenary" ],
+    "Cost": 2,
+    "Attack": 3,
+    "Health": 1,
+    "Keywords": [ "SoulGuard" ],
+    "Description": "SoulGuard."
   },
 
   {
-	"Id": 36,
-	"Name": "Death",
-	"Type": "Unit",
-	"Subtypes": [ "Monster" ],
-	"Cost": 5,
-	"Attack": 3,
-	"Health": 3,
-	"Keywords": [ "SoulGuard" ],
-	"Description": "Whenever a Friendly Unit is Destroyed: Deal 3 damage to the Enemy Hero. SoulGuard.",
-	"Effects": [
-	  {
-		"Trigger": "OnFriendlyUnitDied",
-		"Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 3 } ]
-	  }
-	]
+    "Id": 35,
+    "Name": "Cathulli Captain",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "When a Friendly Monster Unit hurts Enemy Hero that unit gets +1/+1.",
+    "Effects": [
+      {
+        "Trigger": "OnDamagedEnemyHero",
+        "Condition": { "Condition": "IsSubtype", "TargetParam": "Monster" },
+        "Actions": [ { "Type": "BuffStats", "Target": "SelectedTarget", "BuffAtk": 1, "BuffHp": 1 } ]
+      }
+    ]
+  },
+
+  {
+    "Id": 36,
+    "Name": "Death",
+    "Type": "Unit",
+    "Subtypes": [ "Monster" ],
+    "Cost": 5,
+    "Attack": 3,
+    "Health": 3,
+    "Keywords": [ "SoulGuard" ],
+    "Description": "Whenever a Friendly Unit is Destroyed: Deal 3 damage to the Enemy Hero. SoulGuard.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 3 } ]
+      }
+    ]
   },
 
   {
   "Id": 37,
   "Name": "Archer",
   "Type": "Unit",
-  "Subtypes": ["Mercenary"],
+  "Subtypes": [ "Mercenary", "Human" ],
   "Cost": 2, "Attack": 1, "Health": 4,
   "Description": "Before Combat Here: Apply Burning to an Enemy Unit.",
   "Effects": [
-	{
-	  "Trigger": "OnPreCombatLine",
-	  "Actions": [
-		{ 
-		  "Type": "ApplyStatus", 
-		  "Target": "TargetEnemyUnit", 
-		  "StatusKeyword": "Burning" 
-		}
-	  ]
-	}
+    {
+      "Trigger": "OnPreCombatLine",
+      "Actions": [
+        { 
+          "Type": "ApplyStatus", 
+          "Target": "TargetEnemyUnit", 
+          "StatusKeyword": "Burning" 
+        }
+      ]
+    }
   ]
 },
 
 {
-	"Id": 38,
-	"Name": "Tumblr Man",
-	"Type": "Unit",
-	"Subtypes": ["Monster"],
-	"Cost": 1, "Attack": 4, "Health": 2,
-	"Keywords": ["Burning"]
+    "Id": 38,
+    "Name": "Tumblr Man",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 1, "Attack": 4, "Health": 1,
+    "Keywords": ["Burning"],
+     "Description": "Burning."
   },
 
   {
-	"Id": 39,
-	"Name": "Regifter",
-	"Type": "Unit",
-	"Subtypes": ["Monster"],
-	"Cost": 2, "Attack": 3, "Health": 2,
-	"Effects": [{
-	  "Trigger": "OnPlayed",
-	  "Targeting": "TargetFriendlyUnit",
-	  "Actions": [
-		{ "Type": "SacrificeUnit", "Target": "SelectedTarget" },
-		{ "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 2 },
-		{ "Type": "DrawCard", "Target": "EnemyHero", "Amount": 2 }
-	  ]
-	}]
+    "Id": 39,
+    "Name": "Regifter",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 2, "Attack": 3, "Health": 1,
+    "Effects": [{
+      "Trigger": "OnPlayed",
+      "Targeting": "TargetFriendlyUnit",
+      "Actions": [
+        { "Type": "SacrificeUnit", "Target": "SelectedTarget" },
+        { "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 2 },
+        { "Type": "DrawCard", "Target": "EnemyHero", "Amount": 2 }
+      ]
+    }]
   },
 
   {
-	"Id": 40,
-	"Name": "Widows Spider",
-	"Type": "Unit",
-	"Subtypes": ["Animal", "Monster"],
-	"Cost": 1, "Attack": 2, "Health": 2,
-	"Effects": [{
-	  "Trigger": "OnSacrificed",
-	  "Actions": [
-		{ "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 1 },
-		{ "Type": "AddResource", "Target": "FriendlyHero", "Amount": 1 }
-	  ]
-	}]
+    "Id": 40,
+    "Name": "Widows Spider",
+    "Type": "Unit",
+    "Subtypes": ["Animal", "Monster"],
+    "Cost": 1, "Attack": 2, "Health": 2,
+    "Effects": [{
+      "Trigger": "OnSacrificed",
+      "Actions": [
+        { "Type": "AddResource", "Target": "FriendlyHero", "Amount": 1 }
+      ]
+    }]
   },
 
   {
-	"Id": 41,
-	"Name": "Pegasus",
-	"Type": "Unit",
-	"Subtypes": ["Animal", "Mytical"],
-	"Cost": 3, "Attack": 3, "Health": 2,
-	"Keywords": ["Flying"],
-	"Effects": [{
-	  "Trigger": "OnPlayed",
-	  "Actions": [{ "Type": "BonusAttack", "Target": "Self" }]
-	}]
+    "Id": 41,
+    "Name": "Pegasus",
+    "Type": "Unit",
+    "Subtypes": ["Animal", "Mystical"],
+    "Cost": 3, "Attack": 3, "Health": 2,
+    "Keywords": ["Flying"],
+    "Effects": [{
+      "Trigger": "OnPlayed",
+      "Actions": [{ "Type": "BonusAttack", "Target": "Self" }]
+    }]
   },
   {
-	"Id": 42,
-	"Name": "Soldat",
-	"Type": "Unit",
-	"Subtypes": ["Mercenary"],
-	"Cost": 1, "Attack": 1, "Health": 1,
-	"Description": "When Played: If you have a Machine on Board, gain +2/+2.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Condition": {
-		  "Condition": "HasSubtypeOnBoard",
-		  "TargetParam": "Machine"
-		},
-		"Actions": [
-		  { "Type": "BuffStats", "Target": "Self", "BuffAtk": 2, "BuffHp": 2 }
-		]
-	  }
-	]
+    "Id": 42,
+    "Name": "Soldat",
+    "Type": "Unit",
+    "Subtypes": ["Mercenary", "Human" ],
+    "Cost": 1, "Attack": 2, "Health": 2,
+    "Description": "When Played: If you have a Machine on Board, gain +2/+2.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Condition": {
+          "Condition": "HasSubtypeOnBoard",
+          "TargetParam": "Machine"
+        },
+        "Actions": [
+          { "Type": "BuffStats", "Target": "Self", "BuffAtk": 2, "BuffHp": 2 }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 43,
-	"Name": "Evo Ghost",
-	"Type": "Unit",
-	"Subtypes": ["Monster"],
-	"Cost": 4, "Attack": 3, "Health": 3,
-	"Description": "On Death: Make 1/1 Souldiers in Adjacent Lanes.",
-	"Effects": [
-	  {
-		"Trigger": "OnDeath",
-		"Actions": [
-		  { "Type": "MakeAUnit", "ValueParam": 901, "StringParam": "AdjacentLanes" }
-		]
-	  }
-	]
+    "Id": 43,
+    "Name": "Evo Ghost",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 4, "Attack": 3, "Health": 2,
+    "Description": "On Death: Make 1/1 Souldiers in Adjacent Lanes.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          { "Type": "MakeAUnit", "ValueParam": 901, "StringParam": "AdjacentLanes" }
+        ]
+      }
+    ]
   },
   {
-	"Id": 44,
-	"Name": "Machine Bomber",
-	"Type": "Unit",
-	"Subtypes": ["Machine"],
-	"Cost": 1, "Attack": 1, "Health": 2,
-	"Keywords": ["SplashDamage"],
-	"KeywordParams": { "SplashDamage": 1 },
-	"Description": "Splash Damage 1."
+    "Id": 44,
+    "Name": "Machine Bomber",
+    "Type": "Unit",
+    "Subtypes": ["Machine"],
+    "Cost": 1, "Attack": 1, "Health": 2,
+    "Keywords": ["SplashDamage"],
+    "KeywordParams": { "SplashDamage": 1 },
+    "Description": "Splash Damage 1."
   },
   {
   "Id": 45,
@@ -780,79 +785,418 @@
   "Cost": 1,
   "Description": "Deal 2 damage to an Enemy Unit or Enemy Hero.",
   "Effects": [
-	{
-	  "Trigger": "OnPlayed",
-	  "Targeting": "Choice",
-	  "ChoiceLabels": ["Target Enemy Unit", "Enemy Hero"],
-	  "Actions": [
-		{
-		  "Type": "DealDamage",
-		  "Target": "TargetEnemyUnit",
-		  "Amount": 2
-		},
-		{
-		  "Type": "DealDamage",
-		  "Target": "EnemyHero",
-		  "Amount": 2
-		}
-	  ]
-	}
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "Choice",
+      "ChoiceLabels": ["Target Enemy Unit", "Enemy Hero"],
+      "Actions": [
+        {
+          "Type": "DealDamage",
+          "Target": "TargetEnemyUnit",
+          "Amount": 2
+        },
+        {
+          "Type": "DealDamage",
+          "Target": "EnemyHero",
+          "Amount": 2
+        }
+      ]
+    }
   ]
 },
 
+  {
+  "Id": 46,
+  "Name": "Tea Maid",
+  "Type": "Unit",
+  "Subtypes": [ "Human" ],
+  "Cost": 3,
+  "Attack": 1,
+  "Health": 5,
+  "Description": "While in Play: Your Spells cost 1 less.",
+  "Effects": [
+    {
+      "Trigger": "Passive",
+      "Zone": "Board",
+      "Actions": [
+        {
+          "Type": "BuffStats",
+          "Target": "FriendlySpellsInHand",
+          "Amount": -1 
+        }
+      ]
+    }
+  ]
+},
+
+  {
+    "Id": 47,
+    "Name": "Rustler",
+    "Type": "Unit",
+    "Subtypes": ["Mercenary", "Human"],
+    "Cost": 9, "Attack": 6, "Health": 6,
+    "Description": "Costs 1 less for each Spell played. On Played: Bonus Attack.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [{ "Type": "BonusAttack", "Target": "Self" }]
+      },
+      {
+        "Trigger": "OnFriendlyActionPlayed",
+        "Zone": "Hand",
+        "Actions": [{ "Type": "BuffStats", "Target": "Self", "Amount": -1 }] 
+      }
+    ]
+  },
+  {
+  "Id": 48,
+  "Name": "Vane, Butcher of Vanity",
+  "Type": "Unit",
+  "Subtypes": ["Mercenary", "Human"],
+  "Cost": 3,
+  "Attack": 3,
+  "Health": 3,
+  "Description": "Whenever you Sacrifice a unit: This unit gains +1/+1. If it was a Human, gain +2/+2 instead.",
+  "Effects": [
+    {
+      "Trigger": "OnOtherUnitSacrificed",
+      "Actions": [
+        { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1, "BuffHp": 1 }
+      ]
+    },
+    {
+      "Trigger": "OnOtherUnitSacrificed",
+      "Condition": {
+        "Condition": "IsSubtype",
+        "TargetParam": "Human"
+      },
+      "Actions": [
+        { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1, "BuffHp": 1 }
+      ]
+    }
+  ]
+},
 {
-	"Id": 46,
-	"Name": "Tea Maid",
-	"Type": "Unit",
-	"Cost": 3, "Attack": 2, "Health": 4,
-	"Description": "While in Play: Your Spells cost 1 less."
+  "Id": 49,
+  "Name": "Rocket Ignorance",
+  "Type": "Spell",
+  "Cost": 5,
+  "Description": "Destroy an Enemy Unit.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Actions": [
+        { 
+          "Type": "DestroyUnit", 
+          "Target": "TargetEnemyUnit" 
+        }
+      ]
+    }
+  ]
+},
+{
+  "Id": 50,
+  "Name": "Diabetic Treat",
+  "Type": "Spell",
+  "Cost": 1,
+  "Description": "Give a Friendly Unit +1/+3.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "TargetFriendlyUnit",
+      "Actions": [
+        { 
+          "Type": "BuffStats", 
+          "Target": "SelectedTarget", 
+          "BuffAtk": 1, 
+          "BuffHp": 3 
+        }
+      ]
+    }
+  ]
+},
+{
+    "Id": 51,
+    "Name": "The Trapper",
+    "Type": "Unit",
+    "Subtypes": ["Monster", "Human"],
+    "Cost": 2,
+    "Attack": 2,
+    "Health": 2,
+    "Description": "When Played: Gain the Trap.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          {
+            "Type": "AddCardToHand",
+            "Target": "FriendlyHero",
+            "ValueParam": 903
+          }
+        ]
+      }
+    ]
   },
 
   {
-	"Id": 47,
-	"Name": "Rustler",
-	"Type": "Unit",
-	"Subtypes": ["Mercenary"],
-	"Cost": 10, "Attack": 5, "Health": 5,
-	"Description": "Costs 1 less for each Spell played. On Played: Bonus Attack.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [{ "Type": "BonusAttack", "Target": "Self" }]
-	  },
-	  {
-		"Trigger": "OnFriendlyActionPlayed",
-		"Zone": "Hand",
-		"Actions": [{ "Type": "BuffStats", "Target": "Self", "Amount": -1 }] 
-	  }
-	]
+    "Id": 52,
+    "Name": "Little Bob",
+    "Type": "Unit",
+    "Subtypes": ["Machine"],
+    "Cost": 1,
+    "Attack": 1,
+    "Health": 2,
+    "Description": "While in Play: When You play a Machine Unit gain +1/+1.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Condition": {
+          "Condition": "And",
+          "SubConditions": [
+            { "Condition": "IsSubtype", "TargetParam": "Machine" },
+            { "Condition": "Not", "SubConditions": [{ "Condition": "IsSelf" }] }
+          ]
+        },
+        "Zone": "Board",
+        "Actions": [
+          { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1, "BuffHp": 1 }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 53,
+    "Name": "The Curtain Call",
+    "Type": "Spell",
+    "Cost": 9,
+    "Description": "Mark all Enemy Units and then Destroy Them.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          {
+            "Type": "ApplyStatus",
+            "Target": "AllEnemyUnits",
+            "StatusKeyword": "Marked"
+          },
+          {
+            "Type": "DestroyUnit",
+            "Target": "AllEnemyUnits"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 54,
+    "Name": "Thor",
+    "Type": "Unit",
+    "Subtypes": ["Machine", "Mercenary"],
+    "Cost": 4,
+    "Attack": 0,
+    "Health": 6,
+    "Description": "While in Hand: When a Friendly Machine is Destroyed gain +2 ATK.",
+    "Effects": [
+      {
+        "Trigger": "OnFriendlyUnitDied",
+        "Zone": "Hand",
+        "Condition": {
+          "Condition": "IsSubtype",
+          "TargetParam": "Machine"
+        },
+        "Actions": [
+          {
+            "Type": "BuffStats",
+            "Target": "Self",
+            "BuffAtk": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 55,
+    "Name": "ZaUm",
+    "Type": "Unit",
+    "Subtypes": ["Machine"],
+    "Cost": 6,
+    "Attack": 3,
+    "Health": 5,
+    "Keywords": ["SoulGuard", "Unkillable", "Armored", "Flying"],
+    "KeywordParams": { "Armored": 2 },
+    "Description": "SoulGuard. Unkillable. Armored. Flying."
+  },
+  {
+    "Id": 56,
+    "Name": "Collector",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 6,
+    "Attack": 2,
+    "Health": 6,
+    "Description": "When Played: Summon The Collection (Traces of Sylvian, Almer, Grogorth).",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Actions": [
+          { "Type": "MakeAUnit", "ValueParam": 904 },
+          { "Type": "MakeAUnit", "ValueParam": 905 },
+          { "Type": "MakeAUnit", "ValueParam": 906 }
+        ]
+      }
+    ]
+  },
+  {
+  "Id": 57,
+  "Name": "The Pale",
+  "Type": "Spell",
+  "Cost": 4,
+  "Description": "Silence ALL units on the board.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Actions": [
+        {
+          "Type": "Silence",
+          "Target": "AllUnitsOnBoard"
+        }
+      ]
+    }
+  ]
+},
+{
+  "Id": 58,
+  "Name": "Excision Conjucture",
+  "Type": "Spell",
+  "Cost": 2,
+  "Description": "Give all Enemy Units -1/-1.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "AllEnemyUnits",
+      "Actions": [
+        {
+          "Type": "BuffStats",
+          "Target": "AllEnemyUnits",
+          "BuffAtk": -1,
+          "BuffHp": -1
+        }
+      ]
+    }
+  ]
+},
+  {
+    "Id": 59,
+    "Name": "Gargoyle",
+    "Type": "Unit",
+    "Subtypes": ["Monster"],
+    "Cost": 1,
+    "Attack": 2,
+    "Health": 2,
+    "Keywords": ["Flying"],
+    "Description": "Flying."
+  },
+  {
+    "Id": 60,
+    "Name": "Anti Matter DragonFriend",
+    "Type": "Unit",
+    "Subtypes": ["Monster", "Animal"],
+    "Cost": 8,
+    "Attack": 6,
+    "Health": 6,
+    "Keywords": ["SplashDamage"],
+    "KeywordParams": {
+      "SplashDamage": 3
+    },
+    "Description": "Splash Damage 3.",
+    "Effects": [
+    {
+      "Trigger": "Passive",
+      "Zone": "Board",
+      "Actions": [
+        {
+          "Type": "BuffStats",
+          "Target": "EnemySpellsInHand",
+          "Amount": 6
+        }
+      ]
+    }
+  ]
   },
 
 
+
 {
-	"Id": 900,
-	"Name": "The Alluring Goblet",
-	"Type": "Spell",
-	"Cost": 1,
-	"Description": "Make a unit Unkillable, then destroy it.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Targeting": "TargetFriendlyUnit",
-		"Actions": [
-		  { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Unkillable" },
-		  { "Type": "DestroyUnit", "Target": "SelectedTarget" }
-		]
-	  }
-	]
+    "Id": 900,
+    "Name": "The Alluring Goblet",
+    "Type": "Spell",
+    "Subtypes": ["Token"],
+    "Cost": 1,
+    "Description": "Make a unit Unkillable, then destroy it.",
+    "Effects": [
+      {
+        "Trigger": "OnPlayed",
+        "Targeting": "TargetFriendlyUnit",
+        "Actions": [
+          { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Unkillable" },
+          { "Type": "DestroyUnit", "Target": "SelectedTarget" }
+        ]
+      }
+    ]
  },
 
  {
-	"Id": 901,
-	"Name": "Souldier",
-	"Type": "Unit",
-	"Subtypes": ["Monster"],
-	"Cost": 1, "Attack": 1, "Health": 1,
-	"Description": "A loyal token soldier."
-  }
+    "Id": 901,
+    "Name": "Souldier",
+    "Type": "Unit",
+    "Subtypes": ["Monster", "Token"],
+    "Cost": 1, "Attack": 1, "Health": 1,
+    "Description": "Two Loyal Souldiers and One Royale Ghost to rule them all."
+  },
+  {
+  "Id": 902,
+  "Name": "The Appetizing Goblet",
+  "Type": "Spell",
+  "Subtypes": ["Token"],
+  "Cost": 0,
+  "Description": "Sacrifice a Friendly Unit.",
+  "Effects": [
+    {
+      "Trigger": "OnPlayed",
+      "Targeting": "TargetFriendlyUnit",
+      "Actions": [
+        { 
+          "Type": "SacrificeUnit", 
+          "Target": "SelectedTarget" 
+        }
+      ]
+    }
+  ]
+},
+{
+    "Id": 903,
+    "Name": "Trap",
+    "Type": "Unit",
+    "Subtypes": ["Machine", "Token"],
+    "Cost": 0,
+    "Attack": 0,
+    "Health": 1,
+    "Description": "When Destroyed: Stun the Enemy Unit here.",
+    "Effects": [
+      {
+        "Trigger": "OnDeath",
+        "Actions": [
+          {
+            "Type": "ApplyStatus",
+            "Target": "TargetEnemyUnit",
+            "StatusKeyword": "Stunned"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 904, "Name": "Traces of Sylvian", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 3, "Health": 4 },
+  { "Id": 905, "Name": "Traces of Almer", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 4, "Health": 2 },
+  { "Id": 906, "Name": "Traces of Grogorth", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 5, "Health": 1 }
 ]

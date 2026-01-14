@@ -172,7 +172,7 @@
     "Subtypes": [ "Animal" ],
     "Cost": 2,
     "Attack": 2,
-    "Health": 2,
+    "Health": 3,
     "Description": "When Played: Sacrifice a Unit to absorb its stats.",
     "Effects": [
       {
@@ -693,14 +693,14 @@
     "Name": "Regifter",
     "Type": "Unit",
     "Subtypes": ["Monster"],
-    "Cost": 3, "Attack": 2, "Health": 2,
+    "Cost": 2, "Attack": 3, "Health": 1,
     "Effects": [{
       "Trigger": "OnPlayed",
       "Targeting": "TargetFriendlyUnit",
       "Actions": [
         { "Type": "SacrificeUnit", "Target": "SelectedTarget" },
-        { "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 1 },
-        { "Type": "DrawCard", "Target": "EnemyHero", "Amount": 1 }
+        { "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 2 },
+        { "Type": "DrawCard", "Target": "EnemyHero", "Amount": 2 }
       ]
     }]
   },
@@ -1048,7 +1048,7 @@
   },
   {
   "Id": 57,
-  "Name": "White Mourning",
+  "Name": "The Pale",
   "Type": "Spell",
   "Cost": 4,
   "Description": "Silence ALL units on the board.",
