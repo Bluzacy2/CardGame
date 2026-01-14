@@ -1,0 +1,607 @@
+﻿
+
+========================================
+FILE: GameState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\GameState.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Enums;
+
+namespace CardGame.Core.State.Models
+{
+    public class GameState
+    {
+        public int TurnNumber { get; }
+        public GamePhase CurrentPhase { get; }
+        public int ActivePlayerId { get; }
+        public BoardState Board { get; }
+        public PlayerState PlayerA { get; }
+        public PlayerState PlayerB { get; }
+        public IReadOnlyList<int> PlayersReady { get; }
+        public PendingInteraction? PendingInteraction { get; }
+        public IReadOnlyList<CardInstance> SpellStack { get; }
+
+        // Identyfikator gracza, który rozpoczął tę rundę (1 lub 2)
+        public int RoundStartingPlayerId { get; }
+
+        public GameState(
+            int turnNumber,
+            GamePhase currentPhase,
+            int activePlayerId,
+            BoardState board,
+            PlayerState playerA,
+            PlayerState playerB,
+            IEnumerable<int>? playersReady = null,
+            PendingInteraction? pendingInteraction = null,
+            IEnumerable<CardInstance>? spellStack = null,
+            int roundStartingPlayerId = 1)
+        {
+            TurnNumber = turnNumber;
+            CurrentPhase = currentPhase;
+            ActivePlayerId = activePlayerId;
+            Board = board;
+            PlayerA = playerA;
+            PlayerB = playerB;
+            PlayersReady = playersReady != null ? new List<int>(playersReady) : new List<int>();
+            PendingInteraction = pendingInteraction;
+            SpellStack = spellStack != null ? new List<CardInstance>(spellStack) : new List<CardInstance>();
+            RoundStartingPlayerId = roundStartingPlayerId;
+        }
+
+        public static GameState Initial(int startingPlayerId, List<CardInstance> deckA, List<CardInstance> deckB, DeterministicRng rng)
+        {
+            var pA = PlayerState.Initial(1, deckA).WithShuffledDeck(rng);
+            var pB = PlayerState.Initial(2, deckB).WithShuffledDeck(rng);
+
+            for (int i = 0; i < 4; i++) pA = pA.WithCardDrawn();
+            for (int i = 0; i < 4; i++) pB = pB.WithCardDrawn();
+
+            return new GameState(
+                turnNumber: 1,
+                currentPhase: GamePhase.Mulligan,
+                activePlayerId: startingPlayerId,
+                board: BoardState.Empty(),
+                playerA: pA,
+                playerB: pB,
+                roundStartingPlayerId: startingPlayerId
+            );
+        }
+
+        public GameState With(
+            int? turnNumber = null,
+            GamePhase? currentPhase = null,
+            int? activePlayerId = null,
+            BoardState? board = null,
+            PlayerState? playerA = null,
+            PlayerState? playerB = null,
+            IEnumerable<int>? playersReady = null,
+            PendingInteraction? pendingInteraction = null,
+            IEnumerable<CardInstance>? spellStack = null,
+            int? roundStartingPlayerId = null,
+            bool clearPending = false)
+        {
+            return new GameState(
+                turnNumber ?? this.TurnNumber,
+                currentPhase ?? this.CurrentPhase,
+                activePlayerId ?? this.ActivePlayerId,
+                board ?? this.Board,
+                playerA ?? this.PlayerA,
+                playerB ?? this.PlayerB,
+                playersReady ?? this.PlayersReady,
+                clearPending ? null : (pendingInteraction ?? this.PendingInteraction),
+                spellStack ?? this.SpellStack,
+                roundStartingPlayerId ?? this.RoundStartingPlayerId
+            );
+        }
+
+        public GameState MarkPlayerAsReady(int playerId)
+        {
+            var newList = new List<int>(PlayersReady);
+            if (!newList.Contains(playerId)) newList.Add(playerId);
+            return With(playersReady: newList);
+        }
+
+        public PlayerState GetPlayer(int playerId) => playerId == 1 ? PlayerA : PlayerB;
+        public PlayerState GetOpponent(int playerId) => playerId == 1 ? PlayerB : PlayerA;
+        public GameState UpdatePlayer(PlayerState newPlayerState) => newPlayerState.PlayerId == 1 ? With(playerA: newPlayerState) : With(playerB: newPlayerState);
+        public GameState UpdateBoard(BoardState newBoard) => With(board: newBoard);
+    }
+}
+
+
+========================================
+FILE: Line.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\Line.cs
+========================================
+using CardGame.Core.Cards.Models;
+using System.Collections.Generic;
+
+namespace CardGame.Core.State.Models
+{
+    public class Line
+    {
+        public int Index { get; }
+        public CardInstance? Player1Unit { get; }
+        public CardInstance? Player2Unit { get; }
+
+        public Line(int index, CardInstance? player1Unit, CardInstance? player2Unit)
+        {
+            Index = index;
+            Player1Unit = player1Unit;
+            Player2Unit = player2Unit;
+        }
+
+        public static Line Empty(int index) => new Line(index, null, null);
+
+        public bool IsSlotEmpty(int playerId) => playerId == 1 ? Player1Unit == null : Player2Unit == null;
+
+        public Line WithUnitPlaced(int playerId, CardInstance? unit)
+        {
+            return playerId == 1 ? new Line(Index, unit, Player2Unit) : new Line(Index, Player1Unit, unit);
+        }
+
+        public Line UpdateUnits(CardInstance? newP1Unit, CardInstance? newP2Unit) => new Line(Index, newP1Unit, newP2Unit);
+
+        public List<CardInstance> GetAllUnits()
+        {
+            var units = new List<CardInstance>();
+            if (Player1Unit != null) units.Add(Player1Unit);
+            if (Player2Unit != null) units.Add(Player2Unit);
+            return units;
+        }
+    }
+}
+
+
+========================================
+FILE: MulliganPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\MulliganPhaseState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+
+namespace CardGame.Core.StateMachine.Phases
+{
+    public class MulliganPhaseState : IPhaseState
+    {
+        public GamePhase PhaseType => GamePhase.Mulligan;
+        public bool IsCommandAllowed(IGameCommand command, GameState state) => command is CardGame.Core.Commands.Implementations.ConfirmMulliganCommand;
+        public bool ShouldEndPhaseAutomatically(GameState state) => state.PlayersReady.Contains(1) && state.PlayersReady.Contains(2);
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            // Start Rundy 1: Obaj gracze dobierają kartę
+            var pA = currentState.PlayerA.WithCardDrawn(eventBus);
+            var pB = currentState.PlayerB.WithCardDrawn(eventBus);
+
+            return currentState.With(
+                currentPhase: GamePhase.UnitOnly,
+                activePlayerId: 1,
+                roundStartingPlayerId: 1,
+                playerA: pA,
+                playerB: pB
+            );
+        }
+    }
+}
+
+
+========================================
+FILE: PendingInteraction.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\PendingInteraction.cs
+========================================
+using CardGame.Core.Cards.Data;
+
+namespace CardGame.Core.State.Models
+{
+    public class PendingInteraction
+    {
+        public int SourceCardInstanceId { get; } // Karta wykonująca efekt
+        public int EffectIndex { get; }          // Który to efekt z listy Effects (0, 1, 2...)
+        public int ActionIndex { get; }          // Która akcja wewnątrz efektu (0, 1, 2...)
+        public TargetType RequiredTargetType { get; } // Czego UI ma szukać
+
+        public IReadOnlyList<string> Options { get; }
+
+        public PendingInteraction(int sourceId, int effectIndex, int actionIndex, TargetType targetType, IEnumerable<string>? options = null)
+        {
+            SourceCardInstanceId = sourceId;
+            EffectIndex = effectIndex;
+            ActionIndex = actionIndex;
+            RequiredTargetType = targetType;
+            Options = options != null ? new List<string>(options) : new List<string>();
+        }
+    }
+}
+
+
+========================================
+FILE: PlayerState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\PlayerState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.State.Models
+{
+    public class PlayerState
+    {
+        public int PlayerId { get; }
+        public int Health { get; }
+        public int MaxBlood { get; }
+        public int CurrentBlood { get; }
+        public IReadOnlyList<CardInstance> Hand { get; }
+        public IReadOnlyList<CardInstance> DrawPile { get; }
+        public IReadOnlyList<CardInstance> DiscardPile { get; }
+        public CardStats GlobalUnitBuffs { get; }
+
+        // Stała określająca limit kart w ręce
+        public const int MaxHandSize = 8;
+
+        public PlayerState(int playerId, int health, int maxBlood, int currentBlood,
+            IEnumerable<CardInstance> hand, IEnumerable<CardInstance> drawPile,
+            IEnumerable<CardInstance> discardPile, CardStats? globalUnitBuffs = null)
+        {
+            PlayerId = playerId; Health = health; MaxBlood = maxBlood; CurrentBlood = currentBlood;
+            Hand = hand.ToList(); DrawPile = drawPile.ToList(); DiscardPile = discardPile.ToList();
+            GlobalUnitBuffs = globalUnitBuffs ?? new CardStats(0, 0, 0);
+        }
+
+        public static PlayerState Initial(int playerId, List<CardInstance> startingDeck) =>
+            new PlayerState(playerId, 20, 1, 1, new List<CardInstance>(), startingDeck, new List<CardInstance>());
+
+        public PlayerState With(int? health = null, int? maxBlood = null, int? currentBlood = null,
+            IEnumerable<CardInstance>? hand = null, IEnumerable<CardInstance>? drawPile = null,
+            IEnumerable<CardInstance>? discardPile = null, CardStats? globalUnitBuffs = null)
+        {
+            return new PlayerState(PlayerId, health ?? Health, maxBlood ?? MaxBlood, currentBlood ?? CurrentBlood,
+                hand ?? Hand, drawPile ?? DrawPile, discardPile ?? DiscardPile, globalUnitBuffs ?? GlobalUnitBuffs);
+        }
+
+        public PlayerState WithResourceChanged(ResourceType type, int current, int max)
+        {
+            if (type == ResourceType.Blood) return this.With(currentBlood: current, maxBlood: max);
+            return this;
+        }
+
+        public bool CanPlayCard(int cost) => CurrentBlood >= cost;
+        public PlayerState WithBloodSpent(int amount) => this.With(currentBlood: CurrentBlood - amount);
+        public PlayerState WithCardRemovedFromHand(CardInstance card) => this.With(hand: Hand.Where(c => c.InstanceId != card.InstanceId));
+
+        // POPRAWKA: Dodano warunek Hand.Count < MaxHandSize
+        public PlayerState WithCardDrawn(EventBus? events = null)
+        {
+            // Jeśli talia jest pusta LUB osiągnięto limit kart w ręce - przerywamy
+            if (DrawPile.Count == 0 || Hand.Count >= MaxHandSize)
+                return this;
+
+            events?.Publish(new CardDrawnEvent(PlayerId));
+
+            // Pobieramy kartę, usuwamy ją z talii i dodajemy do ręki
+            return this.With(
+                hand: Hand.Append(DrawPile[0]),
+                drawPile: DrawPile.Skip(1)
+            );
+        }
+
+        // Dodatkowa poprawka dla dobierania z cmentarza (opcjonalnie, by zachować spójność)
+        public PlayerState WithCardsDrawnFromDiscard(int count, int? excludeId = null)
+        {
+            var valid = DiscardPile.Where(c => c.InstanceId != excludeId).ToList();
+            if (valid.Count == 0 || Hand.Count >= MaxHandSize) return this;
+
+            // Obliczamy ile faktycznie możemy dobrać
+            int spaceInHand = MaxHandSize - Hand.Count;
+            int actualToDraw = Math.Min(count, spaceInHand);
+
+            if (actualToDraw <= 0) return this;
+
+            var toDraw = valid.TakeLast(actualToDraw).ToList();
+            return this.With(
+                hand: Hand.Concat(toDraw),
+                discardPile: DiscardPile.Where(c => !toDraw.Any(d => d.InstanceId == c.InstanceId))
+            );
+        }
+
+        public PlayerState WithTurnStartBlood(int manaLimit, bool refill)
+        {
+            int newMax = Math.Clamp(manaLimit, 1, 10);
+            return this.With(maxBlood: newMax, currentBlood: refill ? newMax : CurrentBlood);
+        }
+
+        public PlayerState WithCardAddedToHand(CardInstance card)
+        {
+            if (Hand.Count >= MaxHandSize) return this; // Blokada ręcznego dodawania
+            return this.With(hand: Hand.Append(card));
+        }
+
+        public PlayerState WithCardAddedToDiscard(CardInstance card) => this.With(discardPile: DiscardPile.Append(card));
+        public PlayerState WithHealthRestored(int amount) => this.With(health: Health + amount);
+        public PlayerState WithDamageTaken(int amount) => this.With(health: Health - amount);
+
+        public PlayerState WithShuffledDeck(DeterministicRng rng)
+        {
+            var list = DrawPile.ToList();
+            int n = list.Count;
+            while (n > 1) { n--; int k = rng.Next(0, n + 1); (list[k], list[n]) = (list[n], list[k]); }
+            return this.With(drawPile: list);
+        }
+
+        public PlayerState WithGlobalBuffModifier(int atk, int hp) => this.With(globalUnitBuffs: GlobalUnitBuffs + new CardStats(atk, hp, 0));
+        public PlayerState WithCardRemovedFromDeck(CardInstance card) => this.With(drawPile: DrawPile.Where(c => c.InstanceId != card.InstanceId));
+
+        public PlayerState WithMulliganPerformed(List<int> ids)
+        {
+            var toRep = Hand.Where(c => ids.Contains(c.InstanceId)).ToList();
+            var nHand = Hand.Where(c => !ids.Contains(c.InstanceId)).ToList();
+            var nDeck = DrawPile.ToList();
+            foreach (var c in toRep) { if (nDeck.Count > 0) { nHand.Add(nDeck[0]); nDeck.RemoveAt(0); } nDeck.Add(c); }
+            return this.With(hand: nHand, drawPile: nDeck);
+        }
+    }
+}
+
+
+========================================
+FILE: GameStateMachine.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\GameStateMachine.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using CardGame.Core.State.Enums;
+using CardGame.Core.StateMachine.Interfaces;
+using CardGame.Core.StateMachine.Phases;
+
+namespace CardGame.Core.StateMachine
+{
+    public class GameStateMachine
+    {
+        public IPhaseState GetStateForPhase(GamePhase phase)
+        {
+            switch(phase)
+            {
+                case GamePhase.Mulligan:
+                    return new MulliganPhaseState();
+                case GamePhase.UnitOnly:
+                    return new UnitPhaseState();
+                case GamePhase.UnitAndAction:
+                    return new BothPhaseState();
+                case GamePhase.ActionOnly:
+                    return new ActionPhaseState();
+                case GamePhase.Combat:
+                    return new CombatPhaseState();
+                default:
+                    throw new ArgumentException($"Nieobsługiwana faza gry: {phase}");
+            }
+        }
+    }
+}
+
+
+
+========================================
+FILE: IPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Interfaces\IPhaseState.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using CardGame.Core.Events;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.Application;
+
+namespace CardGame.Core.StateMachine.Interfaces
+{
+    public interface IPhaseState
+    {
+
+
+        GamePhase PhaseType { get; }
+        bool IsCommandAllowed(IGameCommand command, GameState state);
+
+        GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context);
+
+        bool ShouldEndPhaseAutomatically(GameState state);
+    }
+}
+
+
+
+========================================
+FILE: ActionPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Phases\ActionPhaseState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+
+namespace CardGame.Core.StateMachine.Phases
+{
+    public class ActionPhaseState : IPhaseState
+    {
+        public GamePhase PhaseType => GamePhase.ActionOnly;
+
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        {
+       
+            if (command is SelectTargetCommand) return true;
+ 
+            return command.PlayerId == state.ActivePlayerId &&
+                   (command is PlaySpellCommand ||
+                    command is EndPhaseCommand);
+        }
+
+        public bool ShouldEndPhaseAutomatically(GameState state) => false;
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+  
+            return currentState.With(currentPhase: GamePhase.Combat);
+        }
+    }
+}
+
+
+========================================
+FILE: BothPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Phases\BothPhaseState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+
+namespace CardGame.Core.StateMachine.Phases
+{
+    public class BothPhaseState : IPhaseState
+    {
+        public GamePhase PhaseType => GamePhase.UnitAndAction;
+
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        {
+     
+            if (command is SelectTargetCommand) return true;
+
+        
+            return command.PlayerId == state.ActivePlayerId &&
+                   (command is PlayUnitCommand ||
+                    command is PlaySpellCommand ||
+                    command is EndPhaseCommand);
+        }
+
+        public bool ShouldEndPhaseAutomatically(GameState state) => false;
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            return currentState.With(
+                currentPhase: GamePhase.ActionOnly,
+                activePlayerId: currentState.RoundStartingPlayerId
+            );
+        }
+    }
+}
+
+
+========================================
+FILE: CombatPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Phases\CombatPhaseState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Combat;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.GameRules.Death;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+
+namespace CardGame.Core.StateMachine.Phases
+{
+    public class CombatPhaseState : IPhaseState
+    {
+        public GamePhase PhaseType => GamePhase.Combat;
+        public bool IsCommandAllowed(IGameCommand command, GameState state) => command is CardGame.Core.Commands.Implementations.EndPhaseCommand;
+        public bool ShouldEndPhaseAutomatically(GameState state) => true;
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            var orchestrator = new CombatOrchestrator();
+            var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState, eventBus, context);
+
+            var workingState = stateAfterCombat;
+            foreach (var unit in workingState.Board.GetAllUnits())
+                workingState = context.Keywords.ProcessRoundEnd(workingState, unit, context);
+
+            workingState = new DeathResolver().ResolveDeaths(workingState, eventBus, context);
+
+            int nextRoundStarter = 3 - currentState.RoundStartingPlayerId;
+            int nextTurnNumber = currentState.TurnNumber + 1;
+
+
+            int manaLimit = nextTurnNumber;
+
+          
+            var pA = workingState.PlayerA.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
+            var pB = workingState.PlayerB.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
+
+            return workingState.With(
+                turnNumber: nextTurnNumber,
+                currentPhase: GamePhase.UnitOnly,
+                activePlayerId: nextRoundStarter,
+                roundStartingPlayerId: nextRoundStarter,
+                playerA: pA,
+                playerB: pB
+            );
+        }
+    }
+}
+
+
+========================================
+FILE: UnitPhaseState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\StateMachine\Phases\UnitPhaseState.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Events;
+using CardGame.Core.State.Enums;
+using CardGame.Core.State.Models;
+using CardGame.Core.StateMachine.Interfaces;
+
+namespace CardGame.Core.StateMachine.Phases
+{
+    public class UnitPhaseState : IPhaseState
+    {
+        public GamePhase PhaseType => GamePhase.UnitOnly;
+
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        {
+            if (command is SelectTargetCommand) return true;
+
+            return command.PlayerId == state.ActivePlayerId &&
+                   (command is PlayUnitCommand || command is EndPhaseCommand);
+        }
+
+        public bool ShouldEndPhaseAutomatically(GameState state) => false;
+
+        public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+        {
+            int opponentId = 3 - currentState.ActivePlayerId;
+            return currentState.With(
+                currentPhase: GamePhase.UnitAndAction,
+                activePlayerId: opponentId
+            );
+        }
+    }
+}

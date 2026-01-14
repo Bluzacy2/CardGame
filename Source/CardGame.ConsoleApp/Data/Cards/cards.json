@@ -317,14 +317,14 @@
     "Id": 18,
     "Name": "Final Mission",
     "Type": "Spell",
-    "Cost": 2,
+    "Cost": 1,
     "Description": "Sacrifice a Friendly Unit to deal 4 damage to an Enemy Unit.",
     "Effects": [
       {
         "Trigger": "OnPlayed",
         "Actions": [
           { "Type": "SacrificeUnit", "Target": "TargetFriendlyUnit" },
-          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 4 }
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 3 }
         ]
       }
     ]
@@ -953,6 +953,7 @@
         "Condition": {
           "Condition": "And",
           "SubConditions": [
+            { "Condition": "IsFriendly" }, 
             { "Condition": "IsSubtype", "TargetParam": "Machine" },
             { "Condition": "Not", "SubConditions": [{ "Condition": "IsSelf" }] }
           ]

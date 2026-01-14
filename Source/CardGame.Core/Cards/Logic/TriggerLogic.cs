@@ -36,14 +36,17 @@ namespace CardGame.Core.Cards.Logic
                 case TriggerType.OnPlayed:
                     if (gameEvent is CardPlayedEvent cpe)
                     {
-                        // 1. Standardowy Battlecry (karta sama wchodzi na stół)
+                        // 1. Battlecry: If the card being played is this card, allow it 
+                        // (Battlecries usually trigger from 'Any' or 'Hand' as they transition to Board)
                         if (cpe.Card.InstanceId == sourceCardId) return true;
 
-                        // 2. REAKCJA: Karta jest na stole i reaguje na zagranie innej karty.
-                        // Little Bob ma w JSON "Zone": "Board" i warunek "Not IsSelf".
-                        // Pozwalamy na trigger tylko jeśli karta ma warunek filtrujący innych (Not IsSelf).
+                        // 2. Reactive: Triggering based on other cards being played
                         if (effect.Zone == EffectZone.Board && effect.Condition != null && IsListeningToOthers(effect.Condition))
                         {
+                            // ADD THIS CHECK: Verify the card is actually on the board
+                            bool isActuallyOnBoard = state.Board.GetAllUnits().Any(u => u.InstanceId == sourceCardId);
+                            if (!isActuallyOnBoard) return false;
+
                             return true;
                         }
                     }
@@ -112,6 +115,8 @@ namespace CardGame.Core.Cards.Logic
                 case ConditionType.IsStatus:
                     return gameEvent is StatusAppliedEvent sae &&
                            string.Equals(sae.Status.ToString(), cond.TargetParam, System.StringComparison.OrdinalIgnoreCase);
+                case ConditionType.IsFriendly:
+                    return gameEvent.SourcePlayerId == myOwnerId;
 
                 case ConditionType.IsEnemy:
                     if (gameEvent is StatusAppliedEvent sae2)
@@ -143,6 +148,7 @@ namespace CardGame.Core.Cards.Logic
                     return state.Board.GetAllUnits()
                         .Any(u => u.OwnerPlayerId == myOwnerId &&
                                   u.Definition.Subtypes.Contains(cond.TargetParam));
+
 
                 default:
                     return true;
