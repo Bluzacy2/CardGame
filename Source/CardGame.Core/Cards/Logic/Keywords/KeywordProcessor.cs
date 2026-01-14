@@ -48,10 +48,18 @@ namespace CardGame.Core.Cards.Logic.Keywords
 
         public bool TryPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
         {
-            foreach (var keyword in unit.CurrentStats.Keywords)
+            // Łączymy słowa kluczowe z aktualnego stanu planszy ORAZ z definicji bazowej karty
+            var allKeywords = unit.CurrentStats.Keywords
+                .Concat(unit.Definition.Keywords) // To zapewnia działanie Unkillable nawet przy śmierci od spella
+                .Distinct();
+
+            foreach (var keyword in allKeywords)
             {
                 if (_handlers.TryGetValue(keyword, out var handler))
                 {
+                    // Unkillable nie powinno działać, jeśli karta jest wyciszona (Silence)
+                    if (unit.IsSilenced) continue;
+
                     if (handler.OnPreventDeath(ref state, unit, context, isSacrifice))
                         return true;
                 }
