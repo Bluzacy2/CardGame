@@ -44,7 +44,7 @@
   "Subtypes": [ "Monster" ],
   "Cost": 1,
   "Attack": 2,
-  "Health": 1,
+  "Health": 2,
   "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
   "Effects": [
     {
@@ -511,7 +511,7 @@
       },
       {
         "Trigger": "OnFriendlyCardDrawn",
-        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 2 } ]
+        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1 } ]
       }
     ]
   },
@@ -714,7 +714,8 @@
     "Effects": [{
       "Trigger": "OnSacrificed",
       "Actions": [
-        { "Type": "AddResource", "Target": "FriendlyHero", "Amount": 1 }
+        { "Type": "AddResource", "Target": "FriendlyHero", "Amount": 1 },
+        { "Type": "DrawCard", "Target": "EnemyHero", "Amount": 2 }
       ]
     }]
   },
