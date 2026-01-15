@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk0g276i0rpuu"]
+
+[ext_resource type="Script" uid="uid://8lwq036y4o7w" path="res://Scripts/ChoiceModal.cs" id="1_pdqlu"]
+
+[sub_resource type="Theme" id="Theme_pdqlu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdqlu"]
+bg_color = Color(0.19309618, 0.19309618, 0.19309618, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ChoiceModal" type="VBoxContainer" node_paths=PackedStringArray("MainPanel", "TitleLabel")]
+custom_minimum_size = Vector2(400, 200)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pdqlu")
+script = ExtResource("1_pdqlu")
+MainPanel = NodePath("CenterContainer/PanelContainer/VBoxContainer")
+TitleLabel = NodePath("CenterContainer/PanelContainer/VBoxContainer/Label")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pdqlu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "WYBIERZ OPCJĘ"
+horizontal_alignment = 1

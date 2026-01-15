@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dohitnkit2tdm"]
+[gd_scene load_steps=8 format=3 uid="uid://dohitnkit2tdm"]
 
 [ext_resource type="Script" uid="uid://brjlv20u4il2w" path="res://Scripts/GameBootstrap.cs" id="1_rgh2o"]
 [ext_resource type="Script" uid="uid://rxyqp5ic26n7" path="res://Scripts/UIManager.cs" id="2_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://b2cbjoaeymfw0" path="res://Scenes/Card.tscn" id="3_v1gob"]
 [ext_resource type="PackedScene" uid="uid://c2ia14ntiwycv" path="res://Scenes/Line.tscn" id="4_jw32o"]
+[ext_resource type="PackedScene" uid="uid://dk0g276i0rpuu" path="res://Scenes/ChoiceModal.tscn" id="5_pbw6q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0du0"]
 
@@ -35,6 +36,7 @@ MessagePanel = NodePath("NotificationLayer/MessagePanel")
 MessageLabel = NodePath("NotificationLayer/MessagePanel/VBoxContainer/MessageLabel")
 CardSceneTemplate = ExtResource("3_v1gob")
 LineSceneTemplate = ExtResource("4_jw32o")
+ChoiceModalScene = ExtResource("5_pbw6q")
 MulliganPanel = NodePath("MulliganPanel")
 MulliganCardsContainer = NodePath("MulliganPanel/VBoxContainer/MulliganCardsContainer")
 ConfirmMulliganButton = NodePath("MulliganPanel/VBoxContainer/ConfirmMulliganButton")
