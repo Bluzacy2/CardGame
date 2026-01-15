@@ -79,6 +79,24 @@ namespace CardGame.Core.GameRules.Battle
             }
 
             var workingState = state;
+
+            // --- NEW: Flying Logic Integration ---
+            // If there is a defender, check if the flying statuses match.
+            // In this game's logic (from ResolveCombatDuel), if one flies and the other doesn't, 
+            // the attacker ignores the unit and hits the hero.
+            if (defender != null)
+            {
+                bool attackerFlying = attacker.CurrentStats.Keywords.Contains(Keyword.Flying);
+                bool defenderFlying = defender.CurrentStats.Keywords.Contains(Keyword.Flying);
+
+                if (attackerFlying != defenderFlying)
+                {
+                    // Mismatch: Attacker bypasses the unit and hits the Hero
+                    defender = null;
+                }
+            }
+            // --------------------------------------
+
             if (defender != null)
             {
                 int dmg = context.DamageCalculator.CalculateFinalDamage(new DamageContext(attacker, defender, attacker.CurrentStats.Attack, DamageType.Combat));
@@ -89,12 +107,13 @@ namespace CardGame.Core.GameRules.Battle
             }
             else
             {
+                // Hits the hero (Player)
                 int dmgValue = attacker.CurrentStats.Attack;
                 var opponent = workingState.GetOpponent(attacker.OwnerPlayerId);
                 workingState = workingState.UpdatePlayer(opponent.WithDamageTaken(dmgValue));
                 workingState = context.Keywords.ProcessPostAttack(workingState, attacker, null, lineIdx, context);
 
-                // Atak na bohatera to specyficzny rodzaj obrażeń - nie celujemy w jednostkę.
+                // Atak na bohatera to specyficzny rodzaj obrażeń
                 events.Publish(new UnitDamagedEvent(null!, dmgValue, attacker));
             }
             return _deathResolver.ResolveDeaths(workingState, events, context);

@@ -44,7 +44,7 @@
   "Subtypes": [ "Monster" ],
   "Cost": 1,
   "Attack": 2,
-  "Health": 1,
+  "Health": 2,
   "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
   "Effects": [
     {
@@ -53,7 +53,7 @@
         {
           "Type": "AddCardToHand",
           "Target": "FriendlyHero",
-          "ValueParam": 902
+          "ValueParam": 900
         }
       ]
     }
@@ -317,14 +317,14 @@
     "Id": 18,
     "Name": "Final Mission",
     "Type": "Spell",
-    "Cost": 2,
+    "Cost": 1,
     "Description": "Sacrifice a Friendly Unit to deal 4 damage to an Enemy Unit.",
     "Effects": [
       {
         "Trigger": "OnPlayed",
         "Actions": [
           { "Type": "SacrificeUnit", "Target": "TargetFriendlyUnit" },
-          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 4 }
+          { "Type": "DealDamage", "Target": "TargetEnemyUnit", "Amount": 3 }
         ]
       }
     ]
@@ -511,7 +511,7 @@
       },
       {
         "Trigger": "OnFriendlyCardDrawn",
-        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 2 } ]
+        "Actions": [ { "Type": "BuffStats", "Target": "Self", "BuffAtk": 1 } ]
       }
     ]
   },
@@ -714,7 +714,8 @@
     "Effects": [{
       "Trigger": "OnSacrificed",
       "Actions": [
-        { "Type": "AddResource", "Target": "FriendlyHero", "Amount": 1 }
+        { "Type": "AddResource", "Target": "FriendlyHero", "Amount": 1 },
+        { "Type": "DrawCard", "Target": "EnemyHero", "Amount": 2 }
       ]
     }]
   },
@@ -953,6 +954,7 @@
         "Condition": {
           "Condition": "And",
           "SubConditions": [
+            { "Condition": "IsFriendly" }, 
             { "Condition": "IsSubtype", "TargetParam": "Machine" },
             { "Condition": "Not", "SubConditions": [{ "Condition": "IsSelf" }] }
           ]

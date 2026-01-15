@@ -69,34 +69,41 @@ namespace CardGame.Core.Events.Triggers
         {
             var map = new Dictionary<TriggerType, List<SourceInfo>>();
 
-          
-            var all = s.Board.GetAllUnits().Select(u => (u, zone: EffectZone.Board))
-        
+            // 1. Identify the unit currently transitioning to the graveyard
+            int? transitioningUnitId = null;
+            if (currentEvt is UnitDiedEvent ude) transitioningUnitId = ude.Unit.InstanceId;
+            else if (currentEvt is UnitSacrificedEvent use) transitioningUnitId = use.Unit.InstanceId;
+
+            // 2. Build the list of potential sources
+            // FIX: We filter the Board units to exclude the one that is currently dying/sacrificed
+            var all = s.Board.GetAllUnits()
+                .Where(u => u.InstanceId != transitioningUnitId)
+                .Select(u => (u, zone: EffectZone.Board))
                 .Concat(s.PlayerA.Hand.Concat(s.PlayerB.Hand).Select(c => (c, zone: EffectZone.Hand)))
-      
                 .Concat(s.SpellStack.Select(sp => (sp, zone: EffectZone.Any)));
-           
-            if (currentEvt is UnitDiedEvent ude)
+
+            // 3. Append the transitioning unit explicitly as a Graveyard entity
+            if (currentEvt is UnitDiedEvent ude2)
             {
-                all = all.Append((ude.Unit, zone: EffectZone.Graveyard));
+                all = all.Append((ude2.Unit, zone: EffectZone.Graveyard));
             }
-            else if (currentEvt is UnitSacrificedEvent use)
+            else if (currentEvt is UnitSacrificedEvent use2)
             {
-                all = all.Append((use.Unit, zone: EffectZone.Graveyard));
+                all = all.Append((use2.Unit, zone: EffectZone.Graveyard));
             }
 
             foreach (var (card, currentZone) in all)
             {
                 foreach (var effect in card.Definition.Effects)
                 {
-                   
+                    // Keep your existing logic for zone matching
                     bool zoneMatches = effect.Zone == currentZone || effect.Zone == EffectZone.Any;
 
-                 
                     bool isDeathRelatedTrigger = effect.Trigger == TriggerType.OnDeath ||
                                                  effect.Trigger == TriggerType.OnSacrificed;
 
-                    bool shouldInclude = effect.Trigger == TriggerType.OnPlayed || 
+                    // Keep your existing logic for inclusion
+                    bool shouldInclude = effect.Trigger == TriggerType.OnPlayed ||
                                          zoneMatches ||
                                          (isDeathRelatedTrigger && currentZone == EffectZone.Graveyard);
 
