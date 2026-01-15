@@ -19,7 +19,6 @@ namespace CardGame.Core.State.Models
         public IReadOnlyList<CardInstance> DiscardPile { get; }
         public CardStats GlobalUnitBuffs { get; }
 
-        // Stała określająca limit kart w ręce
         public const int MaxHandSize = 8;
 
         public PlayerState(int playerId, int health, int maxBlood, int currentBlood,
@@ -52,14 +51,15 @@ namespace CardGame.Core.State.Models
         public PlayerState WithBloodSpent(int amount) => this.With(currentBlood: CurrentBlood - amount);
         public PlayerState WithCardRemovedFromHand(CardInstance card) => this.With(hand: Hand.Where(c => c.InstanceId != card.InstanceId));
 
-        // POPRAWKA: Dodano warunek Hand.Count < MaxHandSize
         public PlayerState WithCardDrawn(EventBus? events = null)
         {
             // Jeśli talia jest pusta LUB osiągnięto limit kart w ręce - przerywamy
             if (DrawPile.Count == 0 || Hand.Count >= MaxHandSize)
                 return this;
 
+            var card = DrawPile[0];
             events?.Publish(new CardDrawnEvent(PlayerId));
+            events?.Publish(new CardMovedEvent(card.InstanceId, PlayerId, CardZone.Deck, CardZone.Hand));
 
             // Pobieramy kartę, usuwamy ją z talii i dodajemy do ręki
             return this.With(
@@ -68,8 +68,7 @@ namespace CardGame.Core.State.Models
             );
         }
 
-        // Dodatkowa poprawka dla dobierania z cmentarza (opcjonalnie, by zachować spójność)
-        public PlayerState WithCardsDrawnFromDiscard(int count, int? excludeId = null)
+        public PlayerState WithCardsDrawnFromDiscard(int count, EventBus? events = null, int? excludeId = null)
         {
             var valid = DiscardPile.Where(c => c.InstanceId != excludeId).ToList();
             if (valid.Count == 0 || Hand.Count >= MaxHandSize) return this;
@@ -81,6 +80,13 @@ namespace CardGame.Core.State.Models
             if (actualToDraw <= 0) return this;
 
             var toDraw = valid.TakeLast(actualToDraw).ToList();
+            if (events != null)
+            {
+                foreach (var card in toDraw)
+                {
+                    events.Publish(new CardMovedEvent(card.InstanceId, PlayerId, CardZone.Graveyard, CardZone.Hand));
+                }
+            }
             return this.With(
                 hand: Hand.Concat(toDraw),
                 discardPile: DiscardPile.Where(c => !toDraw.Any(d => d.InstanceId == c.InstanceId))

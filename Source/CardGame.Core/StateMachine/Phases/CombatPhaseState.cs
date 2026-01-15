@@ -32,9 +32,13 @@ namespace CardGame.Core.StateMachine.Phases
 
             int manaLimit = nextTurnNumber;
 
-          
+            int oldBloodA = workingState.PlayerA.CurrentBlood;
             var pA = workingState.PlayerA.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
+            eventBus.Publish(new ResourceChangedEvent(pA.PlayerId, oldBloodA, pA.CurrentBlood));
+
+            int oldBloodB = workingState.PlayerB.CurrentBlood;
             var pB = workingState.PlayerB.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
+            eventBus.Publish(new ResourceChangedEvent(pB.PlayerId, oldBloodB, pB.CurrentBlood));
 
             return workingState.With(
                 turnNumber: nextTurnNumber,

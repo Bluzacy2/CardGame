@@ -2,6 +2,7 @@
 using CardGame.Core.Cards.Component.Actions;
 using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Logic;
+using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
 using System;
@@ -23,7 +24,9 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
 
                     var freshPlayer = state.GetPlayer(pid);
 
-                   
+                    context.Events.Publish(new CardCreatedEvent(tokenCard, pid));
+                    context.Events.Publish(new CardMovedEvent(tokenCard.InstanceId, pid, CardZone.Deck, CardZone.Hand));
+
                     return state.UpdatePlayer(freshPlayer.WithCardAddedToHand(tokenCard));
 
                 }

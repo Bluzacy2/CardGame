@@ -3,6 +3,7 @@ using CardGame.Core.Cards.Component.Actions;
 using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Logic;
 using CardGame.Core.Cards.Models;
+using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
 using System;
@@ -34,6 +35,17 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
 
                 var buff = new CardStats(victimStats.Attack, victimStats.Health, 0);
                 var biggerMe = me.AddPermanentBuff(buff);
+
+                context.Events.Publish(new UnitStatsChangedEvent(
+                    biggerMe.InstanceId,             // targetId
+                    victimStats.Attack,              // atkDelta
+                    victimStats.Health,              // hpDelta
+                    biggerMe.CurrentStats.Attack,    // curAtk
+                    biggerMe.CurrentStats.Health,    // curHp
+                    targets.TargetUnit.InstanceId,   // sourceId (int?)
+                    biggerMe.OwnerPlayerId,          // sourcePlayerId (int)
+                    false                            // isAura (bool)
+                ));
 
                 if (isOnBoard)
                 {

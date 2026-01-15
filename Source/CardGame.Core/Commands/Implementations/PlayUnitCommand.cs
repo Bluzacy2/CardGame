@@ -26,6 +26,8 @@ namespace CardGame.Core.Commands.Implementations
         public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
         {
             var playerState = currentState.GetPlayer(PlayerId);
+            int oldBlood = playerState.CurrentBlood;
+
             var card = playerState.Hand.FirstOrDefault(c => c.InstanceId == CardInstanceId);
 
             if (card == null) return currentState;
@@ -44,10 +46,14 @@ namespace CardGame.Core.Commands.Implementations
                 .WithBloodSpent(card.CurrentStats.BloodCost)
                 .WithCardRemovedFromHand(card);
 
+            eventBus.Publish(new ResourceChangedEvent(PlayerId, oldBlood, newPlayerState.CurrentBlood));
+
             var cardToPlay = card.AddPermanentBuff(playerState.GlobalUnitBuffs);
             var newBoardState = currentState.Board.WithUnitPlacedAt(TargetLineIndex, PlayerId, cardToPlay);
 
+            eventBus.Publish(new CardMovedEvent(card.InstanceId, PlayerId, CardZone.Hand, CardZone.Board, TargetLineIndex));
             eventBus.Publish(new CardPlayedEvent(PlayerId, card, TargetLineIndex, SelectedTargetId));
+            
 
             return currentState.With(
                 playerA: PlayerId == 1 ? newPlayerState : currentState.PlayerA,

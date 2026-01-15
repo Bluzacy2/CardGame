@@ -13,7 +13,8 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
         public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
         {
             if (targets.TargetPlayer == null) return state;
-            var newPlayer = targets.TargetPlayer.WithCardsDrawnFromDiscard(action.Amount);
+            var newPlayer = targets.TargetPlayer.WithCardsDrawnFromDiscard(action.Amount, context.Events);
+
             return state.UpdatePlayer(newPlayer);
         }
     }

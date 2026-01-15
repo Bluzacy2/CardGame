@@ -1,18 +1,20 @@
 ﻿using CardGame.Core.Cards.Data;
 using CardGame.Core.Events.Interfaces;
 
-namespace CardGame.Core.Events
+public class StatusAppliedEvent : IGameEvent
 {
-    public class StatusAppliedEvent : IGameEvent
+    public int TargetUnitId { get; }
+    public Keyword Status { get; }
+    public int SourcePlayerId { get; }
+
+    // UI Helpers
+    public int? SourceId { get; } 
+
+    public StatusAppliedEvent(int sourcePlayerId, int targetUnitId, Keyword status, int? sourceId = null)
     {
-        public int TargetUnitId { get; }
-        public Keyword Status { get; }
-        public int SourcePlayerId { get; }
-        public StatusAppliedEvent(int sourcePlayerId, int targetUnitId, Keyword status)
-        {
-            SourcePlayerId = sourcePlayerId;
-            TargetUnitId = targetUnitId;
-            Status = status;
-        }
+        SourcePlayerId = sourcePlayerId;
+        TargetUnitId = targetUnitId;
+        Status = status;
+        SourceId = sourceId;
     }
 }
