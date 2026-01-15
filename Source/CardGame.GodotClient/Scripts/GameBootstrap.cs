@@ -46,7 +46,10 @@ public partial class GameBootstrap : Node2D
             UI.ShowGameOverScreen(_engine.WinnerId, _playerId, _botId);
             return;
         }
-
+        if (_inputController != null)
+        {
+            _inputController.UpdateState(_engine.CurrentState);
+        }
         // 2. Aktualizacja UI
         if (_engine.CurrentState != _lastRenderedState)
         {

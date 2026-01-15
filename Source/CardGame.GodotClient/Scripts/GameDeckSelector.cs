@@ -145,6 +145,7 @@ public partial class GameDeckSelector : Control
         btn.CustomMinimumSize = new Vector2(0, 50);
         btn.Alignment = HorizontalAlignment.Left;
         btn.ActionMode = BaseButton.ActionModeEnum.Press;
+        btn.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 
         // --- CHILD COLOR RECT (Tło i Ramka) ---
         var gradientRect = new ColorRect();

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1vspmmetytsu" path="res://Scripts/LineView.cs" id="1_0lsht"]
 
-[node name="LineView" type="Control" node_paths=PackedStringArray("InfoLabel", "UnitsContainer")]
+[node name="LineView" type="Control" node_paths=PackedStringArray("InfoLabel", "EnemySlot", "PlayerSlot")]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -14,7 +14,8 @@ size_flags_horizontal = 3
 mouse_filter = 1
 script = ExtResource("1_0lsht")
 InfoLabel = NodePath("InfoLabel")
-UnitsContainer = NodePath("UnitsContainer")
+EnemySlot = NodePath("VBoxContainer/EnemySlot")
+PlayerSlot = NodePath("VBoxContainer/PlayerSlot")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -45,15 +46,6 @@ offset_right = 327.0
 offset_bottom = 63.0
 vertical_alignment = 1
 
-[node name="UnitsContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 40.0
-offset_right = 74.0
-offset_bottom = 80.0
-theme_override_constants/separation = 50
-alignment = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -61,3 +53,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="EnemySlot" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PlayerSlot" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
