@@ -150,8 +150,8 @@
 	"Name": "Corpse Eater",
 	"Type": "Unit",
 	"Subtypes": [ "Monster" ],
-	"Cost": 2,
-	"Attack": 3,
+	"Cost": 3,
+	"Attack": 2,
 	"Health": 1,
 	"Description": "While in Hand: When Friendly dies, play this.",
 	"Effects": [
@@ -266,7 +266,7 @@
 	"Id": 15,
 	"Name": "Expectancy",
 	"Type": "Spell",
-	"Cost": 3,
+	"Cost": 2,
 	"Description": "Draw 2 from Deck OR Discard.",
 	"Effects": [
 	  {
@@ -503,10 +503,11 @@
 	"Cost": 3,
 	"Attack": 2,
 	"Health": 4,
-	"Description": "Hit Hero: Draw. You Draw: +2 Atk.",
+	"Description": "Hit Hero: Draw. You Draw: +1 Atk.",
 	"Effects": [
 	  {
 		"Trigger": "OnDamagedEnemyHero",
+		"Condition": { "Condition": "IsSelf" }, 
 		"Actions": [ { "Type": "DrawCard", "Target": "FriendlyHero" } ]
 	  },
 	  {
@@ -715,7 +716,7 @@
 	  "Trigger": "OnSacrificed",
 	  "Actions": [
 		{ "Type": "AddResource", "Target": "FriendlyHero", "Amount": 1 },
-		{ "Type": "DrawCard", "Target": "EnemyHero", "Amount": 2 }
+		{ "Type": "DrawCard", "Target": "FriendlyHero", "Amount": 1 }
 	  ]
 	}]
   },
@@ -813,7 +814,7 @@
   "Subtypes": [ "Human" ],
   "Cost": 3,
   "Attack": 1,
-  "Health": 5,
+  "Health": 4,
   "Description": "While in Play: Your Spells cost 1 less.",
   "Effects": [
 	{
@@ -854,8 +855,8 @@
   "Name": "Vane, Butcher of Vanity",
   "Type": "Unit",
   "Subtypes": ["Mercenary", "Human"],
-  "Cost": 3,
-  "Attack": 3,
+  "Cost": 2,
+  "Attack": 2,
   "Health": 3,
   "Description": "Whenever you Sacrifice a unit: This unit gains +1/+1. If it was a Human, gain +2/+2 instead.",
   "Effects": [
@@ -1134,14 +1135,14 @@
 	"Type": "Spell",
 	"Subtypes": ["Token"],
 	"Cost": 1,
-	"Description": "Make a unit Unkillable, then destroy it.",
+	"Description": "Make a unit Unkillable, then Sacrifice it.",
 	"Effects": [
 	  {
 		"Trigger": "OnPlayed",
 		"Targeting": "TargetFriendlyUnit",
 		"Actions": [
 		  { "Type": "ApplyStatus", "Target": "SelectedTarget", "StatusKeyword": "Unkillable" },
-		  { "Type": "DestroyUnit", "Target": "SelectedTarget" }
+		  { "Type": "SacrificeUnit", "Target": "SelectedTarget" }
 		]
 	  }
 	]
