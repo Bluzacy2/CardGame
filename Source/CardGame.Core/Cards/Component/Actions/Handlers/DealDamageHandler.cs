@@ -17,6 +17,7 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
 
         public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
         {
+            // Retrieve source object for engine logic
             CardInstance? sourceCard = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceId)
                ?? state.PlayerA.Hand.Concat(state.PlayerB.Hand).FirstOrDefault(c => c.InstanceId == sourceId)
                ?? state.SpellStack.FirstOrDefault(s => s.InstanceId == sourceId);
@@ -24,8 +25,8 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             if (targets.TargetPlayer != null)
             {
                 var newPlayer = targets.TargetPlayer.WithDamageTaken(action.Amount);
-
-                context.Events.Publish(new UnitDamagedEvent(null!, action.Amount, sourceCard));
+                // Pass null for Unit to indicate Hero damage, but include healthAfter
+                context.Events.Publish(new UnitDamagedEvent(null, action.Amount, sourceCard, newPlayer.Health));
                 return state.UpdatePlayer(newPlayer);
             }
 
@@ -37,7 +38,9 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                 var damagedUnit = targetUnit.TakeDamage(finalDamage);
 
                 workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(damagedUnit));
-                context.Events.Publish(new UnitDamagedEvent(damagedUnit, finalDamage, sourceCard));
+
+                // Pass the objects AND the UI metadata
+                context.Events.Publish(new UnitDamagedEvent(damagedUnit, finalDamage, sourceCard, damagedUnit.CurrentStats.Health));
             }
 
             return workingState;

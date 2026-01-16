@@ -20,11 +20,10 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             if (targets.TargetUnit != null && action.StatusKeyword.HasValue)
             {
                 Keyword k = action.StatusKeyword.Value;
-             
-
                 var unitWithStatus = targets.TargetUnit.AddPermanentBuff(new CardStats(0, 0, 0, new List<Keyword> { k }));
 
-                context.Events.Publish(new StatusAppliedEvent(gameEvent.SourcePlayerId, targets.TargetUnit.InstanceId, k));
+                // Pass original parameters + optional sourceId for UI
+                context.Events.Publish(new StatusAppliedEvent(gameEvent.SourcePlayerId, targets.TargetUnit.InstanceId, k, sourceId));
 
                 return state.UpdateBoard(state.Board.UpdateUnit(unitWithStatus));
             }

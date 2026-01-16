@@ -1,6 +1,566 @@
 ﻿
 
 ========================================
+FILE: BattleService.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Battle\BattleService.cs
+========================================
+using CardGame.Core.State.Models;
+using CardGame.Core.Events;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.GameRules.Damage;
+using CardGame.Core.GameRules.Death;
+using System;
+using System.Linq;
+
+namespace CardGame.Core.GameRules.Battle
+{
+    public class BattleService
+    {
+        private readonly DeathResolver _deathResolver = new DeathResolver();
+
+        public GameState ResolveCombatDuel(GameState state, CardInstance u1, CardInstance u2, int lineIdx, EventBus events, GameContext context)
+        {
+            var workingState = state;
+            bool u1Flying = u1.CurrentStats.Keywords.Contains(Keyword.Flying);
+            bool u2Flying = u2.CurrentStats.Keywords.Contains(Keyword.Flying);
+
+            // FLYING LOGIC: If one unit is flying and the other is not, they ignore each other and strike heroes.
+            if (u1Flying != u2Flying)
+            {
+                workingState = ResolveBonusStrike(workingState, u1, null, lineIdx, events, context);
+                workingState = ResolveBonusStrike(workingState, u2, null, lineIdx, events, context);
+                return workingState;
+            }
+
+            bool u1Stunned = u1.CurrentStats.Keywords.Contains(Keyword.Stunned);
+            bool u2Stunned = u2.CurrentStats.Keywords.Contains(Keyword.Stunned);
+
+            // Handle Stun removal
+            var activeU1 = u1Stunned ? u1.SuppressKeyword(Keyword.Stunned) : u1;
+            var activeU2 = u2Stunned ? u2.SuppressKeyword(Keyword.Stunned) : u2;
+
+            if (u1Stunned) workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(activeU1));
+            if (u2Stunned) workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(activeU2));
+
+            // Calculate Damage (0 if Stunned)
+            int dmgToU2 = u1Stunned ? 0 : context.DamageCalculator.CalculateFinalDamage(new DamageContext(activeU1, activeU2, activeU1.CurrentStats.Attack, DamageType.Combat));
+            int dmgToU1 = u2Stunned ? 0 : context.DamageCalculator.CalculateFinalDamage(new DamageContext(activeU2, activeU1, activeU2.CurrentStats.Attack, DamageType.Combat));
+
+            var nextU1 = activeU1.TakeDamage(dmgToU1);
+            var nextU2 = activeU2.TakeDamage(dmgToU2);
+
+            workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(nextU1));
+            workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(nextU2));
+
+            // Resolve Post-Attack keywords (like Splash or BurnSource)
+            var finalU1 = workingState.Board.Lines[lineIdx].Player1Unit;
+            var finalU2 = workingState.Board.Lines[lineIdx].Player2Unit;
+
+            if (finalU1 != null && finalU2 != null)
+            {
+                if (!u1Stunned) workingState = context.Keywords.ProcessPostAttack(workingState, finalU1, finalU2, lineIdx, context);
+                if (!u2Stunned) workingState = context.Keywords.ProcessPostAttack(workingState, finalU2, finalU1, lineIdx, context);
+            }
+
+            // Publish Events using the "Hybrid" constructor for UI support
+            if (dmgToU1 > 0)
+                events.Publish(new UnitDamagedEvent(nextU1, dmgToU1, activeU2, nextU1.CurrentStats.Health));
+
+            if (dmgToU2 > 0)
+                events.Publish(new UnitDamagedEvent(nextU2, dmgToU2, activeU1, nextU2.CurrentStats.Health));
+
+            return workingState;
+        }
+
+        public GameState ResolveBonusStrike(GameState state, CardInstance attacker, CardInstance? defender, int lineIdx, EventBus events, GameContext context)
+        {
+            // Handle Stunned check
+            if (attacker.CurrentStats.Keywords.Contains(Keyword.Stunned))
+            {
+                var cleanAttacker = attacker.SuppressKeyword(Keyword.Stunned);
+                return state.UpdateBoard(state.Board.UpdateUnit(cleanAttacker));
+            }
+
+            var workingState = state;
+
+            // FLYING LOGIC: Bonus attacks are also blocked/ignored by flying mismatch
+            if (defender != null)
+            {
+                bool attackerFlying = attacker.CurrentStats.Keywords.Contains(Keyword.Flying);
+                bool defenderFlying = defender.CurrentStats.Keywords.Contains(Keyword.Flying);
+                if (attackerFlying != defenderFlying) defender = null;
+            }
+
+            if (defender != null)
+            {
+                // Damage to Unit
+                int dmg = context.DamageCalculator.CalculateFinalDamage(new DamageContext(attacker, defender, attacker.CurrentStats.Attack, DamageType.Combat));
+                var nextDefender = defender.TakeDamage(dmg);
+                workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(nextDefender));
+                workingState = context.Keywords.ProcessPostAttack(workingState, attacker, nextDefender, lineIdx, context);
+
+                // Publish Unit Damage
+                events.Publish(new UnitDamagedEvent(nextDefender, dmg, attacker, nextDefender.CurrentStats.Health));
+            }
+            else
+            {
+                // Damage to Hero
+                int dmgValue = attacker.CurrentStats.Attack;
+                var opponent = workingState.GetOpponent(attacker.OwnerPlayerId);
+                workingState = workingState.UpdatePlayer(opponent.WithDamageTaken(dmgValue));
+                workingState = context.Keywords.ProcessPostAttack(workingState, attacker, null, lineIdx, context);
+
+                // Publish Hero Damage (Passing null as Unit indicates Hero in your hybrid event)
+                events.Publish(new UnitDamagedEvent(null, dmgValue, attacker, opponent.Health - dmgValue));
+            }
+
+            // Check for deaths after the strike
+            return _deathResolver.ResolveDeaths(workingState, events, context);
+        }
+    }
+}
+
+
+========================================
+FILE: DamageCalculator.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\DamageCalculator.cs
+========================================
+using CardGame.Core.Application;
+using System;
+
+namespace CardGame.Core.GameRules.Damage
+{
+    public class DamageCalculator
+    {
+        private readonly GameContext _context;
+
+        public DamageCalculator(GameContext context)
+        {
+            _context = context;
+        }
+
+        public int CalculateFinalDamage(DamageContext context)
+        {
+            int finalDamage = context.RawAmount;
+
+            finalDamage = _context.Keywords.ProcessDamageTaken(finalDamage, context);
+
+            return Math.Max(0, finalDamage);
+        }
+    }
+}
+
+
+========================================
+FILE: DamageContext.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\DamageContext.cs
+========================================
+using CardGame.Core.Cards.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.GameRules.Damage
+{
+    public class DamageContext
+    {
+        public CardInstance? Source { get; }
+        public CardInstance Target { get; }
+        public int RawAmount { get; }
+        public DamageType Type { get; }
+        public DamageContext(CardInstance? source, CardInstance target, int rawAmount, DamageType type)
+        {
+            Source = source;
+            Target = target;
+            RawAmount = rawAmount;
+            Type = type;
+        }
+    }
+}
+
+
+
+========================================
+FILE: DamageType.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\DamageType.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.GameRules.Damage
+{
+    public enum DamageType
+    {
+        Combat,
+        Action,
+        Effect
+    }
+}
+
+
+
+========================================
+FILE: ArmorModifier.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\Modifiers\ArmorModifier.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.GameRules.Damage.Modifiers
+{
+    internal class ArmorModifier
+    {
+    }
+}
+
+
+
+========================================
+FILE: IDamageModifier.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\Modifiers\IDamageModifier.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.GameRules.Damage.Modifiers
+{
+    internal interface IDamageModifier
+    {
+    }
+}
+
+
+
+========================================
+FILE: MarkedModifier.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Damage\Modifiers\MarkedModifier.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.GameRules.Damage.Modifiers
+{
+    internal class MarkedModifier
+    {
+    }
+}
+
+
+
+========================================
+FILE: DeathResolver.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\GameRules\Death\DeathResolver.cs
+========================================
+using System;
+using System.Linq;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+using CardGame.Core.Events;
+using CardGame.Core.Application;
+
+namespace CardGame.Core.GameRules.Death
+{
+    public class DeathResolver
+    {
+        public GameState ResolveDeaths(GameState state, EventBus eventBus, GameContext context)
+        {
+            var workingState = state;
+            bool changed = true;
+
+            while (changed)
+            {
+                changed = false;
+                var allUnits = workingState.Board.GetAllUnits();
+
+              
+                var unitToKill = allUnits.FirstOrDefault(u => u.CurrentStats.Health <= 0);
+
+                if (unitToKill != null)
+                {
+               
+                    int lineIndex = -1;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (workingState.Board.Lines[i].Player1Unit?.InstanceId == unitToKill.InstanceId ||
+                            workingState.Board.Lines[i].Player2Unit?.InstanceId == unitToKill.InstanceId)
+                        {
+                            lineIndex = i;
+                            break;
+                        }
+                    }
+
+                    var history = eventBus.GetHistory().ToList();
+
+                  
+                    bool isSacrifice = history.OfType<UnitSacrificedEvent>()
+                        .Any(e => e.Unit.InstanceId == unitToKill.InstanceId);
+
+                 
+                    if (context.Keywords.TryPreventDeath(ref workingState, unitToKill, context, isSacrifice))
+                    {
+                    
+                        changed = true;
+                        continue;
+                    }
+
+                 
+                    var lastDmg = history.OfType<UnitDamagedEvent>()
+                        .LastOrDefault(e => e.Unit?.InstanceId == unitToKill.InstanceId && e.Source != null);
+
+                 
+                    workingState = KillInstantly(workingState, unitToKill, lineIndex, eventBus, lastDmg?.Source?.InstanceId);
+                    changed = true;
+                }
+            }
+            return workingState;
+        }
+
+        public GameState KillInstantly(GameState state, CardInstance unit, int lineIndex, EventBus events, int? killerId)
+        {
+            var board = state.Board;
+        
+            for (int i = 0; i < 4; i++)
+            {
+                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 1, null);
+                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
+                    board = board.WithUnitPlacedAt(i, 2, null);
+            }
+
+        
+            var owner = state.GetPlayer(unit.OwnerPlayerId);
+
+          
+            var newState = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
+
+         
+            events.Publish(new UnitDiedEvent(unit, lineIndex, killerId));
+            events.Publish(new CardMovedEvent(unit.InstanceId, unit.OwnerPlayerId, CardZone.Board, CardZone.Graveyard));
+
+            return newState;
+        }
+    }
+}
+
+
+========================================
+FILE: NetworkCommand.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\NetworkCommand.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer
+{
+    internal class NetworkCommand
+    {
+    }
+}
+
+
+
+========================================
+FILE: CommandQueue.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\Synchronization\CommandQueue.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer.Synchronization
+{
+    internal class CommandQueue
+    {
+    }
+}
+
+
+
+========================================
+FILE: LockstepManager.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Multiplayer\Synchronization\LockstepManager.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Multiplayer.Synchronization
+{
+    internal class LockstepManager
+    {
+    }
+}
+
+
+
+========================================
+FILE: ISaveStrategy.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Saves\Interfaces\ISaveStrategy.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Saves.Interfaces
+{
+    internal interface ISaveStrategy
+    {
+    }
+}
+
+
+
+========================================
+FILE: SaveData.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Saves\Models\SaveData.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.Saves.Models
+{
+    internal class SaveData
+    {
+    }
+}
+
+
+
+========================================
+FILE: GamePhase.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Enums\GamePhase.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CardGame.Core.State.Enums
+{
+    public enum GamePhase
+    {
+        None,       // Faza nieokreślona lub początkowa
+        Mulligan,   // Pierwsza faza gry - Mulligan & Dobieranie kart
+        UnitOnly, // Faza grania Unitów
+        UnitAndAction, // Faza grania Unitów i Akcji
+        ActionOnly, // Faza grania tylko Akcji
+        Combat, // Faza walki
+        EndTurn    // Faza kończenia tury
+    }
+}
+
+
+
+========================================
+FILE: BoardState.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\BoardState.cs
+========================================
+using CardGame.Core.Cards.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.State.Models
+{
+    public class BoardState
+    {
+        public IReadOnlyList<Line> Lines { get; }
+        public BoardState(IEnumerable<Line> lines)
+        {
+            Lines = new List<Line>(lines);
+        }
+
+        public static BoardState Empty()
+        {
+            var emptyLines = new List<Line>();
+            for (int i = 0; i < 4; i++)
+            {
+                emptyLines.Add(Line.Empty(i));
+            }
+            return new BoardState(emptyLines);
+        }
+
+        public BoardState WithUnitPlacedAt(int lineIndex, int playerId, CardInstance? unit)
+        {
+            var newLines = new List<Line>(Lines);
+            var oldLine = newLines[lineIndex];
+            var newLine = oldLine.WithUnitPlaced(playerId, unit);
+            newLines[lineIndex] = newLine;
+            return new BoardState(newLines);
+        }
+
+        public List<CardInstance> GetAllUnits()
+        {
+            var list = new List<CardInstance>();
+            foreach (var line in Lines)
+            {
+                if (line.Player1Unit != null) list.Add(line.Player1Unit);
+                if (line.Player2Unit != null) list.Add(line.Player2Unit);
+            }
+            return list;
+        }
+
+        public BoardState UpdateUnit(CardInstance updatedUnit)
+        {
+            if (updatedUnit == null) return this;
+
+            var newLines = new List<Line>();
+            bool found = false;
+
+            foreach (var line in Lines)
+            {
+                if (line.Player1Unit?.InstanceId == updatedUnit.InstanceId)
+                {
+                    newLines.Add(line.WithUnitPlaced(1, updatedUnit));
+                    found = true;
+                }
+                else if (line.Player2Unit?.InstanceId == updatedUnit.InstanceId)
+                {
+                    newLines.Add(line.WithUnitPlaced(2, updatedUnit));
+                    found = true;
+                }
+                else
+                {
+                    newLines.Add(line);
+                }
+            }
+
+            return found ? new BoardState(newLines) : this;
+        }
+    }
+}
+
+
+========================================
 FILE: GameState.cs
 PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\State\Models\GameState.cs
 ========================================
@@ -249,7 +809,6 @@ namespace CardGame.Core.State.Models
         public IReadOnlyList<CardInstance> DiscardPile { get; }
         public CardStats GlobalUnitBuffs { get; }
 
-        // Stała określająca limit kart w ręce
         public const int MaxHandSize = 8;
 
         public PlayerState(int playerId, int health, int maxBlood, int currentBlood,
@@ -282,14 +841,15 @@ namespace CardGame.Core.State.Models
         public PlayerState WithBloodSpent(int amount) => this.With(currentBlood: CurrentBlood - amount);
         public PlayerState WithCardRemovedFromHand(CardInstance card) => this.With(hand: Hand.Where(c => c.InstanceId != card.InstanceId));
 
-        // POPRAWKA: Dodano warunek Hand.Count < MaxHandSize
         public PlayerState WithCardDrawn(EventBus? events = null)
         {
             // Jeśli talia jest pusta LUB osiągnięto limit kart w ręce - przerywamy
             if (DrawPile.Count == 0 || Hand.Count >= MaxHandSize)
                 return this;
 
+            var card = DrawPile[0];
             events?.Publish(new CardDrawnEvent(PlayerId));
+            events?.Publish(new CardMovedEvent(card.InstanceId, PlayerId, CardZone.Deck, CardZone.Hand));
 
             // Pobieramy kartę, usuwamy ją z talii i dodajemy do ręki
             return this.With(
@@ -298,8 +858,7 @@ namespace CardGame.Core.State.Models
             );
         }
 
-        // Dodatkowa poprawka dla dobierania z cmentarza (opcjonalnie, by zachować spójność)
-        public PlayerState WithCardsDrawnFromDiscard(int count, int? excludeId = null)
+        public PlayerState WithCardsDrawnFromDiscard(int count, EventBus? events = null, int? excludeId = null)
         {
             var valid = DiscardPile.Where(c => c.InstanceId != excludeId).ToList();
             if (valid.Count == 0 || Hand.Count >= MaxHandSize) return this;
@@ -311,6 +870,13 @@ namespace CardGame.Core.State.Models
             if (actualToDraw <= 0) return this;
 
             var toDraw = valid.TakeLast(actualToDraw).ToList();
+            if (events != null)
+            {
+                foreach (var card in toDraw)
+                {
+                    events.Publish(new CardMovedEvent(card.InstanceId, PlayerId, CardZone.Graveyard, CardZone.Hand));
+                }
+            }
             return this.With(
                 hand: Hand.Concat(toDraw),
                 discardPile: DiscardPile.Where(c => !toDraw.Any(d => d.InstanceId == c.InstanceId))

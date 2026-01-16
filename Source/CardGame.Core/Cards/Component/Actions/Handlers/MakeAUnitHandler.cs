@@ -75,6 +75,8 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             if (targetLine == -1 || targetLine > 3) return state;
 
             var singleToken = context.Factory.CreateCard(action.ValueParam, ownerId);
+            context.Events.Publish(new CardCreatedEvent(singleToken, ownerId));
+            context.Events.Publish(new CardMovedEvent(singleToken.InstanceId, ownerId, CardZone.Deck, CardZone.Board, targetLine));
             return state.UpdateBoard(workingBoard.WithUnitPlacedAt(targetLine, ownerId, singleToken));
         }
 

@@ -24,6 +24,7 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
 
           
                 var silencedUnit = latestUnit.Silence();
+                context.Events.Publish(new UnitSilencedEvent(silencedUnit.InstanceId, sourceId, gameEvent.SourcePlayerId));
                 workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(silencedUnit));
             }
             return workingState;
