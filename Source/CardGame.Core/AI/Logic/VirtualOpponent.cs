@@ -1,77 +1,101 @@
-using System.Collections.Generic;
-using System.Linq;
+using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Factories;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.State.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CardGame.Core.AI.Logic
 {
+    /// <summary>
+    /// Simulates a realistic opponent for AI decision making by injecting likely dangerous cards into the opponent's hand.
+    /// </summary>
     public class VirtualOpponent
     {
         private readonly CardFactory _factory;
 
+        /// <summary>
+        /// Initializes a new instance of the VirtualOpponent class.
+        /// </summary>
+        /// <param name="factory">The card factory for creating card instances.</param>
         public VirtualOpponent(CardFactory factory)
         {
             _factory = factory;
         }
 
+        #region Public Methods
+
         /// <summary>
-        /// Tworzy kopiê stanu gry, w której przeciwnik ma w rêce najbardziej prawdopodobne 
-        /// i niebezpieczne karty ze swojej talii. Pozwala to AI przewidzieæ "Punish".
+        /// Creates a copy of the game state where the opponent has the most probable and dangerous cards
+        /// from their deck in hand, allowing the AI to anticipate potential counterplays.
         /// </summary>
+        /// <param name="state">The current game state to modify.</param>
+        /// <param name="enemyPlayerId">The ID of the opponent player.</param>
+        /// <returns>A modified game state with injected phantom cards in the opponent's hand.</returns>
         public GameState InjectRealisticPhantomHand(GameState state, int enemyPlayerId)
         {
             var enemy = state.GetPlayer(enemyPlayerId);
             var phantomCards = new List<CardInstance>();
 
-            // 1. DECK TRACKING: Analizujemy, co zosta³o w talii przeciwnika.
-            // Bot "pamiêta", jakie karty jeszcze nie zosta³y zagrane.
+            // 1. DECK TRACKING: Analyze what remains in the opponent's deck.
+            // The bot "remembers" which cards have not been played yet.
             var availableInDeck = enemy.DrawPile
                 .GroupBy(c => c.Definition.Id)
                 .Select(g => g.First())
                 .OrderByDescending(c => EvaluateDangerLevel(c))
-                .Take(2); // Wstrzykujemy 2 najgroŸniejsze potencjalne odpowiedzi
+                .Take(2); // Inject the 2 most dangerous potential responses
 
             foreach (var cardDef in availableInDeck)
             {
                 try
                 {
-                    // Tworzymy wirtualn¹ instancjê karty na potrzeby symulacji
+                    // Create a virtual card instance for simulation purposes
                     int id = int.Parse(cardDef.Definition.Id);
                     phantomCards.Add(_factory.CreateCard(id, enemyPlayerId));
                 }
-                catch { /* Ignoruj b³êdy parsowania ID */ }
+                catch
+                {
+                    // Ignore ID parsing errors 
+                }
             }
 
-            // 2. AKTUALIZACJA STANU SYMULACJI
+            // 2. SIMULATION STATE UPDATE
             var newEnemyState = enemy;
-            foreach (var c in phantomCards)
+            foreach (var card in phantomCards)
             {
-                // Dodajemy karty do rêki przeciwnika w œwiecie wirtualnym
-                newEnemyState = newEnemyState.WithCardAddedToHand(c);
+                // Add cards to the opponent's hand in the virtual world
+                newEnemyState = newEnemyState.WithCardAddedToHand(card);
             }
 
             return state.UpdatePlayer(newEnemyState);
         }
 
+        #endregion
+
+        #region Private Methods
+
         /// <summary>
-        /// Ocenia, jak bardzo bot powinien baæ siê konkretnej karty.
+        /// Evaluates how much the bot should fear a specific card.
         /// </summary>
+        /// <param name="c">The card instance to evaluate.</param>
+        /// <returns>A danger level score (higher = more dangerous).</returns>
         private int EvaluateDangerLevel(CardInstance c)
         {
             string id = c.Definition.Id;
 
-            // Priorytet 1: Czary niszcz¹ce/reaktywne (Snajperzy)
-            if (id == "7") return 10;  // Glock-17 (Bezpoœrednie obra¿enia)
-            if (id == "31") return 9;  // Silence (Niszczy synergie/Unkillable)
-            if (id == "16") return 8;  // HellFire (AoE - czyœci stó³)
+            // Priority 1: Destroying/reactive spells (Snipers)
+            if (id == "7") return 10;  // Glock-17 (Direct damage)
+            if (id == "31") return 9;  // Silence (Destroys synergies/Unkillable)
+            if (id == "16") return 8;  // HellFire (AoE - clears the board)
             if (id == "18") return 7;  // Final Mission (Sacrifice removal)
 
-            // Priorytet 2: Silne jednostki
+            // Priority 2: Strong units
             if (c.CurrentStats.Attack >= 5) return 6;
-            if (c.CurrentStats.Keywords.Contains(CardGame.Core.Cards.Data.Keyword.SplashDamage)) return 5;
+            if (c.CurrentStats.Keywords.Contains(Keyword.SplashDamage)) return 5;
 
-            return 1; // Reszta kart jest niskim priorytetem
+            return 1; // Other cards are low priority
         }
+
+        #endregion
     }
-}   
+}

@@ -11,20 +11,39 @@ using System.Linq;
 
 namespace CardGame.Core.Cards.Components.Actions.Handlers
 {
+    #region Movement and Utility Handlers
+
+    /// <summary>
+    /// Handles the ReturnToHand action, moving units from the board back to their owner's hand.
+    /// </summary>
     public class ReturnToHandHandler : IActionHandler
     {
+        /// <summary>
+        /// Gets the action type this handler processes.
+        /// </summary>
         public ActionType Type => ActionType.ReturnToHand;
 
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        /// <summary>
+        /// Executes the ReturnToHand action, moving target units from the board to their owner's hand.
+        /// </summary>
+        public GameState Execute(
+            GameState state,
+            GameContext context,
+            ActionData action,
+            EffectTargets targets,
+            int sourceId,
+            IGameEvent gameEvent)
         {
             var workingState = state;
+
             foreach (var unit in targets.UnitTargets)
             {
                 context.Events.Publish(new CardMovedEvent(
-                        unit.InstanceId,
-                        unit.OwnerPlayerId,
-                        CardZone.Board,
-                        CardZone.Hand));
+                    unit.InstanceId,
+                    unit.OwnerPlayerId,
+                    CardZone.Board,
+                    CardZone.Hand));
+
                 var freshCard = unit.MoveAndReset();
                 var currentOwner = workingState.GetPlayer(unit.OwnerPlayerId);
                 workingState = workingState.UpdatePlayer(currentOwner.WithCardAddedToHand(freshCard));
@@ -32,12 +51,23 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                 var board = workingState.Board;
                 for (int i = 0; i < 4; i++)
                 {
-                    if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId) board = board.WithUnitPlacedAt(i, 1, null);
-                    if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId) board = board.WithUnitPlacedAt(i, 2, null);
+                    if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId)
+                    {
+                        board = board.WithUnitPlacedAt(i, 1, null);
+                    }
+
+                    if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
+                    {
+                        board = board.WithUnitPlacedAt(i, 2, null);
+                    }
                 }
+
                 workingState = workingState.UpdateBoard(board);
             }
+
             return workingState;
         }
     }
+
+    #endregion
 }

@@ -10,8 +10,12 @@ using CardGame.Core.GameRules.Death;
 
 namespace CardGame.Core.Application
 {
+    /// <summary>
+    /// Provides centralized access to game systems, services, and registries used throughout the application.
+    /// </summary>
     public class GameContext
     {
+        #region Services
         public CardFactory Factory { get; }
         public DeterministicRng Rng { get; }
         public EventBus Events { get; }
@@ -20,7 +24,15 @@ namespace CardGame.Core.Application
         public KeywordProcessor Keywords { get; }
         public BattleService Battle { get; }
         public DeathResolver Death { get; }
+        #endregion
 
+        #region Constructor
+        /// <summary>
+        /// Initializes a new instance of the GameContext with required dependencies and registers all handlers.
+        /// </summary>
+        /// <param name="factory">The card factory for creating card instances.</param>
+        /// <param name="rng">The deterministic random number generator.</param>
+        /// <param name="events">The event bus for game event communication.</param>
         public GameContext(CardFactory factory, DeterministicRng rng, EventBus events)
         {
             Factory = factory;
@@ -44,7 +56,9 @@ namespace CardGame.Core.Application
 
             RegisterActionHandlers();
         }
+        #endregion
 
+        #region Handler Registration
         private void RegisterActionHandlers()
         {
             ActionRegistry.Register(new DealDamageHandler());
@@ -72,5 +86,6 @@ namespace CardGame.Core.Application
             ActionRegistry.Register(new AddResourceHandler());
             ActionRegistry.Register(new MakeAUnitHandler());
         }
+        #endregion
     }
 }

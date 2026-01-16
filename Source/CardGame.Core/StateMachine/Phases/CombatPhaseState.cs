@@ -1,6 +1,7 @@
 ﻿using CardGame.Core.Application;
-using CardGame.Core.Combat;
+using CardGame.Core.Commands.Implementations;
 using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.Combat;
 using CardGame.Core.Events;
 using CardGame.Core.GameRules.Death;
 using CardGame.Core.State.Enums;
@@ -9,12 +10,44 @@ using CardGame.Core.StateMachine.Interfaces;
 
 namespace CardGame.Core.StateMachine.Phases
 {
+    /// <summary>
+    /// Handles the Combat Phase where units battle each other and the phase transitions to the next round.
+    /// </summary>
     public class CombatPhaseState : IPhaseState
     {
+        #region Properties
+        /// <summary>
+        /// Gets the type of game phase this state represents (Combat).
+        /// </summary>
         public GamePhase PhaseType => GamePhase.Combat;
-        public bool IsCommandAllowed(IGameCommand command, GameState state) => command is CardGame.Core.Commands.Implementations.EndPhaseCommand;
-        public bool ShouldEndPhaseAutomatically(GameState state) => true;
+        #endregion
 
+        #region Command Validation
+        /// <summary>
+        /// Determines whether a specific command is allowed in the current combat phase.
+        /// </summary>
+        /// <param name="command">The command to validate.</param>
+        /// <param name="state">The current game state.</param>
+        /// <returns>True only for EndPhaseCommand, false for all other commands.</returns>
+        public bool IsCommandAllowed(IGameCommand command, GameState state) =>
+            command is EndPhaseCommand;
+
+        /// <summary>
+        /// Determines whether the combat phase should end automatically without player input.
+        /// </summary>
+        /// <param name="state">The current game state.</param>
+        /// <returns>Always true for combat phase - ends automatically after resolution.</returns>
+        public bool ShouldEndPhaseAutomatically(GameState state) => true;
+        #endregion
+
+        #region Phase Transition Logic
+        /// <summary>
+        /// Processes the end of the combat phase, resolves combat, and transitions to the next round.
+        /// </summary>
+        /// <param name="currentState">The current game state at phase end.</param>
+        /// <param name="eventBus">The event bus for publishing combat and transition events.</param>
+        /// <param name="context">The game context with additional services.</param>
+        /// <returns>The updated game state for the next round.</returns>
         public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
         {
             var orchestrator = new CombatOrchestrator();
@@ -28,26 +61,25 @@ namespace CardGame.Core.StateMachine.Phases
 
             int nextRoundStarter = 3 - currentState.RoundStartingPlayerId;
             int nextTurnNumber = currentState.TurnNumber + 1;
-
-
             int manaLimit = nextTurnNumber;
 
             int oldBloodA = workingState.PlayerA.CurrentBlood;
-            var pA = workingState.PlayerA.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
-            eventBus.Publish(new ResourceChangedEvent(pA.PlayerId, oldBloodA, pA.CurrentBlood));
+            var playerA = workingState.PlayerA.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
+            eventBus.Publish(new ResourceChangedEvent(playerA.PlayerId, oldBloodA, playerA.CurrentBlood));
 
             int oldBloodB = workingState.PlayerB.CurrentBlood;
-            var pB = workingState.PlayerB.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
-            eventBus.Publish(new ResourceChangedEvent(pB.PlayerId, oldBloodB, pB.CurrentBlood));
+            var playerB = workingState.PlayerB.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
+            eventBus.Publish(new ResourceChangedEvent(playerB.PlayerId, oldBloodB, playerB.CurrentBlood));
 
             return workingState.With(
                 turnNumber: nextTurnNumber,
                 currentPhase: GamePhase.UnitOnly,
                 activePlayerId: nextRoundStarter,
                 roundStartingPlayerId: nextRoundStarter,
-                playerA: pA,
-                playerB: pB
+                playerA: playerA,
+                playerB: playerB
             );
         }
+        #endregion
     }
 }

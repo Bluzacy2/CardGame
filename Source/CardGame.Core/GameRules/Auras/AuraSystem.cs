@@ -8,39 +8,49 @@ using System.Linq;
 
 namespace CardGame.Core.GameRules.Auras
 {
+    /// <summary>
+    /// Manages aura calculations and updates, including hand cost modifiers and status keyword applications.
+    /// </summary>
     public class AuraSystem
     {
+        #region Public Methods
+        /// <summary>
+        /// Recalculates all aura effects on the board and updates hand cost modifiers.
+        /// </summary>
+        /// <param name="currentState">The current game state to recalculate auras for.</param>
+        /// <param name="events">Optional event bus for publishing stat change events.</param>
+        /// <returns>The updated game state with recalculated auras applied.</returns>
         public GameState RecalculateAuras(GameState currentState, EventBus? events = null)
         {
             var workingState = currentState;
 
             // 1. Calculate cost modifiers for both players' hands
-            // Check how much total "reduction" (positive discount, negative tax) each player has
-            int p1Reduction = CalculateHandModifier(workingState, 1);
-            int p2Reduction = CalculateHandModifier(workingState, 2);
+            int player1Reduction = CalculateHandModifier(workingState, 1);
+            int player2Reduction = CalculateHandModifier(workingState, 2);
 
             // 2. Update cards in hands (only spells)
-            workingState = UpdateHandDiscounts(workingState, 1, p1Reduction);
-            workingState = UpdateHandDiscounts(workingState, 2, p2Reduction);
+            workingState = UpdateHandDiscounts(workingState, 1, player1Reduction);
+            workingState = UpdateHandDiscounts(workingState, 2, player2Reduction);
 
-            // 3. Aura Keywords logic (e.g., SoulGuard) - Your original logic
-            // Only alive units can emit auras
+            // 3. Aura Keywords logic (e.g., SoulGuard) - Only alive units can emit auras
             var allUnits = workingState.Board.GetAllUnits();
-            var aliveUnits = allUnits.Where(u => !u.IsSilenced && u.CurrentStats.Health > 0).ToList();
+            var aliveUnits = allUnits.Where(unit => !unit.IsSilenced && unit.CurrentStats.Health > 0).ToList();
 
-            var map = new Dictionary<int, List<Keyword>>();
-            foreach (var src in aliveUnits) // Only alive units emit auras
+            var auraMap = new Dictionary<int, List<Keyword>>();
+            foreach (var source in aliveUnits)
             {
-                var passives = src.Definition.Effects.Where(e => e.Trigger == TriggerType.Passive && e.Zone == EffectZone.Board);
-                foreach (var eff in passives)
+                var passiveEffects = source.Definition.Effects.Where(effect => effect.Trigger == TriggerType.Passive && effect.Zone == EffectZone.Board);
+                foreach (var effect in passiveEffects)
                 {
-                    foreach (var act in eff.Actions.Where(a => a.Type == ActionType.ApplyStatus && a.StatusKeyword.HasValue))
+                    foreach (var action in effect.Actions.Where(act => act.Type == ActionType.ApplyStatus && act.StatusKeyword.HasValue))
                     {
-                        var targets = FindTargets(workingState, src, act.Target);
-                        foreach (var t in targets)
+                        var targets = FindTargets(workingState, source, action.Target);
+                        foreach (var target in targets)
                         {
-                            if (!map.ContainsKey(t.InstanceId)) map[t.InstanceId] = new List<Keyword>();
-                            map[t.InstanceId].Add(act.StatusKeyword!.Value);
+                            if (!auraMap.ContainsKey(target.InstanceId)) 
+                                auraMap[target.InstanceId] = new List<Keyword>();
+                            
+                            auraMap[target.InstanceId].Add(action.StatusKeyword!.Value);
                         }
                     }
                 }
@@ -52,69 +62,70 @@ namespace CardGame.Core.GameRules.Auras
                 if (latestUnit == null) continue;
 
                 var oldStats = latestUnit.CurrentStats;
+                var targetKeywords = auraMap.ContainsKey(latestUnit.InstanceId) 
+                    ? auraMap[latestUnit.InstanceId].Distinct().ToList() 
+                    : new List<Keyword>();
+                
+                if (latestUnit.IsSilenced) 
+                    targetKeywords.Clear();
 
-                var targetKw = map.ContainsKey(latestUnit.InstanceId) ? map[latestUnit.InstanceId].Distinct().ToList() : new List<Keyword>();
-                if (latestUnit.IsSilenced) targetKw.Clear();
+                if (targetKeywords.Contains(Keyword.SoulGuard) && latestUnit.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted))
+                    targetKeywords.Remove(Keyword.SoulGuard);
 
-                if (targetKw.Contains(Keyword.SoulGuard) && latestUnit.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted))
-                    targetKw.Remove(Keyword.SoulGuard);
-
-                if (!latestUnit.AuraKeywords.SequenceEqual(targetKw))
+                if (!latestUnit.AuraKeywords.SequenceEqual(targetKeywords))
                 {
-                    var updated = latestUnit.WithAuras(targetKw);
-                    workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(updated));
+                    var updatedUnit = latestUnit.WithAuras(targetKeywords);
+                    workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(updatedUnit));
 
-                    var newStats = updated.CurrentStats;
+                    var newStats = updatedUnit.CurrentStats;
                     if (events != null && (oldStats.Attack != newStats.Attack || oldStats.Health != newStats.Health))
                     {
                         events.Publish(new UnitStatsChangedEvent(
-                            updated.InstanceId,                 // targetId
-                            newStats.Attack - oldStats.Attack,  // atkDelta
-                            newStats.Health - oldStats.Health,  // hpDelta
-                            newStats.Attack,                    // curAtk
-                            newStats.Health,                    // curHp
-                            null,                               // sourceId (int?)
-                            updated.OwnerPlayerId,              // sourcePlayerId (int)
-                            true                                // isAura (bool)
+                            updatedUnit.InstanceId,
+                            newStats.Attack - oldStats.Attack,
+                            newStats.Health - oldStats.Health,
+                            newStats.Attack,
+                            newStats.Health,
+                            null,
+                            updatedUnit.OwnerPlayerId,
+                            true
                         ));
                     }
-
                 }
             }
+            
             return workingState;
         }
+        #endregion
 
+        #region Hand Modifier Calculation
         private int CalculateHandModifier(GameState state, int handOwnerId)
         {
             int totalReduction = 0;
-            // Get all units on board, filter out silenced and dead units
-            var allUnits = state.Board.GetAllUnits().Where(u => !u.IsSilenced && u.CurrentStats.Health > 0);
+            var allUnits = state.Board.GetAllUnits().Where(unit => !unit.IsSilenced && unit.CurrentStats.Health > 0);
 
             foreach (var unit in allUnits)
             {
-                // Look for Passive effects (or WhileOnBoard if you use both interchangeably)
                 var passiveEffects = unit.Definition.Effects
-                    .Where(e => e.Trigger == TriggerType.Passive && e.Zone == EffectZone.Board);
+                    .Where(effect => effect.Trigger == TriggerType.Passive && effect.Zone == EffectZone.Board);
 
-                foreach (var eff in passiveEffects)
+                foreach (var effect in passiveEffects)
                 {
-                    foreach (var act in eff.Actions.Where(a => a.Type == ActionType.BuffStats))
+                    foreach (var action in effect.Actions.Where(act => act.Type == ActionType.BuffStats))
                     {
                         bool applies = false;
 
-                        // My unit affects MY hand
-                        if (act.Target == TargetType.FriendlySpellsInHand && unit.OwnerPlayerId == handOwnerId)
+                        if (action.Target == TargetType.FriendlySpellsInHand && unit.OwnerPlayerId == handOwnerId)
                             applies = true;
 
-                        // Enemy unit affects MY hand
-                        if (act.Target == TargetType.EnemySpellsInHand && unit.OwnerPlayerId != handOwnerId)
+                        if (action.Target == TargetType.EnemySpellsInHand && unit.OwnerPlayerId != handOwnerId)
                             applies = true;
 
                         if (applies)
                         {
                             // Tea Maid (Amount: -1) -> totalReduction -= (-1) => +1 (Discount of 1)
                             // Monster (Amount: 6)   -> totalReduction -= (6)  => -6 (Tax of 6)
-                            totalReduction -= act.Amount;
+                            totalReduction -= action.Amount;
                         }
                     }
                 }
@@ -122,20 +133,18 @@ namespace CardGame.Core.GameRules.Auras
             return totalReduction;
         }
 
-        private GameState UpdateHandDiscounts(GameState s, int pid, int reductionValue)
+        private GameState UpdateHandDiscounts(GameState state, int playerId, int reductionValue)
         {
-            var player = s.GetPlayer(pid);
+            var player = state.GetPlayer(playerId);
             bool changed = false;
             var newHand = new List<CardInstance>();
 
             foreach (var card in player.Hand)
             {
-                // Cost auras in this system only affect spells
                 int targetModifier = (card.Definition.Type == CardType.Spell) ? reductionValue : 0;
 
                 if (card.CostReduction != targetModifier)
                 {
-                    // Use WithCostReduction to create a new immutable instance
                     var updatedCard = card.WithCostReduction(targetModifier);
                     newHand.Add(updatedCard);
                     changed = true;
@@ -146,20 +155,24 @@ namespace CardGame.Core.GameRules.Auras
                 }
             }
 
-            return changed ? s.UpdatePlayer(player.With(hand: newHand)) : s;
+            return changed ? state.UpdatePlayer(player.With(hand: newHand)) : state;
         }
+        #endregion
 
-        private List<CardInstance> FindTargets(GameState s, CardInstance src, TargetType t)
+        #region Target Finding
+        private List<CardInstance> FindTargets(GameState state, CardInstance source, TargetType targetType)
         {
-            var u = s.Board.GetAllUnits();
-            return t switch
+            var units = state.Board.GetAllUnits();
+            
+            return targetType switch
             {
-                TargetType.AllFriendlyUnits => u.Where(x => x.OwnerPlayerId == src.OwnerPlayerId).ToList(),
-                TargetType.OtherFriendlyUnits => u.Where(x => x.OwnerPlayerId == src.OwnerPlayerId && x.InstanceId != src.InstanceId).ToList(),
-                TargetType.AllEnemyUnits => u.Where(x => x.OwnerPlayerId != src.OwnerPlayerId).ToList(),
-                TargetType.AllUnitsOnBoard => u.ToList(),
+                TargetType.AllFriendlyUnits => units.Where(unit => unit.OwnerPlayerId == source.OwnerPlayerId).ToList(),
+                TargetType.OtherFriendlyUnits => units.Where(unit => unit.OwnerPlayerId == source.OwnerPlayerId && unit.InstanceId != source.InstanceId).ToList(),
+                TargetType.AllEnemyUnits => units.Where(unit => unit.OwnerPlayerId != source.OwnerPlayerId).ToList(),
+                TargetType.AllUnitsOnBoard => units.ToList(),
                 _ => new List<CardInstance>()
             };
         }
+        #endregion
     }
 }

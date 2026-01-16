@@ -9,11 +9,28 @@ using System;
 
 namespace CardGame.Core.Cards.Components.Actions.Handlers
 {
+    #region Combat and Utility Handlers
+
+    /// <summary>
+    /// Handles the SacrificeUnit action, voluntarily destroying a friendly unit for an effect.
+    /// </summary>
     public class SacrificeUnitHandler : IActionHandler
     {
+        /// <summary>
+        /// Gets the action type this handler processes.
+        /// </summary>
         public ActionType Type => ActionType.SacrificeUnit;
 
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        /// <summary>
+        /// Executes the SacrificeUnit action, destroying a friendly unit and triggering sacrifice effects.
+        /// </summary>
+        public GameState Execute(
+            GameState state,
+            GameContext context,
+            ActionData action,
+            EffectTargets targets,
+            int sourceId,
+            IGameEvent gameEvent)
         {
             if (targets.TargetUnit != null)
             {
@@ -28,14 +45,17 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                     }
                 }
 
-               
+                // Publish the sacrifice event before dealing damage
                 context.Events.Publish(new UnitSacrificedEvent(targets.TargetUnit, lineIndex));
 
-            
+                // Apply lethal damage to the sacrificed unit
                 var deadUnit = targets.TargetUnit.TakeDamage(9999);
                 return state.UpdateBoard(state.Board.UpdateUnit(deadUnit));
             }
+
             return state;
         }
     }
+
+    #endregion
 }

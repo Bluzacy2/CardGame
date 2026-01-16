@@ -11,20 +11,39 @@ using System.Linq;
 
 namespace CardGame.Core.AI.Logic.Mcts
 {
+    /// <summary>
+    /// Monte Carlo Tree Search implementation for evaluating and selecting optimal game moves.
+    /// </summary>
     public class MctsSolver
     {
+        #region Constants
+        /// <summary>
+        /// Simulation depth - the deeper, the more accurate, but slower. 20 is a solid compromise.
+        /// </summary>
+        private const int SIMULATION_DEPTH = 20;
+
+        /// <summary>
+        /// Exploration constant - 1.41 (square root of 2) is the theoretical optimum.
+        /// </summary>
+        private const double EXPLORATION_CONSTANT = 1.4142;
+        #endregion
+
+        #region Private Fields
         private readonly GameEngine _engineTemplate;
         private readonly int _botId;
         private readonly MoveGenerator _moveGenerator;
         private readonly VirtualOpponent _virtualOpponent;
         private readonly IAIStrategy _heuristic;
         private readonly DeterministicRng _rng;
+        #endregion
 
-        // Głębokość symulacji - im głębiej, tym dokładniej, ale wolniej. 20 to solidny kompromis.
-        private const int SIMULATION_DEPTH = 20;
-        // Stała eksploracji - 1.41 (pierwiastek z 2) to teoretyczne optimum.
-        private const double EXPLORATION_CONSTANT = 1.4142;
-
+        #region Constructor
+        /// <summary>
+        /// Initializes a new instance of the Monte Carlo Tree Search solver.
+        /// </summary>
+        /// <param name="engine">The game engine template for simulations.</param>
+        /// <param name="botId">The identifier of the bot player.</param>
+        /// <param name="heuristic">The heuristic evaluation strategy.</param>
         public MctsSolver(GameEngine engine, int botId, IAIStrategy heuristic)
         {
             _engineTemplate = engine;
@@ -34,39 +53,47 @@ namespace CardGame.Core.AI.Logic.Mcts
             _virtualOpponent = new VirtualOpponent(engine.Factory);
             _rng = new DeterministicRng(new Random().Next());
         }
+        #endregion
 
+        #region Public Methods
+        /// <summary>
+        /// Analyzes the game state and returns the best move according to MCTS simulation.
+        /// </summary>
+        /// <param name="rootState">The current game state to analyze.</param>
+        /// <param name="thinkingTimeMs">Maximum time to spend on analysis in milliseconds.</param>
+        /// <returns>The best evaluated move with its probability of success.</returns>
         public EvaluatedMove FindBestMove(GameState rootState, int thinkingTimeMs = 1500)
         {
-            // 1. Determinization: Zakładamy konkretną (choć zgadywaną) rękę przeciwnika
-            int oppId = rootState.ActivePlayerId == 1 ? 2 : 1;
-            GameState determinizedState = _virtualOpponent.InjectRealisticPhantomHand(rootState, oppId);
+            // 1. Determinization: We assume a specific (though guessed) opponent hand
+            int opponentId = rootState.ActivePlayerId == 1 ? 2 : 1;
+            GameState determinizedState = _virtualOpponent.InjectRealisticPhantomHand(rootState, opponentId);
 
             var rootNode = new MctsNode(determinizedState, null, null, _botId, _moveGenerator);
             var timer = Stopwatch.StartNew();
             int iterations = 0;
 
-            // 2. Główna pętla MCTS
+            // 2. Main MCTS loop
             while (timer.ElapsedMilliseconds < thinkingTimeMs)
             {
-                // A. Selection: Zjazd w dół drzewa do liścia
+                // A. Selection: Traverse down the tree to a leaf
                 MctsNode node = Select(rootNode);
 
-                // B. Expansion: Dodanie nowego węzła, jeśli gra się nie skończyła
+                // B. Expansion: Add a new node if the game is not over
                 if (!node.IsTerminal && !node.IsFullyExpanded)
                 {
                     node = Expand(node);
                 }
 
-                // C. Simulation (Rollout): Szybka, losowa gra do końca (lub do głębokości)
+                // C. Simulation (Rollout): Fast, random play until the end (or until depth)
                 double result = Simulate(node.State);
 
-                // D. Backpropagation: Aktualizacja statystyk w górę drzewa
+                // D. Backpropagation: Update statistics up the tree
                 Backpropagate(node, result);
 
                 iterations++;
             }
 
-            // 3. Wybór ruchu: Najczęściej odwiedzany węzeł jest najbardziej "zaufany"
+            // 3. Move choice: The most visited node is the most "trusted"
             var bestChild = rootNode.Children.OrderByDescending(c => c.Visits).FirstOrDefault();
 
             if (bestChild == null || bestChild.MoveEntered == null)
@@ -74,16 +101,16 @@ namespace CardGame.Core.AI.Logic.Mcts
                 return new EvaluatedMove(new EndPhaseCommand(_botId), -999, "Panic Skip");
             }
 
-            // Statystyka dla człowieka
-            float winProb = (float)(bestChild.Score / bestChild.Visits);
-            string reasoning = $"MCTS: {iterations} iters | WinChance: {winProb:P1} (Visits: {bestChild.Visits})";
+            float winProbability = (float)(bestChild.Score / bestChild.Visits);
+            string reasoning = $"MCTS: {iterations} iterations | WinChance: {winProbability:P1} (Visits: {bestChild.Visits})";
 
-            return new EvaluatedMove(bestChild.MoveEntered, winProb, "MCTS Choice", reasoning);
+            return new EvaluatedMove(bestChild.MoveEntered, winProbability, "MCTS Choice", reasoning);
         }
+        #endregion
 
+        #region MCTS Core Algorithms
         private MctsNode Select(MctsNode node)
         {
-            // Idziemy w głąb dopóki węzeł ma dzieci i jest w pełni rozwinięty (ma dzieci dla wszystkich ruchów)
             while (!node.IsTerminal && node.IsFullyExpanded && node.Children.Count > 0)
             {
                 node = node.GetBestChild(EXPLORATION_CONSTANT);
@@ -93,32 +120,27 @@ namespace CardGame.Core.AI.Logic.Mcts
 
         private MctsNode Expand(MctsNode node)
         {
-            // Wybieramy losowy ruch z listy nierozpatrzonych
             var move = node.UntriedMoves[_rng.Next(0, node.UntriedMoves.Count)];
             node.UntriedMoves.Remove(move);
 
-            // Symulujemy ten ruch na kopii silnika
             var engine = new GameEngine(node.State, _engineTemplate.Rng.Seed);
             var result = engine.ExecuteCommand(move);
             var newState = result.NewState;
 
-            // --- SAFETY BREAK: Obsługa PendingInteraction (np. wybór celu) ---
-            int safety = 0;
-            while (newState.PendingInteraction != null && safety++ < 15)
+            // Safety Break: Handling PendingInteraction (e.g., target selection)
+            int safetyCounter = 0;
+            while (newState.PendingInteraction != null && safetyCounter++ < 15)
             {
                 var legalTargets = _moveGenerator.GenerateLegalMoves(newState, newState.ActivePlayerId);
                 if (!legalTargets.Any()) break;
 
-                // Wybieramy losowy cel
                 var randomTarget = legalTargets[_rng.Next(0, legalTargets.Count)];
                 var subResult = engine.ExecuteCommand(randomTarget);
 
-                // Jeśli stan się nie zmienił (zakleszczenie), przerywamy
                 if (subResult.NewState == newState) break;
                 newState = subResult.NewState;
             }
 
-            // Tworzymy nowy węzeł. Ważne: zapisujemy KTO wykonał ten ruch.
             var childNode = new MctsNode(newState, node, move, node.State.ActivePlayerId, _moveGenerator);
             node.Children.Add(childNode);
             return childNode;
@@ -127,8 +149,7 @@ namespace CardGame.Core.AI.Logic.Mcts
         private double Simulate(GameState initialState)
         {
             var currentState = initialState;
-            // Używamy losowego seeda w symulacji, żeby każda była inna
-            var engine = new GameEngine(currentState, _rng.Next(0,int.MaxValue));
+            var engine = new GameEngine(currentState, _rng.Next(0, int.MaxValue));
             int depth = 0;
 
             while (!IsGameOver(currentState) && depth < SIMULATION_DEPTH)
@@ -136,9 +157,7 @@ namespace CardGame.Core.AI.Logic.Mcts
                 var moves = _moveGenerator.GenerateLegalMoves(currentState, currentState.ActivePlayerId);
                 if (moves.Count == 0) break;
 
-                // --- OPTYMALIZACJA "KILLER MOVE" ---
-                // Jeśli mamy ruch wygrywający (Lethal), ZAWSZE go wybieramy.
-                // To uczy bota wykańczania przeciwnika i unikania śmierci.
+                // "Killer Move" Optimization
                 var lethalMove = FindLethalMove(currentState, moves);
 
                 IGameCommand selectedMove;
@@ -148,9 +167,8 @@ namespace CardGame.Core.AI.Logic.Mcts
                 }
                 else
                 {
-                    // Heurystyka Epsilon-Greedy:
-                    // 80% szans na zagranie czegoś sensownego (nie-EndPhase), 20% na cokolwiek.
-                    // To zapobiega sytuacji, gdzie bot w symulacji ciągle pasuje.
+                    // Epsilon-Greedy Heuristic:
+                    // 80% chance to play something sensible (not EndPhase), 20% chance to play anything.
                     if (_rng.Next(0, 10) < 8 && moves.Any(m => m is not EndPhaseCommand))
                     {
                         var activeMoves = moves.Where(m => m is not EndPhaseCommand).ToList();
@@ -165,15 +183,15 @@ namespace CardGame.Core.AI.Logic.Mcts
                 var result = engine.ExecuteCommand(selectedMove);
                 currentState = result.NewState;
 
-                // --- SAFETY BREAK w Symulacji ---
-                int safety = 0;
-                while (currentState.PendingInteraction != null && safety++ < 15)
+                // Safety Break in Simulation
+                int safetyCounter = 0;
+                while (currentState.PendingInteraction != null && safetyCounter++ < 15)
                 {
                     var targets = _moveGenerator.GenerateLegalMoves(currentState, currentState.ActivePlayerId);
                     if (!targets.Any()) break;
 
-                    var rndTarget = targets[_rng.Next(0, targets.Count)];
-                    var subResult = engine.ExecuteCommand(rndTarget);
+                    var randomTarget = targets[_rng.Next(0, targets.Count)];
+                    var subResult = engine.ExecuteCommand(randomTarget);
 
                     if (subResult.NewState == currentState) break;
                     currentState = subResult.NewState;
@@ -182,81 +200,71 @@ namespace CardGame.Core.AI.Logic.Mcts
                 depth++;
             }
 
-            // OCENA STANU KOŃCOWEGO
-            // Zwracamy wynik z perspektywy BOTA (_botId)
-            // 1.0 = Bot Wygrał / 0.0 = Bot Przegrał
+            // Final State Evaluation
+            // We return the result from the perspective of the BOT (_botId)
+            // 1.0 = Bot Won / 0.0 = Bot Lost
             if (IsGameOver(currentState))
             {
                 if (currentState.PlayerA.Health <= 0 && _botId == 2) return 1.0;
                 if (currentState.PlayerB.Health <= 0 && _botId == 1) return 1.0;
-                return 0.0; // Przegrana
+                return 0.0; // Loss
             }
 
-            // Jeśli gra się nie skończyła, używamy heurystyki z DNA
+            // If the game is not over, we use the heuristic evaluation
             float heuristicScore = _heuristic.Evaluate(currentState, _botId);
 
-            // Sigmoida spłaszcza wynik (np. -5000 do +5000) do zakresu (0.0 do 1.0)
-            // Dzielnik 4000.0f "rozciąga" czułość - bot rozróżni małą przewagę od dużej.
+            // Sigmoid flattens the result (e.g., -5000 to +5000) to the range (0.0 to 1.0)
+            // Divisor 4000.0f "stretches" the sensitivity
             return Sigmoid(heuristicScore / 4000.0f);
         }
 
         private void Backpropagate(MctsNode node, double result)
         {
-            // result = wynik z perspektywy GŁÓWNEGO BOTA (_botId)
-            // 1.0 = Bot wygrywa, 0.0 = Bot przegrywa
+            // result = result from the perspective of the MAIN BOT (_botId)
+            // 1.0 = Bot wins, 0.0 = Bot loses
 
-            MctsNode? temp = node;
-            while (temp != null)
+            MctsNode? currentNode = node;
+            while (currentNode != null)
             {
-                // LOGIKA NEGAMAX / MINMAX:
-                // Każdy węzeł przechowuje statystykę "Jak dobry był ten ruch dla gracza, który go wykonał?"
+                // NEGAMAX / MINMAX LOGIC:
+                // Each node stores the statistic "How good was this move for the player who made it?"
+                double valueForNodeOwner = currentNode.PlayerIdJustMoved == _botId
+                    ? result
+                    : 1.0 - result;
 
-                double valueForNodeOwner;
-
-                if (temp.PlayerIdJustMoved == _botId)
-                {
-                    // Jeśli to był nasz ruch, i wynik jest dobry (1.0), to super.
-                    valueForNodeOwner = result;
-                }
-                else
-                {
-                    // Jeśli to był ruch PRZECIWNIKA, i wynik jest dobry dla NAS (1.0),
-                    // to znaczy, że ten ruch był tragiczny dla przeciwnika (0.0).
-                    valueForNodeOwner = 1.0 - result;
-                }
-
-                temp.Update(valueForNodeOwner);
-                temp = temp.Parent;
+                currentNode.Update(valueForNodeOwner);
+                currentNode = currentNode.Parent;
             }
         }
+        #endregion
 
-        // --- Helpery ---
-
-        private IGameCommand? FindLethalMove(GameState s, List<IGameCommand> moves)
+        #region Helper Methods
+        private IGameCommand? FindLethalMove(GameState state, List<IGameCommand> moves)
         {
-            // Prosta heurystyka: Sprawdź, czy atakując Hero można wygrać w tym ruchu
-            // Nie symulujemy tutaj całego silnika (za wolno), tylko szybkie sprawdzenie.
+            // Simple heuristic: Check if attacking the Hero can win in this move
+            // We don't simulate the entire engine here (too slow), just a quick check.
 
-            // Jeśli to faza ataku
-            if (s.CurrentPhase == GamePhase.Combat) return null;
+            // If it's the attack phase
+            if (state.CurrentPhase == GamePhase.Combat) return null;
 
-            int enemyHp = s.GetOpponent(s.ActivePlayerId).Health;
+            int enemyHealth = state.GetOpponent(state.ActivePlayerId).Health;
 
-            // Szukamy czaru zadającego obrażenia (bardzo uproszczone)
-            foreach (var m in moves)
+            // Look for a spell that deals damage (very simplified)
+            foreach (var move in moves)
             {
-                if (m is PlaySpellCommand psc)
+                if (move is PlaySpellCommand playSpellCommand)
                 {
-                    // Tutaj można dodać logikę sprawdzającą, czy karta to np. Fireball w Hero
-                    // Wymagałoby dostępu do definicji karty.
-                    // Dla wydajności w tym przykładzie pomijam głęboką analizę kart.
+                    // Here you could add logic to check if the card is, for example, Fireball to the Hero
+                    // Would require access to the card definition.
+                    // For performance, in this example, we skip deep card analysis.
                 }
             }
             return null;
         }
 
-        private bool IsGameOver(GameState s) => s.PlayerA.Health <= 0 || s.PlayerB.Health <= 0;
+        private bool IsGameOver(GameState state) => state.PlayerA.Health <= 0 || state.PlayerB.Health <= 0;
 
         private double Sigmoid(double value) => 1.0 / (1.0 + Math.Exp(-value));
+        #endregion
     }
 }
