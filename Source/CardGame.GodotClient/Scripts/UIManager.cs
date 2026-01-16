@@ -166,7 +166,16 @@ public partial class UIManager : Node
         _choiceModalInstance.SetCallback(onSelected);
         _choiceModalInstance.ShowOptions(options);
     }
+    public void ShowCardSelectionModal(List<CardInstance> cards, Action<int> onSelected)
+    {
+        if (_choiceModalInstance == null) return;
 
+        // DEBUG: Sprawdź czy mamy szablon
+        if (CardSceneTemplate == null) GD.PrintErr("[UI] CardSceneTemplate is missing in UIManager!");
+
+        _choiceModalInstance.SetCallback(onSelected);
+        _choiceModalInstance.ShowCardGrid(cards, CardSceneTemplate);
+    }
     public void HideChoiceModal()
     {
         if (_choiceModalInstance != null) _choiceModalInstance.HideModal();

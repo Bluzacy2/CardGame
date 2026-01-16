@@ -303,39 +303,49 @@ public partial class InputController : Node
         {
             _ui.HideTargetingArrow();
 
-            // --- WALIDACJA OPCJI ---
-            // Ponieważ Core nie wysyła flagi "IsUsable", musimy to sprawdzić po stronie klienta.
-            // Analizujemy tekst opcji i stan gry.
+            // --- HEURYSTYKA WYBORU TRYBU ---
+            // Jeśli opcji jest dużo (> 4), zakładamy, że to Tutor (wybór z talii).
+            // Wtedy pobieramy karty z talii gracza i wyświetlamy je graficznie.
 
-            var player = _latestGameState.PlayerA;
-            List<bool> optionValidity = new List<bool>();
-
-            foreach (var opt in pending.Options)
+            if (pending.Options.Count > 4)
             {
-                bool isValid = true;
+                var deck = _latestGameState.PlayerA.DrawPile.ToList();
 
-                // Heurystyka: Szukamy słów kluczowych w opisie
-                if (opt.Contains("Discard", StringComparison.OrdinalIgnoreCase))
+                // Pokaż okno
+                _ui.ShowCardSelectionModal(deck, (index) =>
                 {
-                    // Jeśli opcja dotyczy Discardu, sprawdź czy jest pusty
-                    if (player.DiscardPile.Count == 0) isValid = false;
-                }
-                else if (opt.Contains("Deck", StringComparison.OrdinalIgnoreCase))
-                {
-                    // Jeśli opcja dotyczy Talii, sprawdź czy jest pusta
-                    if (player.DrawPile.Count == 0) isValid = false;
-                }
+                    // --- DEBUG START ---
+                    GD.Print($"[INPUT] Wybrano kartę z gridu. Index: {index}");
+                    GD.Print($"[INPUT] Karta pod tym indeksem w kliencie: {deck[index].Definition.Name}");
+                    GD.Print($"[INPUT] Wysyłam SelectTargetCommand(PlayerId: {_playerId}, TargetId: {index})");
+                    // --- DEBUG END ---
 
-                optionValidity.Add(isValid);
+                    OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, index));
+                    _ui.HideChoiceModal();
+                });
+                return;
             }
-
-            // Przekazujemy listę walidacji do UI
-            _ui.ShowChoiceModal(pending.Options, (index) =>
+            else
             {
-                OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, index));
-                _ui.HideChoiceModal();
-            }, optionValidity);
+                // Mało opcji = Zwykły Modal (Expectancy)
 
+                // ... (Twoja logika walidacji EnabledStates z poprzedniego kroku) ...
+                var player = _latestGameState.PlayerA;
+                List<bool> optionValidity = new List<bool>();
+                foreach (var opt in pending.Options)
+                {
+                    bool isValid = true;
+                    if (opt.Contains("Discard", StringComparison.OrdinalIgnoreCase) && player.DiscardPile.Count == 0) isValid = false;
+                    else if (opt.Contains("Deck", StringComparison.OrdinalIgnoreCase) && player.DrawPile.Count == 0) isValid = false;
+                    optionValidity.Add(isValid);
+                }
+
+                _ui.ShowChoiceModal(pending.Options, (index) =>
+                {
+                    OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, index));
+                    _ui.HideChoiceModal();
+                }, optionValidity);
+            }
             return;
         }
 

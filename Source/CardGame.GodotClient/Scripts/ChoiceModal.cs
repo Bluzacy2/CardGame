@@ -2,24 +2,24 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CardGame.Core.Cards.Models; // Potrzebne do CardInstance
 
 public partial class ChoiceModal : Control
 {
-    [Export] public VBoxContainer MainPanel;
+    [Export] public Control ButtonContainer;
     [Export] public Label TitleLabel;
 
+    // --- NOWE REFERENCJE (Przypisz w Inspektorze!) ---
+    [Export] public ScrollContainer CardGridScroll;
+    [Export] public Control CardGrid;
+
     private Action<int> _currentCallback;
-    private VBoxContainer _dynamicButtonContainer;
 
     public override void _Ready()
     {
         Visible = false;
         SetAnchorsPreset(LayoutPreset.FullRect);
         MouseFilter = MouseFilterEnum.Stop;
-
-        // Upewnij się, że tło jest na spodzie (jeśli w scenie jest bałagan)
-        var bg = GetNodeOrNull<ColorRect>("ColorRect");
-        if (bg != null) MoveChild(bg, 0);
     }
 
     public void SetCallback(Action<int> callback)
@@ -27,81 +27,123 @@ public partial class ChoiceModal : Control
         _currentCallback = callback;
     }
 
-    // Nowa sygnatura: przyjmuje opcjonalną listę dostępności
+    // Tryb 1: Przyciski (Expectancy)
     public void ShowOptions(IEnumerable<string> options, List<bool> enabledStates = null)
+    {
+        SetupView(mode: 0); // 0 = Buttons
+
+        // ... (Twój istniejący kod pętli tworzenia przycisków) ...
+        // ... (Wklej tu zawartość poprzedniej metody ShowOptions) ...
+        // Pamiętaj tylko o dodaniu czyszczenia CardGrid:
+        foreach (Node child in CardGrid.GetChildren()) child.QueueFree();
+
+        // --- Skrócona wersja dla kontekstu (użyj swojej pełnej z poprzedniego kroku) ---
+        Visible = true;
+        MoveToFront();
+        if (ButtonContainer == null) return;
+        foreach (Node child in ButtonContainer.GetChildren()) child.QueueFree();
+
+        int index = 0;
+        var list = options.ToList();
+        foreach (var txt in list)
+        {
+            var btn = new Button();
+            btn.Text = txt;
+            btn.CustomMinimumSize = new Vector2(300, 60);
+
+            // Logika enabled...
+            bool isEnabled = (enabledStates == null) || (index >= enabledStates.Count) || enabledStates[index];
+            btn.Disabled = !isEnabled;
+
+            int capture = index;
+            btn.Pressed += () => OptionClicked(capture);
+            ButtonContainer.AddChild(btn);
+            index++;
+        }
+    }
+
+    // Tryb 2: Siatka Kart (Critical Thinking)
+    public void ShowCardGrid(List<CardInstance> cards, PackedScene cardTemplate)
+    {
+        SetupView(mode: 1); // Włączamy widok Grid
+
+        // DIAGNOSTYKA
+        if (CardGrid == null)
+        {
+            GD.PrintErr("CRITICAL: CardGrid is null! Przypisz go w Inspektorze w ChoiceModal.tscn");
+            return;
+        }
+        if (cardTemplate == null)
+        {
+            GD.PrintErr("CRITICAL: cardTemplate is null! UIManager nie przekazał szablonu karty.");
+            return;
+        }
+
+        GD.Print($"[MODAL] Wyświetlam Grid. Liczba kart: {cards.Count}");
+
+        // Czyścimy stare dzieci
+        foreach (Node child in CardGrid.GetChildren())
+            child.QueueFree();
+
+        int index = 0;
+        foreach (var card in cards)
+        {
+            try
+            {
+                // BEZPIECZNE INSTANCJONOWANIE (Bez generyka <T>)
+                var node = cardTemplate.Instantiate();
+                var cardView = node as CardView;
+
+                if (cardView == null)
+                {
+                    GD.PrintErr($"[MODAL] Błąd: Scena karty nie zawiera skryptu CardView! Node type: {node.GetType().Name}");
+                    continue;
+                }
+
+                CardGrid.AddChild(cardView);
+
+                // Konfiguracja karty
+                cardView.Render(card);
+                cardView.CustomMinimumSize = new Vector2(140, 190); // Wymuś rozmiar
+
+                // Mysz musi działać
+                cardView.MouseFilter = MouseFilterEnum.Stop;
+
+                // Callback
+                int capturedIndex = index;
+                cardView.OnClicked += (cv) => OptionClicked(capturedIndex);
+
+                // Opcjonalnie: Wyłączamy mechanikę Drag&Drop w oknie wyboru, żeby nie psuć UI
+                // (Wymagałoby dodania flagi w CardView, ale na razie zostawmy)
+
+                index++;
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr($"[MODAL] Wyjątek przy tworzeniu karty: {e.Message}");
+            }
+        }
+
+        // Wymuszenie przeliczenia układu
+        if (CardGrid is Container c) c.QueueSort();
+    }
+
+    private void SetupView(int mode)
     {
         Visible = true;
         MoveToFront();
 
-        if (MainPanel == null)
+        if (mode == 0) // Buttons
         {
-            GD.PrintErr("CRITICAL: MainPanel is null in ChoiceModal!");
-            return;
+            if (ButtonContainer != null) ButtonContainer.Visible = true;
+            if (CardGridScroll != null) CardGridScroll.Visible = false;
+            TitleLabel.Text = "WYBIERZ OPCJĘ";
         }
-
-        // Reset kontenera
-        if (_dynamicButtonContainer != null)
+        else // Grid
         {
-            _dynamicButtonContainer.QueueFree();
-            _dynamicButtonContainer = null;
-        }
-
-        _dynamicButtonContainer = new VBoxContainer();
-        _dynamicButtonContainer.AddThemeConstantOverride("separation", 15);
-        _dynamicButtonContainer.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        _dynamicButtonContainer.SizeFlagsVertical = SizeFlags.ExpandFill;
-
-        // Dodajemy kontener na przyciski do panelu głównego
-        MainPanel.AddChild(_dynamicButtonContainer);
-
-        int index = 0;
-        var optionsList = options.ToList();
-
-        for (int i = 0; i < optionsList.Count; i++)
-        {
-            string text = optionsList[i];
-            bool isEnabled = (enabledStates == null) || (i >= enabledStates.Count) || enabledStates[i];
-
-            var btn = new Button();
-            btn.Text = text;
-            btn.Disabled = !isEnabled; // Blokada systemowa
-
-            btn.CustomMinimumSize = new Vector2(300, 60);
-            btn.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-
-            // Stylizacja
-            var styleNormal = new StyleBoxFlat();
-            styleNormal.BgColor = new Color(0.1f, 0.3f, 0.8f); // Niebieski
-            styleNormal.BorderColor = Colors.White;
-            styleNormal.BorderWidthBottom = 2; styleNormal.BorderWidthTop = 2;
-            styleNormal.BorderWidthLeft = 2; styleNormal.BorderWidthRight = 2;
-            styleNormal.CornerRadiusTopLeft = 5; styleNormal.CornerRadiusTopRight = 5;
-            styleNormal.CornerRadiusBottomRight = 5; styleNormal.CornerRadiusBottomLeft = 5;
-
-            var styleDisabled = (StyleBoxFlat)styleNormal.Duplicate();
-            styleDisabled.BgColor = new Color(0.2f, 0.2f, 0.2f); // Szary dla zablokowanego
-            styleDisabled.BorderColor = new Color(0.5f, 0.5f, 0.5f);
-
-            btn.AddThemeStyleboxOverride("normal", styleNormal);
-            btn.AddThemeStyleboxOverride("hover", styleNormal);
-            btn.AddThemeStyleboxOverride("pressed", styleNormal);
-            btn.AddThemeStyleboxOverride("disabled", styleDisabled); // Styl zablokowany
-
-            if (!isEnabled)
-            {
-                btn.AddThemeColorOverride("font_color_disabled", new Color(0.6f, 0.6f, 0.6f));
-                btn.TooltipText = "Brak kart w tym źródle!";
-            }
-            else
-            {
-                btn.AddThemeColorOverride("font_color", Colors.White);
-            }
-
-            int capturedIndex = index;
-            btn.Pressed += () => OptionClicked(capturedIndex);
-
-            _dynamicButtonContainer.AddChild(btn);
-            index++;
+            if (ButtonContainer != null) ButtonContainer.Visible = false;
+            if (CardGridScroll != null) CardGridScroll.Visible = true;
+            TitleLabel.Text = "WYBIERZ KARTĘ Z TALII";
         }
     }
 
@@ -109,12 +151,6 @@ public partial class ChoiceModal : Control
     {
         Visible = false;
         _currentCallback?.Invoke(index);
-
-        if (_dynamicButtonContainer != null)
-        {
-            _dynamicButtonContainer.QueueFree();
-            _dynamicButtonContainer = null;
-        }
     }
 
     public void HideModal()

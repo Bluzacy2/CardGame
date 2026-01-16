@@ -40,11 +40,24 @@ namespace CardGame.Core.Cards.Components.Implementations
             if (_data.Targeting == TargetType.Choice && evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1)
             {
                 int choiceIdx = tse.SelectedTargetId;
-                if (choiceIdx >= 0 && choiceIdx < _data.Actions.Count)
+
+                // --- FIX DLA TUTOR CARD / DISCOVERY ---
+                // Scenariusz A: Wybór Akcji (np. Expectancy - Wybierz efekt A lub B)
+                if (_data.Actions.Count > 1)
                 {
-                    // Wykonujemy wybraną akcję używając zdarzenia wyboru jako kontekstu
-                    return ExecuteAction(workingState, context, _data.Actions[choiceIdx], evt, choiceIdx);
+                    if (choiceIdx >= 0 && choiceIdx < _data.Actions.Count)
+                    {
+                        return ExecuteAction(workingState, context, _data.Actions[choiceIdx], evt, choiceIdx);
+                    }
                 }
+                // Scenariusz B: Wybór Danych dla jednej Akcji (np. Tutor - Wybierz kartę z 30 opcji dla 1 akcji)
+                else if (_data.Actions.Count == 1)
+                {
+                    // Wykonujemy jedyną dostępną akcję, przekazując jej event z wyborem (choiceIdx)
+                    return ExecuteAction(workingState, context, _data.Actions[0], evt, 0);
+                }
+                // --------------------------------------
+
                 return workingState;
             }
 

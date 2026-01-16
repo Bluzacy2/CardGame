@@ -11,7 +11,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="ChoiceModal" type="VBoxContainer" node_paths=PackedStringArray("MainPanel", "TitleLabel")]
+[node name="ChoiceModal" type="VBoxContainer" node_paths=PackedStringArray("ButtonContainer", "TitleLabel", "CardGridScroll", "CardGrid")]
 custom_minimum_size = Vector2(400, 200)
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,8 +20,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_pdqlu")
 script = ExtResource("1_pdqlu")
-MainPanel = NodePath("CenterContainer/PanelContainer/VBoxContainer")
+ButtonContainer = NodePath("CenterContainer/PanelContainer/VBoxContainer/ButtonsList")
 TitleLabel = NodePath("CenterContainer/PanelContainer/VBoxContainer/Label")
+CardGridScroll = NodePath("CenterContainer/PanelContainer/VBoxContainer/CardGridScroll")
+CardGrid = NodePath("CenterContainer/PanelContainer/VBoxContainer/CardGridScroll/CardGrid")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -43,3 +45,19 @@ alignment = 1
 layout_mode = 2
 text = "WYBIERZ OPCJĘ"
 horizontal_alignment = 1
+
+[node name="ButtonsList" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CardGridScroll" type="ScrollContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(900, 400)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardGrid" type="GridContainer" parent="CenterContainer/PanelContainer/VBoxContainer/CardGridScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
