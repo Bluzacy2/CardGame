@@ -72,41 +72,44 @@ namespace CardGame.Core.Cards.Components.Implementations
         {
             GameState workingState = state.With(clearPending: true);
 
-            // If returning from a choice interaction (Choice)
-            if (_data.Targeting == TargetType.Choice && 
-                evt is TargetSelectedEvent tse && 
+            // 1. Handle the initial choice selection (ActionIndex was -1)
+            if (_data.Targeting == TargetType.Choice &&
+                evt is TargetSelectedEvent tse &&
                 state.PendingInteraction?.ActionIndex == -1)
             {
                 int choiceIdx = tse.SelectedTargetId;
 
-                // --- FIX FOR TUTOR CARD / DISCOVERY ---
-                // Scenario A: Action Choice (e.g., Expectancy - Choose effect A or B)
-                if (_data.Actions.Count > 1)
+                if (choiceIdx >= 0 && choiceIdx < _data.Actions.Count)
                 {
-                    if (choiceIdx >= 0 && choiceIdx < _data.Actions.Count)
-                    {
-                        return ExecuteAction(workingState, context, _data.Actions[choiceIdx], evt, choiceIdx);
-                    }
-                }
-                // Scenario B: Data Choice for a Single Action (e.g., Tutor - Choose a card from 30 options for 1 action)
-                else if (_data.Actions.Count == 1)
-                {
-                    // Execute the single available action, passing the choice event with choiceIdx
-                    return ExecuteAction(workingState, context, _data.Actions[0], evt, 0);
+                    // IMPORTANT: We return immediately after executing the chosen action.
+                    // This prevents the engine from looping into the other choices.
+                    return ExecuteAction(workingState, context, _data.Actions[choiceIdx], evt, choiceIdx);
                 }
 
                 return workingState;
             }
 
+            // 2. Handle returning from a manual target selection (ActionIndex >= 0)
+            // If the card is a Choice card, we ONLY want to execute the specific action 
+            // we just picked a target for, then stop.
+            if (_data.Targeting == TargetType.Choice)
+            {
+                return ExecuteAction(workingState, context, _data.Actions[startIndex], evt, startIndex);
+            }
+
+            // 3. Sequential logic for standard cards (Non-Choice)
+            // Cards like "Mark an enemy AND deal damage" use this loop.
             for (int i = startIndex; i < _data.Actions.Count; i++)
             {
                 workingState = ExecuteAction(workingState, context, _data.Actions[i], evt, i);
-                if (workingState.PendingInteraction != null) 
+
+                // If an action requires a target, stop and wait for player.
+                if (workingState.PendingInteraction != null)
                 {
                     return workingState;
                 }
             }
-            
+
             return workingState;
         }
 
