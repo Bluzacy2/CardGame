@@ -122,6 +122,43 @@ namespace CardGame.Core.Cards.Logic
                     if (self != null) result.UnitTargets.Add(self);
                     result.TargetPlayer = state.GetPlayer(ownerId);
                     break;
+                case TargetType.OppositeEnemyUnit:
+                    int lineIdx = -1;
+
+                    // 1. PRIORITY: Check if the event tells us where the unit died
+                    if (contextEvent is UnitDiedEvent ude)
+                        lineIdx = ude.LineIndex;
+                    else if (contextEvent is UnitSacrificedEvent use)
+                        lineIdx = use.LineIndex;
+
+                    // 2. FALLBACK: If it's not a death event (e.g., a "Before Combat" trigger),
+                    // search the board
+                    if (lineIdx == -1)
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            if (state.Board.Lines[i].Player1Unit?.InstanceId == sourceCardId ||
+                                state.Board.Lines[i].Player2Unit?.InstanceId == sourceCardId)
+                            {
+                                lineIdx = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    // 3. TARGETING: Now that we have the line, find the enemy
+                    if (lineIdx >= 0 && lineIdx < 4)
+                    {
+                        var targetLine = state.Board.Lines[lineIdx];
+                        var enemyUnit = (ownerId == 1) ? targetLine.Player2Unit : targetLine.Player1Unit;
+
+                        if (enemyUnit != null)
+                        {
+                            result.UnitTargets.Add(enemyUnit);
+                        }
+                    }
+                    break;
+
             }
             return result;
         }
@@ -153,19 +190,25 @@ namespace CardGame.Core.Cards.Logic
         #region Private Methods
         private static int GetOwner(GameState state, int instanceId, IGameEvent? contextEvent = null)
         {
+            // 1. Priority: Check the context event (Deaths/Sacrifices)
             if (contextEvent is UnitDiedEvent unitDiedEvent && unitDiedEvent.Unit.InstanceId == instanceId)
                 return unitDiedEvent.Unit.OwnerPlayerId;
             if (contextEvent is UnitSacrificedEvent unitSacrificedEvent && unitSacrificedEvent.Unit.InstanceId == instanceId)
                 return unitSacrificedEvent.Unit.OwnerPlayerId;
+            if (contextEvent is TargetSelectedEvent tse && tse.SourceCardId == instanceId)
+                return tse.SourcePlayerId;
 
+            // 2. Check the Board
             var unit = state.Board.GetAllUnits().FirstOrDefault(x => x.InstanceId == instanceId);
             if (unit != null) return unit.OwnerPlayerId;
 
+            // 3. Check Hands/Discard
             if (state.PlayerA.Hand.Any(x => x.InstanceId == instanceId) ||
                 state.PlayerA.DiscardPile.Any(x => x.InstanceId == instanceId)) return 1;
             if (state.PlayerB.Hand.Any(x => x.InstanceId == instanceId) ||
                 state.PlayerB.DiscardPile.Any(x => x.InstanceId == instanceId)) return 2;
 
+            // 4. Fallback: The player whose turn it is
             return state.ActivePlayerId;
         }
         #endregion

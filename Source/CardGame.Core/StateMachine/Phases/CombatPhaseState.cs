@@ -37,7 +37,7 @@ namespace CardGame.Core.StateMachine.Phases
         /// </summary>
         /// <param name="state">The current game state.</param>
         /// <returns>Always true for combat phase - ends automatically after resolution.</returns>
-        public bool ShouldEndPhaseAutomatically(GameState state) => true;
+        public bool ShouldEndPhaseAutomatically(GameState state) => state.CombatLineIndex >= 4;
         #endregion
 
         #region Phase Transition Logic
@@ -51,33 +51,56 @@ namespace CardGame.Core.StateMachine.Phases
         public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
         {
             var orchestrator = new CombatOrchestrator();
+
+            // 1. Run the (potentially resumed) combat
             var stateAfterCombat = orchestrator.ResolveCombatPhase(currentState, eventBus, context);
 
+            // 2. CHECK FOR PAUSE (Bug #2 FIX)
+            // If the Occultist is waiting for a target, we stop here and DO NOT transition to Round 2.
+            if (stateAfterCombat.PendingInteraction != null)
+            {
+                return stateAfterCombat;
+            }
+
+            // 3. COMBAT IS FULLY OVER - PROCEED TO ROUND END CLEANUP
             var workingState = stateAfterCombat;
+
+            // Process Keywords like 'Burning' for all units
             foreach (var unit in workingState.Board.GetAllUnits())
                 workingState = context.Keywords.ProcessRoundEnd(workingState, unit, context);
 
+            // Final death check after Burning/End-of-round effects
             workingState = new DeathResolver().ResolveDeaths(workingState, eventBus, context);
 
+            // Check if the game ended during Round-End processing
+            if (workingState.PlayerA.Health <= 0 || workingState.PlayerB.Health <= 0)
+                return workingState;
+
+            // 4. TRANSITION TO NEXT ROUND
             int nextRoundStarter = 3 - currentState.RoundStartingPlayerId;
             int nextTurnNumber = currentState.TurnNumber + 1;
             int manaLimit = nextTurnNumber;
 
+            // Player A draw and resource refill
             int oldBloodA = workingState.PlayerA.CurrentBlood;
             var playerA = workingState.PlayerA.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
             eventBus.Publish(new ResourceChangedEvent(playerA.PlayerId, oldBloodA, playerA.CurrentBlood));
 
+            // Player B draw and resource refill
             int oldBloodB = workingState.PlayerB.CurrentBlood;
             var playerB = workingState.PlayerB.WithTurnStartBlood(manaLimit, true).WithCardDrawn(eventBus);
             eventBus.Publish(new ResourceChangedEvent(playerB.PlayerId, oldBloodB, playerB.CurrentBlood));
 
+            // Return the state for the new round, RESETTING combatLineIndex to 0
             return workingState.With(
                 turnNumber: nextTurnNumber,
                 currentPhase: GamePhase.UnitOnly,
                 activePlayerId: nextRoundStarter,
                 roundStartingPlayerId: nextRoundStarter,
                 playerA: playerA,
-                playerB: playerB
+                playerB: playerB,
+                combatLineIndex: 0,
+                combatStep: 0
             );
         }
         #endregion

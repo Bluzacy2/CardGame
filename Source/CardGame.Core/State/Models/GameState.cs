@@ -62,6 +62,9 @@ namespace CardGame.Core.State.Models
         /// Gets the ID of the player who started the current round (1 or 2).
         /// </summary>
         public int RoundStartingPlayerId { get; }
+
+        public int CombatLineIndex { get; }
+        public int CombatStep { get; } 
         #endregion
 
         #region Constructor
@@ -88,7 +91,9 @@ namespace CardGame.Core.State.Models
             IEnumerable<int>? playersReady = null,
             PendingInteraction? pendingInteraction = null,
             IEnumerable<CardInstance>? spellStack = null,
-            int roundStartingPlayerId = 1)
+            int roundStartingPlayerId = 1,
+            int combatLineIndex = 0,
+            int combatStep = 0)
         {
             TurnNumber = turnNumber;
             CurrentPhase = currentPhase;
@@ -100,6 +105,8 @@ namespace CardGame.Core.State.Models
             PendingInteraction = pendingInteraction;
             SpellStack = spellStack != null ? new List<CardInstance>(spellStack) : new List<CardInstance>();
             RoundStartingPlayerId = roundStartingPlayerId;
+            CombatLineIndex = combatLineIndex;
+            CombatStep = combatStep;
         }
         #endregion
 
@@ -127,7 +134,9 @@ namespace CardGame.Core.State.Models
                 board: BoardState.Empty(),
                 playerA: playerA,
                 playerB: playerB,
-                roundStartingPlayerId: startingPlayerId
+                roundStartingPlayerId: startingPlayerId,
+                combatLineIndex: 0,
+                combatStep: 0
             );
         }
         #endregion
@@ -159,7 +168,9 @@ namespace CardGame.Core.State.Models
             PendingInteraction? pendingInteraction = null,
             IEnumerable<CardInstance>? spellStack = null,
             int? roundStartingPlayerId = null,
-            bool clearPending = false)
+            bool clearPending = false,
+            int? combatLineIndex = null,
+            int? combatStep = null)
         {
             return new GameState(
                 turnNumber ?? this.TurnNumber,
@@ -171,7 +182,9 @@ namespace CardGame.Core.State.Models
                 playersReady ?? this.PlayersReady,
                 clearPending ? null : (pendingInteraction ?? this.PendingInteraction),
                 spellStack ?? this.SpellStack,
-                roundStartingPlayerId ?? this.RoundStartingPlayerId
+                roundStartingPlayerId ?? this.RoundStartingPlayerId,
+                combatLineIndex: combatLineIndex ?? this.CombatLineIndex,
+                combatStep: combatStep ?? this.CombatStep
             );
         }
 

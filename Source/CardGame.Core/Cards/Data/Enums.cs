@@ -117,7 +117,8 @@
         FriendlySpellsInHand,
         EnemySpellsInHand,
         EmptyLane,
-        RandomEmptyLane
+        RandomEmptyLane,
+        OppositeEnemyUnit
     }
 
     /// <summary>

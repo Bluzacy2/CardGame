@@ -30,28 +30,69 @@ namespace CardGame.Core.Combat
         {
             var workingState = currentState;
 
-            for (int lineIndex = 0; lineIndex < 4; lineIndex++)
+            for (int i = workingState.CombatLineIndex; i < 4; i++)
             {
-                eventBus.Publish(new PreLineCombatEvent(lineIndex));
-                workingState = _triggerSystem.ProcessEvents(workingState, eventBus, context);
-                workingState = _deathResolver.ResolveDeaths(workingState, eventBus, context);
+                // --- STEP 0: PUBLISH PRE-COMBAT EVENT ---
+                if (workingState.CombatStep == 0)
+                {
+                    eventBus.Publish(new PreLineCombatEvent(i));
+                    workingState = workingState.With(combatStep: 1);
+                }
 
-                var line = workingState.Board.Lines[lineIndex];
-                var player1Unit = line.Player1Unit;
-                var player2Unit = line.Player2Unit;
+                // --- STEP 1: PROCESS PRE-COMBAT TRIGGERS (Occultist) ---
+                if (workingState.CombatStep == 1)
+                {
+                    workingState = _triggerSystem.ProcessEvents(workingState, eventBus, context);
+                    if (workingState.PendingInteraction != null)
+                        return workingState.With(combatLineIndex: i, combatStep: 1);
+                    if (workingState.PlayerA.Health <= 0 || workingState.PlayerB.Health <= 0)
+                        return workingState.With(combatLineIndex: 4, combatStep: 0);
 
-                if (player1Unit != null && player2Unit != null)
-                    workingState = _battleService.ResolveCombatDuel(workingState, player1Unit, player2Unit, lineIndex, eventBus, context);
-                else if (player1Unit != null)
-                    workingState = _battleService.ResolveBonusStrike(workingState, player1Unit, null, lineIndex, eventBus, context);
-                else if (player2Unit != null)
-                    workingState = _battleService.ResolveBonusStrike(workingState, player2Unit, null, lineIndex, eventBus, context);
+                    workingState = workingState.With(combatStep: 2);
+                }
 
-                workingState = _deathResolver.ResolveDeaths(workingState, eventBus, context);
-                workingState = _triggerSystem.ProcessEvents(workingState, eventBus, context);
+                // --- STEP 2: RESOLVE DUEL / STRIKE ---
+                if (workingState.CombatStep == 2)
+                {
+                    workingState = _deathResolver.ResolveDeaths(workingState, eventBus, context);
+
+                    var line = workingState.Board.Lines[i];
+                    var p1 = line.Player1Unit;
+                    var p2 = line.Player2Unit;
+
+                    if (p1 != null && p2 != null)
+                        workingState = _battleService.ResolveCombatDuel(workingState, p1, p2, i, eventBus, context);
+                    else if (p1 != null)
+                        workingState = _battleService.ResolveBonusStrike(workingState, p1, null, i, eventBus, context);
+                    else if (p2 != null)
+                        workingState = _battleService.ResolveBonusStrike(workingState, p2, null, i, eventBus, context);
+
+                    // IMMEDIATE LETHAL CHECK (After duel)
+                    if (workingState.PlayerA.Health <= 0 || workingState.PlayerB.Health <= 0)
+                        return workingState.With(combatLineIndex: 4, combatStep: 0);
+
+                    workingState = workingState.With(combatStep: 3);
+                }
+
+                // --- STEP 3: POST-COMBAT TRIGGERS (Trap / Death Effects) ---
+                if (workingState.CombatStep == 3)
+                {
+                    workingState = _deathResolver.ResolveDeaths(workingState, eventBus, context);
+                    workingState = _triggerSystem.ProcessEvents(workingState, eventBus, context);
+
+                    if (workingState.PendingInteraction != null)
+                        return workingState.With(combatLineIndex: i, combatStep: 3);
+
+                    // LETHAL CHECK (After post-combat triggers)
+                    if (workingState.PlayerA.Health <= 0 || workingState.PlayerB.Health <= 0)
+                        return workingState.With(combatLineIndex: 4, combatStep: 0);
+
+                    // Lane complete!
+                    workingState = workingState.With(combatLineIndex: i + 1, combatStep: 0);
+                }
             }
 
-            return workingState;
+            return workingState.With(combatLineIndex: 4, combatStep: 0);
         }
         #endregion
     }

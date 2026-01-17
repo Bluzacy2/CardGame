@@ -133,6 +133,13 @@ namespace CardGame.Core.Cards.Components.Implementations
                 targetType = _data.Targeting;
             }
 
+            if (evt is TargetSelectedEvent && state.PendingInteraction?.ActionIndex == actionIdx)
+            {
+                var manualResolved = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);
+                return context.ActionRegistry.GetHandler(action.Type).Execute(
+                    state.With(clearPending: true), context, action, manualResolved, _sourceId, evt);
+            }
+
             var resolved = EffectTargetResolver.Resolve(targetType, state, evt, _sourceId);
 
             if (resolved.UnitTargets.Any() || resolved.TargetPlayer != null)

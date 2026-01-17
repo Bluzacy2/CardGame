@@ -88,7 +88,7 @@ namespace CardGame.Core.GameRules.Death
             }
 
             var owner = state.GetPlayer(unit.OwnerPlayerId);
-            var newState = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToDiscard(unit));
+            var newState = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToDiscard(unit.MoveAndReset()));
 
             events.Publish(new UnitDiedEvent(unit, lineIndex, killerId));
             events.Publish(new CardMovedEvent(unit.InstanceId, unit.OwnerPlayerId, CardZone.Board, CardZone.Graveyard));
