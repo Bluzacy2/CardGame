@@ -29,15 +29,20 @@ namespace CardGame.Core.StateMachine.Phases
         /// <param name="command">The command to validate.</param>
         /// <param name="state">The current game state.</param>
         /// <returns>True only for EndPhaseCommand, false for all other commands.</returns>
-        public bool IsCommandAllowed(IGameCommand command, GameState state) =>
-            command is EndPhaseCommand;
+        public bool IsCommandAllowed(IGameCommand command, GameState state)
+        {
+            return command is EndPhaseCommand || command is SelectTargetCommand;
+        }
 
         /// <summary>
         /// Determines whether the combat phase should end automatically without player input.
         /// </summary>
         /// <param name="state">The current game state.</param>
         /// <returns>Always true for combat phase - ends automatically after resolution.</returns>
-        public bool ShouldEndPhaseAutomatically(GameState state) => state.CombatLineIndex >= 4;
+        public bool ShouldEndPhaseAutomatically(GameState state)
+        {
+            return state.PendingInteraction == null;
+        }
         #endregion
 
         #region Phase Transition Logic
