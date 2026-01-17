@@ -16,7 +16,11 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
         {
             if (targets.TargetPlayer != null)
             {
-                return state.UpdatePlayer(targets.TargetPlayer.WithShuffledDeck(context.Rng));
+                var shufPlayer = targets.TargetPlayer.WithShuffledDeck(context.Rng);
+
+                // NEW:
+                context.Events.Publish(new DeckShuffledEvent(shufPlayer.PlayerId));
+                return state.UpdatePlayer(shufPlayer);
             }
             return state;
         }

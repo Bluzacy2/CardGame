@@ -38,12 +38,11 @@ namespace CardGame.Core.Application
             _triggerSystem = new TriggerSystem();
             _deathResolver = new DeathResolver();
             _auraSystem = new AuraSystem();
-            CurrentState = _auraSystem.RecalculateAuras(CurrentState);
+            CurrentState = _auraSystem.RecalculateAuras(initialState, null);
         }
 
         public ExecutionResult ExecuteCommand(IGameCommand command)
         {
-            // Czyści krótką historię komendy, by silnik nie widział zdarzeń z poprzedniej tury
             Events.ClearHistory();
 
             if (IsGameOver) return new ExecutionResult(CurrentState, new List<CardGame.Core.Events.Interfaces.IGameEvent>());
@@ -52,6 +51,7 @@ namespace CardGame.Core.Application
             if (!logic.IsCommandAllowed(command, CurrentState))
                 return new ExecutionResult(CurrentState, new List<CardGame.Core.Events.Interfaces.IGameEvent>());
 
+            var oldPhase = CurrentState.CurrentPhase;
             GameState newState = command.Execute(CurrentState, Events, _gameContext);
             _interactionTimer = 0f;
 
@@ -61,6 +61,12 @@ namespace CardGame.Core.Application
             {
                 var currentLogic = _stateMachine.GetStateForPhase(newState.CurrentPhase);
                 newState = currentLogic.ProcessEndPhase(newState, Events, _gameContext);
+
+                if (newState.CurrentPhase != oldPhase)
+                {
+                    Events.Publish(new PhaseChangedEvent(newState.CurrentPhase, newState.ActivePlayerId));
+                    oldPhase = newState.CurrentPhase;
+                }
 
                 var nextLogic = _stateMachine.GetStateForPhase(newState.CurrentPhase);
                 phaseFinished = nextLogic.ShouldEndPhaseAutomatically(newState);
@@ -74,7 +80,7 @@ namespace CardGame.Core.Application
                 var start = newState;
                 newState = _triggerSystem.ProcessEvents(newState, Events, _gameContext);
                 newState = _deathResolver.ResolveDeaths(newState, Events, _gameContext);
-                newState = _auraSystem.RecalculateAuras(newState);
+                newState = _auraSystem.RecalculateAuras(newState, Events);
 
                 if (newState.PendingInteraction != null || CheckGameOver(newState)) break;
                 if (!Events.HasEvents && newState.Board == start.Board) break;
@@ -83,8 +89,14 @@ namespace CardGame.Core.Application
             while (newState.PendingInteraction == null && newState.SpellStack.Any())
             {
                 var spell = newState.SpellStack.Last();
+                Events.Publish(new CardMovedEvent(spell.InstanceId, spell.OwnerPlayerId, CardZone.Stack, CardZone.Graveyard));
                 newState = newState.UpdatePlayer(newState.GetPlayer(spell.OwnerPlayerId).WithCardAddedToDiscard(spell))
                     .With(spellStack: newState.SpellStack.Take(newState.SpellStack.Count - 1));
+            }
+
+            if (newState.PendingInteraction != null)
+            {
+                Events.Publish(new InteractionRequiredEvent(newState.PendingInteraction));
             }
 
             CurrentState = newState;
@@ -108,8 +120,18 @@ namespace CardGame.Core.Application
 
         private bool CheckGameOver(GameState s)
         {
-            bool p1 = s.PlayerA.Health <= 0; bool p2 = s.PlayerB.Health <= 0;
-            if (p1 || p2) { IsGameOver = true; WinnerId = p1 && p2 ? null : (p1 ? 2 : 1); return true; }
+            bool p1 = s.PlayerA.Health <= 0;
+            bool p2 = s.PlayerB.Health <= 0;
+
+            if (p1 || p2)
+            {
+                IsGameOver = true;
+                WinnerId = p1 && p2 ? null : (p1 ? 2 : 1);
+
+              
+                Events.Publish(new GameOverEvent(WinnerId));
+                return true;
+            }
             return false;
         }
     }

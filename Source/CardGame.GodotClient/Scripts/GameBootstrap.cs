@@ -15,6 +15,7 @@ using CardGame.Core.AI;
 using CardGame.Core.AI.Strategies;
 using CardGame.Core.Decks;
 using CardGame.Core.Events;
+using CardGame.Core.Decks.Data;
 
 public partial class GameBootstrap : Node2D
 {
@@ -45,7 +46,10 @@ public partial class GameBootstrap : Node2D
 			UI.ShowGameOverScreen(_engine.WinnerId, _playerId, _botId);
 			return;
 		}
-
+		if (_inputController != null)
+		{
+			_inputController.UpdateState(_engine.CurrentState);
+		}
 		// 2. Aktualizacja UI
 		if (_engine.CurrentState != _lastRenderedState)
 		{
@@ -69,20 +73,43 @@ public partial class GameBootstrap : Node2D
 		var rng = new DeterministicRng(new Random().Next());
 		var factory = new CardFactory(CardLibrary.Instance, rng);
 
-		// 2. Przygotowanie talii Gracza
-		var playerDeckData = GetLatestPlayerDeck();
-		List<CardInstance> d1 = LoadDeckFromData(playerDeckData, _playerId, factory);
+		// --- ZMIANA START: INTEGRACJA Z GAMESESSION ---
 
-		// Jeśli nie znaleziono żadnej talii (pusty folder), użyj starego generatora losowego
+		List<CardInstance> d1 = new List<CardInstance>();
+		List<CardInstance> d2 = new List<CardInstance>();
+
+		// Sprawdź czy mamy dane z Singletona (czyli przyszliśmy z menu)
+		if (GameSession.Instance != null && GameSession.Instance.SelectedPlayerDeck != null)
+		{
+			GD.Print($"[BOOTSTRAP] Ładowanie wybranej talii: {GameSession.Instance.SelectedPlayerDeck.Name}");
+			d1 = LoadDeckFromData(GameSession.Instance.SelectedPlayerDeck, _playerId, factory);
+
+			// Opcjonalnie: Bot Deck z sesji (jeśli zaimplementowano wybór)
+			if (GameSession.Instance.SelectedBotDeck != null)
+			{
+				d2 = LoadDeckFromData(GameSession.Instance.SelectedBotDeck, _botId, factory);
+			}
+		}
+		else
+		{
+			GD.Print("[BOOTSTRAP] Brak danych w sesji (Debug Mode?). Ładowanie ostatniej talii z dysku.");
+			// Fallback do starej logiki
+			var playerDeckData = GetLatestPlayerDeck();
+			d1 = LoadDeckFromData(playerDeckData, _playerId, factory);
+		}
+
+		// Zabezpieczenia (jeśli nadal pusto, stwórz losowe)
 		if (d1.Count == 0) d1 = CreateRandomDeck(factory, _playerId);
 
-		// 3. Przygotowanie talii Bota
-		var botDeckData = GetRandomBotDeck();
-		List<CardInstance> d2 = LoadDeckFromData(botDeckData, _botId, factory);
+		// Generowanie talii bota jeśli nie została wybrana/załadowana
+		if (d2.Count == 0)
+		{
+			var botDeckData = GetRandomBotDeck();
+			d2 = LoadDeckFromData(botDeckData, _botId, factory);
+			if (d2.Count == 0) d2 = CreateRandomDeck(factory, _botId);
+		}
 
-		if (d2.Count == 0) d2 = CreateRandomDeck(factory, _botId);
-
-		GD.Print($"[GAME] Start: Gracz ({playerDeckData?.Name ?? "Losowa"}), Bot ({botDeckData?.Name ?? "Losowa"})");
+		// --- ZMIANA KONIEC ---
 
 		// 4. Start silnika
 		var state = GameState.Initial(1, d1, d2, rng);
@@ -124,8 +151,6 @@ public partial class GameBootstrap : Node2D
 		UI.OnRestartClicked += () => GetTree().ReloadCurrentScene();
 	}
 
-	// --- BRAKUJĄCE METODY ---
-
 	private void ExecutePlayerCommand(IGameCommand cmd)
 	{
 		var stateBefore = _engine.CurrentState;
@@ -150,9 +175,6 @@ public partial class GameBootstrap : Node2D
 		var result = _engine.ExecuteCommand(cmd);
 		UI.HandleVisualEvents(result.EventsHappened, _playerId);
 		UI.UpdateDisplay(_engine.CurrentState, _playerId);
-
-		// BotCoordinator sam resetuje IsThinking, ale UI musi wiedzieć czy odblokować tury
-		// Tu logika jest uproszczona, bo BotCoordinator robi to sekwencyjnie
 	}
 
 	private void ConnectLinesSignals()
@@ -182,7 +204,7 @@ public partial class GameBootstrap : Node2D
 		for (int i = 0; i < 30; i++) l.Add(f.CreateCard(ids[r.Next(ids.Length)], o));
 		return l;
 	}
-	private CardGame.Core.Decks.Data.DeckData GetLatestPlayerDeck()
+	private DeckData GetLatestPlayerDeck()
 	{
 		string path = ProjectSettings.GlobalizePath("res://Data/Decks/");
 		if (!System.IO.Directory.Exists(path)) return null;
@@ -194,11 +216,11 @@ public partial class GameBootstrap : Node2D
 			.FirstOrDefault(d => d != null);
 	}
 
-   
-	private CardGame.Core.Decks.Data.DeckData GetRandomBotDeck()
+
+
+	private DeckData GetRandomBotDeck()
 	{
 		string path = ProjectSettings.GlobalizePath("res://Data/BotDecks/");
-   
 		if (!System.IO.Directory.Exists(path)) path = ProjectSettings.GlobalizePath("res://Data/Decks/");
 		if (!System.IO.Directory.Exists(path)) return null;
 
@@ -210,18 +232,18 @@ public partial class GameBootstrap : Node2D
 		return LoadDeckFromFile(randomFile.FullName);
 	}
 
-   
-	private CardGame.Core.Decks.Data.DeckData LoadDeckFromFile(string fullPath)
+
+	private DeckData LoadDeckFromFile(string fullPath)
 	{
 		try
 		{
 			string json = System.IO.File.ReadAllText(fullPath);
-			return System.Text.Json.JsonSerializer.Deserialize<CardGame.Core.Decks.Data.DeckData>(json);
+			return System.Text.Json.JsonSerializer.Deserialize<DeckData>(json);
 		}
 		catch { return null; }
 	}
 
-	private List<CardInstance> LoadDeckFromData(CardGame.Core.Decks.Data.DeckData data, int ownerId, CardFactory factory)
+	private List<CardInstance> LoadDeckFromData(DeckData data, int ownerId, CardFactory factory)
 	{
 		var instances = new List<CardInstance>();
 		if (data == null || data.CardIds == null) return instances;

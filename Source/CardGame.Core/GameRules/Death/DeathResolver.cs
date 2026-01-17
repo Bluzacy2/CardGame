@@ -82,6 +82,7 @@ namespace CardGame.Core.GameRules.Death
 
          
             events.Publish(new UnitDiedEvent(unit, lineIndex, killerId));
+            events.Publish(new CardMovedEvent(unit.InstanceId, unit.OwnerPlayerId, CardZone.Board, CardZone.Graveyard));
 
             return newState;
         }

@@ -1,5 +1,6 @@
 ﻿using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Models;
+using CardGame.Core.Events;
 using CardGame.Core.State.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace CardGame.Core.GameRules.Auras
 {
     public class AuraSystem
     {
-        public GameState RecalculateAuras(GameState currentState)
+        public GameState RecalculateAuras(GameState currentState, EventBus? events = null)
         {
             var workingState = currentState;
 
@@ -50,6 +51,8 @@ namespace CardGame.Core.GameRules.Auras
                 var latestUnit = workingState.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == unit.InstanceId);
                 if (latestUnit == null) continue;
 
+                var oldStats = latestUnit.CurrentStats;
+
                 var targetKw = map.ContainsKey(latestUnit.InstanceId) ? map[latestUnit.InstanceId].Distinct().ToList() : new List<Keyword>();
                 if (latestUnit.IsSilenced) targetKw.Clear();
 
@@ -60,6 +63,22 @@ namespace CardGame.Core.GameRules.Auras
                 {
                     var updated = latestUnit.WithAuras(targetKw);
                     workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(updated));
+
+                    var newStats = updated.CurrentStats;
+                    if (events != null && (oldStats.Attack != newStats.Attack || oldStats.Health != newStats.Health))
+                    {
+                        events.Publish(new UnitStatsChangedEvent(
+                            updated.InstanceId,                 // targetId
+                            newStats.Attack - oldStats.Attack,  // atkDelta
+                            newStats.Health - oldStats.Health,  // hpDelta
+                            newStats.Attack,                    // curAtk
+                            newStats.Health,                    // curHp
+                            null,                               // sourceId (int?)
+                            updated.OwnerPlayerId,              // sourcePlayerId (int)
+                            true                                // isAura (bool)
+                        ));
+                    }
+
                 }
             }
             return workingState;

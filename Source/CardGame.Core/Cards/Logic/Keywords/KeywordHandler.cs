@@ -120,18 +120,56 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
 
         public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
         {
+            // 1. Logic Check: If the card is silenced, Unkillable shouldn't work 
+            // (KeywordProcessor usually handles this, but we'll be safe)
+            if (unit.IsSilenced) return false;
+
+            context.Events.Publish(new TriggerActivatedEvent(unit.InstanceId, unit.OwnerPlayerId));
+
             var board = state.Board;
+            int lineIndex = -1;
+
+            // 2. Remove from Board
             for (int i = 0; i < 4; i++)
             {
                 if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId)
+                {
+                    lineIndex = i;
                     board = board.WithUnitPlacedAt(i, 1, null);
-                else if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
+                    break;
+                }
+                if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
+                {
+                    lineIndex = i;
                     board = board.WithUnitPlacedAt(i, 2, null);
+                    break;
+                }
             }
+
+            // 3. Prepare the card for hand
+            // MoveAndReset wipes PermanentBuffs, so we must detect if Unkillable was one of them
+            bool wasGraftedUnkillable = unit.CurrentStats.Keywords.Contains(Keyword.Unkillable) &&
+                                        !unit.Definition.Keywords.Contains(Keyword.Unkillable);
+
             var returnedCard = unit.MoveAndReset();
+
+            if (wasGraftedUnkillable)
+            {
+                // Re-apply the Unkillable status so it stays for the NEXT time it's played
+                var statsWithUnkillable = new CardStats(0, 0, 0, new[] { Keyword.Unkillable });
+                returnedCard = returnedCard.AddPermanentBuff(statsWithUnkillable);
+            }
+
+            // 4. Update State
             int pid = unit.OwnerPlayerId;
             var owner = state.GetPlayer(pid);
+
+            // UI Event
+            context.Events.Publish(new CardMovedEvent(unit.InstanceId, pid, CardZone.Board, CardZone.Hand, lineIndex));
+
+            // Use the updated player state (which now handles full hands by discarding)
             state = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToHand(returnedCard));
+
             return true;
         }
     }

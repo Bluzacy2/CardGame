@@ -6,14 +6,11 @@ public partial class MainMenu : Control
     [Export] public Button PlayButton;
     [Export] public Button DeckEditorButton;
     [Export] public Button QuitButton;
-    [Export] public PackedScene DeckSelectionScene;
+    [Export(PropertyHint.File, "*.tscn")]
+    public string DeckSelectionEditorPath = "res://Scenes/DeckSelection.tscn";
 
-    // Referencja do sceny gry (żebyśmy mogli ją wczytać)
-    [Export] public PackedScene GameScene;
-
-    // Opcjonalnie: Scena edytora (na przyszłość)
-    // [Export] public PackedScene EditorScene;
-
+    [Export(PropertyHint.File, "*.tscn")]
+    public string GameSetupPath = "res://Scenes/GameDeckSelector.tscn";
     public override void _Ready()
     {
         if (PlayButton != null)
@@ -28,20 +25,23 @@ public partial class MainMenu : Control
 
     private void OnPlayPressed()
     {
-        if (GameScene == null)
+        if (string.IsNullOrEmpty(GameSetupPath))
         {
-            GD.PrintErr("BŁĄD: Nie przypisano sceny gry w Inspektorze Menu!");
+            GD.PrintErr("Brak ścieżki do GameSetup w MainMenu!");
             return;
         }
-
-        // Zmiana sceny na grę
-        GetTree().ChangeSceneToPacked(GameScene);
+        // Przekierowanie do wyboru talii (GameDeckSelector), a nie bezpośrednio do gry
+        GetTree().ChangeSceneToFile(GameSetupPath);
     }
 
     private void OnEditorPressed()
     {
-        if (DeckSelectionScene != null)
-            GetTree().ChangeSceneToPacked(DeckSelectionScene);
+        if (string.IsNullOrEmpty(DeckSelectionEditorPath))
+        {
+            GD.PrintErr("Brak ścieżki do DeckSelectionEditor w MainMenu!");
+            return;
+        }
+        GetTree().ChangeSceneToFile(DeckSelectionEditorPath);
     }
 
     private void OnQuitPressed()
@@ -49,5 +49,4 @@ public partial class MainMenu : Control
         GD.Print("Wychodzenie z gry...");
         GetTree().Quit();
     }
-        
 }

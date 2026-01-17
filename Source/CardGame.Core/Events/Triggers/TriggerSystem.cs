@@ -44,6 +44,7 @@ namespace CardGame.Core.Events.Triggers
                         var component = new JsonEffectComponent(source.Effect, source.Id);
                         if (component.ShouldTrigger(evt, workingState))
                         {
+                            eventBus.Publish(new TriggerActivatedEvent(source.Id, workingState.GetPlayer(workingState.ActivePlayerId).PlayerId));
                             workingState = component.Resolve(evt, workingState, context);
                             if (workingState.PendingInteraction != null) return workingState;
                         }

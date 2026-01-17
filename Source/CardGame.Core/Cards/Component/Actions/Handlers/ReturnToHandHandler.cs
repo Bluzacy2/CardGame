@@ -3,6 +3,7 @@ using CardGame.Core.Cards.Component.Actions;
 using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Logic;
 using CardGame.Core.Cards.Models;
+using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
 using System;
@@ -19,7 +20,11 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             var workingState = state;
             foreach (var unit in targets.UnitTargets)
             {
-                // Kluczowe: MoveAndReset zachowuje ID i Silence, ale czyści obrażenia/buffami
+                context.Events.Publish(new CardMovedEvent(
+                        unit.InstanceId,
+                        unit.OwnerPlayerId,
+                        CardZone.Board,
+                        CardZone.Hand));
                 var freshCard = unit.MoveAndReset();
                 var currentOwner = workingState.GetPlayer(unit.OwnerPlayerId);
                 workingState = workingState.UpdatePlayer(currentOwner.WithCardAddedToHand(freshCard));
