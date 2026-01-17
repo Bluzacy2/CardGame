@@ -455,9 +455,9 @@
   "Name": "Bounty Hunter",
   "Type": "Unit",
   "Subtypes": [ "Mercenary", "Human" ],
-  "Cost": 2,
-  "Attack": 1,
-  "Health": 5,
+  "Cost": 3,
+  "Attack": 3,
+  "Health": 3,
   "Description": "When an Enemy is Marked: Stun it.",
   "Effects": [
 	{
@@ -759,7 +759,7 @@
 	"Name": "Evo Ghost",
 	"Type": "Unit",
 	"Subtypes": ["Monster"],
-	"Cost": 4, "Attack": 3, "Health": 2,
+	"Cost": 4, "Attack": 3, "Health": 3,
 	"Description": "On Death: Make 1/1 Souldiers in Adjacent Lanes.",
 	"Effects": [
 	  {
@@ -836,7 +836,7 @@
 	"Name": "Rustler",
 	"Type": "Unit",
 	"Subtypes": ["Mercenary", "Human"],
-	"Cost": 9, "Attack": 6, "Health": 6,
+	"Cost": 10, "Attack": 6, "Health": 6,
 	"Description": "Costs 1 less for each Spell played. On Played: Bonus Attack.",
 	"Effects": [
 	  {
@@ -882,7 +882,7 @@
   "Id": 49,
   "Name": "Rocket Ignorance",
   "Type": "Spell",
-  "Cost": 5,
+  "Cost": 4,
   "Description": "Destroy an Enemy Unit.",
   "Effects": [
 	{
@@ -971,7 +971,7 @@
 	"Id": 53,
 	"Name": "The Curtain Call",
 	"Type": "Spell",
-	"Cost": 9,
+	"Cost": 7,
 	"Description": "Mark all Enemy Units and then Destroy Them.",
 	"Effects": [
 	  {

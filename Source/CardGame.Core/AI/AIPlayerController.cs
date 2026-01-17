@@ -74,7 +74,7 @@ namespace CardGame.Core.AI
 
             // Initialize both solvers for flexibility
             // Beam Search: Width 4, Depth 5 (standard settings)
-            BeamSolver = new BotSolver(_gameEngine, BotPlayerId, strategy, beamWidth: 4, maxDepth: 5);
+            BeamSolver = new BotSolver(_gameEngine, BotPlayerId, strategy, beamWidth: 50, maxDepth: 10);
 
             // MCTS uses the same strategy for leaf node evaluation
             _mctsSolver = new MctsSolver(_gameEngine, BotPlayerId, strategy);

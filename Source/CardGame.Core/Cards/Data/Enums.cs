@@ -61,7 +61,8 @@
         OnPreCombatLine,
         OnDamagedEnemyHero,
         OnFriendlyCardDrawn,
-        OnFriendlyActionPlayed
+        OnFriendlyActionPlayed,
+        OnSummoned
     }
 
     /// <summary>
@@ -118,7 +119,8 @@
         EnemySpellsInHand,
         EmptyLane,
         RandomEmptyLane,
-        OppositeEnemyUnit
+        OppositeEnemyUnit,
+        RandomFriendlyUnit
     }
 
     /// <summary>

@@ -165,6 +165,7 @@ namespace CardGame.Core.Cards.Logic
                     else if (gameEvent is UnitDiedEvent unitDiedEvent2) subject = unitDiedEvent2.Unit;
                     else if (gameEvent is CardPlayedEvent cardPlayedEvent2) subject = cardPlayedEvent2.Card;
                     else if (gameEvent is UnitSacrificedEvent unitSacrificedEvent2) subject = unitSacrificedEvent2.Unit;
+                    else if (gameEvent is CardMovedEvent cardMovedEvent) actorId = cardMovedEvent.CardId;
                     return subject != null && subject.Definition.Subtypes.Contains(condition.TargetParam);
 
                 case ConditionType.Not:

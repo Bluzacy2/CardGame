@@ -152,6 +152,7 @@ namespace CardGame.Core.Events.Triggers
             {
                 types.Add(TriggerType.OnPlayed);
                 types.Add(TriggerType.OnFriendlyActionPlayed);
+                types.Add(TriggerType.OnSummoned);
             }
             if (gameEvent is UnitDiedEvent)
             {
@@ -184,6 +185,11 @@ namespace CardGame.Core.Events.Triggers
 
             if (gameEvent is PreLineCombatEvent)
                 types.Add(TriggerType.OnPreCombatLine);
+
+            if (gameEvent is CardMovedEvent cm && cm.To == CardZone.Board)
+            {
+                types.Add(TriggerType.OnSummoned); 
+            }
 
             return types;
         }
