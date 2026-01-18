@@ -1,0 +1,1202 @@
+﻿
+
+========================================
+FILE: InputController.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.GodotClient\Scripts\InputController.cs
+========================================
+using Godot;
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Commands.Implementations;
+using CardGame.Core.Commands.Interfaces;
+using CardGame.Core.State.Models;
+using CardGame.Core.Cards.Logic;
+
+public partial class InputController : Node
+{
+	public enum InputState { Idle, Normal, TargetingCard, PendingTarget, Mulligan }
+
+	private InputState _currentState = InputState.Idle;
+	private int _playerId;
+	private UIManager _ui;
+	private GameState _latestGameState;
+
+	private CardInstance _selectedCardHand;
+	private int? _pendingUnitLineIdx;
+	private PendingInteraction _currentPending;
+
+	// Mulligan
+	private List<int> _mulliganSelection = new List<int>();
+	private const int MAX_MULLIGAN_SWAPS = 3;
+	private List<CardInstance> _mulliganHandCache;
+
+	public event Action<IGameCommand> OnPlayerCommand;
+
+	public void Initialize(int playerId, UIManager uiManager)
+	{
+		_playerId = playerId;
+		_ui = uiManager;
+	}
+
+	public override void _Process(double delta)
+	{
+		// Rysuj strzaĹ‚kÄ™ TYLKO jeĹ›li celujemy w planszÄ™
+		// JeĹ›li mamy PendingTarget typu CHOICE (Menu), nie rysuj strzaĹ‚ki!
+		bool isChoiceMode = _currentState == InputState.PendingTarget &&
+							_currentPending?.RequiredTargetType == TargetType.Choice;
+
+		if ((_currentState == InputState.TargetingCard || _currentState == InputState.PendingTarget) && !isChoiceMode)
+		{
+			UpdateTargetingArrow();
+		}
+		else
+		{
+			_ui.HideTargetingArrow();
+		}
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton mb && mb.Pressed)
+		{
+			// Prawy Przycisk: Anuluj
+			if (mb.ButtonIndex == MouseButton.Right)
+			{
+				if (_currentState == InputState.TargetingCard) CancelTargeting();
+			}
+			// Lewy Przycisk: TERAZ OBSĹUGIWANY PRZEZ ON_CLICKED
+			// Usuwamy stÄ…d TrySelectTargetUnderMouse, bo klikniÄ™cie w kartÄ™
+			// zostanie przechwycone przez Control (MouseFilter Stop) i nie dotrze tutaj.
+			// Zostawiamy to puste lub obsĹ‚ugujemy klikniÄ™cie w "pustkÄ™" (anulowanie).
+		}
+	}
+
+	public void UpdateState(GameState gameState)
+	{
+		_latestGameState = gameState;
+
+		// 1. Priorytet: Mulligan
+		if (gameState.CurrentPhase == CardGame.Core.State.Enums.GamePhase.Mulligan)
+		{
+			if (_currentState != InputState.Mulligan)
+				StartMulligan(gameState.PlayerA.Hand.ToList());
+			return;
+		}
+
+		// 2. Priorytet: Pending Interaction (Wybory/Cele)
+		if (gameState.PendingInteraction != null)
+		{
+			// --- FIX: STRAĹ»NIK PRZED PÄTLÄ„ ---
+			// JeĹ›li juĹĽ jesteĹ›my w trakcie obsĹ‚ugi TEJ SAMEJ interakcji, nie rĂłb nic!
+			// Sprawdzamy czy stan to PendingTarget I czy obiekt interakcji jest ten sam (referencja)
+			// (JeĹ›li w C# obiekty sÄ… rĂłĹĽne co update, sprawdĹşmy chociaĹĽ typ i sourceId)
+
+			bool isSameInteraction = _currentPending != null &&
+									 _currentPending.SourceCardInstanceId == gameState.PendingInteraction.SourceCardInstanceId &&
+									 _currentPending.RequiredTargetType == gameState.PendingInteraction.RequiredTargetType;
+
+			if (_currentState == InputState.PendingTarget && isSameInteraction)
+			{
+				return; // JUĹ» TO ROBIMY -> WYJDĹą
+			}
+			// ---------------------------------
+
+			// JeĹ›li to nowa interakcja, zresetuj stare celowanie
+			if (_currentState == InputState.TargetingCard) CancelTargeting();
+
+			StartPendingResolution(gameState.PendingInteraction);
+			return;
+		}
+
+		// JeĹ›li Pending zniknÄ…Ĺ‚ (jest null), a my wciÄ…ĹĽ myĹ›limy, ĹĽe jest PendingTarget -> WyjdĹş z tego stanu
+		if (_currentState == InputState.PendingTarget && gameState.PendingInteraction == null)
+		{
+			_currentPending = null;
+			_currentState = InputState.Normal;
+			_ui.HideChoiceModal(); // Na wszelki wypadek zamykamy modal
+			_ui.HideTargetingArrow();
+			_ui.ClearHighlights();
+			_ui.ShowBigMessage("", 0);
+		}
+
+		// 3. Normalna tura gracza
+		if (gameState.ActivePlayerId == _playerId)
+		{
+			if (_currentState != InputState.TargetingCard && _currentState != InputState.PendingTarget)
+			{
+				_currentState = InputState.Normal;
+			}
+		}
+		else
+		{
+			_currentState = InputState.Idle;
+			_ui.HideTargetingArrow();
+			_ui.ClearHighlights();
+		}
+	}
+
+	public void HandleCardClick(CardInstance card)
+	{
+		// 1. Mulligan (bez zmian)
+		if (_currentState == InputState.Mulligan)
+		{
+			ProcessMulliganClick(card);
+			return;
+		}
+
+		// 2. Wybieranie Celu (TO JEST NOWOĹšÄ†)
+		// JeĹ›li jesteĹ›my w trybie celowania i klikniÄ™to kartÄ™...
+		if (_currentState == InputState.TargetingCard || _currentState == InputState.PendingTarget)
+		{
+			// Nie pozwĂłl wybraÄ‡ Ducha jako celu
+			if (_ui.GetGhostUnit() != null && _ui.GetGhostUnit().MyCardData == card) return;
+
+			SubmitTarget(card.InstanceId);
+			return;
+		}
+
+		// 3. Zagrywanie z rÄ™ki (Normal)
+		if (_currentState == InputState.Normal)
+		{
+			if (card.OwnerPlayerId == _playerId && _ui.IsCardInHand(card))
+			{
+				if (card.Definition.Type == CardType.Spell)
+					TryPlayCardFromHand(card, null);
+			}
+		}
+	}
+
+	public void HandleCardDrop(CardInstance card, int lineIdx)
+	{
+		if (_currentState != InputState.Normal) return;
+
+		if (card.Definition.Type == CardType.Unit)
+		{
+			// Sprawdzamy czy Unit wymaga celu (np. Polar Bear)
+			bool needsTarget = HasManualTarget(card);
+			bool hasValidTargets = CheckIfHasValidTargetsOnBoard(card);
+
+			if (needsTarget && hasValidTargets)
+			{
+				// Tryb celowania z Duchem
+				TryPlayCardFromHand(card, lineIdx);
+			}
+			else
+			{
+				// Graj natychmiast
+				OnPlayerCommand?.Invoke(new PlayUnitCommand(_playerId, card.InstanceId, lineIdx));
+			}
+		}
+		else if (card.Definition.Type == CardType.Spell)
+		{
+			TryPlayCardFromHand(card, null);
+		}
+	}
+
+	private void TryPlayCardFromHand(CardInstance card, int? unitLineIdx)
+	{
+		bool needsTarget = HasManualTarget(card);
+
+		// Critical Thinking Fix: HasManualTarget zwrĂłci false, wiÄ™c wejdzie do else -> PlaySpellCommand
+
+		if (needsTarget && CheckIfHasValidTargetsOnBoard(card))
+		{
+			_currentState = InputState.TargetingCard;
+			_selectedCardHand = card;
+			_pendingUnitLineIdx = unitLineIdx;
+
+			// Tworzymy ducha TYLKO jeĹ›li to Unit i mamy liniÄ™
+			if (card.Definition.Type == CardType.Unit && unitLineIdx.HasValue)
+			{
+				_ui.CreateGhostUnit(card, unitLineIdx.Value);
+			}
+
+			_ui.ShowBigMessage("WYBIERZ CEL", 0, Colors.Yellow);
+			_ui.SetCancelButtonVisible(true);
+			_ui.HighlightTargets(GetTargetTypeForCard(card), _playerId);
+		}
+		else
+		{
+			// Zagranie bez celowania (Critical Thinking, Final Mission bez celĂłw itp.)
+			if (card.Definition.Type == CardType.Spell)
+			{
+				OnPlayerCommand?.Invoke(new PlaySpellCommand(_playerId, card.InstanceId));
+			}
+			// Unity bez celu poszĹ‚y w HandleCardDrop, tutaj nic nie robimy
+		}
+	}
+
+	public void CancelTargeting()
+	{
+		_currentState = InputState.Normal;
+		_selectedCardHand = null;
+		_pendingUnitLineIdx = null;
+
+		_ui.RemoveGhostUnit();
+		_ui.HideTargetingArrow();
+		_ui.SetCancelButtonVisible(false);
+		_ui.ClearHighlights();
+		_ui.ShowBigMessage("", 0);
+	}
+
+	private void UpdateTargetingArrow()
+	{
+		Vector2 start = _ui.GetArrowStartPosition();
+		_ui.UpdateTargetingArrow(start, GetViewport().GetMousePosition());
+	}
+
+	private void TrySelectTargetUnderMouse()
+	{
+		var mousePos = GetViewport().GetMousePosition();
+		var targetCard = _ui.FindCardUnderMouse(mousePos);
+
+		if (targetCard != null && targetCard.MyCardData != null)
+		{
+			// Nie pozwĂłl celowaÄ‡ w ducha!
+			if (targetCard == _ui.GetGhostUnit()) return;
+
+			SubmitTarget(targetCard.MyCardData.InstanceId);
+		}
+	}
+
+	private void SubmitTarget(int targetId)
+	{
+		if (_currentState == InputState.TargetingCard)
+		{
+			if (_selectedCardHand.Definition.Type == CardType.Unit)
+			{
+				int line = _pendingUnitLineIdx ?? 0;
+				OnPlayerCommand?.Invoke(new PlayUnitCommand(_playerId, _selectedCardHand.InstanceId, line, targetId));
+			}
+			else if (_selectedCardHand.Definition.Type == CardType.Spell)
+			{
+				OnPlayerCommand?.Invoke(new PlaySpellCommand(_playerId, _selectedCardHand.InstanceId, targetId));
+			}
+
+			// WAĹ»NE: Nie usuwamy Ducha tutaj. Zrobi to UIManager przy aktualizacji stanu (UpdateDisplay),
+			// gdy prawdziwa jednostka pojawi siÄ™ na stole.
+			// _ui.RemoveGhostUnit(); <--- USUNIÄTE
+
+			// Resetujemy tylko stan logiczny, UI wyczyĹ›ci siÄ™ przy UpdateDisplay
+			_currentState = InputState.Normal;
+			_selectedCardHand = null;
+			_ui.HideTargetingArrow();
+			_ui.SetCancelButtonVisible(false);
+			_ui.ClearHighlights();
+			_ui.ShowBigMessage("", 0);
+		}
+		else if (_currentState == InputState.PendingTarget)
+		{
+			OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, targetId));
+
+			_ui.ClearHighlights();
+			_ui.ShowBigMessage("", 0);
+			_ui.HideTargetingArrow();
+		}
+	}
+
+	private void StartPendingResolution(PendingInteraction pending)
+	{
+		if (_currentState == InputState.PendingTarget && _currentPending == pending) return;
+
+		_currentPending = pending;
+		_currentState = InputState.PendingTarget;
+
+		if (pending.RequiredTargetType == TargetType.Choice)
+		{
+			_ui.HideTargetingArrow();
+
+			// --- HEURYSTYKA WYBORU TRYBU ---
+			// JeĹ›li opcji jest duĹĽo (> 4), zakĹ‚adamy, ĹĽe to Tutor (wybĂłr z talii).
+			// Wtedy pobieramy karty z talii gracza i wyĹ›wietlamy je graficznie.
+
+			if (pending.Options.Count > 4)
+			{
+				var deck = _latestGameState.PlayerA.DrawPile.ToList();
+
+				// PokaĹĽ okno
+				_ui.ShowCardSelectionModal(deck, (index) =>
+				{
+					// --- DEBUG START ---
+					GD.Print($"[INPUT] Wybrano kartÄ™ z gridu. Index: {index}");
+					GD.Print($"[INPUT] Karta pod tym indeksem w kliencie: {deck[index].Definition.Name}");
+					GD.Print($"[INPUT] WysyĹ‚am SelectTargetCommand(PlayerId: {_playerId}, TargetId: {index})");
+					// --- DEBUG END ---
+
+					OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, index));
+					_ui.HideChoiceModal();
+				});
+				return;
+			}
+			else
+			{
+				// MaĹ‚o opcji = ZwykĹ‚y Modal (Expectancy)
+
+				// ... (Twoja logika walidacji EnabledStates z poprzedniego kroku) ...
+				var player = _latestGameState.PlayerA;
+				List<bool> optionValidity = new List<bool>();
+				foreach (var opt in pending.Options)
+				{
+					bool isValid = true;
+					if (opt.Contains("Discard", StringComparison.OrdinalIgnoreCase) && player.DiscardPile.Count == 0) isValid = false;
+					else if (opt.Contains("Deck", StringComparison.OrdinalIgnoreCase) && player.DrawPile.Count == 0) isValid = false;
+					optionValidity.Add(isValid);
+				}
+
+				_ui.ShowChoiceModal(pending.Options, (index) =>
+				{
+					OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, index));
+					_ui.HideChoiceModal();
+				}, optionValidity);
+			}
+			return;
+		}
+
+		_ui.ShowBigMessage("WYBIERZ CEL EFEKTU", 0, Colors.Orange);
+		_ui.HighlightTargets(pending.RequiredTargetType, _playerId);
+	}
+
+	// --- HELPERY ---
+	private bool HasManualTarget(CardInstance c)
+	{
+		return c.Definition.Effects.Any(e => e.Actions.Any(a => IsManualTarget(a.Target)));
+	}
+
+	private bool IsManualTarget(TargetType t) =>
+		t == TargetType.TargetEnemyUnit ||
+		t == TargetType.TargetFriendlyUnit ||
+		t == TargetType.SelectedTarget ||
+		t == TargetType.OtherFriendlyUnits;
+
+	private TargetType GetTargetTypeForCard(CardInstance c)
+	{
+		foreach (var e in c.Definition.Effects)
+			foreach (var a in e.Actions)
+				if (IsManualTarget(a.Target)) return a.Target;
+		return TargetType.SelectedTarget;
+	}
+
+	private bool CheckIfHasValidTargetsOnBoard(CardInstance card)
+	{
+		if (_latestGameState == null) return false;
+		foreach (var effect in card.Definition.Effects)
+		{
+			if (effect.Trigger != TriggerType.OnPlayed) continue;
+			var tType = effect.Targeting;
+
+			if (tType == TargetType.Self)
+			{
+				var action = effect.Actions.FirstOrDefault(a => IsManualTarget(a.Target));
+				if (action != null) tType = action.Target;
+			}
+
+			var targets = EffectTargetResolver.GetPotentialTargets(tType, _latestGameState, card.InstanceId);
+			if (targets.Count > 0) return true;
+		}
+		return false;
+	}
+
+	// Mulligan...
+	public void StartMulligan(List<CardInstance> hand)
+	{
+		_currentState = InputState.Mulligan;
+		_mulliganSelection.Clear();
+		_mulliganHandCache = hand;
+		_ui.ToggleMulliganPanel(true);
+		_ui.UpdateMulliganCounter(0, MAX_MULLIGAN_SWAPS);
+		_ui.RenderMulliganCards(hand, _mulliganSelection);
+	}
+	private void ProcessMulliganClick(CardInstance card)
+	{
+		int id = card.InstanceId;
+		if (_mulliganSelection.Contains(id)) _mulliganSelection.Remove(id);
+		else if (_mulliganSelection.Count < MAX_MULLIGAN_SWAPS) _mulliganSelection.Add(id);
+		_ui.UpdateMulliganCounter(_mulliganSelection.Count, MAX_MULLIGAN_SWAPS);
+		_ui.RenderMulliganCards(_mulliganHandCache, _mulliganSelection);
+	}
+	public void ConfirmMulligan()
+	{
+		if (_currentState != InputState.Mulligan) return;
+		var cmd = new ConfirmMulliganCommand(_playerId, new List<int>(_mulliganSelection));
+		OnPlayerCommand?.Invoke(cmd);
+		_ui.ToggleMulliganPanel(false);
+	}
+}
+
+
+
+========================================
+FILE: LibraryCardEntry.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.GodotClient\Scripts\LibraryCardEntry.cs
+========================================
+using Godot;
+using System;
+using CardGame.Core.Cards.Models;
+
+public partial class LibraryCardEntry : VBoxContainer
+{
+    [Export] public Control CardHolder;
+    [Export] public Label CountLabel;
+    [Export] public Button AddBtn;
+    [Export] public Button RemoveBtn;
+
+    public event Action<int> OnAddRequest;
+    public event Action<int> OnRemoveRequest;
+
+    private int _cardId;
+
+    public override void _Ready()
+    {
+        if (AddBtn != null) AddBtn.Pressed += () => OnAddRequest?.Invoke(_cardId);
+        if (RemoveBtn != null) RemoveBtn.Pressed += () => OnRemoveRequest?.Invoke(_cardId);
+    }
+
+    public void Setup(CardInstance card, PackedScene cardScene)
+    {
+        _cardId = card.InstanceId;
+
+        foreach (Node child in CardHolder.GetChildren()) child.QueueFree();
+
+        var cardView = cardScene.Instantiate<CardView>();
+        CardHolder.AddChild(cardView);
+        cardView.Render(card);
+
+        // WaĹĽne: Karta w bibliotece ma pozwalaÄ‡ na Drag&Drop, wiÄ™c Stop.
+        // PoniewaĹĽ usunÄ™liĹ›my _GuiInput z tego skryptu, nie bÄ™dzie konfliktu.
+        cardView.MouseFilter = MouseFilterEnum.Stop;
+    }
+
+    public void UpdateCounter(int current, int max)
+    {
+        if (CountLabel != null)
+        {
+            CountLabel.Text = $"{current} / {max}";
+            CountLabel.Modulate = current == max ? Colors.Green : (current > 0 ? Colors.Yellow : Colors.White);
+        }
+        if (AddBtn != null) AddBtn.Disabled = (current >= max);
+        if (RemoveBtn != null) RemoveBtn.Disabled = (current <= 0);
+    }
+}
+
+
+========================================
+FILE: LineView.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.GodotClient\Scripts\LineView.cs
+========================================
+using Godot;
+using System;
+using CardGame.Core.State.Models;
+using CardGame.Core.Cards.Models;
+
+public partial class LineView : Control
+{
+	[Export] public Label InfoLabel;
+	[Export] public Control EnemySlot;
+	[Export] public Control PlayerSlot;
+
+	[Signal] public delegate void CardDroppedOnLineEventHandler(int cardInstanceId, int lineIndex);
+
+	private int _myIndex;
+
+	public override void _Ready()
+	{
+		MouseFilter = MouseFilterEnum.Stop;
+	}
+
+	// --- ZMIANA: Dodano parametr onClickHandler ---
+	public void Render(Line lineData, PackedScene cardScene, Action<CardView> onClickHandler)
+	{
+		_myIndex = lineData.Index;
+		if (InfoLabel != null) InfoLabel.Text = $"L{_myIndex}";
+
+		ClearSlot(EnemySlot);
+		ClearSlot(PlayerSlot);
+
+		// 2. Wrogowie (GĂłra)
+		if (lineData.Player2Unit != null)
+		{
+			var botUnit = cardScene.Instantiate<CardView>();
+			EnemySlot.AddChild(botUnit);
+			botUnit.Render(lineData.Player2Unit);
+
+			botUnit.MouseFilter = MouseFilterEnum.Stop; // Musi byÄ‡ Stop, ĹĽeby odebraÄ‡ klikniÄ™cie
+			botUnit.Modulate = new Color(1, 0.8f, 0.8f);
+
+			// PODPINAMY KLIKNIÄCIE
+			if (onClickHandler != null) botUnit.OnClicked += onClickHandler;
+		}
+
+		// 3. Gracz (DĂłĹ‚)
+		if (lineData.Player1Unit != null)
+		{
+			var myUnit = cardScene.Instantiate<CardView>();
+			PlayerSlot.AddChild(myUnit);
+			myUnit.Render(lineData.Player1Unit);
+
+			myUnit.MouseFilter = MouseFilterEnum.Stop;
+
+			// PODPINAMY KLIKNIÄCIE
+			if (onClickHandler != null) myUnit.OnClicked += onClickHandler;
+		}
+	}
+
+	private void ClearSlot(Control slot)
+	{
+		if (slot == null) return;
+		foreach (Node child in slot.GetChildren())
+		{
+			// Omijamy Ducha (rozpoznajemy po przezroczystoĹ›ci)
+			if (child is CardView cv && cv.Modulate.A < 0.9f) continue;
+			child.QueueFree();
+		}
+	}
+
+	public override bool _CanDropData(Vector2 atPosition, Variant data)
+	{
+		return data.VariantType == Variant.Type.Int;
+	}
+
+	public override void _DropData(Vector2 atPosition, Variant data)
+	{
+		int cardId = (int)data;
+		EmitSignal(SignalName.CardDroppedOnLine, cardId, _myIndex);
+	}
+}
+
+
+
+========================================
+FILE: MainMenu.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.GodotClient\Scripts\MainMenu.cs
+========================================
+using Godot;
+using System;
+
+public partial class MainMenu : Control
+{
+    [Export] public Button PlayButton;
+    [Export] public Button DeckEditorButton;
+    [Export] public Button QuitButton;
+    [Export(PropertyHint.File, "*.tscn")]
+    public string DeckSelectionEditorPath = "res://Scenes/DeckSelection.tscn";
+
+    [Export(PropertyHint.File, "*.tscn")]
+    public string GameSetupPath = "res://Scenes/GameDeckSelector.tscn";
+    public override void _Ready()
+    {
+        if (PlayButton != null)
+            PlayButton.Pressed += OnPlayPressed;
+
+        if (DeckEditorButton != null)
+            DeckEditorButton.Pressed += OnEditorPressed;
+
+        if (QuitButton != null)
+            QuitButton.Pressed += OnQuitPressed;
+    }
+
+    private void OnPlayPressed()
+    {
+        if (string.IsNullOrEmpty(GameSetupPath))
+        {
+            GD.PrintErr("Brak Ĺ›cieĹĽki do GameSetup w MainMenu!");
+            return;
+        }
+        // Przekierowanie do wyboru talii (GameDeckSelector), a nie bezpoĹ›rednio do gry
+        GetTree().ChangeSceneToFile(GameSetupPath);
+    }
+
+    private void OnEditorPressed()
+    {
+        if (string.IsNullOrEmpty(DeckSelectionEditorPath))
+        {
+            GD.PrintErr("Brak Ĺ›cieĹĽki do DeckSelectionEditor w MainMenu!");
+            return;
+        }
+        GetTree().ChangeSceneToFile(DeckSelectionEditorPath);
+    }
+
+    private void OnQuitPressed()
+    {
+        GD.Print("Wychodzenie z gry...");
+        GetTree().Quit();
+    }
+}
+
+
+========================================
+FILE: UIManager.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.GodotClient\Scripts\UIManager.cs
+========================================
+using Godot;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.State.Models;
+using CardGame.Core.State.Enums;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.Events;
+
+public partial class UIManager : Node
+{
+	// --- REFERENCJE DO SCENY ---
+	[ExportGroup("Kontenery")]
+	[Export] public Control HandContainer;
+	[Export] public Control BoardContainer;
+	[Export] public Control EnemyHandContainer;
+	[Export] public Control VFXContainer;
+
+	[ExportGroup("UI Elementy")]
+	[Export] public Button EndTurnButton;
+	[Export] public Button CancelSpellButton;
+	[Export] public Button RestartButton;
+	[Export] public Line2D TargetingArrow;
+
+	[ExportSubgroup("Etykiety")]
+	[Export] public Label PlayerHpLabel;
+	[Export] public Label PlayerManaLabel;
+	[Export] public Label EnemyHpLabel;
+	[Export] public Label EnemyManaLabel;
+
+	[ExportGroup("System PowiadomieĹ„")]
+	[Export] public Control NotificationLayer;
+	[Export] public Control MessagePanel;
+	[Export] public Label MessageLabel;
+
+	[ExportGroup("Szablony")]
+	[Export] public PackedScene CardSceneTemplate;
+	[Export] public PackedScene LineSceneTemplate;
+	[Export] public PackedScene ChoiceModalScene;
+	[ExportGroup("Mulligan UI")]
+	[Export] public Control MulliganPanel;
+	[Export] public Control MulliganCardsContainer;
+	[Export] public Button ConfirmMulliganButton;
+	[Export] public Label MulliganCounterLabel;
+
+	
+	
+
+	// --- NOWE: GHOST UNIT ---
+	private CardView _ghostUnit;
+	private int _ghostLineIdx = -1;
+	public CardView GetGhostUnit() => _ghostUnit;
+
+
+	// --- ZDARZENIA UI ---
+	public event Action<CardView> OnCardClicked;
+	public event Action OnEndTurnClicked;
+	public event Action OnRestartClicked;
+	public event Action OnCancelSpellClicked;
+	public event Action OnConfirmMulliganClicked;
+	private ChoiceModal _choiceModalInstance;
+
+	private GameState _lastRenderedState;
+	private Tween _activeMessageTween;
+
+	public override void _Ready()
+	{
+		// Konfiguracja poczÄ…tkowa
+		if (NotificationLayer != null)
+		{
+			NotificationLayer.Visible = true;
+			NotificationLayer.MouseFilter = Control.MouseFilterEnum.Ignore;
+		}
+		if (MessagePanel != null)
+		{
+			MessagePanel.Visible = false;
+			MessagePanel.PivotOffset = MessagePanel.Size / 2;
+		}
+		if (TargetingArrow != null) TargetingArrow.Visible = false;
+
+		if (EndTurnButton != null) EndTurnButton.Pressed += () => OnEndTurnClicked?.Invoke();
+		if (RestartButton != null) RestartButton.Pressed += () => OnRestartClicked?.Invoke();
+		if (CancelSpellButton != null) CancelSpellButton.Pressed += () => OnCancelSpellClicked?.Invoke();
+
+		SetCancelButtonVisible(false);
+		if (MulliganPanel != null) MulliganPanel.Visible = false;
+		if (ConfirmMulliganButton != null)
+			ConfirmMulliganButton.Pressed += () => OnConfirmMulliganClicked?.Invoke();
+
+		// --- INICJALIZACJA MODALA ---
+		if (ChoiceModalScene != null && NotificationLayer != null)
+		{
+			var instance = ChoiceModalScene.Instantiate();
+			_choiceModalInstance = instance as ChoiceModal;
+
+			if (_choiceModalInstance != null)
+			{
+				NotificationLayer.AddChild(_choiceModalInstance);
+				// TO JEST KLUCZOWE:
+				_choiceModalInstance.Visible = false;
+			}
+		}
+	}
+
+	// --- PUBLICZNE API (Metody uĹĽywane przez InputController i GameBootstrap) ---
+
+	public void CreateGhostUnit(CardInstance card, int lineIdx)
+	{
+		if (BoardContainer == null || CardSceneTemplate == null) return;
+
+		RemoveGhostUnit();
+
+		if (lineIdx >= 0 && lineIdx < BoardContainer.GetChildCount())
+		{
+			var lineView = BoardContainer.GetChild(lineIdx) as LineView;
+
+			// Sprawdzamy czy LineView ma przypisany PlayerSlot
+			if (lineView != null && lineView.PlayerSlot != null)
+			{
+				_ghostUnit = CardSceneTemplate.Instantiate<CardView>();
+
+				// Dodajemy ducha do dolnego slotu
+				// CenterContainer sam wycentruje go idealnie na Ĺ›rodku dolnej poĹ‚owy
+				lineView.PlayerSlot.AddChild(_ghostUnit);
+
+				_ghostUnit.Render(card);
+				_ghostUnit.Modulate = new Color(1, 1, 1, 0.5f); // PĂłĹ‚przezroczysty
+				_ghostUnit.MouseFilter = Control.MouseFilterEnum.Ignore;
+
+				_ghostLineIdx = lineIdx;
+			}
+		}
+	}
+
+	public void RemoveGhostUnit()
+	{
+		if (_ghostUnit != null)
+		{
+			// PrĂłba znalezienia i usuniÄ™cia spacera
+			var parent = _ghostUnit.GetParent();
+			if (parent != null)
+			{
+				var spacer = parent.GetNodeOrNull("GhostSpacer");
+				if (spacer != null) spacer.QueueFree();
+			}
+
+			_ghostUnit.QueueFree();
+			_ghostUnit = null;
+			_ghostLineIdx = -1;
+		}
+	}
+	public Vector2 GetArrowStartPosition()
+	{
+		if (_ghostUnit != null && IsInstanceValid(_ghostUnit))
+		{
+			return _ghostUnit.GetGlobalRect().GetCenter();
+		}
+		return new Vector2(GetViewport().GetVisibleRect().Size.X / 2, GetViewport().GetVisibleRect().Size.Y - 100);
+	}
+
+	public void ShowChoiceModal(IEnumerable<string> options, Action<int> onSelected)
+	{
+		if (_choiceModalInstance == null) return;
+		_choiceModalInstance.SetCallback(onSelected);
+		_choiceModalInstance.ShowOptions(options);
+	}
+	public void ShowCardSelectionModal(List<CardInstance> cards, Action<int> onSelected)
+	{
+		if (_choiceModalInstance == null) return;
+
+		// DEBUG: SprawdĹş czy mamy szablon
+		if (CardSceneTemplate == null) GD.PrintErr("[UI] CardSceneTemplate is missing in UIManager!");
+
+		_choiceModalInstance.SetCallback(onSelected);
+		_choiceModalInstance.ShowCardGrid(cards, CardSceneTemplate);
+	}
+	public void HideChoiceModal()
+	{
+		if (_choiceModalInstance != null) _choiceModalInstance.HideModal();
+	}
+
+	public void HighlightTargets(TargetType type, int playerId)
+	{
+		var allViews = GetAllCardViewsOnBoard();
+		ClearHighlights();
+
+		foreach (var view in allViews)
+		{
+			if (view == _ghostUnit) continue;
+			if (view.MyCardData == null) continue;
+
+			int owner = view.MyCardData.OwnerPlayerId;
+			bool isFriendly = (owner == playerId);
+			bool match = false;
+
+			switch (type)
+			{
+				case TargetType.TargetEnemyUnit: match = !isFriendly; break;
+				case TargetType.TargetFriendlyUnit: match = isFriendly; break;
+				case TargetType.SelectedTarget: match = true; break;
+				case TargetType.OtherFriendlyUnits: match = isFriendly; break;
+			}
+
+			if (match)
+			{
+				view.SetHighlight(true, isFriendly ? Colors.Green : Colors.Red);
+			}
+		}
+	}
+
+	// Ta metoda byĹ‚a zdublowana jako HighlightValidTargets - usuwamy duplikat, zostawiamy tÄ™
+	public void HighlightValidTargets(CardInstance spell, int playerId)
+	{
+		// KompatybilnoĹ›Ä‡ wsteczna - delegujemy do nowej logiki (uproszczone)
+		// Lepiej uĹĽywaÄ‡ HighlightTargets(TargetType)
+		HighlightTargets(TargetType.SelectedTarget, playerId);
+	}
+
+	public void ClearHighlights()
+	{
+		var allViews = GetAllCardViewsOnBoard();
+		foreach (var view in allViews)
+		{
+			view.SetHighlight(false, Colors.White);
+		}
+	}
+
+	public bool IsCardInHand(CardInstance card)
+	{
+		if (HandContainer == null) return false;
+		return HandContainer.GetChildren()
+			.OfType<CardView>()
+			.Any(cv => cv.MyCardData?.InstanceId == card.InstanceId);
+	}
+	private void RenderBoard(GameState state)
+	{
+		if (BoardContainer == null || LineSceneTemplate == null) return;
+
+		if (BoardContainer.GetChildCount() < 4)
+		{
+			for (int i = BoardContainer.GetChildCount(); i < 4; i++)
+			{
+				BoardContainer.AddChild(LineSceneTemplate.Instantiate<LineView>());
+			}
+		}
+
+		int lineIdx = 0;
+		foreach (Node child in BoardContainer.GetChildren())
+		{
+			if (child is LineView lineView && lineIdx < state.Board.Lines.Count)
+			{
+				// --- ZMIANA: Przekazujemy lambda, ktĂłra odpali zdarzenie OnCardClicked ---
+				lineView.Render(
+					state.Board.Lines[lineIdx],
+					CardSceneTemplate,
+					(clickedCardView) => OnCardClicked?.Invoke(clickedCardView)
+				);
+				lineIdx++;
+			}
+		}
+	}
+	public void UpdateDisplay(GameState currentState, int playerId)
+	{
+		if (currentState == null) return;
+
+		// LOGIKA CZYSZCZENIA DUCHA:
+		// JeĹ›li mieliĹ›my ducha na linii X, a w nowym stanie na linii X pojawiĹ‚a siÄ™ prawdziwa jednostka gracza,
+		// to moĹĽemy usunÄ…Ä‡ ducha, bo RenderBoard zaraz narysuje prawdziwÄ… kartÄ™.
+		if (_ghostUnit != null && _ghostLineIdx != -1)
+		{
+			var realUnit = currentState.Board.Lines[_ghostLineIdx].Player1Unit; // ZakĹ‚adamy Player 1
+			if (realUnit != null)
+			{
+				RemoveGhostUnit();
+			}
+			else
+			{
+				// JeĹ›li wciÄ…ĹĽ celujemy (nie ma jednostki), nie odĹ›wieĹĽaj tej jednej linii, ĹĽeby duch nie zniknÄ…Ĺ‚
+				// Ale RenderBoard i tak czyĹ›ci kontenery...
+				// RozwiÄ…zanie: PozwĂłl RenderBoard wyczyĹ›ciÄ‡ wszystko, a potem przywrĂłÄ‡ Ducha?
+				// Nie, proĹ›ciej: JeĹ›li jest duch, po prostu nie rĂłb RenderBoard.
+				// Gra i tak jest "zablokowana" w trybie celowania.
+				return;
+			}
+		}
+
+		if (_lastRenderedState != null) CheckPhaseChange(currentState, _lastRenderedState, playerId);
+		UpdateStats(currentState, playerId);
+		RenderHand(currentState, playerId);
+		RenderEnemyHand(currentState, playerId);
+		RenderBoard(currentState);
+
+		_lastRenderedState = currentState;
+	}
+
+	public void ToggleMulliganPanel(bool visible)
+	{
+		if (MulliganPanel != null) MulliganPanel.Visible = visible;
+	}
+
+	public void UpdateMulliganCounter(int current, int max)
+	{
+		if (MulliganCounterLabel != null)
+			MulliganCounterLabel.Text = $"Do wymiany: {current} / {max}";
+	}
+
+	public void RenderMulliganCards(IEnumerable<CardInstance> cards, List<int> selectedIds)
+	{
+		if (MulliganCardsContainer == null) return;
+
+		foreach (Node child in MulliganCardsContainer.GetChildren()) child.QueueFree();
+
+		foreach (var card in cards)
+		{
+			var view = CardSceneTemplate.Instantiate<CardView>();
+			MulliganCardsContainer.AddChild(view);
+			view.Render(card);
+
+			bool isSelected = selectedIds.Contains(card.InstanceId);
+			view.SetMulliganSelected(isSelected);
+
+			view.OnClicked += (v) => OnCardClicked?.Invoke(v);
+		}
+	}
+
+	public void UpdateTargetingArrow(Vector2 start, Vector2 end)
+	{
+		if (TargetingArrow != null)
+		{
+			TargetingArrow.Visible = true;
+			TargetingArrow.ClearPoints();
+			TargetingArrow.AddPoint(start);
+			TargetingArrow.AddPoint(end);
+		}
+	}
+
+	public void HideTargetingArrow()
+	{
+		if (TargetingArrow != null) TargetingArrow.Visible = false;
+	}
+
+	public void SetCancelButtonVisible(bool visible)
+	{
+		if (CancelSpellButton != null) CancelSpellButton.Visible = visible;
+	}
+
+	public void SetEndTurnEnabled(bool enabled)
+	{
+		if (EndTurnButton != null) EndTurnButton.Disabled = !enabled;
+	}
+
+	public void ShowFloatingText(string text, Vector2 pos, Color color)
+	{
+		if (VFXContainer == null) return;
+		var label = new Label();
+		label.Text = text;
+		label.Position = pos;
+		label.Modulate = color;
+		label.AddThemeFontSizeOverride("font_size", 48);
+		label.AddThemeColorOverride("font_outline_color", Colors.Black);
+		label.AddThemeConstantOverride("outline_size", 8);
+		VFXContainer.AddChild(label);
+
+		var tween = CreateTween();
+		tween.SetParallel(true);
+		tween.TweenProperty(label, "position", pos + new Vector2(0, -120), 1.5f).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
+		tween.TweenProperty(label, "modulate:a", 0.0f, 1.5f).SetEase(Tween.EaseType.In);
+		tween.Chain().TweenCallback(Callable.From(label.QueueFree));
+	}
+
+	public CardView FindCardUnderMouse(Vector2 mousePos)
+	{
+		if (BoardContainer == null) return null;
+		return FindCardUnderMouseRecursive(BoardContainer, mousePos);
+	}
+
+	public void ShowBigMessage(string text, float duration = 0f, Color? color = null)
+	{
+		if (MessagePanel == null || MessageLabel == null) return;
+
+		if (_activeMessageTween != null && _activeMessageTween.IsValid()) _activeMessageTween.Kill();
+
+		MessageLabel.Text = text;
+		MessageLabel.Modulate = color ?? Colors.White;
+		MessagePanel.Visible = true;
+		MessagePanel.Modulate = new Color(1, 1, 1, 1);
+		MessagePanel.Scale = Vector2.One;
+
+		if (duration > 0f)
+		{
+			_activeMessageTween = CreateTween();
+			_activeMessageTween.TweenProperty(MessagePanel, "scale", Vector2.One, 0.3f)
+				.SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.Out);
+			_activeMessageTween.TweenInterval(duration);
+			_activeMessageTween.TweenProperty(MessagePanel, "modulate:a", 0.0f, 0.5f);
+			_activeMessageTween.TweenCallback(Callable.From(() => MessagePanel.Visible = false));
+		}
+		else
+		{
+			MessagePanel.Scale = Vector2.One;
+		}
+	}
+
+	public void ShowGameOverScreen(int? winnerId, int playerId, int botId)
+	{
+		string msg = "REMIS";
+		Color col = Colors.Gray;
+		if (winnerId == playerId) { msg = "ZWYCIÄSTWO!"; col = Colors.Green; }
+		else if (winnerId == botId) { msg = "PORAĹ»KA..."; col = Colors.Red; }
+
+		ShowBigMessage(msg, 0, col);
+
+		if (RestartButton != null) RestartButton.Visible = true;
+		if (EndTurnButton != null) EndTurnButton.Disabled = true;
+
+		HideTargetingArrow();
+		SetCancelButtonVisible(false);
+	}
+
+	public void HandleVisualEvents(IEnumerable<IGameEvent> events, int playerId)
+	{
+		foreach (var e in events)
+		{
+			if (e is UnitDamagedEvent ude)
+			{
+				string text = $"-{ude.Amount}";
+				Vector2 pos = FindVisualPosition(ude.Unit?.InstanceId ?? -1, playerId);
+				ShowFloatingText(text, pos, Colors.Red);
+			}
+		}
+	}
+
+	// --- HELPERY PRYWATNE ---
+
+	private List<CardView> GetAllCardViewsOnBoard()
+	{
+		var list = new List<CardView>();
+		if (BoardContainer != null) FindCardViewsRecursive(BoardContainer, list);
+		return list;
+	}
+
+	private void FindCardViewsRecursive(Node node, List<CardView> list)
+	{
+		if (node is CardView cv) list.Add(cv);
+		foreach (Node child in node.GetChildren()) FindCardViewsRecursive(child, list);
+	}
+
+	private CardView FindCardUnderMouseRecursive(Node parent, Vector2 mousePos)
+	{
+		foreach (Node child in parent.GetChildren())
+		{
+			if (child is CardView cv && cv.GetGlobalRect().HasPoint(mousePos)) return cv;
+			var result = FindCardUnderMouseRecursive(child, mousePos);
+			if (result != null) return result;
+		}
+		return null;
+	}
+
+	private Vector2 FindVisualPosition(int cardId, int playerId)
+	{
+		if (cardId == -1) // Bohater
+			return new Vector2(GetViewport().GetVisibleRect().Size.X / 2, GetViewport().GetVisibleRect().Size.Y / 2);
+
+		Vector2 fallback = GetViewport().GetVisibleRect().Size.X > 0 ? GetViewport().GetVisibleRect().Size / 2 : new Vector2(500, 300);
+		if (BoardContainer == null) return fallback;
+
+		var targetNode = FindCardViewRecursiveById(BoardContainer, cardId);
+		if (targetNode != null)
+			return targetNode.GetGlobalRect().GetCenter() + new Vector2(0, -50);
+
+		return fallback;
+	}
+
+	private CardView FindCardViewRecursiveById(Node parent, int cardId)
+	{
+		foreach (Node child in parent.GetChildren())
+		{
+			if (child is CardView cv && cv.MyCardData != null && cv.MyCardData.InstanceId == cardId)
+				return cv;
+			var res = FindCardViewRecursiveById(child, cardId);
+			if (res != null) return res;
+		}
+		return null;
+	}
+
+	private void UpdateStats(GameState state, int playerId)
+	{
+		var p1 = state.GetPlayer(playerId);
+		var p2 = state.GetOpponent(playerId);
+
+		if (PlayerHpLabel != null) PlayerHpLabel.Text = $"HP: {p1.Health}";
+		if (PlayerManaLabel != null) PlayerManaLabel.Text = $"Krew: {p1.CurrentBlood}/{p1.MaxBlood}";
+		if (EnemyHpLabel != null) EnemyHpLabel.Text = $"WrĂłg HP: {p2.Health}";
+		if (EnemyManaLabel != null) EnemyManaLabel.Text = $"Krew: {p2.CurrentBlood}/{p2.MaxBlood}";
+	}
+
+	private void RenderHand(GameState state, int playerId)
+	{
+		if (HandContainer == null || CardSceneTemplate == null) return;
+
+		var p1 = state.GetPlayer(playerId);
+
+		foreach (Node child in HandContainer.GetChildren()) child.QueueFree();
+
+		foreach (var card in p1.Hand)
+		{
+			var cardVis = CardSceneTemplate.Instantiate<CardView>();
+			HandContainer.AddChild(cardVis);
+			cardVis.Render(card);
+
+			cardVis.OnClicked += (cv) => OnCardClicked?.Invoke(cv);
+
+			if (card.CurrentStats.BloodCost > p1.CurrentBlood || state.ActivePlayerId != playerId)
+				cardVis.Modulate = new Color(0.5f, 0.5f, 0.5f);
+			else
+				cardVis.Modulate = new Color(1, 1, 1);
+		}
+	}
+
+	private void RenderEnemyHand(GameState state, int playerId)
+	{
+		if (EnemyHandContainer == null || CardSceneTemplate == null) return;
+
+		var p2 = state.GetOpponent(playerId);
+
+		foreach (Node child in EnemyHandContainer.GetChildren()) child.QueueFree();
+		for (int i = 0; i < p2.Hand.Count; i++)
+		{
+			var cardBack = CardSceneTemplate.Instantiate<CardView>();
+			EnemyHandContainer.AddChild(cardBack);
+			cardBack.RenderCardBack();
+			cardBack.Scale = new Vector2(0.6f, 0.6f);
+		}
+	}
+	public void ShowChoiceModal(IEnumerable<string> options, Action<int> onSelected, List<bool> enabledStates = null)
+	{
+		if (_choiceModalInstance == null) return;
+		_choiceModalInstance.SetCallback(onSelected);
+		_choiceModalInstance.ShowOptions(options, enabledStates);
+	}
+	private void CheckPhaseChange(GameState current, GameState last, int playerId)
+	{
+		if (current.TurnNumber > last.TurnNumber)
+		{
+			ShowBigMessage("âš” FAZA WALKI âš”", 1.5f, new Color(1, 0.2f, 0.2f));
+		}
+
+		if (current.CurrentPhase != last.CurrentPhase || current.ActivePlayerId != last.ActivePlayerId)
+		{
+			if (current.CurrentPhase == GamePhase.Combat) return;
+
+			string who = current.ActivePlayerId == playerId ? "TY" : "WRĂ“G";
+			string msg = "";
+			Color col = current.ActivePlayerId == playerId ? new Color(0.2f, 1f, 0.4f) : new Color(1f, 0.6f, 0.2f);
+
+			switch (current.CurrentPhase)
+			{
+				case GamePhase.Mulligan: msg = "WYMIANA KART"; break;
+				case GamePhase.UnitOnly: msg = $"FAZA 1: JEDNOSTKI ({who})"; break;
+				case GamePhase.UnitAndAction: msg = $"FAZA 2: MIESZANA ({who})"; break;
+				case GamePhase.ActionOnly: msg = $"FAZA 3: ZAKLÄCIA ({who})"; break;
+			}
+
+			if (!string.IsNullOrEmpty(msg)) ShowBigMessage(msg, 1.5f, col);
+		}
+	}
+}
+

@@ -188,7 +188,7 @@ namespace CardGame.Core.Cards.Logic
         #endregion
 
         #region Private Methods
-        private static int GetOwner(GameState state, int instanceId, IGameEvent? contextEvent = null)
+        public static int GetOwner(GameState state, int instanceId, IGameEvent? contextEvent = null)
         {
             // 1. Priority: Check the context event (Deaths/Sacrifices)
             if (contextEvent is UnitDiedEvent unitDiedEvent && unitDiedEvent.Unit.InstanceId == instanceId)

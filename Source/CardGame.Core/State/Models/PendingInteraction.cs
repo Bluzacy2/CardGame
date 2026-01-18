@@ -28,11 +28,14 @@ namespace CardGame.Core.State.Models
         /// Gets the type of target the UI should look for.
         /// </summary>
         public TargetType RequiredTargetType { get; }
+        
+        public int PlayerIdWhoChooses { get; }
 
         /// <summary>
         /// Gets the list of options available for this interaction.
         /// </summary>
         public IReadOnlyList<string> Options { get; }
+
         #endregion
 
         #region Constructor
@@ -44,12 +47,13 @@ namespace CardGame.Core.State.Models
         /// <param name="actionIndex">The index of the action within the effect.</param>
         /// <param name="targetType">The type of target the UI should look for.</param>
         /// <param name="options">Optional list of options for the interaction.</param>
-        public PendingInteraction(int sourceId, int effectIndex, int actionIndex, TargetType targetType, IEnumerable<string>? options = null)
+        public PendingInteraction(int sourceId, int effectIndex, int actionIndex, TargetType targetType, int playerIdWhoChooses, IEnumerable<string>? options = null)
         {
             SourceCardInstanceId = sourceId;
             EffectIndex = effectIndex;
             ActionIndex = actionIndex;
             RequiredTargetType = targetType;
+            PlayerIdWhoChooses = playerIdWhoChooses;
             Options = options != null ? new List<string>(options) : new List<string>();
         }
         #endregion

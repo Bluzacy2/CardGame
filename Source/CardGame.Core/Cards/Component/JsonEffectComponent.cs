@@ -54,7 +54,7 @@ namespace CardGame.Core.Cards.Components.Implementations
                 !(evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1))
             {
                 return state.With(pendingInteraction: new PendingInteraction(
-                    _sourceId, _effectIndex, -1, TargetType.Choice, _data.ChoiceLabels));
+                    _sourceId, _effectIndex, -1, TargetType.Choice, evt.SourcePlayerId, _data.ChoiceLabels));
             }
             
             return ResolveFromIndex(evt, state, context, 0);
@@ -128,6 +128,7 @@ namespace CardGame.Core.Cards.Components.Implementations
         /// <returns>The updated game state after action execution.</returns>
         private GameState ExecuteAction(GameState state, GameContext context, ActionData action, IGameEvent evt, int actionIdx)
         {
+            int ownerId = EffectTargetResolver.GetOwner(state, _sourceId, evt);
             var targetType = action.Target;
             
             if ((targetType == TargetType.SelectedTarget || targetType == TargetType.Self) && 
@@ -168,7 +169,7 @@ namespace CardGame.Core.Cards.Components.Implementations
                         state.With(clearPending: true), context, action, autoResolved, _sourceId, evt);
                 }
 
-                return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, actionIdx, targetType));
+                return state.With(pendingInteraction: new PendingInteraction(_sourceId, _effectIndex, actionIdx, targetType, ownerId));
             }
 
             return context.ActionRegistry.GetHandler(action.Type).Execute(

@@ -39,6 +39,7 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             int sourceId,
             IGameEvent gameEvent)
         {
+            int choosingPlayerId = EffectTargetResolver.GetOwner(state, sourceId, gameEvent);
             var player = targets.TargetPlayer ?? state.GetPlayer(gameEvent.SourcePlayerId);
 
             // 1. CHECK IF THIS IS A RESPONSE TO A PLAYER CHOICE
@@ -84,6 +85,7 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                     0, // Effect Index
                     0, // Action Index
                     TargetType.Choice,
+                    choosingPlayerId,
                     options));
         }
     }

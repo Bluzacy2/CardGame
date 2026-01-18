@@ -31,7 +31,13 @@ namespace CardGame.Core.StateMachine.Phases
         /// <returns>True only for EndPhaseCommand, false for all other commands.</returns>
         public bool IsCommandAllowed(IGameCommand command, GameState state)
         {
-            return command is EndPhaseCommand || command is SelectTargetCommand;
+            if (command is SelectTargetCommand stc)
+            {
+
+                return state.PendingInteraction != null &&
+                       stc.PlayerId == state.PendingInteraction.PlayerIdWhoChooses;
+            }
+            return command is EndPhaseCommand;
         }
 
         /// <summary>

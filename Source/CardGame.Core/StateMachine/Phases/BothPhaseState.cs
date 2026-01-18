@@ -30,7 +30,12 @@ namespace CardGame.Core.StateMachine.Phases
         public bool IsCommandAllowed(IGameCommand command, GameState state)
         {
             // Always allow target selection commands (for resolving pending interactions)
-            if (command is SelectTargetCommand) return true;
+            if (command is SelectTargetCommand stc)
+            {
+
+                return state.PendingInteraction != null &&
+                       stc.PlayerId == state.PendingInteraction.PlayerIdWhoChooses;
+            }
 
             // Allow unit playing, spell playing, or phase ending commands for the active player
             return command.PlayerId == state.ActivePlayerId &&

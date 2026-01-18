@@ -49,7 +49,10 @@ namespace CardGame.Core.Commands.Implementations
         public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
         {
             var pendingInteraction = currentState.PendingInteraction;
-            if (pendingInteraction == null) return currentState;
+            if (pendingInteraction == null || PlayerId != pendingInteraction.PlayerIdWhoChooses)
+            {
+                return currentState;
+            }
 
             var sourceCard = currentState.SpellStack.FirstOrDefault(card => card.InstanceId == pendingInteraction.SourceCardInstanceId)
                           ?? currentState.Board.GetAllUnits().FirstOrDefault(unit => unit.InstanceId == pendingInteraction.SourceCardInstanceId)

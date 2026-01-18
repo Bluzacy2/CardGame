@@ -142,7 +142,7 @@
 	"Attack": 2,
 	"Health": 3,
 	"Keywords": [ "Armored" ], 
-	"Description": "Armored."
+	"Description": ""
   },
 
   {
@@ -310,7 +310,7 @@
 	"KeywordParams": {
 	  "SplashDamage": 3
 	},
-	"Description": "Splash Damage 3. Burn 1."
+	"Description": ""
   },
 
   {
@@ -376,7 +376,7 @@
 	"Health": 2,
 	"Keywords": [ "Armored" ],
 	"KeywordParams": { "Armored": 2 },
-	"Description": "Armored 2. When dealing damage to a unit: Deal 2 to Enemy Hero.",
+	"Description": "When dealing damage to a unit: Deal 2 to Enemy Hero.",
 	"Effects": [
 	  {
 		"Trigger": "OnDamagedEnemyUnit",
@@ -607,7 +607,7 @@
 	"Attack": 4,
 	"Health": 7,
 	"Keywords": [ "Stunned" ],
-	"Description": "Stunned."
+	"Description": ""
   },
 
   {
@@ -619,7 +619,7 @@
 	"Attack": 3,
 	"Health": 1,
 	"Keywords": [ "SoulGuard" ],
-	"Description": "SoulGuard."
+	"Description": ""
   },
 
   {
@@ -649,7 +649,7 @@
 	"Attack": 3,
 	"Health": 3,
 	"Keywords": [ "SoulGuard" ],
-	"Description": "Whenever a Friendly Unit is Destroyed: Deal 3 damage to the Enemy Hero. SoulGuard.",
+	"Description": "Whenever a Friendly Unit is Destroyed: Deal 3 damage to the Enemy Hero.",
 	"Effects": [
 	  {
 		"Trigger": "OnFriendlyUnitDied",
@@ -686,7 +686,7 @@
 	"Subtypes": ["Monster"],
 	"Cost": 1, "Attack": 4, "Health": 1,
 	"Keywords": ["Burning"],
-	 "Description": "Burning."
+	"Description": ""
   },
 
   {
@@ -695,6 +695,7 @@
 	"Type": "Unit",
 	"Subtypes": ["Monster"],
 	"Cost": 2, "Attack": 3, "Health": 1,
+	"Description": "When Played: Sacrificed a Friend and Both Heroes Draw 2.",
 	"Effects": [{
 	  "Trigger": "OnPlayed",
 	  "Targeting": "TargetFriendlyUnit",
@@ -712,6 +713,7 @@
 	"Type": "Unit",
 	"Subtypes": ["Animal", "Monster"],
 	"Cost": 1, "Attack": 2, "Health": 2,
+	"Description": "When Sacrificed: Gain 1 Blood and Draw 1.",
 	"Effects": [{
 	  "Trigger": "OnSacrificed",
 	  "Actions": [
@@ -725,9 +727,10 @@
 	"Id": 41,
 	"Name": "Pegasus",
 	"Type": "Unit",
-	"Subtypes": ["Animal", "Mystical"],
+	"Subtypes": ["Animal"],
 	"Cost": 3, "Attack": 3, "Health": 2,
 	"Keywords": ["Flying"],
+	"Description": "When Played: Doa a Bonus Attack.",
 	"Effects": [{
 	  "Trigger": "OnPlayed",
 	  "Actions": [{ "Type": "BonusAttack", "Target": "Self" }]
@@ -778,7 +781,7 @@
 	"Cost": 1, "Attack": 1, "Health": 2,
 	"Keywords": ["SplashDamage"],
 	"KeywordParams": { "SplashDamage": 1 },
-	"Description": "Splash Damage 1."
+	"Description": ""
   },
   {
   "Id": 45,
@@ -1027,7 +1030,7 @@
 	"Health": 5,
 	"Keywords": ["SoulGuard", "Unkillable", "Armored", "Flying"],
 	"KeywordParams": { "Armored": 2 },
-	"Description": "SoulGuard. Unkillable. Armored. Flying."
+	"Description": ""
   },
   {
 	"Id": 56,
@@ -1097,7 +1100,7 @@
 	"Attack": 2,
 	"Health": 2,
 	"Keywords": ["Flying"],
-	"Description": "Flying."
+	"Description": ""
   },
   {
 	"Id": 60,
@@ -1111,7 +1114,7 @@
 	"KeywordParams": {
 	  "SplashDamage": 3
 	},
-	"Description": "Splash Damage 3.",
+	"Description": "While in Play: Enemy Spells cost 6 more.",
 	"Effects": [
 	{
 	  "Trigger": "Passive",
@@ -1154,7 +1157,7 @@
 	"Type": "Unit",
 	"Subtypes": ["Monster", "Token"],
 	"Cost": 1, "Attack": 1, "Health": 1,
-	"Description": "Two Loyal Souldiers and One Royale Ghost to rule them all."
+	"Description": ""
   },
   {
   "Id": 902,
@@ -1199,7 +1202,7 @@
   ]
 },
   {
-	"Id": 904, "Name": "Traces of Sylvian", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 3, "Health": 4 },
-  { "Id": 905, "Name": "Traces of Almer", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 4, "Health": 2 },
-  { "Id": 906, "Name": "Traces of Grogorth", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 5, "Health": 1 }
+	"Id": 904, "Name": "Traces of Sylvian", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 3, "Health": 4, "Description": "" },
+  { "Id": 905, "Name": "Traces of Almer", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 4, "Health": 2, "Description": "" },
+  { "Id": 906, "Name": "Traces of Grogorth", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 5, "Health": 1, "Description": "" }
 ]
