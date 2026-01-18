@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2sbllk8p4xlm"]
+[gd_scene load_steps=11 format=3 uid="uid://c2sbllk8p4xlm"]
 
 [ext_resource type="Script" uid="uid://bubc2h83dahnf" path="res://Scripts/DeckEditor.cs" id="1_370mm"]
 [ext_resource type="PackedScene" uid="uid://b2cbjoaeymfw0" path="res://Scenes/Card.tscn" id="2_ltrq1"]
 [ext_resource type="PackedScene" uid="uid://b0awhxq8s0xsf" path="res://Scenes/CardSlot.tscn" id="3_ocuxc"]
 [ext_resource type="PackedScene" uid="uid://omaj0f3o0gfk" path="res://Scenes/LibraryCardEntry.tscn" id="4_ltrq1"]
+[ext_resource type="FontFile" uid="uid://mf3uygscjewx" path="res://Assets/Fonts/Ari-CBold.ttf" id="5_ocuxc"]
 
 [sub_resource type="Gradient" id="Gradient_ltrq1"]
 colors = PackedColorArray(0.25490198, 0.25490198, 0.25490198, 0, 0.25524214, 0.25524214, 0.25524214, 0.6)
@@ -18,21 +19,29 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocuxc"]
-bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i838a"]
-bg_color = Color(0.3137255, 0.3137255, 0.3137255, 1)
+bg_color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="DeckEditor" type="Control" node_paths=PackedStringArray("LibraryGrid", "DeckSlotsGrid", "DeckNameInput", "CardCountLabel", "SaveButton", "ExitButton")]
 layout_mode = 3
@@ -53,6 +62,15 @@ CardScene = ExtResource("2_ltrq1")
 SlotScene = ExtResource("3_ocuxc")
 LibraryEntryScene = ExtResource("4_ltrq1")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="MainLayout" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -66,6 +84,7 @@ mouse_filter = 2
 [node name="LibraryLabel" type="Label" parent="MainLayout"]
 layout_mode = 2
 theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ocuxc")
 theme_override_font_sizes/font_size = 32
 text = "Dostępne Karty"
 horizontal_alignment = 1
@@ -83,7 +102,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 30
-columns = 10
+columns = 8
 
 [node name="FadeOverlay" type="TextureRect" parent="MainLayout"]
 layout_mode = 2
@@ -95,17 +114,27 @@ layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
 
+[node name="Spacer2" type="Control" parent="MainLayout/MiddleBar"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
 [node name="DeckNameInput" type="LineEdit" parent="MainLayout/MiddleBar"]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_ocuxc")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_ltrq1")
 text = "Nazwa Talii"
 alignment = 1
 
+[node name="Spacer1" type="Control" parent="MainLayout/MiddleBar"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
 [node name="CardCountLabel" type="Label" parent="MainLayout/MiddleBar"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8666667, 0.4, 1)
+theme_override_fonts/font = ExtResource("5_ocuxc")
 theme_override_font_sizes/font_size = 32
 text = "Karty: 0/30"
 
@@ -115,6 +144,9 @@ layout_mode = 2
 [node name="SaveButton" type="Button" parent="MainLayout/MiddleBar"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_ocuxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ocuxc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_i838a")
 text = "ZAPISZ"
@@ -122,6 +154,9 @@ text = "ZAPISZ"
 [node name="ExitButton" type="Button" parent="MainLayout/MiddleBar"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_ocuxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ocuxc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_i838a")
 text = "WYJŚCIE"
@@ -130,6 +165,7 @@ text = "WYJŚCIE"
 clip_contents = true
 layout_mode = 2
 theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ocuxc")
 theme_override_font_sizes/font_size = 32
 text = "Twoja Talia"
 horizontal_alignment = 1
@@ -152,7 +188,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
-columns = 10
+columns = 8
 
 [node name="Control" type="Control" parent="MainLayout/BottomPanel/ContentWrapper"]
 custom_minimum_size = Vector2(0, 200)

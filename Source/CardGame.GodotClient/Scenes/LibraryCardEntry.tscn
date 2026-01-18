@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://omaj0f3o0gfk"]
+[gd_scene load_steps=5 format=3 uid="uid://omaj0f3o0gfk"]
 
 [ext_resource type="Script" uid="uid://c3yua51lmr586" path="res://Scripts/LibraryCardEntry.cs" id="1_y5whf"]
+[ext_resource type="FontFile" uid="uid://mf3uygscjewx" path="res://Assets/Fonts/Ari-CBold.ttf" id="2_bgylj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5whf"]
 bg_color = Color(0.5019608, 0.1254902, 0.1254902, 1)
@@ -43,6 +44,7 @@ text = "-"
 
 [node name="Label" type="Label" parent="ActionsPanel"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bgylj")
 text = "0/3"
 horizontal_alignment = 1
 
