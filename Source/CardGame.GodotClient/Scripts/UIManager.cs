@@ -508,6 +508,7 @@ public partial class UIManager : Node
         {
             var cardVis = CardSceneTemplate.Instantiate<CardView>();
             HandContainer.AddChild(cardVis);
+            cardVis.CustomMinimumSize = new Vector2(180, 250);
             cardVis.Render(card);
 
             cardVis.OnClicked += (cv) => OnCardClicked?.Invoke(cv);

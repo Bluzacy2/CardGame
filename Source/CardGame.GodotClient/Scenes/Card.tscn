@@ -1,74 +1,198 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2cbjoaeymfw0"]
+[gd_scene load_steps=7 format=3 uid="uid://b2cbjoaeymfw0"]
 
 [ext_resource type="Script" uid="uid://o8mwikshwly3" path="res://Scripts/CardView.cs" id="1_pnb5n"]
+[ext_resource type="Texture2D" uid="uid://d3cbktcma13c1" path="res://Assets/Cards/Cards/FrameWork/CardFront.png" id="2_kphy1"]
+[ext_resource type="Texture2D" uid="uid://b7g71icpp5eql" path="res://Assets/Cards/Cards/CardImages/missing_texture.png" id="2_wejov"]
+[ext_resource type="FontFile" uid="uid://mf3uygscjewx" path="res://Assets/Fonts/Ari-CBold.ttf" id="3_wejov"]
+[ext_resource type="Texture2D" uid="uid://cos3xe6molcw8" path="res://Assets/Cards/Cards/FrameWork/AttackSquare.png" id="4_c6tr3"]
+[ext_resource type="Texture2D" uid="uid://w5qiykte6goa" path="res://Assets/Cards/Cards/FrameWork/HealthSquare.png" id="5_1geux"]
 
-[node name="CardView" type="Control" node_paths=PackedStringArray("NameLabel", "CostLabel", "HpLabel", "AtkLabel", "Background")]
-custom_minimum_size = Vector2(140, 190)
+[node name="CardView" type="Control" node_paths=PackedStringArray("NameLabel", "CostLabel", "HpLabel", "AtkLabel", "DescLabel", "SubtypeLabel", "Background", "Illustration", "AttackSquare", "HealthSquare", "HighlightBorder")]
+clip_contents = true
+custom_minimum_size = Vector2(200, 280)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1002.0
-offset_bottom = -448.0
+offset_left = 8.0
+offset_right = -1712.0
+offset_bottom = -800.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pnb5n")
-NameLabel = NodePath("NameLabel")
-CostLabel = NodePath("CostLabel")
-HpLabel = NodePath("HealthLabel")
-AtkLabel = NodePath("AttackLabel")
+NameLabel = NodePath("BackGround/NameLabel")
+CostLabel = NodePath("BackGround/CostLabel")
+HpLabel = NodePath("BackGround/HealthLabel")
+AtkLabel = NodePath("BackGround/AttackLabel")
+DescLabel = NodePath("BackGround/DescriptionLabel")
+SubtypeLabel = NodePath("BackGround/SubtypeLabel")
 Background = NodePath("BackGround")
+Illustration = NodePath("BackGround/Illustration")
+AttackSquare = NodePath("BackGround/AttackSquare")
+HealthSquare = NodePath("BackGround/HealthSquare")
+HighlightBorder = NodePath("HighlightBorder")
 
 [node name="HighlightBorder" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="BackGround" type="ColorRect" parent="."]
+[node name="BackGround" type="TextureRect" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(200, 280)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 2
-color = Color(0.15686275, 0.15686275, 0.15686275, 1)
+texture = ExtResource("2_kphy1")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
 
-[node name="NameLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 27.0
-offset_top = 109.0
-offset_right = 125.0
-offset_bottom = 132.0
+[node name="TextureRect" type="TextureRect" parent="BackGround"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.10714286
+anchor_right = 0.98
+anchor_bottom = 0.75357145
+texture = ExtResource("2_wejov")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Illustration" type="TextureRect" parent="BackGround"]
+show_behind_parent = true
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.12857144
+anchor_right = 0.975
+anchor_bottom = 0.79642856
+texture = ExtResource("2_wejov")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="AttackSquare" type="TextureRect" parent="BackGround"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.745
+anchor_top = 0.16428572
+anchor_right = 0.97157896
+anchor_bottom = 0.31071427
+grow_horizontal = 0
+texture = ExtResource("4_c6tr3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HealthSquare" type="TextureRect" parent="BackGround"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.745
+anchor_top = 0.31428573
+anchor_right = 0.97
+anchor_bottom = 0.4642857
+grow_horizontal = 0
+texture = ExtResource("5_1geux")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="BackGround"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = -0.010714286
+anchor_right = 0.715
+anchor_bottom = 0.114285715
+offset_left = 6.0
+offset_top = 7.0
+offset_right = -6.0
+offset_bottom = -8.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_wejov")
+theme_override_font_sizes/font_size = 10
 text = "Nazwa Karty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CostLabel" type="Label" parent="."]
+[node name="CostLabel" type="Label" parent="BackGround"]
 modulate = Color(0.8784314, 0.28627452, 0.26666668, 1)
-layout_mode = 0
-offset_left = 110.0
-offset_top = -1.0
-offset_right = 150.0
-offset_bottom = 22.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.645
+anchor_top = -0.05357143
+anchor_right = 1.07
+anchor_bottom = 0.22857143
+offset_right = -1.5258789e-05
+theme_override_fonts/font = ExtResource("3_wejov")
+theme_override_font_sizes/font_size = 30
 text = "1"
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="AttackLabel" type="Label" parent="."]
-layout_mode = 0
-offset_top = 120.0
-offset_right = 30.0
-offset_bottom = 150.0
+[node name="AttackLabel" type="Label" parent="BackGround"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.77
+anchor_top = 0.18928571
+anchor_right = 0.94
+anchor_bottom = 0.28928572
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_wejov")
+theme_override_font_sizes/font_size = 20
 text = "(1)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 120.0
-offset_top = 120.0
-offset_right = 150.0
-offset_bottom = 150.0
+[node name="HealthLabel" type="Label" parent="BackGround"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.78
+anchor_top = 0.35357141
+anchor_right = 0.925
+anchor_bottom = 0.43214285
+theme_override_fonts/font = ExtResource("3_wejov")
+theme_override_font_sizes/font_size = 20
 text = "(2)"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="BackGround"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.8214286
+anchor_right = 0.98
+anchor_bottom = 0.9892857
+offset_top = 2.0
+offset_bottom = 2.0
+theme_override_fonts/normal_font = ExtResource("3_wejov")
+theme_override_font_sizes/normal_font_size = 12
+text = "tekst"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubtypeLabel" type="RichTextLabel" parent="BackGround"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16
+anchor_top = 0.73214287
+anchor_right = 0.85
+anchor_bottom = 0.83928573
+offset_left = -23.0
+offset_top = 2.0
+offset_right = 24.0
+offset_bottom = 2.0
+theme_override_fonts/normal_font = ExtResource("3_wejov")
+theme_override_font_sizes/normal_font_size = 12
+text = "tekst"
+horizontal_alignment = 1
+vertical_alignment = 1

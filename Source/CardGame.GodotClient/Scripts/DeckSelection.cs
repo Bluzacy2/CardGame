@@ -85,45 +85,82 @@ public partial class DeckSelection : Control
 
     private void CreateDeckRow(DeckData data, string filePath)
     {
-        // 1. Kontener na wiersz (HBox)
+        var mainFont = GD.Load<Font>("res://Assets/Fonts/Ari-CBold.ttf");
+
+        // --- STYLE DLA PRZYCISKU WYBORU (SELECT) ---
+        var styleNormal = new StyleBoxFlat();
+        styleNormal.BgColor = Color.FromHtml("#000000");
+        styleNormal.BorderColor = Color.FromHtml("#404040");
+        styleNormal.SetBorderWidthAll(2);
+        styleNormal.ContentMarginLeft = 20;
+
+        var styleHover = new StyleBoxFlat();
+        styleHover.BgColor = Color.FromHtml("#cccccc");
+        styleHover.SetBorderWidthAll(0);
+        styleHover.ContentMarginLeft = 20;
+
+        // --- STYLE DLA PRZYCISKU USUŃ (DELETE) ---
+        var styleDeleteNormal = new StyleBoxFlat();
+        styleDeleteNormal.BgColor = Color.FromHtml("#880000");
+        styleDeleteNormal.BorderColor = Color.FromHtml("#404040");
+        styleDeleteNormal.SetBorderWidthAll(2);
+
+        var styleDeleteHover = new StyleBoxFlat();
+        styleDeleteHover.BgColor = Color.FromHtml("#ff3333");
+        styleDeleteHover.SetBorderWidthAll(0);
+
+        // Pusty styl dla fokusu (żeby nie było niebieskiej ramki i znikania tekstu)
+        var styleEmpty = new StyleBoxEmpty();
+
         var row = new HBoxContainer();
         row.CustomMinimumSize = new Vector2(0, 60);
         row.AddThemeConstantOverride("separation", 10);
 
-        // 2. Przycisk Wyboru Talii (Duży, po lewej)
+        // --- KONFIGURACJA PRZYCISKU WYBORU ---
         var selectBtn = new Button();
-        selectBtn.Text = $"{(string.IsNullOrEmpty(data.Name) ? "Bez Nazwy" : data.Name)} ({data.CardIds.Count} kart)";
-        // Ważne: Rozciągamy go na całą dostępną szerokość
+        selectBtn.Text = $"{data.Name} ({data.CardIds.Count} KART)";
         selectBtn.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         selectBtn.Alignment = HorizontalAlignment.Left;
 
-        // Obsługa Dwukliku (Edycja)
-        selectBtn.GuiInput += (eventData) =>
-        {
-            if (eventData is InputEventMouseButton mb
-                && mb.ButtonIndex == MouseButton.Left
-                && mb.DoubleClick)
-            {
-                LoadEditor(data);
-            }
-        };
-        // Zwykłe kliknięcie też ładuje
-        selectBtn.Pressed += () => LoadEditor(data);
+        // Przypisanie stylów graficznych
+        selectBtn.AddThemeStyleboxOverride("normal", styleNormal);
+        selectBtn.AddThemeStyleboxOverride("hover", styleHover);
+        selectBtn.AddThemeStyleboxOverride("pressed", styleHover);
+        selectBtn.AddThemeStyleboxOverride("focus", styleEmpty); // WYŁĄCZENIE RAMKI FOKUSU
 
-        // 3. Przycisk Usuwania (Mały, po prawej)
+        // PEŁNE NADPISANIE KOLORÓW CZCIONKI (wszystkie stany)
+        selectBtn.AddThemeColorOverride("font_color", Colors.White);           // Normalny
+        selectBtn.AddThemeColorOverride("font_hover_color", Colors.Black);     // Najechanie
+        selectBtn.AddThemeColorOverride("font_pressed_color", Colors.Black);   // Kliknięcie
+        selectBtn.AddThemeColorOverride("font_focus_color", Colors.Black);     // Zostanie po kliknięciu
+        selectBtn.AddThemeColorOverride("font_hover_pressed_color", Colors.Black); // Ważne!
+
+        if (mainFont != null) selectBtn.AddThemeFontOverride("font", mainFont);
+
+        // --- KONFIGURACJA PRZYCISKU USUŃ ---
         var deleteBtn = new Button();
         deleteBtn.Text = "USUŃ";
-        deleteBtn.CustomMinimumSize = new Vector2(80, 0);
-        deleteBtn.Modulate = new Color(1, 0.4f, 0.4f); // Czerwony kolor ostrzegawczy
+        deleteBtn.CustomMinimumSize = new Vector2(100, 0);
 
-        // Logika usuwania
+        deleteBtn.AddThemeStyleboxOverride("normal", styleDeleteNormal);
+        deleteBtn.AddThemeStyleboxOverride("hover", styleDeleteHover);
+        deleteBtn.AddThemeStyleboxOverride("pressed", styleDeleteHover);
+        deleteBtn.AddThemeStyleboxOverride("focus", styleEmpty); // WYŁĄCZENIE RAMKI FOKUSU
+
+        deleteBtn.AddThemeColorOverride("font_color", Colors.White);
+        deleteBtn.AddThemeColorOverride("font_hover_color", Colors.White);
+        deleteBtn.AddThemeColorOverride("font_pressed_color", Colors.Black);
+        deleteBtn.AddThemeColorOverride("font_focus_color", Colors.White);
+        deleteBtn.AddThemeColorOverride("font_hover_pressed_color", Colors.Black);
+
+        if (mainFont != null) deleteBtn.AddThemeFontOverride("font", mainFont);
+
+        // --- LOGIKA I SKŁADANIE ---
+        selectBtn.Pressed += () => LoadEditor(data);
         deleteBtn.Pressed += () => DeleteDeck(filePath);
 
-        // Składanie wiersza
         row.AddChild(selectBtn);
         row.AddChild(deleteBtn);
-
-        // Dodanie do listy głównej
         DeckListContainer.AddChild(row);
     }
 

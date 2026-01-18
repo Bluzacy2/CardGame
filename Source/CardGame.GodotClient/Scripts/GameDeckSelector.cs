@@ -140,30 +140,35 @@ public partial class GameDeckSelector : Control
 
     private void CreateDeckButton(DeckData deck)
     {
+        var mainFont = GD.Load<Font>("res://Assets/Fonts/Ari-CBold.ttf");
+
         var btn = new Button();
-        btn.Text = $"{deck.Name} ({deck.CardIds.Count} kart)";
-        btn.CustomMinimumSize = new Vector2(0, 50);
+        btn.Text = $"{deck.Name.ToUpper()} ({deck.CardIds.Count} KART)";
+        btn.CustomMinimumSize = new Vector2(0, 60);
         btn.Alignment = HorizontalAlignment.Left;
         btn.ActionMode = BaseButton.ActionModeEnum.Press;
         btn.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 
-        // --- CHILD COLOR RECT (Tło i Ramka) ---
+        // --- CHILD COLOR RECT (Twoja specjalna obramówka z Shaderem) ---
         var gradientRect = new ColorRect();
         gradientRect.Name = "GradientBorder";
         gradientRect.MouseFilter = MouseFilterEnum.Ignore;
         gradientRect.SetAnchorsPreset(LayoutPreset.FullRect);
         gradientRect.ShowBehindParent = true;
         gradientRect.Visible = false;
-
-        // WAŻNE: Klonujemy materiał dla każdego przycisku, bo każdy ma inny rozmiar (size uniform)
         gradientRect.Material = (Material)_baseShaderMaterial.Duplicate();
 
         btn.AddChild(gradientRect);
-        // --------------------------------------
 
-        // Podpinamy sygnał zmiany rozmiaru, żeby aktualizować shader
+        // Czcionka
+        if (mainFont != null)
+        {
+            btn.AddThemeFontOverride("font", mainFont);
+            btn.AddThemeFontSizeOverride("font_size", 22);
+        }
+
+        // Obsługa sygnałów
         btn.Resized += () => UpdateShaderSize(btn, gradientRect);
-
         btn.GuiInput += (inputEvent) => OnDeckRowClicked(inputEvent, deck);
 
         _deckButtons[deck.Id] = btn;
@@ -250,11 +255,15 @@ public partial class GameDeckSelector : Control
             {
                 style.BorderColor = _colPlayer;
                 btn.AddThemeColorOverride("font_color", _colPlayer);
+                btn.AddThemeColorOverride("font_color", _colPlayer);
+                btn.AddThemeColorOverride("font_focus_color", _colPlayer);
             }
             else if (isBot)
             {
                 style.BorderColor = _colBot;
                 btn.AddThemeColorOverride("font_color", _colBot);
+                btn.AddThemeColorOverride("font_color", _colBot);
+                btn.AddThemeColorOverride("font_focus_color", _colBot);
             }
             else
             {
@@ -262,6 +271,8 @@ public partial class GameDeckSelector : Control
                 style.BorderColor = new Color(0.3f, 0.3f, 0.3f);
                 style.BorderWidthBottom = 1; style.BorderWidthTop = 1;
                 style.BorderWidthLeft = 1; style.BorderWidthRight = 1;
+                btn.AddThemeColorOverride("font_color", new Color(1, 1, 0.6f));
+                btn.AddThemeColorOverride("font_focus_color", new Color(1, 1, 0.6f));
             }
         }
 
