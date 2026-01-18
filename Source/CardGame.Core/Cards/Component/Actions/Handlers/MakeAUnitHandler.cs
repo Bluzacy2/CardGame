@@ -1,46 +1,81 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using CardGame.Core.Application;
+﻿using CardGame.Core.Application;
 using CardGame.Core.Cards.Component.Actions;
 using CardGame.Core.Cards.Data;
 using CardGame.Core.Cards.Logic;
 using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CardGame.Core.Cards.Components.Actions.Handlers
 {
+    #region Token Creation Handlers
+
+    /// <summary>
+    /// Handles the MakeAUnit action, creating token units on the board with various placement rules.
+    /// </summary>
     public class MakeAUnitHandler : IActionHandler
     {
+        /// <summary>
+        /// Gets the action type this handler processes.
+        /// </summary>
         public ActionType Type => ActionType.MakeAUnit;
 
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        /// <summary>
+        /// Executes the MakeAUnit action, creating token units on the board based on placement rules.
+        /// </summary>
+        public GameState Execute(
+            GameState state,
+            GameContext context,
+            ActionData action,
+            EffectTargets targets,
+            int sourceId,
+            IGameEvent gameEvent)
         {
-            // Szukamy właściciela w kolejności: Cel (Player) -> Event -> Aktywny gracz
+            // Find owner in order: Target (Player) -> Event -> Active player
             int ownerId = targets.TargetPlayer?.PlayerId ?? gameEvent.SourcePlayerId;
-            if (ownerId == 0) ownerId = state.ActivePlayerId;
+            if (ownerId == 0)
+            {
+                ownerId = state.ActivePlayerId;
+            }
 
             var workingBoard = state.Board;
             int targetLine = -1;
 
-            // 1. Logika wyboru manualnego
+            // 1. Manual choice logic
             if (action.StringParam == "Choose")
             {
-                if (gameEvent is TargetSelectedEvent tse)
-                    targetLine = tse.SelectedTargetId;
+                if (gameEvent is TargetSelectedEvent targetSelectedEvent)
+                {
+                    targetLine = targetSelectedEvent.SelectedTargetId;
+                }
                 else
                 {
-                    // Fallback: jeśli tylko jedno miejsce, bierz je
-                    var free = Enumerable.Range(0, 4).Where(i => workingBoard.Lines[i].IsSlotEmpty(ownerId)).ToList();
-                    if (free.Count == 1) targetLine = free[0];
-                    else return state; // Czekaj na PendingInteraction
+                    // Fallback: if only one free slot, take it
+                    var freeLines = Enumerable.Range(0, 4)
+                        .Where(i => workingBoard.Lines[i].IsSlotEmpty(ownerId))
+                        .ToList();
+
+                    if (freeLines.Count == 1)
+                    {
+                        targetLine = freeLines[0];
+                    }
+                    else
+                    {
+                        return state; // Wait for PendingInteraction
+                    }
                 }
             }
-            // 2. Logika AdjacentLanes
+            // 2. Adjacent lanes logic
             else if (action.StringParam == "AdjacentLanes")
             {
                 int sourceLine = GetUnitLineContext(state, sourceId, gameEvent);
-                if (sourceLine == -1) return state;
+                if (sourceLine == -1)
+                {
+                    return state;
+                }
 
                 var nextBoard = workingBoard;
                 foreach (int idx in new[] { sourceLine - 1, sourceLine + 1 })
@@ -51,17 +86,24 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                         nextBoard = nextBoard.WithUnitPlacedAt(idx, ownerId, token);
                     }
                 }
+
                 return state.UpdateBoard(nextBoard);
             }
-            // 3. Logika automatów
+            // 3. Random placement logic
             else if (action.StringParam == "Random")
             {
-                var free = Enumerable.Range(0, 4).Where(i => workingBoard.Lines[i].IsSlotEmpty(ownerId)).ToList();
-                if (free.Any()) targetLine = free[context.Rng.Next(0, free.Count)];
+                var freeLines = Enumerable.Range(0, 4)
+                    .Where(i => workingBoard.Lines[i].IsSlotEmpty(ownerId))
+                    .ToList();
+
+                if (freeLines.Any())
+                {
+                    targetLine = freeLines[context.Rng.Next(0, freeLines.Count)];
+                }
             }
             else
             {
-                // Domyślnie: Pierwsza wolna (First Free)
+                // Default: First available free slot
                 for (int i = 0; i < 4; i++)
                 {
                     if (workingBoard.Lines[i].IsSlotEmpty(ownerId))
@@ -72,21 +114,54 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                 }
             }
 
-            if (targetLine == -1 || targetLine > 3) return state;
+            if (targetLine == -1 || targetLine > 3)
+            {
+                return state;
+            }
 
             var singleToken = context.Factory.CreateCard(action.ValueParam, ownerId);
             context.Events.Publish(new CardCreatedEvent(singleToken, ownerId));
-            context.Events.Publish(new CardMovedEvent(singleToken.InstanceId, ownerId, CardZone.Deck, CardZone.Board, targetLine));
+            context.Events.Publish(new CardMovedEvent(
+                singleToken.InstanceId,
+                ownerId,
+                CardZone.Deck,
+                CardZone.Board,
+                targetLine));
+
             return state.UpdateBoard(workingBoard.WithUnitPlacedAt(targetLine, ownerId, singleToken));
         }
 
-        private int GetUnitLineContext(GameState s, int id, IGameEvent e)
+        #region Private Helper Methods
+
+        /// <summary>
+        /// Gets the board lane index where a unit is located based on event context.
+        /// </summary>
+        private int GetUnitLineContext(GameState state, int unitId, IGameEvent gameEvent)
         {
-            if (e is UnitDiedEvent ude) return ude.LineIndex;
-            if (e is UnitSacrificedEvent use) return use.LineIndex;
+            if (gameEvent is UnitDiedEvent unitDiedEvent)
+            {
+                return unitDiedEvent.LineIndex;
+            }
+
+            if (gameEvent is UnitSacrificedEvent unitSacrificedEvent)
+            {
+                return unitSacrificedEvent.LineIndex;
+            }
+
             for (int i = 0; i < 4; i++)
-                if (s.Board.Lines[i].Player1Unit?.InstanceId == id || s.Board.Lines[i].Player2Unit?.InstanceId == id) return i;
+            {
+                if (state.Board.Lines[i].Player1Unit?.InstanceId == unitId ||
+                    state.Board.Lines[i].Player2Unit?.InstanceId == unitId)
+                {
+                    return i;
+                }
+            }
+
             return -1;
         }
+
+        #endregion
     }
+
+    #endregion
 }

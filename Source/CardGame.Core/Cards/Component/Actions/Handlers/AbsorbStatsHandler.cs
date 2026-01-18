@@ -11,20 +11,41 @@ using System.Linq;
 
 namespace CardGame.Core.Cards.Components.Actions.Handlers
 {
+    #region Stat Manipulation Handlers
+
+    /// <summary>
+    /// Handles the AbsorbStats action, transferring stats from one unit to another.
+    /// </summary>
     public class AbsorbStatsHandler : IActionHandler
     {
+        /// <summary>
+        /// Gets the action type this handler processes.
+        /// </summary>
         public ActionType Type => ActionType.AbsorbStats;
 
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        /// <summary>
+        /// Executes the AbsorbStats action, transferring stats from a target unit to the source unit.
+        /// </summary>
+        public GameState Execute(
+            GameState state,
+            GameContext context,
+            ActionData action,
+            EffectTargets targets,
+            int sourceId,
+            IGameEvent gameEvent)
         {
-            if (targets.TargetUnit == null) return state;
+            if (targets.TargetUnit == null)
+            {
+                return state;
+            }
 
-
+            // Find the source unit (the one doing the absorption)
             CardInstance? me = state.Board.GetAllUnits().FirstOrDefault(u => u.InstanceId == sourceId);
             bool isOnBoard = me != null;
 
             if (me == null)
             {
+                // Check if the source is in a player's hand
                 me = state.PlayerA.Hand.FirstOrDefault(c => c.InstanceId == sourceId)
                      ?? state.PlayerB.Hand.FirstOrDefault(c => c.InstanceId == sourceId);
             }
@@ -32,7 +53,6 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             if (me != null)
             {
                 var victimStats = targets.TargetUnit.CurrentStats;
-
                 var buff = new CardStats(victimStats.Attack, victimStats.Health, 0);
                 var biggerMe = me.AddPermanentBuff(buff);
 
@@ -54,7 +74,8 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                 else
                 {
                     var owner = state.GetPlayer(biggerMe.OwnerPlayerId);
-                    var newHand = owner.Hand.Select(c => c.InstanceId == sourceId ? biggerMe : c).ToList();
+                    var newHand = owner.Hand.Select(c =>
+                        c.InstanceId == sourceId ? biggerMe : c).ToList();
                     return state.UpdatePlayer(owner.With(hand: newHand));
                 }
             }
@@ -62,4 +83,6 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             return state;
         }
     }
+
+    #endregion
 }

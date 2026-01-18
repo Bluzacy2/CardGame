@@ -10,16 +10,35 @@ using System.Linq;
 
 namespace CardGame.Core.Events.Triggers
 {
+    /// <summary>
+    /// Handles event-triggered effects and processes them according to game state.
+    /// </summary>
     public class TriggerSystem
     {
+        #region Nested Types
         private class SourceInfo
         {
             public int Id;
             public EffectData Effect;
             public EffectZone Zone;
-            public SourceInfo(int id, EffectData effect, EffectZone zone) { Id = id; Effect = effect; Zone = zone; }
-        }
 
+            public SourceInfo(int id, EffectData effect, EffectZone zone)
+            {
+                Id = id;
+                Effect = effect;
+                Zone = zone;
+            }
+        }
+        #endregion
+
+        #region Event Processing
+        /// <summary>
+        /// Processes pending events and activates relevant triggers until an interaction is required.
+        /// </summary>
+        /// <param name="currentState">The current game state.</param>
+        /// <param name="eventBus">The event bus containing pending events.</param>
+        /// <param name="context">The game context for effect resolution.</param>
+        /// <returns>The updated game state after processing triggers.</returns>
         public GameState ProcessEvents(GameState currentState, EventBus eventBus, GameContext context)
         {
             var workingState = currentState;
@@ -33,7 +52,6 @@ namespace CardGame.Core.Events.Triggers
 
                 foreach (var type in types)
                 {
-                 
                     var map = BuildTriggerMap(workingState, evt);
                     if (!map.TryGetValue(type, out var sources)) continue;
 
@@ -53,42 +71,47 @@ namespace CardGame.Core.Events.Triggers
             }
             return workingState;
         }
+        #endregion
 
-        private bool IsStillValid(GameState s, SourceInfo info)
+        #region Validation Methods
+        private bool IsStillValid(GameState state, SourceInfo info)
         {
             if (info.Effect.Trigger == TriggerType.OnDeath ||
                 info.Effect.Trigger == TriggerType.OnSacrificed ||
-                info.Effect.Trigger == TriggerType.OnOtherUnitSacrificed || 
-                info.Effect.Trigger == TriggerType.OnFriendlyUnitDied)    
+                info.Effect.Trigger == TriggerType.OnOtherUnitSacrificed ||
+                info.Effect.Trigger == TriggerType.OnFriendlyUnitDied)
                 return true;
-            if (info.Zone == EffectZone.Board) return s.Board.GetAllUnits().Any(u => u.InstanceId == info.Id);
-            if (info.Zone == EffectZone.Hand) return s.PlayerA.Hand.Concat(s.PlayerB.Hand).Any(c => c.InstanceId == info.Id);
+
+            if (info.Zone == EffectZone.Board)
+                return state.Board.GetAllUnits().Any(u => u.InstanceId == info.Id);
+
+            if (info.Zone == EffectZone.Hand)
+                return state.PlayerA.Hand.Concat(state.PlayerB.Hand).Any(c => c.InstanceId == info.Id);
+
             return true;
         }
+        #endregion
 
-        private Dictionary<TriggerType, List<SourceInfo>> BuildTriggerMap(GameState s, IGameEvent currentEvt)
+        #region Trigger Mapping
+        private Dictionary<TriggerType, List<SourceInfo>> BuildTriggerMap(GameState state, IGameEvent currentEvent)
         {
             var map = new Dictionary<TriggerType, List<SourceInfo>>();
 
-            // 1. Identify the unit currently transitioning to the graveyard
             int? transitioningUnitId = null;
-            if (currentEvt is UnitDiedEvent ude) transitioningUnitId = ude.Unit.InstanceId;
-            else if (currentEvt is UnitSacrificedEvent use) transitioningUnitId = use.Unit.InstanceId;
+            if (currentEvent is UnitDiedEvent ude) transitioningUnitId = ude.Unit.InstanceId;
+            else if (currentEvent is UnitSacrificedEvent use) transitioningUnitId = use.Unit.InstanceId;
 
-            // 2. Build the list of potential sources
-            // FIX: We filter the Board units to exclude the one that is currently dying/sacrificed
-            var all = s.Board.GetAllUnits()
+            var all = state.Board.GetAllUnits()
                 .Where(u => u.InstanceId != transitioningUnitId)
                 .Select(u => (u, zone: EffectZone.Board))
-                .Concat(s.PlayerA.Hand.Concat(s.PlayerB.Hand).Select(c => (c, zone: EffectZone.Hand)))
-                .Concat(s.SpellStack.Select(sp => (sp, zone: EffectZone.Any)));
+                .Concat(state.PlayerA.Hand.Concat(state.PlayerB.Hand).Select(c => (c, zone: EffectZone.Hand)))
+                .Concat(state.SpellStack.Select(sp => (sp, zone: EffectZone.Any)));
 
-            // 3. Append the transitioning unit explicitly as a Graveyard entity
-            if (currentEvt is UnitDiedEvent ude2)
+            if (currentEvent is UnitDiedEvent ude2)
             {
                 all = all.Append((ude2.Unit, zone: EffectZone.Graveyard));
             }
-            else if (currentEvt is UnitSacrificedEvent use2)
+            else if (currentEvent is UnitSacrificedEvent use2)
             {
                 all = all.Append((use2.Unit, zone: EffectZone.Graveyard));
             }
@@ -97,13 +120,9 @@ namespace CardGame.Core.Events.Triggers
             {
                 foreach (var effect in card.Definition.Effects)
                 {
-                    // Keep your existing logic for zone matching
                     bool zoneMatches = effect.Zone == currentZone || effect.Zone == EffectZone.Any;
-
                     bool isDeathRelatedTrigger = effect.Trigger == TriggerType.OnDeath ||
                                                  effect.Trigger == TriggerType.OnSacrificed;
-
-                    // Keep your existing logic for inclusion
                     bool shouldInclude = effect.Trigger == TriggerType.OnPlayed ||
                                          zoneMatches ||
                                          (isDeathRelatedTrigger && currentZone == EffectZone.Graveyard);
@@ -122,19 +141,58 @@ namespace CardGame.Core.Events.Triggers
 
             return map;
         }
+        #endregion
 
-        private List<TriggerType> GetRelevantTriggerTypes(IGameEvent evt)
+        #region Event Type Mapping
+        private List<TriggerType> GetRelevantTriggerTypes(IGameEvent gameEvent)
         {
-            var t = new List<TriggerType>();
-            if (evt is CardPlayedEvent) { t.Add(TriggerType.OnPlayed); t.Add(TriggerType.OnFriendlyActionPlayed); }
-                if (evt is UnitDiedEvent) { t.Add(TriggerType.OnDeath); t.Add(TriggerType.OnFriendlyUnitDied); t.Add(TriggerType.OnKill); }
-            if (evt is UnitSacrificedEvent) { t.Add(TriggerType.OnSacrificed); t.Add(TriggerType.OnOtherUnitSacrificed); t.Add(TriggerType.OnFriendlyUnitDied); }
-            if (evt is UnitDamagedEvent) { t.Add(TriggerType.OnDamagTaken); t.Add(TriggerType.OnDamagedEnemyUnit); t.Add(TriggerType.OnDamagedEnemyHero); }
-            if (evt is TurnStartedEvent) t.Add(TriggerType.OnTurnStart);
-            if (evt is CardDrawnEvent) { t.Add(TriggerType.OnOpponentCardDrawn); t.Add(TriggerType.OnFriendlyCardDrawn); }
-            if (evt is StatusAppliedEvent) t.Add(TriggerType.OnStatusApplied);
-            if (evt is PreLineCombatEvent) t.Add(TriggerType.OnPreCombatLine);
-            return t;
+            var types = new List<TriggerType>();
+
+            if (gameEvent is CardPlayedEvent)
+            {
+                types.Add(TriggerType.OnPlayed);
+                types.Add(TriggerType.OnFriendlyActionPlayed);
+                types.Add(TriggerType.OnSummoned);
+            }
+            if (gameEvent is UnitDiedEvent)
+            {
+                types.Add(TriggerType.OnDeath);
+                types.Add(TriggerType.OnFriendlyUnitDied);
+                types.Add(TriggerType.OnKill);
+            }
+            if (gameEvent is UnitSacrificedEvent)
+            {
+                types.Add(TriggerType.OnSacrificed);
+                types.Add(TriggerType.OnOtherUnitSacrificed);
+                types.Add(TriggerType.OnFriendlyUnitDied);
+            }
+            if (gameEvent is UnitDamagedEvent)
+            {
+                types.Add(TriggerType.OnDamagTaken);
+                types.Add(TriggerType.OnDamagedEnemyUnit);
+                types.Add(TriggerType.OnDamagedEnemyHero);
+            }
+            if (gameEvent is TurnStartedEvent)
+                types.Add(TriggerType.OnTurnStart);
+
+            if (gameEvent is CardDrawnEvent)
+            {
+                types.Add(TriggerType.OnOpponentCardDrawn);
+                types.Add(TriggerType.OnFriendlyCardDrawn);
+            }
+            if (gameEvent is StatusAppliedEvent)
+                types.Add(TriggerType.OnStatusApplied);
+
+            if (gameEvent is PreLineCombatEvent)
+                types.Add(TriggerType.OnPreCombatLine);
+
+            if (gameEvent is CardMovedEvent cm && cm.To == CardZone.Board)
+            {
+                types.Add(TriggerType.OnSummoned); 
+            }
+
+            return types;
         }
+        #endregion
     }
 }

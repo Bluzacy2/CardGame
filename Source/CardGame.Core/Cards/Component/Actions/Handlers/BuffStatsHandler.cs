@@ -10,24 +10,42 @@ using System.Linq;
 
 namespace CardGame.Core.Cards.Components.Actions.Handlers
 {
+    #region Buff and Stat Modification Handlers
+
+    /// <summary>
+    /// Handles the BuffStats action, applying permanent attack and health bonuses to units.
+    /// </summary>
     public class BuffStatsHandler : IActionHandler
     {
+        /// <summary>
+        /// Gets the action type this handler processes.
+        /// </summary>
         public ActionType Type => ActionType.BuffStats;
 
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        /// <summary>
+        /// Executes the BuffStats action, applying permanent stat bonuses to target units.
+        /// </summary>
+        public GameState Execute(
+            GameState state,
+            GameContext context,
+            ActionData action,
+            EffectTargets targets,
+            int sourceId,
+            IGameEvent gameEvent)
         {
             var workingState = state;
+
             foreach (var targetUnit in targets.UnitTargets)
             {
-              
                 var buffDelta = new CardStats(action.BuffAtk, action.BuffHp, action.Amount);
                 var newUnit = targetUnit.AddPermanentBuff(buffDelta);
-
                 var owner = workingState.GetPlayer(newUnit.OwnerPlayerId);
 
+                // Update the unit in hand if it's there, otherwise update on board
                 if (owner.Hand.Any(c => c.InstanceId == newUnit.InstanceId))
                 {
-                    var newHand = owner.Hand.Select(c => c.InstanceId == newUnit.InstanceId ? newUnit : c).ToList();
+                    var newHand = owner.Hand.Select(c =>
+                        c.InstanceId == newUnit.InstanceId ? newUnit : c).ToList();
                     workingState = workingState.UpdatePlayer(owner.With(hand: newHand));
                 }
                 else
@@ -46,7 +64,10 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
                     false
                 ));
             }
+
             return workingState;
         }
     }
+
+    #endregion
 }

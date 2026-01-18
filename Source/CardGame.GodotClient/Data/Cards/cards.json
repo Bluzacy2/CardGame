@@ -229,7 +229,7 @@
 	"Id": 13,
 	"Name": "Critical Thinking",
 	"Type": "Spell",
-	"Cost": 2,
+	"Cost": 1,
 	"Description": "Pick a Card from Deck, Draw it, Shuffle.",
 	"Effects": [
 	  {
@@ -274,8 +274,8 @@
 		"Targeting": "Choice",
 		"ChoiceLabels": ["Draw 2 from Deck", "Draw 2 from Discard"],
 		"Actions": [
-		  { "Type": "DrawCard", "Amount": 2 },
-		  { "Type": "DrawFromDiscard", "Amount": 2 }
+		  { "Type": "DrawCard", "Amount": 2, "Target": "FriendlyHero" },
+  		  { "Type": "DrawFromDiscard", "Amount": 2, "Target": "FriendlyHero" }
 		]
 	  }
 	]
@@ -455,9 +455,9 @@
   "Name": "Bounty Hunter",
   "Type": "Unit",
   "Subtypes": [ "Mercenary", "Human" ],
-  "Cost": 2,
-  "Attack": 1,
-  "Health": 5,
+  "Cost": 3,
+  "Attack": 3,
+  "Health": 3,
   "Description": "When an Enemy is Marked: Stun it.",
   "Effects": [
 	{
@@ -571,7 +571,7 @@
 	"Id": 31,
 	"Name": "Silence",
 	"Type": "Spell",
-	"Cost": 2,
+	"Cost": 1,
 	"Description": "Enemy Unit loses all Bonus Stats, Keywords and Passive Abilities.",
 	"Effects": [
 	  {
@@ -759,7 +759,7 @@
 	"Name": "Evo Ghost",
 	"Type": "Unit",
 	"Subtypes": ["Monster"],
-	"Cost": 4, "Attack": 3, "Health": 2,
+	"Cost": 4, "Attack": 3, "Health": 3,
 	"Description": "On Death: Make 1/1 Souldiers in Adjacent Lanes.",
 	"Effects": [
 	  {
@@ -836,7 +836,7 @@
 	"Name": "Rustler",
 	"Type": "Unit",
 	"Subtypes": ["Mercenary", "Human"],
-	"Cost": 9, "Attack": 6, "Health": 6,
+	"Cost": 10, "Attack": 6, "Health": 6,
 	"Description": "Costs 1 less for each Spell played. On Played: Bonus Attack.",
 	"Effects": [
 	  {
@@ -882,7 +882,7 @@
   "Id": 49,
   "Name": "Rocket Ignorance",
   "Type": "Spell",
-  "Cost": 5,
+  "Cost": 4,
   "Description": "Destroy an Enemy Unit.",
   "Effects": [
 	{
@@ -922,7 +922,7 @@
 	"Name": "The Trapper",
 	"Type": "Unit",
 	"Subtypes": ["Monster", "Human"],
-	"Cost": 2,
+	"Cost": 1,
 	"Attack": 2,
 	"Health": 2,
 	"Description": "When Played: Gain the Trap.",
@@ -971,7 +971,7 @@
 	"Id": 53,
 	"Name": "The Curtain Call",
 	"Type": "Spell",
-	"Cost": 9,
+	"Cost": 7,
 	"Description": "Mark all Enemy Units and then Destroy Them.",
 	"Effects": [
 	  {
@@ -1177,27 +1177,27 @@
   ]
 },
 {
-	"Id": 903,
-	"Name": "Trap",
-	"Type": "Unit",
-	"Subtypes": ["Machine", "Token"],
-	"Cost": 0,
-	"Attack": 0,
-	"Health": 1,
-	"Description": "When Destroyed: Stun the Enemy Unit here.",
-	"Effects": [
-	  {
-		"Trigger": "OnDeath",
-		"Actions": [
-		  {
-			"Type": "ApplyStatus",
-			"Target": "TargetEnemyUnit",
-			"StatusKeyword": "Stunned"
-		  }
-		]
-	  }
-	]
-  },
+  "Id": 903,
+  "Name": "Trap",
+  "Type": "Unit",
+  "Subtypes": ["Machine", "Token"],
+  "Cost": 0,
+  "Attack": 0,
+  "Health": 1,
+  "Description": "When Destroyed: Stun the Enemy Unit here.",
+  "Effects": [
+    {
+      "Trigger": "OnDeath",
+      "Actions": [
+        {
+          "Type": "ApplyStatus",
+          "Target": "OppositeEnemyUnit",
+          "StatusKeyword": "Stunned"
+        }
+      ]
+    }
+  ]
+},
   {
 	"Id": 904, "Name": "Traces of Sylvian", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 3, "Health": 4 },
   { "Id": 905, "Name": "Traces of Almer", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 4, "Health": 2 },

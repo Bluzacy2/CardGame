@@ -6,60 +6,85 @@ using CardGame.Core.Events;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.State.Models;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CardGame.Core.Cards.Components.Actions.Handlers
 {
+    /// <summary>
+    /// Handler for the TutorCard action, which allows a player to search their deck for a specific card.
+    /// </summary>
     public class TutorCardHandler : IActionHandler
     {
+        /// <summary>
+        /// Gets the action type this handler processes.
+        /// </summary>
         public ActionType Type => ActionType.TutorCard;
 
-        public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+        /// <summary>
+        /// Executes the TutorCard action, either presenting card choices or processing the player's selection.
+        /// </summary>
+        /// <param name="state">The current game state.</param>
+        /// <param name="context">The game context providing access to services.</param>
+        /// <param name="action">The action data defining the tutor effect.</param>
+        /// <param name="targets">The resolved targets for the action.</param>
+        /// <param name="sourceId">The ID of the card that initiated the action.</param>
+        /// <param name="gameEvent">The event that triggered this action.</param>
+        /// <returns>The updated game state after processing the tutor action.</returns>
+        public GameState Execute(
+            GameState state,
+            GameContext context,
+            ActionData action,
+            EffectTargets targets,
+            int sourceId,
+            IGameEvent gameEvent)
         {
             var player = targets.TargetPlayer ?? state.GetPlayer(gameEvent.SourcePlayerId);
 
-            // 1. SPRAWDZAMY CZY TO ODPOWIEDŹ NA WYBÓR
-            // Jeśli zdarzenie to TargetSelectedEvent, to znaczy, że gracz wybrał kartę z listy.
-            // Nie sprawdzamy state.PendingInteraction, bo JsonEffectComponent już go wyczyścił!
-
-            if (gameEvent is TargetSelectedEvent tse)
+            // 1. CHECK IF THIS IS A RESPONSE TO A PLAYER CHOICE
+            // If the event is TargetSelectedEvent, the player has chosen a card from the list.
+            // We don't check state.PendingInteraction because JsonEffectComponent already cleared it!
+            if (gameEvent is TargetSelectedEvent targetSelectedEvent)
             {
-                int idx = tse.SelectedTargetId;
+                int selectedIndex = targetSelectedEvent.SelectedTargetId;
                 var deck = player.DrawPile.ToList();
 
-                // Walidacja indeksu
-                if (idx >= 0 && idx < deck.Count)
+                // Validate index
+                if (selectedIndex >= 0 && selectedIndex < deck.Count)
                 {
-                    var card = deck[idx];
+                    var selectedCard = deck[selectedIndex];
 
-                    // Dobieramy kartę: Usuwamy z DrawPile, dodajemy do Hand
-                    // Pending jest już wyczyszczone przez komponent nadrzędny
-                    return state.UpdatePlayer(player.WithCardRemovedFromDeck(card).WithCardAddedToHand(card));
+                    // Draw the card: Remove from DrawPile, add to Hand
+                    // Pending interaction is already cleared by the parent component
+                    return state.UpdatePlayer(
+                        player.WithCardRemovedFromDeck(selectedCard)
+                              .WithCardAddedToHand(selectedCard));
                 }
 
-                // Jeśli indeks błędny, zwracamy stan bez zmian (ewentualnie log błędu)
+                // If index is invalid, return state unchanged (optionally log error)
                 return state;
             }
 
-            // 2. INICJALIZACJA (Jeśli to CardPlayedEvent, czyli pierwsze zagranie)
-
+            // 2. INITIALIZATION (If this is CardPlayedEvent, i.e., first play)
             var currentDeck = player.DrawPile;
-            if (currentDeck.Count == 0) return state; // Pusta talia
+            if (currentDeck.Count == 0)
+            {
+                return state; // Empty deck
+            }
 
-            // Tworzymy listę opcji dla klienta
-            var options = currentDeck.Select(c => $"{c.Definition.Name} ({c.CurrentStats.BloodCost})").ToList();
+            // Create choice options for the client
+            var options = currentDeck
+                .Select(c => $"{c.Definition.Name} ({c.CurrentStats.BloodCost})")
+                .ToList();
 
-            // Zwracamy stan zawieszony, oczekując na wybór
+            // Return pending state, awaiting player choice
             return state.With(
                 pendingInteraction: new PendingInteraction(
                     sourceId,
                     0, // Effect Index
                     0, // Action Index
                     TargetType.Choice,
-                    options
-                )
-            );
+                    options));
         }
     }
 }

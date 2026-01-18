@@ -1,19 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardGame.Core.State.Enums
 {
+    /// <summary>
+    /// Represents the different phases of a game turn.
+    /// </summary>
     public enum GamePhase
     {
-        None,       // Faza nieokreślona lub początkowa
-        Mulligan,   // Pierwsza faza gry - Mulligan & Dobieranie kart
-        UnitOnly, // Faza grania Unitów
-        UnitAndAction, // Faza grania Unitów i Akcji
-        ActionOnly, // Faza grania tylko Akcji
-        Combat, // Faza walki
-        EndTurn    // Faza kończenia tury
+        /// <summary>
+        /// Undefined or initial phase.
+        /// </summary>
+        None,
+
+        /// <summary>
+        /// First game phase - Mulligan and drawing cards.
+        /// </summary>
+        Mulligan,
+
+        /// <summary>
+        /// Unit playing phase (units only).
+        /// </summary>
+        UnitOnly,
+
+        /// <summary>
+        /// Combined phase for playing both units and actions.
+        /// </summary>
+        UnitAndAction,
+
+        /// <summary>
+        /// Action playing phase (actions only).
+        /// </summary>
+        ActionOnly,
+
+        /// <summary>
+        /// Combat resolution phase.
+        /// </summary>
+        Combat,
+
+        /// <summary>
+        /// End of turn phase.
+        /// </summary>
+        EndTurn
     }
 }
