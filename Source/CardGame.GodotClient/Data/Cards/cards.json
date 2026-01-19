@@ -649,11 +649,11 @@
 	"Attack": 3,
 	"Health": 3,
 	"Keywords": [ "SoulGuard" ],
-	"Description": "Whenever a Friendly Unit is Destroyed: Deal 3 damage to the Enemy Hero.",
+	"Description": "Whenever a Friendly Unit is Destroyed: Deal 2 damage to the Enemy Hero.",
 	"Effects": [
 	  {
 		"Trigger": "OnFriendlyUnitDied",
-		"Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 3 } ]
+		"Actions": [ { "Type": "DealDamage", "Target": "EnemyHero", "Amount": 2 } ]
 	  }
 	]
   },
@@ -860,7 +860,7 @@
   "Subtypes": ["Mercenary", "Human"],
   "Cost": 2,
   "Attack": 2,
-  "Health": 3,
+  "Health": 2,
   "Description": "Whenever you Sacrifice a unit: This unit gains +1/+1. If it was a Human, gain +2/+2 instead.",
   "Effects": [
 	{
