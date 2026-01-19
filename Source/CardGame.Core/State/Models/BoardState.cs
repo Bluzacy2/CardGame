@@ -54,6 +54,10 @@ namespace CardGame.Core.State.Models
         /// <returns>A new BoardState with the unit placed at the specified location.</returns>
         public BoardState WithUnitPlacedAt(int lineIndex, int playerId, CardInstance? unit)
         {
+            if (unit != null && unit.OwnerPlayerId != playerId)
+            {
+                unit = new CardInstance(unit.InstanceId, playerId, unit.Definition);
+            }
             var newLines = new List<Line>(Lines);
             var oldLine = newLines[lineIndex];
             var newLine = oldLine.WithUnitPlaced(playerId, unit);

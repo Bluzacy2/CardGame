@@ -53,12 +53,11 @@ namespace CardGame.Core.Cards.Logic
                         if (cardPlayedEvent.Card.InstanceId == sourceCardId) return true;
 
                         // 2. Reactive: Triggering based on other cards being played
-                        if (effect.Zone == EffectZone.Board && effect.Condition != null && IsListeningToOthers(effect.Condition))
+                        if (effect.Zone == EffectZone.Board && effect.Condition != null)
                         {
-                            bool isActuallyOnBoard = state.Board.GetAllUnits().Any(unit => unit.InstanceId == sourceCardId);
-                            if (!isActuallyOnBoard) return false;
-
-                            return true;
+                           
+                            return IsListeningToOthers(effect.Condition) &&
+                                   EvaluateCondition(effect.Condition, gameEvent, state, source);
                         }
                     }
                     return false;
