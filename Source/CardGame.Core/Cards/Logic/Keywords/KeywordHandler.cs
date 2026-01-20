@@ -106,6 +106,7 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
 
             var workingState = state;
             int opponentId = attacker.OwnerPlayerId == 1 ? 2 : 1;
+            bool actsAsBurnSource = attacker.CurrentStats.Keywords.Contains(Keyword.BurnSource);
 
             foreach (int neighborLineIndex in new[] { lineIndex - 1, lineIndex + 1 })
             {
@@ -120,6 +121,17 @@ namespace CardGame.Core.Cards.Logic.Keywords.Handlers
                     if (unit != null)
                     {
                         var nextUnit = unit.TakeDamage(splashDamage);
+                        if (actsAsBurnSource)
+                        {
+                            nextUnit = nextUnit.AddPermanentBuff(new CardStats(0, 0, 0, new[] { Keyword.Burning }));
+
+                            context.Events.Publish(new StatusAppliedEvent(
+                                attacker.OwnerPlayerId,
+                                nextUnit.InstanceId,
+                                Keyword.Burning,
+                                attacker.InstanceId
+                            ));
+                        }
                         workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(nextUnit));
                         context.Events.Publish(new UnitDamagedEvent(nextUnit, splashDamage, attacker));
                     }

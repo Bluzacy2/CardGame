@@ -34,25 +34,46 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             int sourceId,
             IGameEvent gameEvent)
         {
-            if (targets.TargetUnit != null && action.StatusKeyword.HasValue)
+            // 1. Validation: Ensure we have a status to apply
+            if (!action.StatusKeyword.HasValue) return state;
+
+            var statusKeyword = action.StatusKeyword.Value;
+            var workingState = state;
+
+            var unitsToProcess = new List<CardInstance>();
+            if (targets.UnitTargets != null && targets.UnitTargets.Any())
             {
-                Keyword statusKeyword = action.StatusKeyword.Value;
-                var unitWithStatus = targets.TargetUnit.AddPermanentBuff(
+                unitsToProcess.AddRange(targets.UnitTargets);
+            }
+            else if (targets.TargetUnit != null)
+            {
+                unitsToProcess.Add(targets.TargetUnit);
+            }
+
+            foreach (var targetStub in unitsToProcess)
+            {
+
+                var liveUnit = workingState.Board.GetAllUnits()
+                    .FirstOrDefault(u => u.InstanceId == targetStub.InstanceId);
+
+                if (liveUnit == null) continue;
+
+                var unitWithStatus = liveUnit.AddPermanentBuff(
                     new CardStats(0, 0, 0, new List<Keyword> { statusKeyword }));
 
-                // Pass original parameters + optional sourceId for UI
                 context.Events.Publish(new StatusAppliedEvent(
                     gameEvent.SourcePlayerId,
-                    targets.TargetUnit.InstanceId,
+                    liveUnit.InstanceId,
                     statusKeyword,
                     sourceId));
 
-                return state.UpdateBoard(state.Board.UpdateUnit(unitWithStatus));
+                workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(unitWithStatus));
             }
 
-            return state;
+            return workingState;
         }
     }
+
 
     #endregion
 }

@@ -45,7 +45,7 @@
   "Cost": 1,
   "Attack": 2,
   "Health": 2,
-  "Description": "When Destroyed: Gain 'The Alluring Goblet'.",
+  "Description": "When Destroyed: Add 'The Alluring Goblet' to Your Hand.",
   "Effects": [
 	{
 	  "Trigger": "OnDeath",
@@ -87,7 +87,7 @@
 	"Cost": 3,
 	"Attack": 2,
 	"Health": 4,
-	"Description": "Draw a card when a friendly unit dies.",
+	"Description": "While in Play: Draw a Card when a Friendly Unit is Destroyed.",
 	"Effects": [
 	  {
 		"Trigger": "OnFriendlyUnitDied",
@@ -100,13 +100,13 @@
 
   {
 	"Id": 6,
-	"Name": "Radio Demon",
+	"Name": "The Jersey Demon",
 	"Type": "Unit",
 	"Subtypes": [ "Demon", "Monster" ],
 	"Cost": 5,
 	"Attack": 3,
 	"Health": 3,
-	"Description": "Give all friendly units +1/+1 (Global).",
+	"Description": "When Played: Give all Friendly Units +1/+1 for the Rest of the Game.",
 	"Effects": [
 	  {
 		"Trigger": "OnPlayed",
@@ -122,7 +122,7 @@
 	"Name": "Glock-17",
 	"Type": "Spell",
 	"Cost": 2,
-	"Description": "Deal 3 damage to an enemy.",
+	"Description": "Deal 3 damage to the Enemy Unit.",
 	"Effects": [
 	  {
 		"Trigger": "OnPlayed",
@@ -153,7 +153,7 @@
 	"Cost": 3,
 	"Attack": 2,
 	"Health": 1,
-	"Description": "While in Hand: When Friendly dies, play this.",
+	"Description": "While in Hand: When a Friendly Unit is Destroyed: Play it there.",
 	"Effects": [
 	  {
 		"Trigger": "OnFriendlyUnitDied",
@@ -215,7 +215,7 @@
 	"Cost": 0,
 	"Attack": 1,
 	"Health": 1,
-	"Description": "When Sacrificed: Return to Hand instead.",
+	"Description": "When Sacrificed: Return it to Hand instead.",
 	"Effects": [
 	  {
 		"Trigger": "OnSacrificed",
@@ -230,7 +230,7 @@
 	"Name": "Seek",
 	"Type": "Spell",
 	"Cost": 1,
-	"Description": "Pick a Card from Deck, Draw it, Shuffle.",
+	"Description": "Pick a Card from Your Deck and Add it Your Hand. Shuffle Your Deck.",
 	"Effects": [
 	  {
 		"Trigger": "OnPlayed",
@@ -282,21 +282,21 @@
   },
 
   {
-	"Id": 16,
-	"Name": "HellFire",
-	"Type": "Spell",
-	"Cost": 4,
-	"Description": "Deal 3 Damage and Apply Burning to All Units on Board.",
-	"Effects": [
-	  {
-		"Trigger": "OnPlayed",
-		"Actions": [
-		  { "Type": "DealDamage", "Target": "AllUnitsOnBoard", "Amount": 3 },
-		  { "Type": "ApplyStatus", "Target": "AllUnitsOnBoard", "StatusKeyword": "Burning" }
-		]
-	  }
-	]
-  },
+  "Id": 16,
+  "Name": "HellFire",
+  "Type": "Spell",
+  "Cost": 4,
+  "Description": "Deal 3 Damage and Apply Burning to All Units on Board.",
+  "Effects": [
+	{
+	  "Trigger": "OnPlayed",
+	  "Actions": [
+		{ "Type": "ApplyStatus", "Target": "AllUnitsOnBoard", "StatusKeyword": "Burning" },
+		{ "Type": "DealDamage", "Target": "AllUnitsOnBoard", "Amount": 3 }
+	  ]
+	}
+  ]
+},
 
   {
 	"Id": 17,
@@ -310,7 +310,7 @@
 	"KeywordParams": {
 	  "SplashDamage": 3
 	},
-	"Description": ""
+	"Description": "When it Deals Damage to an Enemy Unit: Apply Burning."
   },
 
   {
@@ -318,7 +318,7 @@
 	"Name": "Final Mission",
 	"Type": "Spell",
 	"Cost": 1,
-	"Description": "Sacrifice a Friendly Unit to deal 4 damage to an Enemy Unit.",
+	"Description": "Sacrifice a Friendly Unit and Deal 4 damage to an Enemy Unit.",
 	"Effects": [
 	  {
 		"Trigger": "OnPlayed",
@@ -332,7 +332,7 @@
 
   {
 	"Id": 19,
-	"Name": "Nepotism",
+	"Name": "Lunch",
 	"Type": "Spell",
 	"Cost": 2,
 	"Description": "A Friendly Unit does a Bonus Attack.",
@@ -354,7 +354,7 @@
 	"Cost": 4,
 	"Attack": 3,
 	"Health": 3,
-	"Description": "When Played: Choose a Unit and return it to hand.",
+	"Description": "When Played: Choose a Unit and return it to Owner's Hand.",
 	"Effects": [
 	  {
 		"Trigger": "OnPlayed",
@@ -376,7 +376,7 @@
 	"Health": 2,
 	"Keywords": [ "Armored" ],
 	"KeywordParams": { "Armored": 2 },
-	"Description": "When dealing damage to a unit: Deal 2 to Enemy Hero.",
+	"Description": "When it Deals Damage to an Enemy Unit: Deal 2 Damage to the Enemy Hero.",
 	"Effects": [
 	  {
 		"Trigger": "OnDamagedEnemyUnit",
@@ -395,7 +395,7 @@
 	"Cost": 1,
 	"Attack": 1,
 	"Health": 3,
-	"Description": "Whenever Enemy Hero draws a card: Deal 1 damage to them.",
+	"Description": "When the Enemy Hero Draws a Card: Deal 1 Damage to Them.",
 	"Effects": [
 	  {
 		"Trigger": "OnOpponentCardDrawn",
@@ -414,7 +414,7 @@
 	"Cost": 4,
 	"Attack": 4,
 	"Health": 4,
-	"Description": "When this unit kills an enemy: Heal to full and +2 HP.",
+	"Description": "On Kill: Heal to Full HP and gain +2 HP.",
 	"Effects": [
 	  {
 		"Trigger": "OnKill",
@@ -497,13 +497,13 @@
 
   {
 	"Id": 27,
-	"Name": "Raiding Raptor",
+	"Name": "Drawing Raptor",
 	"Type": "Unit",
 	"Subtypes": [ "Monster" ],
 	"Cost": 3,
 	"Attack": 2,
 	"Health": 4,
-	"Description": "Hit Hero: Draw. You Draw: +1 Atk.",
+	"Description": "While in Play: When You draw a Card gain +1 ATK. When is Hurts the Enemy Hero: Draw a Card.",
 	"Effects": [
 	  {
 		"Trigger": "OnDamagedEnemyHero",
@@ -519,10 +519,10 @@
 
   {
 	"Id": 28,
-	"Name": "Exploding Fruitcake",
+	"Name": "Exploding Present",
 	"Type": "Spell",
 	"Cost": 2,
-	"Description": "5 Dmg to enemy. Opponent gains this.",
+	"Description": "Deal 5 Damage to an Enemy Unit and give them the Exploding Present.",
 	"Effects": [
 	  {
 		"Trigger": "OnPlayed",
@@ -758,20 +758,28 @@
   },
 
   {
-	"Id": 43,
-	"Name": "Evo Ghost",
-	"Type": "Unit",
-	"Subtypes": ["Monster"],
-	"Cost": 4, "Attack": 3, "Health": 3,
-	"Description": "On Death: Make 1/1 Souldiers in Adjacent Lanes.",
-	"Effects": [
-	  {
-		"Trigger": "OnDeath",
-		"Actions": [
-		  { "Type": "MakeAUnit", "ValueParam": 901, "StringParam": "AdjacentLanes" }
-		]
-	  }
-	]
+	  "Id": 43,
+	  "Name": "Evo Ghost",
+	  "Type": "Unit",
+	  "Subtypes": ["Monster"],
+	  "Cost": 3,
+	  "Attack": 3,
+	  "Health": 1,
+	  "Description": "Whenever this unit damages an enemy: Make 1/1 Souldiers in Adjacent Lanes.",
+	  "Effects": [
+		{
+		  "Trigger": "OnDamagedEnemyUnit",
+		  "Actions": [
+			{ "Type": "MakeAUnit", "ValueParam": 901, "StringParam": "AdjacentLanes" }
+		  ]
+		},
+		{
+		  "Trigger": "OnDamagedEnemyHero",
+		  "Actions": [
+			{ "Type": "MakeAUnit", "ValueParam": 901, "StringParam": "AdjacentLanes" }
+		  ]
+		}
+	  ]
   },
   {
 	"Id": 44,
@@ -883,7 +891,7 @@
 },
 {
   "Id": 49,
-  "Name": "Rocket Ignorance",
+  "Name": "Farewell",
   "Type": "Spell",
   "Cost": 4,
   "Description": "Destroy an Enemy Unit.",
@@ -928,7 +936,7 @@
 	"Cost": 1,
 	"Attack": 2,
 	"Health": 2,
-	"Description": "When Played: Gain the Trap.",
+	"Description": "When Played: Add the Trap to Your Hand.",
 	"Effects": [
 	  {
 		"Trigger": "OnPlayed",
@@ -1026,9 +1034,9 @@
 	"Type": "Unit",
 	"Subtypes": ["Machine"],
 	"Cost": 6,
-	"Attack": 3,
-	"Health": 5,
-	"Keywords": ["SoulGuard", "Unkillable", "Armored", "Flying"],
+	"Attack": 6,
+	"Health": 7,
+	"Keywords": ["SoulGuard", "Unkillable", "Armored"],
 	"KeywordParams": { "Armored": 2 },
 	"Description": ""
   },
@@ -1040,7 +1048,7 @@
 	"Cost": 6,
 	"Attack": 2,
 	"Health": 6,
-	"Description": "When Played: Summon The Collection (Traces of Sylvian, Almer, Grogorth).",
+	"Description": "When Played: Summon The Collection.",
 	"Effects": [
 	  {
 		"Trigger": "OnPlayed",
@@ -1104,7 +1112,7 @@
   },
   {
 	"Id": 60,
-	"Name": "Anti Matter DragonFriend",
+	"Name": "Wyvern",
 	"Type": "Unit",
 	"Subtypes": ["Monster", "Animal"],
 	"Cost": 8,
@@ -1112,7 +1120,7 @@
 	"Health": 6,
 	"Keywords": ["SplashDamage"],
 	"KeywordParams": {
-	  "SplashDamage": 3
+	  "SplashDamage": 6
 	},
 	"Description": "While in Play: Enemy Spells cost 6 more.",
 	"Effects": [
@@ -1138,7 +1146,7 @@
 	"Type": "Spell",
 	"Subtypes": ["Token"],
 	"Cost": 1,
-	"Description": "Make a unit Unkillable, then Sacrifice it.",
+	"Description": "Make a Unit Unkillable, then Sacrifice it.",
 	"Effects": [
 	  {
 		"Trigger": "OnPlayed",
@@ -1202,7 +1210,7 @@
   ]
 },
   {
-	"Id": 904, "Name": "Traces of Sylvian", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 3, "Health": 4, "Description": "" },
-  { "Id": 905, "Name": "Traces of Almer", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 4, "Health": 2, "Description": "" },
-  { "Id": 906, "Name": "Traces of Grogorth", "Type": "Unit", "Subtypes": ["Monster", "Collection", "Token"], "Cost": 3, "Attack": 5, "Health": 1, "Description": "" }
+	"Id": 904, "Name": "SE", "Type": "Unit", "Subtypes": ["Funko Pop","Token"], "Cost": 3, "Attack": 3, "Health": 4, "Description": "" },
+  { "Id": 905, "Name": "Janal", "Type": "Unit", "Subtypes": ["Funko Pop", "Token"], "Cost": 3, "Attack": 4, "Health": 2, "Description": "" },
+  { "Id": 906, "Name": "Front Man", "Type": "Unit", "Subtypes": ["Funko Pop", "Token"], "Cost": 3, "Attack": 5, "Health": 1, "Description": "" }
 ]

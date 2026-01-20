@@ -117,6 +117,8 @@ namespace CardGame.Core.Events.Triggers
                 all = all.Append((use2.Unit, zone: EffectZone.Graveyard));
             }
 
+            int? playedCardId = (currentEvent as CardPlayedEvent)?.Card.InstanceId;
+
             foreach (var (card, currentZone) in all)
             {
                 foreach (var effect in card.Definition.Effects)
@@ -124,9 +126,14 @@ namespace CardGame.Core.Events.Triggers
                     bool zoneMatches = effect.Zone == currentZone || effect.Zone == EffectZone.Any;
                     bool isDeathRelatedTrigger = effect.Trigger == TriggerType.OnDeath ||
                                                  effect.Trigger == TriggerType.OnSacrificed;
-                    bool shouldInclude = effect.Trigger == TriggerType.OnPlayed ||
-                                         zoneMatches ||
-                                         (isDeathRelatedTrigger && currentZone == EffectZone.Graveyard);
+
+                    bool isSelfBeingPlayed = effect.Trigger == TriggerType.OnPlayed &&
+                                    playedCardId.HasValue &&
+                                    playedCardId.Value == card.InstanceId;
+
+                    bool shouldInclude = isSelfBeingPlayed ||
+                                 zoneMatches ||
+                                 (isDeathRelatedTrigger && currentZone == EffectZone.Graveyard);
 
                     if (shouldInclude)
                     {

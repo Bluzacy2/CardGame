@@ -60,7 +60,17 @@ namespace CardGame.Core.Cards.Logic.Keywords
             foreach (var keyword in attacker.CurrentStats.Keywords)
             {
                 if (_handlers.TryGetValue(keyword, out var handler))
+                {
+                    CardInstance? currentVictim = victim;
+                    if (victim != null)
+                    {
+                        currentVictim = workingState.Board.GetAllUnits()
+                            .FirstOrDefault(u => u.InstanceId == victim.InstanceId);
+                        if (currentVictim == null) continue;
+                    }
+
                     workingState = handler.OnAfterAttack(workingState, attacker, victim, lineIndex, context);
+                }
             }
             return workingState;
         }

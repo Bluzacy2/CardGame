@@ -1,0 +1,1900 @@
+﻿
+
+========================================
+FILE: CardLibrary.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Data\CardLibrary.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using CardGame.Core.Cards.Models;
+
+namespace CardGame.Core.Cards.Data
+{
+    /// <summary>
+    /// Manages the collection of all available card definitions and provides methods for card creation.
+    /// </summary>
+    public class CardLibrary
+    {
+        private Dictionary<int, CardData> _cards = new Dictionary<int, CardData>();
+
+        /// <summary>
+        /// Gets the singleton instance of the CardLibrary.
+        /// </summary>
+        public static CardLibrary Instance { get; } = new CardLibrary();
+
+        #region Data Management
+
+        /// <summary>
+        /// Removes all card definitions from the library.
+        /// </summary>
+        public void Clear()
+        {
+            _cards.Clear();
+        }
+
+        /// <summary>
+        /// Loads card definitions from a JSON file.
+        /// </summary>
+        /// <param name="filePath">The path to the JSON file containing card data.</param>
+        /// <exception cref="Exception">Thrown when the file is not found or card data is invalid.</exception>
+        public void LoadFromJson(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                throw new Exception($"Card file not found: {filePath}");
+            }
+
+            string jsonString = File.ReadAllText(filePath);
+            var options = new JsonSerializerOptions
+            {
+                Converters = { new JsonStringEnumConverter() },
+                PropertyNameCaseInsensitive = true,
+            };
+
+            List<CardData>? loadedCards = JsonSerializer.Deserialize<List<CardData>>(jsonString, options);
+            _cards = (loadedCards ?? new List<CardData>()).ToDictionary(k => k.Id, v => v);
+
+            ValidateLibrary();
+        }
+
+        #endregion
+
+        #region Validation
+
+        /// <summary>
+        /// Validates all loaded cards for data integrity.
+        /// </summary>
+        /// <exception cref="Exception">Thrown when a card has invalid data.</exception>
+        private void ValidateLibrary()
+        {
+            foreach (var card in _cards.Values)
+            {
+                foreach (var effect in card.Effects)
+                {
+                    foreach (var action in effect.Actions)
+                    {
+                        if (action.Type == ActionType.ApplyStatus && action.StatusKeyword == null)
+                        {
+                            if (!string.IsNullOrEmpty(action.StringParam) &&
+                                Enum.TryParse<Keyword>(action.StringParam, out var keyword))
+                            {
+                                action.StatusKeyword = keyword;
+                            }
+                            else
+                            {
+                                throw new Exception($"CARD ERROR ID {card.Id} ({card.Name}): ApplyStatus action does not have a defined status!");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Card Access
+
+        /// <summary>
+        /// Retrieves card data by ID.
+        /// </summary>
+        /// <param name="id">The unique identifier of the card.</param>
+        /// <returns>The CardData object.</returns>
+        /// <exception cref="Exception">Thrown when the card ID does not exist.</exception>
+        public CardData GetCard(int id)
+        {
+            if (_cards.TryGetValue(id, out var card))
+            {
+                return card;
+            }
+
+            throw new Exception($"Card with ID {id} does not exist.");
+        }
+
+        /// <summary>
+        /// Creates a CardDefinition from a card ID.
+        /// </summary>
+        /// <param name="id">The unique identifier of the card.</param>
+        /// <returns>A new CardDefinition instance.</returns>
+        public CardDefinition CreateDefinition(int id)
+        {
+            var data = GetCard(id);
+            return new CardDefinition(
+                data.Id.ToString(),
+                data.Name,
+                data.Description,
+                data.Type,
+                data.Subtypes,
+                new CardStats(data.Attack, data.Health, data.Cost, data.Keywords, data.KeywordParams, data.CostType),
+                data.Keywords,
+                data.Effects);
+        }
+
+        #endregion
+
+        #region Query Methods
+
+        /// <summary>
+        /// Gets all card IDs in the library.
+        /// </summary>
+        /// <returns>An array of all card IDs.</returns>
+        public int[] GetAllIds()
+        {
+            return _cards.Keys.ToArray();
+        }
+
+        /// <summary>
+        /// Gets card data objects that match a predicate.
+        /// </summary>
+        /// <param name="predicate">The condition to filter cards.</param>
+        /// <returns>A list of matching CardData objects.</returns>
+        public List<CardData> GetCardsByTraits(Func<CardData, bool> predicate)
+        {
+            return _cards.Values.Where(predicate).ToList();
+        }
+
+        /// <summary>
+        /// Gets card IDs that match a predicate.
+        /// </summary>
+        /// <param name="predicate">The condition to filter cards.</param>
+        /// <returns>A list of matching card IDs.</returns>
+        public List<int> GetCardIdsByTraits(Func<CardData, bool> predicate)
+        {
+            return _cards.Values.Where(predicate).Select(c => c.Id).ToList();
+        }
+
+        #endregion
+    }
+}
+
+
+========================================
+FILE: DeckValidator.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Data\DeckValidator.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.Cards.Data
+{
+    /// <summary>
+    /// Provides validation logic for deck construction rules.
+    /// </summary>
+    public static class DeckValidator
+    {
+        /// <summary>
+        /// The required number of cards in a valid deck.
+        /// </summary>
+        public const int DeckSize = 30;
+
+        /// <summary>
+        /// The maximum number of copies allowed for a single card in a deck.
+        /// </summary>
+        public const int MaxCopies = 3;
+
+        /// <summary>
+        /// Validates a deck against game rules.
+        /// </summary>
+        /// <param name="cardIds">The list of card IDs in the deck.</param>
+        /// <param name="error">Output parameter containing validation error message if any.</param>
+        /// <returns>True if the deck is valid, otherwise false.</returns>
+        public static bool Validate(List<int> cardIds, out string error)
+        {
+            error = string.Empty;
+
+            if (cardIds.Count != DeckSize)
+            {
+                error = $"Deck must have {DeckSize} cards. Currently has {cardIds.Count}.";
+                return false;
+            }
+
+            var counts = cardIds.GroupBy(id => id)
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            foreach (var kvp in counts)
+            {
+                if (kvp.Value > MaxCopies)
+                {
+                    string name = $"ID {kvp.Key}";
+
+                    try
+                    {
+                        name = CardLibrary.Instance.GetCard(kvp.Key).Name;
+                    }
+                    catch
+                    {
+                        // Fallback to ID if card name cannot be retrieved
+                    }
+
+                    error = $"Card '{name}' appears too many times ({kvp.Value} copies). Maximum allowed: {MaxCopies}.";
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
+}
+
+
+========================================
+FILE: Enums.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Data\Enums.cs
+========================================
+namespace CardGame.Core.Cards.Data
+{
+    #region Enums
+
+    /// <summary>
+    /// Represents the type of a card.
+    /// </summary>
+    public enum CardType
+    {
+        Unit,
+        Spell
+    }
+
+    /// <summary>
+    /// Represents the type of resource used in the game.
+    /// </summary>
+    public enum ResourceType
+    {
+        Blood
+    }
+
+    /// <summary>
+    /// Represents special abilities or statuses that can be applied to cards.
+    /// </summary>
+    public enum Keyword
+    {
+        None,
+        Armored,
+        Armor2,
+        DoubleStrike,
+        SoulGuard,
+        Unkillable,
+        Marked,
+        SoulGuardDepleted,
+        Burning,
+        SplashDamage,
+        BurnSource,
+        Stunned,
+        Flying
+    }
+
+    /// <summary>
+    /// Represents the timing or condition when an ability activates.
+    /// </summary>
+    public enum TriggerType
+    {
+        OnPlayed,
+        OnDeath,
+        OnDamagTaken,
+        OnTurnStart,
+        OnTurnEnd,
+        WhileOnBoard,
+        OnFriendlyUnitDied,
+        OnSacrificed,
+        Passive,
+        OnOtherUnitSacrificed,
+        OnKill,
+        OnOpponentCardDrawn,
+        OnDamagedEnemyUnit,
+        OnStatusApplied,
+        OnPreCombatLine,
+        OnDamagedEnemyHero,
+        OnFriendlyCardDrawn,
+        OnFriendlyActionPlayed,
+        OnSummoned
+    }
+
+    /// <summary>
+    /// Represents the type of action a card can perform.
+    /// </summary>
+    public enum ActionType
+    {
+        DealDamage,
+        Heal,
+        ConjureCard,
+        DestroyUnit,
+        DiscardCard,
+        Transform,
+        SummonUnit,
+        BuffStats,
+        AddCardToHand,
+        ApplyStatus,
+        ModifyGlobalBuff,
+        DrawCard,
+        SacrificeUnit,
+        AbsorbStats,
+        ShuffleDeck,
+        ReturnToHand,
+        TutorCard,
+        DrawFromDiscard,
+        BonusAttack,
+        HealToFull,
+        MoveRight,
+        GiveToOpponent,
+        Silence,
+        AddResource,
+        MakeAUnit,
+        MoveLeft
+    }
+
+    /// <summary>
+    /// Represents the valid targets for a card's action.
+    /// </summary>
+    public enum TargetType
+    {
+        Self,
+        TargetEnemyUnit,
+        TargetFriendlyUnit,
+        AllEnemyUnits,
+        AllFriendlyUnits,
+        EnemyHero,
+        FriendlyHero,
+        SelectedTarget,
+        OtherFriendlyUnits,
+        AdjacentEnemyUnits,
+        AllUnitsOnBoard,
+        Choice,
+        FriendlySpellsInHand,
+        EnemySpellsInHand,
+        EmptyLane,
+        RandomEmptyLane,
+        OppositeEnemyUnit,
+        RandomFriendlyUnit
+    }
+
+    /// <summary>
+    /// Represents logical conditions for targeting or effect activation.
+    /// </summary>
+    public enum ConditionType
+    {
+        None,
+        And,
+        Or,
+        IsEnemy,
+        IsUnit,
+        IsType,
+        IsStatus,
+        IsSubtype,
+        IsSelf,
+        HasSubtypeOnBoard,
+        Not,
+        IsFriendly
+    }
+
+    /// <summary>
+    /// Represents the game zones where effects can occur.
+    /// </summary>
+    public enum EffectZone
+    {
+        Board,
+        Hand,
+        Graveyard,
+        Any
+    }
+
+    #endregion
+}
+
+
+========================================
+FILE: CardFactory.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Factories\CardFactory.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using System;
+
+namespace CardGame.Core.Cards.Factories
+{
+    /// <summary>
+    /// Factory for creating card instances from definitions.
+    /// </summary>
+    public class CardFactory
+    {
+        private readonly CardLibrary _library;
+        private readonly DeterministicRng _rng;
+
+        /// <summary>
+        /// Initializes a new instance of the CardFactory class.
+        /// </summary>
+        /// <param name="library">The card library containing definitions.</param>
+        /// <param name="rng">The random number generator for instance IDs.</param>
+        public CardFactory(CardLibrary library, DeterministicRng rng)
+        {
+            _library = library;
+            _rng = rng;
+        }
+
+        #region Factory Methods
+
+        /// <summary>
+        /// Creates a new card instance from a definition ID.
+        /// </summary>
+        /// <param name="definitionId">The ID of the card definition.</param>
+        /// <param name="ownerPlayerId">The ID of the player who owns this card.</param>
+        /// <returns>A new CardInstance with a unique ID.</returns>
+        public CardInstance CreateCard(int definitionId, int ownerPlayerId)
+        {
+            var definition = _library.CreateDefinition(definitionId);
+            int instanceId = _rng.NextId(); // Unique card instance ID
+            return new CardInstance(instanceId, ownerPlayerId, definition);
+        }
+
+        #endregion
+    }
+}
+
+
+========================================
+FILE: EffectTargetResolver.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\EffectTargetResolver.cs
+========================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Cards.Logic
+{
+    #region Supporting Types
+    /// <summary>
+    /// Contains the resolved targets for an effect, including player and unit targets.
+    /// </summary>
+    public class EffectTargets
+    {
+        /// <summary>
+        /// Gets or sets the target player, if any.
+        /// </summary>
+        public PlayerState? TargetPlayer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of target units.
+        /// </summary>
+        public List<CardInstance> UnitTargets { get; set; } = new();
+
+        /// <summary>
+        /// Gets the first target unit, if any.
+        /// </summary>
+        public CardInstance? TargetUnit => UnitTargets.FirstOrDefault();
+    }
+    #endregion
+
+    /// <summary>
+    /// Resolves effect targets based on targeting types, game state, and context events.
+    /// </summary>
+    public static class EffectTargetResolver
+    {
+        #region Public Methods
+        /// <summary>
+        /// Resolves the targets for an effect based on the specified targeting type and context.
+        /// </summary>
+        /// <param name="type">The targeting type to resolve.</param>
+        /// <param name="state">The current game state.</param>
+        /// <param name="contextEvent">The context event that triggered the effect.</param>
+        /// <param name="sourceCardId">The instance ID of the card that owns the effect.</param>
+        /// <returns>An EffectTargets object containing all resolved targets.</returns>
+        public static EffectTargets Resolve(TargetType type, GameState state, IGameEvent contextEvent, int sourceCardId)
+        {
+            var result = new EffectTargets();
+            int ownerId = GetOwner(state, sourceCardId, contextEvent);
+            int opponentId = ownerId == 1 ? 2 : 1;
+
+            switch (type)
+            {
+                case TargetType.SelectedTarget:
+                case TargetType.TargetEnemyUnit:
+                case TargetType.TargetFriendlyUnit:
+                case TargetType.OtherFriendlyUnits:
+                    int? targetId = null;
+
+                    if (contextEvent is TargetSelectedEvent targetSelectedEvent)
+                        targetId = targetSelectedEvent.SelectedTargetId;
+                    else if (contextEvent is CardPlayedEvent cardPlayedEvent)
+                        targetId = cardPlayedEvent.SelectedTargetId;
+                    else if (contextEvent is StatusAppliedEvent statusAppliedEvent)
+                        targetId = statusAppliedEvent.TargetUnitId;
+                    else if (contextEvent is UnitDamagedEvent unitDamagedEvent)
+                        targetId = unitDamagedEvent.Unit?.InstanceId ?? unitDamagedEvent.Source?.InstanceId;
+                    else if (contextEvent is UnitDiedEvent unitDiedEvent)
+                        targetId = unitDiedEvent.Unit.InstanceId;
+
+                    if (targetId.HasValue)
+                    {
+                        var targetUnit = state.Board.GetAllUnits().FirstOrDefault(unit => unit.InstanceId == targetId.Value);
+                        if (targetUnit == null && (type == TargetType.Self || type == TargetType.SelectedTarget))
+                        {
+                            targetUnit = state.PlayerA.DiscardPile.FirstOrDefault(unit => unit.InstanceId == targetId.Value)
+                                      ?? state.PlayerB.DiscardPile.FirstOrDefault(unit => unit.InstanceId == targetId.Value);
+                        }
+                        if (type == TargetType.OtherFriendlyUnits && targetId.Value == sourceCardId)
+                            return result;
+
+                        if (targetUnit != null)
+                        {
+                            bool isValid = true;
+                            if (type == TargetType.TargetFriendlyUnit && targetUnit.OwnerPlayerId != ownerId) isValid = false;
+                            if (type == TargetType.OtherFriendlyUnits && targetUnit.OwnerPlayerId != ownerId) isValid = false;
+                            if (type == TargetType.TargetEnemyUnit && targetUnit.OwnerPlayerId != opponentId) isValid = false;
+
+                            if (isValid) result.UnitTargets.Add(targetUnit);
+                        }
+                    }
+                    break;
+
+                case TargetType.FriendlyHero:
+                    result.TargetPlayer = state.GetPlayer(ownerId);
+                    break;
+                case TargetType.EnemyHero:
+                    result.TargetPlayer = state.GetPlayer(opponentId);
+                    break;
+                case TargetType.Choice:
+                    result.TargetPlayer = state.GetPlayer(ownerId);
+                    break;
+                case TargetType.AllUnitsOnBoard:
+                    result.UnitTargets.AddRange(state.Board.GetAllUnits());
+                    break;
+                case TargetType.AllEnemyUnits:
+                    result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(unit => unit.OwnerPlayerId == opponentId));
+                    break;
+                case TargetType.AllFriendlyUnits:
+                    result.UnitTargets.AddRange(state.Board.GetAllUnits().Where(unit => unit.OwnerPlayerId == ownerId));
+                    break;
+
+                case TargetType.Self:
+                    var self = state.Board.GetAllUnits().FirstOrDefault(unit => unit.InstanceId == sourceCardId)
+                            ?? state.PlayerA.Hand.Concat(state.PlayerB.Hand).FirstOrDefault(card => card.InstanceId == sourceCardId)
+                            ?? state.SpellStack.FirstOrDefault(spell => spell.InstanceId == sourceCardId)
+                            ?? state.PlayerA.DiscardPile.Concat(state.PlayerB.DiscardPile).FirstOrDefault(card => card.InstanceId == sourceCardId);
+
+                    if (self != null) result.UnitTargets.Add(self);
+                    result.TargetPlayer = state.GetPlayer(ownerId);
+                    break;
+                case TargetType.OppositeEnemyUnit:
+                    int lineIdx = -1;
+
+                    // 1. PRIORITY: Check if the event tells us where the unit died
+                    if (contextEvent is UnitDiedEvent ude)
+                        lineIdx = ude.LineIndex;
+                    else if (contextEvent is UnitSacrificedEvent use)
+                        lineIdx = use.LineIndex;
+
+                    // 2. FALLBACK: If it's not a death event (e.g., a "Before Combat" trigger),
+                    // search the board
+                    if (lineIdx == -1)
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            if (state.Board.Lines[i].Player1Unit?.InstanceId == sourceCardId ||
+                                state.Board.Lines[i].Player2Unit?.InstanceId == sourceCardId)
+                            {
+                                lineIdx = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    // 3. TARGETING: Now that we have the line, find the enemy
+                    if (lineIdx >= 0 && lineIdx < 4)
+                    {
+                        var targetLine = state.Board.Lines[lineIdx];
+                        var enemyUnit = (ownerId == 1) ? targetLine.Player2Unit : targetLine.Player1Unit;
+
+                        if (enemyUnit != null)
+                        {
+                            result.UnitTargets.Add(enemyUnit);
+                        }
+                    }
+                    break;
+
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Gets all potential targets for a given targeting type without requiring a specific context event.
+        /// </summary>
+        /// <param name="type">The targeting type to get potential targets for.</param>
+        /// <param name="state">The current game state.</param>
+        /// <param name="sourceCardId">The instance ID of the card that owns the effect.</param>
+        /// <returns>A list of potential target units.</returns>
+        public static List<CardInstance> GetPotentialTargets(TargetType type, GameState state, int sourceCardId)
+        {
+            int ownerId = GetOwner(state, sourceCardId);
+            int opponentId = ownerId == 1 ? 2 : 1;
+            var allUnits = state.Board.GetAllUnits();
+
+            return type switch
+            {
+                TargetType.TargetEnemyUnit => allUnits.Where(unit => unit.OwnerPlayerId == opponentId).ToList(),
+                TargetType.TargetFriendlyUnit => allUnits.Where(unit => unit.OwnerPlayerId == ownerId && unit.InstanceId != sourceCardId).ToList(),
+                TargetType.OtherFriendlyUnits => allUnits.Where(unit => unit.OwnerPlayerId == ownerId && unit.InstanceId != sourceCardId).ToList(),
+                TargetType.SelectedTarget => allUnits.Where(unit => unit.InstanceId != sourceCardId).ToList(),
+                _ => new List<CardInstance>()
+            };
+        }
+        #endregion
+
+        #region Private Methods
+        public static int GetOwner(GameState state, int instanceId, IGameEvent? contextEvent = null)
+        {
+            // 1. PRIORITY: If the event explicitly tells us who the source player is 
+            // (e.g. CardPlayedEvent), use that!
+            if (contextEvent != null && contextEvent.SourcePlayerId != 0)
+                return contextEvent.SourcePlayerId;
+
+            // 2. Check the Board
+            var unit = state.Board.GetAllUnits().FirstOrDefault(x => x.InstanceId == instanceId);
+            if (unit != null) return unit.OwnerPlayerId;
+
+            // 3. Check Hands/Discard (Check Player A then B)
+            if (state.PlayerA.Hand.Any(x => x.InstanceId == instanceId) ||
+                state.PlayerA.DiscardPile.Any(x => x.InstanceId == instanceId)) return 1;
+            if (state.PlayerB.Hand.Any(x => x.InstanceId == instanceId) ||
+                state.PlayerB.DiscardPile.Any(x => x.InstanceId == instanceId)) return 2;
+
+            // 4. Check the Spell Stack
+            var stackSpell = state.SpellStack.FirstOrDefault(x => x.InstanceId == instanceId);
+            if (stackSpell != null) return stackSpell.OwnerPlayerId;
+
+            return state.ActivePlayerId;
+        }
+        #endregion
+    }
+}
+
+
+========================================
+FILE: PlayValidator.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\PlayValidator.cs
+========================================
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.State.Models;
+using System.Linq;
+
+namespace CardGame.Core.Cards.Logic
+{
+    /// <summary>
+    /// Validates whether a card can be played in the current game state.
+    /// </summary>
+    public static class PlayValidator
+    {
+        #region Public Methods
+        /// <summary>
+        /// Determines whether a card can be played by the specified player in the current game state.
+        /// </summary>
+        /// <param name="card">The card instance to validate.</param>
+        /// <param name="state">The current game state.</param>
+        /// <param name="playerId">The ID of the player attempting to play the card.</param>
+        /// <returns>True if the card can be played, otherwise false.</returns>
+        public static bool CanPlay(CardInstance card, GameState state, int playerId)
+        {
+            var player = state.GetPlayer(playerId);
+            if (!player.CanPlayCard(card.CurrentStats.BloodCost)) return false;
+
+            if (card.Definition.Type == CardType.Unit)
+            {
+                return state.Board.Lines.Any(line => line.IsSlotEmpty(playerId));
+            }
+
+            if (card.Definition.Type == CardType.Spell)
+            {
+                var onPlayedEffect = card.Definition.Effects.FirstOrDefault(effect => effect.Trigger == TriggerType.OnPlayed);
+                if (onPlayedEffect != null)
+                {
+                    var firstManualAction = onPlayedEffect.Actions.FirstOrDefault(action => IsManualTarget(action.Target) || action.Target == TargetType.SelectedTarget);
+                    if (firstManualAction != null)
+                    {
+                        var typeToCheck = firstManualAction.Target == TargetType.SelectedTarget ? onPlayedEffect.Targeting : firstManualAction.Target;
+                        if (!EffectTargetResolver.GetPotentialTargets(typeToCheck, state, card.InstanceId).Any()) return false;
+                    }
+                }
+            }
+            return true;
+        }
+        #endregion
+
+        #region Private Helper Methods
+        private static bool IsManualTarget(TargetType targetType) =>
+            targetType == TargetType.SelectedTarget ||
+            targetType == TargetType.TargetEnemyUnit ||
+            targetType == TargetType.TargetFriendlyUnit ||
+            targetType == TargetType.OtherFriendlyUnits;
+        #endregion
+    }
+}
+
+
+========================================
+FILE: TriggerLogic.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\TriggerLogic.cs
+========================================
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events;
+using CardGame.Core.Events.Interfaces;
+using CardGame.Core.State.Models;
+using System;
+using System.Linq;
+
+namespace CardGame.Core.Cards.Logic
+{
+    /// <summary>
+    /// Contains logic for evaluating whether card effects should trigger based on game events and conditions.
+    /// </summary>
+    public static class TriggerLogic
+    {
+        #region Public Methods
+        /// <summary>
+        /// Checks whether a specific effect should trigger based on the current game event and state.
+        /// </summary>
+        /// <param name="effect">The effect data to evaluate.</param>
+        /// <param name="gameEvent">The current game event that might trigger the effect.</param>
+        /// <param name="state">The current game state.</param>
+        /// <param name="sourceCardId">The instance ID of the card that owns the effect.</param>
+        /// <returns>True if the effect should trigger, otherwise false.</returns>
+        public static bool Check(EffectData effect, IGameEvent gameEvent, GameState state, int sourceCardId)
+        {
+            CardInstance? source = null;
+            if (gameEvent is UnitDiedEvent unitDiedEvent && unitDiedEvent.Unit.InstanceId == sourceCardId)
+                source = unitDiedEvent.Unit;
+            else if (gameEvent is UnitSacrificedEvent unitSacrificedEvent && unitSacrificedEvent.Unit.InstanceId == sourceCardId)
+                source = unitSacrificedEvent.Unit;
+            else
+                source = state.Board.GetAllUnits().FirstOrDefault(unit => unit.InstanceId == sourceCardId)
+                      ?? state.PlayerA.Hand.Concat(state.PlayerB.Hand).FirstOrDefault(card => card.InstanceId == sourceCardId)
+                      ?? state.SpellStack.FirstOrDefault(spell => spell.InstanceId == sourceCardId)
+                      ?? state.PlayerA.DiscardPile.Concat(state.PlayerB.DiscardPile).FirstOrDefault(card => card.InstanceId == sourceCardId);
+
+            if (source == null) return false;
+
+            if (source.IsSilenced && effect.Trigger != TriggerType.OnPlayed) return false;
+
+            if (effect.Condition != null && !EvaluateCondition(effect.Condition, gameEvent, state, source))
+                return false;
+
+            int myOwnerId = source.OwnerPlayerId;
+
+            switch (effect.Trigger)
+            {
+                case TriggerType.OnPlayed:
+                    if (gameEvent is CardPlayedEvent cardPlayedEvent)
+                    {
+                     
+                        if (cardPlayedEvent.Card.InstanceId == sourceCardId) return true;
+                        if (effect.Zone == EffectZone.Board && effect.Condition != null)
+                        {
+                           
+                            return IsListeningToOthers(effect.Condition) &&
+                                   EvaluateCondition(effect.Condition, gameEvent, state, source);
+                        }
+                    }
+                    return false;
+
+                case TriggerType.OnDeath:
+                    return gameEvent is UnitDiedEvent deathEvent && deathEvent.Unit.InstanceId == sourceCardId;
+
+                case TriggerType.OnKill:
+                    return gameEvent is UnitDiedEvent killEvent && killEvent.KillerInstanceId == sourceCardId;
+
+                case TriggerType.OnSacrificed:
+                    return gameEvent is UnitSacrificedEvent sacrificedEvent && sacrificedEvent.Unit.InstanceId == sourceCardId;
+
+                case TriggerType.OnFriendlyUnitDied:
+                    if (gameEvent is UnitDiedEvent friendlyDeathEvent) 
+                        return friendlyDeathEvent.Unit.InstanceId != sourceCardId && friendlyDeathEvent.OwnerId == myOwnerId;
+                    if (gameEvent is UnitSacrificedEvent friendlySacrificeEvent) 
+                        return friendlySacrificeEvent.Unit.InstanceId != sourceCardId && friendlySacrificeEvent.OwnerId == myOwnerId;
+                    return false;
+
+                case TriggerType.OnOtherUnitSacrificed:
+                    return gameEvent is UnitSacrificedEvent otherSacrificeEvent && 
+                           otherSacrificeEvent.Unit.InstanceId != sourceCardId && 
+                           otherSacrificeEvent.OwnerId == myOwnerId;
+
+                case TriggerType.OnDamagedEnemyHero:
+                    return gameEvent is UnitDamagedEvent heroDamageEvent && 
+                           heroDamageEvent.Source != null && 
+                           heroDamageEvent.Source.OwnerPlayerId == myOwnerId && 
+                           heroDamageEvent.Unit == null;
+
+                case TriggerType.OnDamagedEnemyUnit:
+                    return gameEvent is UnitDamagedEvent unitDamageEvent && 
+                           unitDamageEvent.Source?.InstanceId == sourceCardId && 
+                           unitDamageEvent.Unit != null && 
+                           unitDamageEvent.Unit.OwnerPlayerId != myOwnerId;
+
+                case TriggerType.OnOpponentCardDrawn:
+                    return gameEvent is CardDrawnEvent opponentDrawEvent && opponentDrawEvent.PlayerId != myOwnerId;
+
+                case TriggerType.OnFriendlyCardDrawn:
+                    return gameEvent is CardDrawnEvent friendlyDrawEvent && friendlyDrawEvent.PlayerId == myOwnerId;
+
+                case TriggerType.OnPreCombatLine:
+                    return gameEvent is PreLineCombatEvent lineCombatEvent && 
+                           state.Board.Lines[lineCombatEvent.LineIndex].GetAllUnits().Any(unit => unit.InstanceId == sourceCardId);
+
+                case TriggerType.OnStatusApplied:
+                    return gameEvent is StatusAppliedEvent;
+
+                case TriggerType.OnDamagTaken:
+                    return gameEvent is UnitDamagedEvent damageTakenEvent && damageTakenEvent.Unit?.InstanceId == sourceCardId;
+
+                case TriggerType.OnFriendlyActionPlayed:
+                    return gameEvent is CardPlayedEvent friendlyActionEvent &&
+                           friendlyActionEvent.PlayerId == myOwnerId &&
+                           friendlyActionEvent.Card.Definition.Type == CardType.Spell;
+
+                default:
+                    return false;
+            }
+        }
+        #endregion
+
+        #region Condition Evaluation
+        private static bool EvaluateCondition(ConditionData condition, IGameEvent gameEvent, GameState state, CardInstance source)
+        {
+            int myOwnerId = source.OwnerPlayerId;
+
+            switch (condition.Condition)
+            {
+                case ConditionType.And:
+                    return condition.SubConditions.All(subCondition => EvaluateCondition(subCondition, gameEvent, state, source));
+
+                case ConditionType.Or:
+                    return condition.SubConditions.Any(subCondition => EvaluateCondition(subCondition, gameEvent, state, source));
+
+                case ConditionType.IsStatus:
+                    return gameEvent is StatusAppliedEvent statusAppliedEvent &&
+                           string.Equals(statusAppliedEvent.Status.ToString(), condition.TargetParam, StringComparison.OrdinalIgnoreCase);
+
+                case ConditionType.IsFriendly:
+                    return gameEvent.SourcePlayerId == myOwnerId;
+
+                case ConditionType.IsEnemy:
+                    if (gameEvent is StatusAppliedEvent statusAppliedEvent2)
+                    {
+                        var targetUnit = state.Board.GetAllUnits().FirstOrDefault(unit => unit.InstanceId == statusAppliedEvent2.TargetUnitId);
+                        return targetUnit != null && targetUnit.OwnerPlayerId != myOwnerId;
+                    }
+                    return gameEvent.SourcePlayerId != myOwnerId;
+
+                case ConditionType.IsSelf:
+                    int actorId = -1;
+                    if (gameEvent is UnitDamagedEvent unitDamagedEvent) actorId = unitDamagedEvent.Source?.InstanceId ?? -1;
+                    else if (gameEvent is UnitDiedEvent unitDiedEvent) actorId = (condition.ValueParam == 1) ? unitDiedEvent.KillerInstanceId ?? -1 : unitDiedEvent.Unit.InstanceId;
+                    else if (gameEvent is CardPlayedEvent cardPlayedEvent) actorId = cardPlayedEvent.Card.InstanceId;
+                    else if (gameEvent is UnitSacrificedEvent unitSacrificedEvent) actorId = unitSacrificedEvent.Unit.InstanceId;
+                    return actorId == source.InstanceId;
+
+                case ConditionType.IsSubtype:
+                    CardInstance? subject = null;
+                    if (gameEvent is UnitDamagedEvent unitDamagedEvent2) subject = unitDamagedEvent2.Source;
+                    else if (gameEvent is UnitDiedEvent unitDiedEvent2) subject = unitDiedEvent2.Unit;
+                    else if (gameEvent is CardPlayedEvent cardPlayedEvent2) subject = cardPlayedEvent2.Card;
+                    else if (gameEvent is UnitSacrificedEvent unitSacrificedEvent2) subject = unitSacrificedEvent2.Unit;
+                    else if (gameEvent is CardMovedEvent cardMovedEvent) actorId = cardMovedEvent.CardId;
+                    return subject != null && subject.Definition.Subtypes.Contains(condition.TargetParam);
+
+                case ConditionType.Not:
+                    return !condition.SubConditions.Any(subCondition => EvaluateCondition(subCondition, gameEvent, state, source));
+
+                case ConditionType.HasSubtypeOnBoard:
+                    return state.Board.GetAllUnits()
+                        .Any(unit => unit.OwnerPlayerId == myOwnerId &&
+                                  unit.Definition.Subtypes.Contains(condition.TargetParam));
+
+                default:
+                    return true;
+            }
+        }
+
+        private static bool IsListeningToOthers(ConditionData condition)
+        {
+            // Check if the condition is "Not IsSelf"
+            if (condition.Condition == ConditionType.Not && condition.SubConditions.Any(subCondition => subCondition.Condition == ConditionType.IsSelf))
+                return true;
+
+            // Search complex conditions (And/Or)
+            if (condition.Condition == ConditionType.And || condition.Condition == ConditionType.Or)
+                return condition.SubConditions.Any(IsListeningToOthers);
+
+            return false;
+        }
+        #endregion
+    }
+}
+
+
+========================================
+FILE: IKeywordHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\Keywords\IKeywordHandler.cs
+========================================
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.GameRules.Damage;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Cards.Logic.Keywords
+{
+    /// <summary>
+    /// Defines the contract for keyword handlers that process keyword-specific effects and interactions.
+    /// </summary>
+    public interface IKeywordHandler
+    {
+        #region Properties
+        /// <summary>
+        /// Gets the keyword type this handler processes.
+        /// </summary>
+        Keyword Type { get; }
+        #endregion
+
+        #region Damage Modification
+        /// <summary>
+        /// Modifies incoming damage based on the keyword's properties.
+        /// </summary>
+        /// <param name="amount">The initial damage amount.</param>
+        /// <param name="context">The damage context containing source, target, and damage type.</param>
+        /// <returns>The modified damage amount after applying keyword effects.</returns>
+        int OnModifyDamageTaken(int amount, DamageContext context);
+        #endregion
+
+        #region Combat Processing
+        /// <summary>
+        /// Processes effects that occur after a unit attacks.
+        /// </summary>
+        /// <param name="state">The current game state.</param>
+        /// <param name="attacker">The unit that performed the attack.</param>
+        /// <param name="victim">The target of the attack, or null if attacking a hero.</param>
+        /// <param name="lineIndex">The line index where the attack occurred.</param>
+        /// <param name="context">The game context with additional services.</param>
+        /// <returns>The updated game state after processing attack effects.</returns>
+        GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context);
+        #endregion
+
+        #region Turn Processing
+        /// <summary>
+        /// Processes effects that occur at the end of a round for a unit.
+        /// </summary>
+        /// <param name="state">The current game state.</param>
+        /// <param name="unit">The unit to process round-end effects for.</param>
+        /// <param name="context">The game context with additional services.</param>
+        /// <returns>The updated game state after processing round-end effects.</returns>
+        GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context);
+        #endregion
+
+        #region Death Prevention
+        /// <summary>
+        /// Attempts to prevent a unit's death using keyword-specific prevention mechanics.
+        /// </summary>
+        /// <param name="state">The current game state (passed by reference for potential modification).</param>
+        /// <param name="unit">The unit that is about to die.</param>
+        /// <param name="context">The game context with additional services.</param>
+        /// <param name="isSacrifice">Whether the death is due to a sacrifice effect.</param>
+        /// <returns>True if death was prevented, otherwise false.</returns>
+        bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice);
+        #endregion
+    }
+}
+
+
+========================================
+FILE: KeywordHandler.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\Keywords\KeywordHandler.cs
+========================================
+using System;
+using System.Collections.Generic;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.Events;
+using CardGame.Core.GameRules.Damage;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Cards.Logic.Keywords.Handlers
+{
+    /// <summary>
+    /// Handles the Armored keyword which reduces incoming combat damage by a fixed amount.
+    /// </summary>
+    public class ArmoredHandler : IKeywordHandler
+    {
+        /// <summary>
+        /// Gets the keyword type this handler processes (Armored).
+        /// </summary>
+        public Keyword Type => Keyword.Armored;
+
+        /// <summary>
+        /// Reduces combat damage by the armor value (default 1 or from keyword parameters).
+        /// Non-combat damage is unaffected.
+        /// </summary>
+        public int OnModifyDamageTaken(int amount, DamageContext context)
+        {
+            if (context.Type != DamageType.Combat) return amount;
+
+            int armorValue = 1;
+            if (context.Target.Definition.BaseStats.KeywordParams.TryGetValue(Keyword.Armored, out int value))
+                armorValue = value;
+
+            return Math.Max(0, amount - armorValue);
+        }
+
+        /// <summary>
+        /// Armored has no special effects after attacking.
+        /// </summary>
+        public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context) => state;
+
+        /// <summary>
+        /// Armored has no special effects at round end.
+        /// </summary>
+        public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context) => state;
+
+        /// <summary>
+        /// Armored does not prevent death.
+        /// </summary>
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice) => false;
+    }
+
+    /// <summary>
+    /// Handles the Marked keyword which doubles incoming damage to the unit.
+    /// </summary>
+    public class MarkedHandler : IKeywordHandler
+    {
+        /// <summary>
+        /// Gets the keyword type this handler processes (Marked).
+        /// </summary>
+        public Keyword Type => Keyword.Marked;
+
+        /// <summary>
+        /// Doubles all incoming damage to the marked unit.
+        /// </summary>
+        public int OnModifyDamageTaken(int amount, DamageContext context) => amount * 2;
+
+        /// <summary>
+        /// Marked has no special effects after attacking.
+        /// </summary>
+        public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context) => state;
+
+        /// <summary>
+        /// Marked has no special effects at round end.
+        /// </summary>
+        public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context) => state;
+
+        /// <summary>
+        /// Marked does not prevent death.
+        /// </summary>
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice) => false;
+    }
+
+    /// <summary>
+    /// Handles the SplashDamage keyword which deals damage to adjacent enemy units when attacking.
+    /// </summary>
+    public class SplashDamageHandler : IKeywordHandler
+    {
+        /// <summary>
+        /// Gets the keyword type this handler processes (SplashDamage).
+        /// </summary>
+        public Keyword Type => Keyword.SplashDamage;
+
+        /// <summary>
+        /// Splash damage does not modify incoming damage.
+        /// </summary>
+        public int OnModifyDamageTaken(int amount, DamageContext context) => amount;
+
+        /// <summary>
+        /// Deals splash damage to enemy units in adjacent lines after attacking.
+        /// </summary>
+        public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context)
+        {
+            if (!attacker.Definition.BaseStats.KeywordParams.TryGetValue(Keyword.SplashDamage, out int splashDamage))
+                return state;
+
+            var workingState = state;
+            int opponentId = attacker.OwnerPlayerId == 1 ? 2 : 1;
+
+            foreach (int neighborLineIndex in new[] { lineIndex - 1, lineIndex + 1 })
+            {
+                if (neighborLineIndex >= 0 && neighborLineIndex < 4)
+                {
+                    var unit = workingState.Board.Lines[neighborLineIndex].IsSlotEmpty(opponentId)
+                        ? null
+                        : (opponentId == 1
+                            ? workingState.Board.Lines[neighborLineIndex].Player1Unit
+                            : workingState.Board.Lines[neighborLineIndex].Player2Unit);
+
+                    if (unit != null)
+                    {
+                        var nextUnit = unit.TakeDamage(splashDamage);
+                        workingState = workingState.UpdateBoard(workingState.Board.UpdateUnit(nextUnit));
+                        context.Events.Publish(new UnitDamagedEvent(nextUnit, splashDamage, attacker));
+                    }
+                }
+            }
+            return workingState;
+        }
+
+        /// <summary>
+        /// Splash damage has no special effects at round end.
+        /// </summary>
+        public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context) => state;
+
+        /// <summary>
+        /// Splash damage does not prevent death.
+        /// </summary>
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice) => false;
+    }
+
+    /// <summary>
+    /// Handles the BurnSource keyword which applies the Burning status to attacked units.
+    /// </summary>
+    public class BurnSourceHandler : IKeywordHandler
+    {
+        /// <summary>
+        /// Gets the keyword type this handler processes (BurnSource).
+        /// </summary>
+        public Keyword Type => Keyword.BurnSource;
+
+        /// <summary>
+        /// BurnSource does not modify incoming damage.
+        /// </summary>
+        public int OnModifyDamageTaken(int amount, DamageContext context) => amount;
+
+        /// <summary>
+        /// Applies the Burning keyword to the attacked unit.
+        /// </summary>
+        public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context)
+        {
+            if (victim == null) return state;
+            var burnedVictim = victim.AddPermanentBuff(new CardStats(0, 0, 0, new[] { Keyword.Burning }));
+            return state.UpdateBoard(state.Board.UpdateUnit(burnedVictim));
+        }
+
+        /// <summary>
+        /// BurnSource has no special effects at round end.
+        /// </summary>
+        public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context) => state;
+
+        /// <summary>
+        /// BurnSource does not prevent death.
+        /// </summary>
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice) => false;
+    }
+
+    /// <summary>
+    /// Handles the Burning keyword which deals 1 damage to the unit at the end of each round.
+    /// </summary>
+    public class BurningHandler : IKeywordHandler
+    {
+        /// <summary>
+        /// Gets the keyword type this handler processes (Burning).
+        /// </summary>
+        public Keyword Type => Keyword.Burning;
+
+        /// <summary>
+        /// Burning does not modify incoming damage.
+        /// </summary>
+        public int OnModifyDamageTaken(int amount, DamageContext context) => amount;
+
+        /// <summary>
+        /// Burning has no special effects after attacking.
+        /// </summary>
+        public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context) => state;
+
+        /// <summary>
+        /// Deals 1 damage to the burning unit at the end of the round.
+        /// </summary>
+        public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context)
+        {
+            var damagedUnit = unit.TakeDamage(1);
+            context.Events.Publish(new UnitDamagedEvent(unit, 1, null));
+            return state.UpdateBoard(state.Board.UpdateUnit(damagedUnit));
+        }
+
+        /// <summary>
+        /// Burning does not prevent death.
+        /// </summary>
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice) => false;
+    }
+
+    /// <summary>
+    /// Handles the SoulGuard keyword which prevents death once per game (unless depleted or sacrificed).
+    /// </summary>
+    public class SoulGuardHandler : IKeywordHandler
+    {
+        /// <summary>
+        /// Gets the keyword type this handler processes (SoulGuard).
+        /// </summary>
+        public Keyword Type => Keyword.SoulGuard;
+
+        /// <summary>
+        /// SoulGuard does not modify incoming damage.
+        /// </summary>
+        public int OnModifyDamageTaken(int amount, DamageContext context) => amount;
+
+        /// <summary>
+        /// SoulGuard has no special effects after attacking.
+        /// </summary>
+        public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context) => state;
+
+        /// <summary>
+        /// SoulGuard has no special effects at round end.
+        /// </summary>
+        public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context) => state;
+
+        /// <summary>
+        /// Prevents death by setting unit to 1 HP and applying the SoulGuardDepleted keyword.
+        /// Does not work against sacrifice effects.
+        /// </summary>
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
+        {
+            if (isSacrifice) return false;
+            if (unit.CurrentStats.Keywords.Contains(Keyword.SoulGuardDepleted)) return false;
+
+            int damageToSet = Math.Max(0, unit.MaxHealth - 1);
+            var survivedUnit = unit.WithDamage(damageToSet).AddPermanentBuff(new CardStats(0, 0, 0, new[] { Keyword.SoulGuardDepleted }));
+            state = state.UpdateBoard(state.Board.UpdateUnit(survivedUnit));
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// Handles the Unkillable keyword which returns the unit to hand instead of dying.
+    /// </summary>
+    public class UnkillableHandler : IKeywordHandler
+    {
+        /// <summary>
+        /// Gets the keyword type this handler processes (Unkillable).
+        /// </summary>
+        public Keyword Type => Keyword.Unkillable;
+
+        /// <summary>
+        /// Unkillable does not modify incoming damage.
+        /// </summary>
+        public int OnModifyDamageTaken(int amount, DamageContext context) => amount;
+
+        /// <summary>
+        /// Unkillable has no special effects after attacking.
+        /// </summary>
+        public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context) => state;
+
+        /// <summary>
+        /// Unkillable has no special effects at round end.
+        /// </summary>
+        public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context) => state;
+
+        /// <summary>
+        /// Prevents death by returning the unit to the owner's hand.
+        /// Silenced units cannot use this effect.
+        /// </summary>
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
+        {
+            if (unit.IsSilenced) return false;
+
+            context.Events.Publish(new TriggerActivatedEvent(unit.InstanceId, unit.OwnerPlayerId));
+
+            var board = state.Board;
+            int lineIndex = -1;
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (board.Lines[i].Player1Unit?.InstanceId == unit.InstanceId)
+                {
+                    lineIndex = i;
+                    board = board.WithUnitPlacedAt(i, 1, null);
+                    break;
+                }
+                if (board.Lines[i].Player2Unit?.InstanceId == unit.InstanceId)
+                {
+                    lineIndex = i;
+                    board = board.WithUnitPlacedAt(i, 2, null);
+                    break;
+                }
+            }
+
+            bool wasGraftedUnkillable = unit.CurrentStats.Keywords.Contains(Keyword.Unkillable) &&
+                                        !unit.Definition.Keywords.Contains(Keyword.Unkillable);
+
+            var returnedCard = unit.MoveAndReset();
+
+            if (wasGraftedUnkillable)
+            {
+                var statsWithUnkillable = new CardStats(0, 0, 0, new[] { Keyword.Unkillable });
+                returnedCard = returnedCard.AddPermanentBuff(statsWithUnkillable);
+            }
+
+            int playerId = unit.OwnerPlayerId;
+            var owner = state.GetPlayer(playerId);
+
+            context.Events.Publish(new CardMovedEvent(unit.InstanceId, playerId, CardZone.Board, CardZone.Hand, lineIndex));
+
+            state = state.UpdateBoard(board).UpdatePlayer(owner.WithCardAddedToHand(returnedCard));
+
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// Handles the Stunned keyword which prevents a unit from attacking on its next turn.
+    /// </summary>
+    public class StunnedHandler : IKeywordHandler
+    {
+        /// <summary>
+        /// Gets the keyword type this handler processes (Stunned).
+        /// </summary>
+        public Keyword Type => Keyword.Stunned;
+
+        /// <summary>
+        /// Stunned does not modify incoming damage.
+        /// </summary>
+        public int OnModifyDamageTaken(int amount, DamageContext context) => amount;
+
+        /// <summary>
+        /// Stunned has no special effects after attacking.
+        /// </summary>
+        public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context) => state;
+
+        /// <summary>
+        /// Stunned has no special effects at round end.
+        /// </summary>
+        public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context) => state;
+
+        /// <summary>
+        /// Stunned does not prevent death.
+        /// </summary>
+        public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice) => false;
+    }
+}
+
+
+========================================
+FILE: KeywordProcessor.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Logic\Keywords\KeywordProcessor.cs
+========================================
+using System.Collections.Generic;
+using System.Linq;
+using CardGame.Core.Application;
+using CardGame.Core.Cards.Data;
+using CardGame.Core.Cards.Models;
+using CardGame.Core.GameRules.Damage;
+using CardGame.Core.State.Models;
+
+namespace CardGame.Core.Cards.Logic.Keywords
+{
+    /// <summary>
+    /// Processes keyword effects and delegates to registered keyword handlers for various game events.
+    /// </summary>
+    public class KeywordProcessor
+    {
+        #region Private Fields
+        private readonly Dictionary<Keyword, IKeywordHandler> _handlers = new();
+        #endregion
+
+        #region Handler Registration
+        /// <summary>
+        /// Registers a keyword handler for a specific keyword type.
+        /// </summary>
+        /// <param name="handler">The handler to register.</param>
+        public void RegisterHandler(IKeywordHandler handler) => _handlers[handler.Type] = handler;
+        #endregion
+
+        #region Damage Processing
+        /// <summary>
+        /// Processes damage taken by applying keyword-based damage modifications.
+        /// </summary>
+        /// <param name="amount">The initial damage amount.</param>
+        /// <param name="context">The damage context containing source, target, and damage type.</param>
+        /// <returns>The final damage amount after keyword modifications.</returns>
+        public int ProcessDamageTaken(int amount, DamageContext context)
+        {
+            int finalAmount = amount;
+            foreach (var keyword in context.Target.CurrentStats.Keywords)
+            {
+                if (_handlers.TryGetValue(keyword, out var handler))
+                    finalAmount = handler.OnModifyDamageTaken(finalAmount, context);
+            }
+            return finalAmount;
+        }
+        #endregion
+
+        #region Combat Processing
+        /// <summary>
+        /// Processes post-attack keyword effects after a unit attacks.
+        /// </summary>
+        /// <param name="state">The current game state.</param>
+        /// <param name="attacker">The unit that performed the attack.</param>
+        /// <param name="victim">The target of the attack, or null if attacking a hero.</param>
+        /// <param name="lineIndex">The line index where the attack occurred.</param>
+        /// <param name="context">The game context with additional services.</param>
+        /// <returns>The updated game state after processing post-attack keyword effects.</returns>
+        public GameState ProcessPostAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context)
+        {
+            var workingState = state;
+            foreach (var keyword in attacker.CurrentStats.Keywords)
+            {
+                if (_handlers.TryGetValue(keyword, out var handler))
+                    workingState = handler.OnAfterAttack(workingState, attacker, victim, lineIndex, context);
+            }
+            return workingState;
+        }
+        #endregion
+
+        #region Turn Processing
+        /// <summary>
+        /// Processes round-end keyword effects for a specific unit.
+        /// </summary>
+        /// <param name="state">The current game state.</param>
+        /// <param name="unit">The unit to process round-end effects for.</param>
+        /// <param name="context">The game context with additional services.</param>
+        /// <returns>The updated game state after processing round-end keyword effects.</returns>
+        public GameState ProcessRoundEnd(GameState state, CardInstance unit, GameContext context)
+        {
+            var workingState = state;
+            foreach (var keyword in unit.CurrentStats.Keywords)
+            {
+                if (_handlers.TryGetValue(keyword, out var handler))
+                    workingState = handler.OnRoundEnd(workingState, unit, context);
+            }
+            return workingState;
+        }
+        #endregion
+
+        #region Death Prevention
+        /// <summary>
+        /// Attempts to prevent a unit's death using keyword-based death prevention effects.
+        /// Combines keywords from the current stats and the base card definition.
+        /// </summary>
+        /// <param name="state">The current game state (passed by reference for potential modification).</param>
+        /// <param name="unit">The unit that is about to die.</param>
+        /// <param name="context">The game context with additional services.</param>
+        /// <param name="isSacrifice">Whether the death is due to a sacrifice effect.</param>
+        /// <returns>True if death was prevented, otherwise false.</returns>
+        public bool TryPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
+        {
+            // Combine keywords from current stats AND from the base card definition
+            // This ensures Unkillable works even when dying from a spell
+            var allKeywords = unit.CurrentStats.Keywords
+                .Concat(unit.Definition.Keywords)
+                .Distinct();
+
+            foreach (var keyword in allKeywords)
+            {
+                if (_handlers.TryGetValue(keyword, out var handler))
+                {
+                    // Unkillable should not work if the card is silenced
+                    if (unit.IsSilenced) continue;
+
+                    if (handler.OnPreventDeath(ref state, unit, context, isSacrifice))
+                        return true;
+                }
+            }
+            return false;
+        }
+        #endregion
+    }
+}
+
+
+========================================
+FILE: CardDefinition.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Models\CardDefinition.cs
+========================================
+using CardGame.Core.Cards.Data;
+using System.Collections.Generic;
+
+namespace CardGame.Core.Cards.Models
+{
+    /// <summary>
+    /// Represents the static definition of a card, containing all immutable data required to create card instances.
+    /// </summary>
+    public class CardDefinition
+    {
+        #region Constructor
+        /// <summary>
+        /// Initializes a new instance of the CardDefinition class.
+        /// </summary>
+        /// <param name="id">The unique identifier of the card.</param>
+        /// <param name="name">The display name of the card.</param>
+        /// <param name="description">The flavor text or ability description of the card.</param>
+        /// <param name="type">The type of card (Unit, Spell, etc.).</param>
+        /// <param name="subtypes">The subtype classifications of the card.</param>
+        /// <param name="baseStats">The base statistics (attack, health, cost) of the card.</param>
+        /// <param name="keywords">The keywords associated with the card.</param>
+        /// <param name="effects">The effects and abilities of the card.</param>
+        public CardDefinition(
+            string id,
+            string name,
+            string description,
+            CardType type,
+            IEnumerable<string> subtypes,
+            CardStats baseStats,
+            IEnumerable<Keyword> keywords,
+            IEnumerable<EffectData> effects)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Type = type;
+            Subtypes = new List<string>(subtypes);
+            BaseStats = baseStats;
+            Keywords = new List<Keyword>(keywords);
+            Effects = new List<EffectData>(effects);
+        }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets the unique identifier of the card.
+        /// </summary>
+        public string Id { get; }
+
+        /// <summary>
+        /// Gets the display name of the card.
+        /// </summary>
+        public string Name { get; }
+
+        /// <summary>
+        /// Gets the flavor text or ability description of the card.
+        /// </summary>
+        public string Description { get; }
+
+        /// <summary>
+        /// Gets the type of card (Unit, Spell, etc.).
+        /// </summary>
+        public CardType Type { get; }
+
+        /// <summary>
+        /// Gets the subtype classifications of the card.
+        /// </summary>
+        public IReadOnlyList<string> Subtypes { get; }
+
+        /// <summary>
+        /// Gets the base statistics (attack, health, cost) of the card.
+        /// </summary>
+        public CardStats BaseStats { get; }
+
+        /// <summary>
+        /// Gets the keywords associated with the card.
+        /// </summary>
+        public IReadOnlyList<Keyword> Keywords { get; }
+
+        /// <summary>
+        /// Gets the effects and abilities of the card.
+        /// </summary>
+        public IReadOnlyList<EffectData> Effects { get; }
+        #endregion
+    }
+}
+
+
+========================================
+FILE: CardInstance.cs
+PATH: C:\Users\bluza\Documents\CardGame\Source\CardGame.Core\Cards\Models\CardInstance.cs
+========================================
+using CardGame.Core.Cards.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CardGame.Core.Cards.Models
+{
+    /// <summary>
+    /// Represents an instance of a card in the game with mutable state such as damage taken and buffs.
+    /// Each card instance is immutable and returns new instances when modified.
+    /// </summary>
+    public class CardInstance
+    {
+        #region Properties
+        /// <summary>
+        /// Gets the unique identifier for this card instance.
+        /// </summary>
+        public int InstanceId { get; }
+
+        /// <summary>
+        /// Gets the ID of the player who owns this card.
+        /// </summary>
+        public int OwnerPlayerId { get; }
+
+        /// <summary>
+        /// Gets the static definition of the card (base stats, effects, etc.).
+        /// </summary>
+        public CardDefinition Definition { get; }
+
+        /// <summary>
+        /// Gets the amount of damage this card has taken.
+        /// </summary>
+        public int DamageTaken { get; }
+
+        /// <summary>
+        /// Gets the permanent stat buffs applied to this card.
+        /// </summary>
+        public CardStats PermanentBuffs { get; }
+
+        /// <summary>
+        /// Gets the keywords applied to this card via auras from other units.
+        /// </summary>
+        public IReadOnlyList<Keyword> AuraKeywords { get; }
+
+        /// <summary>
+        /// Gets the keywords that have been temporarily suppressed on this card.
+        /// </summary>
+        public IReadOnlyList<Keyword> SuppressedKeywords { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether this card is silenced (ignores all buffs and keywords).
+        /// </summary>
+        public bool IsSilenced { get; }
+
+        /// <summary>
+        /// Gets the cost reduction applied to this card (immutable once set).
+        /// </summary>
+        public int CostReduction { get; }
+
+        /// <summary>
+        /// Gets the current calculated stats of the card, accounting for buffs, damage, and silenced state.
+        /// </summary>
+        public CardStats CurrentStats
+        {
+            get
+            {
+                if (IsSilenced)
+                {
+                    return new CardStats(
+                        Definition.BaseStats.Attack,
+                        Definition.BaseStats.Health - DamageTaken,
+                        Definition.BaseStats.BloodCost,
+                        new List<Keyword>(),
+                        new Dictionary<Keyword, int>(),
+                        Definition.BaseStats.CostType
+                    );
+                }
+
+                var baseAndPermanent = Definition.BaseStats + PermanentBuffs;
+                int finalCost = Math.Max(0, baseAndPermanent.BloodCost - CostReduction);
+                var combinedKeywords = baseAndPermanent.Keywords.Concat(AuraKeywords)
+                    .Where(keyword => !SuppressedKeywords.Contains(keyword))
+                    .Distinct()
+                    .ToList();
+
+                return new CardStats(
+                    baseAndPermanent.Attack,
+                    baseAndPermanent.Health - DamageTaken,
+                    finalCost,
+                    combinedKeywords,
+                    new Dictionary<Keyword, int>((Dictionary<Keyword, int>)baseAndPermanent.KeywordParams),
+                    baseAndPermanent.CostType
+                );
+            }
+        }
+
+        /// <summary>
+        /// Gets the maximum health of the card (base health + permanent buffs, ignoring damage taken).
+        /// </summary>
+        public int MaxHealth => IsSilenced ? Definition.BaseStats.Health : (Definition.BaseStats + PermanentBuffs).Health;
+        #endregion
+
+        #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the CardInstance class with default values.
+        /// </summary>
+        /// <param name="instanceId">The unique identifier for this card instance.</param>
+        /// <param name="ownerPlayerId">The ID of the player who owns this card.</param>
+        /// <param name="definition">The static definition of the card.</param>
+        public CardInstance(int instanceId, int ownerPlayerId, CardDefinition definition)
+            : this(
+                instanceId,
+                ownerPlayerId,
+                definition,
+                damageTaken: 0,
+                permanentBuffs: new CardStats(0, 0, 0),
+                auraKeywords: new List<Keyword>(),
+                suppressedKeywords: new List<Keyword>(),
+                isSilenced: false,
+                costReduction: 0)
+        { }
+
+        /// <summary>
+        /// Private constructor for creating modified instances with all state parameters.
+        /// </summary>
+        private CardInstance(
+            int instanceId,
+            int ownerPlayerId,
+            CardDefinition definition,
+            int damageTaken,
+            CardStats permanentBuffs,
+            IEnumerable<Keyword> auraKeywords,
+            IEnumerable<Keyword> suppressedKeywords,
+            bool isSilenced,
+            int costReduction)
+        {
+            InstanceId = instanceId;
+            OwnerPlayerId = ownerPlayerId;
+            Definition = definition;
+            DamageTaken = damageTaken;
+            PermanentBuffs = permanentBuffs;
+            AuraKeywords = auraKeywords?.ToList() ?? new List<Keyword>();
+            SuppressedKeywords = suppressedKeywords?.ToList() ?? new List<Keyword>();
+            IsSilenced = isSilenced;
+            CostReduction = costReduction;
+        }
+        #endregion
+
+        #region State Modification Methods
+        /// <summary>
+        /// Creates a new card instance with all state reset to default (except InstanceId, Owner, and Definition).
+        /// Typically used when moving a card between zones.
+        /// </summary>
+        /// <returns>A new CardInstance with reset state.</returns>
+        public CardInstance MoveAndReset() =>
+            new CardInstance(
+                InstanceId,
+                OwnerPlayerId,
+                Definition,
+                damageTaken: 0,
+                permanentBuffs: new CardStats(0, 0, 0),
+                auraKeywords: new List<Keyword>(),
+                suppressedKeywords: new List<Keyword>(),
+                isSilenced: IsSilenced,
+                costReduction: 0
+            );
+
+        /// <summary>
+        /// Creates a new card instance with the specified total damage.
+        /// </summary>
+        /// <param name="totalDamage">The total damage the card has taken.</param>
+        /// <returns>A new CardInstance with the specified damage.</returns>
+        public CardInstance WithDamage(int totalDamage) =>
+            new CardInstance(
+                InstanceId,
+                OwnerPlayerId,
+                Definition,
+                totalDamage,
+                PermanentBuffs,
+                AuraKeywords,
+                SuppressedKeywords,
+                IsSilenced,
+                CostReduction
+            );
+
+        /// <summary>
+        /// Applies damage to the card and returns a new instance.
+        /// </summary>
+        /// <param name="amount">The amount of damage to apply.</param>
+        /// <returns>A new CardInstance with increased damage taken.</returns>
+        public CardInstance TakeDamage(int amount) => WithDamage(DamageTaken + amount);
+
+        /// <summary>
+        /// Heals the card and returns a new instance.
+        /// </summary>
+        /// <param name="amount">The amount of health to restore.</param>
+        /// <returns>A new CardInstance with reduced damage taken.</returns>
+        public CardInstance Heal(int amount) => WithDamage(Math.Max(0, DamageTaken - amount));
+
+        /// <summary>
+        /// Adds a permanent stat buff to the card and returns a new instance.
+        /// Silenced cards cannot receive buffs.
+        /// </summary>
+        /// <param name="buff">The stat buff to apply.</param>
+        /// <returns>A new CardInstance with the buff applied, or the same instance if silenced.</returns>
+        public CardInstance AddPermanentBuff(CardStats buff) =>
+            IsSilenced ? this : new CardInstance(
+                InstanceId,
+                OwnerPlayerId,
+                Definition,
+                DamageTaken,
+                PermanentBuffs + buff,
+                AuraKeywords,
+                SuppressedKeywords,
+                IsSilenced,
+                CostReduction
+            );
+
+        /// <summary>
+        /// Updates the aura keywords on the card and returns a new instance.
+        /// </summary>
+        /// <param name="newAuras">The new aura keywords to apply.</param>
+        /// <returns>A new CardInstance with the updated aura keywords.</returns>
+        public CardInstance WithAuras(IEnumerable<Keyword> newAuras) =>
+            new CardInstance(
+                InstanceId,
+                OwnerPlayerId,
+                Definition,
+                DamageTaken,
+                PermanentBuffs,
+                newAuras,
+                SuppressedKeywords,
+                IsSilenced,
+                CostReduction
+            );
+
+        /// <summary>
+        /// Updates the cost reduction on the card and returns a new instance.
+        /// </summary>
+        /// <param name="costReduction">The new cost reduction value.</param>
+        /// <returns>A new CardInstance with the updated cost reduction.</returns>
+        public CardInstance WithCostReduction(int costReduction) =>
+            new CardInstance(
+                InstanceId,
+                OwnerPlayerId,
+                Definition,
+                DamageTaken,
+                PermanentBuffs,
+                AuraKeywords,
+                SuppressedKeywords,
+                IsSilenced,
+                costReduction
+            );
+
+        /// <summary>
+        /// Temporarily suppresses a keyword on the card and returns a new instance.
+        /// </summary>
+        /// <param name="keyword">The keyword to suppress.</param>
+        /// <returns>A new CardInstance with the keyword added to suppressed keywords.</returns>
+        public CardInstance SuppressKeyword(Keyword keyword)
+        {
+            var newList = new List<Keyword>(SuppressedKeywords);
+            if (!newList.Contains(keyword)) newList.Add(keyword);
+            return new CardInstance(
+                InstanceId,
+                OwnerPlayerId,
+                Definition,
+                DamageTaken,
+                PermanentBuffs,
+                AuraKeywords,
+                newList,
+                IsSilenced,
+                CostReduction
+            );
+        }
+
+        /// <summary>
+        /// Silences the card, removing all buffs, keywords, and auras, and returns a new instance.
+        /// </summary>
+        /// <returns>A new silenced CardInstance with all state reset except damage taken.</returns>
+        public CardInstance Silence() =>
+            new CardInstance(
+                InstanceId,
+                OwnerPlayerId,
+                Definition,
+                DamageTaken,
+                permanentBuffs: new CardStats(0, 0, 0),
+                auraKeywords: new List<Keyword>(),
+                suppressedKeywords: new List<Keyword>(),
+                isSilenced: true,
+                costReduction: 0
+            );
+        #endregion
+    }
+}

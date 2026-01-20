@@ -85,7 +85,10 @@ public partial class DeckEditor : Control
 
 		foreach (Node child in LibraryGrid.GetChildren()) child.QueueFree();
 
-		var allIds = CardLibrary.Instance.GetAllIds().OrderBy(id => CardLibrary.Instance.GetCard(id).Cost);
+		var allIds = CardLibrary.Instance.GetAllIds()
+			.Where(id => id < 900)
+			.OrderBy(id => CardLibrary.Instance.GetCard(id).Cost) 
+			.ThenBy(id => CardLibrary.Instance.GetCard(id).Name);
 
 		foreach (var id in allIds)
 		{

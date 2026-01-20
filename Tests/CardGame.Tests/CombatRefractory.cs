@@ -56,7 +56,7 @@ namespace CardGame.Tests
 
             var sideUnit = board.Lines[2].Player2Unit;
             Assert.NotNull(sideUnit);
-            Assert.Equal(8, sideUnit.CurrentStats.Health);
+            Assert.Equal(7, sideUnit.CurrentStats.Health);
 
             var updatedMainVictim = board.Lines[1].Player2Unit;
             Assert.NotNull(updatedMainVictim);

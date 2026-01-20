@@ -124,22 +124,23 @@ public partial class CardView : Control
 
 	// --- KEYWORDY (Z kropkami: "Flying. Armored.") ---
 	if (KeywordsLabel != null)
-		{
-			KeywordsLabel.BbcodeEnabled = true;
-			var keywords = card.CurrentStats.Keywords
-				.Where(k => k != Keyword.None && k != Keyword.SoulGuardDepleted)
-				.Select(k => FormatText(k.ToString()))
-				.ToList();
+{
+	KeywordsLabel.BbcodeEnabled = true;
+	
+	var keywords = card.CurrentStats.Keywords
+		.Where(k => k != Keyword.None && k != Keyword.SoulGuardDepleted && k != Keyword.BurnSource)
+		.Select(k => GetKeywordDisplayText(k, card)) // <--- CHANGED THIS LINE
+		.ToList();
 
-			if (keywords.Count > 0)
-			{
-				string kwRaw = string.Join(". ", keywords) + ".";
-				ApplySmartFontSize(KeywordsLabel, kwRaw, 18); // Bazowy rozmiar dla keywordów: 18
-				KeywordsLabel.Text = $"[center][b]{kwRaw}[/b][/center]";
-				KeywordsLabel.Visible = true;
-			}
-			else KeywordsLabel.Visible = false;
-		}
+	if (keywords.Count > 0)
+	{
+		string kwRaw = string.Join(". ", keywords) + ".";
+		ApplySmartFontSize(KeywordsLabel, kwRaw, 15);
+		KeywordsLabel.Text = $"[center][b]{kwRaw}[/b][/center]";
+		KeywordsLabel.Visible = true;
+	}
+	else KeywordsLabel.Visible = false;
+}
 
 
 
@@ -295,4 +296,19 @@ public partial class CardView : Control
 		label.AddThemeFontSizeOverride("bold_font_size", fontSize);
 		label.AddThemeFontSizeOverride("italics_font_size", fontSize);
 	}
+	private string GetKeywordDisplayText(Keyword k, CardInstance card)
+{
+	// 1. Get the readable name (e.g. "SplashDamage" -> "Splash Damage")
+	string text = FormatText(k.ToString());
+
+	// 2. Check if this keyword has a parameter value (e.g., 2, 3)
+	if (card.CurrentStats.KeywordParams.TryGetValue(k, out int value))
+	{
+		// Return "Armor 2" or "Splash Damage 3"
+		return $"{text} {value}";
+	}
+
+	// Return just "Flying" or "Unkillable"
+	return text;
+}
 }

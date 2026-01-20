@@ -49,10 +49,8 @@ namespace CardGame.Core.Cards.Logic
                 case TriggerType.OnPlayed:
                     if (gameEvent is CardPlayedEvent cardPlayedEvent)
                     {
-                        // 1. Battlecry: If the card being played is this card, allow it
+                     
                         if (cardPlayedEvent.Card.InstanceId == sourceCardId) return true;
-
-                        // 2. Reactive: Triggering based on other cards being played
                         if (effect.Zone == EffectZone.Board && effect.Condition != null)
                         {
                            

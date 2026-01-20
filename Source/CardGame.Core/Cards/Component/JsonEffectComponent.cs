@@ -72,6 +72,7 @@ namespace CardGame.Core.Cards.Components.Implementations
         {
             GameState workingState = state.With(clearPending: true);
 
+            // 1. Initial Choice Selection (User picks the option)
             if (_data.Targeting == TargetType.Choice && evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1)
             {
                 int choiceIdx = tse.SelectedTargetId;
@@ -82,6 +83,15 @@ namespace CardGame.Core.Cards.Components.Implementations
                 return workingState;
             }
 
+            if (_data.Targeting == TargetType.Choice)
+            {
+                if (startIndex >= 0 && startIndex < _data.Actions.Count)
+                {
+                    return ExecuteAction(workingState, context, _data.Actions[startIndex], evt, startIndex);
+                }
+                return workingState;
+            }
+          
             for (int i = startIndex; i < _data.Actions.Count; i++)
             {
                 var action = _data.Actions[i];
