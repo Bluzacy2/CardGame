@@ -1,0 +1,247 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Combat.CombatOrchestrator
+  commentId: T:CardGame.Core.Combat.CombatOrchestrator
+  id: CombatOrchestrator
+  parent: CardGame.Core.Combat
+  children:
+  - CardGame.Core.Combat.CombatOrchestrator.ResolveCombatPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  langs:
+  - csharp
+  - vb
+  name: CombatOrchestrator
+  nameWithType: CombatOrchestrator
+  fullName: CardGame.Core.Combat.CombatOrchestrator
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Combat/CombatOrchestrator.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CombatOrchestrator
+    path: ../Source/CardGame.Core/Combat/CombatOrchestrator.cs
+    startLine: 12
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Combat
+  summary: Orchestrates the combat phase by resolving battles across all board lines and handling associated triggers.
+  example: []
+  syntax:
+    content: public class CombatOrchestrator
+    content.vb: Public Class CombatOrchestrator
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Combat.CombatOrchestrator.ResolveCombatPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Combat.CombatOrchestrator.ResolveCombatPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  id: ResolveCombatPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Combat.CombatOrchestrator
+  langs:
+  - csharp
+  - vb
+  name: ResolveCombatPhase(GameState, EventBus, GameContext)
+  nameWithType: CombatOrchestrator.ResolveCombatPhase(GameState, EventBus, GameContext)
+  fullName: CardGame.Core.Combat.CombatOrchestrator.ResolveCombatPhase(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Combat/CombatOrchestrator.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ResolveCombatPhase
+    path: ../Source/CardGame.Core/Combat/CombatOrchestrator.cs
+    startLine: 28
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Combat
+  summary: Resolves the entire combat phase by processing each board line sequentially.
+  example: []
+  syntax:
+    content: public GameState ResolveCombatPhase(GameState currentState, EventBus eventBus, GameContext context)
+    parameters:
+    - id: currentState
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state at the start of combat.
+    - id: eventBus
+      type: CardGame.Core.Events.EventBus
+      description: The event bus for publishing combat events.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: The game context with additional services.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state after resolving all combat.
+    content.vb: Public Function ResolveCombatPhase(currentState As GameState, eventBus As EventBus, context As GameContext) As GameState
+  overload: CardGame.Core.Combat.CombatOrchestrator.ResolveCombatPhase*
+references:
+- uid: CardGame.Core.Combat
+  commentId: N:CardGame.Core.Combat
+  href: CardGame.html
+  name: CardGame.Core.Combat
+  nameWithType: CardGame.Core.Combat
+  fullName: CardGame.Core.Combat
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Combat
+    name: Combat
+    href: CardGame.Core.Combat.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Combat
+    name: Combat
+    href: CardGame.Core.Combat.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Combat.CombatOrchestrator.ResolveCombatPhase*
+  commentId: Overload:CardGame.Core.Combat.CombatOrchestrator.ResolveCombatPhase
+  href: CardGame.Core.Combat.CombatOrchestrator.html#CardGame_Core_Combat_CombatOrchestrator_ResolveCombatPhase_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  name: ResolveCombatPhase
+  nameWithType: CombatOrchestrator.ResolveCombatPhase
+  fullName: CardGame.Core.Combat.CombatOrchestrator.ResolveCombatPhase
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html

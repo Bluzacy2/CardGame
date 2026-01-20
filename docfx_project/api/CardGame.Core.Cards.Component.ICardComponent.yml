@@ -1,0 +1,306 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Component.ICardComponent
+  commentId: T:CardGame.Core.Cards.Component.ICardComponent
+  id: ICardComponent
+  parent: CardGame.Core.Cards.Component
+  children:
+  - CardGame.Core.Cards.Component.ICardComponent.Resolve(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext)
+  - CardGame.Core.Cards.Component.ICardComponent.ShouldTrigger(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState)
+  langs:
+  - csharp
+  - vb
+  name: ICardComponent
+  nameWithType: ICardComponent
+  fullName: CardGame.Core.Cards.Component.ICardComponent
+  type: Interface
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Component/ICardComponent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ICardComponent
+    path: ../Source/CardGame.Core/Cards/Component/ICardComponent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Component
+  summary: Defines the contract for card components that can respond to game events.
+  example: []
+  syntax:
+    content: public interface ICardComponent
+    content.vb: Public Interface ICardComponent
+- uid: CardGame.Core.Cards.Component.ICardComponent.ShouldTrigger(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState)
+  commentId: M:CardGame.Core.Cards.Component.ICardComponent.ShouldTrigger(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState)
+  id: ShouldTrigger(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState)
+  parent: CardGame.Core.Cards.Component.ICardComponent
+  langs:
+  - csharp
+  - vb
+  name: ShouldTrigger(IGameEvent, GameState)
+  nameWithType: ICardComponent.ShouldTrigger(IGameEvent, GameState)
+  fullName: CardGame.Core.Cards.Component.ICardComponent.ShouldTrigger(CardGame.Core.Events.Interfaces.IGameEvent, CardGame.Core.State.Models.GameState)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Component/ICardComponent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ShouldTrigger
+    path: ../Source/CardGame.Core/Cards/Component/ICardComponent.cs
+    startLine: 17
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Component
+  summary: Determines whether this component should trigger in response to a game event.
+  example: []
+  syntax:
+    content: bool ShouldTrigger(IGameEvent gameEvent, GameState state)
+    parameters:
+    - id: gameEvent
+      type: CardGame.Core.Events.Interfaces.IGameEvent
+      description: The game event that occurred.
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    return:
+      type: System.Boolean
+      description: True if the component should trigger, otherwise false.
+    content.vb: Function ShouldTrigger(gameEvent As IGameEvent, state As GameState) As Boolean
+  overload: CardGame.Core.Cards.Component.ICardComponent.ShouldTrigger*
+- uid: CardGame.Core.Cards.Component.ICardComponent.Resolve(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Cards.Component.ICardComponent.Resolve(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext)
+  id: Resolve(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Cards.Component.ICardComponent
+  langs:
+  - csharp
+  - vb
+  name: Resolve(IGameEvent, GameState, GameContext)
+  nameWithType: ICardComponent.Resolve(IGameEvent, GameState, GameContext)
+  fullName: CardGame.Core.Cards.Component.ICardComponent.Resolve(CardGame.Core.Events.Interfaces.IGameEvent, CardGame.Core.State.Models.GameState, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Component/ICardComponent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Resolve
+    path: ../Source/CardGame.Core/Cards/Component/ICardComponent.cs
+    startLine: 26
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Component
+  summary: Resolves the component's effect, potentially modifying the game state.
+  example: []
+  syntax:
+    content: GameState Resolve(IGameEvent gameEvent, GameState currentState, GameContext context)
+    parameters:
+    - id: gameEvent
+      type: CardGame.Core.Events.Interfaces.IGameEvent
+      description: The triggering game event.
+    - id: currentState
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state before resolution.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: The game context providing access to services and factories.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state after resolution.
+    content.vb: Function Resolve(gameEvent As IGameEvent, currentState As GameState, context As GameContext) As GameState
+  overload: CardGame.Core.Cards.Component.ICardComponent.Resolve*
+references:
+- uid: CardGame.Core.Cards.Component
+  commentId: N:CardGame.Core.Cards.Component
+  href: CardGame.html
+  name: CardGame.Core.Cards.Component
+  nameWithType: CardGame.Core.Cards.Component
+  fullName: CardGame.Core.Cards.Component
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component
+    name: Component
+    href: CardGame.Core.Cards.Component.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component
+    name: Component
+    href: CardGame.Core.Cards.Component.html
+- uid: CardGame.Core.Cards.Component.ICardComponent.ShouldTrigger*
+  commentId: Overload:CardGame.Core.Cards.Component.ICardComponent.ShouldTrigger
+  href: CardGame.Core.Cards.Component.ICardComponent.html#CardGame_Core_Cards_Component_ICardComponent_ShouldTrigger_CardGame_Core_Events_Interfaces_IGameEvent_CardGame_Core_State_Models_GameState_
+  name: ShouldTrigger
+  nameWithType: ICardComponent.ShouldTrigger
+  fullName: CardGame.Core.Cards.Component.ICardComponent.ShouldTrigger
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Component.ICardComponent.Resolve*
+  commentId: Overload:CardGame.Core.Cards.Component.ICardComponent.Resolve
+  href: CardGame.Core.Cards.Component.ICardComponent.html#CardGame_Core_Cards_Component_ICardComponent_Resolve_CardGame_Core_Events_Interfaces_IGameEvent_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_
+  name: Resolve
+  nameWithType: ICardComponent.Resolve
+  fullName: CardGame.Core.Cards.Component.ICardComponent.Resolve
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html

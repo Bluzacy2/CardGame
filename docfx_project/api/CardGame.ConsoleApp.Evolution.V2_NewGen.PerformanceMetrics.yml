@@ -1,0 +1,332 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  id: PerformanceMetrics
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.AvailableMemoryMB
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.CpuUsage
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.HandleCount
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ProcessMemoryMB
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ThreadCount
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.TotalProcessorTime
+  langs:
+  - csharp
+  - vb
+  name: PerformanceMetrics
+  nameWithType: PerformanceMetrics
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PerformanceMetrics
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 147
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class PerformanceMetrics
+    content.vb: Public Class PerformanceMetrics
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.CpuUsage
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.CpuUsage
+  id: CpuUsage
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  langs:
+  - csharp
+  - vb
+  name: CpuUsage
+  nameWithType: PerformanceMetrics.CpuUsage
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.CpuUsage
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CpuUsage
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 149
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float CpuUsage { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property CpuUsage As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.CpuUsage*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.AvailableMemoryMB
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.AvailableMemoryMB
+  id: AvailableMemoryMB
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  langs:
+  - csharp
+  - vb
+  name: AvailableMemoryMB
+  nameWithType: PerformanceMetrics.AvailableMemoryMB
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.AvailableMemoryMB
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AvailableMemoryMB
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 150
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float AvailableMemoryMB { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property AvailableMemoryMB As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.AvailableMemoryMB*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ProcessMemoryMB
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ProcessMemoryMB
+  id: ProcessMemoryMB
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  langs:
+  - csharp
+  - vb
+  name: ProcessMemoryMB
+  nameWithType: PerformanceMetrics.ProcessMemoryMB
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ProcessMemoryMB
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ProcessMemoryMB
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 151
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double ProcessMemoryMB { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ProcessMemoryMB As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ProcessMemoryMB*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ThreadCount
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ThreadCount
+  id: ThreadCount
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  langs:
+  - csharp
+  - vb
+  name: ThreadCount
+  nameWithType: PerformanceMetrics.ThreadCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ThreadCount
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ThreadCount
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 152
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int ThreadCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ThreadCount As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ThreadCount*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.HandleCount
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.HandleCount
+  id: HandleCount
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  langs:
+  - csharp
+  - vb
+  name: HandleCount
+  nameWithType: PerformanceMetrics.HandleCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.HandleCount
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: HandleCount
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 153
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int HandleCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property HandleCount As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.HandleCount*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.TotalProcessorTime
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.TotalProcessorTime
+  id: TotalProcessorTime
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  langs:
+  - csharp
+  - vb
+  name: TotalProcessorTime
+  nameWithType: PerformanceMetrics.TotalProcessorTime
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.TotalProcessorTime
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TotalProcessorTime
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 154
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double TotalProcessorTime { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property TotalProcessorTime As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.TotalProcessorTime*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.CpuUsage*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.CpuUsage
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.html#CardGame_ConsoleApp_Evolution_V2_NewGen_PerformanceMetrics_CpuUsage
+  name: CpuUsage
+  nameWithType: PerformanceMetrics.CpuUsage
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.CpuUsage
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.AvailableMemoryMB*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.AvailableMemoryMB
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.html#CardGame_ConsoleApp_Evolution_V2_NewGen_PerformanceMetrics_AvailableMemoryMB
+  name: AvailableMemoryMB
+  nameWithType: PerformanceMetrics.AvailableMemoryMB
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.AvailableMemoryMB
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ProcessMemoryMB*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ProcessMemoryMB
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.html#CardGame_ConsoleApp_Evolution_V2_NewGen_PerformanceMetrics_ProcessMemoryMB
+  name: ProcessMemoryMB
+  nameWithType: PerformanceMetrics.ProcessMemoryMB
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ProcessMemoryMB
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ThreadCount*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ThreadCount
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.html#CardGame_ConsoleApp_Evolution_V2_NewGen_PerformanceMetrics_ThreadCount
+  name: ThreadCount
+  nameWithType: PerformanceMetrics.ThreadCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.ThreadCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.HandleCount*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.HandleCount
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.html#CardGame_ConsoleApp_Evolution_V2_NewGen_PerformanceMetrics_HandleCount
+  name: HandleCount
+  nameWithType: PerformanceMetrics.HandleCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.HandleCount
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.TotalProcessorTime*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.TotalProcessorTime
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.html#CardGame_ConsoleApp_Evolution_V2_NewGen_PerformanceMetrics_TotalProcessorTime
+  name: TotalProcessorTime
+  nameWithType: PerformanceMetrics.TotalProcessorTime
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.TotalProcessorTime

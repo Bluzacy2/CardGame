@@ -1,0 +1,3176 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  commentId: T:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  id: DNA
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy
+  children:
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ActionOnly_ReactionWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Adaptive_Learning_Rate
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.AdjacencyBonus
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Aggro_Bias
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.AnimalAffinity
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ArmoredEfficiency
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BloodConservationRatio
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BloodEfficiencyWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Bluff_Potential_Value
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Bluff_Resistance
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BoardPresenceSafety
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_FacePressure
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_HighAtk_Preference
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_LethalExecution
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_TriggerHunting
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Armored
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Splash
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Unkillable
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_TallStrategy_Weight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_WideStrategy_Weight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Burn_Bias
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BurningPenalty
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Card_Tracking_Probability
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.CombatProjectionTrust
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Combo_Bias
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Complexity_Bias
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Control_Bias
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Lethal_Buffer
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Mark_Disruption
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Unkillable_Stall
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DeckThinning_Utility
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DeckTracking_FinisherFound
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DefensiveBlockingValue
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DemonAffinity
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Desperation_Factor
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DiscardPileUtility
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Dominance_Greed
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Draw_vs_Play_Priority
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EmptyLaneBonus
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyAtkWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyHealthWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyHpWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Aggro_Likelihood
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Control_Likelihood
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Sacrifice_Likelihood
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Fatigue_Panic_Factor
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FlyingUtility
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FriendlyAtkWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FriendlyHpWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.GlobalBuffValue
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HandSizeUtility
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Heal_Efficiency_Bonus
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Heal_Hero_vs_Unit_Ratio
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HeroPanicThreshold
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HumanAffinity
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.L0_L3_Corner_Value
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.LethalFeverWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.LethalProbability_Multiplier
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line0_Priority
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line1_Priority
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line2_Priority
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line3_Priority
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Concentration_Preference
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Depth_Strategic_Value
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Switching_Urgency
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MachineAffinity
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MarkedOnEnemyValue
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MarkedOnSelfPenalty
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MercenaryAffinity
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Midrange_Bias
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MonsterAffinity
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_ComboPiece_Retention
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_KeepSpell_Priority
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_KeepUnit_MaxCost
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OpponentEmptyHand_Aggression
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OpponentHandSize_FearFactor
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Opponent_NextTurn_ManaAwareness
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OverdrawRiskPenalty
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OverkillPenalty
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Predict_AoE_Danger_Level
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Predict_Silence_Danger_Level
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.PredictiveOpponentFear
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.PresenceOfMachineBonus
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.RecycleComboPreference
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ResourceGainValue
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Resource_Burst_Potential
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SacrificeValueThreshold
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Save_ValueTarget_Weight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SelfHealthWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SilencePriority_Buffs
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SilencePriority_Keywords
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SoulGuardValue
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SplashDamageUtility
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.StunnedPenalty
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TOTAL_GENES
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_Bodyguard_Breaker
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_EngineUnit_Priority
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_FodderUnit_Ignore
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_HighAtk_LowHP_Snipe
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Tempo_Bias
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Tempo_Sacrifice_Tolerance
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TokenSynergyWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TutorPriority
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnitAndAction_Flexibility
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnitOnly_Commitment
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnkillableValue
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Value_Bias
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.VengeanceWeight
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.WinCondition_Proximity_Greed
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Win_Condition_Clarity
+  langs:
+  - csharp
+  - vb
+  name: DNA
+  nameWithType: DNA
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DNA
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 2
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public static class DNA
+    content.vb: Public Module DNA
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SelfHealthWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SelfHealthWeight
+  id: SelfHealthWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: SelfHealthWeight
+  nameWithType: DNA.SelfHealthWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SelfHealthWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SelfHealthWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 5
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int SelfHealthWeight = 0
+    return:
+      type: System.Int32
+    content.vb: Public Const SelfHealthWeight As Integer = 0
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyHealthWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyHealthWeight
+  id: EnemyHealthWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: EnemyHealthWeight
+  nameWithType: DNA.EnemyHealthWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyHealthWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EnemyHealthWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 6
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int EnemyHealthWeight = 1
+    return:
+      type: System.Int32
+    content.vb: Public Const EnemyHealthWeight As Integer = 1
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HeroPanicThreshold
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HeroPanicThreshold
+  id: HeroPanicThreshold
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: HeroPanicThreshold
+  nameWithType: DNA.HeroPanicThreshold
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HeroPanicThreshold
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: HeroPanicThreshold
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 7
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int HeroPanicThreshold = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const HeroPanicThreshold As Integer = 2
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.LethalFeverWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.LethalFeverWeight
+  id: LethalFeverWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: LethalFeverWeight
+  nameWithType: DNA.LethalFeverWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.LethalFeverWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LethalFeverWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 8
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int LethalFeverWeight = 3
+    return:
+      type: System.Int32
+    content.vb: Public Const LethalFeverWeight As Integer = 3
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BloodEfficiencyWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BloodEfficiencyWeight
+  id: BloodEfficiencyWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: BloodEfficiencyWeight
+  nameWithType: DNA.BloodEfficiencyWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BloodEfficiencyWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BloodEfficiencyWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 9
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int BloodEfficiencyWeight = 4
+    return:
+      type: System.Int32
+    content.vb: Public Const BloodEfficiencyWeight As Integer = 4
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BloodConservationRatio
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BloodConservationRatio
+  id: BloodConservationRatio
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: BloodConservationRatio
+  nameWithType: DNA.BloodConservationRatio
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BloodConservationRatio
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BloodConservationRatio
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 10
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int BloodConservationRatio = 5
+    return:
+      type: System.Int32
+    content.vb: Public Const BloodConservationRatio As Integer = 5
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HandSizeUtility
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HandSizeUtility
+  id: HandSizeUtility
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: HandSizeUtility
+  nameWithType: DNA.HandSizeUtility
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HandSizeUtility
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: HandSizeUtility
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 11
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int HandSizeUtility = 6
+    return:
+      type: System.Int32
+    content.vb: Public Const HandSizeUtility As Integer = 6
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OverdrawRiskPenalty
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OverdrawRiskPenalty
+  id: OverdrawRiskPenalty
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: OverdrawRiskPenalty
+  nameWithType: DNA.OverdrawRiskPenalty
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OverdrawRiskPenalty
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OverdrawRiskPenalty
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 12
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int OverdrawRiskPenalty = 7
+    return:
+      type: System.Int32
+    content.vb: Public Const OverdrawRiskPenalty As Integer = 7
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FriendlyAtkWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FriendlyAtkWeight
+  id: FriendlyAtkWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: FriendlyAtkWeight
+  nameWithType: DNA.FriendlyAtkWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FriendlyAtkWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: FriendlyAtkWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 15
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int FriendlyAtkWeight = 8
+    return:
+      type: System.Int32
+    content.vb: Public Const FriendlyAtkWeight As Integer = 8
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FriendlyHpWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FriendlyHpWeight
+  id: FriendlyHpWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: FriendlyHpWeight
+  nameWithType: DNA.FriendlyHpWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FriendlyHpWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: FriendlyHpWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 16
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int FriendlyHpWeight = 9
+    return:
+      type: System.Int32
+    content.vb: Public Const FriendlyHpWeight As Integer = 9
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyAtkWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyAtkWeight
+  id: EnemyAtkWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: EnemyAtkWeight
+  nameWithType: DNA.EnemyAtkWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyAtkWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EnemyAtkWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 17
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int EnemyAtkWeight = 10
+    return:
+      type: System.Int32
+    content.vb: Public Const EnemyAtkWeight As Integer = 10
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyHpWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyHpWeight
+  id: EnemyHpWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: EnemyHpWeight
+  nameWithType: DNA.EnemyHpWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyHpWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EnemyHpWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 18
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int EnemyHpWeight = 11
+    return:
+      type: System.Int32
+    content.vb: Public Const EnemyHpWeight As Integer = 11
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EmptyLaneBonus
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EmptyLaneBonus
+  id: EmptyLaneBonus
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: EmptyLaneBonus
+  nameWithType: DNA.EmptyLaneBonus
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EmptyLaneBonus
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EmptyLaneBonus
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 19
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int EmptyLaneBonus = 12
+    return:
+      type: System.Int32
+    content.vb: Public Const EmptyLaneBonus As Integer = 12
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DefensiveBlockingValue
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DefensiveBlockingValue
+  id: DefensiveBlockingValue
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: DefensiveBlockingValue
+  nameWithType: DNA.DefensiveBlockingValue
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DefensiveBlockingValue
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DefensiveBlockingValue
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 20
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int DefensiveBlockingValue = 13
+    return:
+      type: System.Int32
+    content.vb: Public Const DefensiveBlockingValue As Integer = 13
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.AdjacencyBonus
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.AdjacencyBonus
+  id: AdjacencyBonus
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: AdjacencyBonus
+  nameWithType: DNA.AdjacencyBonus
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.AdjacencyBonus
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AdjacencyBonus
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 21
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int AdjacencyBonus = 14
+    return:
+      type: System.Int32
+    content.vb: Public Const AdjacencyBonus As Integer = 14
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MarkedOnEnemyValue
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MarkedOnEnemyValue
+  id: MarkedOnEnemyValue
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: MarkedOnEnemyValue
+  nameWithType: DNA.MarkedOnEnemyValue
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MarkedOnEnemyValue
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: MarkedOnEnemyValue
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 24
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int MarkedOnEnemyValue = 15
+    return:
+      type: System.Int32
+    content.vb: Public Const MarkedOnEnemyValue As Integer = 15
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MarkedOnSelfPenalty
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MarkedOnSelfPenalty
+  id: MarkedOnSelfPenalty
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: MarkedOnSelfPenalty
+  nameWithType: DNA.MarkedOnSelfPenalty
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MarkedOnSelfPenalty
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: MarkedOnSelfPenalty
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 25
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int MarkedOnSelfPenalty = 16
+    return:
+      type: System.Int32
+    content.vb: Public Const MarkedOnSelfPenalty As Integer = 16
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ArmoredEfficiency
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ArmoredEfficiency
+  id: ArmoredEfficiency
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: ArmoredEfficiency
+  nameWithType: DNA.ArmoredEfficiency
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ArmoredEfficiency
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ArmoredEfficiency
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 26
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int ArmoredEfficiency = 17
+    return:
+      type: System.Int32
+    content.vb: Public Const ArmoredEfficiency As Integer = 17
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnkillableValue
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnkillableValue
+  id: UnkillableValue
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: UnkillableValue
+  nameWithType: DNA.UnkillableValue
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnkillableValue
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UnkillableValue
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 27
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int UnkillableValue = 18
+    return:
+      type: System.Int32
+    content.vb: Public Const UnkillableValue As Integer = 18
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SoulGuardValue
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SoulGuardValue
+  id: SoulGuardValue
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: SoulGuardValue
+  nameWithType: DNA.SoulGuardValue
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SoulGuardValue
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SoulGuardValue
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 28
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int SoulGuardValue = 19
+    return:
+      type: System.Int32
+    content.vb: Public Const SoulGuardValue As Integer = 19
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.StunnedPenalty
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.StunnedPenalty
+  id: StunnedPenalty
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: StunnedPenalty
+  nameWithType: DNA.StunnedPenalty
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.StunnedPenalty
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: StunnedPenalty
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 29
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int StunnedPenalty = 20
+    return:
+      type: System.Int32
+    content.vb: Public Const StunnedPenalty As Integer = 20
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BurningPenalty
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BurningPenalty
+  id: BurningPenalty
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: BurningPenalty
+  nameWithType: DNA.BurningPenalty
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BurningPenalty
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BurningPenalty
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 30
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int BurningPenalty = 21
+    return:
+      type: System.Int32
+    content.vb: Public Const BurningPenalty As Integer = 21
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SplashDamageUtility
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SplashDamageUtility
+  id: SplashDamageUtility
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: SplashDamageUtility
+  nameWithType: DNA.SplashDamageUtility
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SplashDamageUtility
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SplashDamageUtility
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 31
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int SplashDamageUtility = 22
+    return:
+      type: System.Int32
+    content.vb: Public Const SplashDamageUtility As Integer = 22
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnitOnly_Commitment
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnitOnly_Commitment
+  id: UnitOnly_Commitment
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: UnitOnly_Commitment
+  nameWithType: DNA.UnitOnly_Commitment
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnitOnly_Commitment
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UnitOnly_Commitment
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 34
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int UnitOnly_Commitment = 23
+    return:
+      type: System.Int32
+    content.vb: Public Const UnitOnly_Commitment As Integer = 23
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnitAndAction_Flexibility
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnitAndAction_Flexibility
+  id: UnitAndAction_Flexibility
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: UnitAndAction_Flexibility
+  nameWithType: DNA.UnitAndAction_Flexibility
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnitAndAction_Flexibility
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UnitAndAction_Flexibility
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 35
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int UnitAndAction_Flexibility = 24
+    return:
+      type: System.Int32
+    content.vb: Public Const UnitAndAction_Flexibility As Integer = 24
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ActionOnly_ReactionWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ActionOnly_ReactionWeight
+  id: ActionOnly_ReactionWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: ActionOnly_ReactionWeight
+  nameWithType: DNA.ActionOnly_ReactionWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ActionOnly_ReactionWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ActionOnly_ReactionWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 36
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int ActionOnly_ReactionWeight = 25
+    return:
+      type: System.Int32
+    content.vb: Public Const ActionOnly_ReactionWeight As Integer = 25
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.CombatProjectionTrust
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.CombatProjectionTrust
+  id: CombatProjectionTrust
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: CombatProjectionTrust
+  nameWithType: DNA.CombatProjectionTrust
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.CombatProjectionTrust
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CombatProjectionTrust
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 37
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int CombatProjectionTrust = 26
+    return:
+      type: System.Int32
+    content.vb: Public Const CombatProjectionTrust As Integer = 26
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MonsterAffinity
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MonsterAffinity
+  id: MonsterAffinity
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: MonsterAffinity
+  nameWithType: DNA.MonsterAffinity
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MonsterAffinity
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: MonsterAffinity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 40
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int MonsterAffinity = 27
+    return:
+      type: System.Int32
+    content.vb: Public Const MonsterAffinity As Integer = 27
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MercenaryAffinity
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MercenaryAffinity
+  id: MercenaryAffinity
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: MercenaryAffinity
+  nameWithType: DNA.MercenaryAffinity
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MercenaryAffinity
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: MercenaryAffinity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 41
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int MercenaryAffinity = 28
+    return:
+      type: System.Int32
+    content.vb: Public Const MercenaryAffinity As Integer = 28
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.AnimalAffinity
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.AnimalAffinity
+  id: AnimalAffinity
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: AnimalAffinity
+  nameWithType: DNA.AnimalAffinity
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.AnimalAffinity
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AnimalAffinity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 42
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int AnimalAffinity = 29
+    return:
+      type: System.Int32
+    content.vb: Public Const AnimalAffinity As Integer = 29
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MachineAffinity
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MachineAffinity
+  id: MachineAffinity
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: MachineAffinity
+  nameWithType: DNA.MachineAffinity
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MachineAffinity
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: MachineAffinity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 43
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int MachineAffinity = 30
+    return:
+      type: System.Int32
+    content.vb: Public Const MachineAffinity As Integer = 30
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HumanAffinity
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HumanAffinity
+  id: HumanAffinity
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: HumanAffinity
+  nameWithType: DNA.HumanAffinity
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HumanAffinity
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: HumanAffinity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 44
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int HumanAffinity = 31
+    return:
+      type: System.Int32
+    content.vb: Public Const HumanAffinity As Integer = 31
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DemonAffinity
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DemonAffinity
+  id: DemonAffinity
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: DemonAffinity
+  nameWithType: DNA.DemonAffinity
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DemonAffinity
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DemonAffinity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 45
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int DemonAffinity = 32
+    return:
+      type: System.Int32
+    content.vb: Public Const DemonAffinity As Integer = 32
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SacrificeValueThreshold
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SacrificeValueThreshold
+  id: SacrificeValueThreshold
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: SacrificeValueThreshold
+  nameWithType: DNA.SacrificeValueThreshold
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SacrificeValueThreshold
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SacrificeValueThreshold
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 48
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int SacrificeValueThreshold = 33
+    return:
+      type: System.Int32
+    content.vb: Public Const SacrificeValueThreshold As Integer = 33
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.RecycleComboPreference
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.RecycleComboPreference
+  id: RecycleComboPreference
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: RecycleComboPreference
+  nameWithType: DNA.RecycleComboPreference
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.RecycleComboPreference
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: RecycleComboPreference
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 49
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int RecycleComboPreference = 34
+    return:
+      type: System.Int32
+    content.vb: Public Const RecycleComboPreference As Integer = 34
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SilencePriority_Keywords
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SilencePriority_Keywords
+  id: SilencePriority_Keywords
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: SilencePriority_Keywords
+  nameWithType: DNA.SilencePriority_Keywords
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SilencePriority_Keywords
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SilencePriority_Keywords
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 50
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int SilencePriority_Keywords = 35
+    return:
+      type: System.Int32
+    content.vb: Public Const SilencePriority_Keywords As Integer = 35
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SilencePriority_Buffs
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SilencePriority_Buffs
+  id: SilencePriority_Buffs
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: SilencePriority_Buffs
+  nameWithType: DNA.SilencePriority_Buffs
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SilencePriority_Buffs
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SilencePriority_Buffs
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 51
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int SilencePriority_Buffs = 36
+    return:
+      type: System.Int32
+    content.vb: Public Const SilencePriority_Buffs As Integer = 36
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.GlobalBuffValue
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.GlobalBuffValue
+  id: GlobalBuffValue
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: GlobalBuffValue
+  nameWithType: DNA.GlobalBuffValue
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.GlobalBuffValue
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GlobalBuffValue
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 52
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int GlobalBuffValue = 37
+    return:
+      type: System.Int32
+    content.vb: Public Const GlobalBuffValue As Integer = 37
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DiscardPileUtility
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DiscardPileUtility
+  id: DiscardPileUtility
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: DiscardPileUtility
+  nameWithType: DNA.DiscardPileUtility
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DiscardPileUtility
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DiscardPileUtility
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 53
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int DiscardPileUtility = 38
+    return:
+      type: System.Int32
+    content.vb: Public Const DiscardPileUtility As Integer = 38
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TutorPriority
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TutorPriority
+  id: TutorPriority
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: TutorPriority
+  nameWithType: DNA.TutorPriority
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TutorPriority
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TutorPriority
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 54
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int TutorPriority = 39
+    return:
+      type: System.Int32
+    content.vb: Public Const TutorPriority As Integer = 39
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OverkillPenalty
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OverkillPenalty
+  id: OverkillPenalty
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: OverkillPenalty
+  nameWithType: DNA.OverkillPenalty
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OverkillPenalty
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OverkillPenalty
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 57
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int OverkillPenalty = 40
+    return:
+      type: System.Int32
+    content.vb: Public Const OverkillPenalty As Integer = 40
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BoardPresenceSafety
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BoardPresenceSafety
+  id: BoardPresenceSafety
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: BoardPresenceSafety
+  nameWithType: DNA.BoardPresenceSafety
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BoardPresenceSafety
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BoardPresenceSafety
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 58
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int BoardPresenceSafety = 41
+    return:
+      type: System.Int32
+    content.vb: Public Const BoardPresenceSafety As Integer = 41
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.VengeanceWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.VengeanceWeight
+  id: VengeanceWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: VengeanceWeight
+  nameWithType: DNA.VengeanceWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.VengeanceWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: VengeanceWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 59
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int VengeanceWeight = 42
+    return:
+      type: System.Int32
+    content.vb: Public Const VengeanceWeight As Integer = 42
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.PredictiveOpponentFear
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.PredictiveOpponentFear
+  id: PredictiveOpponentFear
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: PredictiveOpponentFear
+  nameWithType: DNA.PredictiveOpponentFear
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.PredictiveOpponentFear
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PredictiveOpponentFear
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 60
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int PredictiveOpponentFear = 43
+    return:
+      type: System.Int32
+    content.vb: Public Const PredictiveOpponentFear As Integer = 43
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OpponentHandSize_FearFactor
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OpponentHandSize_FearFactor
+  id: OpponentHandSize_FearFactor
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: OpponentHandSize_FearFactor
+  nameWithType: DNA.OpponentHandSize_FearFactor
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OpponentHandSize_FearFactor
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OpponentHandSize_FearFactor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 63
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int OpponentHandSize_FearFactor = 44
+    return:
+      type: System.Int32
+    content.vb: Public Const OpponentHandSize_FearFactor As Integer = 44
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OpponentEmptyHand_Aggression
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OpponentEmptyHand_Aggression
+  id: OpponentEmptyHand_Aggression
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: OpponentEmptyHand_Aggression
+  nameWithType: DNA.OpponentEmptyHand_Aggression
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OpponentEmptyHand_Aggression
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OpponentEmptyHand_Aggression
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 64
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int OpponentEmptyHand_Aggression = 45
+    return:
+      type: System.Int32
+    content.vb: Public Const OpponentEmptyHand_Aggression As Integer = 45
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DeckTracking_FinisherFound
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DeckTracking_FinisherFound
+  id: DeckTracking_FinisherFound
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: DeckTracking_FinisherFound
+  nameWithType: DNA.DeckTracking_FinisherFound
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DeckTracking_FinisherFound
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DeckTracking_FinisherFound
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 65
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int DeckTracking_FinisherFound = 46
+    return:
+      type: System.Int32
+    content.vb: Public Const DeckTracking_FinisherFound As Integer = 46
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DeckThinning_Utility
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DeckThinning_Utility
+  id: DeckThinning_Utility
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: DeckThinning_Utility
+  nameWithType: DNA.DeckThinning_Utility
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DeckThinning_Utility
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DeckThinning_Utility
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 66
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int DeckThinning_Utility = 47
+    return:
+      type: System.Int32
+    content.vb: Public Const DeckThinning_Utility As Integer = 47
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.LethalProbability_Multiplier
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.LethalProbability_Multiplier
+  id: LethalProbability_Multiplier
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: LethalProbability_Multiplier
+  nameWithType: DNA.LethalProbability_Multiplier
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.LethalProbability_Multiplier
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LethalProbability_Multiplier
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 67
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int LethalProbability_Multiplier = 48
+    return:
+      type: System.Int32
+    content.vb: Public Const LethalProbability_Multiplier As Integer = 48
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_TallStrategy_Weight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_TallStrategy_Weight
+  id: Buff_TallStrategy_Weight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Buff_TallStrategy_Weight
+  nameWithType: DNA.Buff_TallStrategy_Weight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_TallStrategy_Weight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Buff_TallStrategy_Weight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 70
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Buff_TallStrategy_Weight = 49
+    return:
+      type: System.Int32
+    content.vb: Public Const Buff_TallStrategy_Weight As Integer = 49
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_WideStrategy_Weight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_WideStrategy_Weight
+  id: Buff_WideStrategy_Weight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Buff_WideStrategy_Weight
+  nameWithType: DNA.Buff_WideStrategy_Weight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_WideStrategy_Weight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Buff_WideStrategy_Weight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 71
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Buff_WideStrategy_Weight = 50
+    return:
+      type: System.Int32
+    content.vb: Public Const Buff_WideStrategy_Weight As Integer = 50
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Unkillable
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Unkillable
+  id: Buff_Priority_Unkillable
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Buff_Priority_Unkillable
+  nameWithType: DNA.Buff_Priority_Unkillable
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Unkillable
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Buff_Priority_Unkillable
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 72
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Buff_Priority_Unkillable = 51
+    return:
+      type: System.Int32
+    content.vb: Public Const Buff_Priority_Unkillable As Integer = 51
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Armored
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Armored
+  id: Buff_Priority_Armored
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Buff_Priority_Armored
+  nameWithType: DNA.Buff_Priority_Armored
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Armored
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Buff_Priority_Armored
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 73
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Buff_Priority_Armored = 52
+    return:
+      type: System.Int32
+    content.vb: Public Const Buff_Priority_Armored As Integer = 52
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Splash
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Splash
+  id: Buff_Priority_Splash
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Buff_Priority_Splash
+  nameWithType: DNA.Buff_Priority_Splash
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Splash
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Buff_Priority_Splash
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 74
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Buff_Priority_Splash = 53
+    return:
+      type: System.Int32
+    content.vb: Public Const Buff_Priority_Splash As Integer = 53
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_LethalExecution
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_LethalExecution
+  id: BonusAtk_LethalExecution
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: BonusAtk_LethalExecution
+  nameWithType: DNA.BonusAtk_LethalExecution
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_LethalExecution
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BonusAtk_LethalExecution
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 77
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int BonusAtk_LethalExecution = 54
+    return:
+      type: System.Int32
+    content.vb: Public Const BonusAtk_LethalExecution As Integer = 54
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_FacePressure
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_FacePressure
+  id: BonusAtk_FacePressure
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: BonusAtk_FacePressure
+  nameWithType: DNA.BonusAtk_FacePressure
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_FacePressure
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BonusAtk_FacePressure
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 78
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int BonusAtk_FacePressure = 55
+    return:
+      type: System.Int32
+    content.vb: Public Const BonusAtk_FacePressure As Integer = 55
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_HighAtk_Preference
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_HighAtk_Preference
+  id: BonusAtk_HighAtk_Preference
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: BonusAtk_HighAtk_Preference
+  nameWithType: DNA.BonusAtk_HighAtk_Preference
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_HighAtk_Preference
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BonusAtk_HighAtk_Preference
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 79
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int BonusAtk_HighAtk_Preference = 56
+    return:
+      type: System.Int32
+    content.vb: Public Const BonusAtk_HighAtk_Preference As Integer = 56
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_TriggerHunting
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_TriggerHunting
+  id: BonusAtk_TriggerHunting
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: BonusAtk_TriggerHunting
+  nameWithType: DNA.BonusAtk_TriggerHunting
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_TriggerHunting
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BonusAtk_TriggerHunting
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 80
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int BonusAtk_TriggerHunting = 57
+    return:
+      type: System.Int32
+    content.vb: Public Const BonusAtk_TriggerHunting As Integer = 57
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_EngineUnit_Priority
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_EngineUnit_Priority
+  id: Target_EngineUnit_Priority
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Target_EngineUnit_Priority
+  nameWithType: DNA.Target_EngineUnit_Priority
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_EngineUnit_Priority
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Target_EngineUnit_Priority
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 83
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Target_EngineUnit_Priority = 58
+    return:
+      type: System.Int32
+    content.vb: Public Const Target_EngineUnit_Priority As Integer = 58
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_FodderUnit_Ignore
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_FodderUnit_Ignore
+  id: Target_FodderUnit_Ignore
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Target_FodderUnit_Ignore
+  nameWithType: DNA.Target_FodderUnit_Ignore
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_FodderUnit_Ignore
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Target_FodderUnit_Ignore
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 84
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Target_FodderUnit_Ignore = 59
+    return:
+      type: System.Int32
+    content.vb: Public Const Target_FodderUnit_Ignore As Integer = 59
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_HighAtk_LowHP_Snipe
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_HighAtk_LowHP_Snipe
+  id: Target_HighAtk_LowHP_Snipe
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Target_HighAtk_LowHP_Snipe
+  nameWithType: DNA.Target_HighAtk_LowHP_Snipe
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_HighAtk_LowHP_Snipe
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Target_HighAtk_LowHP_Snipe
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 85
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Target_HighAtk_LowHP_Snipe = 60
+    return:
+      type: System.Int32
+    content.vb: Public Const Target_HighAtk_LowHP_Snipe As Integer = 60
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_Bodyguard_Breaker
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_Bodyguard_Breaker
+  id: Target_Bodyguard_Breaker
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Target_Bodyguard_Breaker
+  nameWithType: DNA.Target_Bodyguard_Breaker
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_Bodyguard_Breaker
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Target_Bodyguard_Breaker
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 86
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Target_Bodyguard_Breaker = 61
+    return:
+      type: System.Int32
+    content.vb: Public Const Target_Bodyguard_Breaker As Integer = 61
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Heal_Hero_vs_Unit_Ratio
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Heal_Hero_vs_Unit_Ratio
+  id: Heal_Hero_vs_Unit_Ratio
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Heal_Hero_vs_Unit_Ratio
+  nameWithType: DNA.Heal_Hero_vs_Unit_Ratio
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Heal_Hero_vs_Unit_Ratio
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Heal_Hero_vs_Unit_Ratio
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 89
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Heal_Hero_vs_Unit_Ratio = 62
+    return:
+      type: System.Int32
+    content.vb: Public Const Heal_Hero_vs_Unit_Ratio As Integer = 62
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Save_ValueTarget_Weight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Save_ValueTarget_Weight
+  id: Save_ValueTarget_Weight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Save_ValueTarget_Weight
+  nameWithType: DNA.Save_ValueTarget_Weight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Save_ValueTarget_Weight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Save_ValueTarget_Weight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 90
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Save_ValueTarget_Weight = 63
+    return:
+      type: System.Int32
+    content.vb: Public Const Save_ValueTarget_Weight As Integer = 63
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Heal_Efficiency_Bonus
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Heal_Efficiency_Bonus
+  id: Heal_Efficiency_Bonus
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Heal_Efficiency_Bonus
+  nameWithType: DNA.Heal_Efficiency_Bonus
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Heal_Efficiency_Bonus
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Heal_Efficiency_Bonus
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 91
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Heal_Efficiency_Bonus = 64
+    return:
+      type: System.Int32
+    content.vb: Public Const Heal_Efficiency_Bonus As Integer = 64
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Aggro_Bias
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Aggro_Bias
+  id: Aggro_Bias
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Aggro_Bias
+  nameWithType: DNA.Aggro_Bias
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Aggro_Bias
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Aggro_Bias
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 94
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Aggro_Bias = 65
+    return:
+      type: System.Int32
+    content.vb: Public Const Aggro_Bias As Integer = 65
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Control_Bias
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Control_Bias
+  id: Control_Bias
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Control_Bias
+  nameWithType: DNA.Control_Bias
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Control_Bias
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Control_Bias
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 95
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Control_Bias = 66
+    return:
+      type: System.Int32
+    content.vb: Public Const Control_Bias As Integer = 66
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Tempo_Bias
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Tempo_Bias
+  id: Tempo_Bias
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Tempo_Bias
+  nameWithType: DNA.Tempo_Bias
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Tempo_Bias
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Tempo_Bias
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 96
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Tempo_Bias = 67
+    return:
+      type: System.Int32
+    content.vb: Public Const Tempo_Bias As Integer = 67
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Value_Bias
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Value_Bias
+  id: Value_Bias
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Value_Bias
+  nameWithType: DNA.Value_Bias
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Value_Bias
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Value_Bias
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 97
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Value_Bias = 68
+    return:
+      type: System.Int32
+    content.vb: Public Const Value_Bias As Integer = 68
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Burn_Bias
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Burn_Bias
+  id: Burn_Bias
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Burn_Bias
+  nameWithType: DNA.Burn_Bias
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Burn_Bias
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Burn_Bias
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 98
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Burn_Bias = 69
+    return:
+      type: System.Int32
+    content.vb: Public Const Burn_Bias As Integer = 69
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Midrange_Bias
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Midrange_Bias
+  id: Midrange_Bias
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Midrange_Bias
+  nameWithType: DNA.Midrange_Bias
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Midrange_Bias
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Midrange_Bias
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 99
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Midrange_Bias = 70
+    return:
+      type: System.Int32
+    content.vb: Public Const Midrange_Bias As Integer = 70
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_KeepUnit_MaxCost
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_KeepUnit_MaxCost
+  id: Mulligan_KeepUnit_MaxCost
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Mulligan_KeepUnit_MaxCost
+  nameWithType: DNA.Mulligan_KeepUnit_MaxCost
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_KeepUnit_MaxCost
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Mulligan_KeepUnit_MaxCost
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 102
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Mulligan_KeepUnit_MaxCost = 71
+    return:
+      type: System.Int32
+    content.vb: Public Const Mulligan_KeepUnit_MaxCost As Integer = 71
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_KeepSpell_Priority
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_KeepSpell_Priority
+  id: Mulligan_KeepSpell_Priority
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Mulligan_KeepSpell_Priority
+  nameWithType: DNA.Mulligan_KeepSpell_Priority
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_KeepSpell_Priority
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Mulligan_KeepSpell_Priority
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 103
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Mulligan_KeepSpell_Priority = 72
+    return:
+      type: System.Int32
+    content.vb: Public Const Mulligan_KeepSpell_Priority As Integer = 72
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_ComboPiece_Retention
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_ComboPiece_Retention
+  id: Mulligan_ComboPiece_Retention
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Mulligan_ComboPiece_Retention
+  nameWithType: DNA.Mulligan_ComboPiece_Retention
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_ComboPiece_Retention
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Mulligan_ComboPiece_Retention
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 104
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Mulligan_ComboPiece_Retention = 73
+    return:
+      type: System.Int32
+    content.vb: Public Const Mulligan_ComboPiece_Retention As Integer = 73
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Opponent_NextTurn_ManaAwareness
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Opponent_NextTurn_ManaAwareness
+  id: Opponent_NextTurn_ManaAwareness
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Opponent_NextTurn_ManaAwareness
+  nameWithType: DNA.Opponent_NextTurn_ManaAwareness
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Opponent_NextTurn_ManaAwareness
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Opponent_NextTurn_ManaAwareness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 107
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Opponent_NextTurn_ManaAwareness = 74
+    return:
+      type: System.Int32
+    content.vb: Public Const Opponent_NextTurn_ManaAwareness As Integer = 74
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Fatigue_Panic_Factor
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Fatigue_Panic_Factor
+  id: Fatigue_Panic_Factor
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Fatigue_Panic_Factor
+  nameWithType: DNA.Fatigue_Panic_Factor
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Fatigue_Panic_Factor
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Fatigue_Panic_Factor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 108
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Fatigue_Panic_Factor = 75
+    return:
+      type: System.Int32
+    content.vb: Public Const Fatigue_Panic_Factor As Integer = 75
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.WinCondition_Proximity_Greed
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.WinCondition_Proximity_Greed
+  id: WinCondition_Proximity_Greed
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: WinCondition_Proximity_Greed
+  nameWithType: DNA.WinCondition_Proximity_Greed
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.WinCondition_Proximity_Greed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WinCondition_Proximity_Greed
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 109
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int WinCondition_Proximity_Greed = 76
+    return:
+      type: System.Int32
+    content.vb: Public Const WinCondition_Proximity_Greed As Integer = 76
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Concentration_Preference
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Concentration_Preference
+  id: Line_Concentration_Preference
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Line_Concentration_Preference
+  nameWithType: DNA.Line_Concentration_Preference
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Concentration_Preference
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Line_Concentration_Preference
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 112
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Line_Concentration_Preference = 77
+    return:
+      type: System.Int32
+    content.vb: Public Const Line_Concentration_Preference As Integer = 77
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.L0_L3_Corner_Value
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.L0_L3_Corner_Value
+  id: L0_L3_Corner_Value
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: L0_L3_Corner_Value
+  nameWithType: DNA.L0_L3_Corner_Value
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.L0_L3_Corner_Value
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: L0_L3_Corner_Value
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 113
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int L0_L3_Corner_Value = 78
+    return:
+      type: System.Int32
+    content.vb: Public Const L0_L3_Corner_Value As Integer = 78
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Switching_Urgency
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Switching_Urgency
+  id: Line_Switching_Urgency
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Line_Switching_Urgency
+  nameWithType: DNA.Line_Switching_Urgency
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Switching_Urgency
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Line_Switching_Urgency
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 114
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Line_Switching_Urgency = 79
+    return:
+      type: System.Int32
+    content.vb: Public Const Line_Switching_Urgency As Integer = 79
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Card_Tracking_Probability
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Card_Tracking_Probability
+  id: Card_Tracking_Probability
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Card_Tracking_Probability
+  nameWithType: DNA.Card_Tracking_Probability
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Card_Tracking_Probability
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Card_Tracking_Probability
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 117
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Card_Tracking_Probability = 80
+    return:
+      type: System.Int32
+    content.vb: Public Const Card_Tracking_Probability As Integer = 80
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Bluff_Resistance
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Bluff_Resistance
+  id: Bluff_Resistance
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Bluff_Resistance
+  nameWithType: DNA.Bluff_Resistance
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Bluff_Resistance
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Bluff_Resistance
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 118
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Bluff_Resistance = 81
+    return:
+      type: System.Int32
+    content.vb: Public Const Bluff_Resistance As Integer = 81
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Sacrifice_Likelihood
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Sacrifice_Likelihood
+  id: Enemy_Archetype_Sacrifice_Likelihood
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Enemy_Archetype_Sacrifice_Likelihood
+  nameWithType: DNA.Enemy_Archetype_Sacrifice_Likelihood
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Sacrifice_Likelihood
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Enemy_Archetype_Sacrifice_Likelihood
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 121
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Enemy_Archetype_Sacrifice_Likelihood = 82
+    return:
+      type: System.Int32
+    content.vb: Public Const Enemy_Archetype_Sacrifice_Likelihood As Integer = 82
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Control_Likelihood
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Control_Likelihood
+  id: Enemy_Archetype_Control_Likelihood
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Enemy_Archetype_Control_Likelihood
+  nameWithType: DNA.Enemy_Archetype_Control_Likelihood
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Control_Likelihood
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Enemy_Archetype_Control_Likelihood
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 122
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Enemy_Archetype_Control_Likelihood = 83
+    return:
+      type: System.Int32
+    content.vb: Public Const Enemy_Archetype_Control_Likelihood As Integer = 83
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Aggro_Likelihood
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Aggro_Likelihood
+  id: Enemy_Archetype_Aggro_Likelihood
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Enemy_Archetype_Aggro_Likelihood
+  nameWithType: DNA.Enemy_Archetype_Aggro_Likelihood
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Aggro_Likelihood
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Enemy_Archetype_Aggro_Likelihood
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 123
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Enemy_Archetype_Aggro_Likelihood = 84
+    return:
+      type: System.Int32
+    content.vb: Public Const Enemy_Archetype_Aggro_Likelihood As Integer = 84
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Predict_AoE_Danger_Level
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Predict_AoE_Danger_Level
+  id: Predict_AoE_Danger_Level
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Predict_AoE_Danger_Level
+  nameWithType: DNA.Predict_AoE_Danger_Level
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Predict_AoE_Danger_Level
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Predict_AoE_Danger_Level
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 124
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Predict_AoE_Danger_Level = 85
+    return:
+      type: System.Int32
+    content.vb: Public Const Predict_AoE_Danger_Level As Integer = 85
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Predict_Silence_Danger_Level
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Predict_Silence_Danger_Level
+  id: Predict_Silence_Danger_Level
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Predict_Silence_Danger_Level
+  nameWithType: DNA.Predict_Silence_Danger_Level
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Predict_Silence_Danger_Level
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Predict_Silence_Danger_Level
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 125
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Predict_Silence_Danger_Level = 86
+    return:
+      type: System.Int32
+    content.vb: Public Const Predict_Silence_Danger_Level As Integer = 86
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Lethal_Buffer
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Lethal_Buffer
+  id: Counter_Lethal_Buffer
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Counter_Lethal_Buffer
+  nameWithType: DNA.Counter_Lethal_Buffer
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Lethal_Buffer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Counter_Lethal_Buffer
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 128
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Counter_Lethal_Buffer = 87
+    return:
+      type: System.Int32
+    content.vb: Public Const Counter_Lethal_Buffer As Integer = 87
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Unkillable_Stall
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Unkillable_Stall
+  id: Counter_Unkillable_Stall
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Counter_Unkillable_Stall
+  nameWithType: DNA.Counter_Unkillable_Stall
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Unkillable_Stall
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Counter_Unkillable_Stall
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 129
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Counter_Unkillable_Stall = 88
+    return:
+      type: System.Int32
+    content.vb: Public Const Counter_Unkillable_Stall As Integer = 88
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Mark_Disruption
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Mark_Disruption
+  id: Counter_Mark_Disruption
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Counter_Mark_Disruption
+  nameWithType: DNA.Counter_Mark_Disruption
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Mark_Disruption
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Counter_Mark_Disruption
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 130
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Counter_Mark_Disruption = 89
+    return:
+      type: System.Int32
+    content.vb: Public Const Counter_Mark_Disruption As Integer = 89
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Desperation_Factor
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Desperation_Factor
+  id: Desperation_Factor
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Desperation_Factor
+  nameWithType: DNA.Desperation_Factor
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Desperation_Factor
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Desperation_Factor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 133
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Desperation_Factor = 90
+    return:
+      type: System.Int32
+    content.vb: Public Const Desperation_Factor As Integer = 90
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Dominance_Greed
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Dominance_Greed
+  id: Dominance_Greed
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Dominance_Greed
+  nameWithType: DNA.Dominance_Greed
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Dominance_Greed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Dominance_Greed
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 134
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Dominance_Greed = 91
+    return:
+      type: System.Int32
+    content.vb: Public Const Dominance_Greed As Integer = 91
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Bluff_Potential_Value
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Bluff_Potential_Value
+  id: Bluff_Potential_Value
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Bluff_Potential_Value
+  nameWithType: DNA.Bluff_Potential_Value
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Bluff_Potential_Value
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Bluff_Potential_Value
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 135
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Bluff_Potential_Value = 92
+    return:
+      type: System.Int32
+    content.vb: Public Const Bluff_Potential_Value As Integer = 92
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Tempo_Sacrifice_Tolerance
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Tempo_Sacrifice_Tolerance
+  id: Tempo_Sacrifice_Tolerance
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Tempo_Sacrifice_Tolerance
+  nameWithType: DNA.Tempo_Sacrifice_Tolerance
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Tempo_Sacrifice_Tolerance
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Tempo_Sacrifice_Tolerance
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 136
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Tempo_Sacrifice_Tolerance = 93
+    return:
+      type: System.Int32
+    content.vb: Public Const Tempo_Sacrifice_Tolerance As Integer = 93
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Depth_Strategic_Value
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Depth_Strategic_Value
+  id: Line_Depth_Strategic_Value
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Line_Depth_Strategic_Value
+  nameWithType: DNA.Line_Depth_Strategic_Value
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Depth_Strategic_Value
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Line_Depth_Strategic_Value
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 139
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Line_Depth_Strategic_Value = 94
+    return:
+      type: System.Int32
+    content.vb: Public Const Line_Depth_Strategic_Value As Integer = 94
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Resource_Burst_Potential
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Resource_Burst_Potential
+  id: Resource_Burst_Potential
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Resource_Burst_Potential
+  nameWithType: DNA.Resource_Burst_Potential
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Resource_Burst_Potential
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Resource_Burst_Potential
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 140
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Resource_Burst_Potential = 95
+    return:
+      type: System.Int32
+    content.vb: Public Const Resource_Burst_Potential As Integer = 95
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Draw_vs_Play_Priority
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Draw_vs_Play_Priority
+  id: Draw_vs_Play_Priority
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Draw_vs_Play_Priority
+  nameWithType: DNA.Draw_vs_Play_Priority
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Draw_vs_Play_Priority
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Draw_vs_Play_Priority
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 141
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Draw_vs_Play_Priority = 96
+    return:
+      type: System.Int32
+    content.vb: Public Const Draw_vs_Play_Priority As Integer = 96
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Complexity_Bias
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Complexity_Bias
+  id: Complexity_Bias
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Complexity_Bias
+  nameWithType: DNA.Complexity_Bias
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Complexity_Bias
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Complexity_Bias
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 144
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Complexity_Bias = 97
+    return:
+      type: System.Int32
+    content.vb: Public Const Complexity_Bias As Integer = 97
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Win_Condition_Clarity
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Win_Condition_Clarity
+  id: Win_Condition_Clarity
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Win_Condition_Clarity
+  nameWithType: DNA.Win_Condition_Clarity
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Win_Condition_Clarity
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Win_Condition_Clarity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 145
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Win_Condition_Clarity = 98
+    return:
+      type: System.Int32
+    content.vb: Public Const Win_Condition_Clarity As Integer = 98
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Adaptive_Learning_Rate
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Adaptive_Learning_Rate
+  id: Adaptive_Learning_Rate
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Adaptive_Learning_Rate
+  nameWithType: DNA.Adaptive_Learning_Rate
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Adaptive_Learning_Rate
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Adaptive_Learning_Rate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 146
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Adaptive_Learning_Rate = 99
+    return:
+      type: System.Int32
+    content.vb: Public Const Adaptive_Learning_Rate As Integer = 99
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line0_Priority
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line0_Priority
+  id: Line0_Priority
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Line0_Priority
+  nameWithType: DNA.Line0_Priority
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line0_Priority
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Line0_Priority
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 148
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Line0_Priority = 100
+    return:
+      type: System.Int32
+    content.vb: Public Const Line0_Priority As Integer = 100
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line1_Priority
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line1_Priority
+  id: Line1_Priority
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Line1_Priority
+  nameWithType: DNA.Line1_Priority
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line1_Priority
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Line1_Priority
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 149
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Line1_Priority = 101
+    return:
+      type: System.Int32
+    content.vb: Public Const Line1_Priority As Integer = 101
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line2_Priority
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line2_Priority
+  id: Line2_Priority
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Line2_Priority
+  nameWithType: DNA.Line2_Priority
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line2_Priority
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Line2_Priority
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 150
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Line2_Priority = 102
+    return:
+      type: System.Int32
+    content.vb: Public Const Line2_Priority As Integer = 102
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line3_Priority
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line3_Priority
+  id: Line3_Priority
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Line3_Priority
+  nameWithType: DNA.Line3_Priority
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line3_Priority
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Line3_Priority
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 151
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Line3_Priority = 103
+    return:
+      type: System.Int32
+    content.vb: Public Const Line3_Priority As Integer = 103
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FlyingUtility
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FlyingUtility
+  id: FlyingUtility
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: FlyingUtility
+  nameWithType: DNA.FlyingUtility
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FlyingUtility
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: FlyingUtility
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 153
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int FlyingUtility = 104
+    return:
+      type: System.Int32
+    content.vb: Public Const FlyingUtility As Integer = 104
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ResourceGainValue
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ResourceGainValue
+  id: ResourceGainValue
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: ResourceGainValue
+  nameWithType: DNA.ResourceGainValue
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ResourceGainValue
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ResourceGainValue
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 154
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int ResourceGainValue = 105
+    return:
+      type: System.Int32
+    content.vb: Public Const ResourceGainValue As Integer = 105
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TokenSynergyWeight
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TokenSynergyWeight
+  id: TokenSynergyWeight
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: TokenSynergyWeight
+  nameWithType: DNA.TokenSynergyWeight
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TokenSynergyWeight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TokenSynergyWeight
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 155
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int TokenSynergyWeight = 106
+    return:
+      type: System.Int32
+    content.vb: Public Const TokenSynergyWeight As Integer = 106
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.PresenceOfMachineBonus
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.PresenceOfMachineBonus
+  id: PresenceOfMachineBonus
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: PresenceOfMachineBonus
+  nameWithType: DNA.PresenceOfMachineBonus
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.PresenceOfMachineBonus
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PresenceOfMachineBonus
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 156
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int PresenceOfMachineBonus = 107
+    return:
+      type: System.Int32
+    content.vb: Public Const PresenceOfMachineBonus As Integer = 107
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Combo_Bias
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Combo_Bias
+  id: Combo_Bias
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: Combo_Bias
+  nameWithType: DNA.Combo_Bias
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Combo_Bias
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Combo_Bias
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 158
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int Combo_Bias = 108
+    return:
+      type: System.Int32
+    content.vb: Public Const Combo_Bias As Integer = 108
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TOTAL_GENES
+  commentId: F:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TOTAL_GENES
+  id: TOTAL_GENES
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  langs:
+  - csharp
+  - vb
+  name: TOTAL_GENES
+  nameWithType: DNA.TOTAL_GENES
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TOTAL_GENES
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TOTAL_GENES
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs
+    startLine: 160
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public const int TOTAL_GENES = 109
+    return:
+      type: System.Int32
+    content.vb: Public Const TOTAL_GENES As Integer = 109
+references:
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+  commentId: N:CardGame.ConsoleApp.Evolution.V1_Legacy
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V1_Legacy
+  nameWithType: CardGame.ConsoleApp.Evolution.V1_Legacy
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

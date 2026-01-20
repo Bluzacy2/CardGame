@@ -1,0 +1,1186 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  id: CardInstance
+  parent: CardGame.Core.Cards.Models
+  children:
+  - CardGame.Core.Cards.Models.CardInstance.#ctor(System.Int32,System.Int32,CardGame.Core.Cards.Models.CardDefinition)
+  - CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff(CardGame.Core.Cards.Models.CardStats)
+  - CardGame.Core.Cards.Models.CardInstance.AuraKeywords
+  - CardGame.Core.Cards.Models.CardInstance.CostReduction
+  - CardGame.Core.Cards.Models.CardInstance.CurrentStats
+  - CardGame.Core.Cards.Models.CardInstance.DamageTaken
+  - CardGame.Core.Cards.Models.CardInstance.Definition
+  - CardGame.Core.Cards.Models.CardInstance.Heal(System.Int32)
+  - CardGame.Core.Cards.Models.CardInstance.InstanceId
+  - CardGame.Core.Cards.Models.CardInstance.IsSilenced
+  - CardGame.Core.Cards.Models.CardInstance.MaxHealth
+  - CardGame.Core.Cards.Models.CardInstance.MoveAndReset
+  - CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId
+  - CardGame.Core.Cards.Models.CardInstance.PermanentBuffs
+  - CardGame.Core.Cards.Models.CardInstance.Silence
+  - CardGame.Core.Cards.Models.CardInstance.SuppressKeyword(CardGame.Core.Cards.Data.Keyword)
+  - CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords
+  - CardGame.Core.Cards.Models.CardInstance.TakeDamage(System.Int32)
+  - CardGame.Core.Cards.Models.CardInstance.WithAuras(System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword})
+  - CardGame.Core.Cards.Models.CardInstance.WithCostReduction(System.Int32)
+  - CardGame.Core.Cards.Models.CardInstance.WithDamage(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardInstance
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 11
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: >-
+    Represents an instance of a card in the game with mutable state such as damage taken and buffs.
+
+    Each card instance is immutable and returns new instances when modified.
+  example: []
+  syntax:
+    content: public class CardInstance
+    content.vb: Public Class CardInstance
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Models.CardInstance.InstanceId
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.InstanceId
+  id: InstanceId
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: InstanceId
+  nameWithType: CardInstance.InstanceId
+  fullName: CardGame.Core.Cards.Models.CardInstance.InstanceId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: InstanceId
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 17
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the unique identifier for this card instance.
+  example: []
+  syntax:
+    content: public int InstanceId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property InstanceId As Integer
+  overload: CardGame.Core.Cards.Models.CardInstance.InstanceId*
+- uid: CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId
+  id: OwnerPlayerId
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: OwnerPlayerId
+  nameWithType: CardInstance.OwnerPlayerId
+  fullName: CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OwnerPlayerId
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 22
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the ID of the player who owns this card.
+  example: []
+  syntax:
+    content: public int OwnerPlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property OwnerPlayerId As Integer
+  overload: CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId*
+- uid: CardGame.Core.Cards.Models.CardInstance.Definition
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.Definition
+  id: Definition
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: Definition
+  nameWithType: CardInstance.Definition
+  fullName: CardGame.Core.Cards.Models.CardInstance.Definition
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Definition
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 27
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the static definition of the card (base stats, effects, etc.).
+  example: []
+  syntax:
+    content: public CardDefinition Definition { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Models.CardDefinition
+    content.vb: Public ReadOnly Property Definition As CardDefinition
+  overload: CardGame.Core.Cards.Models.CardInstance.Definition*
+- uid: CardGame.Core.Cards.Models.CardInstance.DamageTaken
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.DamageTaken
+  id: DamageTaken
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: DamageTaken
+  nameWithType: CardInstance.DamageTaken
+  fullName: CardGame.Core.Cards.Models.CardInstance.DamageTaken
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DamageTaken
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 32
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the amount of damage this card has taken.
+  example: []
+  syntax:
+    content: public int DamageTaken { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property DamageTaken As Integer
+  overload: CardGame.Core.Cards.Models.CardInstance.DamageTaken*
+- uid: CardGame.Core.Cards.Models.CardInstance.PermanentBuffs
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.PermanentBuffs
+  id: PermanentBuffs
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: PermanentBuffs
+  nameWithType: CardInstance.PermanentBuffs
+  fullName: CardGame.Core.Cards.Models.CardInstance.PermanentBuffs
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PermanentBuffs
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 37
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the permanent stat buffs applied to this card.
+  example: []
+  syntax:
+    content: public CardStats PermanentBuffs { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Models.CardStats
+    content.vb: Public ReadOnly Property PermanentBuffs As CardStats
+  overload: CardGame.Core.Cards.Models.CardInstance.PermanentBuffs*
+- uid: CardGame.Core.Cards.Models.CardInstance.AuraKeywords
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.AuraKeywords
+  id: AuraKeywords
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: AuraKeywords
+  nameWithType: CardInstance.AuraKeywords
+  fullName: CardGame.Core.Cards.Models.CardInstance.AuraKeywords
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AuraKeywords
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 42
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the keywords applied to this card via auras from other units.
+  example: []
+  syntax:
+    content: public IReadOnlyList<Keyword> AuraKeywords { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.Keyword}
+    content.vb: Public ReadOnly Property AuraKeywords As IReadOnlyList(Of Keyword)
+  overload: CardGame.Core.Cards.Models.CardInstance.AuraKeywords*
+- uid: CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords
+  id: SuppressedKeywords
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: SuppressedKeywords
+  nameWithType: CardInstance.SuppressedKeywords
+  fullName: CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SuppressedKeywords
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 47
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the keywords that have been temporarily suppressed on this card.
+  example: []
+  syntax:
+    content: public IReadOnlyList<Keyword> SuppressedKeywords { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.Keyword}
+    content.vb: Public ReadOnly Property SuppressedKeywords As IReadOnlyList(Of Keyword)
+  overload: CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords*
+- uid: CardGame.Core.Cards.Models.CardInstance.IsSilenced
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.IsSilenced
+  id: IsSilenced
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: IsSilenced
+  nameWithType: CardInstance.IsSilenced
+  fullName: CardGame.Core.Cards.Models.CardInstance.IsSilenced
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: IsSilenced
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 52
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets a value indicating whether this card is silenced (ignores all buffs and keywords).
+  example: []
+  syntax:
+    content: public bool IsSilenced { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsSilenced As Boolean
+  overload: CardGame.Core.Cards.Models.CardInstance.IsSilenced*
+- uid: CardGame.Core.Cards.Models.CardInstance.CostReduction
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.CostReduction
+  id: CostReduction
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: CostReduction
+  nameWithType: CardInstance.CostReduction
+  fullName: CardGame.Core.Cards.Models.CardInstance.CostReduction
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CostReduction
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 57
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the cost reduction applied to this card (immutable once set).
+  example: []
+  syntax:
+    content: public int CostReduction { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property CostReduction As Integer
+  overload: CardGame.Core.Cards.Models.CardInstance.CostReduction*
+- uid: CardGame.Core.Cards.Models.CardInstance.CurrentStats
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.CurrentStats
+  id: CurrentStats
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: CurrentStats
+  nameWithType: CardInstance.CurrentStats
+  fullName: CardGame.Core.Cards.Models.CardInstance.CurrentStats
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CurrentStats
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 62
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the current calculated stats of the card, accounting for buffs, damage, and silenced state.
+  example: []
+  syntax:
+    content: public CardStats CurrentStats { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Models.CardStats
+    content.vb: Public ReadOnly Property CurrentStats As CardStats
+  overload: CardGame.Core.Cards.Models.CardInstance.CurrentStats*
+- uid: CardGame.Core.Cards.Models.CardInstance.MaxHealth
+  commentId: P:CardGame.Core.Cards.Models.CardInstance.MaxHealth
+  id: MaxHealth
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: MaxHealth
+  nameWithType: CardInstance.MaxHealth
+  fullName: CardGame.Core.Cards.Models.CardInstance.MaxHealth
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: MaxHealth
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 99
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the maximum health of the card (base health + permanent buffs, ignoring damage taken).
+  example: []
+  syntax:
+    content: public int MaxHealth { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MaxHealth As Integer
+  overload: CardGame.Core.Cards.Models.CardInstance.MaxHealth*
+- uid: CardGame.Core.Cards.Models.CardInstance.#ctor(System.Int32,System.Int32,CardGame.Core.Cards.Models.CardDefinition)
+  commentId: M:CardGame.Core.Cards.Models.CardInstance.#ctor(System.Int32,System.Int32,CardGame.Core.Cards.Models.CardDefinition)
+  id: '#ctor(System.Int32,System.Int32,CardGame.Core.Cards.Models.CardDefinition)'
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: CardInstance(int, int, CardDefinition)
+  nameWithType: CardInstance.CardInstance(int, int, CardDefinition)
+  fullName: CardGame.Core.Cards.Models.CardInstance.CardInstance(int, int, CardGame.Core.Cards.Models.CardDefinition)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 109
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Initializes a new instance of the CardInstance class with default values.
+  example: []
+  syntax:
+    content: public CardInstance(int instanceId, int ownerPlayerId, CardDefinition definition)
+    parameters:
+    - id: instanceId
+      type: System.Int32
+      description: The unique identifier for this card instance.
+    - id: ownerPlayerId
+      type: System.Int32
+      description: The ID of the player who owns this card.
+    - id: definition
+      type: CardGame.Core.Cards.Models.CardDefinition
+      description: The static definition of the card.
+    content.vb: Public Sub New(instanceId As Integer, ownerPlayerId As Integer, definition As CardDefinition)
+  overload: CardGame.Core.Cards.Models.CardInstance.#ctor*
+  nameWithType.vb: CardInstance.New(Integer, Integer, CardDefinition)
+  fullName.vb: CardGame.Core.Cards.Models.CardInstance.New(Integer, Integer, CardGame.Core.Cards.Models.CardDefinition)
+  name.vb: New(Integer, Integer, CardDefinition)
+- uid: CardGame.Core.Cards.Models.CardInstance.MoveAndReset
+  commentId: M:CardGame.Core.Cards.Models.CardInstance.MoveAndReset
+  id: MoveAndReset
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: MoveAndReset()
+  nameWithType: CardInstance.MoveAndReset()
+  fullName: CardGame.Core.Cards.Models.CardInstance.MoveAndReset()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: MoveAndReset
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 154
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: >-
+    Creates a new card instance with all state reset to default (except InstanceId, Owner, and Definition).
+
+    Typically used when moving a card between zones.
+  example: []
+  syntax:
+    content: public CardInstance MoveAndReset()
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: A new CardInstance with reset state.
+    content.vb: Public Function MoveAndReset() As CardInstance
+  overload: CardGame.Core.Cards.Models.CardInstance.MoveAndReset*
+- uid: CardGame.Core.Cards.Models.CardInstance.WithDamage(System.Int32)
+  commentId: M:CardGame.Core.Cards.Models.CardInstance.WithDamage(System.Int32)
+  id: WithDamage(System.Int32)
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: WithDamage(int)
+  nameWithType: CardInstance.WithDamage(int)
+  fullName: CardGame.Core.Cards.Models.CardInstance.WithDamage(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WithDamage
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 172
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Creates a new card instance with the specified total damage.
+  example: []
+  syntax:
+    content: public CardInstance WithDamage(int totalDamage)
+    parameters:
+    - id: totalDamage
+      type: System.Int32
+      description: The total damage the card has taken.
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: A new CardInstance with the specified damage.
+    content.vb: Public Function WithDamage(totalDamage As Integer) As CardInstance
+  overload: CardGame.Core.Cards.Models.CardInstance.WithDamage*
+  nameWithType.vb: CardInstance.WithDamage(Integer)
+  fullName.vb: CardGame.Core.Cards.Models.CardInstance.WithDamage(Integer)
+  name.vb: WithDamage(Integer)
+- uid: CardGame.Core.Cards.Models.CardInstance.TakeDamage(System.Int32)
+  commentId: M:CardGame.Core.Cards.Models.CardInstance.TakeDamage(System.Int32)
+  id: TakeDamage(System.Int32)
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: TakeDamage(int)
+  nameWithType: CardInstance.TakeDamage(int)
+  fullName: CardGame.Core.Cards.Models.CardInstance.TakeDamage(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TakeDamage
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 190
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Applies damage to the card and returns a new instance.
+  example: []
+  syntax:
+    content: public CardInstance TakeDamage(int amount)
+    parameters:
+    - id: amount
+      type: System.Int32
+      description: The amount of damage to apply.
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: A new CardInstance with increased damage taken.
+    content.vb: Public Function TakeDamage(amount As Integer) As CardInstance
+  overload: CardGame.Core.Cards.Models.CardInstance.TakeDamage*
+  nameWithType.vb: CardInstance.TakeDamage(Integer)
+  fullName.vb: CardGame.Core.Cards.Models.CardInstance.TakeDamage(Integer)
+  name.vb: TakeDamage(Integer)
+- uid: CardGame.Core.Cards.Models.CardInstance.Heal(System.Int32)
+  commentId: M:CardGame.Core.Cards.Models.CardInstance.Heal(System.Int32)
+  id: Heal(System.Int32)
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: Heal(int)
+  nameWithType: CardInstance.Heal(int)
+  fullName: CardGame.Core.Cards.Models.CardInstance.Heal(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Heal
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 197
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Heals the card and returns a new instance.
+  example: []
+  syntax:
+    content: public CardInstance Heal(int amount)
+    parameters:
+    - id: amount
+      type: System.Int32
+      description: The amount of health to restore.
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: A new CardInstance with reduced damage taken.
+    content.vb: Public Function Heal(amount As Integer) As CardInstance
+  overload: CardGame.Core.Cards.Models.CardInstance.Heal*
+  nameWithType.vb: CardInstance.Heal(Integer)
+  fullName.vb: CardGame.Core.Cards.Models.CardInstance.Heal(Integer)
+  name.vb: Heal(Integer)
+- uid: CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff(CardGame.Core.Cards.Models.CardStats)
+  commentId: M:CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff(CardGame.Core.Cards.Models.CardStats)
+  id: AddPermanentBuff(CardGame.Core.Cards.Models.CardStats)
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: AddPermanentBuff(CardStats)
+  nameWithType: CardInstance.AddPermanentBuff(CardStats)
+  fullName: CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff(CardGame.Core.Cards.Models.CardStats)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AddPermanentBuff
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 205
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: >-
+    Adds a permanent stat buff to the card and returns a new instance.
+
+    Silenced cards cannot receive buffs.
+  example: []
+  syntax:
+    content: public CardInstance AddPermanentBuff(CardStats buff)
+    parameters:
+    - id: buff
+      type: CardGame.Core.Cards.Models.CardStats
+      description: The stat buff to apply.
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: A new CardInstance with the buff applied, or the same instance if silenced.
+    content.vb: Public Function AddPermanentBuff(buff As CardStats) As CardInstance
+  overload: CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff*
+- uid: CardGame.Core.Cards.Models.CardInstance.WithAuras(System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword})
+  commentId: M:CardGame.Core.Cards.Models.CardInstance.WithAuras(System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword})
+  id: WithAuras(System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword})
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: WithAuras(IEnumerable<Keyword>)
+  nameWithType: CardInstance.WithAuras(IEnumerable<Keyword>)
+  fullName: CardGame.Core.Cards.Models.CardInstance.WithAuras(System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Data.Keyword>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WithAuras
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 223
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Updates the aura keywords on the card and returns a new instance.
+  example: []
+  syntax:
+    content: public CardInstance WithAuras(IEnumerable<Keyword> newAuras)
+    parameters:
+    - id: newAuras
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword}
+      description: The new aura keywords to apply.
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: A new CardInstance with the updated aura keywords.
+    content.vb: Public Function WithAuras(newAuras As IEnumerable(Of Keyword)) As CardInstance
+  overload: CardGame.Core.Cards.Models.CardInstance.WithAuras*
+  nameWithType.vb: CardInstance.WithAuras(IEnumerable(Of Keyword))
+  fullName.vb: CardGame.Core.Cards.Models.CardInstance.WithAuras(System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Data.Keyword))
+  name.vb: WithAuras(IEnumerable(Of Keyword))
+- uid: CardGame.Core.Cards.Models.CardInstance.WithCostReduction(System.Int32)
+  commentId: M:CardGame.Core.Cards.Models.CardInstance.WithCostReduction(System.Int32)
+  id: WithCostReduction(System.Int32)
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: WithCostReduction(int)
+  nameWithType: CardInstance.WithCostReduction(int)
+  fullName: CardGame.Core.Cards.Models.CardInstance.WithCostReduction(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WithCostReduction
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 241
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Updates the cost reduction on the card and returns a new instance.
+  example: []
+  syntax:
+    content: public CardInstance WithCostReduction(int costReduction)
+    parameters:
+    - id: costReduction
+      type: System.Int32
+      description: The new cost reduction value.
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: A new CardInstance with the updated cost reduction.
+    content.vb: Public Function WithCostReduction(costReduction As Integer) As CardInstance
+  overload: CardGame.Core.Cards.Models.CardInstance.WithCostReduction*
+  nameWithType.vb: CardInstance.WithCostReduction(Integer)
+  fullName.vb: CardGame.Core.Cards.Models.CardInstance.WithCostReduction(Integer)
+  name.vb: WithCostReduction(Integer)
+- uid: CardGame.Core.Cards.Models.CardInstance.SuppressKeyword(CardGame.Core.Cards.Data.Keyword)
+  commentId: M:CardGame.Core.Cards.Models.CardInstance.SuppressKeyword(CardGame.Core.Cards.Data.Keyword)
+  id: SuppressKeyword(CardGame.Core.Cards.Data.Keyword)
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: SuppressKeyword(Keyword)
+  nameWithType: CardInstance.SuppressKeyword(Keyword)
+  fullName: CardGame.Core.Cards.Models.CardInstance.SuppressKeyword(CardGame.Core.Cards.Data.Keyword)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SuppressKeyword
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 259
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Temporarily suppresses a keyword on the card and returns a new instance.
+  example: []
+  syntax:
+    content: public CardInstance SuppressKeyword(Keyword keyword)
+    parameters:
+    - id: keyword
+      type: CardGame.Core.Cards.Data.Keyword
+      description: The keyword to suppress.
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: A new CardInstance with the keyword added to suppressed keywords.
+    content.vb: Public Function SuppressKeyword(keyword As Keyword) As CardInstance
+  overload: CardGame.Core.Cards.Models.CardInstance.SuppressKeyword*
+- uid: CardGame.Core.Cards.Models.CardInstance.Silence
+  commentId: M:CardGame.Core.Cards.Models.CardInstance.Silence
+  id: Silence
+  parent: CardGame.Core.Cards.Models.CardInstance
+  langs:
+  - csharp
+  - vb
+  name: Silence()
+  nameWithType: CardInstance.Silence()
+  fullName: CardGame.Core.Cards.Models.CardInstance.Silence()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardInstance.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Silence
+    path: ../Source/CardGame.Core/Cards/Models/CardInstance.cs
+    startLine: 280
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Silences the card, removing all buffs, keywords, and auras, and returns a new instance.
+  example: []
+  syntax:
+    content: public CardInstance Silence()
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: A new silenced CardInstance with all state reset except damage taken.
+    content.vb: Public Function Silence() As CardInstance
+  overload: CardGame.Core.Cards.Models.CardInstance.Silence*
+references:
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Models.CardInstance.InstanceId*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.InstanceId
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_InstanceId
+  name: InstanceId
+  nameWithType: CardInstance.InstanceId
+  fullName: CardGame.Core.Cards.Models.CardInstance.InstanceId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_OwnerPlayerId
+  name: OwnerPlayerId
+  nameWithType: CardInstance.OwnerPlayerId
+  fullName: CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId
+- uid: CardGame.Core.Cards.Models.CardInstance.Definition*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.Definition
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_Definition
+  name: Definition
+  nameWithType: CardInstance.Definition
+  fullName: CardGame.Core.Cards.Models.CardInstance.Definition
+- uid: CardGame.Core.Cards.Models.CardDefinition
+  commentId: T:CardGame.Core.Cards.Models.CardDefinition
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardDefinition.html
+  name: CardDefinition
+  nameWithType: CardDefinition
+  fullName: CardGame.Core.Cards.Models.CardDefinition
+- uid: CardGame.Core.Cards.Models.CardInstance.DamageTaken*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.DamageTaken
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_DamageTaken
+  name: DamageTaken
+  nameWithType: CardInstance.DamageTaken
+  fullName: CardGame.Core.Cards.Models.CardInstance.DamageTaken
+- uid: CardGame.Core.Cards.Models.CardInstance.PermanentBuffs*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.PermanentBuffs
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_PermanentBuffs
+  name: PermanentBuffs
+  nameWithType: CardInstance.PermanentBuffs
+  fullName: CardGame.Core.Cards.Models.CardInstance.PermanentBuffs
+- uid: CardGame.Core.Cards.Models.CardStats
+  commentId: T:CardGame.Core.Cards.Models.CardStats
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardStats.html
+  name: CardStats
+  nameWithType: CardStats
+  fullName: CardGame.Core.Cards.Models.CardStats
+- uid: CardGame.Core.Cards.Models.CardInstance.AuraKeywords*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.AuraKeywords
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_AuraKeywords
+  name: AuraKeywords
+  nameWithType: CardInstance.AuraKeywords
+  fullName: CardGame.Core.Cards.Models.CardInstance.AuraKeywords
+- uid: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.Keyword}
+  commentId: T:System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.Keyword}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: IReadOnlyList<Keyword>
+  nameWithType: IReadOnlyList<Keyword>
+  fullName: System.Collections.Generic.IReadOnlyList<CardGame.Core.Cards.Data.Keyword>
+  nameWithType.vb: IReadOnlyList(Of Keyword)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of CardGame.Core.Cards.Data.Keyword)
+  name.vb: IReadOnlyList(Of Keyword)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_SuppressedKeywords
+  name: SuppressedKeywords
+  nameWithType: CardInstance.SuppressedKeywords
+  fullName: CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords
+- uid: CardGame.Core.Cards.Models.CardInstance.IsSilenced*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.IsSilenced
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_IsSilenced
+  name: IsSilenced
+  nameWithType: CardInstance.IsSilenced
+  fullName: CardGame.Core.Cards.Models.CardInstance.IsSilenced
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.Core.Cards.Models.CardInstance.CostReduction*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.CostReduction
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_CostReduction
+  name: CostReduction
+  nameWithType: CardInstance.CostReduction
+  fullName: CardGame.Core.Cards.Models.CardInstance.CostReduction
+- uid: CardGame.Core.Cards.Models.CardInstance.CurrentStats*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.CurrentStats
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_CurrentStats
+  name: CurrentStats
+  nameWithType: CardInstance.CurrentStats
+  fullName: CardGame.Core.Cards.Models.CardInstance.CurrentStats
+- uid: CardGame.Core.Cards.Models.CardInstance.MaxHealth*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.MaxHealth
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_MaxHealth
+  name: MaxHealth
+  nameWithType: CardInstance.MaxHealth
+  fullName: CardGame.Core.Cards.Models.CardInstance.MaxHealth
+- uid: CardGame.Core.Cards.Models.CardInstance.#ctor*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.#ctor
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance__ctor_System_Int32_System_Int32_CardGame_Core_Cards_Models_CardDefinition_
+  name: CardInstance
+  nameWithType: CardInstance.CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance.CardInstance
+  nameWithType.vb: CardInstance.New
+  fullName.vb: CardGame.Core.Cards.Models.CardInstance.New
+  name.vb: New
+- uid: CardGame.Core.Cards.Models.CardInstance.MoveAndReset*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.MoveAndReset
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_MoveAndReset
+  name: MoveAndReset
+  nameWithType: CardInstance.MoveAndReset
+  fullName: CardGame.Core.Cards.Models.CardInstance.MoveAndReset
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: CardGame.Core.Cards.Models.CardInstance.WithDamage*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.WithDamage
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_WithDamage_System_Int32_
+  name: WithDamage
+  nameWithType: CardInstance.WithDamage
+  fullName: CardGame.Core.Cards.Models.CardInstance.WithDamage
+- uid: CardGame.Core.Cards.Models.CardInstance.TakeDamage*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.TakeDamage
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_TakeDamage_System_Int32_
+  name: TakeDamage
+  nameWithType: CardInstance.TakeDamage
+  fullName: CardGame.Core.Cards.Models.CardInstance.TakeDamage
+- uid: CardGame.Core.Cards.Models.CardInstance.Heal*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.Heal
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_Heal_System_Int32_
+  name: Heal
+  nameWithType: CardInstance.Heal
+  fullName: CardGame.Core.Cards.Models.CardInstance.Heal
+- uid: CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_AddPermanentBuff_CardGame_Core_Cards_Models_CardStats_
+  name: AddPermanentBuff
+  nameWithType: CardInstance.AddPermanentBuff
+  fullName: CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff
+- uid: CardGame.Core.Cards.Models.CardInstance.WithAuras*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.WithAuras
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_WithAuras_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Data_Keyword__
+  name: WithAuras
+  nameWithType: CardInstance.WithAuras
+  fullName: CardGame.Core.Cards.Models.CardInstance.WithAuras
+- uid: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword}
+  commentId: T:System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: IEnumerable<Keyword>
+  nameWithType: IEnumerable<Keyword>
+  fullName: System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Data.Keyword>
+  nameWithType.vb: IEnumerable(Of Keyword)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Data.Keyword)
+  name.vb: IEnumerable(Of Keyword)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Cards.Models.CardInstance.WithCostReduction*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.WithCostReduction
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_WithCostReduction_System_Int32_
+  name: WithCostReduction
+  nameWithType: CardInstance.WithCostReduction
+  fullName: CardGame.Core.Cards.Models.CardInstance.WithCostReduction
+- uid: CardGame.Core.Cards.Models.CardInstance.SuppressKeyword*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.SuppressKeyword
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_SuppressKeyword_CardGame_Core_Cards_Data_Keyword_
+  name: SuppressKeyword
+  nameWithType: CardInstance.SuppressKeyword
+  fullName: CardGame.Core.Cards.Models.CardInstance.SuppressKeyword
+- uid: CardGame.Core.Cards.Data.Keyword
+  commentId: T:CardGame.Core.Cards.Data.Keyword
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: Keyword
+  nameWithType: Keyword
+  fullName: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Cards.Models.CardInstance.Silence*
+  commentId: Overload:CardGame.Core.Cards.Models.CardInstance.Silence
+  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_Silence
+  name: Silence
+  nameWithType: CardInstance.Silence
+  fullName: CardGame.Core.Cards.Models.CardInstance.Silence

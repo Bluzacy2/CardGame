@@ -1,0 +1,398 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Application.ExecutionResult
+  commentId: T:CardGame.Core.Application.ExecutionResult
+  id: ExecutionResult
+  parent: CardGame.Core.Application
+  children:
+  - CardGame.Core.Application.ExecutionResult.#ctor(CardGame.Core.State.Models.GameState,System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent})
+  - CardGame.Core.Application.ExecutionResult.EventsHappened
+  - CardGame.Core.Application.ExecutionResult.NewState
+  langs:
+  - csharp
+  - vb
+  name: ExecutionResult
+  nameWithType: ExecutionResult
+  fullName: CardGame.Core.Application.ExecutionResult
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/ExecutionResult.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ExecutionResult
+    path: ../Source/CardGame.Core/Application/ExecutionResult.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Represents the result of executing a game action, including the updated state and generated events.
+  example: []
+  syntax:
+    content: public class ExecutionResult
+    content.vb: Public Class ExecutionResult
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Application.ExecutionResult.NewState
+  commentId: P:CardGame.Core.Application.ExecutionResult.NewState
+  id: NewState
+  parent: CardGame.Core.Application.ExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: NewState
+  nameWithType: ExecutionResult.NewState
+  fullName: CardGame.Core.Application.ExecutionResult.NewState
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/ExecutionResult.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: NewState
+    path: ../Source/CardGame.Core/Application/ExecutionResult.cs
+    startLine: 14
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Gets the game state after execution.
+  example: []
+  syntax:
+    content: public GameState NewState { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Models.GameState
+    content.vb: Public ReadOnly Property NewState As GameState
+  overload: CardGame.Core.Application.ExecutionResult.NewState*
+- uid: CardGame.Core.Application.ExecutionResult.EventsHappened
+  commentId: P:CardGame.Core.Application.ExecutionResult.EventsHappened
+  id: EventsHappened
+  parent: CardGame.Core.Application.ExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: EventsHappened
+  nameWithType: ExecutionResult.EventsHappened
+  fullName: CardGame.Core.Application.ExecutionResult.EventsHappened
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/ExecutionResult.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EventsHappened
+    path: ../Source/CardGame.Core/Application/ExecutionResult.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Gets the list of events that occurred during execution.
+  example: []
+  syntax:
+    content: public IReadOnlyList<IGameEvent> EventsHappened { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{CardGame.Core.Events.Interfaces.IGameEvent}
+    content.vb: Public ReadOnly Property EventsHappened As IReadOnlyList(Of IGameEvent)
+  overload: CardGame.Core.Application.ExecutionResult.EventsHappened*
+- uid: CardGame.Core.Application.ExecutionResult.#ctor(CardGame.Core.State.Models.GameState,System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent})
+  commentId: M:CardGame.Core.Application.ExecutionResult.#ctor(CardGame.Core.State.Models.GameState,System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent})
+  id: '#ctor(CardGame.Core.State.Models.GameState,System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent})'
+  parent: CardGame.Core.Application.ExecutionResult
+  langs:
+  - csharp
+  - vb
+  name: ExecutionResult(GameState, IEnumerable<IGameEvent>)
+  nameWithType: ExecutionResult.ExecutionResult(GameState, IEnumerable<IGameEvent>)
+  fullName: CardGame.Core.Application.ExecutionResult.ExecutionResult(CardGame.Core.State.Models.GameState, System.Collections.Generic.IEnumerable<CardGame.Core.Events.Interfaces.IGameEvent>)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/ExecutionResult.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Application/ExecutionResult.cs
+    startLine: 26
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Initializes a new instance of the ExecutionResult class.
+  example: []
+  syntax:
+    content: public ExecutionResult(GameState newState, IEnumerable<IGameEvent> events)
+    parameters:
+    - id: newState
+      type: CardGame.Core.State.Models.GameState
+      description: The game state after execution.
+    - id: events
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent}
+      description: The events that occurred during execution.
+    content.vb: Public Sub New(newState As GameState, events As IEnumerable(Of IGameEvent))
+  overload: CardGame.Core.Application.ExecutionResult.#ctor*
+  nameWithType.vb: ExecutionResult.New(GameState, IEnumerable(Of IGameEvent))
+  fullName.vb: CardGame.Core.Application.ExecutionResult.New(CardGame.Core.State.Models.GameState, System.Collections.Generic.IEnumerable(Of CardGame.Core.Events.Interfaces.IGameEvent))
+  name.vb: New(GameState, IEnumerable(Of IGameEvent))
+references:
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Application.ExecutionResult.NewState*
+  commentId: Overload:CardGame.Core.Application.ExecutionResult.NewState
+  href: CardGame.Core.Application.ExecutionResult.html#CardGame_Core_Application_ExecutionResult_NewState
+  name: NewState
+  nameWithType: ExecutionResult.NewState
+  fullName: CardGame.Core.Application.ExecutionResult.NewState
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Application.ExecutionResult.EventsHappened*
+  commentId: Overload:CardGame.Core.Application.ExecutionResult.EventsHappened
+  href: CardGame.Core.Application.ExecutionResult.html#CardGame_Core_Application_ExecutionResult_EventsHappened
+  name: EventsHappened
+  nameWithType: ExecutionResult.EventsHappened
+  fullName: CardGame.Core.Application.ExecutionResult.EventsHappened
+- uid: System.Collections.Generic.IReadOnlyList{CardGame.Core.Events.Interfaces.IGameEvent}
+  commentId: T:System.Collections.Generic.IReadOnlyList{CardGame.Core.Events.Interfaces.IGameEvent}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IReadOnlyList<IGameEvent>
+  nameWithType: IReadOnlyList<IGameEvent>
+  fullName: System.Collections.Generic.IReadOnlyList<CardGame.Core.Events.Interfaces.IGameEvent>
+  nameWithType.vb: IReadOnlyList(Of IGameEvent)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of CardGame.Core.Events.Interfaces.IGameEvent)
+  name.vb: IReadOnlyList(Of IGameEvent)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Events.Interfaces.IGameEvent
+    name: IGameEvent
+    href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Events.Interfaces.IGameEvent
+    name: IGameEvent
+    href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.Application.ExecutionResult.#ctor*
+  commentId: Overload:CardGame.Core.Application.ExecutionResult.#ctor
+  href: CardGame.Core.Application.ExecutionResult.html#CardGame_Core_Application_ExecutionResult__ctor_CardGame_Core_State_Models_GameState_System_Collections_Generic_IEnumerable_CardGame_Core_Events_Interfaces_IGameEvent__
+  name: ExecutionResult
+  nameWithType: ExecutionResult.ExecutionResult
+  fullName: CardGame.Core.Application.ExecutionResult.ExecutionResult
+  nameWithType.vb: ExecutionResult.New
+  fullName.vb: CardGame.Core.Application.ExecutionResult.New
+  name.vb: New
+- uid: System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent}
+  commentId: T:System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IEnumerable<IGameEvent>
+  nameWithType: IEnumerable<IGameEvent>
+  fullName: System.Collections.Generic.IEnumerable<CardGame.Core.Events.Interfaces.IGameEvent>
+  nameWithType.vb: IEnumerable(Of IGameEvent)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CardGame.Core.Events.Interfaces.IGameEvent)
+  name.vb: IEnumerable(Of IGameEvent)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Events.Interfaces.IGameEvent
+    name: IGameEvent
+    href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Events.Interfaces.IGameEvent
+    name: IGameEvent
+    href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

@@ -1,0 +1,101 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Decks
+  commentId: N:CardGame.Core.Decks
+  id: Decks
+  parent: CardGame.Core
+  children:
+  - CardGame.Core.Decks.Data
+  - CardGame.Core.Decks.DeckRepository
+  - CardGame.Core.Decks.DeckService
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Decks
+  nameWithType: CardGame.Core.Decks
+  fullName: CardGame.Core.Decks
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Decks.Data
+  commentId: N:CardGame.Core.Decks.Data
+  href: CardGame.html
+  name: CardGame.Core.Decks.Data
+  nameWithType: CardGame.Core.Decks.Data
+  fullName: CardGame.Core.Decks.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html
+- uid: CardGame.Core.Decks.DeckRepository
+  commentId: T:CardGame.Core.Decks.DeckRepository
+  parent: CardGame.Core.Decks
+  href: CardGame.Core.Decks.DeckRepository.html
+  name: DeckRepository
+  nameWithType: DeckRepository
+  fullName: CardGame.Core.Decks.DeckRepository
+- uid: CardGame.Core.Decks.DeckService
+  commentId: T:CardGame.Core.Decks.DeckService
+  href: CardGame.Core.Decks.DeckService.html
+  name: DeckService
+  nameWithType: DeckService
+  fullName: CardGame.Core.Decks.DeckService
+- uid: CardGame.Core.Decks
+  commentId: N:CardGame.Core.Decks
+  href: CardGame.html
+  name: CardGame.Core.Decks
+  nameWithType: CardGame.Core.Decks
+  fullName: CardGame.Core.Decks
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html

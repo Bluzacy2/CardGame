@@ -1,0 +1,63 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Decks.Data
+  commentId: N:CardGame.Core.Decks.Data
+  id: Data
+  parent: CardGame.Core.Decks
+  children:
+  - CardGame.Core.Decks.Data.DeckData
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Decks.Data
+  nameWithType: CardGame.Core.Decks.Data
+  fullName: CardGame.Core.Decks.Data
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Decks.Data.DeckData
+  commentId: T:CardGame.Core.Decks.Data.DeckData
+  parent: CardGame.Core.Decks.Data
+  href: CardGame.Core.Decks.Data.DeckData.html
+  name: DeckData
+  nameWithType: DeckData
+  fullName: CardGame.Core.Decks.Data.DeckData
+- uid: CardGame.Core.Decks.Data
+  commentId: N:CardGame.Core.Decks.Data
+  href: CardGame.html
+  name: CardGame.Core.Decks.Data
+  nameWithType: CardGame.Core.Decks.Data
+  fullName: CardGame.Core.Decks.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html

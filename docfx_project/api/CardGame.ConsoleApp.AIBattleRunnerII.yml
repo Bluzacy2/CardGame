@@ -1,0 +1,149 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.AIBattleRunnerII
+  commentId: T:CardGame.ConsoleApp.AIBattleRunnerII
+  id: AIBattleRunnerII
+  parent: CardGame.ConsoleApp
+  children:
+  - CardGame.ConsoleApp.AIBattleRunnerII.RunAsync
+  langs:
+  - csharp
+  - vb
+  name: AIBattleRunnerII
+  nameWithType: AIBattleRunnerII
+  fullName: CardGame.ConsoleApp.AIBattleRunnerII
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/AIBattleRunnerII.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AIBattleRunnerII
+    path: ../Source/CardGame.ConsoleApp/AIBattleRunnerII.cs
+    startLine: 18
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp
+  syntax:
+    content: public static class AIBattleRunnerII
+    content.vb: Public Module AIBattleRunnerII
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.AIBattleRunnerII.RunAsync
+  commentId: M:CardGame.ConsoleApp.AIBattleRunnerII.RunAsync
+  id: RunAsync
+  parent: CardGame.ConsoleApp.AIBattleRunnerII
+  langs:
+  - csharp
+  - vb
+  name: RunAsync()
+  nameWithType: AIBattleRunnerII.RunAsync()
+  fullName: CardGame.ConsoleApp.AIBattleRunnerII.RunAsync()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/AIBattleRunnerII.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: RunAsync
+    path: ../Source/CardGame.ConsoleApp/AIBattleRunnerII.cs
+    startLine: 25
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp
+  syntax:
+    content: public static Task RunAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Shared Function RunAsync() As Task
+  overload: CardGame.ConsoleApp.AIBattleRunnerII.RunAsync*
+references:
+- uid: CardGame.ConsoleApp
+  commentId: N:CardGame.ConsoleApp
+  href: CardGame.html
+  name: CardGame.ConsoleApp
+  nameWithType: CardGame.ConsoleApp
+  fullName: CardGame.ConsoleApp
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.AIBattleRunnerII.RunAsync*
+  commentId: Overload:CardGame.ConsoleApp.AIBattleRunnerII.RunAsync
+  href: CardGame.ConsoleApp.AIBattleRunnerII.html#CardGame_ConsoleApp_AIBattleRunnerII_RunAsync
+  name: RunAsync
+  nameWithType: AIBattleRunnerII.RunAsync
+  fullName: CardGame.ConsoleApp.AIBattleRunnerII.RunAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

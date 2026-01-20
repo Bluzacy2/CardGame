@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Logic.Mcts
+  commentId: N:CardGame.Core.AI.Logic.Mcts
+  id: Mcts
+  parent: CardGame.Core.AI.Logic
+  children:
+  - CardGame.Core.AI.Logic.Mcts.MctsNode
+  - CardGame.Core.AI.Logic.Mcts.MctsSolver
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.AI.Logic.Mcts
+  nameWithType: CardGame.Core.AI.Logic.Mcts
+  fullName: CardGame.Core.AI.Logic.Mcts
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode
+  commentId: T:CardGame.Core.AI.Logic.Mcts.MctsNode
+  parent: CardGame.Core.AI.Logic.Mcts
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html
+  name: MctsNode
+  nameWithType: MctsNode
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode
+- uid: CardGame.Core.AI.Logic.Mcts.MctsSolver
+  commentId: T:CardGame.Core.AI.Logic.Mcts.MctsSolver
+  href: CardGame.Core.AI.Logic.Mcts.MctsSolver.html
+  name: MctsSolver
+  nameWithType: MctsSolver
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsSolver
+- uid: CardGame.Core.AI.Logic.Mcts
+  commentId: N:CardGame.Core.AI.Logic.Mcts
+  href: CardGame.html
+  name: CardGame.Core.AI.Logic.Mcts
+  nameWithType: CardGame.Core.AI.Logic.Mcts
+  fullName: CardGame.Core.AI.Logic.Mcts
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic.Mcts
+    name: Mcts
+    href: CardGame.Core.AI.Logic.Mcts.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic.Mcts
+    name: Mcts
+    href: CardGame.Core.AI.Logic.Mcts.html

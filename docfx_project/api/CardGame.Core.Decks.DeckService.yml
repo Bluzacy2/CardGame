@@ -1,0 +1,341 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Decks.DeckService
+  commentId: T:CardGame.Core.Decks.DeckService
+  id: DeckService
+  parent: CardGame.Core.Decks
+  children:
+  - CardGame.Core.Decks.DeckService.#ctor(CardGame.Core.Decks.DeckRepository,CardGame.Core.Cards.Factories.CardFactory)
+  - CardGame.Core.Decks.DeckService.CreateDeckFromId(System.String,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: DeckService
+  nameWithType: DeckService
+  fullName: CardGame.Core.Decks.DeckService
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/DeckService.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DeckService
+    path: ../Source/CardGame.Core/Decks/DeckService.cs
+    startLine: 11
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks
+  summary: Service for creating decks of card instances from deck data definitions.
+  example: []
+  syntax:
+    content: public class DeckService
+    content.vb: Public Class DeckService
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Decks.DeckService.#ctor(CardGame.Core.Decks.DeckRepository,CardGame.Core.Cards.Factories.CardFactory)
+  commentId: M:CardGame.Core.Decks.DeckService.#ctor(CardGame.Core.Decks.DeckRepository,CardGame.Core.Cards.Factories.CardFactory)
+  id: '#ctor(CardGame.Core.Decks.DeckRepository,CardGame.Core.Cards.Factories.CardFactory)'
+  parent: CardGame.Core.Decks.DeckService
+  langs:
+  - csharp
+  - vb
+  name: DeckService(DeckRepository, CardFactory)
+  nameWithType: DeckService.DeckService(DeckRepository, CardFactory)
+  fullName: CardGame.Core.Decks.DeckService.DeckService(CardGame.Core.Decks.DeckRepository, CardGame.Core.Cards.Factories.CardFactory)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/DeckService.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Decks/DeckService.cs
+    startLine: 21
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks
+  summary: Initializes a new instance of the DeckService class.
+  example: []
+  syntax:
+    content: public DeckService(DeckRepository repository, CardFactory cardFactory)
+    parameters:
+    - id: repository
+      type: CardGame.Core.Decks.DeckRepository
+      description: The repository providing deck data definitions.
+    - id: cardFactory
+      type: CardGame.Core.Cards.Factories.CardFactory
+      description: The factory for creating card instances.
+    content.vb: Public Sub New(repository As DeckRepository, cardFactory As CardFactory)
+  overload: CardGame.Core.Decks.DeckService.#ctor*
+  nameWithType.vb: DeckService.New(DeckRepository, CardFactory)
+  fullName.vb: CardGame.Core.Decks.DeckService.New(CardGame.Core.Decks.DeckRepository, CardGame.Core.Cards.Factories.CardFactory)
+  name.vb: New(DeckRepository, CardFactory)
+- uid: CardGame.Core.Decks.DeckService.CreateDeckFromId(System.String,System.Int32)
+  commentId: M:CardGame.Core.Decks.DeckService.CreateDeckFromId(System.String,System.Int32)
+  id: CreateDeckFromId(System.String,System.Int32)
+  parent: CardGame.Core.Decks.DeckService
+  langs:
+  - csharp
+  - vb
+  name: CreateDeckFromId(string, int)
+  nameWithType: DeckService.CreateDeckFromId(string, int)
+  fullName: CardGame.Core.Decks.DeckService.CreateDeckFromId(string, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/DeckService.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CreateDeckFromId
+    path: ../Source/CardGame.Core/Decks/DeckService.cs
+    startLine: 35
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks
+  summary: Creates a list of card instances from a deck definition ID for a specific owner.
+  example: []
+  syntax:
+    content: public List<CardInstance> CreateDeckFromId(string deckId, int ownerId)
+    parameters:
+    - id: deckId
+      type: System.String
+      description: The unique identifier of the deck definition.
+    - id: ownerId
+      type: System.Int32
+      description: The ID of the player who will own these cards.
+    return:
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+      description: A list of card instances representing the complete deck.
+    content.vb: Public Function CreateDeckFromId(deckId As String, ownerId As Integer) As List(Of CardInstance)
+  overload: CardGame.Core.Decks.DeckService.CreateDeckFromId*
+  nameWithType.vb: DeckService.CreateDeckFromId(String, Integer)
+  fullName.vb: CardGame.Core.Decks.DeckService.CreateDeckFromId(String, Integer)
+  name.vb: CreateDeckFromId(String, Integer)
+references:
+- uid: CardGame.Core.Decks
+  commentId: N:CardGame.Core.Decks
+  href: CardGame.html
+  name: CardGame.Core.Decks
+  nameWithType: CardGame.Core.Decks
+  fullName: CardGame.Core.Decks
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Decks.DeckService.#ctor*
+  commentId: Overload:CardGame.Core.Decks.DeckService.#ctor
+  href: CardGame.Core.Decks.DeckService.html#CardGame_Core_Decks_DeckService__ctor_CardGame_Core_Decks_DeckRepository_CardGame_Core_Cards_Factories_CardFactory_
+  name: DeckService
+  nameWithType: DeckService.DeckService
+  fullName: CardGame.Core.Decks.DeckService.DeckService
+  nameWithType.vb: DeckService.New
+  fullName.vb: CardGame.Core.Decks.DeckService.New
+  name.vb: New
+- uid: CardGame.Core.Decks.DeckRepository
+  commentId: T:CardGame.Core.Decks.DeckRepository
+  parent: CardGame.Core.Decks
+  href: CardGame.Core.Decks.DeckRepository.html
+  name: DeckRepository
+  nameWithType: DeckRepository
+  fullName: CardGame.Core.Decks.DeckRepository
+- uid: CardGame.Core.Cards.Factories.CardFactory
+  commentId: T:CardGame.Core.Cards.Factories.CardFactory
+  parent: CardGame.Core.Cards.Factories
+  href: CardGame.Core.Cards.Factories.CardFactory.html
+  name: CardFactory
+  nameWithType: CardFactory
+  fullName: CardGame.Core.Cards.Factories.CardFactory
+- uid: CardGame.Core.Cards.Factories
+  commentId: N:CardGame.Core.Cards.Factories
+  href: CardGame.html
+  name: CardGame.Core.Cards.Factories
+  nameWithType: CardGame.Core.Cards.Factories
+  fullName: CardGame.Core.Cards.Factories
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Factories
+    name: Factories
+    href: CardGame.Core.Cards.Factories.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Factories
+    name: Factories
+    href: CardGame.Core.Cards.Factories.html
+- uid: CardGame.Core.Decks.DeckService.CreateDeckFromId*
+  commentId: Overload:CardGame.Core.Decks.DeckService.CreateDeckFromId
+  href: CardGame.Core.Decks.DeckService.html#CardGame_Core_Decks_DeckService_CreateDeckFromId_System_String_System_Int32_
+  name: CreateDeckFromId
+  nameWithType: DeckService.CreateDeckFromId
+  fullName: CardGame.Core.Decks.DeckService.CreateDeckFromId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: List<CardInstance>
+  nameWithType: List<CardInstance>
+  fullName: System.Collections.Generic.List<CardGame.Core.Cards.Models.CardInstance>
+  nameWithType.vb: List(Of CardInstance)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Cards.Models.CardInstance)
+  name.vb: List(Of CardInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

@@ -1,0 +1,454 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  id: EventBus
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.EventBus.ClearHistory
+  - CardGame.Core.Events.EventBus.GetGlobalHistory
+  - CardGame.Core.Events.EventBus.GetHistory
+  - CardGame.Core.Events.EventBus.HasEvents
+  - CardGame.Core.Events.EventBus.Pop
+  - CardGame.Core.Events.EventBus.Publish(CardGame.Core.Events.Interfaces.IGameEvent)
+  langs:
+  - csharp
+  - vb
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/EventBus.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EventBus
+    path: ../Source/CardGame.Core/Events/EventBus.cs
+    startLine: 8
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Manages the publishing and processing of game events with both short-term and global history tracking.
+  example: []
+  syntax:
+    content: public class EventBus
+    content.vb: Public Class EventBus
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Events.EventBus.Publish(CardGame.Core.Events.Interfaces.IGameEvent)
+  commentId: M:CardGame.Core.Events.EventBus.Publish(CardGame.Core.Events.Interfaces.IGameEvent)
+  id: Publish(CardGame.Core.Events.Interfaces.IGameEvent)
+  parent: CardGame.Core.Events.EventBus
+  langs:
+  - csharp
+  - vb
+  name: Publish(IGameEvent)
+  nameWithType: EventBus.Publish(IGameEvent)
+  fullName: CardGame.Core.Events.EventBus.Publish(CardGame.Core.Events.Interfaces.IGameEvent)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/EventBus.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Publish
+    path: ../Source/CardGame.Core/Events/EventBus.cs
+    startLine: 24
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Publishes a game event to the processing queue and history.
+  example: []
+  syntax:
+    content: public void Publish(IGameEvent gameEvent)
+    parameters:
+    - id: gameEvent
+      type: CardGame.Core.Events.Interfaces.IGameEvent
+      description: The event to publish.
+    content.vb: Public Sub Publish(gameEvent As IGameEvent)
+  overload: CardGame.Core.Events.EventBus.Publish*
+- uid: CardGame.Core.Events.EventBus.HasEvents
+  commentId: P:CardGame.Core.Events.EventBus.HasEvents
+  id: HasEvents
+  parent: CardGame.Core.Events.EventBus
+  langs:
+  - csharp
+  - vb
+  name: HasEvents
+  nameWithType: EventBus.HasEvents
+  fullName: CardGame.Core.Events.EventBus.HasEvents
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/EventBus.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: HasEvents
+    path: ../Source/CardGame.Core/Events/EventBus.cs
+    startLine: 34
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets a value indicating whether there are pending events in the processing queue.
+  example: []
+  syntax:
+    content: public bool HasEvents { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasEvents As Boolean
+  overload: CardGame.Core.Events.EventBus.HasEvents*
+- uid: CardGame.Core.Events.EventBus.Pop
+  commentId: M:CardGame.Core.Events.EventBus.Pop
+  id: Pop
+  parent: CardGame.Core.Events.EventBus
+  langs:
+  - csharp
+  - vb
+  name: Pop()
+  nameWithType: EventBus.Pop()
+  fullName: CardGame.Core.Events.EventBus.Pop()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/EventBus.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Pop
+    path: ../Source/CardGame.Core/Events/EventBus.cs
+    startLine: 40
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Removes and returns the next event from the processing queue.
+  example: []
+  syntax:
+    content: public IGameEvent Pop()
+    return:
+      type: CardGame.Core.Events.Interfaces.IGameEvent
+      description: The next IGameEvent in the queue.
+    content.vb: Public Function Pop() As IGameEvent
+  overload: CardGame.Core.Events.EventBus.Pop*
+- uid: CardGame.Core.Events.EventBus.ClearHistory
+  commentId: M:CardGame.Core.Events.EventBus.ClearHistory
+  id: ClearHistory
+  parent: CardGame.Core.Events.EventBus
+  langs:
+  - csharp
+  - vb
+  name: ClearHistory()
+  nameWithType: EventBus.ClearHistory()
+  fullName: CardGame.Core.Events.EventBus.ClearHistory()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/EventBus.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ClearHistory
+    path: ../Source/CardGame.Core/Events/EventBus.cs
+    startLine: 52
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Clears the short-term command history (used between command executions).
+  example: []
+  syntax:
+    content: public void ClearHistory()
+    content.vb: Public Sub ClearHistory()
+  overload: CardGame.Core.Events.EventBus.ClearHistory*
+- uid: CardGame.Core.Events.EventBus.GetHistory
+  commentId: M:CardGame.Core.Events.EventBus.GetHistory
+  id: GetHistory
+  parent: CardGame.Core.Events.EventBus
+  langs:
+  - csharp
+  - vb
+  name: GetHistory()
+  nameWithType: EventBus.GetHistory()
+  fullName: CardGame.Core.Events.EventBus.GetHistory()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/EventBus.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetHistory
+    path: ../Source/CardGame.Core/Events/EventBus.cs
+    startLine: 61
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the short-term history of events for the current command/frame.
+  example: []
+  syntax:
+    content: public IEnumerable<IGameEvent> GetHistory()
+    return:
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent}
+      description: A read-only collection of recent events.
+    content.vb: Public Function GetHistory() As IEnumerable(Of IGameEvent)
+  overload: CardGame.Core.Events.EventBus.GetHistory*
+- uid: CardGame.Core.Events.EventBus.GetGlobalHistory
+  commentId: M:CardGame.Core.Events.EventBus.GetGlobalHistory
+  id: GetGlobalHistory
+  parent: CardGame.Core.Events.EventBus
+  langs:
+  - csharp
+  - vb
+  name: GetGlobalHistory()
+  nameWithType: EventBus.GetGlobalHistory()
+  fullName: CardGame.Core.Events.EventBus.GetGlobalHistory()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/EventBus.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetGlobalHistory
+    path: ../Source/CardGame.Core/Events/EventBus.cs
+    startLine: 70
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the complete history of all events from the start of the game.
+  example: []
+  syntax:
+    content: public IEnumerable<IGameEvent> GetGlobalHistory()
+    return:
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent}
+      description: A read-only collection of all game events.
+    content.vb: Public Function GetGlobalHistory() As IEnumerable(Of IGameEvent)
+  overload: CardGame.Core.Events.EventBus.GetGlobalHistory*
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.EventBus.Publish*
+  commentId: Overload:CardGame.Core.Events.EventBus.Publish
+  href: CardGame.Core.Events.EventBus.html#CardGame_Core_Events_EventBus_Publish_CardGame_Core_Events_Interfaces_IGameEvent_
+  name: Publish
+  nameWithType: EventBus.Publish
+  fullName: CardGame.Core.Events.EventBus.Publish
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.EventBus.HasEvents*
+  commentId: Overload:CardGame.Core.Events.EventBus.HasEvents
+  href: CardGame.Core.Events.EventBus.html#CardGame_Core_Events_EventBus_HasEvents
+  name: HasEvents
+  nameWithType: EventBus.HasEvents
+  fullName: CardGame.Core.Events.EventBus.HasEvents
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.Core.Events.EventBus.Pop*
+  commentId: Overload:CardGame.Core.Events.EventBus.Pop
+  href: CardGame.Core.Events.EventBus.html#CardGame_Core_Events_EventBus_Pop
+  name: Pop
+  nameWithType: EventBus.Pop
+  fullName: CardGame.Core.Events.EventBus.Pop
+- uid: CardGame.Core.Events.EventBus.ClearHistory*
+  commentId: Overload:CardGame.Core.Events.EventBus.ClearHistory
+  href: CardGame.Core.Events.EventBus.html#CardGame_Core_Events_EventBus_ClearHistory
+  name: ClearHistory
+  nameWithType: EventBus.ClearHistory
+  fullName: CardGame.Core.Events.EventBus.ClearHistory
+- uid: CardGame.Core.Events.EventBus.GetHistory*
+  commentId: Overload:CardGame.Core.Events.EventBus.GetHistory
+  href: CardGame.Core.Events.EventBus.html#CardGame_Core_Events_EventBus_GetHistory
+  name: GetHistory
+  nameWithType: EventBus.GetHistory
+  fullName: CardGame.Core.Events.EventBus.GetHistory
+- uid: System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent}
+  commentId: T:System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IEnumerable<IGameEvent>
+  nameWithType: IEnumerable<IGameEvent>
+  fullName: System.Collections.Generic.IEnumerable<CardGame.Core.Events.Interfaces.IGameEvent>
+  nameWithType.vb: IEnumerable(Of IGameEvent)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CardGame.Core.Events.Interfaces.IGameEvent)
+  name.vb: IEnumerable(Of IGameEvent)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Events.Interfaces.IGameEvent
+    name: IGameEvent
+    href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Events.Interfaces.IGameEvent
+    name: IGameEvent
+    href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.Events.EventBus.GetGlobalHistory*
+  commentId: Overload:CardGame.Core.Events.EventBus.GetGlobalHistory
+  href: CardGame.Core.Events.EventBus.html#CardGame_Core_Events_EventBus_GetGlobalHistory
+  name: GetGlobalHistory
+  nameWithType: EventBus.GetGlobalHistory
+  fullName: CardGame.Core.Events.EventBus.GetGlobalHistory

@@ -1,0 +1,384 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Strategies.EvolvableStrategy
+  commentId: T:CardGame.Core.AI.Strategies.EvolvableStrategy
+  id: EvolvableStrategy
+  parent: CardGame.Core.AI.Strategies
+  children:
+  - CardGame.Core.AI.Strategies.EvolvableStrategy.#ctor(System.Single[])
+  - CardGame.Core.AI.Strategies.EvolvableStrategy.DNA
+  - CardGame.Core.AI.Strategies.EvolvableStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: EvolvableStrategy
+  nameWithType: EvolvableStrategy
+  fullName: CardGame.Core.AI.Strategies.EvolvableStrategy
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/AI_Integration/EvolvableStrategy.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EvolvableStrategy
+    path: ../Source/CardGame.ConsoleApp/AI_Integration/EvolvableStrategy.cs
+    startLine: 11
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.Core.AI.Strategies
+  syntax:
+    content: 'public class EvolvableStrategy : IAIStrategy'
+    content.vb: Public Class EvolvableStrategy Implements IAIStrategy
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.AI.Interfaces.IAIStrategy
+- uid: CardGame.Core.AI.Strategies.EvolvableStrategy.DNA
+  commentId: P:CardGame.Core.AI.Strategies.EvolvableStrategy.DNA
+  id: DNA
+  parent: CardGame.Core.AI.Strategies.EvolvableStrategy
+  langs:
+  - csharp
+  - vb
+  name: DNA
+  nameWithType: EvolvableStrategy.DNA
+  fullName: CardGame.Core.AI.Strategies.EvolvableStrategy.DNA
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/AI_Integration/EvolvableStrategy.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DNA
+    path: ../Source/CardGame.ConsoleApp/AI_Integration/EvolvableStrategy.cs
+    startLine: 13
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.Core.AI.Strategies
+  syntax:
+    content: public float[] DNA { get; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: Public ReadOnly Property DNA As Single()
+  overload: CardGame.Core.AI.Strategies.EvolvableStrategy.DNA*
+- uid: CardGame.Core.AI.Strategies.EvolvableStrategy.#ctor(System.Single[])
+  commentId: M:CardGame.Core.AI.Strategies.EvolvableStrategy.#ctor(System.Single[])
+  id: '#ctor(System.Single[])'
+  parent: CardGame.Core.AI.Strategies.EvolvableStrategy
+  langs:
+  - csharp
+  - vb
+  name: EvolvableStrategy(float[])
+  nameWithType: EvolvableStrategy.EvolvableStrategy(float[])
+  fullName: CardGame.Core.AI.Strategies.EvolvableStrategy.EvolvableStrategy(float[])
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/AI_Integration/EvolvableStrategy.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/AI_Integration/EvolvableStrategy.cs
+    startLine: 15
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.Core.AI.Strategies
+  syntax:
+    content: public EvolvableStrategy(float[] genes)
+    parameters:
+    - id: genes
+      type: System.Single[]
+    content.vb: Public Sub New(genes As Single())
+  overload: CardGame.Core.AI.Strategies.EvolvableStrategy.#ctor*
+  nameWithType.vb: EvolvableStrategy.New(Single())
+  fullName.vb: CardGame.Core.AI.Strategies.EvolvableStrategy.New(Single())
+  name.vb: New(Single())
+- uid: CardGame.Core.AI.Strategies.EvolvableStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  commentId: M:CardGame.Core.AI.Strategies.EvolvableStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  id: Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  parent: CardGame.Core.AI.Strategies.EvolvableStrategy
+  langs:
+  - csharp
+  - vb
+  name: Evaluate(GameState, int)
+  nameWithType: EvolvableStrategy.Evaluate(GameState, int)
+  fullName: CardGame.Core.AI.Strategies.EvolvableStrategy.Evaluate(CardGame.Core.State.Models.GameState, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/AI_Integration/EvolvableStrategy.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Evaluate
+    path: ../Source/CardGame.ConsoleApp/AI_Integration/EvolvableStrategy.cs
+    startLine: 30
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.Core.AI.Strategies
+  summary: Evaluates the desirability of a game state from the perspective of the specified bot player.
+  example: []
+  syntax:
+    content: public float Evaluate(GameState state, int botId)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The game state to evaluate.
+    - id: botId
+      type: System.Int32
+    return:
+      type: System.Single
+      description: A float score representing the desirability of the state (higher is better).
+    content.vb: Public Function Evaluate(state As GameState, botId As Integer) As Single
+  overload: CardGame.Core.AI.Strategies.EvolvableStrategy.Evaluate*
+  implements:
+  - CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  nameWithType.vb: EvolvableStrategy.Evaluate(GameState, Integer)
+  fullName.vb: CardGame.Core.AI.Strategies.EvolvableStrategy.Evaluate(CardGame.Core.State.Models.GameState, Integer)
+  name.vb: Evaluate(GameState, Integer)
+references:
+- uid: CardGame.Core.AI.Strategies
+  commentId: N:CardGame.Core.AI.Strategies
+  href: CardGame.html
+  name: CardGame.Core.AI.Strategies
+  nameWithType: CardGame.Core.AI.Strategies
+  fullName: CardGame.Core.AI.Strategies
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Strategies
+    name: Strategies
+    href: CardGame.Core.AI.Strategies.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Strategies
+    name: Strategies
+    href: CardGame.Core.AI.Strategies.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.AI.Interfaces.IAIStrategy
+  commentId: T:CardGame.Core.AI.Interfaces.IAIStrategy
+  parent: CardGame.Core.AI.Interfaces
+  href: CardGame.Core.AI.Interfaces.IAIStrategy.html
+  name: IAIStrategy
+  nameWithType: IAIStrategy
+  fullName: CardGame.Core.AI.Interfaces.IAIStrategy
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.AI.Interfaces
+  commentId: N:CardGame.Core.AI.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.AI.Interfaces
+  nameWithType: CardGame.Core.AI.Interfaces
+  fullName: CardGame.Core.AI.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+- uid: CardGame.Core.AI.Strategies.EvolvableStrategy.DNA*
+  commentId: Overload:CardGame.Core.AI.Strategies.EvolvableStrategy.DNA
+  href: CardGame.Core.AI.Strategies.EvolvableStrategy.html#CardGame_Core_AI_Strategies_EvolvableStrategy_DNA
+  name: DNA
+  nameWithType: EvolvableStrategy.DNA
+  fullName: CardGame.Core.AI.Strategies.EvolvableStrategy.DNA
+- uid: System.Single[]
+  isExternal: true
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.Core.AI.Strategies.EvolvableStrategy.#ctor*
+  commentId: Overload:CardGame.Core.AI.Strategies.EvolvableStrategy.#ctor
+  href: CardGame.Core.AI.Strategies.EvolvableStrategy.html#CardGame_Core_AI_Strategies_EvolvableStrategy__ctor_System_Single___
+  name: EvolvableStrategy
+  nameWithType: EvolvableStrategy.EvolvableStrategy
+  fullName: CardGame.Core.AI.Strategies.EvolvableStrategy.EvolvableStrategy
+  nameWithType.vb: EvolvableStrategy.New
+  fullName.vb: CardGame.Core.AI.Strategies.EvolvableStrategy.New
+  name.vb: New
+- uid: CardGame.Core.AI.Strategies.EvolvableStrategy.Evaluate*
+  commentId: Overload:CardGame.Core.AI.Strategies.EvolvableStrategy.Evaluate
+  href: CardGame.Core.AI.Strategies.EvolvableStrategy.html#CardGame_Core_AI_Strategies_EvolvableStrategy_Evaluate_CardGame_Core_State_Models_GameState_System_Int32_
+  name: Evaluate
+  nameWithType: EvolvableStrategy.Evaluate
+  fullName: CardGame.Core.AI.Strategies.EvolvableStrategy.Evaluate
+- uid: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  commentId: M:CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  parent: CardGame.Core.AI.Interfaces.IAIStrategy
+  isExternal: true
+  href: CardGame.Core.AI.Interfaces.IAIStrategy.html#CardGame_Core_AI_Interfaces_IAIStrategy_Evaluate_CardGame_Core_State_Models_GameState_System_Int32_
+  name: Evaluate(GameState, int)
+  nameWithType: IAIStrategy.Evaluate(GameState, int)
+  fullName: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState, int)
+  nameWithType.vb: IAIStrategy.Evaluate(GameState, Integer)
+  fullName.vb: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState, Integer)
+  name.vb: Evaluate(GameState, Integer)
+  spec.csharp:
+  - uid: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+    name: Evaluate
+    href: CardGame.Core.AI.Interfaces.IAIStrategy.html#CardGame_Core_AI_Interfaces_IAIStrategy_Evaluate_CardGame_Core_State_Models_GameState_System_Int32_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+    name: Evaluate
+    href: CardGame.Core.AI.Interfaces.IAIStrategy.html#CardGame_Core_AI_Interfaces_IAIStrategy_Evaluate_CardGame_Core_State_Models_GameState_System_Int32_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html

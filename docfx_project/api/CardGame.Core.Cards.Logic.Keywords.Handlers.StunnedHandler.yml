@@ -1,0 +1,854 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler
+  commentId: T:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler
+  id: StunnedHandler
+  parent: CardGame.Core.Cards.Logic.Keywords.Handlers
+  children:
+  - CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  - CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  - CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  - CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+  - CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.Type
+  langs:
+  - csharp
+  - vb
+  name: StunnedHandler
+  nameWithType: StunnedHandler
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: StunnedHandler
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+    startLine: 333
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords.Handlers
+  summary: Handles the Stunned keyword which prevents a unit from attacking on its next turn.
+  example: []
+  syntax:
+    content: 'public class StunnedHandler : IKeywordHandler'
+    content.vb: Public Class StunnedHandler Implements IKeywordHandler
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.Type
+  commentId: P:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.Type
+  id: Type
+  parent: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: StunnedHandler.Type
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.Type
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Type
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+    startLine: 338
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords.Handlers
+  summary: Gets the keyword type this handler processes (Stunned).
+  example: []
+  syntax:
+    content: public Keyword Type { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+    content.vb: Public ReadOnly Property Type As Keyword
+  overload: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.Type*
+  implements:
+  - CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  id: OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  parent: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler
+  langs:
+  - csharp
+  - vb
+  name: OnModifyDamageTaken(int, DamageContext)
+  nameWithType: StunnedHandler.OnModifyDamageTaken(int, DamageContext)
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnModifyDamageTaken(int, CardGame.Core.GameRules.Damage.DamageContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnModifyDamageTaken
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+    startLine: 343
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords.Handlers
+  summary: Stunned does not modify incoming damage.
+  example: []
+  syntax:
+    content: public int OnModifyDamageTaken(int amount, DamageContext context)
+    parameters:
+    - id: amount
+      type: System.Int32
+    - id: context
+      type: CardGame.Core.GameRules.Damage.DamageContext
+    return:
+      type: System.Int32
+    content.vb: Public Function OnModifyDamageTaken(amount As Integer, context As DamageContext) As Integer
+  overload: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnModifyDamageTaken*
+  implements:
+  - CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  nameWithType.vb: StunnedHandler.OnModifyDamageTaken(Integer, DamageContext)
+  fullName.vb: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnModifyDamageTaken(Integer, CardGame.Core.GameRules.Damage.DamageContext)
+  name.vb: OnModifyDamageTaken(Integer, DamageContext)
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  id: OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler
+  langs:
+  - csharp
+  - vb
+  name: OnAfterAttack(GameState, CardInstance, CardInstance?, int, GameContext)
+  nameWithType: StunnedHandler.OnAfterAttack(GameState, CardInstance, CardInstance?, int, GameContext)
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnAfterAttack(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance?, int, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnAfterAttack
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+    startLine: 348
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords.Handlers
+  summary: Stunned has no special effects after attacking.
+  example: []
+  syntax:
+    content: public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+    - id: attacker
+      type: CardGame.Core.Cards.Models.CardInstance
+    - id: victim
+      type: CardGame.Core.Cards.Models.CardInstance
+    - id: lineIndex
+      type: System.Int32
+    - id: context
+      type: CardGame.Core.Application.GameContext
+    return:
+      type: CardGame.Core.State.Models.GameState
+    content.vb: Public Function OnAfterAttack(state As GameState, attacker As CardInstance, victim As CardInstance, lineIndex As Integer, context As GameContext) As GameState
+  overload: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnAfterAttack*
+  implements:
+  - CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  nameWithType.vb: StunnedHandler.OnAfterAttack(GameState, CardInstance, CardInstance, Integer, GameContext)
+  fullName.vb: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnAfterAttack(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance, Integer, CardGame.Core.Application.GameContext)
+  name.vb: OnAfterAttack(GameState, CardInstance, CardInstance, Integer, GameContext)
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+  id: OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler
+  langs:
+  - csharp
+  - vb
+  name: OnRoundEnd(GameState, CardInstance, GameContext)
+  nameWithType: StunnedHandler.OnRoundEnd(GameState, CardInstance, GameContext)
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnRoundEnd(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnRoundEnd
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+    startLine: 353
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords.Handlers
+  summary: Stunned has no special effects at round end.
+  example: []
+  syntax:
+    content: public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+    - id: unit
+      type: CardGame.Core.Cards.Models.CardInstance
+    - id: context
+      type: CardGame.Core.Application.GameContext
+    return:
+      type: CardGame.Core.State.Models.GameState
+    content.vb: Public Function OnRoundEnd(state As GameState, unit As CardInstance, context As GameContext) As GameState
+  overload: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnRoundEnd*
+  implements:
+  - CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  id: OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  parent: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler
+  langs:
+  - csharp
+  - vb
+  name: OnPreventDeath(ref GameState, CardInstance, GameContext, bool)
+  nameWithType: StunnedHandler.OnPreventDeath(ref GameState, CardInstance, GameContext, bool)
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnPreventDeath(ref CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext, bool)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnPreventDeath
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs
+    startLine: 358
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords.Handlers
+  summary: Stunned does not prevent death.
+  example: []
+  syntax:
+    content: public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+    - id: unit
+      type: CardGame.Core.Cards.Models.CardInstance
+    - id: context
+      type: CardGame.Core.Application.GameContext
+    - id: isSacrifice
+      type: System.Boolean
+    return:
+      type: System.Boolean
+    content.vb: Public Function OnPreventDeath(state As GameState, unit As CardInstance, context As GameContext, isSacrifice As Boolean) As Boolean
+  overload: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnPreventDeath*
+  implements:
+  - CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  nameWithType.vb: StunnedHandler.OnPreventDeath(GameState, CardInstance, GameContext, Boolean)
+  fullName.vb: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnPreventDeath(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext, Boolean)
+  name.vb: OnPreventDeath(GameState, CardInstance, GameContext, Boolean)
+references:
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers
+  commentId: N:CardGame.Core.Cards.Logic.Keywords.Handlers
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic.Keywords.Handlers
+  nameWithType: CardGame.Core.Cards.Logic.Keywords.Handlers
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords.Handlers
+    name: Handlers
+    href: CardGame.Core.Cards.Logic.Keywords.Handlers.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords.Handlers
+    name: Handlers
+    href: CardGame.Core.Cards.Logic.Keywords.Handlers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  commentId: T:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  parent: CardGame.Core.Cards.Logic.Keywords
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html
+  name: IKeywordHandler
+  nameWithType: IKeywordHandler
+  fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Logic.Keywords
+  commentId: N:CardGame.Core.Cards.Logic.Keywords
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic.Keywords
+  nameWithType: CardGame.Core.Cards.Logic.Keywords
+  fullName: CardGame.Core.Cards.Logic.Keywords
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.Type*
+  commentId: Overload:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.Type
+  href: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.html#CardGame_Core_Cards_Logic_Keywords_Handlers_StunnedHandler_Type
+  name: Type
+  nameWithType: StunnedHandler.Type
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.Type
+- uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type
+  commentId: P:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type
+  parent: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_Type
+  name: Type
+  nameWithType: IKeywordHandler.Type
+  fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type
+- uid: CardGame.Core.Cards.Data.Keyword
+  commentId: T:CardGame.Core.Cards.Data.Keyword
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: Keyword
+  nameWithType: Keyword
+  fullName: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnModifyDamageTaken*
+  commentId: Overload:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnModifyDamageTaken
+  href: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.html#CardGame_Core_Cards_Logic_Keywords_Handlers_StunnedHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+  name: OnModifyDamageTaken
+  nameWithType: StunnedHandler.OnModifyDamageTaken
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnModifyDamageTaken
+- uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  parent: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  isExternal: true
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+  name: OnModifyDamageTaken(int, DamageContext)
+  nameWithType: IKeywordHandler.OnModifyDamageTaken(int, DamageContext)
+  fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(int, CardGame.Core.GameRules.Damage.DamageContext)
+  nameWithType.vb: IKeywordHandler.OnModifyDamageTaken(Integer, DamageContext)
+  fullName.vb: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(Integer, CardGame.Core.GameRules.Damage.DamageContext)
+  name.vb: OnModifyDamageTaken(Integer, DamageContext)
+  spec.csharp:
+  - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+    name: OnModifyDamageTaken
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.GameRules.Damage.DamageContext
+    name: DamageContext
+    href: CardGame.Core.GameRules.Damage.DamageContext.html
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+    name: OnModifyDamageTaken
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.GameRules.Damage.DamageContext
+    name: DamageContext
+    href: CardGame.Core.GameRules.Damage.DamageContext.html
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.GameRules.Damage.DamageContext
+  commentId: T:CardGame.Core.GameRules.Damage.DamageContext
+  parent: CardGame.Core.GameRules.Damage
+  href: CardGame.Core.GameRules.Damage.DamageContext.html
+  name: DamageContext
+  nameWithType: DamageContext
+  fullName: CardGame.Core.GameRules.Damage.DamageContext
+- uid: CardGame.Core.GameRules.Damage
+  commentId: N:CardGame.Core.GameRules.Damage
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Damage
+  nameWithType: CardGame.Core.GameRules.Damage
+  fullName: CardGame.Core.GameRules.Damage
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnAfterAttack*
+  commentId: Overload:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnAfterAttack
+  href: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.html#CardGame_Core_Cards_Logic_Keywords_Handlers_StunnedHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+  name: OnAfterAttack
+  nameWithType: StunnedHandler.OnAfterAttack
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnAfterAttack
+- uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  isExternal: true
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+  name: OnAfterAttack(GameState, CardInstance, CardInstance, int, GameContext)
+  nameWithType: IKeywordHandler.OnAfterAttack(GameState, CardInstance, CardInstance, int, GameContext)
+  fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance, int, CardGame.Core.Application.GameContext)
+  nameWithType.vb: IKeywordHandler.OnAfterAttack(GameState, CardInstance, CardInstance, Integer, GameContext)
+  fullName.vb: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance, Integer, CardGame.Core.Application.GameContext)
+  name.vb: OnAfterAttack(GameState, CardInstance, CardInstance, Integer, GameContext)
+  spec.csharp:
+  - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+    name: OnAfterAttack
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+    name: OnAfterAttack
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: )
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnRoundEnd*
+  commentId: Overload:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnRoundEnd
+  href: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.html#CardGame_Core_Cards_Logic_Keywords_Handlers_StunnedHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+  name: OnRoundEnd
+  nameWithType: StunnedHandler.OnRoundEnd
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnRoundEnd
+- uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+  name: OnRoundEnd(GameState, CardInstance, GameContext)
+  nameWithType: IKeywordHandler.OnRoundEnd(GameState, CardInstance, GameContext)
+  fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext)
+  spec.csharp:
+  - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+    name: OnRoundEnd
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+    name: OnRoundEnd
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: )
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnPreventDeath*
+  commentId: Overload:CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnPreventDeath
+  href: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.html#CardGame_Core_Cards_Logic_Keywords_Handlers_StunnedHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+  name: OnPreventDeath
+  nameWithType: StunnedHandler.OnPreventDeath
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.OnPreventDeath
+- uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  parent: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  isExternal: true
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+  name: OnPreventDeath(ref GameState, CardInstance, GameContext, bool)
+  nameWithType: IKeywordHandler.OnPreventDeath(ref GameState, CardInstance, GameContext, bool)
+  fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(ref CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext, bool)
+  nameWithType.vb: IKeywordHandler.OnPreventDeath(GameState, CardInstance, GameContext, Boolean)
+  fullName.vb: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext, Boolean)
+  name.vb: OnPreventDeath(GameState, CardInstance, GameContext, Boolean)
+  spec.csharp:
+  - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+    name: OnPreventDeath
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+  - name: (
+  - name: ref
+  - name: " "
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+    name: OnPreventDeath
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

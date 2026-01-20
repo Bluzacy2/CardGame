@@ -1,0 +1,353 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.BattleClashEvent
+  commentId: T:CardGame.Core.Events.BattleClashEvent
+  id: BattleClashEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.BattleClashEvent.#ctor(System.Int32,System.Nullable{System.Int32})
+  - CardGame.Core.Events.BattleClashEvent.AttackerId
+  - CardGame.Core.Events.BattleClashEvent.DefenderId
+  - CardGame.Core.Events.BattleClashEvent.SourcePlayerId
+  langs:
+  - csharp
+  - vb
+  name: BattleClashEvent
+  nameWithType: BattleClashEvent
+  fullName: CardGame.Core.Events.BattleClashEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/BattleClashEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BattleClashEvent
+    path: ../Source/CardGame.Core/Events/BattleClashEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs during combat when units clash.
+  example: []
+  syntax:
+    content: 'public class BattleClashEvent : IGameEvent'
+    content.vb: Public Class BattleClashEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.BattleClashEvent.#ctor(System.Int32,System.Nullable{System.Int32})
+  commentId: M:CardGame.Core.Events.BattleClashEvent.#ctor(System.Int32,System.Nullable{System.Int32})
+  id: '#ctor(System.Int32,System.Nullable{System.Int32})'
+  parent: CardGame.Core.Events.BattleClashEvent
+  langs:
+  - csharp
+  - vb
+  name: BattleClashEvent(int, int?)
+  nameWithType: BattleClashEvent.BattleClashEvent(int, int?)
+  fullName: CardGame.Core.Events.BattleClashEvent.BattleClashEvent(int, int?)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/BattleClashEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/BattleClashEvent.cs
+    startLine: 16
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the BattleClashEvent class.
+  example: []
+  syntax:
+    content: public BattleClashEvent(int attackerId, int? defenderId)
+    parameters:
+    - id: attackerId
+      type: System.Int32
+      description: The ID of the attacking unit.
+    - id: defenderId
+      type: System.Nullable{System.Int32}
+      description: The optional ID of the defending unit.
+    content.vb: Public Sub New(attackerId As Integer, defenderId As Integer?)
+  overload: CardGame.Core.Events.BattleClashEvent.#ctor*
+  nameWithType.vb: BattleClashEvent.New(Integer, Integer?)
+  fullName.vb: CardGame.Core.Events.BattleClashEvent.New(Integer, Integer?)
+  name.vb: New(Integer, Integer?)
+- uid: CardGame.Core.Events.BattleClashEvent.AttackerId
+  commentId: P:CardGame.Core.Events.BattleClashEvent.AttackerId
+  id: AttackerId
+  parent: CardGame.Core.Events.BattleClashEvent
+  langs:
+  - csharp
+  - vb
+  name: AttackerId
+  nameWithType: BattleClashEvent.AttackerId
+  fullName: CardGame.Core.Events.BattleClashEvent.AttackerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/BattleClashEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AttackerId
+    path: ../Source/CardGame.Core/Events/BattleClashEvent.cs
+    startLine: 25
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the attacking unit.
+  example: []
+  syntax:
+    content: public int AttackerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property AttackerId As Integer
+  overload: CardGame.Core.Events.BattleClashEvent.AttackerId*
+- uid: CardGame.Core.Events.BattleClashEvent.DefenderId
+  commentId: P:CardGame.Core.Events.BattleClashEvent.DefenderId
+  id: DefenderId
+  parent: CardGame.Core.Events.BattleClashEvent
+  langs:
+  - csharp
+  - vb
+  name: DefenderId
+  nameWithType: BattleClashEvent.DefenderId
+  fullName: CardGame.Core.Events.BattleClashEvent.DefenderId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/BattleClashEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DefenderId
+    path: ../Source/CardGame.Core/Events/BattleClashEvent.cs
+    startLine: 30
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the optional ID of the defending unit.
+  example: []
+  syntax:
+    content: public int? DefenderId { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property DefenderId As Integer?
+  overload: CardGame.Core.Events.BattleClashEvent.DefenderId*
+- uid: CardGame.Core.Events.BattleClashEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.BattleClashEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.BattleClashEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: BattleClashEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.BattleClashEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/BattleClashEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/BattleClashEvent.cs
+    startLine: 35
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who caused the event (0 indicates a system event).
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.BattleClashEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.BattleClashEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.BattleClashEvent.#ctor
+  href: CardGame.Core.Events.BattleClashEvent.html#CardGame_Core_Events_BattleClashEvent__ctor_System_Int32_System_Nullable_System_Int32__
+  name: BattleClashEvent
+  nameWithType: BattleClashEvent.BattleClashEvent
+  fullName: CardGame.Core.Events.BattleClashEvent.BattleClashEvent
+  nameWithType.vb: BattleClashEvent.New
+  fullName.vb: CardGame.Core.Events.BattleClashEvent.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Events.BattleClashEvent.AttackerId*
+  commentId: Overload:CardGame.Core.Events.BattleClashEvent.AttackerId
+  href: CardGame.Core.Events.BattleClashEvent.html#CardGame_Core_Events_BattleClashEvent_AttackerId
+  name: AttackerId
+  nameWithType: BattleClashEvent.AttackerId
+  fullName: CardGame.Core.Events.BattleClashEvent.AttackerId
+- uid: CardGame.Core.Events.BattleClashEvent.DefenderId*
+  commentId: Overload:CardGame.Core.Events.BattleClashEvent.DefenderId
+  href: CardGame.Core.Events.BattleClashEvent.html#CardGame_Core_Events_BattleClashEvent_DefenderId
+  name: DefenderId
+  nameWithType: BattleClashEvent.DefenderId
+  fullName: CardGame.Core.Events.BattleClashEvent.DefenderId
+- uid: CardGame.Core.Events.BattleClashEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.BattleClashEvent.SourcePlayerId
+  href: CardGame.Core.Events.BattleClashEvent.html#CardGame_Core_Events_BattleClashEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: BattleClashEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.BattleClashEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId

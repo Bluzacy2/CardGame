@@ -1,0 +1,647 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.StateMachine.Phases.BothPhaseState
+  commentId: T:CardGame.Core.StateMachine.Phases.BothPhaseState
+  id: BothPhaseState
+  parent: CardGame.Core.StateMachine.Phases
+  children:
+  - CardGame.Core.StateMachine.Phases.BothPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand,CardGame.Core.State.Models.GameState)
+  - CardGame.Core.StateMachine.Phases.BothPhaseState.PhaseType
+  - CardGame.Core.StateMachine.Phases.BothPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  - CardGame.Core.StateMachine.Phases.BothPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+  langs:
+  - csharp
+  - vb
+  name: BothPhaseState
+  nameWithType: BothPhaseState
+  fullName: CardGame.Core.StateMachine.Phases.BothPhaseState
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/StateMachine/Phases/BothPhaseState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BothPhaseState
+    path: ../Source/CardGame.Core/StateMachine/Phases/BothPhaseState.cs
+    startLine: 13
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.StateMachine.Phases
+  summary: Handles the Combined Phase where players can play both units and action cards (spells).
+  example: []
+  syntax:
+    content: 'public class BothPhaseState : IPhaseState'
+    content.vb: Public Class BothPhaseState Implements IPhaseState
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.StateMachine.Interfaces.IPhaseState
+- uid: CardGame.Core.StateMachine.Phases.BothPhaseState.PhaseType
+  commentId: P:CardGame.Core.StateMachine.Phases.BothPhaseState.PhaseType
+  id: PhaseType
+  parent: CardGame.Core.StateMachine.Phases.BothPhaseState
+  langs:
+  - csharp
+  - vb
+  name: PhaseType
+  nameWithType: BothPhaseState.PhaseType
+  fullName: CardGame.Core.StateMachine.Phases.BothPhaseState.PhaseType
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/StateMachine/Phases/BothPhaseState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PhaseType
+    path: ../Source/CardGame.Core/StateMachine/Phases/BothPhaseState.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.StateMachine.Phases
+  summary: Gets the type of game phase this state represents (UnitAndAction).
+  example: []
+  syntax:
+    content: public GamePhase PhaseType { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Enums.GamePhase
+    content.vb: Public ReadOnly Property PhaseType As GamePhase
+  overload: CardGame.Core.StateMachine.Phases.BothPhaseState.PhaseType*
+  implements:
+  - CardGame.Core.StateMachine.Interfaces.IPhaseState.PhaseType
+- uid: CardGame.Core.StateMachine.Phases.BothPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand,CardGame.Core.State.Models.GameState)
+  commentId: M:CardGame.Core.StateMachine.Phases.BothPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand,CardGame.Core.State.Models.GameState)
+  id: IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand,CardGame.Core.State.Models.GameState)
+  parent: CardGame.Core.StateMachine.Phases.BothPhaseState
+  langs:
+  - csharp
+  - vb
+  name: IsCommandAllowed(IGameCommand, GameState)
+  nameWithType: BothPhaseState.IsCommandAllowed(IGameCommand, GameState)
+  fullName: CardGame.Core.StateMachine.Phases.BothPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand, CardGame.Core.State.Models.GameState)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/StateMachine/Phases/BothPhaseState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: IsCommandAllowed
+    path: ../Source/CardGame.Core/StateMachine/Phases/BothPhaseState.cs
+    startLine: 29
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.StateMachine.Phases
+  summary: Determines whether a specific command is allowed in the current combined phase.
+  example: []
+  syntax:
+    content: public bool IsCommandAllowed(IGameCommand command, GameState state)
+    parameters:
+    - id: command
+      type: CardGame.Core.Commands.Interfaces.IGameCommand
+      description: The command to validate.
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    return:
+      type: System.Boolean
+      description: True if the command is allowed in this phase, otherwise false.
+    content.vb: Public Function IsCommandAllowed(command As IGameCommand, state As GameState) As Boolean
+  overload: CardGame.Core.StateMachine.Phases.BothPhaseState.IsCommandAllowed*
+  implements:
+  - CardGame.Core.StateMachine.Interfaces.IPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand,CardGame.Core.State.Models.GameState)
+- uid: CardGame.Core.StateMachine.Phases.BothPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+  commentId: M:CardGame.Core.StateMachine.Phases.BothPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+  id: ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+  parent: CardGame.Core.StateMachine.Phases.BothPhaseState
+  langs:
+  - csharp
+  - vb
+  name: ShouldEndPhaseAutomatically(GameState)
+  nameWithType: BothPhaseState.ShouldEndPhaseAutomatically(GameState)
+  fullName: CardGame.Core.StateMachine.Phases.BothPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/StateMachine/Phases/BothPhaseState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ShouldEndPhaseAutomatically
+    path: ../Source/CardGame.Core/StateMachine/Phases/BothPhaseState.cs
+    startLine: 53
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.StateMachine.Phases
+  summary: Determines whether the combined phase should end automatically without player input.
+  example: []
+  syntax:
+    content: public bool ShouldEndPhaseAutomatically(GameState state)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    return:
+      type: System.Boolean
+      description: Always false for combined phase - requires explicit EndPhaseCommand.
+    content.vb: Public Function ShouldEndPhaseAutomatically(state As GameState) As Boolean
+  overload: CardGame.Core.StateMachine.Phases.BothPhaseState.ShouldEndPhaseAutomatically*
+  implements:
+  - CardGame.Core.StateMachine.Interfaces.IPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+- uid: CardGame.Core.StateMachine.Phases.BothPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.StateMachine.Phases.BothPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  id: ProcessEndPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.StateMachine.Phases.BothPhaseState
+  langs:
+  - csharp
+  - vb
+  name: ProcessEndPhase(GameState, EventBus, GameContext)
+  nameWithType: BothPhaseState.ProcessEndPhase(GameState, EventBus, GameContext)
+  fullName: CardGame.Core.StateMachine.Phases.BothPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/StateMachine/Phases/BothPhaseState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ProcessEndPhase
+    path: ../Source/CardGame.Core/StateMachine/Phases/BothPhaseState.cs
+    startLine: 62
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.StateMachine.Phases
+  summary: Processes the end of the combined phase and transitions to the action-only phase.
+  example: []
+  syntax:
+    content: public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)
+    parameters:
+    - id: currentState
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state at phase end.
+    - id: eventBus
+      type: CardGame.Core.Events.EventBus
+      description: The event bus for publishing phase transition events.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: The game context with additional services.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state with phase set to ActionOnly and active player reset to the round starter.
+    content.vb: Public Function ProcessEndPhase(currentState As GameState, eventBus As EventBus, context As GameContext) As GameState
+  overload: CardGame.Core.StateMachine.Phases.BothPhaseState.ProcessEndPhase*
+  implements:
+  - CardGame.Core.StateMachine.Interfaces.IPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+references:
+- uid: CardGame.Core.StateMachine.Phases
+  commentId: N:CardGame.Core.StateMachine.Phases
+  href: CardGame.html
+  name: CardGame.Core.StateMachine.Phases
+  nameWithType: CardGame.Core.StateMachine.Phases
+  fullName: CardGame.Core.StateMachine.Phases
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Phases
+    name: Phases
+    href: CardGame.Core.StateMachine.Phases.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Phases
+    name: Phases
+    href: CardGame.Core.StateMachine.Phases.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.StateMachine.Interfaces.IPhaseState
+  commentId: T:CardGame.Core.StateMachine.Interfaces.IPhaseState
+  parent: CardGame.Core.StateMachine.Interfaces
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html
+  name: IPhaseState
+  nameWithType: IPhaseState
+  fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.StateMachine.Interfaces
+  commentId: N:CardGame.Core.StateMachine.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.StateMachine.Interfaces
+  nameWithType: CardGame.Core.StateMachine.Interfaces
+  fullName: CardGame.Core.StateMachine.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Interfaces
+    name: Interfaces
+    href: CardGame.Core.StateMachine.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Interfaces
+    name: Interfaces
+    href: CardGame.Core.StateMachine.Interfaces.html
+- uid: CardGame.Core.StateMachine.Phases.BothPhaseState.PhaseType*
+  commentId: Overload:CardGame.Core.StateMachine.Phases.BothPhaseState.PhaseType
+  href: CardGame.Core.StateMachine.Phases.BothPhaseState.html#CardGame_Core_StateMachine_Phases_BothPhaseState_PhaseType
+  name: PhaseType
+  nameWithType: BothPhaseState.PhaseType
+  fullName: CardGame.Core.StateMachine.Phases.BothPhaseState.PhaseType
+- uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.PhaseType
+  commentId: P:CardGame.Core.StateMachine.Interfaces.IPhaseState.PhaseType
+  parent: CardGame.Core.StateMachine.Interfaces.IPhaseState
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_PhaseType
+  name: PhaseType
+  nameWithType: IPhaseState.PhaseType
+  fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState.PhaseType
+- uid: CardGame.Core.State.Enums.GamePhase
+  commentId: T:CardGame.Core.State.Enums.GamePhase
+  parent: CardGame.Core.State.Enums
+  href: CardGame.Core.State.Enums.GamePhase.html
+  name: GamePhase
+  nameWithType: GamePhase
+  fullName: CardGame.Core.State.Enums.GamePhase
+- uid: CardGame.Core.State.Enums
+  commentId: N:CardGame.Core.State.Enums
+  href: CardGame.html
+  name: CardGame.Core.State.Enums
+  nameWithType: CardGame.Core.State.Enums
+  fullName: CardGame.Core.State.Enums
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Enums
+    name: Enums
+    href: CardGame.Core.State.Enums.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Enums
+    name: Enums
+    href: CardGame.Core.State.Enums.html
+- uid: CardGame.Core.StateMachine.Phases.BothPhaseState.IsCommandAllowed*
+  commentId: Overload:CardGame.Core.StateMachine.Phases.BothPhaseState.IsCommandAllowed
+  href: CardGame.Core.StateMachine.Phases.BothPhaseState.html#CardGame_Core_StateMachine_Phases_BothPhaseState_IsCommandAllowed_CardGame_Core_Commands_Interfaces_IGameCommand_CardGame_Core_State_Models_GameState_
+  name: IsCommandAllowed
+  nameWithType: BothPhaseState.IsCommandAllowed
+  fullName: CardGame.Core.StateMachine.Phases.BothPhaseState.IsCommandAllowed
+- uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand,CardGame.Core.State.Models.GameState)
+  commentId: M:CardGame.Core.StateMachine.Interfaces.IPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand,CardGame.Core.State.Models.GameState)
+  parent: CardGame.Core.StateMachine.Interfaces.IPhaseState
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_IsCommandAllowed_CardGame_Core_Commands_Interfaces_IGameCommand_CardGame_Core_State_Models_GameState_
+  name: IsCommandAllowed(IGameCommand, GameState)
+  nameWithType: IPhaseState.IsCommandAllowed(IGameCommand, GameState)
+  fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand, CardGame.Core.State.Models.GameState)
+  spec.csharp:
+  - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand,CardGame.Core.State.Models.GameState)
+    name: IsCommandAllowed
+    href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_IsCommandAllowed_CardGame_Core_Commands_Interfaces_IGameCommand_CardGame_Core_State_Models_GameState_
+  - name: (
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand
+    name: IGameCommand
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand,CardGame.Core.State.Models.GameState)
+    name: IsCommandAllowed
+    href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_IsCommandAllowed_CardGame_Core_Commands_Interfaces_IGameCommand_CardGame_Core_State_Models_GameState_
+  - name: (
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand
+    name: IGameCommand
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: )
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand
+  commentId: T:CardGame.Core.Commands.Interfaces.IGameCommand
+  parent: CardGame.Core.Commands.Interfaces
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: IGameCommand
+  nameWithType: IGameCommand
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.Core.Commands.Interfaces
+  commentId: N:CardGame.Core.Commands.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Commands.Interfaces
+  nameWithType: CardGame.Core.Commands.Interfaces
+  fullName: CardGame.Core.Commands.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.StateMachine.Phases.BothPhaseState.ShouldEndPhaseAutomatically*
+  commentId: Overload:CardGame.Core.StateMachine.Phases.BothPhaseState.ShouldEndPhaseAutomatically
+  href: CardGame.Core.StateMachine.Phases.BothPhaseState.html#CardGame_Core_StateMachine_Phases_BothPhaseState_ShouldEndPhaseAutomatically_CardGame_Core_State_Models_GameState_
+  name: ShouldEndPhaseAutomatically
+  nameWithType: BothPhaseState.ShouldEndPhaseAutomatically
+  fullName: CardGame.Core.StateMachine.Phases.BothPhaseState.ShouldEndPhaseAutomatically
+- uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+  commentId: M:CardGame.Core.StateMachine.Interfaces.IPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+  parent: CardGame.Core.StateMachine.Interfaces.IPhaseState
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_ShouldEndPhaseAutomatically_CardGame_Core_State_Models_GameState_
+  name: ShouldEndPhaseAutomatically(GameState)
+  nameWithType: IPhaseState.ShouldEndPhaseAutomatically(GameState)
+  fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+  spec.csharp:
+  - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+    name: ShouldEndPhaseAutomatically
+    href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_ShouldEndPhaseAutomatically_CardGame_Core_State_Models_GameState_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)
+    name: ShouldEndPhaseAutomatically
+    href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_ShouldEndPhaseAutomatically_CardGame_Core_State_Models_GameState_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: )
+- uid: CardGame.Core.StateMachine.Phases.BothPhaseState.ProcessEndPhase*
+  commentId: Overload:CardGame.Core.StateMachine.Phases.BothPhaseState.ProcessEndPhase
+  href: CardGame.Core.StateMachine.Phases.BothPhaseState.html#CardGame_Core_StateMachine_Phases_BothPhaseState_ProcessEndPhase_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  name: ProcessEndPhase
+  nameWithType: BothPhaseState.ProcessEndPhase
+  fullName: CardGame.Core.StateMachine.Phases.BothPhaseState.ProcessEndPhase
+- uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.StateMachine.Interfaces.IPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.StateMachine.Interfaces.IPhaseState
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_ProcessEndPhase_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  name: ProcessEndPhase(GameState, EventBus, GameContext)
+  nameWithType: IPhaseState.ProcessEndPhase(GameState, EventBus, GameContext)
+  fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  spec.csharp:
+  - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+    name: ProcessEndPhase
+    href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_ProcessEndPhase_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Events.EventBus
+    name: EventBus
+    href: CardGame.Core.Events.EventBus.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+    name: ProcessEndPhase
+    href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_ProcessEndPhase_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Events.EventBus
+    name: EventBus
+    href: CardGame.Core.Events.EventBus.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: )
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html

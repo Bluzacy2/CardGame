@@ -1,0 +1,71 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Component.Actions
+  commentId: N:CardGame.Core.Cards.Component.Actions
+  id: Actions
+  parent: CardGame.Core.Cards.Component
+  children:
+  - CardGame.Core.Cards.Component.Actions.IActionHandler
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Cards.Component.Actions
+  nameWithType: CardGame.Core.Cards.Component.Actions
+  fullName: CardGame.Core.Cards.Component.Actions
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Cards.Component.Actions.IActionHandler
+  commentId: T:CardGame.Core.Cards.Component.Actions.IActionHandler
+  parent: CardGame.Core.Cards.Component.Actions
+  href: CardGame.Core.Cards.Component.Actions.IActionHandler.html
+  name: IActionHandler
+  nameWithType: IActionHandler
+  fullName: CardGame.Core.Cards.Component.Actions.IActionHandler
+- uid: CardGame.Core.Cards.Component.Actions
+  commentId: N:CardGame.Core.Cards.Component.Actions
+  href: CardGame.html
+  name: CardGame.Core.Cards.Component.Actions
+  nameWithType: CardGame.Core.Cards.Component.Actions
+  fullName: CardGame.Core.Cards.Component.Actions
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component
+    name: Component
+    href: CardGame.Core.Cards.Component.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Component.Actions.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component
+    name: Component
+    href: CardGame.Core.Cards.Component.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Component.Actions.html

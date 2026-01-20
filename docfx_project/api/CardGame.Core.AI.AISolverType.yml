@@ -1,0 +1,126 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.AISolverType
+  commentId: T:CardGame.Core.AI.AISolverType
+  id: AISolverType
+  parent: CardGame.Core.AI
+  children:
+  - CardGame.Core.AI.AISolverType.BeamSearch
+  - CardGame.Core.AI.AISolverType.MCTS
+  langs:
+  - csharp
+  - vb
+  name: AISolverType
+  nameWithType: AISolverType
+  fullName: CardGame.Core.AI.AISolverType
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/AIPlayerController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AISolverType
+    path: ../Source/CardGame.Core/AI/AIPlayerController.cs
+    startLine: 20
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI
+  summary: Specifies the AI solver algorithm to use for decision making.
+  example: []
+  syntax:
+    content: public enum AISolverType
+    content.vb: Public Enum AISolverType
+- uid: CardGame.Core.AI.AISolverType.BeamSearch
+  commentId: F:CardGame.Core.AI.AISolverType.BeamSearch
+  id: BeamSearch
+  parent: CardGame.Core.AI.AISolverType
+  langs:
+  - csharp
+  - vb
+  name: BeamSearch
+  nameWithType: AISolverType.BeamSearch
+  fullName: CardGame.Core.AI.AISolverType.BeamSearch
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/AIPlayerController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BeamSearch
+    path: ../Source/CardGame.Core/AI/AIPlayerController.cs
+    startLine: 25
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI
+  summary: Fast heuristic solver using beam search.
+  example: []
+  syntax:
+    content: BeamSearch = 0
+    return:
+      type: CardGame.Core.AI.AISolverType
+- uid: CardGame.Core.AI.AISolverType.MCTS
+  commentId: F:CardGame.Core.AI.AISolverType.MCTS
+  id: MCTS
+  parent: CardGame.Core.AI.AISolverType
+  langs:
+  - csharp
+  - vb
+  name: MCTS
+  nameWithType: AISolverType.MCTS
+  fullName: CardGame.Core.AI.AISolverType.MCTS
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/AIPlayerController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: MCTS
+    path: ../Source/CardGame.Core/AI/AIPlayerController.cs
+    startLine: 30
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI
+  summary: Advanced Monte Carlo Tree Search solver.
+  example: []
+  syntax:
+    content: MCTS = 1
+    return:
+      type: CardGame.Core.AI.AISolverType
+references:
+- uid: CardGame.Core.AI
+  commentId: N:CardGame.Core.AI
+  href: CardGame.html
+  name: CardGame.Core.AI
+  nameWithType: CardGame.Core.AI
+  fullName: CardGame.Core.AI
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+- uid: CardGame.Core.AI.AISolverType
+  commentId: T:CardGame.Core.AI.AISolverType
+  parent: CardGame.Core.AI
+  href: CardGame.Core.AI.AISolverType.html
+  name: AISolverType
+  nameWithType: AISolverType
+  fullName: CardGame.Core.AI.AISolverType

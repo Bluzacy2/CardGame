@@ -1,0 +1,134 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Logic.Keywords
+  commentId: N:CardGame.Core.Cards.Logic.Keywords
+  id: Keywords
+  parent: CardGame.Core.Cards.Logic
+  children:
+  - CardGame.Core.Cards.Logic.Keywords.Handlers
+  - CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  - CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Cards.Logic.Keywords
+  nameWithType: CardGame.Core.Cards.Logic.Keywords
+  fullName: CardGame.Core.Cards.Logic.Keywords
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Cards.Logic.Keywords.Handlers
+  commentId: N:CardGame.Core.Cards.Logic.Keywords.Handlers
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic.Keywords.Handlers
+  nameWithType: CardGame.Core.Cards.Logic.Keywords.Handlers
+  fullName: CardGame.Core.Cards.Logic.Keywords.Handlers
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords.Handlers
+    name: Handlers
+    href: CardGame.Core.Cards.Logic.Keywords.Handlers.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords.Handlers
+    name: Handlers
+    href: CardGame.Core.Cards.Logic.Keywords.Handlers.html
+- uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  commentId: T:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  parent: CardGame.Core.Cards.Logic.Keywords
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html
+  name: IKeywordHandler
+  nameWithType: IKeywordHandler
+  fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  commentId: T:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  parent: CardGame.Core.Cards.Logic.Keywords
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html
+  name: KeywordProcessor
+  nameWithType: KeywordProcessor
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+- uid: CardGame.Core.Cards.Logic.Keywords
+  commentId: N:CardGame.Core.Cards.Logic.Keywords
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic.Keywords
+  nameWithType: CardGame.Core.Cards.Logic.Keywords
+  fullName: CardGame.Core.Cards.Logic.Keywords
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html

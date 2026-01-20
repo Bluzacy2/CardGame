@@ -1,0 +1,210 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core
+  id: Core
+  parent: CardGame
+  children:
+  - CardGame.Core.AI
+  - CardGame.Core.Application
+  - CardGame.Core.Cards
+  - CardGame.Core.Combat
+  - CardGame.Core.Commands
+  - CardGame.Core.Decks
+  - CardGame.Core.Events
+  - CardGame.Core.GameRules
+  - CardGame.Core.State
+  - CardGame.Core.StateMachine
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core
+  type: Namespace
+references:
+- uid: CardGame.Core.AI
+  commentId: N:CardGame.Core.AI
+  href: CardGame.html
+  name: CardGame.Core.AI
+  nameWithType: CardGame.Core.AI
+  fullName: CardGame.Core.AI
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: CardGame.Core.Cards
+  isExternal: true
+- uid: CardGame.Core.Combat
+  commentId: N:CardGame.Core.Combat
+  href: CardGame.html
+  name: CardGame.Core.Combat
+  nameWithType: CardGame.Core.Combat
+  fullName: CardGame.Core.Combat
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Combat
+    name: Combat
+    href: CardGame.Core.Combat.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Combat
+    name: Combat
+    href: CardGame.Core.Combat.html
+- uid: CardGame.Core.Commands
+  isExternal: true
+- uid: CardGame.Core.Decks
+  commentId: N:CardGame.Core.Decks
+  href: CardGame.html
+  name: CardGame.Core.Decks
+  nameWithType: CardGame.Core.Decks
+  fullName: CardGame.Core.Decks
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: CardGame.Core.GameRules
+  isExternal: true
+- uid: CardGame.Core.State
+  isExternal: true
+- uid: CardGame.Core.StateMachine
+  commentId: N:CardGame.Core.StateMachine
+  href: CardGame.html
+  name: CardGame.Core.StateMachine
+  nameWithType: CardGame.Core.StateMachine
+  fullName: CardGame.Core.StateMachine
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html

@@ -1,0 +1,3455 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class DNA | CardGame Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DNA | CardGame Docs ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bluzacy2/CardGame/new/main/apiSpec/new?filename=CardGame_ConsoleApp_Evolution_V1_Legacy_DNA.md&amp;value=---%0Auid%3A%20CardGame.ConsoleApp.Evolution.V1_Legacy.DNA%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA">
+
+
+
+  <h1 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA" class="text-break">
+Class DNA  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L3"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="CardGame.html">CardGame</a>.<a class="xref" href="CardGame.ConsoleApp.html">ConsoleApp</a>.<a class="xref" href="CardGame.ConsoleApp.Evolution.html">Evolution</a>.<a class="xref" href="CardGame.ConsoleApp.Evolution.V1_Legacy.html">V1_Legacy</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>CardGame.ConsoleApp.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class DNA</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><span class="xref">object</span></div>
+      <div><span class="xref">DNA</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_ActionOnly_ReactionWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ActionOnly_ReactionWeight">
+  ActionOnly_ReactionWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ActionOnly_ReactionWeight = 25</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Adaptive_Learning_Rate" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Adaptive_Learning_Rate">
+  Adaptive_Learning_Rate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Adaptive_Learning_Rate = 99</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_AdjacencyBonus" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.AdjacencyBonus">
+  AdjacencyBonus
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int AdjacencyBonus = 14</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Aggro_Bias" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Aggro_Bias">
+  Aggro_Bias
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Aggro_Bias = 65</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_AnimalAffinity" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.AnimalAffinity">
+  AnimalAffinity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int AnimalAffinity = 29</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_ArmoredEfficiency" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ArmoredEfficiency">
+  ArmoredEfficiency
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ArmoredEfficiency = 17</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_BloodConservationRatio" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BloodConservationRatio">
+  BloodConservationRatio
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BloodConservationRatio = 5</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_BloodEfficiencyWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BloodEfficiencyWeight">
+  BloodEfficiencyWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BloodEfficiencyWeight = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Bluff_Potential_Value" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Bluff_Potential_Value">
+  Bluff_Potential_Value
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Bluff_Potential_Value = 92</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Bluff_Resistance" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Bluff_Resistance">
+  Bluff_Resistance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Bluff_Resistance = 81</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_BoardPresenceSafety" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BoardPresenceSafety">
+  BoardPresenceSafety
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BoardPresenceSafety = 41</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_BonusAtk_FacePressure" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_FacePressure">
+  BonusAtk_FacePressure
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BonusAtk_FacePressure = 55</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_BonusAtk_HighAtk_Preference" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_HighAtk_Preference">
+  BonusAtk_HighAtk_Preference
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BonusAtk_HighAtk_Preference = 56</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_BonusAtk_LethalExecution" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_LethalExecution">
+  BonusAtk_LethalExecution
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BonusAtk_LethalExecution = 54</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_BonusAtk_TriggerHunting" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BonusAtk_TriggerHunting">
+  BonusAtk_TriggerHunting
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BonusAtk_TriggerHunting = 57</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Buff_Priority_Armored" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Armored">
+  Buff_Priority_Armored
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Buff_Priority_Armored = 52</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Buff_Priority_Splash" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Splash">
+  Buff_Priority_Splash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Buff_Priority_Splash = 53</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Buff_Priority_Unkillable" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_Priority_Unkillable">
+  Buff_Priority_Unkillable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Buff_Priority_Unkillable = 51</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Buff_TallStrategy_Weight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_TallStrategy_Weight">
+  Buff_TallStrategy_Weight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Buff_TallStrategy_Weight = 49</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Buff_WideStrategy_Weight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Buff_WideStrategy_Weight">
+  Buff_WideStrategy_Weight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Buff_WideStrategy_Weight = 50</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Burn_Bias" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Burn_Bias">
+  Burn_Bias
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Burn_Bias = 69</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_BurningPenalty" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.BurningPenalty">
+  BurningPenalty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BurningPenalty = 21</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Card_Tracking_Probability" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Card_Tracking_Probability">
+  Card_Tracking_Probability
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Card_Tracking_Probability = 80</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_CombatProjectionTrust" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.CombatProjectionTrust">
+  CombatProjectionTrust
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int CombatProjectionTrust = 26</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Combo_Bias" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Combo_Bias">
+  Combo_Bias
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Combo_Bias = 108</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Complexity_Bias" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Complexity_Bias">
+  Complexity_Bias
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L145"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Complexity_Bias = 97</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Control_Bias" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Control_Bias">
+  Control_Bias
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Control_Bias = 66</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Counter_Lethal_Buffer" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Lethal_Buffer">
+  Counter_Lethal_Buffer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Counter_Lethal_Buffer = 87</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Counter_Mark_Disruption" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Mark_Disruption">
+  Counter_Mark_Disruption
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Counter_Mark_Disruption = 89</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Counter_Unkillable_Stall" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Counter_Unkillable_Stall">
+  Counter_Unkillable_Stall
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Counter_Unkillable_Stall = 88</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_DeckThinning_Utility" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DeckThinning_Utility">
+  DeckThinning_Utility
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DeckThinning_Utility = 47</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_DeckTracking_FinisherFound" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DeckTracking_FinisherFound">
+  DeckTracking_FinisherFound
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DeckTracking_FinisherFound = 46</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_DefensiveBlockingValue" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DefensiveBlockingValue">
+  DefensiveBlockingValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DefensiveBlockingValue = 13</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_DemonAffinity" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DemonAffinity">
+  DemonAffinity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DemonAffinity = 32</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Desperation_Factor" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Desperation_Factor">
+  Desperation_Factor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Desperation_Factor = 90</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_DiscardPileUtility" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.DiscardPileUtility">
+  DiscardPileUtility
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DiscardPileUtility = 38</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Dominance_Greed" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Dominance_Greed">
+  Dominance_Greed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Dominance_Greed = 91</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Draw_vs_Play_Priority" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Draw_vs_Play_Priority">
+  Draw_vs_Play_Priority
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Draw_vs_Play_Priority = 96</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_EmptyLaneBonus" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EmptyLaneBonus">
+  EmptyLaneBonus
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EmptyLaneBonus = 12</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_EnemyAtkWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyAtkWeight">
+  EnemyAtkWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EnemyAtkWeight = 10</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_EnemyHealthWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyHealthWeight">
+  EnemyHealthWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EnemyHealthWeight = 1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_EnemyHpWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.EnemyHpWeight">
+  EnemyHpWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EnemyHpWeight = 11</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Enemy_Archetype_Aggro_Likelihood" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Aggro_Likelihood">
+  Enemy_Archetype_Aggro_Likelihood
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Enemy_Archetype_Aggro_Likelihood = 84</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Enemy_Archetype_Control_Likelihood" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Control_Likelihood">
+  Enemy_Archetype_Control_Likelihood
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Enemy_Archetype_Control_Likelihood = 83</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Enemy_Archetype_Sacrifice_Likelihood" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Enemy_Archetype_Sacrifice_Likelihood">
+  Enemy_Archetype_Sacrifice_Likelihood
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Enemy_Archetype_Sacrifice_Likelihood = 82</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Fatigue_Panic_Factor" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Fatigue_Panic_Factor">
+  Fatigue_Panic_Factor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Fatigue_Panic_Factor = 75</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_FlyingUtility" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FlyingUtility">
+  FlyingUtility
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FlyingUtility = 104</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_FriendlyAtkWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FriendlyAtkWeight">
+  FriendlyAtkWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FriendlyAtkWeight = 8</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_FriendlyHpWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.FriendlyHpWeight">
+  FriendlyHpWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FriendlyHpWeight = 9</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_GlobalBuffValue" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.GlobalBuffValue">
+  GlobalBuffValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int GlobalBuffValue = 37</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_HandSizeUtility" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HandSizeUtility">
+  HandSizeUtility
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int HandSizeUtility = 6</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Heal_Efficiency_Bonus" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Heal_Efficiency_Bonus">
+  Heal_Efficiency_Bonus
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Heal_Efficiency_Bonus = 64</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Heal_Hero_vs_Unit_Ratio" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Heal_Hero_vs_Unit_Ratio">
+  Heal_Hero_vs_Unit_Ratio
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Heal_Hero_vs_Unit_Ratio = 62</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_HeroPanicThreshold" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HeroPanicThreshold">
+  HeroPanicThreshold
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int HeroPanicThreshold = 2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_HumanAffinity" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.HumanAffinity">
+  HumanAffinity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int HumanAffinity = 31</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_L0_L3_Corner_Value" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.L0_L3_Corner_Value">
+  L0_L3_Corner_Value
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int L0_L3_Corner_Value = 78</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_LethalFeverWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.LethalFeverWeight">
+  LethalFeverWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int LethalFeverWeight = 3</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_LethalProbability_Multiplier" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.LethalProbability_Multiplier">
+  LethalProbability_Multiplier
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int LethalProbability_Multiplier = 48</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Line0_Priority" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line0_Priority">
+  Line0_Priority
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Line0_Priority = 100</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Line1_Priority" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line1_Priority">
+  Line1_Priority
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Line1_Priority = 101</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Line2_Priority" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line2_Priority">
+  Line2_Priority
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Line2_Priority = 102</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Line3_Priority" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line3_Priority">
+  Line3_Priority
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Line3_Priority = 103</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Line_Concentration_Preference" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Concentration_Preference">
+  Line_Concentration_Preference
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Line_Concentration_Preference = 77</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Line_Depth_Strategic_Value" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Depth_Strategic_Value">
+  Line_Depth_Strategic_Value
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Line_Depth_Strategic_Value = 94</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Line_Switching_Urgency" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Line_Switching_Urgency">
+  Line_Switching_Urgency
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Line_Switching_Urgency = 79</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_MachineAffinity" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MachineAffinity">
+  MachineAffinity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MachineAffinity = 30</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_MarkedOnEnemyValue" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MarkedOnEnemyValue">
+  MarkedOnEnemyValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MarkedOnEnemyValue = 15</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_MarkedOnSelfPenalty" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MarkedOnSelfPenalty">
+  MarkedOnSelfPenalty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MarkedOnSelfPenalty = 16</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_MercenaryAffinity" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MercenaryAffinity">
+  MercenaryAffinity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MercenaryAffinity = 28</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Midrange_Bias" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Midrange_Bias">
+  Midrange_Bias
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Midrange_Bias = 70</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_MonsterAffinity" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.MonsterAffinity">
+  MonsterAffinity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MonsterAffinity = 27</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Mulligan_ComboPiece_Retention" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_ComboPiece_Retention">
+  Mulligan_ComboPiece_Retention
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Mulligan_ComboPiece_Retention = 73</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Mulligan_KeepSpell_Priority" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_KeepSpell_Priority">
+  Mulligan_KeepSpell_Priority
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Mulligan_KeepSpell_Priority = 72</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Mulligan_KeepUnit_MaxCost" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Mulligan_KeepUnit_MaxCost">
+  Mulligan_KeepUnit_MaxCost
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Mulligan_KeepUnit_MaxCost = 71</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_OpponentEmptyHand_Aggression" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OpponentEmptyHand_Aggression">
+  OpponentEmptyHand_Aggression
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int OpponentEmptyHand_Aggression = 45</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_OpponentHandSize_FearFactor" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OpponentHandSize_FearFactor">
+  OpponentHandSize_FearFactor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int OpponentHandSize_FearFactor = 44</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Opponent_NextTurn_ManaAwareness" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Opponent_NextTurn_ManaAwareness">
+  Opponent_NextTurn_ManaAwareness
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Opponent_NextTurn_ManaAwareness = 74</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_OverdrawRiskPenalty" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OverdrawRiskPenalty">
+  OverdrawRiskPenalty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int OverdrawRiskPenalty = 7</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_OverkillPenalty" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.OverkillPenalty">
+  OverkillPenalty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int OverkillPenalty = 40</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Predict_AoE_Danger_Level" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Predict_AoE_Danger_Level">
+  Predict_AoE_Danger_Level
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Predict_AoE_Danger_Level = 85</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Predict_Silence_Danger_Level" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Predict_Silence_Danger_Level">
+  Predict_Silence_Danger_Level
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Predict_Silence_Danger_Level = 86</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_PredictiveOpponentFear" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.PredictiveOpponentFear">
+  PredictiveOpponentFear
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PredictiveOpponentFear = 43</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_PresenceOfMachineBonus" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.PresenceOfMachineBonus">
+  PresenceOfMachineBonus
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L157"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PresenceOfMachineBonus = 107</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_RecycleComboPreference" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.RecycleComboPreference">
+  RecycleComboPreference
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int RecycleComboPreference = 34</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_ResourceGainValue" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.ResourceGainValue">
+  ResourceGainValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ResourceGainValue = 105</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Resource_Burst_Potential" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Resource_Burst_Potential">
+  Resource_Burst_Potential
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Resource_Burst_Potential = 95</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_SacrificeValueThreshold" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SacrificeValueThreshold">
+  SacrificeValueThreshold
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SacrificeValueThreshold = 33</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Save_ValueTarget_Weight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Save_ValueTarget_Weight">
+  Save_ValueTarget_Weight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Save_ValueTarget_Weight = 63</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_SelfHealthWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SelfHealthWeight">
+  SelfHealthWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SelfHealthWeight = 0</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_SilencePriority_Buffs" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SilencePriority_Buffs">
+  SilencePriority_Buffs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SilencePriority_Buffs = 36</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_SilencePriority_Keywords" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SilencePriority_Keywords">
+  SilencePriority_Keywords
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SilencePriority_Keywords = 35</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_SoulGuardValue" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SoulGuardValue">
+  SoulGuardValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SoulGuardValue = 19</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_SplashDamageUtility" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.SplashDamageUtility">
+  SplashDamageUtility
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SplashDamageUtility = 22</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_StunnedPenalty" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.StunnedPenalty">
+  StunnedPenalty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int StunnedPenalty = 20</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_TOTAL_GENES" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TOTAL_GENES">
+  TOTAL_GENES
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TOTAL_GENES = 109</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Target_Bodyguard_Breaker" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_Bodyguard_Breaker">
+  Target_Bodyguard_Breaker
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Target_Bodyguard_Breaker = 61</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Target_EngineUnit_Priority" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_EngineUnit_Priority">
+  Target_EngineUnit_Priority
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Target_EngineUnit_Priority = 58</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Target_FodderUnit_Ignore" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_FodderUnit_Ignore">
+  Target_FodderUnit_Ignore
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Target_FodderUnit_Ignore = 59</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Target_HighAtk_LowHP_Snipe" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Target_HighAtk_LowHP_Snipe">
+  Target_HighAtk_LowHP_Snipe
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Target_HighAtk_LowHP_Snipe = 60</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Tempo_Bias" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Tempo_Bias">
+  Tempo_Bias
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Tempo_Bias = 67</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Tempo_Sacrifice_Tolerance" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Tempo_Sacrifice_Tolerance">
+  Tempo_Sacrifice_Tolerance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Tempo_Sacrifice_Tolerance = 93</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_TokenSynergyWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TokenSynergyWeight">
+  TokenSynergyWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TokenSynergyWeight = 106</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_TutorPriority" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.TutorPriority">
+  TutorPriority
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TutorPriority = 39</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_UnitAndAction_Flexibility" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnitAndAction_Flexibility">
+  UnitAndAction_Flexibility
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int UnitAndAction_Flexibility = 24</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_UnitOnly_Commitment" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnitOnly_Commitment">
+  UnitOnly_Commitment
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int UnitOnly_Commitment = 23</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_UnkillableValue" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.UnkillableValue">
+  UnkillableValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int UnkillableValue = 18</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Value_Bias" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Value_Bias">
+  Value_Bias
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Value_Bias = 68</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_VengeanceWeight" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.VengeanceWeight">
+  VengeanceWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int VengeanceWeight = 42</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_WinCondition_Proximity_Greed" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.WinCondition_Proximity_Greed">
+  WinCondition_Proximity_Greed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int WinCondition_Proximity_Greed = 76</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="CardGame_ConsoleApp_Evolution_V1_Legacy_DNA_Win_Condition_Clarity" data-uid="CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.Win_Condition_Clarity">
+  Win_Condition_Clarity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Win_Condition_Clarity = 98</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.ConsoleApp/Evolution/V1_Legacy/DNA.cs/#L3" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

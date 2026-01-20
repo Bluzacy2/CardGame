@@ -1,0 +1,246 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+  id: AdaptiveFitnessOptimizer
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.CalculateOptimizedFitness(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.PrintWeights
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.UpdateConvergenceState(System.Single,System.Single,System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: AdaptiveFitnessOptimizer
+  nameWithType: AdaptiveFitnessOptimizer
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AdaptiveFitnessOptimizer
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 414
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class AdaptiveFitnessOptimizer
+    content.vb: Public Class AdaptiveFitnessOptimizer
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.UpdateConvergenceState(System.Single,System.Single,System.Int32,System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.UpdateConvergenceState(System.Single,System.Single,System.Int32,System.Int32)
+  id: UpdateConvergenceState(System.Single,System.Single,System.Int32,System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+  langs:
+  - csharp
+  - vb
+  name: UpdateConvergenceState(float, float, int, int)
+  nameWithType: AdaptiveFitnessOptimizer.UpdateConvergenceState(float, float, int, int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.UpdateConvergenceState(float, float, int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UpdateConvergenceState
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 429
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void UpdateConvergenceState(float currentBestFitness, float populationDiversity, int generation, int stagnationCounter)
+    parameters:
+    - id: currentBestFitness
+      type: System.Single
+    - id: populationDiversity
+      type: System.Single
+    - id: generation
+      type: System.Int32
+    - id: stagnationCounter
+      type: System.Int32
+    content.vb: Public Sub UpdateConvergenceState(currentBestFitness As Single, populationDiversity As Single, generation As Integer, stagnationCounter As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.UpdateConvergenceState*
+  nameWithType.vb: AdaptiveFitnessOptimizer.UpdateConvergenceState(Single, Single, Integer, Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.UpdateConvergenceState(Single, Single, Integer, Integer)
+  name.vb: UpdateConvergenceState(Single, Single, Integer, Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.CalculateOptimizedFitness(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.CalculateOptimizedFitness(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  id: CalculateOptimizedFitness(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+  langs:
+  - csharp
+  - vb
+  name: CalculateOptimizedFitness(EvolvableIndividual, float, float, float, float, float, float, float)
+  nameWithType: AdaptiveFitnessOptimizer.CalculateOptimizedFitness(EvolvableIndividual, float, float, float, float, float, float, float)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.CalculateOptimizedFitness(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, float, float, float, float, float, float, float)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CalculateOptimizedFitness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 467
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float CalculateOptimizedFitness(EvolvableIndividual individual, float baseFitness, float deckNoveltyScore, float synergyBonus, float consistencyBonus, float rareCardBonus, float explorationBonus, float hybridBonus)
+    parameters:
+    - id: individual
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    - id: baseFitness
+      type: System.Single
+    - id: deckNoveltyScore
+      type: System.Single
+    - id: synergyBonus
+      type: System.Single
+    - id: consistencyBonus
+      type: System.Single
+    - id: rareCardBonus
+      type: System.Single
+    - id: explorationBonus
+      type: System.Single
+    - id: hybridBonus
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Function CalculateOptimizedFitness(individual As EvolvableIndividual, baseFitness As Single, deckNoveltyScore As Single, synergyBonus As Single, consistencyBonus As Single, rareCardBonus As Single, explorationBonus As Single, hybridBonus As Single) As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.CalculateOptimizedFitness*
+  nameWithType.vb: AdaptiveFitnessOptimizer.CalculateOptimizedFitness(EvolvableIndividual, Single, Single, Single, Single, Single, Single, Single)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.CalculateOptimizedFitness(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, Single, Single, Single, Single, Single, Single, Single)
+  name.vb: CalculateOptimizedFitness(EvolvableIndividual, Single, Single, Single, Single, Single, Single, Single)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.PrintWeights
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.PrintWeights
+  id: PrintWeights
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+  langs:
+  - csharp
+  - vb
+  name: PrintWeights()
+  nameWithType: AdaptiveFitnessOptimizer.PrintWeights()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.PrintWeights()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PrintWeights
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 521
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void PrintWeights()
+    content.vb: Public Sub PrintWeights()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.PrintWeights*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.UpdateConvergenceState*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.UpdateConvergenceState
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.html#CardGame_ConsoleApp_Evolution_V2_NewGen_AdaptiveFitnessOptimizer_UpdateConvergenceState_System_Single_System_Single_System_Int32_System_Int32_
+  name: UpdateConvergenceState
+  nameWithType: AdaptiveFitnessOptimizer.UpdateConvergenceState
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.UpdateConvergenceState
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.CalculateOptimizedFitness*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.CalculateOptimizedFitness
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.html#CardGame_ConsoleApp_Evolution_V2_NewGen_AdaptiveFitnessOptimizer_CalculateOptimizedFitness_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  name: CalculateOptimizedFitness
+  nameWithType: AdaptiveFitnessOptimizer.CalculateOptimizedFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.CalculateOptimizedFitness
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.PrintWeights*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.PrintWeights
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.html#CardGame_ConsoleApp_Evolution_V2_NewGen_AdaptiveFitnessOptimizer_PrintWeights
+  name: PrintWeights
+  nameWithType: AdaptiveFitnessOptimizer.PrintWeights
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.PrintWeights

@@ -1,0 +1,289 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Strategies.BalanceStrategy
+  commentId: T:CardGame.Core.AI.Strategies.BalanceStrategy
+  id: BalanceStrategy
+  parent: CardGame.Core.AI.Strategies
+  children:
+  - CardGame.Core.AI.Strategies.BalanceStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: BalanceStrategy
+  nameWithType: BalanceStrategy
+  fullName: CardGame.Core.AI.Strategies.BalanceStrategy
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Strategies/BalanceStrategy.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BalanceStrategy
+    path: ../Source/CardGame.Core/AI/Strategies/BalanceStrategy.cs
+    startLine: 15
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Strategies
+  summary: Provides a balanced AI strategy that evaluates game states with emphasis on resource management and tactical positioning.
+  example: []
+  syntax:
+    content: 'public class BalanceStrategy : IAIStrategy'
+    content.vb: Public Class BalanceStrategy Implements IAIStrategy
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.AI.Interfaces.IAIStrategy
+- uid: CardGame.Core.AI.Strategies.BalanceStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  commentId: M:CardGame.Core.AI.Strategies.BalanceStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  id: Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  parent: CardGame.Core.AI.Strategies.BalanceStrategy
+  langs:
+  - csharp
+  - vb
+  name: Evaluate(GameState, int)
+  nameWithType: BalanceStrategy.Evaluate(GameState, int)
+  fullName: CardGame.Core.AI.Strategies.BalanceStrategy.Evaluate(CardGame.Core.State.Models.GameState, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Strategies/BalanceStrategy.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Evaluate
+    path: ../Source/CardGame.Core/AI/Strategies/BalanceStrategy.cs
+    startLine: 44
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Strategies
+  summary: Evaluates the game state with balanced consideration of multiple strategic factors.
+  example: []
+  syntax:
+    content: public float Evaluate(GameState state, int botPlayerId)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state to evaluate.
+    - id: botPlayerId
+      type: System.Int32
+      description: The ID of the bot player.
+    return:
+      type: System.Single
+      description: A score representing the desirability of the state for the bot player.
+    content.vb: Public Function Evaluate(state As GameState, botPlayerId As Integer) As Single
+  overload: CardGame.Core.AI.Strategies.BalanceStrategy.Evaluate*
+  implements:
+  - CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  nameWithType.vb: BalanceStrategy.Evaluate(GameState, Integer)
+  fullName.vb: CardGame.Core.AI.Strategies.BalanceStrategy.Evaluate(CardGame.Core.State.Models.GameState, Integer)
+  name.vb: Evaluate(GameState, Integer)
+references:
+- uid: CardGame.Core.AI.Strategies
+  commentId: N:CardGame.Core.AI.Strategies
+  href: CardGame.html
+  name: CardGame.Core.AI.Strategies
+  nameWithType: CardGame.Core.AI.Strategies
+  fullName: CardGame.Core.AI.Strategies
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Strategies
+    name: Strategies
+    href: CardGame.Core.AI.Strategies.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Strategies
+    name: Strategies
+    href: CardGame.Core.AI.Strategies.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.AI.Interfaces.IAIStrategy
+  commentId: T:CardGame.Core.AI.Interfaces.IAIStrategy
+  parent: CardGame.Core.AI.Interfaces
+  href: CardGame.Core.AI.Interfaces.IAIStrategy.html
+  name: IAIStrategy
+  nameWithType: IAIStrategy
+  fullName: CardGame.Core.AI.Interfaces.IAIStrategy
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.AI.Interfaces
+  commentId: N:CardGame.Core.AI.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.AI.Interfaces
+  nameWithType: CardGame.Core.AI.Interfaces
+  fullName: CardGame.Core.AI.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+- uid: CardGame.Core.AI.Strategies.BalanceStrategy.Evaluate*
+  commentId: Overload:CardGame.Core.AI.Strategies.BalanceStrategy.Evaluate
+  href: CardGame.Core.AI.Strategies.BalanceStrategy.html#CardGame_Core_AI_Strategies_BalanceStrategy_Evaluate_CardGame_Core_State_Models_GameState_System_Int32_
+  name: Evaluate
+  nameWithType: BalanceStrategy.Evaluate
+  fullName: CardGame.Core.AI.Strategies.BalanceStrategy.Evaluate
+- uid: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  commentId: M:CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  parent: CardGame.Core.AI.Interfaces.IAIStrategy
+  isExternal: true
+  href: CardGame.Core.AI.Interfaces.IAIStrategy.html#CardGame_Core_AI_Interfaces_IAIStrategy_Evaluate_CardGame_Core_State_Models_GameState_System_Int32_
+  name: Evaluate(GameState, int)
+  nameWithType: IAIStrategy.Evaluate(GameState, int)
+  fullName: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState, int)
+  nameWithType.vb: IAIStrategy.Evaluate(GameState, Integer)
+  fullName.vb: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState, Integer)
+  name.vb: Evaluate(GameState, Integer)
+  spec.csharp:
+  - uid: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+    name: Evaluate
+    href: CardGame.Core.AI.Interfaces.IAIStrategy.html#CardGame_Core_AI_Interfaces_IAIStrategy_Evaluate_CardGame_Core_State_Models_GameState_System_Int32_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+    name: Evaluate
+    href: CardGame.Core.AI.Interfaces.IAIStrategy.html#CardGame_Core_AI_Interfaces_IAIStrategy_Evaluate_CardGame_Core_State_Models_GameState_System_Int32_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html

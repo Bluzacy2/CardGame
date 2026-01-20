@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Logic
+  commentId: N:CardGame.Core.Cards.Logic
+  id: Logic
+  parent: CardGame.Core.Cards
+  children:
+  - CardGame.Core.Cards.Logic.EffectTargetResolver
+  - CardGame.Core.Cards.Logic.EffectTargets
+  - CardGame.Core.Cards.Logic.Keywords
+  - CardGame.Core.Cards.Logic.PlayValidator
+  - CardGame.Core.Cards.Logic.TriggerLogic
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Cards.Logic
+  nameWithType: CardGame.Core.Cards.Logic
+  fullName: CardGame.Core.Cards.Logic
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Cards.Logic.Keywords
+  commentId: N:CardGame.Core.Cards.Logic.Keywords
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic.Keywords
+  nameWithType: CardGame.Core.Cards.Logic.Keywords
+  fullName: CardGame.Core.Cards.Logic.Keywords
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+- uid: CardGame.Core.Cards.Logic.EffectTargetResolver
+  commentId: T:CardGame.Core.Cards.Logic.EffectTargetResolver
+  href: CardGame.Core.Cards.Logic.EffectTargetResolver.html
+  name: EffectTargetResolver
+  nameWithType: EffectTargetResolver
+  fullName: CardGame.Core.Cards.Logic.EffectTargetResolver
+- uid: CardGame.Core.Cards.Logic.EffectTargets
+  commentId: T:CardGame.Core.Cards.Logic.EffectTargets
+  parent: CardGame.Core.Cards.Logic
+  href: CardGame.Core.Cards.Logic.EffectTargets.html
+  name: EffectTargets
+  nameWithType: EffectTargets
+  fullName: CardGame.Core.Cards.Logic.EffectTargets
+- uid: CardGame.Core.Cards.Logic.PlayValidator
+  commentId: T:CardGame.Core.Cards.Logic.PlayValidator
+  href: CardGame.Core.Cards.Logic.PlayValidator.html
+  name: PlayValidator
+  nameWithType: PlayValidator
+  fullName: CardGame.Core.Cards.Logic.PlayValidator
+- uid: CardGame.Core.Cards.Logic.TriggerLogic
+  commentId: T:CardGame.Core.Cards.Logic.TriggerLogic
+  href: CardGame.Core.Cards.Logic.TriggerLogic.html
+  name: TriggerLogic
+  nameWithType: TriggerLogic
+  fullName: CardGame.Core.Cards.Logic.TriggerLogic
+- uid: CardGame.Core.Cards.Logic
+  commentId: N:CardGame.Core.Cards.Logic
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic
+  nameWithType: CardGame.Core.Cards.Logic
+  fullName: CardGame.Core.Cards.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html

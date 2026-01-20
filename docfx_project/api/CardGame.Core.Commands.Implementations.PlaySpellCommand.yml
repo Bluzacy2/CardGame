@@ -1,0 +1,578 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand
+  commentId: T:CardGame.Core.Commands.Implementations.PlaySpellCommand
+  id: PlaySpellCommand
+  parent: CardGame.Core.Commands.Implementations
+  children:
+  - CardGame.Core.Commands.Implementations.PlaySpellCommand.#ctor(System.Int32,System.Int32,System.Nullable{System.Int32})
+  - CardGame.Core.Commands.Implementations.PlaySpellCommand.CardInstanceId
+  - CardGame.Core.Commands.Implementations.PlaySpellCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  - CardGame.Core.Commands.Implementations.PlaySpellCommand.PlayerId
+  - CardGame.Core.Commands.Implementations.PlaySpellCommand.SelectedTargetId
+  langs:
+  - csharp
+  - vb
+  name: PlaySpellCommand
+  nameWithType: PlaySpellCommand
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PlaySpellCommand
+    path: ../Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+    startLine: 13
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Command to play a spell card from the player's hand, moving it to the spell stack and paying its cost.
+  example: []
+  syntax:
+    content: 'public class PlaySpellCommand : IGameCommand'
+    content.vb: Public Class PlaySpellCommand Implements IGameCommand
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Commands.Interfaces.IGameCommand
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand.PlayerId
+  commentId: P:CardGame.Core.Commands.Implementations.PlaySpellCommand.PlayerId
+  id: PlayerId
+  parent: CardGame.Core.Commands.Implementations.PlaySpellCommand
+  langs:
+  - csharp
+  - vb
+  name: PlayerId
+  nameWithType: PlaySpellCommand.PlayerId
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand.PlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PlayerId
+    path: ../Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Gets the ID of the player playing the spell.
+  example: []
+  syntax:
+    content: public int PlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PlayerId As Integer
+  overload: CardGame.Core.Commands.Implementations.PlaySpellCommand.PlayerId*
+  implements:
+  - CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand.CardInstanceId
+  commentId: P:CardGame.Core.Commands.Implementations.PlaySpellCommand.CardInstanceId
+  id: CardInstanceId
+  parent: CardGame.Core.Commands.Implementations.PlaySpellCommand
+  langs:
+  - csharp
+  - vb
+  name: CardInstanceId
+  nameWithType: PlaySpellCommand.CardInstanceId
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand.CardInstanceId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardInstanceId
+    path: ../Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+    startLine: 24
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Gets the instance ID of the spell card being played.
+  example: []
+  syntax:
+    content: public int CardInstanceId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property CardInstanceId As Integer
+  overload: CardGame.Core.Commands.Implementations.PlaySpellCommand.CardInstanceId*
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand.SelectedTargetId
+  commentId: P:CardGame.Core.Commands.Implementations.PlaySpellCommand.SelectedTargetId
+  id: SelectedTargetId
+  parent: CardGame.Core.Commands.Implementations.PlaySpellCommand
+  langs:
+  - csharp
+  - vb
+  name: SelectedTargetId
+  nameWithType: PlaySpellCommand.SelectedTargetId
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand.SelectedTargetId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SelectedTargetId
+    path: ../Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+    startLine: 29
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Gets the optional ID of the selected target for the spell.
+  example: []
+  syntax:
+    content: public int? SelectedTargetId { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property SelectedTargetId As Integer?
+  overload: CardGame.Core.Commands.Implementations.PlaySpellCommand.SelectedTargetId*
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand.#ctor(System.Int32,System.Int32,System.Nullable{System.Int32})
+  commentId: M:CardGame.Core.Commands.Implementations.PlaySpellCommand.#ctor(System.Int32,System.Int32,System.Nullable{System.Int32})
+  id: '#ctor(System.Int32,System.Int32,System.Nullable{System.Int32})'
+  parent: CardGame.Core.Commands.Implementations.PlaySpellCommand
+  langs:
+  - csharp
+  - vb
+  name: PlaySpellCommand(int, int, int?)
+  nameWithType: PlaySpellCommand.PlaySpellCommand(int, int, int?)
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand.PlaySpellCommand(int, int, int?)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+    startLine: 39
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Initializes a new instance of the PlaySpellCommand class.
+  example: []
+  syntax:
+    content: public PlaySpellCommand(int playerId, int cardInstanceId, int? selectedTargetId = null)
+    parameters:
+    - id: playerId
+      type: System.Int32
+      description: The ID of the player playing the spell.
+    - id: cardInstanceId
+      type: System.Int32
+      description: The instance ID of the spell card being played.
+    - id: selectedTargetId
+      type: System.Nullable{System.Int32}
+      description: Optional ID of the selected target for the spell.
+    content.vb: Public Sub New(playerId As Integer, cardInstanceId As Integer, selectedTargetId As Integer? = Nothing)
+  overload: CardGame.Core.Commands.Implementations.PlaySpellCommand.#ctor*
+  nameWithType.vb: PlaySpellCommand.New(Integer, Integer, Integer?)
+  fullName.vb: CardGame.Core.Commands.Implementations.PlaySpellCommand.New(Integer, Integer, Integer?)
+  name.vb: New(Integer, Integer, Integer?)
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Commands.Implementations.PlaySpellCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  id: Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Commands.Implementations.PlaySpellCommand
+  langs:
+  - csharp
+  - vb
+  name: Execute(GameState, EventBus, GameContext)
+  nameWithType: PlaySpellCommand.Execute(GameState, EventBus, GameContext)
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Execute
+    path: ../Source/CardGame.Core/Commands/Implementations/PlaySpellCommand.cs
+    startLine: 55
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Executes the spell playing command, validating the play, paying costs, and moving the card to the spell stack.
+  example: []
+  syntax:
+    content: public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
+    parameters:
+    - id: currentState
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    - id: eventBus
+      type: CardGame.Core.Events.EventBus
+      description: The event bus for publishing game events.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: The game context with additional services.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state after playing the spell.
+    content.vb: Public Function Execute(currentState As GameState, eventBus As EventBus, context As GameContext) As GameState
+  overload: CardGame.Core.Commands.Implementations.PlaySpellCommand.Execute*
+  implements:
+  - CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+references:
+- uid: CardGame.Core.Commands.Implementations
+  commentId: N:CardGame.Core.Commands.Implementations
+  href: CardGame.html
+  name: CardGame.Core.Commands.Implementations
+  nameWithType: CardGame.Core.Commands.Implementations
+  fullName: CardGame.Core.Commands.Implementations
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Implementations
+    name: Implementations
+    href: CardGame.Core.Commands.Implementations.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Implementations
+    name: Implementations
+    href: CardGame.Core.Commands.Implementations.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand
+  commentId: T:CardGame.Core.Commands.Interfaces.IGameCommand
+  parent: CardGame.Core.Commands.Interfaces
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: IGameCommand
+  nameWithType: IGameCommand
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Commands.Interfaces
+  commentId: N:CardGame.Core.Commands.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Commands.Interfaces
+  nameWithType: CardGame.Core.Commands.Interfaces
+  fullName: CardGame.Core.Commands.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand.PlayerId*
+  commentId: Overload:CardGame.Core.Commands.Implementations.PlaySpellCommand.PlayerId
+  href: CardGame.Core.Commands.Implementations.PlaySpellCommand.html#CardGame_Core_Commands_Implementations_PlaySpellCommand_PlayerId
+  name: PlayerId
+  nameWithType: PlaySpellCommand.PlayerId
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand.PlayerId
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
+  commentId: P:CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
+  parent: CardGame.Core.Commands.Interfaces.IGameCommand
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_PlayerId
+  name: PlayerId
+  nameWithType: IGameCommand.PlayerId
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand.CardInstanceId*
+  commentId: Overload:CardGame.Core.Commands.Implementations.PlaySpellCommand.CardInstanceId
+  href: CardGame.Core.Commands.Implementations.PlaySpellCommand.html#CardGame_Core_Commands_Implementations_PlaySpellCommand_CardInstanceId
+  name: CardInstanceId
+  nameWithType: PlaySpellCommand.CardInstanceId
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand.CardInstanceId
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand.SelectedTargetId*
+  commentId: Overload:CardGame.Core.Commands.Implementations.PlaySpellCommand.SelectedTargetId
+  href: CardGame.Core.Commands.Implementations.PlaySpellCommand.html#CardGame_Core_Commands_Implementations_PlaySpellCommand_SelectedTargetId
+  name: SelectedTargetId
+  nameWithType: PlaySpellCommand.SelectedTargetId
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand.SelectedTargetId
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand.#ctor*
+  commentId: Overload:CardGame.Core.Commands.Implementations.PlaySpellCommand.#ctor
+  href: CardGame.Core.Commands.Implementations.PlaySpellCommand.html#CardGame_Core_Commands_Implementations_PlaySpellCommand__ctor_System_Int32_System_Int32_System_Nullable_System_Int32__
+  name: PlaySpellCommand
+  nameWithType: PlaySpellCommand.PlaySpellCommand
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand.PlaySpellCommand
+  nameWithType.vb: PlaySpellCommand.New
+  fullName.vb: CardGame.Core.Commands.Implementations.PlaySpellCommand.New
+  name.vb: New
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand.Execute*
+  commentId: Overload:CardGame.Core.Commands.Implementations.PlaySpellCommand.Execute
+  href: CardGame.Core.Commands.Implementations.PlaySpellCommand.html#CardGame_Core_Commands_Implementations_PlaySpellCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  name: Execute
+  nameWithType: PlaySpellCommand.Execute
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand.Execute
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Commands.Interfaces.IGameCommand
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  name: Execute(GameState, EventBus, GameContext)
+  nameWithType: IGameCommand.Execute(GameState, EventBus, GameContext)
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  spec.csharp:
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+    name: Execute
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Events.EventBus
+    name: EventBus
+    href: CardGame.Core.Events.EventBus.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+    name: Execute
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Events.EventBus
+    name: EventBus
+    href: CardGame.Core.Events.EventBus.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: )
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html

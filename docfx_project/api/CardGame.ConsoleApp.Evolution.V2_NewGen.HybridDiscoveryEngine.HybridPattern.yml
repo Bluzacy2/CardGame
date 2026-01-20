@@ -1,0 +1,460 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  id: HybridDiscoveryEngine.HybridPattern
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.DiscoveryScore
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.GamesPlayed
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.KeyCards
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.PrimaryArchetype
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.Ratio
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.SecondaryArchetype
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.WinRate
+  langs:
+  - csharp
+  - vb
+  name: HybridDiscoveryEngine.HybridPattern
+  nameWithType: HybridDiscoveryEngine.HybridPattern
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: HybridPattern
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 785
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class HybridDiscoveryEngine.HybridPattern
+    content.vb: Public Class HybridDiscoveryEngine.HybridPattern
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.PrimaryArchetype
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.PrimaryArchetype
+  id: PrimaryArchetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  langs:
+  - csharp
+  - vb
+  name: PrimaryArchetype
+  nameWithType: HybridDiscoveryEngine.HybridPattern.PrimaryArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.PrimaryArchetype
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PrimaryArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 787
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string PrimaryArchetype { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PrimaryArchetype As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.PrimaryArchetype*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.SecondaryArchetype
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.SecondaryArchetype
+  id: SecondaryArchetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  langs:
+  - csharp
+  - vb
+  name: SecondaryArchetype
+  nameWithType: HybridDiscoveryEngine.HybridPattern.SecondaryArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.SecondaryArchetype
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SecondaryArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 788
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string SecondaryArchetype { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SecondaryArchetype As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.SecondaryArchetype*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.Ratio
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.Ratio
+  id: Ratio
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  langs:
+  - csharp
+  - vb
+  name: Ratio
+  nameWithType: HybridDiscoveryEngine.HybridPattern.Ratio
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.Ratio
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Ratio
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 789
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float Ratio { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Ratio As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.Ratio*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.KeyCards
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.KeyCards
+  id: KeyCards
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  langs:
+  - csharp
+  - vb
+  name: KeyCards
+  nameWithType: HybridDiscoveryEngine.HybridPattern.KeyCards
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.KeyCards
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KeyCards
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 790
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<int> KeyCards { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Int32}
+    content.vb: Public Property KeyCards As List(Of Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.KeyCards*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.WinRate
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.WinRate
+  id: WinRate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  langs:
+  - csharp
+  - vb
+  name: WinRate
+  nameWithType: HybridDiscoveryEngine.HybridPattern.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.WinRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WinRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 791
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float WinRate { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property WinRate As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.WinRate*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.GamesPlayed
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.GamesPlayed
+  id: GamesPlayed
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  langs:
+  - csharp
+  - vb
+  name: GamesPlayed
+  nameWithType: HybridDiscoveryEngine.HybridPattern.GamesPlayed
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.GamesPlayed
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GamesPlayed
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 792
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int GamesPlayed { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property GamesPlayed As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.GamesPlayed*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.DiscoveryScore
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.DiscoveryScore
+  id: DiscoveryScore
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  langs:
+  - csharp
+  - vb
+  name: DiscoveryScore
+  nameWithType: HybridDiscoveryEngine.HybridPattern.DiscoveryScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.DiscoveryScore
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DiscoveryScore
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 793
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float DiscoveryScore { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property DiscoveryScore As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.DiscoveryScore*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.PrimaryArchetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.PrimaryArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_HybridPattern_PrimaryArchetype
+  name: PrimaryArchetype
+  nameWithType: HybridDiscoveryEngine.HybridPattern.PrimaryArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.PrimaryArchetype
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.SecondaryArchetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.SecondaryArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_HybridPattern_SecondaryArchetype
+  name: SecondaryArchetype
+  nameWithType: HybridDiscoveryEngine.HybridPattern.SecondaryArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.SecondaryArchetype
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.Ratio*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.Ratio
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_HybridPattern_Ratio
+  name: Ratio
+  nameWithType: HybridDiscoveryEngine.HybridPattern.Ratio
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.Ratio
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.KeyCards*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.KeyCards
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_HybridPattern_KeyCards
+  name: KeyCards
+  nameWithType: HybridDiscoveryEngine.HybridPattern.KeyCards
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.KeyCards
+- uid: System.Collections.Generic.List{System.Int32}
+  commentId: T:System.Collections.Generic.List{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<int>
+  nameWithType: List<int>
+  fullName: System.Collections.Generic.List<int>
+  nameWithType.vb: List(Of Integer)
+  fullName.vb: System.Collections.Generic.List(Of Integer)
+  name.vb: List(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.WinRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.WinRate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_HybridPattern_WinRate
+  name: WinRate
+  nameWithType: HybridDiscoveryEngine.HybridPattern.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.WinRate
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.GamesPlayed*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.GamesPlayed
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_HybridPattern_GamesPlayed
+  name: GamesPlayed
+  nameWithType: HybridDiscoveryEngine.HybridPattern.GamesPlayed
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.GamesPlayed
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.DiscoveryScore*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.DiscoveryScore
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_HybridPattern_DiscoveryScore
+  name: DiscoveryScore
+  nameWithType: HybridDiscoveryEngine.HybridPattern.DiscoveryScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.DiscoveryScore

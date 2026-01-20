@@ -1,0 +1,571 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.UnitStatsChangedEvent
+  commentId: T:CardGame.Core.Events.UnitStatsChangedEvent
+  id: UnitStatsChangedEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.UnitStatsChangedEvent.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Int32,System.Boolean)
+  - CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta
+  - CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack
+  - CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth
+  - CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta
+  - CardGame.Core.Events.UnitStatsChangedEvent.IsAura
+  - CardGame.Core.Events.UnitStatsChangedEvent.SourceId
+  - CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId
+  - CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId
+  langs:
+  - csharp
+  - vb
+  name: UnitStatsChangedEvent
+  nameWithType: UnitStatsChangedEvent
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UnitStatsChangedEvent
+    path: ../Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+    startLine: 7
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs when a unit's statistics (attack/health) change.
+  example: []
+  syntax:
+    content: 'public class UnitStatsChangedEvent : IGameEvent'
+    content.vb: Public Class UnitStatsChangedEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId
+  commentId: P:CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId
+  id: TargetUnitId
+  parent: CardGame.Core.Events.UnitStatsChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: TargetUnitId
+  nameWithType: UnitStatsChangedEvent.TargetUnitId
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TargetUnitId
+    path: ../Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+    startLine: 12
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the unit whose statistics changed.
+  example: []
+  syntax:
+    content: public int TargetUnitId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property TargetUnitId As Integer
+  overload: CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId*
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.SourceId
+  commentId: P:CardGame.Core.Events.UnitStatsChangedEvent.SourceId
+  id: SourceId
+  parent: CardGame.Core.Events.UnitStatsChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: SourceId
+  nameWithType: UnitStatsChangedEvent.SourceId
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.SourceId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourceId
+    path: ../Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+    startLine: 17
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the optional source ID that caused the stat change.
+  example: []
+  syntax:
+    content: public int? SourceId { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property SourceId As Integer?
+  overload: CardGame.Core.Events.UnitStatsChangedEvent.SourceId*
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta
+  commentId: P:CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta
+  id: AttackDelta
+  parent: CardGame.Core.Events.UnitStatsChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: AttackDelta
+  nameWithType: UnitStatsChangedEvent.AttackDelta
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AttackDelta
+    path: ../Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+    startLine: 22
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the change in attack value (positive for increase, negative for decrease).
+  example: []
+  syntax:
+    content: public int AttackDelta { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property AttackDelta As Integer
+  overload: CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta*
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta
+  commentId: P:CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta
+  id: HealthDelta
+  parent: CardGame.Core.Events.UnitStatsChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: HealthDelta
+  nameWithType: UnitStatsChangedEvent.HealthDelta
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: HealthDelta
+    path: ../Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+    startLine: 27
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the change in health value (positive for increase, negative for decrease).
+  example: []
+  syntax:
+    content: public int HealthDelta { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property HealthDelta As Integer
+  overload: CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta*
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack
+  commentId: P:CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack
+  id: CurrentAttack
+  parent: CardGame.Core.Events.UnitStatsChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: CurrentAttack
+  nameWithType: UnitStatsChangedEvent.CurrentAttack
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CurrentAttack
+    path: ../Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+    startLine: 32
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the current attack value after the change.
+  example: []
+  syntax:
+    content: public int CurrentAttack { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property CurrentAttack As Integer
+  overload: CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack*
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth
+  commentId: P:CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth
+  id: CurrentHealth
+  parent: CardGame.Core.Events.UnitStatsChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: CurrentHealth
+  nameWithType: UnitStatsChangedEvent.CurrentHealth
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CurrentHealth
+    path: ../Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+    startLine: 37
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the current health value after the change.
+  example: []
+  syntax:
+    content: public int CurrentHealth { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property CurrentHealth As Integer
+  overload: CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth*
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.IsAura
+  commentId: P:CardGame.Core.Events.UnitStatsChangedEvent.IsAura
+  id: IsAura
+  parent: CardGame.Core.Events.UnitStatsChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: IsAura
+  nameWithType: UnitStatsChangedEvent.IsAura
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.IsAura
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: IsAura
+    path: ../Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+    startLine: 42
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets a value indicating whether the change was caused by an aura effect.
+  example: []
+  syntax:
+    content: public bool IsAura { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsAura As Boolean
+  overload: CardGame.Core.Events.UnitStatsChangedEvent.IsAura*
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.UnitStatsChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: UnitStatsChangedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+    startLine: 47
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who caused the stat change.
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Int32,System.Boolean)
+  commentId: M:CardGame.Core.Events.UnitStatsChangedEvent.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Int32,System.Boolean)
+  id: '#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Int32,System.Boolean)'
+  parent: CardGame.Core.Events.UnitStatsChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: UnitStatsChangedEvent(int, int, int, int, int, int?, int, bool)
+  nameWithType: UnitStatsChangedEvent.UnitStatsChangedEvent(int, int, int, int, int, int?, int, bool)
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.UnitStatsChangedEvent(int, int, int, int, int, int?, int, bool)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/UnitStatsChangedEvent.cs
+    startLine: 60
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the UnitStatsChangedEvent class.
+  example: []
+  syntax:
+    content: public UnitStatsChangedEvent(int targetId, int atkDelta, int hpDelta, int curAtk, int curHp, int? sourceId, int sourcePlayerId, bool isAura = false)
+    parameters:
+    - id: targetId
+      type: System.Int32
+      description: The ID of the target unit.
+    - id: atkDelta
+      type: System.Int32
+      description: The change in attack value.
+    - id: hpDelta
+      type: System.Int32
+      description: The change in health value.
+    - id: curAtk
+      type: System.Int32
+      description: The current attack value after change.
+    - id: curHp
+      type: System.Int32
+      description: The current health value after change.
+    - id: sourceId
+      type: System.Nullable{System.Int32}
+      description: The optional source ID that caused the change.
+    - id: sourcePlayerId
+      type: System.Int32
+      description: The ID of the player who caused the change.
+    - id: isAura
+      type: System.Boolean
+      description: Whether the change was caused by an aura effect.
+    content.vb: Public Sub New(targetId As Integer, atkDelta As Integer, hpDelta As Integer, curAtk As Integer, curHp As Integer, sourceId As Integer?, sourcePlayerId As Integer, isAura As Boolean = False)
+  overload: CardGame.Core.Events.UnitStatsChangedEvent.#ctor*
+  nameWithType.vb: UnitStatsChangedEvent.New(Integer, Integer, Integer, Integer, Integer, Integer?, Integer, Boolean)
+  fullName.vb: CardGame.Core.Events.UnitStatsChangedEvent.New(Integer, Integer, Integer, Integer, Integer, Integer?, Integer, Boolean)
+  name.vb: New(Integer, Integer, Integer, Integer, Integer, Integer?, Integer, Boolean)
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId*
+  commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId
+  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_TargetUnitId
+  name: TargetUnitId
+  nameWithType: UnitStatsChangedEvent.TargetUnitId
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.SourceId*
+  commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.SourceId
+  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_SourceId
+  name: SourceId
+  nameWithType: UnitStatsChangedEvent.SourceId
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.SourceId
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta*
+  commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta
+  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_AttackDelta
+  name: AttackDelta
+  nameWithType: UnitStatsChangedEvent.AttackDelta
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta*
+  commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta
+  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_HealthDelta
+  name: HealthDelta
+  nameWithType: UnitStatsChangedEvent.HealthDelta
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack*
+  commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack
+  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_CurrentAttack
+  name: CurrentAttack
+  nameWithType: UnitStatsChangedEvent.CurrentAttack
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth*
+  commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth
+  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_CurrentHealth
+  name: CurrentHealth
+  nameWithType: UnitStatsChangedEvent.CurrentHealth
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.IsAura*
+  commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.IsAura
+  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_IsAura
+  name: IsAura
+  nameWithType: UnitStatsChangedEvent.IsAura
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.IsAura
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId
+  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: UnitStatsChangedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.UnitStatsChangedEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.#ctor
+  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Nullable_System_Int32__System_Int32_System_Boolean_
+  name: UnitStatsChangedEvent
+  nameWithType: UnitStatsChangedEvent.UnitStatsChangedEvent
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent.UnitStatsChangedEvent
+  nameWithType.vb: UnitStatsChangedEvent.New
+  fullName.vb: CardGame.Core.Events.UnitStatsChangedEvent.New
+  name.vb: New

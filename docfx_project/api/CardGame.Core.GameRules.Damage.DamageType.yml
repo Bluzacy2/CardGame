@@ -1,0 +1,163 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.GameRules.Damage.DamageType
+  commentId: T:CardGame.Core.GameRules.Damage.DamageType
+  id: DamageType
+  parent: CardGame.Core.GameRules.Damage
+  children:
+  - CardGame.Core.GameRules.Damage.DamageType.Action
+  - CardGame.Core.GameRules.Damage.DamageType.Combat
+  - CardGame.Core.GameRules.Damage.DamageType.Effect
+  langs:
+  - csharp
+  - vb
+  name: DamageType
+  nameWithType: DamageType
+  fullName: CardGame.Core.GameRules.Damage.DamageType
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.Core/GameRules/Damage/DamageType.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DamageType
+    path: ../Source/CardGame.Core/GameRules/Damage/DamageType.cs
+    startLine: 7
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.GameRules.Damage
+  summary: Represents the different types of damage that can be dealt in the game.
+  example: []
+  syntax:
+    content: public enum DamageType
+    content.vb: Public Enum DamageType
+- uid: CardGame.Core.GameRules.Damage.DamageType.Combat
+  commentId: F:CardGame.Core.GameRules.Damage.DamageType.Combat
+  id: Combat
+  parent: CardGame.Core.GameRules.Damage.DamageType
+  langs:
+  - csharp
+  - vb
+  name: Combat
+  nameWithType: DamageType.Combat
+  fullName: CardGame.Core.GameRules.Damage.DamageType.Combat
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/GameRules/Damage/DamageType.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Combat
+    path: ../Source/CardGame.Core/GameRules/Damage/DamageType.cs
+    startLine: 12
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.GameRules.Damage
+  summary: Damage dealt through combat between units.
+  example: []
+  syntax:
+    content: Combat = 0
+    return:
+      type: CardGame.Core.GameRules.Damage.DamageType
+- uid: CardGame.Core.GameRules.Damage.DamageType.Action
+  commentId: F:CardGame.Core.GameRules.Damage.DamageType.Action
+  id: Action
+  parent: CardGame.Core.GameRules.Damage.DamageType
+  langs:
+  - csharp
+  - vb
+  name: Action
+  nameWithType: DamageType.Action
+  fullName: CardGame.Core.GameRules.Damage.DamageType.Action
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/GameRules/Damage/DamageType.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Action
+    path: ../Source/CardGame.Core/GameRules/Damage/DamageType.cs
+    startLine: 17
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.GameRules.Damage
+  summary: Damage dealt through action cards (spells).
+  example: []
+  syntax:
+    content: Action = 1
+    return:
+      type: CardGame.Core.GameRules.Damage.DamageType
+- uid: CardGame.Core.GameRules.Damage.DamageType.Effect
+  commentId: F:CardGame.Core.GameRules.Damage.DamageType.Effect
+  id: Effect
+  parent: CardGame.Core.GameRules.Damage.DamageType
+  langs:
+  - csharp
+  - vb
+  name: Effect
+  nameWithType: DamageType.Effect
+  fullName: CardGame.Core.GameRules.Damage.DamageType.Effect
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/GameRules/Damage/DamageType.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Effect
+    path: ../Source/CardGame.Core/GameRules/Damage/DamageType.cs
+    startLine: 22
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.GameRules.Damage
+  summary: Damage dealt through passive effects or abilities.
+  example: []
+  syntax:
+    content: Effect = 2
+    return:
+      type: CardGame.Core.GameRules.Damage.DamageType
+references:
+- uid: CardGame.Core.GameRules.Damage
+  commentId: N:CardGame.Core.GameRules.Damage
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Damage
+  nameWithType: CardGame.Core.GameRules.Damage
+  fullName: CardGame.Core.GameRules.Damage
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+- uid: CardGame.Core.GameRules.Damage.DamageType
+  commentId: T:CardGame.Core.GameRules.Damage.DamageType
+  parent: CardGame.Core.GameRules.Damage
+  href: CardGame.Core.GameRules.Damage.DamageType.html
+  name: DamageType
+  nameWithType: DamageType
+  fullName: CardGame.Core.GameRules.Damage.DamageType

@@ -1,0 +1,542 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  id: MetagameTracker
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetAntiMetaBonus(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetArchetypePrevalence
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetMostPrevalentArchetype
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.IsArchetypeDominant(System.String)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.UpdateAfterGeneration(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  langs:
+  - csharp
+  - vb
+  name: MetagameTracker
+  nameWithType: MetagameTracker
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: MetagameTracker
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 918
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class MetagameTracker
+    content.vb: Public Class MetagameTracker
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.UpdateAfterGeneration(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.UpdateAfterGeneration(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  id: UpdateAfterGeneration(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  langs:
+  - csharp
+  - vb
+  name: UpdateAfterGeneration(List<EvolvableIndividual>)
+  nameWithType: MetagameTracker.UpdateAfterGeneration(List<EvolvableIndividual>)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.UpdateAfterGeneration(System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UpdateAfterGeneration
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 924
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void UpdateAfterGeneration(List<EvolvableIndividual> population)
+    parameters:
+    - id: population
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+    content.vb: Public Sub UpdateAfterGeneration(population As List(Of EvolvableIndividual))
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.UpdateAfterGeneration*
+  nameWithType.vb: MetagameTracker.UpdateAfterGeneration(List(Of EvolvableIndividual))
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.UpdateAfterGeneration(System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual))
+  name.vb: UpdateAfterGeneration(List(Of EvolvableIndividual))
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetMostPrevalentArchetype
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetMostPrevalentArchetype
+  id: GetMostPrevalentArchetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  langs:
+  - csharp
+  - vb
+  name: GetMostPrevalentArchetype()
+  nameWithType: MetagameTracker.GetMostPrevalentArchetype()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetMostPrevalentArchetype()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetMostPrevalentArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 960
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public (string archetype, float prevalence) GetMostPrevalentArchetype()
+    return:
+      type: System.ValueTuple{System.String,System.Single}
+    content.vb: Public Function GetMostPrevalentArchetype() As (archetype As String, prevalence As Single)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetMostPrevalentArchetype*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.IsArchetypeDominant(System.String)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.IsArchetypeDominant(System.String)
+  id: IsArchetypeDominant(System.String)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  langs:
+  - csharp
+  - vb
+  name: IsArchetypeDominant(string)
+  nameWithType: MetagameTracker.IsArchetypeDominant(string)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.IsArchetypeDominant(string)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: IsArchetypeDominant
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 973
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public bool IsArchetypeDominant(string archetype)
+    parameters:
+    - id: archetype
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsArchetypeDominant(archetype As String) As Boolean
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.IsArchetypeDominant*
+  nameWithType.vb: MetagameTracker.IsArchetypeDominant(String)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.IsArchetypeDominant(String)
+  name.vb: IsArchetypeDominant(String)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetAntiMetaBonus(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetAntiMetaBonus(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  id: GetAntiMetaBonus(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  langs:
+  - csharp
+  - vb
+  name: GetAntiMetaBonus(EvolvableIndividual)
+  nameWithType: MetagameTracker.GetAntiMetaBonus(EvolvableIndividual)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetAntiMetaBonus(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetAntiMetaBonus
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 982
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float GetAntiMetaBonus(EvolvableIndividual individual)
+    parameters:
+    - id: individual
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    return:
+      type: System.Single
+    content.vb: Public Function GetAntiMetaBonus(individual As EvolvableIndividual) As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetAntiMetaBonus*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetArchetypePrevalence
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetArchetypePrevalence
+  id: GetArchetypePrevalence
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  langs:
+  - csharp
+  - vb
+  name: GetArchetypePrevalence()
+  nameWithType: MetagameTracker.GetArchetypePrevalence()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetArchetypePrevalence()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetArchetypePrevalence
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1032
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public Dictionary<string, float> GetArchetypePrevalence()
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Single}
+    content.vb: Public Function GetArchetypePrevalence() As Dictionary(Of String, Single)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetArchetypePrevalence*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.UpdateAfterGeneration*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.UpdateAfterGeneration
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.html#CardGame_ConsoleApp_Evolution_V2_NewGen_MetagameTracker_UpdateAfterGeneration_System_Collections_Generic_List_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual__
+  name: UpdateAfterGeneration
+  nameWithType: MetagameTracker.UpdateAfterGeneration
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.UpdateAfterGeneration
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: List<EvolvableIndividual>
+  nameWithType: List<EvolvableIndividual>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>
+  nameWithType.vb: List(Of EvolvableIndividual)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  name.vb: List(Of EvolvableIndividual)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetMostPrevalentArchetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetMostPrevalentArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.html#CardGame_ConsoleApp_Evolution_V2_NewGen_MetagameTracker_GetMostPrevalentArchetype
+  name: GetMostPrevalentArchetype
+  nameWithType: MetagameTracker.GetMostPrevalentArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetMostPrevalentArchetype
+- uid: System.ValueTuple{System.String,System.Single}
+  commentId: T:System.ValueTuple{System.String,System.Single}
+  parent: System
+  definition: System.ValueTuple`2
+  name: (string archetype, float prevalence)
+  nameWithType: (string archetype, float prevalence)
+  fullName: (string archetype, float prevalence)
+  nameWithType.vb: (archetype As String, prevalence As Single)
+  fullName.vb: (archetype As String, prevalence As Single)
+  name.vb: (archetype As String, prevalence As Single)
+  spec.csharp:
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.Single}.archetype
+    name: archetype
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.Single}.prevalence
+    name: prevalence
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.String,System.Single}.archetype
+    name: archetype
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.String,System.Single}.prevalence
+    name: prevalence
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.ValueTuple`2
+  commentId: T:System.ValueTuple`2
+  name: (T1, T2)
+  nameWithType: (T1, T2)
+  fullName: (T1, T2)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.IsArchetypeDominant*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.IsArchetypeDominant
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.html#CardGame_ConsoleApp_Evolution_V2_NewGen_MetagameTracker_IsArchetypeDominant_System_String_
+  name: IsArchetypeDominant
+  nameWithType: MetagameTracker.IsArchetypeDominant
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.IsArchetypeDominant
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetAntiMetaBonus*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetAntiMetaBonus
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.html#CardGame_ConsoleApp_Evolution_V2_NewGen_MetagameTracker_GetAntiMetaBonus_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_
+  name: GetAntiMetaBonus
+  nameWithType: MetagameTracker.GetAntiMetaBonus
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetAntiMetaBonus
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetArchetypePrevalence*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetArchetypePrevalence
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.html#CardGame_ConsoleApp_Evolution_V2_NewGen_MetagameTracker_GetArchetypePrevalence
+  name: GetArchetypePrevalence
+  nameWithType: MetagameTracker.GetArchetypePrevalence
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.GetArchetypePrevalence
+- uid: System.Collections.Generic.Dictionary{System.String,System.Single}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<string, float>
+  nameWithType: Dictionary<string, float>
+  fullName: System.Collections.Generic.Dictionary<string, float>
+  nameWithType.vb: Dictionary(Of String, Single)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Single)
+  name.vb: Dictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )

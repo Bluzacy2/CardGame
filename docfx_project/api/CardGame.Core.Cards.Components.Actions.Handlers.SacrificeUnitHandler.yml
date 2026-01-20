@@ -1,0 +1,574 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler
+  commentId: T:CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler
+  id: SacrificeUnitHandler
+  parent: CardGame.Core.Cards.Components.Actions.Handlers
+  children:
+  - CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  - CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Type
+  langs:
+  - csharp
+  - vb
+  name: SacrificeUnitHandler
+  nameWithType: SacrificeUnitHandler
+  fullName: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Component/Actions/Handlers/SacrificeUnitHandler.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SacrificeUnitHandler
+    path: ../Source/CardGame.Core/Cards/Component/Actions/Handlers/SacrificeUnitHandler.cs
+    startLine: 16
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Components.Actions.Handlers
+  summary: Handles the SacrificeUnit action, voluntarily destroying a friendly unit for an effect.
+  example: []
+  syntax:
+    content: 'public class SacrificeUnitHandler : IActionHandler'
+    content.vb: Public Class SacrificeUnitHandler Implements IActionHandler
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Cards.Component.Actions.IActionHandler
+- uid: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Type
+  commentId: P:CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Type
+  id: Type
+  parent: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: SacrificeUnitHandler.Type
+  fullName: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Type
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Component/Actions/Handlers/SacrificeUnitHandler.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Type
+    path: ../Source/CardGame.Core/Cards/Component/Actions/Handlers/SacrificeUnitHandler.cs
+    startLine: 21
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Components.Actions.Handlers
+  summary: Gets the action type this handler processes.
+  example: []
+  syntax:
+    content: public ActionType Type { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+    content.vb: Public ReadOnly Property Type As ActionType
+  overload: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Type*
+  implements:
+  - CardGame.Core.Cards.Component.Actions.IActionHandler.Type
+- uid: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  commentId: M:CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  id: Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  parent: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler
+  langs:
+  - csharp
+  - vb
+  name: Execute(GameState, GameContext, ActionData, EffectTargets, int, IGameEvent)
+  nameWithType: SacrificeUnitHandler.Execute(GameState, GameContext, ActionData, EffectTargets, int, IGameEvent)
+  fullName: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Application.GameContext, CardGame.Core.Cards.Data.ActionData, CardGame.Core.Cards.Logic.EffectTargets, int, CardGame.Core.Events.Interfaces.IGameEvent)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Component/Actions/Handlers/SacrificeUnitHandler.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Execute
+    path: ../Source/CardGame.Core/Cards/Component/Actions/Handlers/SacrificeUnitHandler.cs
+    startLine: 26
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Components.Actions.Handlers
+  summary: Executes the SacrificeUnit action, destroying a friendly unit and triggering sacrifice effects.
+  example: []
+  syntax:
+    content: public GameState Execute(GameState state, GameContext context, ActionData action, EffectTargets targets, int sourceId, IGameEvent gameEvent)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+    - id: context
+      type: CardGame.Core.Application.GameContext
+    - id: action
+      type: CardGame.Core.Cards.Data.ActionData
+    - id: targets
+      type: CardGame.Core.Cards.Logic.EffectTargets
+    - id: sourceId
+      type: System.Int32
+    - id: gameEvent
+      type: CardGame.Core.Events.Interfaces.IGameEvent
+    return:
+      type: CardGame.Core.State.Models.GameState
+    content.vb: Public Function Execute(state As GameState, context As GameContext, action As ActionData, targets As EffectTargets, sourceId As Integer, gameEvent As IGameEvent) As GameState
+  overload: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Execute*
+  implements:
+  - CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  nameWithType.vb: SacrificeUnitHandler.Execute(GameState, GameContext, ActionData, EffectTargets, Integer, IGameEvent)
+  fullName.vb: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Application.GameContext, CardGame.Core.Cards.Data.ActionData, CardGame.Core.Cards.Logic.EffectTargets, Integer, CardGame.Core.Events.Interfaces.IGameEvent)
+  name.vb: Execute(GameState, GameContext, ActionData, EffectTargets, Integer, IGameEvent)
+references:
+- uid: CardGame.Core.Cards.Components.Actions.Handlers
+  commentId: N:CardGame.Core.Cards.Components.Actions.Handlers
+  href: CardGame.html
+  name: CardGame.Core.Cards.Components.Actions.Handlers
+  nameWithType: CardGame.Core.Cards.Components.Actions.Handlers
+  fullName: CardGame.Core.Cards.Components.Actions.Handlers
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components
+    name: Components
+    href: CardGame.Core.Cards.Components.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Components.Actions.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions.Handlers
+    name: Handlers
+    href: CardGame.Core.Cards.Components.Actions.Handlers.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components
+    name: Components
+    href: CardGame.Core.Cards.Components.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Components.Actions.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions.Handlers
+    name: Handlers
+    href: CardGame.Core.Cards.Components.Actions.Handlers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Cards.Component.Actions.IActionHandler
+  commentId: T:CardGame.Core.Cards.Component.Actions.IActionHandler
+  parent: CardGame.Core.Cards.Component.Actions
+  href: CardGame.Core.Cards.Component.Actions.IActionHandler.html
+  name: IActionHandler
+  nameWithType: IActionHandler
+  fullName: CardGame.Core.Cards.Component.Actions.IActionHandler
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Component.Actions
+  commentId: N:CardGame.Core.Cards.Component.Actions
+  href: CardGame.html
+  name: CardGame.Core.Cards.Component.Actions
+  nameWithType: CardGame.Core.Cards.Component.Actions
+  fullName: CardGame.Core.Cards.Component.Actions
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component
+    name: Component
+    href: CardGame.Core.Cards.Component.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Component.Actions.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component
+    name: Component
+    href: CardGame.Core.Cards.Component.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Component.Actions.html
+- uid: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Type*
+  commentId: Overload:CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Type
+  href: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.html#CardGame_Core_Cards_Components_Actions_Handlers_SacrificeUnitHandler_Type
+  name: Type
+  nameWithType: SacrificeUnitHandler.Type
+  fullName: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Type
+- uid: CardGame.Core.Cards.Component.Actions.IActionHandler.Type
+  commentId: P:CardGame.Core.Cards.Component.Actions.IActionHandler.Type
+  parent: CardGame.Core.Cards.Component.Actions.IActionHandler
+  href: CardGame.Core.Cards.Component.Actions.IActionHandler.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Type
+  name: Type
+  nameWithType: IActionHandler.Type
+  fullName: CardGame.Core.Cards.Component.Actions.IActionHandler.Type
+- uid: CardGame.Core.Cards.Data.ActionType
+  commentId: T:CardGame.Core.Cards.Data.ActionType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ActionType.html
+  name: ActionType
+  nameWithType: ActionType
+  fullName: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Execute*
+  commentId: Overload:CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Execute
+  href: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.html#CardGame_Core_Cards_Components_Actions_Handlers_SacrificeUnitHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
+  name: Execute
+  nameWithType: SacrificeUnitHandler.Execute
+  fullName: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.Execute
+- uid: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  commentId: M:CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  parent: CardGame.Core.Cards.Component.Actions.IActionHandler
+  isExternal: true
+  href: CardGame.Core.Cards.Component.Actions.IActionHandler.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
+  name: Execute(GameState, GameContext, ActionData, EffectTargets, int, IGameEvent)
+  nameWithType: IActionHandler.Execute(GameState, GameContext, ActionData, EffectTargets, int, IGameEvent)
+  fullName: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Application.GameContext, CardGame.Core.Cards.Data.ActionData, CardGame.Core.Cards.Logic.EffectTargets, int, CardGame.Core.Events.Interfaces.IGameEvent)
+  nameWithType.vb: IActionHandler.Execute(GameState, GameContext, ActionData, EffectTargets, Integer, IGameEvent)
+  fullName.vb: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Application.GameContext, CardGame.Core.Cards.Data.ActionData, CardGame.Core.Cards.Logic.EffectTargets, Integer, CardGame.Core.Events.Interfaces.IGameEvent)
+  name.vb: Execute(GameState, GameContext, ActionData, EffectTargets, Integer, IGameEvent)
+  spec.csharp:
+  - uid: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+    name: Execute
+    href: CardGame.Core.Cards.Component.Actions.IActionHandler.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.ActionData
+    name: ActionData
+    href: CardGame.Core.Cards.Data.ActionData.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Logic.EffectTargets
+    name: EffectTargets
+    href: CardGame.Core.Cards.Logic.EffectTargets.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Events.Interfaces.IGameEvent
+    name: IGameEvent
+    href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+    name: Execute
+    href: CardGame.Core.Cards.Component.Actions.IActionHandler.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.ActionData
+    name: ActionData
+    href: CardGame.Core.Cards.Data.ActionData.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Cards.Logic.EffectTargets
+    name: EffectTargets
+    href: CardGame.Core.Cards.Logic.EffectTargets.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Events.Interfaces.IGameEvent
+    name: IGameEvent
+    href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  - name: )
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.Cards.Data.ActionData
+  commentId: T:CardGame.Core.Cards.Data.ActionData
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ActionData.html
+  name: ActionData
+  nameWithType: ActionData
+  fullName: CardGame.Core.Cards.Data.ActionData
+- uid: CardGame.Core.Cards.Logic.EffectTargets
+  commentId: T:CardGame.Core.Cards.Logic.EffectTargets
+  parent: CardGame.Core.Cards.Logic
+  href: CardGame.Core.Cards.Logic.EffectTargets.html
+  name: EffectTargets
+  nameWithType: EffectTargets
+  fullName: CardGame.Core.Cards.Logic.EffectTargets
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: CardGame.Core.Cards.Logic
+  commentId: N:CardGame.Core.Cards.Logic
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic
+  nameWithType: CardGame.Core.Cards.Logic
+  fullName: CardGame.Core.Cards.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html

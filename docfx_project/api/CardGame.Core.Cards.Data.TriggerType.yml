@@ -1,0 +1,589 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.TriggerType
+  commentId: T:CardGame.Core.Cards.Data.TriggerType
+  id: TriggerType
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.TriggerType.OnDamagTaken
+  - CardGame.Core.Cards.Data.TriggerType.OnDamagedEnemyHero
+  - CardGame.Core.Cards.Data.TriggerType.OnDamagedEnemyUnit
+  - CardGame.Core.Cards.Data.TriggerType.OnDeath
+  - CardGame.Core.Cards.Data.TriggerType.OnFriendlyActionPlayed
+  - CardGame.Core.Cards.Data.TriggerType.OnFriendlyCardDrawn
+  - CardGame.Core.Cards.Data.TriggerType.OnFriendlyUnitDied
+  - CardGame.Core.Cards.Data.TriggerType.OnKill
+  - CardGame.Core.Cards.Data.TriggerType.OnOpponentCardDrawn
+  - CardGame.Core.Cards.Data.TriggerType.OnOtherUnitSacrificed
+  - CardGame.Core.Cards.Data.TriggerType.OnPlayed
+  - CardGame.Core.Cards.Data.TriggerType.OnPreCombatLine
+  - CardGame.Core.Cards.Data.TriggerType.OnSacrificed
+  - CardGame.Core.Cards.Data.TriggerType.OnStatusApplied
+  - CardGame.Core.Cards.Data.TriggerType.OnSummoned
+  - CardGame.Core.Cards.Data.TriggerType.OnTurnEnd
+  - CardGame.Core.Cards.Data.TriggerType.OnTurnStart
+  - CardGame.Core.Cards.Data.TriggerType.Passive
+  - CardGame.Core.Cards.Data.TriggerType.WhileOnBoard
+  langs:
+  - csharp
+  - vb
+  name: TriggerType
+  nameWithType: TriggerType
+  fullName: CardGame.Core.Cards.Data.TriggerType
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TriggerType
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 44
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Represents the timing or condition when an ability activates.
+  example: []
+  syntax:
+    content: public enum TriggerType
+    content.vb: Public Enum TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnPlayed
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnPlayed
+  id: OnPlayed
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnPlayed
+  nameWithType: TriggerType.OnPlayed
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnPlayed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnPlayed
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 46
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnPlayed = 0
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnDeath
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnDeath
+  id: OnDeath
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnDeath
+  nameWithType: TriggerType.OnDeath
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnDeath
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnDeath
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 47
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnDeath = 1
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnDamagTaken
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnDamagTaken
+  id: OnDamagTaken
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnDamagTaken
+  nameWithType: TriggerType.OnDamagTaken
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnDamagTaken
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnDamagTaken
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 48
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnDamagTaken = 2
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnTurnStart
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnTurnStart
+  id: OnTurnStart
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnTurnStart
+  nameWithType: TriggerType.OnTurnStart
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnTurnStart
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnTurnStart
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 49
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnTurnStart = 3
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnTurnEnd
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnTurnEnd
+  id: OnTurnEnd
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnTurnEnd
+  nameWithType: TriggerType.OnTurnEnd
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnTurnEnd
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnTurnEnd
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 50
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnTurnEnd = 4
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.WhileOnBoard
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.WhileOnBoard
+  id: WhileOnBoard
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: WhileOnBoard
+  nameWithType: TriggerType.WhileOnBoard
+  fullName: CardGame.Core.Cards.Data.TriggerType.WhileOnBoard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WhileOnBoard
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 51
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: WhileOnBoard = 5
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnFriendlyUnitDied
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnFriendlyUnitDied
+  id: OnFriendlyUnitDied
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnFriendlyUnitDied
+  nameWithType: TriggerType.OnFriendlyUnitDied
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnFriendlyUnitDied
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnFriendlyUnitDied
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 52
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnFriendlyUnitDied = 6
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnSacrificed
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnSacrificed
+  id: OnSacrificed
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnSacrificed
+  nameWithType: TriggerType.OnSacrificed
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnSacrificed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnSacrificed
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 53
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnSacrificed = 7
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.Passive
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.Passive
+  id: Passive
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: Passive
+  nameWithType: TriggerType.Passive
+  fullName: CardGame.Core.Cards.Data.TriggerType.Passive
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Passive
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 54
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Passive = 8
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnOtherUnitSacrificed
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnOtherUnitSacrificed
+  id: OnOtherUnitSacrificed
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnOtherUnitSacrificed
+  nameWithType: TriggerType.OnOtherUnitSacrificed
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnOtherUnitSacrificed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnOtherUnitSacrificed
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 55
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnOtherUnitSacrificed = 9
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnKill
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnKill
+  id: OnKill
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnKill
+  nameWithType: TriggerType.OnKill
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnKill
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnKill
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 56
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnKill = 10
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnOpponentCardDrawn
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnOpponentCardDrawn
+  id: OnOpponentCardDrawn
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnOpponentCardDrawn
+  nameWithType: TriggerType.OnOpponentCardDrawn
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnOpponentCardDrawn
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnOpponentCardDrawn
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 57
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnOpponentCardDrawn = 11
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnDamagedEnemyUnit
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnDamagedEnemyUnit
+  id: OnDamagedEnemyUnit
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnDamagedEnemyUnit
+  nameWithType: TriggerType.OnDamagedEnemyUnit
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnDamagedEnemyUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnDamagedEnemyUnit
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 58
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnDamagedEnemyUnit = 12
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnStatusApplied
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnStatusApplied
+  id: OnStatusApplied
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnStatusApplied
+  nameWithType: TriggerType.OnStatusApplied
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnStatusApplied
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnStatusApplied
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 59
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnStatusApplied = 13
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnPreCombatLine
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnPreCombatLine
+  id: OnPreCombatLine
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnPreCombatLine
+  nameWithType: TriggerType.OnPreCombatLine
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnPreCombatLine
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnPreCombatLine
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 60
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnPreCombatLine = 14
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnDamagedEnemyHero
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnDamagedEnemyHero
+  id: OnDamagedEnemyHero
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnDamagedEnemyHero
+  nameWithType: TriggerType.OnDamagedEnemyHero
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnDamagedEnemyHero
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnDamagedEnemyHero
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 61
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnDamagedEnemyHero = 15
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnFriendlyCardDrawn
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnFriendlyCardDrawn
+  id: OnFriendlyCardDrawn
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnFriendlyCardDrawn
+  nameWithType: TriggerType.OnFriendlyCardDrawn
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnFriendlyCardDrawn
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnFriendlyCardDrawn
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 62
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnFriendlyCardDrawn = 16
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnFriendlyActionPlayed
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnFriendlyActionPlayed
+  id: OnFriendlyActionPlayed
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnFriendlyActionPlayed
+  nameWithType: TriggerType.OnFriendlyActionPlayed
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnFriendlyActionPlayed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnFriendlyActionPlayed
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 63
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnFriendlyActionPlayed = 17
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.TriggerType.OnSummoned
+  commentId: F:CardGame.Core.Cards.Data.TriggerType.OnSummoned
+  id: OnSummoned
+  parent: CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: OnSummoned
+  nameWithType: TriggerType.OnSummoned
+  fullName: CardGame.Core.Cards.Data.TriggerType.OnSummoned
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OnSummoned
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 64
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OnSummoned = 18
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Cards.Data.TriggerType
+  commentId: T:CardGame.Core.Cards.Data.TriggerType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.TriggerType.html
+  name: TriggerType
+  nameWithType: TriggerType
+  fullName: CardGame.Core.Cards.Data.TriggerType

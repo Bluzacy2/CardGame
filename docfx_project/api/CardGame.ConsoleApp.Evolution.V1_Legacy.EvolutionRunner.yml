@@ -1,0 +1,165 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner
+  commentId: T:CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner
+  id: EvolutionRunner
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy
+  children:
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.RunEvolutionAsync
+  langs:
+  - csharp
+  - vb
+  name: EvolutionRunner
+  nameWithType: EvolutionRunner
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/EvolutionRunner.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EvolutionRunner
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/EvolutionRunner.cs
+    startLine: 21
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public class EvolutionRunner
+    content.vb: Public Class EvolutionRunner
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.RunEvolutionAsync
+  commentId: M:CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.RunEvolutionAsync
+  id: RunEvolutionAsync
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner
+  langs:
+  - csharp
+  - vb
+  name: RunEvolutionAsync()
+  nameWithType: EvolutionRunner.RunEvolutionAsync()
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.RunEvolutionAsync()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/EvolutionRunner.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: RunEvolutionAsync
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/EvolutionRunner.cs
+    startLine: 32
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public Task RunEvolutionAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function RunEvolutionAsync() As Task
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.RunEvolutionAsync*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+  commentId: N:CardGame.ConsoleApp.Evolution.V1_Legacy
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V1_Legacy
+  nameWithType: CardGame.ConsoleApp.Evolution.V1_Legacy
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.RunEvolutionAsync*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.RunEvolutionAsync
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.html#CardGame_ConsoleApp_Evolution_V1_Legacy_EvolutionRunner_RunEvolutionAsync
+  name: RunEvolutionAsync
+  nameWithType: EvolutionRunner.RunEvolutionAsync
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.RunEvolutionAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

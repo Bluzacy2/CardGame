@@ -1,0 +1,222 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.StateMachine.GameStateMachine
+  commentId: T:CardGame.Core.StateMachine.GameStateMachine
+  id: GameStateMachine
+  parent: CardGame.Core.StateMachine
+  children:
+  - CardGame.Core.StateMachine.GameStateMachine.GetStateForPhase(CardGame.Core.State.Enums.GamePhase)
+  langs:
+  - csharp
+  - vb
+  name: GameStateMachine
+  nameWithType: GameStateMachine
+  fullName: CardGame.Core.StateMachine.GameStateMachine
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/StateMachine/GameStateMachine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GameStateMachine
+    path: ../Source/CardGame.Core/StateMachine/GameStateMachine.cs
+    startLine: 10
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.StateMachine
+  summary: Factory that returns the appropriate phase state implementation for a given game phase.
+  example: []
+  syntax:
+    content: public class GameStateMachine
+    content.vb: Public Class GameStateMachine
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.StateMachine.GameStateMachine.GetStateForPhase(CardGame.Core.State.Enums.GamePhase)
+  commentId: M:CardGame.Core.StateMachine.GameStateMachine.GetStateForPhase(CardGame.Core.State.Enums.GamePhase)
+  id: GetStateForPhase(CardGame.Core.State.Enums.GamePhase)
+  parent: CardGame.Core.StateMachine.GameStateMachine
+  langs:
+  - csharp
+  - vb
+  name: GetStateForPhase(GamePhase)
+  nameWithType: GameStateMachine.GetStateForPhase(GamePhase)
+  fullName: CardGame.Core.StateMachine.GameStateMachine.GetStateForPhase(CardGame.Core.State.Enums.GamePhase)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/StateMachine/GameStateMachine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetStateForPhase
+    path: ../Source/CardGame.Core/StateMachine/GameStateMachine.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.StateMachine
+  summary: Gets the phase state implementation corresponding to the specified game phase.
+  example: []
+  syntax:
+    content: public IPhaseState GetStateForPhase(GamePhase phase)
+    parameters:
+    - id: phase
+      type: CardGame.Core.State.Enums.GamePhase
+      description: The game phase to get the state for.
+    return:
+      type: CardGame.Core.StateMachine.Interfaces.IPhaseState
+      description: An IPhaseState implementation that handles the specified phase.
+    content.vb: Public Function GetStateForPhase(phase As GamePhase) As IPhaseState
+  overload: CardGame.Core.StateMachine.GameStateMachine.GetStateForPhase*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when an unsupported game phase is provided.
+references:
+- uid: CardGame.Core.StateMachine
+  commentId: N:CardGame.Core.StateMachine
+  href: CardGame.html
+  name: CardGame.Core.StateMachine
+  nameWithType: CardGame.Core.StateMachine
+  fullName: CardGame.Core.StateMachine
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: CardGame.Core.StateMachine.GameStateMachine.GetStateForPhase*
+  commentId: Overload:CardGame.Core.StateMachine.GameStateMachine.GetStateForPhase
+  href: CardGame.Core.StateMachine.GameStateMachine.html#CardGame_Core_StateMachine_GameStateMachine_GetStateForPhase_CardGame_Core_State_Enums_GamePhase_
+  name: GetStateForPhase
+  nameWithType: GameStateMachine.GetStateForPhase
+  fullName: CardGame.Core.StateMachine.GameStateMachine.GetStateForPhase
+- uid: CardGame.Core.State.Enums.GamePhase
+  commentId: T:CardGame.Core.State.Enums.GamePhase
+  parent: CardGame.Core.State.Enums
+  href: CardGame.Core.State.Enums.GamePhase.html
+  name: GamePhase
+  nameWithType: GamePhase
+  fullName: CardGame.Core.State.Enums.GamePhase
+- uid: CardGame.Core.StateMachine.Interfaces.IPhaseState
+  commentId: T:CardGame.Core.StateMachine.Interfaces.IPhaseState
+  parent: CardGame.Core.StateMachine.Interfaces
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html
+  name: IPhaseState
+  nameWithType: IPhaseState
+  fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState
+- uid: CardGame.Core.State.Enums
+  commentId: N:CardGame.Core.State.Enums
+  href: CardGame.html
+  name: CardGame.Core.State.Enums
+  nameWithType: CardGame.Core.State.Enums
+  fullName: CardGame.Core.State.Enums
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Enums
+    name: Enums
+    href: CardGame.Core.State.Enums.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Enums
+    name: Enums
+    href: CardGame.Core.State.Enums.html
+- uid: CardGame.Core.StateMachine.Interfaces
+  commentId: N:CardGame.Core.StateMachine.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.StateMachine.Interfaces
+  nameWithType: CardGame.Core.StateMachine.Interfaces
+  fullName: CardGame.Core.StateMachine.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Interfaces
+    name: Interfaces
+    href: CardGame.Core.StateMachine.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Interfaces
+    name: Interfaces
+    href: CardGame.Core.StateMachine.Interfaces.html

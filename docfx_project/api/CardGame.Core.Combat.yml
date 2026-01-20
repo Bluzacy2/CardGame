@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Combat
+  commentId: N:CardGame.Core.Combat
+  id: Combat
+  parent: CardGame.Core
+  children:
+  - CardGame.Core.Combat.CombatOrchestrator
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Combat
+  nameWithType: CardGame.Core.Combat
+  fullName: CardGame.Core.Combat
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Combat.CombatOrchestrator
+  commentId: T:CardGame.Core.Combat.CombatOrchestrator
+  href: CardGame.Core.Combat.CombatOrchestrator.html
+  name: CombatOrchestrator
+  nameWithType: CombatOrchestrator
+  fullName: CardGame.Core.Combat.CombatOrchestrator

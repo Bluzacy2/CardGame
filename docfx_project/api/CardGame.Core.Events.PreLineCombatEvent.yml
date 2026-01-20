@@ -1,0 +1,267 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.PreLineCombatEvent
+  commentId: T:CardGame.Core.Events.PreLineCombatEvent
+  id: PreLineCombatEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.PreLineCombatEvent.#ctor(System.Int32)
+  - CardGame.Core.Events.PreLineCombatEvent.LineIndex
+  - CardGame.Core.Events.PreLineCombatEvent.SourcePlayerId
+  langs:
+  - csharp
+  - vb
+  name: PreLineCombatEvent
+  nameWithType: PreLineCombatEvent
+  fullName: CardGame.Core.Events.PreLineCombatEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/PreLineCombat.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PreLineCombatEvent
+    path: ../Source/CardGame.Core/Events/PreLineCombat.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs before combat is resolved in a specific board lane.
+  example: []
+  syntax:
+    content: 'public class PreLineCombatEvent : IGameEvent'
+    content.vb: Public Class PreLineCombatEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.PreLineCombatEvent.LineIndex
+  commentId: P:CardGame.Core.Events.PreLineCombatEvent.LineIndex
+  id: LineIndex
+  parent: CardGame.Core.Events.PreLineCombatEvent
+  langs:
+  - csharp
+  - vb
+  name: LineIndex
+  nameWithType: PreLineCombatEvent.LineIndex
+  fullName: CardGame.Core.Events.PreLineCombatEvent.LineIndex
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/PreLineCombat.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LineIndex
+    path: ../Source/CardGame.Core/Events/PreLineCombat.cs
+    startLine: 14
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the index of the board lane where combat is about to occur.
+  example: []
+  syntax:
+    content: public int LineIndex { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property LineIndex As Integer
+  overload: CardGame.Core.Events.PreLineCombatEvent.LineIndex*
+- uid: CardGame.Core.Events.PreLineCombatEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.PreLineCombatEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.PreLineCombatEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: PreLineCombatEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.PreLineCombatEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/PreLineCombat.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/PreLineCombat.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who caused the event (0 indicates a system event).
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.PreLineCombatEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.PreLineCombatEvent.#ctor(System.Int32)
+  commentId: M:CardGame.Core.Events.PreLineCombatEvent.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: CardGame.Core.Events.PreLineCombatEvent
+  langs:
+  - csharp
+  - vb
+  name: PreLineCombatEvent(int)
+  nameWithType: PreLineCombatEvent.PreLineCombatEvent(int)
+  fullName: CardGame.Core.Events.PreLineCombatEvent.PreLineCombatEvent(int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/PreLineCombat.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/PreLineCombat.cs
+    startLine: 25
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the PreLineCombatEvent class.
+  example: []
+  syntax:
+    content: public PreLineCombatEvent(int lineIndex)
+    parameters:
+    - id: lineIndex
+      type: System.Int32
+      description: The index of the board lane (0-3).
+    content.vb: Public Sub New(lineIndex As Integer)
+  overload: CardGame.Core.Events.PreLineCombatEvent.#ctor*
+  nameWithType.vb: PreLineCombatEvent.New(Integer)
+  fullName.vb: CardGame.Core.Events.PreLineCombatEvent.New(Integer)
+  name.vb: New(Integer)
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.PreLineCombatEvent.LineIndex*
+  commentId: Overload:CardGame.Core.Events.PreLineCombatEvent.LineIndex
+  href: CardGame.Core.Events.PreLineCombatEvent.html#CardGame_Core_Events_PreLineCombatEvent_LineIndex
+  name: LineIndex
+  nameWithType: PreLineCombatEvent.LineIndex
+  fullName: CardGame.Core.Events.PreLineCombatEvent.LineIndex
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.PreLineCombatEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.PreLineCombatEvent.SourcePlayerId
+  href: CardGame.Core.Events.PreLineCombatEvent.html#CardGame_Core_Events_PreLineCombatEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: PreLineCombatEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.PreLineCombatEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.PreLineCombatEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.PreLineCombatEvent.#ctor
+  href: CardGame.Core.Events.PreLineCombatEvent.html#CardGame_Core_Events_PreLineCombatEvent__ctor_System_Int32_
+  name: PreLineCombatEvent
+  nameWithType: PreLineCombatEvent.PreLineCombatEvent
+  fullName: CardGame.Core.Events.PreLineCombatEvent.PreLineCombatEvent
+  nameWithType.vb: PreLineCombatEvent.New
+  fullName.vb: CardGame.Core.Events.PreLineCombatEvent.New
+  name.vb: New

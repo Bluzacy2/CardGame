@@ -1,0 +1,3272 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  id: NewDna
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.#ctor
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.#ctor(System.Single[])
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ApplyArchetypeBias(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype,System.Random,System.Single)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Average(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna})
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_FLYING_LANE_OPPORTUNISM
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_HORIZONTAL_FOCUS_BIAS
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_LANE_DENSITY_STRATEGY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_MOVEMENT_VALUE_SENSE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_PLACEMENT_REACTION_TYPE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_SPACE_MANAGEMENT_LOGIC
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_SPLASH_OPTIMIZATION_LOGIC
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_THREAT_SYMMETRY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BUFF_PROTECTION_OR_AMPLIFY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BuildDeck(System.Int32[],System.Random,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_LETHAL_CONFIDENCE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_PRECOMBAT_PRIORITY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_RESOURCE_EXCHANGE_EFFICIENCY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_TRADING_EFFICIENCY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CalculateDistance(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ClassifyArchetype
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Clone
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateArchetypeDNA(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype,System.Random)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateRandom(System.Random)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Crossover(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Random)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Genes
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetBehaviorVector
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetGenesArray
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_ARMORED_EFFICIENCY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_BONUS_ATTACK_VALUE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_BURNSOURCE_AGGRESSION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_FLYING_VALUE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_MARKED_FOCUS
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_SOULGUARD_STICKINESS
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_SPLASH_PRIORITY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_STUN_DENIAL
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_UNKILLABLE_RECURSION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_COMBAT_ORDER_URGENCY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_HEAL_PRIORITY_HERO
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_INDIRECT_DAMAGE_FOCUS
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_LETHAL_BUFFER
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_LETHAL_VISION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_OPPONENT_HP_WEIGHT
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_OVERHEAL_APPRECIATION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_PANIC_THRESHOLD
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_RISK_APPETITE_AT_LETHAL
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_SELF_HP_VALUE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_VULNERABILITY_SENSE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DECK_THINNING_FOCUS
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DISCARD_PILE_RECYCLE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DRAW_URGENCY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_GIVING_RESOURCES_PENALTY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_HAND_SIZE_OPTIMIZATION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_MANA_CURVE_BIAS
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_OVERDRAW_RISK_TOLERANCE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_PATIENCE_FACTOR
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_PROBABILITY_COGNITION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_REACTION_FROM_HAND_SENSE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_STRATEGY_COST_REDUCTION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_TUTOR_PRECISION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Mutate(System.Random,System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_COUNTER_ANTICIPATION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_EFFICIENCY_VS_VALUE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_INITIATIVE_POSTURE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_MANA_RESERVE_STRATEGY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_REACTION_SENSITIVITY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_ADAPTABILITY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_BLUFF_RESISTANCE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_DECEPTION_BAITING
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_OPPONENT_MANA_RESPECT
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_PREDICTIVE_CAUTION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_RESOURCE_ADVANTAGE_GREED
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_AGGRO
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_BURN
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_COMBO
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_CONTROL
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_FUTURE_PLANNING_BIAS
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_MIDRANGE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_TEMPO_PREFERENCE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_AOE_SYMMETRY_TOLERANCE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_DAMAGE_WASTE_TOLERANCE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_FACE_VS_BOARD_BIAS
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_FRIENDLY_SACRIFICE_VALUE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_REACTIVE_VS_PROACTIVE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_STATUS_PHILOSOPHY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_UNIT_PRIORITY_TYPE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TOKEN_SUBTYPE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TOTAL_GENES
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_COMBAT_STRATEGY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_DEATH_STRATEGY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_DESTRUCTION_PREFERENCE
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_PLAY_STRATEGY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_SACRIFICE_VISION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_SETUP_RECOGNITION
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_ENGINE_DURABILITY_PRIORITY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_PROTECTION_SYNERGY_BIAS
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_REPLACEMENT_URGENCY
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_STAT_VS_EFFECT_WEIGHT
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_SUBTYPE_COHESION_WEIGHT
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_TOKEN_VALUATION_LOGIC
+  langs:
+  - csharp
+  - vb
+  name: NewDna
+  nameWithType: NewDna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: NewDna
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 9
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class NewDna
+    content.vb: Public Class NewDna
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TOTAL_GENES
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TOTAL_GENES
+  id: TOTAL_GENES
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TOTAL_GENES
+  nameWithType: NewDna.TOTAL_GENES
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TOTAL_GENES
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TOTAL_GENES
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 11
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TOTAL_GENES = 82
+    return:
+      type: System.Int32
+    content.vb: Public Const TOTAL_GENES As Integer = 82
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TOKEN_SUBTYPE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TOKEN_SUBTYPE
+  id: TOKEN_SUBTYPE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TOKEN_SUBTYPE
+  nameWithType: NewDna.TOKEN_SUBTYPE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TOKEN_SUBTYPE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TOKEN_SUBTYPE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 12
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const string TOKEN_SUBTYPE = "Token"
+    return:
+      type: System.String
+    content.vb: Public Const TOKEN_SUBTYPE As String = "Token"
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Genes
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Genes
+  id: Genes
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: Genes
+  nameWithType: NewDna.Genes
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Genes
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Genes
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 14
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float[] Genes { get; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: Public Property Genes As Single()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Genes*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_FUTURE_PLANNING_BIAS
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_FUTURE_PLANNING_BIAS
+  id: STYLE_FUTURE_PLANNING_BIAS
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: STYLE_FUTURE_PLANNING_BIAS
+  nameWithType: NewDna.STYLE_FUTURE_PLANNING_BIAS
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_FUTURE_PLANNING_BIAS
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: STYLE_FUTURE_PLANNING_BIAS
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 17
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int STYLE_FUTURE_PLANNING_BIAS = 0
+    return:
+      type: System.Int32
+    content.vb: Public Const STYLE_FUTURE_PLANNING_BIAS As Integer = 0
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_TEMPO_PREFERENCE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_TEMPO_PREFERENCE
+  id: STYLE_TEMPO_PREFERENCE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: STYLE_TEMPO_PREFERENCE
+  nameWithType: NewDna.STYLE_TEMPO_PREFERENCE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_TEMPO_PREFERENCE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: STYLE_TEMPO_PREFERENCE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 18
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int STYLE_TEMPO_PREFERENCE = 1
+    return:
+      type: System.Int32
+    content.vb: Public Const STYLE_TEMPO_PREFERENCE As Integer = 1
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_MIDRANGE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_MIDRANGE
+  id: STYLE_MIDRANGE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: STYLE_MIDRANGE
+  nameWithType: NewDna.STYLE_MIDRANGE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_MIDRANGE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: STYLE_MIDRANGE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 19
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int STYLE_MIDRANGE = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const STYLE_MIDRANGE As Integer = 2
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_CONTROL
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_CONTROL
+  id: STYLE_CONTROL
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: STYLE_CONTROL
+  nameWithType: NewDna.STYLE_CONTROL
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_CONTROL
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: STYLE_CONTROL
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 20
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int STYLE_CONTROL = 3
+    return:
+      type: System.Int32
+    content.vb: Public Const STYLE_CONTROL As Integer = 3
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_COMBO
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_COMBO
+  id: STYLE_COMBO
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: STYLE_COMBO
+  nameWithType: NewDna.STYLE_COMBO
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_COMBO
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: STYLE_COMBO
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 21
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int STYLE_COMBO = 4
+    return:
+      type: System.Int32
+    content.vb: Public Const STYLE_COMBO As Integer = 4
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_AGGRO
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_AGGRO
+  id: STYLE_AGGRO
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: STYLE_AGGRO
+  nameWithType: NewDna.STYLE_AGGRO
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_AGGRO
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: STYLE_AGGRO
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 22
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int STYLE_AGGRO = 5
+    return:
+      type: System.Int32
+    content.vb: Public Const STYLE_AGGRO As Integer = 5
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_BURN
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_BURN
+  id: STYLE_BURN
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: STYLE_BURN
+  nameWithType: NewDna.STYLE_BURN
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.STYLE_BURN
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: STYLE_BURN
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 23
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int STYLE_BURN = 6
+    return:
+      type: System.Int32
+    content.vb: Public Const STYLE_BURN As Integer = 6
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_RISK_APPETITE_AT_LETHAL
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_RISK_APPETITE_AT_LETHAL
+  id: LIFE_RISK_APPETITE_AT_LETHAL
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_RISK_APPETITE_AT_LETHAL
+  nameWithType: NewDna.LIFE_RISK_APPETITE_AT_LETHAL
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_RISK_APPETITE_AT_LETHAL
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_RISK_APPETITE_AT_LETHAL
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 26
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_RISK_APPETITE_AT_LETHAL = 7
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_RISK_APPETITE_AT_LETHAL As Integer = 7
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_INDIRECT_DAMAGE_FOCUS
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_INDIRECT_DAMAGE_FOCUS
+  id: LIFE_INDIRECT_DAMAGE_FOCUS
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_INDIRECT_DAMAGE_FOCUS
+  nameWithType: NewDna.LIFE_INDIRECT_DAMAGE_FOCUS
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_INDIRECT_DAMAGE_FOCUS
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_INDIRECT_DAMAGE_FOCUS
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 27
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_INDIRECT_DAMAGE_FOCUS = 8
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_INDIRECT_DAMAGE_FOCUS As Integer = 8
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_COMBAT_ORDER_URGENCY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_COMBAT_ORDER_URGENCY
+  id: LIFE_COMBAT_ORDER_URGENCY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_COMBAT_ORDER_URGENCY
+  nameWithType: NewDna.LIFE_COMBAT_ORDER_URGENCY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_COMBAT_ORDER_URGENCY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_COMBAT_ORDER_URGENCY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 28
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_COMBAT_ORDER_URGENCY = 9
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_COMBAT_ORDER_URGENCY As Integer = 9
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_OVERHEAL_APPRECIATION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_OVERHEAL_APPRECIATION
+  id: LIFE_OVERHEAL_APPRECIATION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_OVERHEAL_APPRECIATION
+  nameWithType: NewDna.LIFE_OVERHEAL_APPRECIATION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_OVERHEAL_APPRECIATION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_OVERHEAL_APPRECIATION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 29
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_OVERHEAL_APPRECIATION = 10
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_OVERHEAL_APPRECIATION As Integer = 10
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_VULNERABILITY_SENSE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_VULNERABILITY_SENSE
+  id: LIFE_VULNERABILITY_SENSE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_VULNERABILITY_SENSE
+  nameWithType: NewDna.LIFE_VULNERABILITY_SENSE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_VULNERABILITY_SENSE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_VULNERABILITY_SENSE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 30
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_VULNERABILITY_SENSE = 11
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_VULNERABILITY_SENSE As Integer = 11
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_OPPONENT_HP_WEIGHT
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_OPPONENT_HP_WEIGHT
+  id: LIFE_OPPONENT_HP_WEIGHT
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_OPPONENT_HP_WEIGHT
+  nameWithType: NewDna.LIFE_OPPONENT_HP_WEIGHT
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_OPPONENT_HP_WEIGHT
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_OPPONENT_HP_WEIGHT
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 31
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_OPPONENT_HP_WEIGHT = 12
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_OPPONENT_HP_WEIGHT As Integer = 12
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_HEAL_PRIORITY_HERO
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_HEAL_PRIORITY_HERO
+  id: LIFE_HEAL_PRIORITY_HERO
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_HEAL_PRIORITY_HERO
+  nameWithType: NewDna.LIFE_HEAL_PRIORITY_HERO
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_HEAL_PRIORITY_HERO
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_HEAL_PRIORITY_HERO
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 32
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_HEAL_PRIORITY_HERO = 13
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_HEAL_PRIORITY_HERO As Integer = 13
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_PANIC_THRESHOLD
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_PANIC_THRESHOLD
+  id: LIFE_PANIC_THRESHOLD
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_PANIC_THRESHOLD
+  nameWithType: NewDna.LIFE_PANIC_THRESHOLD
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_PANIC_THRESHOLD
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_PANIC_THRESHOLD
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 33
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_PANIC_THRESHOLD = 14
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_PANIC_THRESHOLD As Integer = 14
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_LETHAL_BUFFER
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_LETHAL_BUFFER
+  id: LIFE_LETHAL_BUFFER
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_LETHAL_BUFFER
+  nameWithType: NewDna.LIFE_LETHAL_BUFFER
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_LETHAL_BUFFER
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_LETHAL_BUFFER
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 34
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_LETHAL_BUFFER = 15
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_LETHAL_BUFFER As Integer = 15
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_LETHAL_VISION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_LETHAL_VISION
+  id: LIFE_LETHAL_VISION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_LETHAL_VISION
+  nameWithType: NewDna.LIFE_LETHAL_VISION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_LETHAL_VISION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_LETHAL_VISION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 35
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_LETHAL_VISION = 16
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_LETHAL_VISION As Integer = 16
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_SELF_HP_VALUE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_SELF_HP_VALUE
+  id: LIFE_SELF_HP_VALUE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LIFE_SELF_HP_VALUE
+  nameWithType: NewDna.LIFE_SELF_HP_VALUE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LIFE_SELF_HP_VALUE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LIFE_SELF_HP_VALUE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 36
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LIFE_SELF_HP_VALUE = 17
+    return:
+      type: System.Int32
+    content.vb: Public Const LIFE_SELF_HP_VALUE As Integer = 17
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_HAND_SIZE_OPTIMIZATION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_HAND_SIZE_OPTIMIZATION
+  id: LOGIC_HAND_SIZE_OPTIMIZATION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_HAND_SIZE_OPTIMIZATION
+  nameWithType: NewDna.LOGIC_HAND_SIZE_OPTIMIZATION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_HAND_SIZE_OPTIMIZATION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_HAND_SIZE_OPTIMIZATION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 39
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_HAND_SIZE_OPTIMIZATION = 18
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_HAND_SIZE_OPTIMIZATION As Integer = 18
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_OVERDRAW_RISK_TOLERANCE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_OVERDRAW_RISK_TOLERANCE
+  id: LOGIC_OVERDRAW_RISK_TOLERANCE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_OVERDRAW_RISK_TOLERANCE
+  nameWithType: NewDna.LOGIC_OVERDRAW_RISK_TOLERANCE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_OVERDRAW_RISK_TOLERANCE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_OVERDRAW_RISK_TOLERANCE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 40
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_OVERDRAW_RISK_TOLERANCE = 19
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_OVERDRAW_RISK_TOLERANCE As Integer = 19
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_GIVING_RESOURCES_PENALTY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_GIVING_RESOURCES_PENALTY
+  id: LOGIC_GIVING_RESOURCES_PENALTY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_GIVING_RESOURCES_PENALTY
+  nameWithType: NewDna.LOGIC_GIVING_RESOURCES_PENALTY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_GIVING_RESOURCES_PENALTY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_GIVING_RESOURCES_PENALTY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 41
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_GIVING_RESOURCES_PENALTY = 20
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_GIVING_RESOURCES_PENALTY As Integer = 20
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_REACTION_FROM_HAND_SENSE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_REACTION_FROM_HAND_SENSE
+  id: LOGIC_REACTION_FROM_HAND_SENSE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_REACTION_FROM_HAND_SENSE
+  nameWithType: NewDna.LOGIC_REACTION_FROM_HAND_SENSE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_REACTION_FROM_HAND_SENSE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_REACTION_FROM_HAND_SENSE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 42
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_REACTION_FROM_HAND_SENSE = 21
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_REACTION_FROM_HAND_SENSE As Integer = 21
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_STRATEGY_COST_REDUCTION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_STRATEGY_COST_REDUCTION
+  id: LOGIC_STRATEGY_COST_REDUCTION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_STRATEGY_COST_REDUCTION
+  nameWithType: NewDna.LOGIC_STRATEGY_COST_REDUCTION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_STRATEGY_COST_REDUCTION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_STRATEGY_COST_REDUCTION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 43
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_STRATEGY_COST_REDUCTION = 22
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_STRATEGY_COST_REDUCTION As Integer = 22
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_PROBABILITY_COGNITION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_PROBABILITY_COGNITION
+  id: LOGIC_PROBABILITY_COGNITION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_PROBABILITY_COGNITION
+  nameWithType: NewDna.LOGIC_PROBABILITY_COGNITION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_PROBABILITY_COGNITION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_PROBABILITY_COGNITION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 44
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_PROBABILITY_COGNITION = 23
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_PROBABILITY_COGNITION As Integer = 23
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DECK_THINNING_FOCUS
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DECK_THINNING_FOCUS
+  id: LOGIC_DECK_THINNING_FOCUS
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_DECK_THINNING_FOCUS
+  nameWithType: NewDna.LOGIC_DECK_THINNING_FOCUS
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DECK_THINNING_FOCUS
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_DECK_THINNING_FOCUS
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 45
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_DECK_THINNING_FOCUS = 24
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_DECK_THINNING_FOCUS As Integer = 24
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DISCARD_PILE_RECYCLE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DISCARD_PILE_RECYCLE
+  id: LOGIC_DISCARD_PILE_RECYCLE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_DISCARD_PILE_RECYCLE
+  nameWithType: NewDna.LOGIC_DISCARD_PILE_RECYCLE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DISCARD_PILE_RECYCLE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_DISCARD_PILE_RECYCLE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 46
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_DISCARD_PILE_RECYCLE = 25
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_DISCARD_PILE_RECYCLE As Integer = 25
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_TUTOR_PRECISION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_TUTOR_PRECISION
+  id: LOGIC_TUTOR_PRECISION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_TUTOR_PRECISION
+  nameWithType: NewDna.LOGIC_TUTOR_PRECISION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_TUTOR_PRECISION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_TUTOR_PRECISION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 47
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_TUTOR_PRECISION = 26
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_TUTOR_PRECISION As Integer = 26
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DRAW_URGENCY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DRAW_URGENCY
+  id: LOGIC_DRAW_URGENCY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_DRAW_URGENCY
+  nameWithType: NewDna.LOGIC_DRAW_URGENCY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_DRAW_URGENCY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_DRAW_URGENCY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 48
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_DRAW_URGENCY = 27
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_DRAW_URGENCY As Integer = 27
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_PATIENCE_FACTOR
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_PATIENCE_FACTOR
+  id: LOGIC_PATIENCE_FACTOR
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_PATIENCE_FACTOR
+  nameWithType: NewDna.LOGIC_PATIENCE_FACTOR
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_PATIENCE_FACTOR
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_PATIENCE_FACTOR
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 49
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_PATIENCE_FACTOR = 28
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_PATIENCE_FACTOR As Integer = 28
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_MANA_CURVE_BIAS
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_MANA_CURVE_BIAS
+  id: LOGIC_MANA_CURVE_BIAS
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: LOGIC_MANA_CURVE_BIAS
+  nameWithType: NewDna.LOGIC_MANA_CURVE_BIAS
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.LOGIC_MANA_CURVE_BIAS
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LOGIC_MANA_CURVE_BIAS
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 50
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int LOGIC_MANA_CURVE_BIAS = 29
+    return:
+      type: System.Int32
+    content.vb: Public Const LOGIC_MANA_CURVE_BIAS As Integer = 29
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_MANA_RESERVE_STRATEGY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_MANA_RESERVE_STRATEGY
+  id: PHASE_MANA_RESERVE_STRATEGY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PHASE_MANA_RESERVE_STRATEGY
+  nameWithType: NewDna.PHASE_MANA_RESERVE_STRATEGY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_MANA_RESERVE_STRATEGY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PHASE_MANA_RESERVE_STRATEGY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 53
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PHASE_MANA_RESERVE_STRATEGY = 30
+    return:
+      type: System.Int32
+    content.vb: Public Const PHASE_MANA_RESERVE_STRATEGY As Integer = 30
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_INITIATIVE_POSTURE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_INITIATIVE_POSTURE
+  id: PHASE_INITIATIVE_POSTURE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PHASE_INITIATIVE_POSTURE
+  nameWithType: NewDna.PHASE_INITIATIVE_POSTURE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_INITIATIVE_POSTURE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PHASE_INITIATIVE_POSTURE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 54
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PHASE_INITIATIVE_POSTURE = 31
+    return:
+      type: System.Int32
+    content.vb: Public Const PHASE_INITIATIVE_POSTURE As Integer = 31
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_EFFICIENCY_VS_VALUE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_EFFICIENCY_VS_VALUE
+  id: PHASE_EFFICIENCY_VS_VALUE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PHASE_EFFICIENCY_VS_VALUE
+  nameWithType: NewDna.PHASE_EFFICIENCY_VS_VALUE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_EFFICIENCY_VS_VALUE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PHASE_EFFICIENCY_VS_VALUE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 55
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PHASE_EFFICIENCY_VS_VALUE = 32
+    return:
+      type: System.Int32
+    content.vb: Public Const PHASE_EFFICIENCY_VS_VALUE As Integer = 32
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_REACTION_SENSITIVITY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_REACTION_SENSITIVITY
+  id: PHASE_REACTION_SENSITIVITY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PHASE_REACTION_SENSITIVITY
+  nameWithType: NewDna.PHASE_REACTION_SENSITIVITY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_REACTION_SENSITIVITY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PHASE_REACTION_SENSITIVITY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 56
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PHASE_REACTION_SENSITIVITY = 33
+    return:
+      type: System.Int32
+    content.vb: Public Const PHASE_REACTION_SENSITIVITY As Integer = 33
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_COUNTER_ANTICIPATION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_COUNTER_ANTICIPATION
+  id: PHASE_COUNTER_ANTICIPATION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PHASE_COUNTER_ANTICIPATION
+  nameWithType: NewDna.PHASE_COUNTER_ANTICIPATION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PHASE_COUNTER_ANTICIPATION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PHASE_COUNTER_ANTICIPATION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 57
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PHASE_COUNTER_ANTICIPATION = 34
+    return:
+      type: System.Int32
+    content.vb: Public Const PHASE_COUNTER_ANTICIPATION As Integer = 34
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_SPLASH_OPTIMIZATION_LOGIC
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_SPLASH_OPTIMIZATION_LOGIC
+  id: BOARD_SPLASH_OPTIMIZATION_LOGIC
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: BOARD_SPLASH_OPTIMIZATION_LOGIC
+  nameWithType: NewDna.BOARD_SPLASH_OPTIMIZATION_LOGIC
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_SPLASH_OPTIMIZATION_LOGIC
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BOARD_SPLASH_OPTIMIZATION_LOGIC
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 60
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int BOARD_SPLASH_OPTIMIZATION_LOGIC = 35
+    return:
+      type: System.Int32
+    content.vb: Public Const BOARD_SPLASH_OPTIMIZATION_LOGIC As Integer = 35
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_FLYING_LANE_OPPORTUNISM
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_FLYING_LANE_OPPORTUNISM
+  id: BOARD_FLYING_LANE_OPPORTUNISM
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: BOARD_FLYING_LANE_OPPORTUNISM
+  nameWithType: NewDna.BOARD_FLYING_LANE_OPPORTUNISM
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_FLYING_LANE_OPPORTUNISM
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BOARD_FLYING_LANE_OPPORTUNISM
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 61
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int BOARD_FLYING_LANE_OPPORTUNISM = 36
+    return:
+      type: System.Int32
+    content.vb: Public Const BOARD_FLYING_LANE_OPPORTUNISM As Integer = 36
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_PLACEMENT_REACTION_TYPE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_PLACEMENT_REACTION_TYPE
+  id: BOARD_PLACEMENT_REACTION_TYPE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: BOARD_PLACEMENT_REACTION_TYPE
+  nameWithType: NewDna.BOARD_PLACEMENT_REACTION_TYPE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_PLACEMENT_REACTION_TYPE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BOARD_PLACEMENT_REACTION_TYPE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 62
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int BOARD_PLACEMENT_REACTION_TYPE = 37
+    return:
+      type: System.Int32
+    content.vb: Public Const BOARD_PLACEMENT_REACTION_TYPE As Integer = 37
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_HORIZONTAL_FOCUS_BIAS
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_HORIZONTAL_FOCUS_BIAS
+  id: BOARD_HORIZONTAL_FOCUS_BIAS
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: BOARD_HORIZONTAL_FOCUS_BIAS
+  nameWithType: NewDna.BOARD_HORIZONTAL_FOCUS_BIAS
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_HORIZONTAL_FOCUS_BIAS
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BOARD_HORIZONTAL_FOCUS_BIAS
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 63
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int BOARD_HORIZONTAL_FOCUS_BIAS = 38
+    return:
+      type: System.Int32
+    content.vb: Public Const BOARD_HORIZONTAL_FOCUS_BIAS As Integer = 38
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_LANE_DENSITY_STRATEGY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_LANE_DENSITY_STRATEGY
+  id: BOARD_LANE_DENSITY_STRATEGY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: BOARD_LANE_DENSITY_STRATEGY
+  nameWithType: NewDna.BOARD_LANE_DENSITY_STRATEGY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_LANE_DENSITY_STRATEGY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BOARD_LANE_DENSITY_STRATEGY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 64
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int BOARD_LANE_DENSITY_STRATEGY = 39
+    return:
+      type: System.Int32
+    content.vb: Public Const BOARD_LANE_DENSITY_STRATEGY As Integer = 39
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_SPACE_MANAGEMENT_LOGIC
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_SPACE_MANAGEMENT_LOGIC
+  id: BOARD_SPACE_MANAGEMENT_LOGIC
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: BOARD_SPACE_MANAGEMENT_LOGIC
+  nameWithType: NewDna.BOARD_SPACE_MANAGEMENT_LOGIC
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_SPACE_MANAGEMENT_LOGIC
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BOARD_SPACE_MANAGEMENT_LOGIC
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 65
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int BOARD_SPACE_MANAGEMENT_LOGIC = 40
+    return:
+      type: System.Int32
+    content.vb: Public Const BOARD_SPACE_MANAGEMENT_LOGIC As Integer = 40
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_MOVEMENT_VALUE_SENSE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_MOVEMENT_VALUE_SENSE
+  id: BOARD_MOVEMENT_VALUE_SENSE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: BOARD_MOVEMENT_VALUE_SENSE
+  nameWithType: NewDna.BOARD_MOVEMENT_VALUE_SENSE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_MOVEMENT_VALUE_SENSE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BOARD_MOVEMENT_VALUE_SENSE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 66
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int BOARD_MOVEMENT_VALUE_SENSE = 41
+    return:
+      type: System.Int32
+    content.vb: Public Const BOARD_MOVEMENT_VALUE_SENSE As Integer = 41
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_THREAT_SYMMETRY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_THREAT_SYMMETRY
+  id: BOARD_THREAT_SYMMETRY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: BOARD_THREAT_SYMMETRY
+  nameWithType: NewDna.BOARD_THREAT_SYMMETRY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BOARD_THREAT_SYMMETRY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BOARD_THREAT_SYMMETRY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 67
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int BOARD_THREAT_SYMMETRY = 42
+    return:
+      type: System.Int32
+    content.vb: Public Const BOARD_THREAT_SYMMETRY As Integer = 42
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_AOE_SYMMETRY_TOLERANCE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_AOE_SYMMETRY_TOLERANCE
+  id: TARGETING_AOE_SYMMETRY_TOLERANCE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TARGETING_AOE_SYMMETRY_TOLERANCE
+  nameWithType: NewDna.TARGETING_AOE_SYMMETRY_TOLERANCE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_AOE_SYMMETRY_TOLERANCE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TARGETING_AOE_SYMMETRY_TOLERANCE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 70
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TARGETING_AOE_SYMMETRY_TOLERANCE = 43
+    return:
+      type: System.Int32
+    content.vb: Public Const TARGETING_AOE_SYMMETRY_TOLERANCE As Integer = 43
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_FRIENDLY_SACRIFICE_VALUE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_FRIENDLY_SACRIFICE_VALUE
+  id: TARGETING_FRIENDLY_SACRIFICE_VALUE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TARGETING_FRIENDLY_SACRIFICE_VALUE
+  nameWithType: NewDna.TARGETING_FRIENDLY_SACRIFICE_VALUE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_FRIENDLY_SACRIFICE_VALUE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TARGETING_FRIENDLY_SACRIFICE_VALUE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 71
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TARGETING_FRIENDLY_SACRIFICE_VALUE = 44
+    return:
+      type: System.Int32
+    content.vb: Public Const TARGETING_FRIENDLY_SACRIFICE_VALUE As Integer = 44
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_DAMAGE_WASTE_TOLERANCE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_DAMAGE_WASTE_TOLERANCE
+  id: TARGETING_DAMAGE_WASTE_TOLERANCE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TARGETING_DAMAGE_WASTE_TOLERANCE
+  nameWithType: NewDna.TARGETING_DAMAGE_WASTE_TOLERANCE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_DAMAGE_WASTE_TOLERANCE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TARGETING_DAMAGE_WASTE_TOLERANCE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 72
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TARGETING_DAMAGE_WASTE_TOLERANCE = 45
+    return:
+      type: System.Int32
+    content.vb: Public Const TARGETING_DAMAGE_WASTE_TOLERANCE As Integer = 45
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_RESOURCE_EXCHANGE_EFFICIENCY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_RESOURCE_EXCHANGE_EFFICIENCY
+  id: COMBAT_RESOURCE_EXCHANGE_EFFICIENCY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: COMBAT_RESOURCE_EXCHANGE_EFFICIENCY
+  nameWithType: NewDna.COMBAT_RESOURCE_EXCHANGE_EFFICIENCY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_RESOURCE_EXCHANGE_EFFICIENCY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: COMBAT_RESOURCE_EXCHANGE_EFFICIENCY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 73
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int COMBAT_RESOURCE_EXCHANGE_EFFICIENCY = 46
+    return:
+      type: System.Int32
+    content.vb: Public Const COMBAT_RESOURCE_EXCHANGE_EFFICIENCY As Integer = 46
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_UNIT_PRIORITY_TYPE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_UNIT_PRIORITY_TYPE
+  id: TARGETING_UNIT_PRIORITY_TYPE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TARGETING_UNIT_PRIORITY_TYPE
+  nameWithType: NewDna.TARGETING_UNIT_PRIORITY_TYPE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_UNIT_PRIORITY_TYPE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TARGETING_UNIT_PRIORITY_TYPE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 74
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TARGETING_UNIT_PRIORITY_TYPE = 47
+    return:
+      type: System.Int32
+    content.vb: Public Const TARGETING_UNIT_PRIORITY_TYPE As Integer = 47
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_FACE_VS_BOARD_BIAS
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_FACE_VS_BOARD_BIAS
+  id: TARGETING_FACE_VS_BOARD_BIAS
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TARGETING_FACE_VS_BOARD_BIAS
+  nameWithType: NewDna.TARGETING_FACE_VS_BOARD_BIAS
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_FACE_VS_BOARD_BIAS
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TARGETING_FACE_VS_BOARD_BIAS
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 75
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TARGETING_FACE_VS_BOARD_BIAS = 48
+    return:
+      type: System.Int32
+    content.vb: Public Const TARGETING_FACE_VS_BOARD_BIAS As Integer = 48
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_STATUS_PHILOSOPHY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_STATUS_PHILOSOPHY
+  id: TARGETING_STATUS_PHILOSOPHY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TARGETING_STATUS_PHILOSOPHY
+  nameWithType: NewDna.TARGETING_STATUS_PHILOSOPHY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_STATUS_PHILOSOPHY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TARGETING_STATUS_PHILOSOPHY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 76
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TARGETING_STATUS_PHILOSOPHY = 49
+    return:
+      type: System.Int32
+    content.vb: Public Const TARGETING_STATUS_PHILOSOPHY As Integer = 49
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_REACTIVE_VS_PROACTIVE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_REACTIVE_VS_PROACTIVE
+  id: TARGETING_REACTIVE_VS_PROACTIVE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TARGETING_REACTIVE_VS_PROACTIVE
+  nameWithType: NewDna.TARGETING_REACTIVE_VS_PROACTIVE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TARGETING_REACTIVE_VS_PROACTIVE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TARGETING_REACTIVE_VS_PROACTIVE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 77
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TARGETING_REACTIVE_VS_PROACTIVE = 50
+    return:
+      type: System.Int32
+    content.vb: Public Const TARGETING_REACTIVE_VS_PROACTIVE As Integer = 50
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_TRADING_EFFICIENCY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_TRADING_EFFICIENCY
+  id: COMBAT_TRADING_EFFICIENCY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: COMBAT_TRADING_EFFICIENCY
+  nameWithType: NewDna.COMBAT_TRADING_EFFICIENCY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_TRADING_EFFICIENCY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: COMBAT_TRADING_EFFICIENCY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 78
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int COMBAT_TRADING_EFFICIENCY = 51
+    return:
+      type: System.Int32
+    content.vb: Public Const COMBAT_TRADING_EFFICIENCY As Integer = 51
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_PRECOMBAT_PRIORITY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_PRECOMBAT_PRIORITY
+  id: COMBAT_PRECOMBAT_PRIORITY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: COMBAT_PRECOMBAT_PRIORITY
+  nameWithType: NewDna.COMBAT_PRECOMBAT_PRIORITY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_PRECOMBAT_PRIORITY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: COMBAT_PRECOMBAT_PRIORITY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 79
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int COMBAT_PRECOMBAT_PRIORITY = 52
+    return:
+      type: System.Int32
+    content.vb: Public Const COMBAT_PRECOMBAT_PRIORITY As Integer = 52
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_LETHAL_CONFIDENCE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_LETHAL_CONFIDENCE
+  id: COMBAT_LETHAL_CONFIDENCE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: COMBAT_LETHAL_CONFIDENCE
+  nameWithType: NewDna.COMBAT_LETHAL_CONFIDENCE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.COMBAT_LETHAL_CONFIDENCE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: COMBAT_LETHAL_CONFIDENCE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 80
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int COMBAT_LETHAL_CONFIDENCE = 53
+    return:
+      type: System.Int32
+    content.vb: Public Const COMBAT_LETHAL_CONFIDENCE As Integer = 53
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_ENGINE_DURABILITY_PRIORITY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_ENGINE_DURABILITY_PRIORITY
+  id: UNIT_ENGINE_DURABILITY_PRIORITY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: UNIT_ENGINE_DURABILITY_PRIORITY
+  nameWithType: NewDna.UNIT_ENGINE_DURABILITY_PRIORITY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_ENGINE_DURABILITY_PRIORITY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UNIT_ENGINE_DURABILITY_PRIORITY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 83
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int UNIT_ENGINE_DURABILITY_PRIORITY = 54
+    return:
+      type: System.Int32
+    content.vb: Public Const UNIT_ENGINE_DURABILITY_PRIORITY As Integer = 54
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_STAT_VS_EFFECT_WEIGHT
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_STAT_VS_EFFECT_WEIGHT
+  id: UNIT_STAT_VS_EFFECT_WEIGHT
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: UNIT_STAT_VS_EFFECT_WEIGHT
+  nameWithType: NewDna.UNIT_STAT_VS_EFFECT_WEIGHT
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_STAT_VS_EFFECT_WEIGHT
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UNIT_STAT_VS_EFFECT_WEIGHT
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 84
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int UNIT_STAT_VS_EFFECT_WEIGHT = 55
+    return:
+      type: System.Int32
+    content.vb: Public Const UNIT_STAT_VS_EFFECT_WEIGHT As Integer = 55
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_SUBTYPE_COHESION_WEIGHT
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_SUBTYPE_COHESION_WEIGHT
+  id: UNIT_SUBTYPE_COHESION_WEIGHT
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: UNIT_SUBTYPE_COHESION_WEIGHT
+  nameWithType: NewDna.UNIT_SUBTYPE_COHESION_WEIGHT
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_SUBTYPE_COHESION_WEIGHT
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UNIT_SUBTYPE_COHESION_WEIGHT
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 85
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int UNIT_SUBTYPE_COHESION_WEIGHT = 56
+    return:
+      type: System.Int32
+    content.vb: Public Const UNIT_SUBTYPE_COHESION_WEIGHT As Integer = 56
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_PROTECTION_SYNERGY_BIAS
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_PROTECTION_SYNERGY_BIAS
+  id: UNIT_PROTECTION_SYNERGY_BIAS
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: UNIT_PROTECTION_SYNERGY_BIAS
+  nameWithType: NewDna.UNIT_PROTECTION_SYNERGY_BIAS
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_PROTECTION_SYNERGY_BIAS
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UNIT_PROTECTION_SYNERGY_BIAS
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 86
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int UNIT_PROTECTION_SYNERGY_BIAS = 57
+    return:
+      type: System.Int32
+    content.vb: Public Const UNIT_PROTECTION_SYNERGY_BIAS As Integer = 57
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_REPLACEMENT_URGENCY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_REPLACEMENT_URGENCY
+  id: UNIT_REPLACEMENT_URGENCY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: UNIT_REPLACEMENT_URGENCY
+  nameWithType: NewDna.UNIT_REPLACEMENT_URGENCY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_REPLACEMENT_URGENCY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UNIT_REPLACEMENT_URGENCY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 87
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int UNIT_REPLACEMENT_URGENCY = 58
+    return:
+      type: System.Int32
+    content.vb: Public Const UNIT_REPLACEMENT_URGENCY As Integer = 58
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_TOKEN_VALUATION_LOGIC
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_TOKEN_VALUATION_LOGIC
+  id: UNIT_TOKEN_VALUATION_LOGIC
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: UNIT_TOKEN_VALUATION_LOGIC
+  nameWithType: NewDna.UNIT_TOKEN_VALUATION_LOGIC
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.UNIT_TOKEN_VALUATION_LOGIC
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UNIT_TOKEN_VALUATION_LOGIC
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 88
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int UNIT_TOKEN_VALUATION_LOGIC = 59
+    return:
+      type: System.Int32
+    content.vb: Public Const UNIT_TOKEN_VALUATION_LOGIC As Integer = 59
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_UNKILLABLE_RECURSION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_UNKILLABLE_RECURSION
+  id: KEYWORD_UNKILLABLE_RECURSION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: KEYWORD_UNKILLABLE_RECURSION
+  nameWithType: NewDna.KEYWORD_UNKILLABLE_RECURSION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_UNKILLABLE_RECURSION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KEYWORD_UNKILLABLE_RECURSION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 91
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int KEYWORD_UNKILLABLE_RECURSION = 60
+    return:
+      type: System.Int32
+    content.vb: Public Const KEYWORD_UNKILLABLE_RECURSION As Integer = 60
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_BURNSOURCE_AGGRESSION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_BURNSOURCE_AGGRESSION
+  id: KEYWORD_BURNSOURCE_AGGRESSION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: KEYWORD_BURNSOURCE_AGGRESSION
+  nameWithType: NewDna.KEYWORD_BURNSOURCE_AGGRESSION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_BURNSOURCE_AGGRESSION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KEYWORD_BURNSOURCE_AGGRESSION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 92
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int KEYWORD_BURNSOURCE_AGGRESSION = 61
+    return:
+      type: System.Int32
+    content.vb: Public Const KEYWORD_BURNSOURCE_AGGRESSION As Integer = 61
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_ARMORED_EFFICIENCY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_ARMORED_EFFICIENCY
+  id: KEYWORD_ARMORED_EFFICIENCY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: KEYWORD_ARMORED_EFFICIENCY
+  nameWithType: NewDna.KEYWORD_ARMORED_EFFICIENCY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_ARMORED_EFFICIENCY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KEYWORD_ARMORED_EFFICIENCY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 93
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int KEYWORD_ARMORED_EFFICIENCY = 62
+    return:
+      type: System.Int32
+    content.vb: Public Const KEYWORD_ARMORED_EFFICIENCY As Integer = 62
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_BONUS_ATTACK_VALUE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_BONUS_ATTACK_VALUE
+  id: KEYWORD_BONUS_ATTACK_VALUE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: KEYWORD_BONUS_ATTACK_VALUE
+  nameWithType: NewDna.KEYWORD_BONUS_ATTACK_VALUE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_BONUS_ATTACK_VALUE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KEYWORD_BONUS_ATTACK_VALUE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 94
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int KEYWORD_BONUS_ATTACK_VALUE = 63
+    return:
+      type: System.Int32
+    content.vb: Public Const KEYWORD_BONUS_ATTACK_VALUE As Integer = 63
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_MARKED_FOCUS
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_MARKED_FOCUS
+  id: KEYWORD_MARKED_FOCUS
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: KEYWORD_MARKED_FOCUS
+  nameWithType: NewDna.KEYWORD_MARKED_FOCUS
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_MARKED_FOCUS
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KEYWORD_MARKED_FOCUS
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 95
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int KEYWORD_MARKED_FOCUS = 64
+    return:
+      type: System.Int32
+    content.vb: Public Const KEYWORD_MARKED_FOCUS As Integer = 64
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_SPLASH_PRIORITY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_SPLASH_PRIORITY
+  id: KEYWORD_SPLASH_PRIORITY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: KEYWORD_SPLASH_PRIORITY
+  nameWithType: NewDna.KEYWORD_SPLASH_PRIORITY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_SPLASH_PRIORITY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KEYWORD_SPLASH_PRIORITY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 96
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int KEYWORD_SPLASH_PRIORITY = 65
+    return:
+      type: System.Int32
+    content.vb: Public Const KEYWORD_SPLASH_PRIORITY As Integer = 65
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_SOULGUARD_STICKINESS
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_SOULGUARD_STICKINESS
+  id: KEYWORD_SOULGUARD_STICKINESS
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: KEYWORD_SOULGUARD_STICKINESS
+  nameWithType: NewDna.KEYWORD_SOULGUARD_STICKINESS
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_SOULGUARD_STICKINESS
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KEYWORD_SOULGUARD_STICKINESS
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 97
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int KEYWORD_SOULGUARD_STICKINESS = 66
+    return:
+      type: System.Int32
+    content.vb: Public Const KEYWORD_SOULGUARD_STICKINESS As Integer = 66
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_STUN_DENIAL
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_STUN_DENIAL
+  id: KEYWORD_STUN_DENIAL
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: KEYWORD_STUN_DENIAL
+  nameWithType: NewDna.KEYWORD_STUN_DENIAL
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_STUN_DENIAL
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KEYWORD_STUN_DENIAL
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 98
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int KEYWORD_STUN_DENIAL = 67
+    return:
+      type: System.Int32
+    content.vb: Public Const KEYWORD_STUN_DENIAL As Integer = 67
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_FLYING_VALUE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_FLYING_VALUE
+  id: KEYWORD_FLYING_VALUE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: KEYWORD_FLYING_VALUE
+  nameWithType: NewDna.KEYWORD_FLYING_VALUE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.KEYWORD_FLYING_VALUE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KEYWORD_FLYING_VALUE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 99
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int KEYWORD_FLYING_VALUE = 68
+    return:
+      type: System.Int32
+    content.vb: Public Const KEYWORD_FLYING_VALUE As Integer = 68
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_DESTRUCTION_PREFERENCE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_DESTRUCTION_PREFERENCE
+  id: TRIGGER_DESTRUCTION_PREFERENCE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TRIGGER_DESTRUCTION_PREFERENCE
+  nameWithType: NewDna.TRIGGER_DESTRUCTION_PREFERENCE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_DESTRUCTION_PREFERENCE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TRIGGER_DESTRUCTION_PREFERENCE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 101
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TRIGGER_DESTRUCTION_PREFERENCE = 69
+    return:
+      type: System.Int32
+    content.vb: Public Const TRIGGER_DESTRUCTION_PREFERENCE As Integer = 69
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_SACRIFICE_VISION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_SACRIFICE_VISION
+  id: TRIGGER_SACRIFICE_VISION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TRIGGER_SACRIFICE_VISION
+  nameWithType: NewDna.TRIGGER_SACRIFICE_VISION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_SACRIFICE_VISION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TRIGGER_SACRIFICE_VISION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 102
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TRIGGER_SACRIFICE_VISION = 70
+    return:
+      type: System.Int32
+    content.vb: Public Const TRIGGER_SACRIFICE_VISION As Integer = 70
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_DEATH_STRATEGY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_DEATH_STRATEGY
+  id: TRIGGER_DEATH_STRATEGY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TRIGGER_DEATH_STRATEGY
+  nameWithType: NewDna.TRIGGER_DEATH_STRATEGY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_DEATH_STRATEGY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TRIGGER_DEATH_STRATEGY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 103
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TRIGGER_DEATH_STRATEGY = 71
+    return:
+      type: System.Int32
+    content.vb: Public Const TRIGGER_DEATH_STRATEGY As Integer = 71
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_PLAY_STRATEGY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_PLAY_STRATEGY
+  id: TRIGGER_PLAY_STRATEGY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TRIGGER_PLAY_STRATEGY
+  nameWithType: NewDna.TRIGGER_PLAY_STRATEGY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_PLAY_STRATEGY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TRIGGER_PLAY_STRATEGY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 104
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TRIGGER_PLAY_STRATEGY = 72
+    return:
+      type: System.Int32
+    content.vb: Public Const TRIGGER_PLAY_STRATEGY As Integer = 72
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_COMBAT_STRATEGY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_COMBAT_STRATEGY
+  id: TRIGGER_COMBAT_STRATEGY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TRIGGER_COMBAT_STRATEGY
+  nameWithType: NewDna.TRIGGER_COMBAT_STRATEGY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_COMBAT_STRATEGY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TRIGGER_COMBAT_STRATEGY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 105
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TRIGGER_COMBAT_STRATEGY = 73
+    return:
+      type: System.Int32
+    content.vb: Public Const TRIGGER_COMBAT_STRATEGY As Integer = 73
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_SETUP_RECOGNITION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_SETUP_RECOGNITION
+  id: TRIGGER_SETUP_RECOGNITION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: TRIGGER_SETUP_RECOGNITION
+  nameWithType: NewDna.TRIGGER_SETUP_RECOGNITION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.TRIGGER_SETUP_RECOGNITION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TRIGGER_SETUP_RECOGNITION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 106
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int TRIGGER_SETUP_RECOGNITION = 74
+    return:
+      type: System.Int32
+    content.vb: Public Const TRIGGER_SETUP_RECOGNITION As Integer = 74
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_RESOURCE_ADVANTAGE_GREED
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_RESOURCE_ADVANTAGE_GREED
+  id: PSYCH_RESOURCE_ADVANTAGE_GREED
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PSYCH_RESOURCE_ADVANTAGE_GREED
+  nameWithType: NewDna.PSYCH_RESOURCE_ADVANTAGE_GREED
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_RESOURCE_ADVANTAGE_GREED
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PSYCH_RESOURCE_ADVANTAGE_GREED
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 109
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PSYCH_RESOURCE_ADVANTAGE_GREED = 75
+    return:
+      type: System.Int32
+    content.vb: Public Const PSYCH_RESOURCE_ADVANTAGE_GREED As Integer = 75
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_PREDICTIVE_CAUTION
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_PREDICTIVE_CAUTION
+  id: PSYCH_PREDICTIVE_CAUTION
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PSYCH_PREDICTIVE_CAUTION
+  nameWithType: NewDna.PSYCH_PREDICTIVE_CAUTION
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_PREDICTIVE_CAUTION
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PSYCH_PREDICTIVE_CAUTION
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 110
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PSYCH_PREDICTIVE_CAUTION = 76
+    return:
+      type: System.Int32
+    content.vb: Public Const PSYCH_PREDICTIVE_CAUTION As Integer = 76
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_OPPONENT_MANA_RESPECT
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_OPPONENT_MANA_RESPECT
+  id: PSYCH_OPPONENT_MANA_RESPECT
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PSYCH_OPPONENT_MANA_RESPECT
+  nameWithType: NewDna.PSYCH_OPPONENT_MANA_RESPECT
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_OPPONENT_MANA_RESPECT
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PSYCH_OPPONENT_MANA_RESPECT
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 111
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PSYCH_OPPONENT_MANA_RESPECT = 77
+    return:
+      type: System.Int32
+    content.vb: Public Const PSYCH_OPPONENT_MANA_RESPECT As Integer = 77
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_DECEPTION_BAITING
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_DECEPTION_BAITING
+  id: PSYCH_DECEPTION_BAITING
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PSYCH_DECEPTION_BAITING
+  nameWithType: NewDna.PSYCH_DECEPTION_BAITING
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_DECEPTION_BAITING
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PSYCH_DECEPTION_BAITING
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 112
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PSYCH_DECEPTION_BAITING = 78
+    return:
+      type: System.Int32
+    content.vb: Public Const PSYCH_DECEPTION_BAITING As Integer = 78
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_BLUFF_RESISTANCE
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_BLUFF_RESISTANCE
+  id: PSYCH_BLUFF_RESISTANCE
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PSYCH_BLUFF_RESISTANCE
+  nameWithType: NewDna.PSYCH_BLUFF_RESISTANCE
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_BLUFF_RESISTANCE
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PSYCH_BLUFF_RESISTANCE
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 113
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PSYCH_BLUFF_RESISTANCE = 79
+    return:
+      type: System.Int32
+    content.vb: Public Const PSYCH_BLUFF_RESISTANCE As Integer = 79
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_ADAPTABILITY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_ADAPTABILITY
+  id: PSYCH_ADAPTABILITY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: PSYCH_ADAPTABILITY
+  nameWithType: NewDna.PSYCH_ADAPTABILITY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.PSYCH_ADAPTABILITY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PSYCH_ADAPTABILITY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 114
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int PSYCH_ADAPTABILITY = 80
+    return:
+      type: System.Int32
+    content.vb: Public Const PSYCH_ADAPTABILITY As Integer = 80
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BUFF_PROTECTION_OR_AMPLIFY
+  commentId: F:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BUFF_PROTECTION_OR_AMPLIFY
+  id: BUFF_PROTECTION_OR_AMPLIFY
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: BUFF_PROTECTION_OR_AMPLIFY
+  nameWithType: NewDna.BUFF_PROTECTION_OR_AMPLIFY
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BUFF_PROTECTION_OR_AMPLIFY
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BUFF_PROTECTION_OR_AMPLIFY
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 117
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public const int BUFF_PROTECTION_OR_AMPLIFY = 81
+    return:
+      type: System.Int32
+    content.vb: Public Const BUFF_PROTECTION_OR_AMPLIFY As Integer = 81
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.#ctor
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.#ctor
+  id: '#ctor'
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: NewDna()
+  nameWithType: NewDna.NewDna()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.NewDna()
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 120
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public NewDna()
+    content.vb: Public Sub New()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.#ctor*
+  nameWithType.vb: NewDna.New()
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.New()
+  name.vb: New()
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.#ctor(System.Single[])
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.#ctor(System.Single[])
+  id: '#ctor(System.Single[])'
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: NewDna(float[])
+  nameWithType: NewDna.NewDna(float[])
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.NewDna(float[])
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 125
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public NewDna(float[] genes)
+    parameters:
+    - id: genes
+      type: System.Single[]
+    content.vb: Public Sub New(genes As Single())
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.#ctor*
+  nameWithType.vb: NewDna.New(Single())
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.New(Single())
+  name.vb: New(Single())
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateRandom(System.Random)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateRandom(System.Random)
+  id: CreateRandom(System.Random)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: CreateRandom(Random)
+  nameWithType: NewDna.CreateRandom(Random)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateRandom(System.Random)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CreateRandom
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 133
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static NewDna CreateRandom(Random rng)
+    parameters:
+    - id: rng
+      type: System.Random
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    content.vb: Public Shared Function CreateRandom(rng As Random) As NewDna
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateRandom*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateArchetypeDNA(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype,System.Random)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateArchetypeDNA(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype,System.Random)
+  id: CreateArchetypeDNA(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype,System.Random)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: CreateArchetypeDNA(BotArchetype, Random)
+  nameWithType: NewDna.CreateArchetypeDNA(BotArchetype, Random)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateArchetypeDNA(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype, System.Random)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CreateArchetypeDNA
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 141
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static NewDna CreateArchetypeDNA(BotArchetype archetype, Random rng)
+    parameters:
+    - id: archetype
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+    - id: rng
+      type: System.Random
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    content.vb: Public Shared Function CreateArchetypeDNA(archetype As BotArchetype, rng As Random) As NewDna
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateArchetypeDNA*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Clone
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Clone
+  id: Clone
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: NewDna.Clone()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Clone()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Clone
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 149
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public NewDna Clone()
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    content.vb: Public Function Clone() As NewDna
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Clone*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Crossover(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Random)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Crossover(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Random)
+  id: Crossover(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Random)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: Crossover(NewDna, NewDna, Random)
+  nameWithType: NewDna.Crossover(NewDna, NewDna, Random)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Crossover(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, System.Random)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Crossover
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 154
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static NewDna Crossover(NewDna parent1, NewDna parent2, Random rng)
+    parameters:
+    - id: parent1
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    - id: parent2
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    - id: rng
+      type: System.Random
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    content.vb: Public Shared Function Crossover(parent1 As NewDna, parent2 As NewDna, rng As Random) As NewDna
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Crossover*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Mutate(System.Random,System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Mutate(System.Random,System.Int32)
+  id: Mutate(System.Random,System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: Mutate(Random, int)
+  nameWithType: NewDna.Mutate(Random, int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Mutate(System.Random, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Mutate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 174
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void Mutate(Random rng, int stagnationCounter)
+    parameters:
+    - id: rng
+      type: System.Random
+    - id: stagnationCounter
+      type: System.Int32
+    content.vb: Public Sub Mutate(rng As Random, stagnationCounter As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Mutate*
+  nameWithType.vb: NewDna.Mutate(Random, Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Mutate(System.Random, Integer)
+  name.vb: Mutate(Random, Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CalculateDistance(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CalculateDistance(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  id: CalculateDistance(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: CalculateDistance(NewDna, NewDna)
+  nameWithType: NewDna.CalculateDistance(NewDna, NewDna)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CalculateDistance(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CalculateDistance
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 206
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static float CalculateDistance(NewDna a, NewDna b)
+    parameters:
+    - id: a
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    - id: b
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    return:
+      type: System.Single
+    content.vb: Public Shared Function CalculateDistance(a As NewDna, b As NewDna) As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CalculateDistance*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Average(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna})
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Average(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna})
+  id: Average(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna})
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: Average(List<NewDna>)
+  nameWithType: NewDna.Average(List<NewDna>)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Average(System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Average
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 217
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static NewDna Average(List<NewDna> dnaList)
+    parameters:
+    - id: dnaList
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna}
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    content.vb: Public Shared Function Average(dnaList As List(Of NewDna)) As NewDna
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Average*
+  nameWithType.vb: NewDna.Average(List(Of NewDna))
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Average(System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna))
+  name.vb: Average(List(Of NewDna))
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ApplyArchetypeBias(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype,System.Random,System.Single)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ApplyArchetypeBias(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype,System.Random,System.Single)
+  id: ApplyArchetypeBias(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype,System.Random,System.Single)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: ApplyArchetypeBias(BotArchetype, Random, float)
+  nameWithType: NewDna.ApplyArchetypeBias(BotArchetype, Random, float)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ApplyArchetypeBias(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype, System.Random, float)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ApplyArchetypeBias
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 229
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void ApplyArchetypeBias(BotArchetype archetype, Random rng, float strength = 0.5)
+    parameters:
+    - id: archetype
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+    - id: rng
+      type: System.Random
+    - id: strength
+      type: System.Single
+    content.vb: Public Sub ApplyArchetypeBias(archetype As BotArchetype, rng As Random, strength As Single = 0.5)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ApplyArchetypeBias*
+  nameWithType.vb: NewDna.ApplyArchetypeBias(BotArchetype, Random, Single)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ApplyArchetypeBias(CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype, System.Random, Single)
+  name.vb: ApplyArchetypeBias(BotArchetype, Random, Single)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ClassifyArchetype
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ClassifyArchetype
+  id: ClassifyArchetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: ClassifyArchetype()
+  nameWithType: NewDna.ClassifyArchetype()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ClassifyArchetype()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ClassifyArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 272
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string ClassifyArchetype()
+    return:
+      type: System.String
+    content.vb: Public Function ClassifyArchetype() As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ClassifyArchetype*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BuildDeck(System.Int32[],System.Random,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BuildDeck(System.Int32[],System.Random,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  id: BuildDeck(System.Int32[],System.Random,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: BuildDeck(int[], Random, Dictionary<int, CardStatsEnhanced>)
+  nameWithType: NewDna.BuildDeck(int[], Random, Dictionary<int, CardStatsEnhanced>)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BuildDeck(int[], System.Random, System.Collections.Generic.Dictionary<int, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BuildDeck
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 289
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int[] BuildDeck(int[] cardPool, Random rng, Dictionary<int, CardStatsEnhanced> stats = null)
+    parameters:
+    - id: cardPool
+      type: System.Int32[]
+    - id: rng
+      type: System.Random
+    - id: stats
+      type: System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+    return:
+      type: System.Int32[]
+    content.vb: Public Function BuildDeck(cardPool As Integer(), rng As Random, stats As Dictionary(Of Integer, CardStatsEnhanced) = Nothing) As Integer()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BuildDeck*
+  nameWithType.vb: NewDna.BuildDeck(Integer(), Random, Dictionary(Of Integer, CardStatsEnhanced))
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BuildDeck(Integer(), System.Random, System.Collections.Generic.Dictionary(Of Integer, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced))
+  name.vb: BuildDeck(Integer(), Random, Dictionary(Of Integer, CardStatsEnhanced))
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetGenesArray
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetGenesArray
+  id: GetGenesArray
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: GetGenesArray()
+  nameWithType: NewDna.GetGenesArray()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetGenesArray()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetGenesArray
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 908
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float[] GetGenesArray()
+    return:
+      type: System.Single[]
+    content.vb: Public Function GetGenesArray() As Single()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetGenesArray*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetBehaviorVector
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetBehaviorVector
+  id: GetBehaviorVector
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  langs:
+  - csharp
+  - vb
+  name: GetBehaviorVector()
+  nameWithType: NewDna.GetBehaviorVector()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetBehaviorVector()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetBehaviorVector
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/NewDna.cs
+    startLine: 910
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float[] GetBehaviorVector()
+    return:
+      type: System.Single[]
+    content.vb: Public Function GetBehaviorVector() As Single()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetBehaviorVector*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Genes*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Genes
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_Genes
+  name: Genes
+  nameWithType: NewDna.Genes
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Genes
+- uid: System.Single[]
+  isExternal: true
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.#ctor*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.#ctor
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna__ctor
+  name: NewDna
+  nameWithType: NewDna.NewDna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.NewDna
+  nameWithType.vb: NewDna.New
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.New
+  name.vb: New
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateRandom*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateRandom
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_CreateRandom_System_Random_
+  name: CreateRandom
+  nameWithType: NewDna.CreateRandom
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateRandom
+- uid: System.Random
+  commentId: T:System.Random
+  parent: System
+  isExternal: true
+  name: Random
+  nameWithType: Random
+  fullName: System.Random
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html
+  name: NewDna
+  nameWithType: NewDna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateArchetypeDNA*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateArchetypeDNA
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_CreateArchetypeDNA_CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetype_System_Random_
+  name: CreateArchetypeDNA
+  nameWithType: NewDna.CreateArchetypeDNA
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CreateArchetypeDNA
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html
+  name: BotArchetype
+  nameWithType: BotArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Clone*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Clone
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_Clone
+  name: Clone
+  nameWithType: NewDna.Clone
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Clone
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Crossover*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Crossover
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_Crossover_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_System_Random_
+  name: Crossover
+  nameWithType: NewDna.Crossover
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Crossover
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Mutate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Mutate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_Mutate_System_Random_System_Int32_
+  name: Mutate
+  nameWithType: NewDna.Mutate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Mutate
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CalculateDistance*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CalculateDistance
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_CalculateDistance_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_
+  name: CalculateDistance
+  nameWithType: NewDna.CalculateDistance
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.CalculateDistance
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Average*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Average
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_Average_System_Collections_Generic_List_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna__
+  name: Average
+  nameWithType: NewDna.Average
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.Average
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html
+  name: List<NewDna>
+  nameWithType: List<NewDna>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna>
+  nameWithType.vb: List(Of NewDna)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  name.vb: List(Of NewDna)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    name: NewDna
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    name: NewDna
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ApplyArchetypeBias*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ApplyArchetypeBias
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_ApplyArchetypeBias_CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetype_System_Random_System_Single_
+  name: ApplyArchetypeBias
+  nameWithType: NewDna.ApplyArchetypeBias
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ApplyArchetypeBias
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ClassifyArchetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ClassifyArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_ClassifyArchetype
+  name: ClassifyArchetype
+  nameWithType: NewDna.ClassifyArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.ClassifyArchetype
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BuildDeck*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BuildDeck
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_BuildDeck_System_Int32___System_Random_System_Collections_Generic_Dictionary_System_Int32_CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced__
+  name: BuildDeck
+  nameWithType: NewDna.BuildDeck
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.BuildDeck
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+  commentId: T:System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  name: Dictionary<int, CardStatsEnhanced>
+  nameWithType: Dictionary<int, CardStatsEnhanced>
+  fullName: System.Collections.Generic.Dictionary<int, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced>
+  nameWithType.vb: Dictionary(Of Integer, CardStatsEnhanced)
+  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced)
+  name.vb: Dictionary(Of Integer, CardStatsEnhanced)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+    name: CardStatsEnhanced
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+    name: CardStatsEnhanced
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetGenesArray*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetGenesArray
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_GetGenesArray
+  name: GetGenesArray
+  nameWithType: NewDna.GetGenesArray
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetGenesArray
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetBehaviorVector*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetBehaviorVector
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html#CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_GetBehaviorVector
+  name: GetBehaviorVector
+  nameWithType: NewDna.GetBehaviorVector
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.GetBehaviorVector

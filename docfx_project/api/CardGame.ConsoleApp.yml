@@ -1,0 +1,93 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp
+  commentId: N:CardGame.ConsoleApp
+  id: ConsoleApp
+  parent: CardGame
+  children:
+  - CardGame.ConsoleApp.AIBattleRunner
+  - CardGame.ConsoleApp.AIBattleRunnerII
+  - CardGame.ConsoleApp.AIBattleRunnerIII
+  - CardGame.ConsoleApp.BalanceAITester
+  - CardGame.ConsoleApp.Core
+  - CardGame.ConsoleApp.Evolution
+  - CardGame.ConsoleApp.MechanicsTester
+  - CardGame.ConsoleApp.OptimizedAILogger
+  langs:
+  - csharp
+  - vb
+  name: CardGame.ConsoleApp
+  nameWithType: CardGame.ConsoleApp
+  fullName: CardGame.ConsoleApp
+  type: Namespace
+  assemblies:
+  - CardGame.ConsoleApp
+references:
+- uid: CardGame.ConsoleApp.Core
+  commentId: N:CardGame.ConsoleApp.Core
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Core
+  nameWithType: CardGame.ConsoleApp.Core
+  fullName: CardGame.ConsoleApp.Core
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Core
+    name: Core
+    href: CardGame.ConsoleApp.Core.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Core
+    name: Core
+    href: CardGame.ConsoleApp.Core.html
+- uid: CardGame.ConsoleApp.Evolution
+  isExternal: true
+- uid: CardGame.ConsoleApp.AIBattleRunner
+  commentId: T:CardGame.ConsoleApp.AIBattleRunner
+  href: CardGame.ConsoleApp.AIBattleRunner.html
+  name: AIBattleRunner
+  nameWithType: AIBattleRunner
+  fullName: CardGame.ConsoleApp.AIBattleRunner
+- uid: CardGame.ConsoleApp.AIBattleRunnerII
+  commentId: T:CardGame.ConsoleApp.AIBattleRunnerII
+  href: CardGame.ConsoleApp.AIBattleRunnerII.html
+  name: AIBattleRunnerII
+  nameWithType: AIBattleRunnerII
+  fullName: CardGame.ConsoleApp.AIBattleRunnerII
+- uid: CardGame.ConsoleApp.AIBattleRunnerIII
+  commentId: T:CardGame.ConsoleApp.AIBattleRunnerIII
+  href: CardGame.ConsoleApp.AIBattleRunnerIII.html
+  name: AIBattleRunnerIII
+  nameWithType: AIBattleRunnerIII
+  fullName: CardGame.ConsoleApp.AIBattleRunnerIII
+- uid: CardGame.ConsoleApp.BalanceAITester
+  commentId: T:CardGame.ConsoleApp.BalanceAITester
+  href: CardGame.ConsoleApp.BalanceAITester.html
+  name: BalanceAITester
+  nameWithType: BalanceAITester
+  fullName: CardGame.ConsoleApp.BalanceAITester
+- uid: CardGame.ConsoleApp.MechanicsTester
+  commentId: T:CardGame.ConsoleApp.MechanicsTester
+  href: CardGame.ConsoleApp.MechanicsTester.html
+  name: MechanicsTester
+  nameWithType: MechanicsTester
+  fullName: CardGame.ConsoleApp.MechanicsTester
+- uid: CardGame.ConsoleApp.OptimizedAILogger
+  commentId: T:CardGame.ConsoleApp.OptimizedAILogger
+  href: CardGame.ConsoleApp.OptimizedAILogger.html
+  name: OptimizedAILogger
+  nameWithType: OptimizedAILogger
+  fullName: CardGame.ConsoleApp.OptimizedAILogger

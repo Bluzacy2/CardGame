@@ -1,0 +1,255 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.Triggers.TriggerSystem
+  commentId: T:CardGame.Core.Events.Triggers.TriggerSystem
+  id: TriggerSystem
+  parent: CardGame.Core.Events.Triggers
+  children:
+  - CardGame.Core.Events.Triggers.TriggerSystem.ProcessEvents(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  langs:
+  - csharp
+  - vb
+  name: TriggerSystem
+  nameWithType: TriggerSystem
+  fullName: CardGame.Core.Events.Triggers.TriggerSystem
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/Triggers/TriggerSystem.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TriggerSystem
+    path: ../Source/CardGame.Core/Events/Triggers/TriggerSystem.cs
+    startLine: 15
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events.Triggers
+  summary: Handles event-triggered effects and processes them according to game state.
+  example: []
+  syntax:
+    content: public class TriggerSystem
+    content.vb: Public Class TriggerSystem
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Events.Triggers.TriggerSystem.ProcessEvents(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Events.Triggers.TriggerSystem.ProcessEvents(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  id: ProcessEvents(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Events.Triggers.TriggerSystem
+  langs:
+  - csharp
+  - vb
+  name: ProcessEvents(GameState, EventBus, GameContext)
+  nameWithType: TriggerSystem.ProcessEvents(GameState, EventBus, GameContext)
+  fullName: CardGame.Core.Events.Triggers.TriggerSystem.ProcessEvents(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/Triggers/TriggerSystem.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ProcessEvents
+    path: ../Source/CardGame.Core/Events/Triggers/TriggerSystem.cs
+    startLine: 41
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events.Triggers
+  summary: Processes pending events and activates relevant triggers until an interaction is required.
+  example: []
+  syntax:
+    content: public GameState ProcessEvents(GameState currentState, EventBus eventBus, GameContext context)
+    parameters:
+    - id: currentState
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    - id: eventBus
+      type: CardGame.Core.Events.EventBus
+      description: The event bus containing pending events.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: The game context for effect resolution.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state after processing triggers.
+    content.vb: Public Function ProcessEvents(currentState As GameState, eventBus As EventBus, context As GameContext) As GameState
+  overload: CardGame.Core.Events.Triggers.TriggerSystem.ProcessEvents*
+references:
+- uid: CardGame.Core.Events.Triggers
+  commentId: N:CardGame.Core.Events.Triggers
+  href: CardGame.html
+  name: CardGame.Core.Events.Triggers
+  nameWithType: CardGame.Core.Events.Triggers
+  fullName: CardGame.Core.Events.Triggers
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Triggers
+    name: Triggers
+    href: CardGame.Core.Events.Triggers.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Triggers
+    name: Triggers
+    href: CardGame.Core.Events.Triggers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Triggers.TriggerSystem.ProcessEvents*
+  commentId: Overload:CardGame.Core.Events.Triggers.TriggerSystem.ProcessEvents
+  href: CardGame.Core.Events.Triggers.TriggerSystem.html#CardGame_Core_Events_Triggers_TriggerSystem_ProcessEvents_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  name: ProcessEvents
+  nameWithType: TriggerSystem.ProcessEvents
+  fullName: CardGame.Core.Events.Triggers.TriggerSystem.ProcessEvents
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html

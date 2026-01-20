@@ -1,0 +1,189 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Interfaces.IAIStrategy
+  commentId: T:CardGame.Core.AI.Interfaces.IAIStrategy
+  id: IAIStrategy
+  parent: CardGame.Core.AI.Interfaces
+  children:
+  - CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IAIStrategy
+  nameWithType: IAIStrategy
+  fullName: CardGame.Core.AI.Interfaces.IAIStrategy
+  type: Interface
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Interfaces/IAIStrategy.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: IAIStrategy
+    path: ../Source/CardGame.Core/AI/Interfaces/IAIStrategy.cs
+    startLine: 8
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Interfaces
+  summary: Defines the contract for AI strategies that evaluate game states and make decisions.
+  example: []
+  syntax:
+    content: public interface IAIStrategy
+    content.vb: Public Interface IAIStrategy
+- uid: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  commentId: M:CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  id: Evaluate(CardGame.Core.State.Models.GameState,System.Int32)
+  parent: CardGame.Core.AI.Interfaces.IAIStrategy
+  langs:
+  - csharp
+  - vb
+  name: Evaluate(GameState, int)
+  nameWithType: IAIStrategy.Evaluate(GameState, int)
+  fullName: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Interfaces/IAIStrategy.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Evaluate
+    path: ../Source/CardGame.Core/AI/Interfaces/IAIStrategy.cs
+    startLine: 16
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Interfaces
+  summary: Evaluates the desirability of a game state from the perspective of the specified bot player.
+  example: []
+  syntax:
+    content: float Evaluate(GameState state, int botPlayerId)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The game state to evaluate.
+    - id: botPlayerId
+      type: System.Int32
+      description: The ID of the bot player being evaluated.
+    return:
+      type: System.Single
+      description: A float score representing the desirability of the state (higher is better).
+    content.vb: Function Evaluate(state As GameState, botPlayerId As Integer) As Single
+  overload: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate*
+  nameWithType.vb: IAIStrategy.Evaluate(GameState, Integer)
+  fullName.vb: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate(CardGame.Core.State.Models.GameState, Integer)
+  name.vb: Evaluate(GameState, Integer)
+references:
+- uid: CardGame.Core.AI.Interfaces
+  commentId: N:CardGame.Core.AI.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.AI.Interfaces
+  nameWithType: CardGame.Core.AI.Interfaces
+  fullName: CardGame.Core.AI.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+- uid: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate*
+  commentId: Overload:CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate
+  href: CardGame.Core.AI.Interfaces.IAIStrategy.html#CardGame_Core_AI_Interfaces_IAIStrategy_Evaluate_CardGame_Core_State_Models_GameState_System_Int32_
+  name: Evaluate
+  nameWithType: IAIStrategy.Evaluate
+  fullName: CardGame.Core.AI.Interfaces.IAIStrategy.Evaluate
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

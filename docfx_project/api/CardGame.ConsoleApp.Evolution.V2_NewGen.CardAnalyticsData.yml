@@ -1,0 +1,731 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  id: CardAnalyticsData
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals
+  langs:
+  - csharp
+  - vb
+  name: CardAnalyticsData
+  nameWithType: CardAnalyticsData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardAnalyticsData
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 710
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class CardAnalyticsData
+    content.vb: Public Class CardAnalyticsData
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation
+  id: Generation
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  langs:
+  - csharp
+  - vb
+  name: Generation
+  nameWithType: CardAnalyticsData.Generation
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Generation
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 712
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Generation { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Generation As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp
+  id: Timestamp
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: CardAnalyticsData.Timestamp
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Timestamp
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 713
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public DateTime Timestamp { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property Timestamp As Date
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals
+  id: TotalIndividuals
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  langs:
+  - csharp
+  - vb
+  name: TotalIndividuals
+  nameWithType: CardAnalyticsData.TotalIndividuals
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TotalIndividuals
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 714
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int TotalIndividuals { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalIndividuals As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics
+  id: CardStatistics
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  langs:
+  - csharp
+  - vb
+  name: CardStatistics
+  nameWithType: CardAnalyticsData.CardStatistics
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardStatistics
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 715
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<CardStatistic> CardStatistics { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic}
+    content.vb: Public Property CardStatistics As List(Of CardStatistic)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics
+  id: ArchetypeStatistics
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  langs:
+  - csharp
+  - vb
+  name: ArchetypeStatistics
+  nameWithType: CardAnalyticsData.ArchetypeStatistics
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ArchetypeStatistics
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 716
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<ArchetypeStatistic> ArchetypeStatistics { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic}
+    content.vb: Public Property ArchetypeStatistics As List(Of ArchetypeStatistic)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype
+  id: TopCardsByArchetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  langs:
+  - csharp
+  - vb
+  name: TopCardsByArchetype
+  nameWithType: CardAnalyticsData.TopCardsByArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TopCardsByArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 717
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public Dictionary<string, List<CardStatistic>> TopCardsByArchetype { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic}}
+    content.vb: Public Property TopCardsByArchetype As Dictionary(Of String, List(Of CardStatistic))
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies
+  id: CardSynergies
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  langs:
+  - csharp
+  - vb
+  name: CardSynergies
+  nameWithType: CardAnalyticsData.CardSynergies
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardSynergies
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 718
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<CardSynergy> CardSynergies { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy}
+    content.vb: Public Property CardSynergies As List(Of CardSynergy)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards
+  id: BestWinRateCards
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  langs:
+  - csharp
+  - vb
+  name: BestWinRateCards
+  nameWithType: CardAnalyticsData.BestWinRateCards
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BestWinRateCards
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 719
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<WinRateCardStat> BestWinRateCards { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat}
+    content.vb: Public Property BestWinRateCards As List(Of WinRateCardStat)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks
+  id: TopDecks
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  langs:
+  - csharp
+  - vb
+  name: TopDecks
+  nameWithType: CardAnalyticsData.TopDecks
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TopDecks
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 720
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<DeckInfo> TopDecks { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo}
+    content.vb: Public Property TopDecks As List(Of DeckInfo)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_Generation
+  name: Generation
+  nameWithType: CardAnalyticsData.Generation
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_Timestamp
+  name: Timestamp
+  nameWithType: CardAnalyticsData.Timestamp
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_TotalIndividuals
+  name: TotalIndividuals
+  nameWithType: CardAnalyticsData.TotalIndividuals
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_CardStatistics
+  name: CardStatistics
+  nameWithType: CardAnalyticsData.CardStatistics
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html
+  name: List<CardStatistic>
+  nameWithType: List<CardStatistic>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic>
+  nameWithType.vb: List(Of CardStatistic)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic)
+  name.vb: List(Of CardStatistic)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+    name: CardStatistic
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+    name: CardStatistic
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_ArchetypeStatistics
+  name: ArchetypeStatistics
+  nameWithType: CardAnalyticsData.ArchetypeStatistics
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.html
+  name: List<ArchetypeStatistic>
+  nameWithType: List<ArchetypeStatistic>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic>
+  nameWithType.vb: List(Of ArchetypeStatistic)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic)
+  name.vb: List(Of ArchetypeStatistic)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+    name: ArchetypeStatistic
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+    name: ArchetypeStatistic
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.html
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_TopCardsByArchetype
+  name: TopCardsByArchetype
+  nameWithType: CardAnalyticsData.TopCardsByArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype
+- uid: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic}}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html
+  name: Dictionary<string, List<CardStatistic>>
+  nameWithType: Dictionary<string, List<CardStatistic>>
+  fullName: System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic>>
+  nameWithType.vb: Dictionary(Of String, List(Of CardStatistic))
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic))
+  name.vb: Dictionary(Of String, List(Of CardStatistic))
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+    name: CardStatistic
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+    name: CardStatistic
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_CardSynergies
+  name: CardSynergies
+  nameWithType: CardAnalyticsData.CardSynergies
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html
+  name: List<CardSynergy>
+  nameWithType: List<CardSynergy>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy>
+  nameWithType.vb: List(Of CardSynergy)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy)
+  name.vb: List(Of CardSynergy)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+    name: CardSynergy
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+    name: CardSynergy
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_BestWinRateCards
+  name: BestWinRateCards
+  nameWithType: CardAnalyticsData.BestWinRateCards
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html
+  name: List<WinRateCardStat>
+  nameWithType: List<WinRateCardStat>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat>
+  nameWithType.vb: List(Of WinRateCardStat)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat)
+  name.vb: List(Of WinRateCardStat)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+    name: WinRateCardStat
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+    name: WinRateCardStat
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_TopDecks
+  name: TopDecks
+  nameWithType: CardAnalyticsData.TopDecks
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo.html
+  name: List<DeckInfo>
+  nameWithType: List<DeckInfo>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo>
+  nameWithType.vb: List(Of DeckInfo)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo)
+  name.vb: List(Of DeckInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo
+    name: DeckInfo
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo
+    name: DeckInfo
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo.html
+  - name: )

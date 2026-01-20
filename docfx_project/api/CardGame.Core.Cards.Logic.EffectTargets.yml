@@ -1,0 +1,385 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Logic.EffectTargets
+  commentId: T:CardGame.Core.Cards.Logic.EffectTargets
+  id: EffectTargets
+  parent: CardGame.Core.Cards.Logic
+  children:
+  - CardGame.Core.Cards.Logic.EffectTargets.TargetPlayer
+  - CardGame.Core.Cards.Logic.EffectTargets.TargetUnit
+  - CardGame.Core.Cards.Logic.EffectTargets.UnitTargets
+  langs:
+  - csharp
+  - vb
+  name: EffectTargets
+  nameWithType: EffectTargets
+  fullName: CardGame.Core.Cards.Logic.EffectTargets
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EffectTargets
+    path: ../Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+    startLine: 15
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic
+  summary: Contains the resolved targets for an effect, including player and unit targets.
+  example: []
+  syntax:
+    content: public class EffectTargets
+    content.vb: Public Class EffectTargets
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Logic.EffectTargets.TargetPlayer
+  commentId: P:CardGame.Core.Cards.Logic.EffectTargets.TargetPlayer
+  id: TargetPlayer
+  parent: CardGame.Core.Cards.Logic.EffectTargets
+  langs:
+  - csharp
+  - vb
+  name: TargetPlayer
+  nameWithType: EffectTargets.TargetPlayer
+  fullName: CardGame.Core.Cards.Logic.EffectTargets.TargetPlayer
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TargetPlayer
+    path: ../Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+    startLine: 20
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic
+  summary: Gets or sets the target player, if any.
+  example: []
+  syntax:
+    content: public PlayerState? TargetPlayer { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Models.PlayerState
+    content.vb: Public Property TargetPlayer As PlayerState
+  overload: CardGame.Core.Cards.Logic.EffectTargets.TargetPlayer*
+- uid: CardGame.Core.Cards.Logic.EffectTargets.UnitTargets
+  commentId: P:CardGame.Core.Cards.Logic.EffectTargets.UnitTargets
+  id: UnitTargets
+  parent: CardGame.Core.Cards.Logic.EffectTargets
+  langs:
+  - csharp
+  - vb
+  name: UnitTargets
+  nameWithType: EffectTargets.UnitTargets
+  fullName: CardGame.Core.Cards.Logic.EffectTargets.UnitTargets
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UnitTargets
+    path: ../Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+    startLine: 25
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic
+  summary: Gets or sets the list of target units.
+  example: []
+  syntax:
+    content: public List<CardInstance> UnitTargets { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+    content.vb: Public Property UnitTargets As List(Of CardInstance)
+  overload: CardGame.Core.Cards.Logic.EffectTargets.UnitTargets*
+- uid: CardGame.Core.Cards.Logic.EffectTargets.TargetUnit
+  commentId: P:CardGame.Core.Cards.Logic.EffectTargets.TargetUnit
+  id: TargetUnit
+  parent: CardGame.Core.Cards.Logic.EffectTargets
+  langs:
+  - csharp
+  - vb
+  name: TargetUnit
+  nameWithType: EffectTargets.TargetUnit
+  fullName: CardGame.Core.Cards.Logic.EffectTargets.TargetUnit
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TargetUnit
+    path: ../Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+    startLine: 30
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic
+  summary: Gets the first target unit, if any.
+  example: []
+  syntax:
+    content: public CardInstance? TargetUnit { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+    content.vb: Public ReadOnly Property TargetUnit As CardInstance
+  overload: CardGame.Core.Cards.Logic.EffectTargets.TargetUnit*
+references:
+- uid: CardGame.Core.Cards.Logic
+  commentId: N:CardGame.Core.Cards.Logic
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic
+  nameWithType: CardGame.Core.Cards.Logic
+  fullName: CardGame.Core.Cards.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Logic.EffectTargets.TargetPlayer*
+  commentId: Overload:CardGame.Core.Cards.Logic.EffectTargets.TargetPlayer
+  href: CardGame.Core.Cards.Logic.EffectTargets.html#CardGame_Core_Cards_Logic_EffectTargets_TargetPlayer
+  name: TargetPlayer
+  nameWithType: EffectTargets.TargetPlayer
+  fullName: CardGame.Core.Cards.Logic.EffectTargets.TargetPlayer
+- uid: CardGame.Core.State.Models.PlayerState
+  commentId: T:CardGame.Core.State.Models.PlayerState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.PlayerState.html
+  name: PlayerState
+  nameWithType: PlayerState
+  fullName: CardGame.Core.State.Models.PlayerState
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Cards.Logic.EffectTargets.UnitTargets*
+  commentId: Overload:CardGame.Core.Cards.Logic.EffectTargets.UnitTargets
+  href: CardGame.Core.Cards.Logic.EffectTargets.html#CardGame_Core_Cards_Logic_EffectTargets_UnitTargets
+  name: UnitTargets
+  nameWithType: EffectTargets.UnitTargets
+  fullName: CardGame.Core.Cards.Logic.EffectTargets.UnitTargets
+- uid: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: List<CardInstance>
+  nameWithType: List<CardInstance>
+  fullName: System.Collections.Generic.List<CardGame.Core.Cards.Models.CardInstance>
+  nameWithType.vb: List(Of CardInstance)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Cards.Models.CardInstance)
+  name.vb: List(Of CardInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.Cards.Logic.EffectTargets.TargetUnit*
+  commentId: Overload:CardGame.Core.Cards.Logic.EffectTargets.TargetUnit
+  href: CardGame.Core.Cards.Logic.EffectTargets.html#CardGame_Core_Cards_Logic_EffectTargets_TargetUnit
+  name: TargetUnit
+  nameWithType: EffectTargets.TargetUnit
+  fullName: CardGame.Core.Cards.Logic.EffectTargets.TargetUnit
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html

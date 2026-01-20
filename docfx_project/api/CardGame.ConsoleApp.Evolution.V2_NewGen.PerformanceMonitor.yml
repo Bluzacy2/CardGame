@@ -1,0 +1,256 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+  id: PerformanceMonitor
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.CheckForBottlenecks
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.GetCurrentMetrics
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.LogGenerationPerformance(System.Int32,System.TimeSpan,System.Int32,System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.PrintSystemSummary
+  langs:
+  - csharp
+  - vb
+  name: PerformanceMonitor
+  nameWithType: PerformanceMonitor
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PerformanceMonitor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 4
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static class PerformanceMonitor
+    content.vb: Public Module PerformanceMonitor
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.GetCurrentMetrics
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.GetCurrentMetrics
+  id: GetCurrentMetrics
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentMetrics()
+  nameWithType: PerformanceMonitor.GetCurrentMetrics()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.GetCurrentMetrics()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetCurrentMetrics
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 25
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static PerformanceMetrics GetCurrentMetrics()
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+    content.vb: Public Shared Function GetCurrentMetrics() As PerformanceMetrics
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.GetCurrentMetrics*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.LogGenerationPerformance(System.Int32,System.TimeSpan,System.Int32,System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.LogGenerationPerformance(System.Int32,System.TimeSpan,System.Int32,System.Int32)
+  id: LogGenerationPerformance(System.Int32,System.TimeSpan,System.Int32,System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+  langs:
+  - csharp
+  - vb
+  name: LogGenerationPerformance(int, TimeSpan, int, int)
+  nameWithType: PerformanceMonitor.LogGenerationPerformance(int, TimeSpan, int, int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.LogGenerationPerformance(int, System.TimeSpan, int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LogGenerationPerformance
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 61
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static void LogGenerationPerformance(int generation, TimeSpan generationTime, int populationSize, int matchesPerBot)
+    parameters:
+    - id: generation
+      type: System.Int32
+    - id: generationTime
+      type: System.TimeSpan
+    - id: populationSize
+      type: System.Int32
+    - id: matchesPerBot
+      type: System.Int32
+    content.vb: Public Shared Sub LogGenerationPerformance(generation As Integer, generationTime As TimeSpan, populationSize As Integer, matchesPerBot As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.LogGenerationPerformance*
+  nameWithType.vb: PerformanceMonitor.LogGenerationPerformance(Integer, TimeSpan, Integer, Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.LogGenerationPerformance(Integer, System.TimeSpan, Integer, Integer)
+  name.vb: LogGenerationPerformance(Integer, TimeSpan, Integer, Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.CheckForBottlenecks
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.CheckForBottlenecks
+  id: CheckForBottlenecks
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+  langs:
+  - csharp
+  - vb
+  name: CheckForBottlenecks()
+  nameWithType: PerformanceMonitor.CheckForBottlenecks()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.CheckForBottlenecks()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CheckForBottlenecks
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 104
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static void CheckForBottlenecks()
+    content.vb: Public Shared Sub CheckForBottlenecks()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.CheckForBottlenecks*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.PrintSystemSummary
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.PrintSystemSummary
+  id: PrintSystemSummary
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+  langs:
+  - csharp
+  - vb
+  name: PrintSystemSummary()
+  nameWithType: PerformanceMonitor.PrintSystemSummary()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.PrintSystemSummary()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PrintSystemSummary
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/PerformanceMonitor.cs
+    startLine: 134
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static void PrintSystemSummary()
+    content.vb: Public Shared Sub PrintSystemSummary()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.PrintSystemSummary*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.GetCurrentMetrics*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.GetCurrentMetrics
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.html#CardGame_ConsoleApp_Evolution_V2_NewGen_PerformanceMonitor_GetCurrentMetrics
+  name: GetCurrentMetrics
+  nameWithType: PerformanceMonitor.GetCurrentMetrics
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.GetCurrentMetrics
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.html
+  name: PerformanceMetrics
+  nameWithType: PerformanceMetrics
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.LogGenerationPerformance*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.LogGenerationPerformance
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.html#CardGame_ConsoleApp_Evolution_V2_NewGen_PerformanceMonitor_LogGenerationPerformance_System_Int32_System_TimeSpan_System_Int32_System_Int32_
+  name: LogGenerationPerformance
+  nameWithType: PerformanceMonitor.LogGenerationPerformance
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.LogGenerationPerformance
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.CheckForBottlenecks*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.CheckForBottlenecks
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.html#CardGame_ConsoleApp_Evolution_V2_NewGen_PerformanceMonitor_CheckForBottlenecks
+  name: CheckForBottlenecks
+  nameWithType: PerformanceMonitor.CheckForBottlenecks
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.CheckForBottlenecks
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.PrintSystemSummary*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.PrintSystemSummary
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.html#CardGame_ConsoleApp_Evolution_V2_NewGen_PerformanceMonitor_PrintSystemSummary
+  name: PrintSystemSummary
+  nameWithType: PerformanceMonitor.PrintSystemSummary
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.PrintSystemSummary

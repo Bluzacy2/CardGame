@@ -1,0 +1,483 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Logic.EffectTargetResolver
+  commentId: T:CardGame.Core.Cards.Logic.EffectTargetResolver
+  id: EffectTargetResolver
+  parent: CardGame.Core.Cards.Logic
+  children:
+  - CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner(CardGame.Core.State.Models.GameState,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  - CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets(CardGame.Core.Cards.Data.TargetType,CardGame.Core.State.Models.GameState,System.Int32)
+  - CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve(CardGame.Core.Cards.Data.TargetType,CardGame.Core.State.Models.GameState,CardGame.Core.Events.Interfaces.IGameEvent,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: EffectTargetResolver
+  nameWithType: EffectTargetResolver
+  fullName: CardGame.Core.Cards.Logic.EffectTargetResolver
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EffectTargetResolver
+    path: ../Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+    startLine: 37
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic
+  summary: Resolves effect targets based on targeting types, game state, and context events.
+  example: []
+  syntax:
+    content: public static class EffectTargetResolver
+    content.vb: Public Module EffectTargetResolver
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve(CardGame.Core.Cards.Data.TargetType,CardGame.Core.State.Models.GameState,CardGame.Core.Events.Interfaces.IGameEvent,System.Int32)
+  commentId: M:CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve(CardGame.Core.Cards.Data.TargetType,CardGame.Core.State.Models.GameState,CardGame.Core.Events.Interfaces.IGameEvent,System.Int32)
+  id: Resolve(CardGame.Core.Cards.Data.TargetType,CardGame.Core.State.Models.GameState,CardGame.Core.Events.Interfaces.IGameEvent,System.Int32)
+  parent: CardGame.Core.Cards.Logic.EffectTargetResolver
+  langs:
+  - csharp
+  - vb
+  name: Resolve(TargetType, GameState, IGameEvent, int)
+  nameWithType: EffectTargetResolver.Resolve(TargetType, GameState, IGameEvent, int)
+  fullName: CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve(CardGame.Core.Cards.Data.TargetType, CardGame.Core.State.Models.GameState, CardGame.Core.Events.Interfaces.IGameEvent, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Resolve
+    path: ../Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+    startLine: 48
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic
+  summary: Resolves the targets for an effect based on the specified targeting type and context.
+  example: []
+  syntax:
+    content: public static EffectTargets Resolve(TargetType type, GameState state, IGameEvent contextEvent, int sourceCardId)
+    parameters:
+    - id: type
+      type: CardGame.Core.Cards.Data.TargetType
+      description: The targeting type to resolve.
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    - id: contextEvent
+      type: CardGame.Core.Events.Interfaces.IGameEvent
+      description: The context event that triggered the effect.
+    - id: sourceCardId
+      type: System.Int32
+      description: The instance ID of the card that owns the effect.
+    return:
+      type: CardGame.Core.Cards.Logic.EffectTargets
+      description: An EffectTargets object containing all resolved targets.
+    content.vb: Public Shared Function Resolve(type As TargetType, state As GameState, contextEvent As IGameEvent, sourceCardId As Integer) As EffectTargets
+  overload: CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve*
+  nameWithType.vb: EffectTargetResolver.Resolve(TargetType, GameState, IGameEvent, Integer)
+  fullName.vb: CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve(CardGame.Core.Cards.Data.TargetType, CardGame.Core.State.Models.GameState, CardGame.Core.Events.Interfaces.IGameEvent, Integer)
+  name.vb: Resolve(TargetType, GameState, IGameEvent, Integer)
+- uid: CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets(CardGame.Core.Cards.Data.TargetType,CardGame.Core.State.Models.GameState,System.Int32)
+  commentId: M:CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets(CardGame.Core.Cards.Data.TargetType,CardGame.Core.State.Models.GameState,System.Int32)
+  id: GetPotentialTargets(CardGame.Core.Cards.Data.TargetType,CardGame.Core.State.Models.GameState,System.Int32)
+  parent: CardGame.Core.Cards.Logic.EffectTargetResolver
+  langs:
+  - csharp
+  - vb
+  name: GetPotentialTargets(TargetType, GameState, int)
+  nameWithType: EffectTargetResolver.GetPotentialTargets(TargetType, GameState, int)
+  fullName: CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets(CardGame.Core.Cards.Data.TargetType, CardGame.Core.State.Models.GameState, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetPotentialTargets
+    path: ../Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+    startLine: 172
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic
+  summary: Gets all potential targets for a given targeting type without requiring a specific context event.
+  example: []
+  syntax:
+    content: public static List<CardInstance> GetPotentialTargets(TargetType type, GameState state, int sourceCardId)
+    parameters:
+    - id: type
+      type: CardGame.Core.Cards.Data.TargetType
+      description: The targeting type to get potential targets for.
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    - id: sourceCardId
+      type: System.Int32
+      description: The instance ID of the card that owns the effect.
+    return:
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+      description: A list of potential target units.
+    content.vb: Public Shared Function GetPotentialTargets(type As TargetType, state As GameState, sourceCardId As Integer) As List(Of CardInstance)
+  overload: CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets*
+  nameWithType.vb: EffectTargetResolver.GetPotentialTargets(TargetType, GameState, Integer)
+  fullName.vb: CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets(CardGame.Core.Cards.Data.TargetType, CardGame.Core.State.Models.GameState, Integer)
+  name.vb: GetPotentialTargets(TargetType, GameState, Integer)
+- uid: CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner(CardGame.Core.State.Models.GameState,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  commentId: M:CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner(CardGame.Core.State.Models.GameState,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  id: GetOwner(CardGame.Core.State.Models.GameState,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
+  parent: CardGame.Core.Cards.Logic.EffectTargetResolver
+  langs:
+  - csharp
+  - vb
+  name: GetOwner(GameState, int, IGameEvent?)
+  nameWithType: EffectTargetResolver.GetOwner(GameState, int, IGameEvent?)
+  fullName: CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner(CardGame.Core.State.Models.GameState, int, CardGame.Core.Events.Interfaces.IGameEvent?)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetOwner
+    path: ../Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs
+    startLine: 190
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic
+  syntax:
+    content: public static int GetOwner(GameState state, int instanceId, IGameEvent? contextEvent = null)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+    - id: instanceId
+      type: System.Int32
+    - id: contextEvent
+      type: CardGame.Core.Events.Interfaces.IGameEvent
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function GetOwner(state As GameState, instanceId As Integer, contextEvent As IGameEvent = Nothing) As Integer
+  overload: CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner*
+  nameWithType.vb: EffectTargetResolver.GetOwner(GameState, Integer, IGameEvent)
+  fullName.vb: CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner(CardGame.Core.State.Models.GameState, Integer, CardGame.Core.Events.Interfaces.IGameEvent)
+  name.vb: GetOwner(GameState, Integer, IGameEvent)
+references:
+- uid: CardGame.Core.Cards.Logic
+  commentId: N:CardGame.Core.Cards.Logic
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic
+  nameWithType: CardGame.Core.Cards.Logic
+  fullName: CardGame.Core.Cards.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve*
+  commentId: Overload:CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve
+  href: CardGame.Core.Cards.Logic.EffectTargetResolver.html#CardGame_Core_Cards_Logic_EffectTargetResolver_Resolve_CardGame_Core_Cards_Data_TargetType_CardGame_Core_State_Models_GameState_CardGame_Core_Events_Interfaces_IGameEvent_System_Int32_
+  name: Resolve
+  nameWithType: EffectTargetResolver.Resolve
+  fullName: CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve
+- uid: CardGame.Core.Cards.Data.TargetType
+  commentId: T:CardGame.Core.Cards.Data.TargetType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.TargetType.html
+  name: TargetType
+  nameWithType: TargetType
+  fullName: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Logic.EffectTargets
+  commentId: T:CardGame.Core.Cards.Logic.EffectTargets
+  parent: CardGame.Core.Cards.Logic
+  href: CardGame.Core.Cards.Logic.EffectTargets.html
+  name: EffectTargets
+  nameWithType: EffectTargets
+  fullName: CardGame.Core.Cards.Logic.EffectTargets
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets*
+  commentId: Overload:CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets
+  href: CardGame.Core.Cards.Logic.EffectTargetResolver.html#CardGame_Core_Cards_Logic_EffectTargetResolver_GetPotentialTargets_CardGame_Core_Cards_Data_TargetType_CardGame_Core_State_Models_GameState_System_Int32_
+  name: GetPotentialTargets
+  nameWithType: EffectTargetResolver.GetPotentialTargets
+  fullName: CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets
+- uid: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: List<CardInstance>
+  nameWithType: List<CardInstance>
+  fullName: System.Collections.Generic.List<CardGame.Core.Cards.Models.CardInstance>
+  nameWithType.vb: List(Of CardInstance)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Cards.Models.CardInstance)
+  name.vb: List(Of CardInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner*
+  commentId: Overload:CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner
+  href: CardGame.Core.Cards.Logic.EffectTargetResolver.html#CardGame_Core_Cards_Logic_EffectTargetResolver_GetOwner_CardGame_Core_State_Models_GameState_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
+  name: GetOwner
+  nameWithType: EffectTargetResolver.GetOwner
+  fullName: CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner

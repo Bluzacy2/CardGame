@@ -1,0 +1,90 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Commands
+  id: Commands
+  parent: CardGame.Core
+  children:
+  - CardGame.Core.Commands.Implementations
+  - CardGame.Core.Commands.Interfaces
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Commands
+  type: Namespace
+references:
+- uid: CardGame.Core.Commands.Implementations
+  commentId: N:CardGame.Core.Commands.Implementations
+  href: CardGame.html
+  name: CardGame.Core.Commands.Implementations
+  nameWithType: CardGame.Core.Commands.Implementations
+  fullName: CardGame.Core.Commands.Implementations
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Implementations
+    name: Implementations
+    href: CardGame.Core.Commands.Implementations.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Implementations
+    name: Implementations
+    href: CardGame.Core.Commands.Implementations.html
+- uid: CardGame.Core.Commands.Interfaces
+  commentId: N:CardGame.Core.Commands.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Commands.Interfaces
+  nameWithType: CardGame.Core.Commands.Interfaces
+  fullName: CardGame.Core.Commands.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html

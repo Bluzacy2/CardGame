@@ -1,0 +1,52 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.StateMachine.Phases
+  commentId: N:CardGame.Core.StateMachine.Phases
+  id: Phases
+  parent: CardGame.Core.StateMachine
+  children:
+  - CardGame.Core.StateMachine.Phases.ActionPhaseState
+  - CardGame.Core.StateMachine.Phases.BothPhaseState
+  - CardGame.Core.StateMachine.Phases.CombatPhaseState
+  - CardGame.Core.StateMachine.Phases.MulliganPhaseState
+  - CardGame.Core.StateMachine.Phases.UnitPhaseState
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.StateMachine.Phases
+  nameWithType: CardGame.Core.StateMachine.Phases
+  fullName: CardGame.Core.StateMachine.Phases
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.StateMachine.Phases.ActionPhaseState
+  commentId: T:CardGame.Core.StateMachine.Phases.ActionPhaseState
+  href: CardGame.Core.StateMachine.Phases.ActionPhaseState.html
+  name: ActionPhaseState
+  nameWithType: ActionPhaseState
+  fullName: CardGame.Core.StateMachine.Phases.ActionPhaseState
+- uid: CardGame.Core.StateMachine.Phases.BothPhaseState
+  commentId: T:CardGame.Core.StateMachine.Phases.BothPhaseState
+  href: CardGame.Core.StateMachine.Phases.BothPhaseState.html
+  name: BothPhaseState
+  nameWithType: BothPhaseState
+  fullName: CardGame.Core.StateMachine.Phases.BothPhaseState
+- uid: CardGame.Core.StateMachine.Phases.CombatPhaseState
+  commentId: T:CardGame.Core.StateMachine.Phases.CombatPhaseState
+  href: CardGame.Core.StateMachine.Phases.CombatPhaseState.html
+  name: CombatPhaseState
+  nameWithType: CombatPhaseState
+  fullName: CardGame.Core.StateMachine.Phases.CombatPhaseState
+- uid: CardGame.Core.StateMachine.Phases.MulliganPhaseState
+  commentId: T:CardGame.Core.StateMachine.Phases.MulliganPhaseState
+  href: CardGame.Core.StateMachine.Phases.MulliganPhaseState.html
+  name: MulliganPhaseState
+  nameWithType: MulliganPhaseState
+  fullName: CardGame.Core.StateMachine.Phases.MulliganPhaseState
+- uid: CardGame.Core.StateMachine.Phases.UnitPhaseState
+  commentId: T:CardGame.Core.StateMachine.Phases.UnitPhaseState
+  href: CardGame.Core.StateMachine.Phases.UnitPhaseState.html
+  name: UnitPhaseState
+  nameWithType: UnitPhaseState
+  fullName: CardGame.Core.StateMachine.Phases.UnitPhaseState

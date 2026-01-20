@@ -1,0 +1,166 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  id: Data
+  parent: CardGame.Core.Cards
+  children:
+  - CardGame.Core.Cards.Data.ActionData
+  - CardGame.Core.Cards.Data.ActionType
+  - CardGame.Core.Cards.Data.CardData
+  - CardGame.Core.Cards.Data.CardLibrary
+  - CardGame.Core.Cards.Data.CardType
+  - CardGame.Core.Cards.Data.ConditionData
+  - CardGame.Core.Cards.Data.ConditionType
+  - CardGame.Core.Cards.Data.DeckValidator
+  - CardGame.Core.Cards.Data.EffectData
+  - CardGame.Core.Cards.Data.EffectZone
+  - CardGame.Core.Cards.Data.Keyword
+  - CardGame.Core.Cards.Data.ResourceType
+  - CardGame.Core.Cards.Data.TargetType
+  - CardGame.Core.Cards.Data.TriggerType
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Cards.Data.ActionData
+  commentId: T:CardGame.Core.Cards.Data.ActionData
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ActionData.html
+  name: ActionData
+  nameWithType: ActionData
+  fullName: CardGame.Core.Cards.Data.ActionData
+- uid: CardGame.Core.Cards.Data.ActionType
+  commentId: T:CardGame.Core.Cards.Data.ActionType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ActionType.html
+  name: ActionType
+  nameWithType: ActionType
+  fullName: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.CardData
+  commentId: T:CardGame.Core.Cards.Data.CardData
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.CardData.html
+  name: CardData
+  nameWithType: CardData
+  fullName: CardGame.Core.Cards.Data.CardData
+- uid: CardGame.Core.Cards.Data.CardLibrary
+  commentId: T:CardGame.Core.Cards.Data.CardLibrary
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.CardLibrary.html
+  name: CardLibrary
+  nameWithType: CardLibrary
+  fullName: CardGame.Core.Cards.Data.CardLibrary
+- uid: CardGame.Core.Cards.Data.CardType
+  commentId: T:CardGame.Core.Cards.Data.CardType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.CardType.html
+  name: CardType
+  nameWithType: CardType
+  fullName: CardGame.Core.Cards.Data.CardType
+- uid: CardGame.Core.Cards.Data.ConditionData
+  commentId: T:CardGame.Core.Cards.Data.ConditionData
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ConditionData.html
+  name: ConditionData
+  nameWithType: ConditionData
+  fullName: CardGame.Core.Cards.Data.ConditionData
+- uid: CardGame.Core.Cards.Data.ConditionType
+  commentId: T:CardGame.Core.Cards.Data.ConditionType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ConditionType.html
+  name: ConditionType
+  nameWithType: ConditionType
+  fullName: CardGame.Core.Cards.Data.ConditionType
+- uid: CardGame.Core.Cards.Data.DeckValidator
+  commentId: T:CardGame.Core.Cards.Data.DeckValidator
+  href: CardGame.Core.Cards.Data.DeckValidator.html
+  name: DeckValidator
+  nameWithType: DeckValidator
+  fullName: CardGame.Core.Cards.Data.DeckValidator
+- uid: CardGame.Core.Cards.Data.EffectData
+  commentId: T:CardGame.Core.Cards.Data.EffectData
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.EffectData.html
+  name: EffectData
+  nameWithType: EffectData
+  fullName: CardGame.Core.Cards.Data.EffectData
+- uid: CardGame.Core.Cards.Data.EffectZone
+  commentId: T:CardGame.Core.Cards.Data.EffectZone
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.EffectZone.html
+  name: EffectZone
+  nameWithType: EffectZone
+  fullName: CardGame.Core.Cards.Data.EffectZone
+- uid: CardGame.Core.Cards.Data.Keyword
+  commentId: T:CardGame.Core.Cards.Data.Keyword
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: Keyword
+  nameWithType: Keyword
+  fullName: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.ResourceType
+  commentId: T:CardGame.Core.Cards.Data.ResourceType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ResourceType.html
+  name: ResourceType
+  nameWithType: ResourceType
+  fullName: CardGame.Core.Cards.Data.ResourceType
+- uid: CardGame.Core.Cards.Data.TargetType
+  commentId: T:CardGame.Core.Cards.Data.TargetType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.TargetType.html
+  name: TargetType
+  nameWithType: TargetType
+  fullName: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TriggerType
+  commentId: T:CardGame.Core.Cards.Data.TriggerType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.TriggerType.html
+  name: TriggerType
+  nameWithType: TriggerType
+  fullName: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html

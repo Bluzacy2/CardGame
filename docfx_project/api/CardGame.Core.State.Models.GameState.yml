@@ -1,0 +1,1426 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  id: GameState
+  parent: CardGame.Core.State.Models
+  children:
+  - CardGame.Core.State.Models.GameState.#ctor(System.Int32,CardGame.Core.State.Enums.GamePhase,System.Int32,CardGame.Core.State.Models.BoardState,CardGame.Core.State.Models.PlayerState,CardGame.Core.State.Models.PlayerState,System.Collections.Generic.IEnumerable{System.Int32},CardGame.Core.State.Models.PendingInteraction,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Int32,System.Int32,System.Int32)
+  - CardGame.Core.State.Models.GameState.ActivePlayerId
+  - CardGame.Core.State.Models.GameState.Board
+  - CardGame.Core.State.Models.GameState.CombatLineIndex
+  - CardGame.Core.State.Models.GameState.CombatStep
+  - CardGame.Core.State.Models.GameState.CurrentPhase
+  - CardGame.Core.State.Models.GameState.GetOpponent(System.Int32)
+  - CardGame.Core.State.Models.GameState.GetPlayer(System.Int32)
+  - CardGame.Core.State.Models.GameState.Initial(System.Int32,System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},CardGame.Core.Application.DeterministicRng)
+  - CardGame.Core.State.Models.GameState.MarkPlayerAsReady(System.Int32)
+  - CardGame.Core.State.Models.GameState.PendingInteraction
+  - CardGame.Core.State.Models.GameState.PlayerA
+  - CardGame.Core.State.Models.GameState.PlayerB
+  - CardGame.Core.State.Models.GameState.PlayersReady
+  - CardGame.Core.State.Models.GameState.RoundStartingPlayerId
+  - CardGame.Core.State.Models.GameState.SpellStack
+  - CardGame.Core.State.Models.GameState.TurnNumber
+  - CardGame.Core.State.Models.GameState.UpdateBoard(CardGame.Core.State.Models.BoardState)
+  - CardGame.Core.State.Models.GameState.UpdatePlayer(CardGame.Core.State.Models.PlayerState)
+  - CardGame.Core.State.Models.GameState.With(System.Nullable{System.Int32},System.Nullable{CardGame.Core.State.Enums.GamePhase},System.Nullable{System.Int32},CardGame.Core.State.Models.BoardState,CardGame.Core.State.Models.PlayerState,CardGame.Core.State.Models.PlayerState,System.Collections.Generic.IEnumerable{System.Int32},CardGame.Core.State.Models.PendingInteraction,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Nullable{System.Int32},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  langs:
+  - csharp
+  - vb
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GameState
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 12
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Represents the complete state of a game, including board, players, and game phase information.
+  example: []
+  syntax:
+    content: public class GameState
+    content.vb: Public Class GameState
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.State.Models.GameState.TurnNumber
+  commentId: P:CardGame.Core.State.Models.GameState.TurnNumber
+  id: TurnNumber
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: TurnNumber
+  nameWithType: GameState.TurnNumber
+  fullName: CardGame.Core.State.Models.GameState.TurnNumber
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TurnNumber
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 18
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the current turn number.
+  example: []
+  syntax:
+    content: public int TurnNumber { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property TurnNumber As Integer
+  overload: CardGame.Core.State.Models.GameState.TurnNumber*
+- uid: CardGame.Core.State.Models.GameState.CurrentPhase
+  commentId: P:CardGame.Core.State.Models.GameState.CurrentPhase
+  id: CurrentPhase
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: CurrentPhase
+  nameWithType: GameState.CurrentPhase
+  fullName: CardGame.Core.State.Models.GameState.CurrentPhase
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CurrentPhase
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 23
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the current phase of the game (Mulligan, Main, Combat, etc.).
+  example: []
+  syntax:
+    content: public GamePhase CurrentPhase { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Enums.GamePhase
+    content.vb: Public ReadOnly Property CurrentPhase As GamePhase
+  overload: CardGame.Core.State.Models.GameState.CurrentPhase*
+- uid: CardGame.Core.State.Models.GameState.ActivePlayerId
+  commentId: P:CardGame.Core.State.Models.GameState.ActivePlayerId
+  id: ActivePlayerId
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: ActivePlayerId
+  nameWithType: GameState.ActivePlayerId
+  fullName: CardGame.Core.State.Models.GameState.ActivePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ActivePlayerId
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 28
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the ID of the player whose turn it is (1 or 2).
+  example: []
+  syntax:
+    content: public int ActivePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ActivePlayerId As Integer
+  overload: CardGame.Core.State.Models.GameState.ActivePlayerId*
+- uid: CardGame.Core.State.Models.GameState.Board
+  commentId: P:CardGame.Core.State.Models.GameState.Board
+  id: Board
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: Board
+  nameWithType: GameState.Board
+  fullName: CardGame.Core.State.Models.GameState.Board
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Board
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 33
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the current state of the game board.
+  example: []
+  syntax:
+    content: public BoardState Board { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Models.BoardState
+    content.vb: Public ReadOnly Property Board As BoardState
+  overload: CardGame.Core.State.Models.GameState.Board*
+- uid: CardGame.Core.State.Models.GameState.PlayerA
+  commentId: P:CardGame.Core.State.Models.GameState.PlayerA
+  id: PlayerA
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: PlayerA
+  nameWithType: GameState.PlayerA
+  fullName: CardGame.Core.State.Models.GameState.PlayerA
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PlayerA
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 38
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the state of player A.
+  example: []
+  syntax:
+    content: public PlayerState PlayerA { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Models.PlayerState
+    content.vb: Public ReadOnly Property PlayerA As PlayerState
+  overload: CardGame.Core.State.Models.GameState.PlayerA*
+- uid: CardGame.Core.State.Models.GameState.PlayerB
+  commentId: P:CardGame.Core.State.Models.GameState.PlayerB
+  id: PlayerB
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: PlayerB
+  nameWithType: GameState.PlayerB
+  fullName: CardGame.Core.State.Models.GameState.PlayerB
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PlayerB
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 43
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the state of player B.
+  example: []
+  syntax:
+    content: public PlayerState PlayerB { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Models.PlayerState
+    content.vb: Public ReadOnly Property PlayerB As PlayerState
+  overload: CardGame.Core.State.Models.GameState.PlayerB*
+- uid: CardGame.Core.State.Models.GameState.PlayersReady
+  commentId: P:CardGame.Core.State.Models.GameState.PlayersReady
+  id: PlayersReady
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: PlayersReady
+  nameWithType: GameState.PlayersReady
+  fullName: CardGame.Core.State.Models.GameState.PlayersReady
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PlayersReady
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 48
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the list of player IDs who have confirmed their mulligan.
+  example: []
+  syntax:
+    content: public IReadOnlyList<int> PlayersReady { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.Int32}
+    content.vb: Public ReadOnly Property PlayersReady As IReadOnlyList(Of Integer)
+  overload: CardGame.Core.State.Models.GameState.PlayersReady*
+- uid: CardGame.Core.State.Models.GameState.PendingInteraction
+  commentId: P:CardGame.Core.State.Models.GameState.PendingInteraction
+  id: PendingInteraction
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: PendingInteraction
+  nameWithType: GameState.PendingInteraction
+  fullName: CardGame.Core.State.Models.GameState.PendingInteraction
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PendingInteraction
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 53
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the current pending interaction, if any (e.g., target selection).
+  example: []
+  syntax:
+    content: public PendingInteraction? PendingInteraction { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Models.PendingInteraction
+    content.vb: Public ReadOnly Property PendingInteraction As PendingInteraction
+  overload: CardGame.Core.State.Models.GameState.PendingInteraction*
+- uid: CardGame.Core.State.Models.GameState.SpellStack
+  commentId: P:CardGame.Core.State.Models.GameState.SpellStack
+  id: SpellStack
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: SpellStack
+  nameWithType: GameState.SpellStack
+  fullName: CardGame.Core.State.Models.GameState.SpellStack
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SpellStack
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 58
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the current spell stack (for resolving spell chains).
+  example: []
+  syntax:
+    content: public IReadOnlyList<CardInstance> SpellStack { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Models.CardInstance}
+    content.vb: Public ReadOnly Property SpellStack As IReadOnlyList(Of CardInstance)
+  overload: CardGame.Core.State.Models.GameState.SpellStack*
+- uid: CardGame.Core.State.Models.GameState.RoundStartingPlayerId
+  commentId: P:CardGame.Core.State.Models.GameState.RoundStartingPlayerId
+  id: RoundStartingPlayerId
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: RoundStartingPlayerId
+  nameWithType: GameState.RoundStartingPlayerId
+  fullName: CardGame.Core.State.Models.GameState.RoundStartingPlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: RoundStartingPlayerId
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 63
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the ID of the player who started the current round (1 or 2).
+  example: []
+  syntax:
+    content: public int RoundStartingPlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property RoundStartingPlayerId As Integer
+  overload: CardGame.Core.State.Models.GameState.RoundStartingPlayerId*
+- uid: CardGame.Core.State.Models.GameState.CombatLineIndex
+  commentId: P:CardGame.Core.State.Models.GameState.CombatLineIndex
+  id: CombatLineIndex
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: CombatLineIndex
+  nameWithType: GameState.CombatLineIndex
+  fullName: CardGame.Core.State.Models.GameState.CombatLineIndex
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CombatLineIndex
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 65
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  syntax:
+    content: public int CombatLineIndex { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property CombatLineIndex As Integer
+  overload: CardGame.Core.State.Models.GameState.CombatLineIndex*
+- uid: CardGame.Core.State.Models.GameState.CombatStep
+  commentId: P:CardGame.Core.State.Models.GameState.CombatStep
+  id: CombatStep
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: CombatStep
+  nameWithType: GameState.CombatStep
+  fullName: CardGame.Core.State.Models.GameState.CombatStep
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CombatStep
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 66
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  syntax:
+    content: public int CombatStep { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property CombatStep As Integer
+  overload: CardGame.Core.State.Models.GameState.CombatStep*
+- uid: CardGame.Core.State.Models.GameState.#ctor(System.Int32,CardGame.Core.State.Enums.GamePhase,System.Int32,CardGame.Core.State.Models.BoardState,CardGame.Core.State.Models.PlayerState,CardGame.Core.State.Models.PlayerState,System.Collections.Generic.IEnumerable{System.Int32},CardGame.Core.State.Models.PendingInteraction,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Int32,System.Int32,System.Int32)
+  commentId: M:CardGame.Core.State.Models.GameState.#ctor(System.Int32,CardGame.Core.State.Enums.GamePhase,System.Int32,CardGame.Core.State.Models.BoardState,CardGame.Core.State.Models.PlayerState,CardGame.Core.State.Models.PlayerState,System.Collections.Generic.IEnumerable{System.Int32},CardGame.Core.State.Models.PendingInteraction,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Int32,System.Int32,System.Int32)
+  id: '#ctor(System.Int32,CardGame.Core.State.Enums.GamePhase,System.Int32,CardGame.Core.State.Models.BoardState,CardGame.Core.State.Models.PlayerState,CardGame.Core.State.Models.PlayerState,System.Collections.Generic.IEnumerable{System.Int32},CardGame.Core.State.Models.PendingInteraction,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Int32,System.Int32,System.Int32)'
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: GameState(int, GamePhase, int, BoardState, PlayerState, PlayerState, IEnumerable<int>?, PendingInteraction?, IEnumerable<CardInstance>?, int, int, int)
+  nameWithType: GameState.GameState(int, GamePhase, int, BoardState, PlayerState, PlayerState, IEnumerable<int>?, PendingInteraction?, IEnumerable<CardInstance>?, int, int, int)
+  fullName: CardGame.Core.State.Models.GameState.GameState(int, CardGame.Core.State.Enums.GamePhase, int, CardGame.Core.State.Models.BoardState, CardGame.Core.State.Models.PlayerState, CardGame.Core.State.Models.PlayerState, System.Collections.Generic.IEnumerable<int>?, CardGame.Core.State.Models.PendingInteraction?, System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Models.CardInstance>?, int, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 83
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Initializes a new instance of the GameState class.
+  example: []
+  syntax:
+    content: public GameState(int turnNumber, GamePhase currentPhase, int activePlayerId, BoardState board, PlayerState playerA, PlayerState playerB, IEnumerable<int>? playersReady = null, PendingInteraction? pendingInteraction = null, IEnumerable<CardInstance>? spellStack = null, int roundStartingPlayerId = 1, int combatLineIndex = 0, int combatStep = 0)
+    parameters:
+    - id: turnNumber
+      type: System.Int32
+      description: The current turn number.
+    - id: currentPhase
+      type: CardGame.Core.State.Enums.GamePhase
+      description: The current phase of the game.
+    - id: activePlayerId
+      type: System.Int32
+      description: The ID of the active player.
+    - id: board
+      type: CardGame.Core.State.Models.BoardState
+      description: The current board state.
+    - id: playerA
+      type: CardGame.Core.State.Models.PlayerState
+      description: The state of player A.
+    - id: playerB
+      type: CardGame.Core.State.Models.PlayerState
+      description: The state of player B.
+    - id: playersReady
+      type: System.Collections.Generic.IEnumerable{System.Int32}
+      description: Optional list of players who are ready.
+    - id: pendingInteraction
+      type: CardGame.Core.State.Models.PendingInteraction
+      description: Optional pending interaction.
+    - id: spellStack
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance}
+      description: Optional current spell stack.
+    - id: roundStartingPlayerId
+      type: System.Int32
+      description: The ID of the player who started this round.
+    - id: combatLineIndex
+      type: System.Int32
+    - id: combatStep
+      type: System.Int32
+    content.vb: Public Sub New(turnNumber As Integer, currentPhase As GamePhase, activePlayerId As Integer, board As BoardState, playerA As PlayerState, playerB As PlayerState, playersReady As IEnumerable(Of Integer) = Nothing, pendingInteraction As PendingInteraction = Nothing, spellStack As IEnumerable(Of CardInstance) = Nothing, roundStartingPlayerId As Integer = 1, combatLineIndex As Integer = 0, combatStep As Integer = 0)
+  overload: CardGame.Core.State.Models.GameState.#ctor*
+  nameWithType.vb: GameState.New(Integer, GamePhase, Integer, BoardState, PlayerState, PlayerState, IEnumerable(Of Integer), PendingInteraction, IEnumerable(Of CardInstance), Integer, Integer, Integer)
+  fullName.vb: CardGame.Core.State.Models.GameState.New(Integer, CardGame.Core.State.Enums.GamePhase, Integer, CardGame.Core.State.Models.BoardState, CardGame.Core.State.Models.PlayerState, CardGame.Core.State.Models.PlayerState, System.Collections.Generic.IEnumerable(Of Integer), CardGame.Core.State.Models.PendingInteraction, System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Models.CardInstance), Integer, Integer, Integer)
+  name.vb: New(Integer, GamePhase, Integer, BoardState, PlayerState, PlayerState, IEnumerable(Of Integer), PendingInteraction, IEnumerable(Of CardInstance), Integer, Integer, Integer)
+- uid: CardGame.Core.State.Models.GameState.Initial(System.Int32,System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},CardGame.Core.Application.DeterministicRng)
+  commentId: M:CardGame.Core.State.Models.GameState.Initial(System.Int32,System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},CardGame.Core.Application.DeterministicRng)
+  id: Initial(System.Int32,System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},CardGame.Core.Application.DeterministicRng)
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: Initial(int, List<CardInstance>, List<CardInstance>, DeterministicRng)
+  nameWithType: GameState.Initial(int, List<CardInstance>, List<CardInstance>, DeterministicRng)
+  fullName: CardGame.Core.State.Models.GameState.Initial(int, System.Collections.Generic.List<CardGame.Core.Cards.Models.CardInstance>, System.Collections.Generic.List<CardGame.Core.Cards.Models.CardInstance>, CardGame.Core.Application.DeterministicRng)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Initial
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 121
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Creates the initial game state for a new game.
+  example: []
+  syntax:
+    content: public static GameState Initial(int startingPlayerId, List<CardInstance> deckA, List<CardInstance> deckB, DeterministicRng rng)
+    parameters:
+    - id: startingPlayerId
+      type: System.Int32
+      description: The ID of the player who goes first (1 or 2).
+    - id: deckA
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+      description: The deck for player A.
+    - id: deckB
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+      description: The deck for player B.
+    - id: rng
+      type: CardGame.Core.Application.DeterministicRng
+      description: The random number generator for deck shuffling.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: A new GameState representing the start of a game.
+    content.vb: Public Shared Function Initial(startingPlayerId As Integer, deckA As List(Of CardInstance), deckB As List(Of CardInstance), rng As DeterministicRng) As GameState
+  overload: CardGame.Core.State.Models.GameState.Initial*
+  nameWithType.vb: GameState.Initial(Integer, List(Of CardInstance), List(Of CardInstance), DeterministicRng)
+  fullName.vb: CardGame.Core.State.Models.GameState.Initial(Integer, System.Collections.Generic.List(Of CardGame.Core.Cards.Models.CardInstance), System.Collections.Generic.List(Of CardGame.Core.Cards.Models.CardInstance), CardGame.Core.Application.DeterministicRng)
+  name.vb: Initial(Integer, List(Of CardInstance), List(Of CardInstance), DeterministicRng)
+- uid: CardGame.Core.State.Models.GameState.With(System.Nullable{System.Int32},System.Nullable{CardGame.Core.State.Enums.GamePhase},System.Nullable{System.Int32},CardGame.Core.State.Models.BoardState,CardGame.Core.State.Models.PlayerState,CardGame.Core.State.Models.PlayerState,System.Collections.Generic.IEnumerable{System.Int32},CardGame.Core.State.Models.PendingInteraction,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Nullable{System.Int32},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  commentId: M:CardGame.Core.State.Models.GameState.With(System.Nullable{System.Int32},System.Nullable{CardGame.Core.State.Enums.GamePhase},System.Nullable{System.Int32},CardGame.Core.State.Models.BoardState,CardGame.Core.State.Models.PlayerState,CardGame.Core.State.Models.PlayerState,System.Collections.Generic.IEnumerable{System.Int32},CardGame.Core.State.Models.PendingInteraction,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Nullable{System.Int32},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  id: With(System.Nullable{System.Int32},System.Nullable{CardGame.Core.State.Enums.GamePhase},System.Nullable{System.Int32},CardGame.Core.State.Models.BoardState,CardGame.Core.State.Models.PlayerState,CardGame.Core.State.Models.PlayerState,System.Collections.Generic.IEnumerable{System.Int32},CardGame.Core.State.Models.PendingInteraction,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Nullable{System.Int32},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: With(int?, GamePhase?, int?, BoardState?, PlayerState?, PlayerState?, IEnumerable<int>?, PendingInteraction?, IEnumerable<CardInstance>?, int?, bool, int?, int?)
+  nameWithType: GameState.With(int?, GamePhase?, int?, BoardState?, PlayerState?, PlayerState?, IEnumerable<int>?, PendingInteraction?, IEnumerable<CardInstance>?, int?, bool, int?, int?)
+  fullName: CardGame.Core.State.Models.GameState.With(int?, CardGame.Core.State.Enums.GamePhase?, int?, CardGame.Core.State.Models.BoardState?, CardGame.Core.State.Models.PlayerState?, CardGame.Core.State.Models.PlayerState?, System.Collections.Generic.IEnumerable<int>?, CardGame.Core.State.Models.PendingInteraction?, System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Models.CardInstance>?, int?, bool, int?, int?)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: With
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 159
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Creates a new GameState with the specified properties modified.
+  example: []
+  syntax:
+    content: public GameState With(int? turnNumber = null, GamePhase? currentPhase = null, int? activePlayerId = null, BoardState? board = null, PlayerState? playerA = null, PlayerState? playerB = null, IEnumerable<int>? playersReady = null, PendingInteraction? pendingInteraction = null, IEnumerable<CardInstance>? spellStack = null, int? roundStartingPlayerId = null, bool clearPending = false, int? combatLineIndex = null, int? combatStep = null)
+    parameters:
+    - id: turnNumber
+      type: System.Nullable{System.Int32}
+      description: Optional new turn number.
+    - id: currentPhase
+      type: System.Nullable{CardGame.Core.State.Enums.GamePhase}
+      description: Optional new game phase.
+    - id: activePlayerId
+      type: System.Nullable{System.Int32}
+      description: Optional new active player ID.
+    - id: board
+      type: CardGame.Core.State.Models.BoardState
+      description: Optional new board state.
+    - id: playerA
+      type: CardGame.Core.State.Models.PlayerState
+      description: Optional new player A state.
+    - id: playerB
+      type: CardGame.Core.State.Models.PlayerState
+      description: Optional new player B state.
+    - id: playersReady
+      type: System.Collections.Generic.IEnumerable{System.Int32}
+      description: Optional new players ready list.
+    - id: pendingInteraction
+      type: CardGame.Core.State.Models.PendingInteraction
+      description: Optional new pending interaction.
+    - id: spellStack
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance}
+      description: Optional new spell stack.
+    - id: roundStartingPlayerId
+      type: System.Nullable{System.Int32}
+      description: Optional new round starting player ID.
+    - id: clearPending
+      type: System.Boolean
+      description: Whether to clear any pending interaction.
+    - id: combatLineIndex
+      type: System.Nullable{System.Int32}
+    - id: combatStep
+      type: System.Nullable{System.Int32}
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: A new GameState with the specified modifications.
+    content.vb: Public Function [With](turnNumber As Integer? = Nothing, currentPhase As GamePhase? = Nothing, activePlayerId As Integer? = Nothing, board As BoardState = Nothing, playerA As PlayerState = Nothing, playerB As PlayerState = Nothing, playersReady As IEnumerable(Of Integer) = Nothing, pendingInteraction As PendingInteraction = Nothing, spellStack As IEnumerable(Of CardInstance) = Nothing, roundStartingPlayerId As Integer? = Nothing, clearPending As Boolean = False, combatLineIndex As Integer? = Nothing, combatStep As Integer? = Nothing) As GameState
+  overload: CardGame.Core.State.Models.GameState.With*
+  nameWithType.vb: GameState.With(Integer?, GamePhase?, Integer?, BoardState, PlayerState, PlayerState, IEnumerable(Of Integer), PendingInteraction, IEnumerable(Of CardInstance), Integer?, Boolean, Integer?, Integer?)
+  fullName.vb: CardGame.Core.State.Models.GameState.With(Integer?, CardGame.Core.State.Enums.GamePhase?, Integer?, CardGame.Core.State.Models.BoardState, CardGame.Core.State.Models.PlayerState, CardGame.Core.State.Models.PlayerState, System.Collections.Generic.IEnumerable(Of Integer), CardGame.Core.State.Models.PendingInteraction, System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Models.CardInstance), Integer?, Boolean, Integer?, Integer?)
+  name.vb: With(Integer?, GamePhase?, Integer?, BoardState, PlayerState, PlayerState, IEnumerable(Of Integer), PendingInteraction, IEnumerable(Of CardInstance), Integer?, Boolean, Integer?, Integer?)
+- uid: CardGame.Core.State.Models.GameState.MarkPlayerAsReady(System.Int32)
+  commentId: M:CardGame.Core.State.Models.GameState.MarkPlayerAsReady(System.Int32)
+  id: MarkPlayerAsReady(System.Int32)
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: MarkPlayerAsReady(int)
+  nameWithType: GameState.MarkPlayerAsReady(int)
+  fullName: CardGame.Core.State.Models.GameState.MarkPlayerAsReady(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: MarkPlayerAsReady
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 195
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Marks a player as ready (e.g., after mulligan).
+  example: []
+  syntax:
+    content: public GameState MarkPlayerAsReady(int playerId)
+    parameters:
+    - id: playerId
+      type: System.Int32
+      description: The ID of the player to mark as ready.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: A new GameState with the player added to the ready list.
+    content.vb: Public Function MarkPlayerAsReady(playerId As Integer) As GameState
+  overload: CardGame.Core.State.Models.GameState.MarkPlayerAsReady*
+  nameWithType.vb: GameState.MarkPlayerAsReady(Integer)
+  fullName.vb: CardGame.Core.State.Models.GameState.MarkPlayerAsReady(Integer)
+  name.vb: MarkPlayerAsReady(Integer)
+- uid: CardGame.Core.State.Models.GameState.GetPlayer(System.Int32)
+  commentId: M:CardGame.Core.State.Models.GameState.GetPlayer(System.Int32)
+  id: GetPlayer(System.Int32)
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: GetPlayer(int)
+  nameWithType: GameState.GetPlayer(int)
+  fullName: CardGame.Core.State.Models.GameState.GetPlayer(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetPlayer
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 209
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the state of the specified player.
+  example: []
+  syntax:
+    content: public PlayerState GetPlayer(int playerId)
+    parameters:
+    - id: playerId
+      type: System.Int32
+      description: The ID of the player (1 or 2).
+    return:
+      type: CardGame.Core.State.Models.PlayerState
+      description: The PlayerState for the specified player.
+    content.vb: Public Function GetPlayer(playerId As Integer) As PlayerState
+  overload: CardGame.Core.State.Models.GameState.GetPlayer*
+  nameWithType.vb: GameState.GetPlayer(Integer)
+  fullName.vb: CardGame.Core.State.Models.GameState.GetPlayer(Integer)
+  name.vb: GetPlayer(Integer)
+- uid: CardGame.Core.State.Models.GameState.GetOpponent(System.Int32)
+  commentId: M:CardGame.Core.State.Models.GameState.GetOpponent(System.Int32)
+  id: GetOpponent(System.Int32)
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: GetOpponent(int)
+  nameWithType: GameState.GetOpponent(int)
+  fullName: CardGame.Core.State.Models.GameState.GetOpponent(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetOpponent
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 216
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the state of the opponent of the specified player.
+  example: []
+  syntax:
+    content: public PlayerState GetOpponent(int playerId)
+    parameters:
+    - id: playerId
+      type: System.Int32
+      description: The ID of the player to get the opponent of.
+    return:
+      type: CardGame.Core.State.Models.PlayerState
+      description: The PlayerState for the opponent.
+    content.vb: Public Function GetOpponent(playerId As Integer) As PlayerState
+  overload: CardGame.Core.State.Models.GameState.GetOpponent*
+  nameWithType.vb: GameState.GetOpponent(Integer)
+  fullName.vb: CardGame.Core.State.Models.GameState.GetOpponent(Integer)
+  name.vb: GetOpponent(Integer)
+- uid: CardGame.Core.State.Models.GameState.UpdatePlayer(CardGame.Core.State.Models.PlayerState)
+  commentId: M:CardGame.Core.State.Models.GameState.UpdatePlayer(CardGame.Core.State.Models.PlayerState)
+  id: UpdatePlayer(CardGame.Core.State.Models.PlayerState)
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: UpdatePlayer(PlayerState)
+  nameWithType: GameState.UpdatePlayer(PlayerState)
+  fullName: CardGame.Core.State.Models.GameState.UpdatePlayer(CardGame.Core.State.Models.PlayerState)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UpdatePlayer
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 223
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Updates the state of a player.
+  example: []
+  syntax:
+    content: public GameState UpdatePlayer(PlayerState newPlayerState)
+    parameters:
+    - id: newPlayerState
+      type: CardGame.Core.State.Models.PlayerState
+      description: The new player state.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: A new GameState with the updated player.
+    content.vb: Public Function UpdatePlayer(newPlayerState As PlayerState) As GameState
+  overload: CardGame.Core.State.Models.GameState.UpdatePlayer*
+- uid: CardGame.Core.State.Models.GameState.UpdateBoard(CardGame.Core.State.Models.BoardState)
+  commentId: M:CardGame.Core.State.Models.GameState.UpdateBoard(CardGame.Core.State.Models.BoardState)
+  id: UpdateBoard(CardGame.Core.State.Models.BoardState)
+  parent: CardGame.Core.State.Models.GameState
+  langs:
+  - csharp
+  - vb
+  name: UpdateBoard(BoardState)
+  nameWithType: GameState.UpdateBoard(BoardState)
+  fullName: CardGame.Core.State.Models.GameState.UpdateBoard(CardGame.Core.State.Models.BoardState)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/GameState.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UpdateBoard
+    path: ../Source/CardGame.Core/State/Models/GameState.cs
+    startLine: 231
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Updates the board state.
+  example: []
+  syntax:
+    content: public GameState UpdateBoard(BoardState newBoard)
+    parameters:
+    - id: newBoard
+      type: CardGame.Core.State.Models.BoardState
+      description: The new board state.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: A new GameState with the updated board.
+    content.vb: Public Function UpdateBoard(newBoard As BoardState) As GameState
+  overload: CardGame.Core.State.Models.GameState.UpdateBoard*
+references:
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.State.Models.GameState.TurnNumber*
+  commentId: Overload:CardGame.Core.State.Models.GameState.TurnNumber
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_TurnNumber
+  name: TurnNumber
+  nameWithType: GameState.TurnNumber
+  fullName: CardGame.Core.State.Models.GameState.TurnNumber
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.State.Models.GameState.CurrentPhase*
+  commentId: Overload:CardGame.Core.State.Models.GameState.CurrentPhase
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_CurrentPhase
+  name: CurrentPhase
+  nameWithType: GameState.CurrentPhase
+  fullName: CardGame.Core.State.Models.GameState.CurrentPhase
+- uid: CardGame.Core.State.Enums.GamePhase
+  commentId: T:CardGame.Core.State.Enums.GamePhase
+  parent: CardGame.Core.State.Enums
+  href: CardGame.Core.State.Enums.GamePhase.html
+  name: GamePhase
+  nameWithType: GamePhase
+  fullName: CardGame.Core.State.Enums.GamePhase
+- uid: CardGame.Core.State.Enums
+  commentId: N:CardGame.Core.State.Enums
+  href: CardGame.html
+  name: CardGame.Core.State.Enums
+  nameWithType: CardGame.Core.State.Enums
+  fullName: CardGame.Core.State.Enums
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Enums
+    name: Enums
+    href: CardGame.Core.State.Enums.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Enums
+    name: Enums
+    href: CardGame.Core.State.Enums.html
+- uid: CardGame.Core.State.Models.GameState.ActivePlayerId*
+  commentId: Overload:CardGame.Core.State.Models.GameState.ActivePlayerId
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_ActivePlayerId
+  name: ActivePlayerId
+  nameWithType: GameState.ActivePlayerId
+  fullName: CardGame.Core.State.Models.GameState.ActivePlayerId
+- uid: CardGame.Core.State.Models.GameState.Board*
+  commentId: Overload:CardGame.Core.State.Models.GameState.Board
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_Board
+  name: Board
+  nameWithType: GameState.Board
+  fullName: CardGame.Core.State.Models.GameState.Board
+- uid: CardGame.Core.State.Models.BoardState
+  commentId: T:CardGame.Core.State.Models.BoardState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.BoardState.html
+  name: BoardState
+  nameWithType: BoardState
+  fullName: CardGame.Core.State.Models.BoardState
+- uid: CardGame.Core.State.Models.GameState.PlayerA*
+  commentId: Overload:CardGame.Core.State.Models.GameState.PlayerA
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_PlayerA
+  name: PlayerA
+  nameWithType: GameState.PlayerA
+  fullName: CardGame.Core.State.Models.GameState.PlayerA
+- uid: CardGame.Core.State.Models.PlayerState
+  commentId: T:CardGame.Core.State.Models.PlayerState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.PlayerState.html
+  name: PlayerState
+  nameWithType: PlayerState
+  fullName: CardGame.Core.State.Models.PlayerState
+- uid: CardGame.Core.State.Models.GameState.PlayerB*
+  commentId: Overload:CardGame.Core.State.Models.GameState.PlayerB
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_PlayerB
+  name: PlayerB
+  nameWithType: GameState.PlayerB
+  fullName: CardGame.Core.State.Models.GameState.PlayerB
+- uid: CardGame.Core.State.Models.GameState.PlayersReady*
+  commentId: Overload:CardGame.Core.State.Models.GameState.PlayersReady
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_PlayersReady
+  name: PlayersReady
+  nameWithType: GameState.PlayersReady
+  fullName: CardGame.Core.State.Models.GameState.PlayersReady
+- uid: System.Collections.Generic.IReadOnlyList{System.Int32}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  name: IReadOnlyList<int>
+  nameWithType: IReadOnlyList<int>
+  fullName: System.Collections.Generic.IReadOnlyList<int>
+  nameWithType.vb: IReadOnlyList(Of Integer)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Integer)
+  name.vb: IReadOnlyList(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.State.Models.GameState.PendingInteraction*
+  commentId: Overload:CardGame.Core.State.Models.GameState.PendingInteraction
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_PendingInteraction
+  name: PendingInteraction
+  nameWithType: GameState.PendingInteraction
+  fullName: CardGame.Core.State.Models.GameState.PendingInteraction
+- uid: CardGame.Core.State.Models.PendingInteraction
+  commentId: T:CardGame.Core.State.Models.PendingInteraction
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.PendingInteraction.html
+  name: PendingInteraction
+  nameWithType: PendingInteraction
+  fullName: CardGame.Core.State.Models.PendingInteraction
+- uid: CardGame.Core.State.Models.GameState.SpellStack*
+  commentId: Overload:CardGame.Core.State.Models.GameState.SpellStack
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_SpellStack
+  name: SpellStack
+  nameWithType: GameState.SpellStack
+  fullName: CardGame.Core.State.Models.GameState.SpellStack
+- uid: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Models.CardInstance}
+  commentId: T:System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Models.CardInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: IReadOnlyList<CardInstance>
+  nameWithType: IReadOnlyList<CardInstance>
+  fullName: System.Collections.Generic.IReadOnlyList<CardGame.Core.Cards.Models.CardInstance>
+  nameWithType.vb: IReadOnlyList(Of CardInstance)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of CardGame.Core.Cards.Models.CardInstance)
+  name.vb: IReadOnlyList(Of CardInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: )
+- uid: CardGame.Core.State.Models.GameState.RoundStartingPlayerId*
+  commentId: Overload:CardGame.Core.State.Models.GameState.RoundStartingPlayerId
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_RoundStartingPlayerId
+  name: RoundStartingPlayerId
+  nameWithType: GameState.RoundStartingPlayerId
+  fullName: CardGame.Core.State.Models.GameState.RoundStartingPlayerId
+- uid: CardGame.Core.State.Models.GameState.CombatLineIndex*
+  commentId: Overload:CardGame.Core.State.Models.GameState.CombatLineIndex
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_CombatLineIndex
+  name: CombatLineIndex
+  nameWithType: GameState.CombatLineIndex
+  fullName: CardGame.Core.State.Models.GameState.CombatLineIndex
+- uid: CardGame.Core.State.Models.GameState.CombatStep*
+  commentId: Overload:CardGame.Core.State.Models.GameState.CombatStep
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_CombatStep
+  name: CombatStep
+  nameWithType: GameState.CombatStep
+  fullName: CardGame.Core.State.Models.GameState.CombatStep
+- uid: CardGame.Core.State.Models.GameState.#ctor*
+  commentId: Overload:CardGame.Core.State.Models.GameState.#ctor
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState__ctor_System_Int32_CardGame_Core_State_Enums_GamePhase_System_Int32_CardGame_Core_State_Models_BoardState_CardGame_Core_State_Models_PlayerState_CardGame_Core_State_Models_PlayerState_System_Collections_Generic_IEnumerable_System_Int32__CardGame_Core_State_Models_PendingInteraction_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Int32_System_Int32_System_Int32_
+  name: GameState
+  nameWithType: GameState.GameState
+  fullName: CardGame.Core.State.Models.GameState.GameState
+  nameWithType.vb: GameState.New
+  fullName.vb: CardGame.Core.State.Models.GameState.New
+  name.vb: New
+- uid: System.Collections.Generic.IEnumerable{System.Int32}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<int>
+  nameWithType: IEnumerable<int>
+  fullName: System.Collections.Generic.IEnumerable<int>
+  nameWithType.vb: IEnumerable(Of Integer)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Integer)
+  name.vb: IEnumerable(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance}
+  commentId: T:System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: IEnumerable<CardInstance>
+  nameWithType: IEnumerable<CardInstance>
+  fullName: System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Models.CardInstance>
+  nameWithType.vb: IEnumerable(Of CardInstance)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Models.CardInstance)
+  name.vb: IEnumerable(Of CardInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.State.Models.GameState.Initial*
+  commentId: Overload:CardGame.Core.State.Models.GameState.Initial
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_Initial_System_Int32_System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__CardGame_Core_Application_DeterministicRng_
+  name: Initial
+  nameWithType: GameState.Initial
+  fullName: CardGame.Core.State.Models.GameState.Initial
+- uid: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: List<CardInstance>
+  nameWithType: List<CardInstance>
+  fullName: System.Collections.Generic.List<CardGame.Core.Cards.Models.CardInstance>
+  nameWithType.vb: List(Of CardInstance)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Cards.Models.CardInstance)
+  name.vb: List(Of CardInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: )
+- uid: CardGame.Core.Application.DeterministicRng
+  commentId: T:CardGame.Core.Application.DeterministicRng
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.DeterministicRng.html
+  name: DeterministicRng
+  nameWithType: DeterministicRng
+  fullName: CardGame.Core.Application.DeterministicRng
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: CardGame.Core.State.Models.GameState.With*
+  commentId: Overload:CardGame.Core.State.Models.GameState.With
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_With_System_Nullable_System_Int32__System_Nullable_CardGame_Core_State_Enums_GamePhase__System_Nullable_System_Int32__CardGame_Core_State_Models_BoardState_CardGame_Core_State_Models_PlayerState_CardGame_Core_State_Models_PlayerState_System_Collections_Generic_IEnumerable_System_Int32__CardGame_Core_State_Models_PendingInteraction_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_System_Int32__System_Boolean_System_Nullable_System_Int32__System_Nullable_System_Int32__
+  name: With
+  nameWithType: GameState.With
+  fullName: CardGame.Core.State.Models.GameState.With
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable{CardGame.Core.State.Enums.GamePhase}
+  commentId: T:System.Nullable{CardGame.Core.State.Enums.GamePhase}
+  parent: System
+  definition: System.Nullable`1
+  href: CardGame.Core.State.Enums.GamePhase.html
+  name: GamePhase?
+  nameWithType: GamePhase?
+  fullName: CardGame.Core.State.Enums.GamePhase?
+  spec.csharp:
+  - uid: CardGame.Core.State.Enums.GamePhase
+    name: GamePhase
+    href: CardGame.Core.State.Enums.GamePhase.html
+  - name: '?'
+  spec.vb:
+  - uid: CardGame.Core.State.Enums.GamePhase
+    name: GamePhase
+    href: CardGame.Core.State.Enums.GamePhase.html
+  - name: '?'
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.State.Models.GameState.MarkPlayerAsReady*
+  commentId: Overload:CardGame.Core.State.Models.GameState.MarkPlayerAsReady
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_MarkPlayerAsReady_System_Int32_
+  name: MarkPlayerAsReady
+  nameWithType: GameState.MarkPlayerAsReady
+  fullName: CardGame.Core.State.Models.GameState.MarkPlayerAsReady
+- uid: CardGame.Core.State.Models.GameState.GetPlayer*
+  commentId: Overload:CardGame.Core.State.Models.GameState.GetPlayer
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_GetPlayer_System_Int32_
+  name: GetPlayer
+  nameWithType: GameState.GetPlayer
+  fullName: CardGame.Core.State.Models.GameState.GetPlayer
+- uid: CardGame.Core.State.Models.GameState.GetOpponent*
+  commentId: Overload:CardGame.Core.State.Models.GameState.GetOpponent
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_GetOpponent_System_Int32_
+  name: GetOpponent
+  nameWithType: GameState.GetOpponent
+  fullName: CardGame.Core.State.Models.GameState.GetOpponent
+- uid: CardGame.Core.State.Models.GameState.UpdatePlayer*
+  commentId: Overload:CardGame.Core.State.Models.GameState.UpdatePlayer
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_UpdatePlayer_CardGame_Core_State_Models_PlayerState_
+  name: UpdatePlayer
+  nameWithType: GameState.UpdatePlayer
+  fullName: CardGame.Core.State.Models.GameState.UpdatePlayer
+- uid: CardGame.Core.State.Models.GameState.UpdateBoard*
+  commentId: Overload:CardGame.Core.State.Models.GameState.UpdateBoard
+  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_UpdateBoard_CardGame_Core_State_Models_BoardState_
+  name: UpdateBoard
+  nameWithType: GameState.UpdateBoard
+  fullName: CardGame.Core.State.Models.GameState.UpdateBoard

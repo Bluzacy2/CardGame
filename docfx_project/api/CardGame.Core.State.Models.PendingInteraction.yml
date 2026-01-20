@@ -1,0 +1,575 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.State.Models.PendingInteraction
+  commentId: T:CardGame.Core.State.Models.PendingInteraction
+  id: PendingInteraction
+  parent: CardGame.Core.State.Models
+  children:
+  - CardGame.Core.State.Models.PendingInteraction.#ctor(System.Int32,System.Int32,System.Int32,CardGame.Core.Cards.Data.TargetType,System.Int32,System.Collections.Generic.IEnumerable{System.String})
+  - CardGame.Core.State.Models.PendingInteraction.ActionIndex
+  - CardGame.Core.State.Models.PendingInteraction.EffectIndex
+  - CardGame.Core.State.Models.PendingInteraction.Options
+  - CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses
+  - CardGame.Core.State.Models.PendingInteraction.RequiredTargetType
+  - CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId
+  langs:
+  - csharp
+  - vb
+  name: PendingInteraction
+  nameWithType: PendingInteraction
+  fullName: CardGame.Core.State.Models.PendingInteraction
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/PendingInteraction.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PendingInteraction
+    path: ../Source/CardGame.Core/State/Models/PendingInteraction.cs
+    startLine: 8
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Represents a pending interaction that requires player input, such as target selection for a spell or ability.
+  example: []
+  syntax:
+    content: public class PendingInteraction
+    content.vb: Public Class PendingInteraction
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId
+  commentId: P:CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId
+  id: SourceCardInstanceId
+  parent: CardGame.Core.State.Models.PendingInteraction
+  langs:
+  - csharp
+  - vb
+  name: SourceCardInstanceId
+  nameWithType: PendingInteraction.SourceCardInstanceId
+  fullName: CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/PendingInteraction.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourceCardInstanceId
+    path: ../Source/CardGame.Core/State/Models/PendingInteraction.cs
+    startLine: 14
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the instance ID of the card executing the effect.
+  example: []
+  syntax:
+    content: public int SourceCardInstanceId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourceCardInstanceId As Integer
+  overload: CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId*
+- uid: CardGame.Core.State.Models.PendingInteraction.EffectIndex
+  commentId: P:CardGame.Core.State.Models.PendingInteraction.EffectIndex
+  id: EffectIndex
+  parent: CardGame.Core.State.Models.PendingInteraction
+  langs:
+  - csharp
+  - vb
+  name: EffectIndex
+  nameWithType: PendingInteraction.EffectIndex
+  fullName: CardGame.Core.State.Models.PendingInteraction.EffectIndex
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/PendingInteraction.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EffectIndex
+    path: ../Source/CardGame.Core/State/Models/PendingInteraction.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the index of the effect within the card's Effects list (0, 1, 2...).
+  example: []
+  syntax:
+    content: public int EffectIndex { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property EffectIndex As Integer
+  overload: CardGame.Core.State.Models.PendingInteraction.EffectIndex*
+- uid: CardGame.Core.State.Models.PendingInteraction.ActionIndex
+  commentId: P:CardGame.Core.State.Models.PendingInteraction.ActionIndex
+  id: ActionIndex
+  parent: CardGame.Core.State.Models.PendingInteraction
+  langs:
+  - csharp
+  - vb
+  name: ActionIndex
+  nameWithType: PendingInteraction.ActionIndex
+  fullName: CardGame.Core.State.Models.PendingInteraction.ActionIndex
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/PendingInteraction.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ActionIndex
+    path: ../Source/CardGame.Core/State/Models/PendingInteraction.cs
+    startLine: 24
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the index of the action within the effect (0, 1, 2...).
+  example: []
+  syntax:
+    content: public int ActionIndex { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ActionIndex As Integer
+  overload: CardGame.Core.State.Models.PendingInteraction.ActionIndex*
+- uid: CardGame.Core.State.Models.PendingInteraction.RequiredTargetType
+  commentId: P:CardGame.Core.State.Models.PendingInteraction.RequiredTargetType
+  id: RequiredTargetType
+  parent: CardGame.Core.State.Models.PendingInteraction
+  langs:
+  - csharp
+  - vb
+  name: RequiredTargetType
+  nameWithType: PendingInteraction.RequiredTargetType
+  fullName: CardGame.Core.State.Models.PendingInteraction.RequiredTargetType
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/PendingInteraction.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: RequiredTargetType
+    path: ../Source/CardGame.Core/State/Models/PendingInteraction.cs
+    startLine: 29
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the type of target the UI should look for.
+  example: []
+  syntax:
+    content: public TargetType RequiredTargetType { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+    content.vb: Public ReadOnly Property RequiredTargetType As TargetType
+  overload: CardGame.Core.State.Models.PendingInteraction.RequiredTargetType*
+- uid: CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses
+  commentId: P:CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses
+  id: PlayerIdWhoChooses
+  parent: CardGame.Core.State.Models.PendingInteraction
+  langs:
+  - csharp
+  - vb
+  name: PlayerIdWhoChooses
+  nameWithType: PendingInteraction.PlayerIdWhoChooses
+  fullName: CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/PendingInteraction.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PlayerIdWhoChooses
+    path: ../Source/CardGame.Core/State/Models/PendingInteraction.cs
+    startLine: 31
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  syntax:
+    content: public int PlayerIdWhoChooses { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PlayerIdWhoChooses As Integer
+  overload: CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses*
+- uid: CardGame.Core.State.Models.PendingInteraction.Options
+  commentId: P:CardGame.Core.State.Models.PendingInteraction.Options
+  id: Options
+  parent: CardGame.Core.State.Models.PendingInteraction
+  langs:
+  - csharp
+  - vb
+  name: Options
+  nameWithType: PendingInteraction.Options
+  fullName: CardGame.Core.State.Models.PendingInteraction.Options
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/PendingInteraction.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Options
+    path: ../Source/CardGame.Core/State/Models/PendingInteraction.cs
+    startLine: 36
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Gets the list of options available for this interaction.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> Options { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public ReadOnly Property Options As IReadOnlyList(Of String)
+  overload: CardGame.Core.State.Models.PendingInteraction.Options*
+- uid: CardGame.Core.State.Models.PendingInteraction.#ctor(System.Int32,System.Int32,System.Int32,CardGame.Core.Cards.Data.TargetType,System.Int32,System.Collections.Generic.IEnumerable{System.String})
+  commentId: M:CardGame.Core.State.Models.PendingInteraction.#ctor(System.Int32,System.Int32,System.Int32,CardGame.Core.Cards.Data.TargetType,System.Int32,System.Collections.Generic.IEnumerable{System.String})
+  id: '#ctor(System.Int32,System.Int32,System.Int32,CardGame.Core.Cards.Data.TargetType,System.Int32,System.Collections.Generic.IEnumerable{System.String})'
+  parent: CardGame.Core.State.Models.PendingInteraction
+  langs:
+  - csharp
+  - vb
+  name: PendingInteraction(int, int, int, TargetType, int, IEnumerable<string>?)
+  nameWithType: PendingInteraction.PendingInteraction(int, int, int, TargetType, int, IEnumerable<string>?)
+  fullName: CardGame.Core.State.Models.PendingInteraction.PendingInteraction(int, int, int, CardGame.Core.Cards.Data.TargetType, int, System.Collections.Generic.IEnumerable<string>?)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/State/Models/PendingInteraction.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/State/Models/PendingInteraction.cs
+    startLine: 49
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.State.Models
+  summary: Initializes a new instance of the PendingInteraction class.
+  example: []
+  syntax:
+    content: public PendingInteraction(int sourceId, int effectIndex, int actionIndex, TargetType targetType, int playerIdWhoChooses, IEnumerable<string>? options = null)
+    parameters:
+    - id: sourceId
+      type: System.Int32
+      description: The instance ID of the card executing the effect.
+    - id: effectIndex
+      type: System.Int32
+      description: The index of the effect within the card's Effects list.
+    - id: actionIndex
+      type: System.Int32
+      description: The index of the action within the effect.
+    - id: targetType
+      type: CardGame.Core.Cards.Data.TargetType
+      description: The type of target the UI should look for.
+    - id: playerIdWhoChooses
+      type: System.Int32
+    - id: options
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: Optional list of options for the interaction.
+    content.vb: Public Sub New(sourceId As Integer, effectIndex As Integer, actionIndex As Integer, targetType As TargetType, playerIdWhoChooses As Integer, options As IEnumerable(Of String) = Nothing)
+  overload: CardGame.Core.State.Models.PendingInteraction.#ctor*
+  nameWithType.vb: PendingInteraction.New(Integer, Integer, Integer, TargetType, Integer, IEnumerable(Of String))
+  fullName.vb: CardGame.Core.State.Models.PendingInteraction.New(Integer, Integer, Integer, CardGame.Core.Cards.Data.TargetType, Integer, System.Collections.Generic.IEnumerable(Of String))
+  name.vb: New(Integer, Integer, Integer, TargetType, Integer, IEnumerable(Of String))
+references:
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId*
+  commentId: Overload:CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId
+  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_SourceCardInstanceId
+  name: SourceCardInstanceId
+  nameWithType: PendingInteraction.SourceCardInstanceId
+  fullName: CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.State.Models.PendingInteraction.EffectIndex*
+  commentId: Overload:CardGame.Core.State.Models.PendingInteraction.EffectIndex
+  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_EffectIndex
+  name: EffectIndex
+  nameWithType: PendingInteraction.EffectIndex
+  fullName: CardGame.Core.State.Models.PendingInteraction.EffectIndex
+- uid: CardGame.Core.State.Models.PendingInteraction.ActionIndex*
+  commentId: Overload:CardGame.Core.State.Models.PendingInteraction.ActionIndex
+  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_ActionIndex
+  name: ActionIndex
+  nameWithType: PendingInteraction.ActionIndex
+  fullName: CardGame.Core.State.Models.PendingInteraction.ActionIndex
+- uid: CardGame.Core.State.Models.PendingInteraction.RequiredTargetType*
+  commentId: Overload:CardGame.Core.State.Models.PendingInteraction.RequiredTargetType
+  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_RequiredTargetType
+  name: RequiredTargetType
+  nameWithType: PendingInteraction.RequiredTargetType
+  fullName: CardGame.Core.State.Models.PendingInteraction.RequiredTargetType
+- uid: CardGame.Core.Cards.Data.TargetType
+  commentId: T:CardGame.Core.Cards.Data.TargetType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.TargetType.html
+  name: TargetType
+  nameWithType: TargetType
+  fullName: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses*
+  commentId: Overload:CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses
+  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_PlayerIdWhoChooses
+  name: PlayerIdWhoChooses
+  nameWithType: PendingInteraction.PlayerIdWhoChooses
+  fullName: CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses
+- uid: CardGame.Core.State.Models.PendingInteraction.Options*
+  commentId: Overload:CardGame.Core.State.Models.PendingInteraction.Options
+  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_Options
+  name: Options
+  nameWithType: PendingInteraction.Options
+  fullName: CardGame.Core.State.Models.PendingInteraction.Options
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.State.Models.PendingInteraction.#ctor*
+  commentId: Overload:CardGame.Core.State.Models.PendingInteraction.#ctor
+  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction__ctor_System_Int32_System_Int32_System_Int32_CardGame_Core_Cards_Data_TargetType_System_Int32_System_Collections_Generic_IEnumerable_System_String__
+  name: PendingInteraction
+  nameWithType: PendingInteraction.PendingInteraction
+  fullName: CardGame.Core.State.Models.PendingInteraction.PendingInteraction
+  nameWithType.vb: PendingInteraction.New
+  fullName.vb: CardGame.Core.State.Models.PendingInteraction.New
+  name.vb: New
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

@@ -1,0 +1,761 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  id: CardStatsEnhanced
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.#ctor(System.Int32,System.String)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.AverageDensity
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardId
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardName
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.DeckCount
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.GamesWithCard
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.IncrementGames(System.Boolean)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.PopularityScore
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.ResetUsageStats
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetInitialGamesAndWins(System.Int32,System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetWinRateDirectly(System.Single)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalCopiesInPopulation
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalDecks
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UpdateUsageStats(System.Int32,System.Int32,System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UseRate
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinRate
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinsWithCard
+  langs:
+  - csharp
+  - vb
+  name: CardStatsEnhanced
+  nameWithType: CardStatsEnhanced
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardStatsEnhanced
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1165
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class CardStatsEnhanced
+    content.vb: Public Class CardStatsEnhanced
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardId
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardId
+  id: CardId
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: CardId
+  nameWithType: CardStatsEnhanced.CardId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardId
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1167
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int CardId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property CardId As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardId*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardName
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardName
+  id: CardName
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: CardName
+  nameWithType: CardStatsEnhanced.CardName
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardName
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardName
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1168
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string CardName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property CardName As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardName*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalCopiesInPopulation
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalCopiesInPopulation
+  id: TotalCopiesInPopulation
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: TotalCopiesInPopulation
+  nameWithType: CardStatsEnhanced.TotalCopiesInPopulation
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalCopiesInPopulation
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TotalCopiesInPopulation
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1169
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int TotalCopiesInPopulation { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalCopiesInPopulation As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalCopiesInPopulation*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.DeckCount
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.DeckCount
+  id: DeckCount
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: DeckCount
+  nameWithType: CardStatsEnhanced.DeckCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.DeckCount
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DeckCount
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1170
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int DeckCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DeckCount As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.DeckCount*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalDecks
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalDecks
+  id: TotalDecks
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: TotalDecks
+  nameWithType: CardStatsEnhanced.TotalDecks
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalDecks
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TotalDecks
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1171
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int TotalDecks { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalDecks As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalDecks*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UseRate
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UseRate
+  id: UseRate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: UseRate
+  nameWithType: CardStatsEnhanced.UseRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UseRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UseRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1172
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float UseRate { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property UseRate As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UseRate*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinRate
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinRate
+  id: WinRate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: WinRate
+  nameWithType: CardStatsEnhanced.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WinRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1173
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float WinRate { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property WinRate As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinRate*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.GamesWithCard
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.GamesWithCard
+  id: GamesWithCard
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: GamesWithCard
+  nameWithType: CardStatsEnhanced.GamesWithCard
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.GamesWithCard
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GamesWithCard
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1174
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int GamesWithCard { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property GamesWithCard As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.GamesWithCard*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinsWithCard
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinsWithCard
+  id: WinsWithCard
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: WinsWithCard
+  nameWithType: CardStatsEnhanced.WinsWithCard
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinsWithCard
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WinsWithCard
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1175
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int WinsWithCard { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property WinsWithCard As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinsWithCard*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.AverageDensity
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.AverageDensity
+  id: AverageDensity
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: AverageDensity
+  nameWithType: CardStatsEnhanced.AverageDensity
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.AverageDensity
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AverageDensity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1176
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float AverageDensity { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property AverageDensity As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.AverageDensity*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.PopularityScore
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.PopularityScore
+  id: PopularityScore
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: PopularityScore
+  nameWithType: CardStatsEnhanced.PopularityScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.PopularityScore
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PopularityScore
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1177
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float PopularityScore { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property PopularityScore As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.PopularityScore*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.#ctor(System.Int32,System.String)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.#ctor(System.Int32,System.String)
+  id: '#ctor(System.Int32,System.String)'
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: CardStatsEnhanced(int, string)
+  nameWithType: CardStatsEnhanced.CardStatsEnhanced(int, string)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardStatsEnhanced(int, string)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1184
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public CardStatsEnhanced(int cardId, string cardName)
+    parameters:
+    - id: cardId
+      type: System.Int32
+    - id: cardName
+      type: System.String
+    content.vb: Public Sub New(cardId As Integer, cardName As String)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.#ctor*
+  nameWithType.vb: CardStatsEnhanced.New(Integer, String)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.New(Integer, String)
+  name.vb: New(Integer, String)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.ResetUsageStats
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.ResetUsageStats
+  id: ResetUsageStats
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: ResetUsageStats()
+  nameWithType: CardStatsEnhanced.ResetUsageStats()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.ResetUsageStats()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ResetUsageStats
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1190
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void ResetUsageStats()
+    content.vb: Public Sub ResetUsageStats()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.ResetUsageStats*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UpdateUsageStats(System.Int32,System.Int32,System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UpdateUsageStats(System.Int32,System.Int32,System.Int32)
+  id: UpdateUsageStats(System.Int32,System.Int32,System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: UpdateUsageStats(int, int, int)
+  nameWithType: CardStatsEnhanced.UpdateUsageStats(int, int, int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UpdateUsageStats(int, int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UpdateUsageStats
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1201
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void UpdateUsageStats(int deckCount, int totalCopies, int totalDecks)
+    parameters:
+    - id: deckCount
+      type: System.Int32
+    - id: totalCopies
+      type: System.Int32
+    - id: totalDecks
+      type: System.Int32
+    content.vb: Public Sub UpdateUsageStats(deckCount As Integer, totalCopies As Integer, totalDecks As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UpdateUsageStats*
+  nameWithType.vb: CardStatsEnhanced.UpdateUsageStats(Integer, Integer, Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UpdateUsageStats(Integer, Integer, Integer)
+  name.vb: UpdateUsageStats(Integer, Integer, Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.IncrementGames(System.Boolean)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.IncrementGames(System.Boolean)
+  id: IncrementGames(System.Boolean)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: IncrementGames(bool)
+  nameWithType: CardStatsEnhanced.IncrementGames(bool)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.IncrementGames(bool)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: IncrementGames
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1213
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void IncrementGames(bool won)
+    parameters:
+    - id: won
+      type: System.Boolean
+    content.vb: Public Sub IncrementGames(won As Boolean)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.IncrementGames*
+  nameWithType.vb: CardStatsEnhanced.IncrementGames(Boolean)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.IncrementGames(Boolean)
+  name.vb: IncrementGames(Boolean)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetInitialGamesAndWins(System.Int32,System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetInitialGamesAndWins(System.Int32,System.Int32)
+  id: SetInitialGamesAndWins(System.Int32,System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: SetInitialGamesAndWins(int, int)
+  nameWithType: CardStatsEnhanced.SetInitialGamesAndWins(int, int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetInitialGamesAndWins(int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SetInitialGamesAndWins
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1227
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void SetInitialGamesAndWins(int games, int wins)
+    parameters:
+    - id: games
+      type: System.Int32
+    - id: wins
+      type: System.Int32
+    content.vb: Public Sub SetInitialGamesAndWins(games As Integer, wins As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetInitialGamesAndWins*
+  nameWithType.vb: CardStatsEnhanced.SetInitialGamesAndWins(Integer, Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetInitialGamesAndWins(Integer, Integer)
+  name.vb: SetInitialGamesAndWins(Integer, Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetWinRateDirectly(System.Single)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetWinRateDirectly(System.Single)
+  id: SetWinRateDirectly(System.Single)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  langs:
+  - csharp
+  - vb
+  name: SetWinRateDirectly(float)
+  nameWithType: CardStatsEnhanced.SetWinRateDirectly(float)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetWinRateDirectly(float)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SetWinRateDirectly
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1248
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void SetWinRateDirectly(float winRate)
+    parameters:
+    - id: winRate
+      type: System.Single
+    content.vb: Public Sub SetWinRateDirectly(winRate As Single)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetWinRateDirectly*
+  nameWithType.vb: CardStatsEnhanced.SetWinRateDirectly(Single)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetWinRateDirectly(Single)
+  name.vb: SetWinRateDirectly(Single)
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardId*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardId
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_CardId
+  name: CardId
+  nameWithType: CardStatsEnhanced.CardId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardName*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardName
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_CardName
+  name: CardName
+  nameWithType: CardStatsEnhanced.CardName
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalCopiesInPopulation*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalCopiesInPopulation
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_TotalCopiesInPopulation
+  name: TotalCopiesInPopulation
+  nameWithType: CardStatsEnhanced.TotalCopiesInPopulation
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalCopiesInPopulation
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.DeckCount*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.DeckCount
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_DeckCount
+  name: DeckCount
+  nameWithType: CardStatsEnhanced.DeckCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.DeckCount
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalDecks*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalDecks
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_TotalDecks
+  name: TotalDecks
+  nameWithType: CardStatsEnhanced.TotalDecks
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.TotalDecks
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UseRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UseRate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_UseRate
+  name: UseRate
+  nameWithType: CardStatsEnhanced.UseRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UseRate
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinRate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_WinRate
+  name: WinRate
+  nameWithType: CardStatsEnhanced.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinRate
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.GamesWithCard*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.GamesWithCard
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_GamesWithCard
+  name: GamesWithCard
+  nameWithType: CardStatsEnhanced.GamesWithCard
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.GamesWithCard
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinsWithCard*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinsWithCard
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_WinsWithCard
+  name: WinsWithCard
+  nameWithType: CardStatsEnhanced.WinsWithCard
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.WinsWithCard
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.AverageDensity*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.AverageDensity
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_AverageDensity
+  name: AverageDensity
+  nameWithType: CardStatsEnhanced.AverageDensity
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.AverageDensity
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.PopularityScore*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.PopularityScore
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_PopularityScore
+  name: PopularityScore
+  nameWithType: CardStatsEnhanced.PopularityScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.PopularityScore
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.#ctor*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.#ctor
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced__ctor_System_Int32_System_String_
+  name: CardStatsEnhanced
+  nameWithType: CardStatsEnhanced.CardStatsEnhanced
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.CardStatsEnhanced
+  nameWithType.vb: CardStatsEnhanced.New
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.New
+  name.vb: New
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.ResetUsageStats*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.ResetUsageStats
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_ResetUsageStats
+  name: ResetUsageStats
+  nameWithType: CardStatsEnhanced.ResetUsageStats
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.ResetUsageStats
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UpdateUsageStats*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UpdateUsageStats
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_UpdateUsageStats_System_Int32_System_Int32_System_Int32_
+  name: UpdateUsageStats
+  nameWithType: CardStatsEnhanced.UpdateUsageStats
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.UpdateUsageStats
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.IncrementGames*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.IncrementGames
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_IncrementGames_System_Boolean_
+  name: IncrementGames
+  nameWithType: CardStatsEnhanced.IncrementGames
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.IncrementGames
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetInitialGamesAndWins*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetInitialGamesAndWins
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_SetInitialGamesAndWins_System_Int32_System_Int32_
+  name: SetInitialGamesAndWins
+  nameWithType: CardStatsEnhanced.SetInitialGamesAndWins
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetInitialGamesAndWins
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetWinRateDirectly*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetWinRateDirectly
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced_SetWinRateDirectly_System_Single_
+  name: SetWinRateDirectly
+  nameWithType: CardStatsEnhanced.SetWinRateDirectly
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.SetWinRateDirectly

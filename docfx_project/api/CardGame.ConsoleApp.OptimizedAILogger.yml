@@ -1,0 +1,149 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.OptimizedAILogger
+  commentId: T:CardGame.ConsoleApp.OptimizedAILogger
+  id: OptimizedAILogger
+  parent: CardGame.ConsoleApp
+  children:
+  - CardGame.ConsoleApp.OptimizedAILogger.RunAsync
+  langs:
+  - csharp
+  - vb
+  name: OptimizedAILogger
+  nameWithType: OptimizedAILogger
+  fullName: CardGame.ConsoleApp.OptimizedAILogger
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/OptimizedAILogger.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OptimizedAILogger
+    path: ../Source/CardGame.ConsoleApp/OptimizedAILogger.cs
+    startLine: 20
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp
+  syntax:
+    content: public static class OptimizedAILogger
+    content.vb: Public Module OptimizedAILogger
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.OptimizedAILogger.RunAsync
+  commentId: M:CardGame.ConsoleApp.OptimizedAILogger.RunAsync
+  id: RunAsync
+  parent: CardGame.ConsoleApp.OptimizedAILogger
+  langs:
+  - csharp
+  - vb
+  name: RunAsync()
+  nameWithType: OptimizedAILogger.RunAsync()
+  fullName: CardGame.ConsoleApp.OptimizedAILogger.RunAsync()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/OptimizedAILogger.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: RunAsync
+    path: ../Source/CardGame.ConsoleApp/OptimizedAILogger.cs
+    startLine: 22
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp
+  syntax:
+    content: public static Task RunAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Shared Function RunAsync() As Task
+  overload: CardGame.ConsoleApp.OptimizedAILogger.RunAsync*
+references:
+- uid: CardGame.ConsoleApp
+  commentId: N:CardGame.ConsoleApp
+  href: CardGame.html
+  name: CardGame.ConsoleApp
+  nameWithType: CardGame.ConsoleApp
+  fullName: CardGame.ConsoleApp
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.OptimizedAILogger.RunAsync*
+  commentId: Overload:CardGame.ConsoleApp.OptimizedAILogger.RunAsync
+  href: CardGame.ConsoleApp.OptimizedAILogger.html#CardGame_ConsoleApp_OptimizedAILogger_RunAsync
+  name: RunAsync
+  nameWithType: OptimizedAILogger.RunAsync
+  fullName: CardGame.ConsoleApp.OptimizedAILogger.RunAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

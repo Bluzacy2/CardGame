@@ -1,0 +1,467 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.EffectData
+  commentId: T:CardGame.Core.Cards.Data.EffectData
+  id: EffectData
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.EffectData.Actions
+  - CardGame.Core.Cards.Data.EffectData.ChoiceLabels
+  - CardGame.Core.Cards.Data.EffectData.Condition
+  - CardGame.Core.Cards.Data.EffectData.Targeting
+  - CardGame.Core.Cards.Data.EffectData.Trigger
+  - CardGame.Core.Cards.Data.EffectData.Zone
+  langs:
+  - csharp
+  - vb
+  name: EffectData
+  nameWithType: EffectData
+  fullName: CardGame.Core.Cards.Data.EffectData
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EffectData
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 76
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Represents a triggered effect with conditions and actions.
+  example: []
+  syntax:
+    content: public class EffectData
+    content.vb: Public Class EffectData
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Data.EffectData.Trigger
+  commentId: P:CardGame.Core.Cards.Data.EffectData.Trigger
+  id: Trigger
+  parent: CardGame.Core.Cards.Data.EffectData
+  langs:
+  - csharp
+  - vb
+  name: Trigger
+  nameWithType: EffectData.Trigger
+  fullName: CardGame.Core.Cards.Data.EffectData.Trigger
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Trigger
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 81
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the event that triggers this effect.
+  example: []
+  syntax:
+    content: public TriggerType Trigger { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.TriggerType
+    content.vb: Public Property Trigger As TriggerType
+  overload: CardGame.Core.Cards.Data.EffectData.Trigger*
+- uid: CardGame.Core.Cards.Data.EffectData.Condition
+  commentId: P:CardGame.Core.Cards.Data.EffectData.Condition
+  id: Condition
+  parent: CardGame.Core.Cards.Data.EffectData
+  langs:
+  - csharp
+  - vb
+  name: Condition
+  nameWithType: EffectData.Condition
+  fullName: CardGame.Core.Cards.Data.EffectData.Condition
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Condition
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 86
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the condition that must be met for the effect to activate.
+  example: []
+  syntax:
+    content: public ConditionData? Condition { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.ConditionData
+    content.vb: Public Property Condition As ConditionData
+  overload: CardGame.Core.Cards.Data.EffectData.Condition*
+- uid: CardGame.Core.Cards.Data.EffectData.Actions
+  commentId: P:CardGame.Core.Cards.Data.EffectData.Actions
+  id: Actions
+  parent: CardGame.Core.Cards.Data.EffectData
+  langs:
+  - csharp
+  - vb
+  name: Actions
+  nameWithType: EffectData.Actions
+  fullName: CardGame.Core.Cards.Data.EffectData.Actions
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Actions
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 91
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the actions performed when the effect triggers.
+  example: []
+  syntax:
+    content: public List<ActionData> Actions { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Data.ActionData}
+    content.vb: Public Property Actions As List(Of ActionData)
+  overload: CardGame.Core.Cards.Data.EffectData.Actions*
+- uid: CardGame.Core.Cards.Data.EffectData.Targeting
+  commentId: P:CardGame.Core.Cards.Data.EffectData.Targeting
+  id: Targeting
+  parent: CardGame.Core.Cards.Data.EffectData
+  langs:
+  - csharp
+  - vb
+  name: Targeting
+  nameWithType: EffectData.Targeting
+  fullName: CardGame.Core.Cards.Data.EffectData.Targeting
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Targeting
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 96
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the targeting rules for the effect.
+  example: []
+  syntax:
+    content: public TargetType Targeting { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+    content.vb: Public Property Targeting As TargetType
+  overload: CardGame.Core.Cards.Data.EffectData.Targeting*
+- uid: CardGame.Core.Cards.Data.EffectData.ChoiceLabels
+  commentId: P:CardGame.Core.Cards.Data.EffectData.ChoiceLabels
+  id: ChoiceLabels
+  parent: CardGame.Core.Cards.Data.EffectData
+  langs:
+  - csharp
+  - vb
+  name: ChoiceLabels
+  nameWithType: EffectData.ChoiceLabels
+  fullName: CardGame.Core.Cards.Data.EffectData.ChoiceLabels
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ChoiceLabels
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 101
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the labels for player choices in multi-choice effects.
+  example: []
+  syntax:
+    content: public List<string> ChoiceLabels { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Property ChoiceLabels As List(Of String)
+  overload: CardGame.Core.Cards.Data.EffectData.ChoiceLabels*
+- uid: CardGame.Core.Cards.Data.EffectData.Zone
+  commentId: P:CardGame.Core.Cards.Data.EffectData.Zone
+  id: Zone
+  parent: CardGame.Core.Cards.Data.EffectData
+  langs:
+  - csharp
+  - vb
+  name: Zone
+  nameWithType: EffectData.Zone
+  fullName: CardGame.Core.Cards.Data.EffectData.Zone
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Zone
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 106
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the zone where the effect can be activated from.
+  example: []
+  syntax:
+    content: public EffectZone Zone { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.EffectZone
+    content.vb: Public Property Zone As EffectZone
+  overload: CardGame.Core.Cards.Data.EffectData.Zone*
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Data.EffectData.Trigger*
+  commentId: Overload:CardGame.Core.Cards.Data.EffectData.Trigger
+  href: CardGame.Core.Cards.Data.EffectData.html#CardGame_Core_Cards_Data_EffectData_Trigger
+  name: Trigger
+  nameWithType: EffectData.Trigger
+  fullName: CardGame.Core.Cards.Data.EffectData.Trigger
+- uid: CardGame.Core.Cards.Data.TriggerType
+  commentId: T:CardGame.Core.Cards.Data.TriggerType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.TriggerType.html
+  name: TriggerType
+  nameWithType: TriggerType
+  fullName: CardGame.Core.Cards.Data.TriggerType
+- uid: CardGame.Core.Cards.Data.EffectData.Condition*
+  commentId: Overload:CardGame.Core.Cards.Data.EffectData.Condition
+  href: CardGame.Core.Cards.Data.EffectData.html#CardGame_Core_Cards_Data_EffectData_Condition
+  name: Condition
+  nameWithType: EffectData.Condition
+  fullName: CardGame.Core.Cards.Data.EffectData.Condition
+- uid: CardGame.Core.Cards.Data.ConditionData
+  commentId: T:CardGame.Core.Cards.Data.ConditionData
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ConditionData.html
+  name: ConditionData
+  nameWithType: ConditionData
+  fullName: CardGame.Core.Cards.Data.ConditionData
+- uid: CardGame.Core.Cards.Data.EffectData.Actions*
+  commentId: Overload:CardGame.Core.Cards.Data.EffectData.Actions
+  href: CardGame.Core.Cards.Data.EffectData.html#CardGame_Core_Cards_Data_EffectData_Actions
+  name: Actions
+  nameWithType: EffectData.Actions
+  fullName: CardGame.Core.Cards.Data.EffectData.Actions
+- uid: System.Collections.Generic.List{CardGame.Core.Cards.Data.ActionData}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Cards.Data.ActionData}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Cards.Data.ActionData.html
+  name: List<ActionData>
+  nameWithType: List<ActionData>
+  fullName: System.Collections.Generic.List<CardGame.Core.Cards.Data.ActionData>
+  nameWithType.vb: List(Of ActionData)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Cards.Data.ActionData)
+  name.vb: List(Of ActionData)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.ActionData
+    name: ActionData
+    href: CardGame.Core.Cards.Data.ActionData.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.ActionData
+    name: ActionData
+    href: CardGame.Core.Cards.Data.ActionData.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.Cards.Data.EffectData.Targeting*
+  commentId: Overload:CardGame.Core.Cards.Data.EffectData.Targeting
+  href: CardGame.Core.Cards.Data.EffectData.html#CardGame_Core_Cards_Data_EffectData_Targeting
+  name: Targeting
+  nameWithType: EffectData.Targeting
+  fullName: CardGame.Core.Cards.Data.EffectData.Targeting
+- uid: CardGame.Core.Cards.Data.TargetType
+  commentId: T:CardGame.Core.Cards.Data.TargetType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.TargetType.html
+  name: TargetType
+  nameWithType: TargetType
+  fullName: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.EffectData.ChoiceLabels*
+  commentId: Overload:CardGame.Core.Cards.Data.EffectData.ChoiceLabels
+  href: CardGame.Core.Cards.Data.EffectData.html#CardGame_Core_Cards_Data_EffectData_ChoiceLabels
+  name: ChoiceLabels
+  nameWithType: EffectData.ChoiceLabels
+  fullName: CardGame.Core.Cards.Data.EffectData.ChoiceLabels
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: CardGame.Core.Cards.Data.EffectData.Zone*
+  commentId: Overload:CardGame.Core.Cards.Data.EffectData.Zone
+  href: CardGame.Core.Cards.Data.EffectData.html#CardGame_Core_Cards_Data_EffectData_Zone
+  name: Zone
+  nameWithType: EffectData.Zone
+  fullName: CardGame.Core.Cards.Data.EffectData.Zone
+- uid: CardGame.Core.Cards.Data.EffectZone
+  commentId: T:CardGame.Core.Cards.Data.EffectZone
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.EffectZone.html
+  name: EffectZone
+  nameWithType: EffectZone
+  fullName: CardGame.Core.Cards.Data.EffectZone

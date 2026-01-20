@@ -1,0 +1,270 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.TriggerActivatedEvent
+  commentId: T:CardGame.Core.Events.TriggerActivatedEvent
+  id: TriggerActivatedEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.TriggerActivatedEvent.#ctor(System.Int32,System.Int32)
+  - CardGame.Core.Events.TriggerActivatedEvent.SourceCardId
+  - CardGame.Core.Events.TriggerActivatedEvent.SourcePlayerId
+  langs:
+  - csharp
+  - vb
+  name: TriggerActivatedEvent
+  nameWithType: TriggerActivatedEvent
+  fullName: CardGame.Core.Events.TriggerActivatedEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/TriggerActivatedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TriggerActivatedEvent
+    path: ../Source/CardGame.Core/Events/TriggerActivatedEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs when a card's trigger condition is activated.
+  example: []
+  syntax:
+    content: 'public class TriggerActivatedEvent : IGameEvent'
+    content.vb: Public Class TriggerActivatedEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.TriggerActivatedEvent.SourceCardId
+  commentId: P:CardGame.Core.Events.TriggerActivatedEvent.SourceCardId
+  id: SourceCardId
+  parent: CardGame.Core.Events.TriggerActivatedEvent
+  langs:
+  - csharp
+  - vb
+  name: SourceCardId
+  nameWithType: TriggerActivatedEvent.SourceCardId
+  fullName: CardGame.Core.Events.TriggerActivatedEvent.SourceCardId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/TriggerActivatedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourceCardId
+    path: ../Source/CardGame.Core/Events/TriggerActivatedEvent.cs
+    startLine: 14
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the card that triggered the event.
+  example: []
+  syntax:
+    content: public int SourceCardId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourceCardId As Integer
+  overload: CardGame.Core.Events.TriggerActivatedEvent.SourceCardId*
+- uid: CardGame.Core.Events.TriggerActivatedEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.TriggerActivatedEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.TriggerActivatedEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: TriggerActivatedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.TriggerActivatedEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/TriggerActivatedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/TriggerActivatedEvent.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who owns the triggering card.
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.TriggerActivatedEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.TriggerActivatedEvent.#ctor(System.Int32,System.Int32)
+  commentId: M:CardGame.Core.Events.TriggerActivatedEvent.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: CardGame.Core.Events.TriggerActivatedEvent
+  langs:
+  - csharp
+  - vb
+  name: TriggerActivatedEvent(int, int)
+  nameWithType: TriggerActivatedEvent.TriggerActivatedEvent(int, int)
+  fullName: CardGame.Core.Events.TriggerActivatedEvent.TriggerActivatedEvent(int, int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/TriggerActivatedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/TriggerActivatedEvent.cs
+    startLine: 26
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the TriggerActivatedEvent class.
+  example: []
+  syntax:
+    content: public TriggerActivatedEvent(int sourceCardId, int sourcePlayerId)
+    parameters:
+    - id: sourceCardId
+      type: System.Int32
+      description: The ID of the card that triggered the event.
+    - id: sourcePlayerId
+      type: System.Int32
+      description: The ID of the player who owns the card.
+    content.vb: Public Sub New(sourceCardId As Integer, sourcePlayerId As Integer)
+  overload: CardGame.Core.Events.TriggerActivatedEvent.#ctor*
+  nameWithType.vb: TriggerActivatedEvent.New(Integer, Integer)
+  fullName.vb: CardGame.Core.Events.TriggerActivatedEvent.New(Integer, Integer)
+  name.vb: New(Integer, Integer)
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.TriggerActivatedEvent.SourceCardId*
+  commentId: Overload:CardGame.Core.Events.TriggerActivatedEvent.SourceCardId
+  href: CardGame.Core.Events.TriggerActivatedEvent.html#CardGame_Core_Events_TriggerActivatedEvent_SourceCardId
+  name: SourceCardId
+  nameWithType: TriggerActivatedEvent.SourceCardId
+  fullName: CardGame.Core.Events.TriggerActivatedEvent.SourceCardId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.TriggerActivatedEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.TriggerActivatedEvent.SourcePlayerId
+  href: CardGame.Core.Events.TriggerActivatedEvent.html#CardGame_Core_Events_TriggerActivatedEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: TriggerActivatedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.TriggerActivatedEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.TriggerActivatedEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.TriggerActivatedEvent.#ctor
+  href: CardGame.Core.Events.TriggerActivatedEvent.html#CardGame_Core_Events_TriggerActivatedEvent__ctor_System_Int32_System_Int32_
+  name: TriggerActivatedEvent
+  nameWithType: TriggerActivatedEvent.TriggerActivatedEvent
+  fullName: CardGame.Core.Events.TriggerActivatedEvent.TriggerActivatedEvent
+  nameWithType.vb: TriggerActivatedEvent.New
+  fullName.vb: CardGame.Core.Events.TriggerActivatedEvent.New
+  name.vb: New

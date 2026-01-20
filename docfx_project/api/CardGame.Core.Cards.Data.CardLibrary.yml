@@ -1,0 +1,729 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.CardLibrary
+  commentId: T:CardGame.Core.Cards.Data.CardLibrary
+  id: CardLibrary
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.CardLibrary.Clear
+  - CardGame.Core.Cards.Data.CardLibrary.CreateDefinition(System.Int32)
+  - CardGame.Core.Cards.Data.CardLibrary.GetAllIds
+  - CardGame.Core.Cards.Data.CardLibrary.GetCard(System.Int32)
+  - CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits(System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean})
+  - CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits(System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean})
+  - CardGame.Core.Cards.Data.CardLibrary.Instance
+  - CardGame.Core.Cards.Data.CardLibrary.LoadFromJson(System.String)
+  langs:
+  - csharp
+  - vb
+  name: CardLibrary
+  nameWithType: CardLibrary
+  fullName: CardGame.Core.Cards.Data.CardLibrary
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardLibrary.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardLibrary
+    path: ../Source/CardGame.Core/Cards/Data/CardLibrary.cs
+    startLine: 13
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Manages the collection of all available card definitions and provides methods for card creation.
+  example: []
+  syntax:
+    content: public class CardLibrary
+    content.vb: Public Class CardLibrary
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Data.CardLibrary.Instance
+  commentId: P:CardGame.Core.Cards.Data.CardLibrary.Instance
+  id: Instance
+  parent: CardGame.Core.Cards.Data.CardLibrary
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: CardLibrary.Instance
+  fullName: CardGame.Core.Cards.Data.CardLibrary.Instance
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardLibrary.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Instance
+    path: ../Source/CardGame.Core/Cards/Data/CardLibrary.cs
+    startLine: 20
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets the singleton instance of the CardLibrary.
+  example: []
+  syntax:
+    content: public static CardLibrary Instance { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.CardLibrary
+    content.vb: Public Shared ReadOnly Property Instance As CardLibrary
+  overload: CardGame.Core.Cards.Data.CardLibrary.Instance*
+- uid: CardGame.Core.Cards.Data.CardLibrary.Clear
+  commentId: M:CardGame.Core.Cards.Data.CardLibrary.Clear
+  id: Clear
+  parent: CardGame.Core.Cards.Data.CardLibrary
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: CardLibrary.Clear()
+  fullName: CardGame.Core.Cards.Data.CardLibrary.Clear()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardLibrary.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Clear
+    path: ../Source/CardGame.Core/Cards/Data/CardLibrary.cs
+    startLine: 27
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Removes all card definitions from the library.
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: CardGame.Core.Cards.Data.CardLibrary.Clear*
+- uid: CardGame.Core.Cards.Data.CardLibrary.LoadFromJson(System.String)
+  commentId: M:CardGame.Core.Cards.Data.CardLibrary.LoadFromJson(System.String)
+  id: LoadFromJson(System.String)
+  parent: CardGame.Core.Cards.Data.CardLibrary
+  langs:
+  - csharp
+  - vb
+  name: LoadFromJson(string)
+  nameWithType: CardLibrary.LoadFromJson(string)
+  fullName: CardGame.Core.Cards.Data.CardLibrary.LoadFromJson(string)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardLibrary.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: LoadFromJson
+    path: ../Source/CardGame.Core/Cards/Data/CardLibrary.cs
+    startLine: 37
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Loads card definitions from a JSON file.
+  example: []
+  syntax:
+    content: public void LoadFromJson(string filePath)
+    parameters:
+    - id: filePath
+      type: System.String
+      description: The path to the JSON file containing card data.
+    content.vb: Public Sub LoadFromJson(filePath As String)
+  overload: CardGame.Core.Cards.Data.CardLibrary.LoadFromJson*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown when the file is not found or card data is invalid.
+  nameWithType.vb: CardLibrary.LoadFromJson(String)
+  fullName.vb: CardGame.Core.Cards.Data.CardLibrary.LoadFromJson(String)
+  name.vb: LoadFromJson(String)
+- uid: CardGame.Core.Cards.Data.CardLibrary.GetCard(System.Int32)
+  commentId: M:CardGame.Core.Cards.Data.CardLibrary.GetCard(System.Int32)
+  id: GetCard(System.Int32)
+  parent: CardGame.Core.Cards.Data.CardLibrary
+  langs:
+  - csharp
+  - vb
+  name: GetCard(int)
+  nameWithType: CardLibrary.GetCard(int)
+  fullName: CardGame.Core.Cards.Data.CardLibrary.GetCard(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardLibrary.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetCard
+    path: ../Source/CardGame.Core/Cards/Data/CardLibrary.cs
+    startLine: 100
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Retrieves card data by ID.
+  example: []
+  syntax:
+    content: public CardData GetCard(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: The unique identifier of the card.
+    return:
+      type: CardGame.Core.Cards.Data.CardData
+      description: The CardData object.
+    content.vb: Public Function GetCard(id As Integer) As CardData
+  overload: CardGame.Core.Cards.Data.CardLibrary.GetCard*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown when the card ID does not exist.
+  nameWithType.vb: CardLibrary.GetCard(Integer)
+  fullName.vb: CardGame.Core.Cards.Data.CardLibrary.GetCard(Integer)
+  name.vb: GetCard(Integer)
+- uid: CardGame.Core.Cards.Data.CardLibrary.CreateDefinition(System.Int32)
+  commentId: M:CardGame.Core.Cards.Data.CardLibrary.CreateDefinition(System.Int32)
+  id: CreateDefinition(System.Int32)
+  parent: CardGame.Core.Cards.Data.CardLibrary
+  langs:
+  - csharp
+  - vb
+  name: CreateDefinition(int)
+  nameWithType: CardLibrary.CreateDefinition(int)
+  fullName: CardGame.Core.Cards.Data.CardLibrary.CreateDefinition(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardLibrary.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CreateDefinition
+    path: ../Source/CardGame.Core/Cards/Data/CardLibrary.cs
+    startLine: 115
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Creates a CardDefinition from a card ID.
+  example: []
+  syntax:
+    content: public CardDefinition CreateDefinition(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: The unique identifier of the card.
+    return:
+      type: CardGame.Core.Cards.Models.CardDefinition
+      description: A new CardDefinition instance.
+    content.vb: Public Function CreateDefinition(id As Integer) As CardDefinition
+  overload: CardGame.Core.Cards.Data.CardLibrary.CreateDefinition*
+  nameWithType.vb: CardLibrary.CreateDefinition(Integer)
+  fullName.vb: CardGame.Core.Cards.Data.CardLibrary.CreateDefinition(Integer)
+  name.vb: CreateDefinition(Integer)
+- uid: CardGame.Core.Cards.Data.CardLibrary.GetAllIds
+  commentId: M:CardGame.Core.Cards.Data.CardLibrary.GetAllIds
+  id: GetAllIds
+  parent: CardGame.Core.Cards.Data.CardLibrary
+  langs:
+  - csharp
+  - vb
+  name: GetAllIds()
+  nameWithType: CardLibrary.GetAllIds()
+  fullName: CardGame.Core.Cards.Data.CardLibrary.GetAllIds()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardLibrary.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetAllIds
+    path: ../Source/CardGame.Core/Cards/Data/CardLibrary.cs
+    startLine: 137
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets all card IDs in the library.
+  example: []
+  syntax:
+    content: public int[] GetAllIds()
+    return:
+      type: System.Int32[]
+      description: An array of all card IDs.
+    content.vb: Public Function GetAllIds() As Integer()
+  overload: CardGame.Core.Cards.Data.CardLibrary.GetAllIds*
+- uid: CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits(System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean})
+  commentId: M:CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits(System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean})
+  id: GetCardsByTraits(System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean})
+  parent: CardGame.Core.Cards.Data.CardLibrary
+  langs:
+  - csharp
+  - vb
+  name: GetCardsByTraits(Func<CardData, bool>)
+  nameWithType: CardLibrary.GetCardsByTraits(Func<CardData, bool>)
+  fullName: CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits(System.Func<CardGame.Core.Cards.Data.CardData, bool>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardLibrary.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetCardsByTraits
+    path: ../Source/CardGame.Core/Cards/Data/CardLibrary.cs
+    startLine: 147
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets card data objects that match a predicate.
+  example: []
+  syntax:
+    content: public List<CardData> GetCardsByTraits(Func<CardData, bool> predicate)
+    parameters:
+    - id: predicate
+      type: System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean}
+      description: The condition to filter cards.
+    return:
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Data.CardData}
+      description: A list of matching CardData objects.
+    content.vb: Public Function GetCardsByTraits(predicate As Func(Of CardData, Boolean)) As List(Of CardData)
+  overload: CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits*
+  nameWithType.vb: CardLibrary.GetCardsByTraits(Func(Of CardData, Boolean))
+  fullName.vb: CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits(System.Func(Of CardGame.Core.Cards.Data.CardData, Boolean))
+  name.vb: GetCardsByTraits(Func(Of CardData, Boolean))
+- uid: CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits(System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean})
+  commentId: M:CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits(System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean})
+  id: GetCardIdsByTraits(System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean})
+  parent: CardGame.Core.Cards.Data.CardLibrary
+  langs:
+  - csharp
+  - vb
+  name: GetCardIdsByTraits(Func<CardData, bool>)
+  nameWithType: CardLibrary.GetCardIdsByTraits(Func<CardData, bool>)
+  fullName: CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits(System.Func<CardGame.Core.Cards.Data.CardData, bool>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardLibrary.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetCardIdsByTraits
+    path: ../Source/CardGame.Core/Cards/Data/CardLibrary.cs
+    startLine: 157
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets card IDs that match a predicate.
+  example: []
+  syntax:
+    content: public List<int> GetCardIdsByTraits(Func<CardData, bool> predicate)
+    parameters:
+    - id: predicate
+      type: System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean}
+      description: The condition to filter cards.
+    return:
+      type: System.Collections.Generic.List{System.Int32}
+      description: A list of matching card IDs.
+    content.vb: Public Function GetCardIdsByTraits(predicate As Func(Of CardData, Boolean)) As List(Of Integer)
+  overload: CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits*
+  nameWithType.vb: CardLibrary.GetCardIdsByTraits(Func(Of CardData, Boolean))
+  fullName.vb: CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits(System.Func(Of CardGame.Core.Cards.Data.CardData, Boolean))
+  name.vb: GetCardIdsByTraits(Func(Of CardData, Boolean))
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Data.CardLibrary.Instance*
+  commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.Instance
+  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_Instance
+  name: Instance
+  nameWithType: CardLibrary.Instance
+  fullName: CardGame.Core.Cards.Data.CardLibrary.Instance
+- uid: CardGame.Core.Cards.Data.CardLibrary
+  commentId: T:CardGame.Core.Cards.Data.CardLibrary
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.CardLibrary.html
+  name: CardLibrary
+  nameWithType: CardLibrary
+  fullName: CardGame.Core.Cards.Data.CardLibrary
+- uid: CardGame.Core.Cards.Data.CardLibrary.Clear*
+  commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.Clear
+  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_Clear
+  name: Clear
+  nameWithType: CardLibrary.Clear
+  fullName: CardGame.Core.Cards.Data.CardLibrary.Clear
+- uid: System.Exception
+  commentId: T:System.Exception
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: CardGame.Core.Cards.Data.CardLibrary.LoadFromJson*
+  commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.LoadFromJson
+  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_LoadFromJson_System_String_
+  name: LoadFromJson
+  nameWithType: CardLibrary.LoadFromJson
+  fullName: CardGame.Core.Cards.Data.CardLibrary.LoadFromJson
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.Core.Cards.Data.CardLibrary.GetCard*
+  commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.GetCard
+  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_GetCard_System_Int32_
+  name: GetCard
+  nameWithType: CardLibrary.GetCard
+  fullName: CardGame.Core.Cards.Data.CardLibrary.GetCard
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Data.CardData
+  commentId: T:CardGame.Core.Cards.Data.CardData
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.CardData.html
+  name: CardData
+  nameWithType: CardData
+  fullName: CardGame.Core.Cards.Data.CardData
+- uid: CardGame.Core.Cards.Data.CardLibrary.CreateDefinition*
+  commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.CreateDefinition
+  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_CreateDefinition_System_Int32_
+  name: CreateDefinition
+  nameWithType: CardLibrary.CreateDefinition
+  fullName: CardGame.Core.Cards.Data.CardLibrary.CreateDefinition
+- uid: CardGame.Core.Cards.Models.CardDefinition
+  commentId: T:CardGame.Core.Cards.Models.CardDefinition
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardDefinition.html
+  name: CardDefinition
+  nameWithType: CardDefinition
+  fullName: CardGame.Core.Cards.Models.CardDefinition
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: CardGame.Core.Cards.Data.CardLibrary.GetAllIds*
+  commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.GetAllIds
+  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_GetAllIds
+  name: GetAllIds
+  nameWithType: CardLibrary.GetAllIds
+  fullName: CardGame.Core.Cards.Data.CardLibrary.GetAllIds
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits*
+  commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits
+  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_GetCardsByTraits_System_Func_CardGame_Core_Cards_Data_CardData_System_Boolean__
+  name: GetCardsByTraits
+  nameWithType: CardLibrary.GetCardsByTraits
+  fullName: CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits
+- uid: System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean}
+  commentId: T:System.Func{CardGame.Core.Cards.Data.CardData,System.Boolean}
+  parent: System
+  definition: System.Func`2
+  href: CardGame.Core.Cards.Data.CardData.html
+  name: Func<CardData, bool>
+  nameWithType: Func<CardData, bool>
+  fullName: System.Func<CardGame.Core.Cards.Data.CardData, bool>
+  nameWithType.vb: Func(Of CardData, Boolean)
+  fullName.vb: System.Func(Of CardGame.Core.Cards.Data.CardData, Boolean)
+  name.vb: Func(Of CardData, Boolean)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.CardData
+    name: CardData
+    href: CardGame.Core.Cards.Data.CardData.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.CardData
+    name: CardData
+    href: CardGame.Core.Cards.Data.CardData.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List{CardGame.Core.Cards.Data.CardData}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Cards.Data.CardData}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Cards.Data.CardData.html
+  name: List<CardData>
+  nameWithType: List<CardData>
+  fullName: System.Collections.Generic.List<CardGame.Core.Cards.Data.CardData>
+  nameWithType.vb: List(Of CardData)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Cards.Data.CardData)
+  name.vb: List(Of CardData)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.CardData
+    name: CardData
+    href: CardGame.Core.Cards.Data.CardData.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.CardData
+    name: CardData
+    href: CardGame.Core.Cards.Data.CardData.html
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits*
+  commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits
+  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_GetCardIdsByTraits_System_Func_CardGame_Core_Cards_Data_CardData_System_Boolean__
+  name: GetCardIdsByTraits
+  nameWithType: CardLibrary.GetCardIdsByTraits
+  fullName: CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits
+- uid: System.Collections.Generic.List{System.Int32}
+  commentId: T:System.Collections.Generic.List{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<int>
+  nameWithType: List<int>
+  fullName: System.Collections.Generic.List<int>
+  nameWithType.vb: List(Of Integer)
+  fullName.vb: System.Collections.Generic.List(Of Integer)
+  name.vb: List(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )

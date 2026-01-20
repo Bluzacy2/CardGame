@@ -1,0 +1,77 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+  commentId: N:CardGame.ConsoleApp.Evolution.V1_Legacy
+  id: V1_Legacy
+  parent: CardGame.ConsoleApp.Evolution
+  children:
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: CardGame.ConsoleApp.Evolution.V1_Legacy
+  nameWithType: CardGame.ConsoleApp.Evolution.V1_Legacy
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy
+  type: Namespace
+  assemblies:
+  - CardGame.ConsoleApp
+references:
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  commentId: T:CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.html
+  name: DNA
+  nameWithType: DNA
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner
+  commentId: T:CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.html
+  name: EvolutionRunner
+  nameWithType: EvolutionRunner
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html
+  name: GeneticIndividual
+  nameWithType: GeneticIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+  commentId: N:CardGame.ConsoleApp.Evolution.V1_Legacy
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V1_Legacy
+  nameWithType: CardGame.ConsoleApp.Evolution.V1_Legacy
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html

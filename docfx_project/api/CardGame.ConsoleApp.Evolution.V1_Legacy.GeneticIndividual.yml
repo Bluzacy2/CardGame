@@ -1,0 +1,608 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  id: GeneticIndividual
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy
+  children:
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.#ctor
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.#ctor(System.Single[],System.Int32[],System.Int32)
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Clone
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckDNA
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckNoveltyScore
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Fitness
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GamesPlayed
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Generation
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Id
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.StrategyDNA
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.WinRate
+  - CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Wins
+  langs:
+  - csharp
+  - vb
+  name: GeneticIndividual
+  nameWithType: GeneticIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GeneticIndividual
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 5
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public class GeneticIndividual
+    content.vb: Public Class GeneticIndividual
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Id
+  commentId: P:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Id
+  id: Id
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: GeneticIndividual.Id
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Id
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Id
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 7
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Id*
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.StrategyDNA
+  commentId: P:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.StrategyDNA
+  id: StrategyDNA
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: StrategyDNA
+  nameWithType: GeneticIndividual.StrategyDNA
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.StrategyDNA
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: StrategyDNA
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 8
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public float[] StrategyDNA { get; set; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: Public Property StrategyDNA As Single()
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.StrategyDNA*
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckDNA
+  commentId: P:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckDNA
+  id: DeckDNA
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: DeckDNA
+  nameWithType: GeneticIndividual.DeckDNA
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckDNA
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DeckDNA
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 9
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public int[] DeckDNA { get; set; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: Public Property DeckDNA As Integer()
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckDNA*
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Wins
+  commentId: P:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Wins
+  id: Wins
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: Wins
+  nameWithType: GeneticIndividual.Wins
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Wins
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Wins
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 10
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public int Wins { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Wins As Integer
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Wins*
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GamesPlayed
+  commentId: P:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GamesPlayed
+  id: GamesPlayed
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: GamesPlayed
+  nameWithType: GeneticIndividual.GamesPlayed
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GamesPlayed
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GamesPlayed
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 11
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public int GamesPlayed { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property GamesPlayed As Integer
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GamesPlayed*
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Fitness
+  commentId: P:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Fitness
+  id: Fitness
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: Fitness
+  nameWithType: GeneticIndividual.Fitness
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Fitness
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Fitness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 12
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public float Fitness { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Fitness As Single
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Fitness*
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Generation
+  commentId: P:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Generation
+  id: Generation
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: Generation
+  nameWithType: GeneticIndividual.Generation
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Generation
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Generation
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 13
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public int Generation { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Generation As Integer
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Generation*
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckNoveltyScore
+  commentId: P:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckNoveltyScore
+  id: DeckNoveltyScore
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: DeckNoveltyScore
+  nameWithType: GeneticIndividual.DeckNoveltyScore
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckNoveltyScore
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DeckNoveltyScore
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 14
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public float DeckNoveltyScore { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property DeckNoveltyScore As Single
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckNoveltyScore*
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.WinRate
+  commentId: P:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.WinRate
+  id: WinRate
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: WinRate
+  nameWithType: GeneticIndividual.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.WinRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WinRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 16
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public float WinRate { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property WinRate As Single
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.WinRate*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.#ctor
+  commentId: M:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.#ctor
+  id: '#ctor'
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: GeneticIndividual()
+  nameWithType: GeneticIndividual.GeneticIndividual()
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GeneticIndividual()
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 19
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public GeneticIndividual()
+    content.vb: Public Sub New()
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.#ctor*
+  nameWithType.vb: GeneticIndividual.New()
+  fullName.vb: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.New()
+  name.vb: New()
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.#ctor(System.Single[],System.Int32[],System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.#ctor(System.Single[],System.Int32[],System.Int32)
+  id: '#ctor(System.Single[],System.Int32[],System.Int32)'
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: GeneticIndividual(float[], int[], int)
+  nameWithType: GeneticIndividual.GeneticIndividual(float[], int[], int)
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GeneticIndividual(float[], int[], int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 21
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public GeneticIndividual(float[] strategyDNA, int[] deckDNA, int generation)
+    parameters:
+    - id: strategyDNA
+      type: System.Single[]
+    - id: deckDNA
+      type: System.Int32[]
+    - id: generation
+      type: System.Int32
+    content.vb: Public Sub New(strategyDNA As Single(), deckDNA As Integer(), generation As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.#ctor*
+  nameWithType.vb: GeneticIndividual.New(Single(), Integer(), Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.New(Single(), Integer(), Integer)
+  name.vb: New(Single(), Integer(), Integer)
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Clone
+  commentId: M:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Clone
+  id: Clone
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: GeneticIndividual.Clone()
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Clone()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Clone
+    path: ../Source/CardGame.ConsoleApp/Evolution/V1_Legacy/GeneticIndividual.cs
+    startLine: 29
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V1_Legacy
+  syntax:
+    content: public GeneticIndividual Clone()
+    return:
+      type: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+    content.vb: Public Function Clone() As GeneticIndividual
+  overload: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Clone*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+  commentId: N:CardGame.ConsoleApp.Evolution.V1_Legacy
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V1_Legacy
+  nameWithType: CardGame.ConsoleApp.Evolution.V1_Legacy
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Id*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Id
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_Id
+  name: Id
+  nameWithType: GeneticIndividual.Id
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.StrategyDNA*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.StrategyDNA
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_StrategyDNA
+  name: StrategyDNA
+  nameWithType: GeneticIndividual.StrategyDNA
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.StrategyDNA
+- uid: System.Single[]
+  isExternal: true
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckDNA*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckDNA
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_DeckDNA
+  name: DeckDNA
+  nameWithType: GeneticIndividual.DeckDNA
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckDNA
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Wins*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Wins
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_Wins
+  name: Wins
+  nameWithType: GeneticIndividual.Wins
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Wins
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GamesPlayed*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GamesPlayed
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_GamesPlayed
+  name: GamesPlayed
+  nameWithType: GeneticIndividual.GamesPlayed
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GamesPlayed
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Fitness*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Fitness
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_Fitness
+  name: Fitness
+  nameWithType: GeneticIndividual.Fitness
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Fitness
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Generation*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Generation
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_Generation
+  name: Generation
+  nameWithType: GeneticIndividual.Generation
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Generation
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckNoveltyScore*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckNoveltyScore
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_DeckNoveltyScore
+  name: DeckNoveltyScore
+  nameWithType: GeneticIndividual.DeckNoveltyScore
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.DeckNoveltyScore
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.WinRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.WinRate
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_WinRate
+  name: WinRate
+  nameWithType: GeneticIndividual.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.WinRate
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.#ctor*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.#ctor
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual__ctor
+  name: GeneticIndividual
+  nameWithType: GeneticIndividual.GeneticIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.GeneticIndividual
+  nameWithType.vb: GeneticIndividual.New
+  fullName.vb: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.New
+  name.vb: New
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Clone*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Clone
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html#CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_Clone
+  name: Clone
+  nameWithType: GeneticIndividual.Clone
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.Clone
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html
+  name: GeneticIndividual
+  nameWithType: GeneticIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual

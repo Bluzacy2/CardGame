@@ -1,0 +1,685 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Application.GameEngine
+  commentId: T:CardGame.Core.Application.GameEngine
+  id: GameEngine
+  parent: CardGame.Core.Application
+  children:
+  - CardGame.Core.Application.GameEngine.#ctor(CardGame.Core.State.Models.GameState,System.Int32)
+  - CardGame.Core.Application.GameEngine.CurrentState
+  - CardGame.Core.Application.GameEngine.Events
+  - CardGame.Core.Application.GameEngine.ExecuteCommand(CardGame.Core.Commands.Interfaces.IGameCommand)
+  - CardGame.Core.Application.GameEngine.Factory
+  - CardGame.Core.Application.GameEngine.IsGameOver
+  - CardGame.Core.Application.GameEngine.Rng
+  - CardGame.Core.Application.GameEngine.Update(System.Single)
+  - CardGame.Core.Application.GameEngine.WinnerId
+  langs:
+  - csharp
+  - vb
+  name: GameEngine
+  nameWithType: GameEngine
+  fullName: CardGame.Core.Application.GameEngine
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameEngine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GameEngine
+    path: ../Source/CardGame.Core/Application/GameEngine.cs
+    startLine: 17
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: >-
+    The core orchestrator of the card game. 
+
+    Manages state transitions, command execution, and the resolution of triggered effects.
+  example: []
+  syntax:
+    content: public class GameEngine
+    content.vb: Public Class GameEngine
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Application.GameEngine.CurrentState
+  commentId: P:CardGame.Core.Application.GameEngine.CurrentState
+  id: CurrentState
+  parent: CardGame.Core.Application.GameEngine
+  langs:
+  - csharp
+  - vb
+  name: CurrentState
+  nameWithType: GameEngine.CurrentState
+  fullName: CardGame.Core.Application.GameEngine.CurrentState
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameEngine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CurrentState
+    path: ../Source/CardGame.Core/Application/GameEngine.cs
+    startLine: 29
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public GameState CurrentState { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Models.GameState
+    content.vb: Public Property CurrentState As GameState
+  overload: CardGame.Core.Application.GameEngine.CurrentState*
+- uid: CardGame.Core.Application.GameEngine.IsGameOver
+  commentId: P:CardGame.Core.Application.GameEngine.IsGameOver
+  id: IsGameOver
+  parent: CardGame.Core.Application.GameEngine
+  langs:
+  - csharp
+  - vb
+  name: IsGameOver
+  nameWithType: GameEngine.IsGameOver
+  fullName: CardGame.Core.Application.GameEngine.IsGameOver
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameEngine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: IsGameOver
+    path: ../Source/CardGame.Core/Application/GameEngine.cs
+    startLine: 30
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public bool IsGameOver { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsGameOver As Boolean
+  overload: CardGame.Core.Application.GameEngine.IsGameOver*
+- uid: CardGame.Core.Application.GameEngine.WinnerId
+  commentId: P:CardGame.Core.Application.GameEngine.WinnerId
+  id: WinnerId
+  parent: CardGame.Core.Application.GameEngine
+  langs:
+  - csharp
+  - vb
+  name: WinnerId
+  nameWithType: GameEngine.WinnerId
+  fullName: CardGame.Core.Application.GameEngine.WinnerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameEngine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WinnerId
+    path: ../Source/CardGame.Core/Application/GameEngine.cs
+    startLine: 31
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public int? WinnerId { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property WinnerId As Integer?
+  overload: CardGame.Core.Application.GameEngine.WinnerId*
+- uid: CardGame.Core.Application.GameEngine.Events
+  commentId: P:CardGame.Core.Application.GameEngine.Events
+  id: Events
+  parent: CardGame.Core.Application.GameEngine
+  langs:
+  - csharp
+  - vb
+  name: Events
+  nameWithType: GameEngine.Events
+  fullName: CardGame.Core.Application.GameEngine.Events
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameEngine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Events
+    path: ../Source/CardGame.Core/Application/GameEngine.cs
+    startLine: 32
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public EventBus Events { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Events.EventBus
+    content.vb: Public ReadOnly Property Events As EventBus
+  overload: CardGame.Core.Application.GameEngine.Events*
+- uid: CardGame.Core.Application.GameEngine.Factory
+  commentId: P:CardGame.Core.Application.GameEngine.Factory
+  id: Factory
+  parent: CardGame.Core.Application.GameEngine
+  langs:
+  - csharp
+  - vb
+  name: Factory
+  nameWithType: GameEngine.Factory
+  fullName: CardGame.Core.Application.GameEngine.Factory
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameEngine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Factory
+    path: ../Source/CardGame.Core/Application/GameEngine.cs
+    startLine: 33
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public CardFactory Factory { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Factories.CardFactory
+    content.vb: Public ReadOnly Property Factory As CardFactory
+  overload: CardGame.Core.Application.GameEngine.Factory*
+- uid: CardGame.Core.Application.GameEngine.Rng
+  commentId: P:CardGame.Core.Application.GameEngine.Rng
+  id: Rng
+  parent: CardGame.Core.Application.GameEngine
+  langs:
+  - csharp
+  - vb
+  name: Rng
+  nameWithType: GameEngine.Rng
+  fullName: CardGame.Core.Application.GameEngine.Rng
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameEngine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Rng
+    path: ../Source/CardGame.Core/Application/GameEngine.cs
+    startLine: 34
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public DeterministicRng Rng { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Application.DeterministicRng
+    content.vb: Public ReadOnly Property Rng As DeterministicRng
+  overload: CardGame.Core.Application.GameEngine.Rng*
+- uid: CardGame.Core.Application.GameEngine.#ctor(CardGame.Core.State.Models.GameState,System.Int32)
+  commentId: M:CardGame.Core.Application.GameEngine.#ctor(CardGame.Core.State.Models.GameState,System.Int32)
+  id: '#ctor(CardGame.Core.State.Models.GameState,System.Int32)'
+  parent: CardGame.Core.Application.GameEngine
+  langs:
+  - csharp
+  - vb
+  name: GameEngine(GameState, int)
+  nameWithType: GameEngine.GameEngine(GameState, int)
+  fullName: CardGame.Core.Application.GameEngine.GameEngine(CardGame.Core.State.Models.GameState, int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameEngine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Application/GameEngine.cs
+    startLine: 37
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public GameEngine(GameState initialState, int seed = 0)
+    parameters:
+    - id: initialState
+      type: CardGame.Core.State.Models.GameState
+    - id: seed
+      type: System.Int32
+    content.vb: Public Sub New(initialState As GameState, seed As Integer = 0)
+  overload: CardGame.Core.Application.GameEngine.#ctor*
+  nameWithType.vb: GameEngine.New(GameState, Integer)
+  fullName.vb: CardGame.Core.Application.GameEngine.New(CardGame.Core.State.Models.GameState, Integer)
+  name.vb: New(GameState, Integer)
+- uid: CardGame.Core.Application.GameEngine.ExecuteCommand(CardGame.Core.Commands.Interfaces.IGameCommand)
+  commentId: M:CardGame.Core.Application.GameEngine.ExecuteCommand(CardGame.Core.Commands.Interfaces.IGameCommand)
+  id: ExecuteCommand(CardGame.Core.Commands.Interfaces.IGameCommand)
+  parent: CardGame.Core.Application.GameEngine
+  langs:
+  - csharp
+  - vb
+  name: ExecuteCommand(IGameCommand)
+  nameWithType: GameEngine.ExecuteCommand(IGameCommand)
+  fullName: CardGame.Core.Application.GameEngine.ExecuteCommand(CardGame.Core.Commands.Interfaces.IGameCommand)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameEngine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ExecuteCommand
+    path: ../Source/CardGame.Core/Application/GameEngine.cs
+    startLine: 57
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Processes a player command, updates the game state, and resolves all resulting triggers/auras.
+  example: []
+  syntax:
+    content: public ExecutionResult ExecuteCommand(IGameCommand command)
+    parameters:
+    - id: command
+      type: CardGame.Core.Commands.Interfaces.IGameCommand
+    return:
+      type: CardGame.Core.Application.ExecutionResult
+    content.vb: Public Function ExecuteCommand(command As IGameCommand) As ExecutionResult
+  overload: CardGame.Core.Application.GameEngine.ExecuteCommand*
+- uid: CardGame.Core.Application.GameEngine.Update(System.Single)
+  commentId: M:CardGame.Core.Application.GameEngine.Update(System.Single)
+  id: Update(System.Single)
+  parent: CardGame.Core.Application.GameEngine
+  langs:
+  - csharp
+  - vb
+  name: Update(float)
+  nameWithType: GameEngine.Update(float)
+  fullName: CardGame.Core.Application.GameEngine.Update(float)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameEngine.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Update
+    path: ../Source/CardGame.Core/Application/GameEngine.cs
+    startLine: 129
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Periodic update for handling interaction timeouts.
+  example: []
+  syntax:
+    content: public void Update(float delta)
+    parameters:
+    - id: delta
+      type: System.Single
+    content.vb: Public Sub Update(delta As Single)
+  overload: CardGame.Core.Application.GameEngine.Update*
+  nameWithType.vb: GameEngine.Update(Single)
+  fullName.vb: CardGame.Core.Application.GameEngine.Update(Single)
+  name.vb: Update(Single)
+references:
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Application.GameEngine.CurrentState*
+  commentId: Overload:CardGame.Core.Application.GameEngine.CurrentState
+  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_CurrentState
+  name: CurrentState
+  nameWithType: GameEngine.CurrentState
+  fullName: CardGame.Core.Application.GameEngine.CurrentState
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Application.GameEngine.IsGameOver*
+  commentId: Overload:CardGame.Core.Application.GameEngine.IsGameOver
+  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_IsGameOver
+  name: IsGameOver
+  nameWithType: GameEngine.IsGameOver
+  fullName: CardGame.Core.Application.GameEngine.IsGameOver
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.Core.Application.GameEngine.WinnerId*
+  commentId: Overload:CardGame.Core.Application.GameEngine.WinnerId
+  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_WinnerId
+  name: WinnerId
+  nameWithType: GameEngine.WinnerId
+  fullName: CardGame.Core.Application.GameEngine.WinnerId
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Application.GameEngine.Events*
+  commentId: Overload:CardGame.Core.Application.GameEngine.Events
+  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_Events
+  name: Events
+  nameWithType: GameEngine.Events
+  fullName: CardGame.Core.Application.GameEngine.Events
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: CardGame.Core.Application.GameEngine.Factory*
+  commentId: Overload:CardGame.Core.Application.GameEngine.Factory
+  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_Factory
+  name: Factory
+  nameWithType: GameEngine.Factory
+  fullName: CardGame.Core.Application.GameEngine.Factory
+- uid: CardGame.Core.Cards.Factories.CardFactory
+  commentId: T:CardGame.Core.Cards.Factories.CardFactory
+  parent: CardGame.Core.Cards.Factories
+  href: CardGame.Core.Cards.Factories.CardFactory.html
+  name: CardFactory
+  nameWithType: CardFactory
+  fullName: CardGame.Core.Cards.Factories.CardFactory
+- uid: CardGame.Core.Cards.Factories
+  commentId: N:CardGame.Core.Cards.Factories
+  href: CardGame.html
+  name: CardGame.Core.Cards.Factories
+  nameWithType: CardGame.Core.Cards.Factories
+  fullName: CardGame.Core.Cards.Factories
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Factories
+    name: Factories
+    href: CardGame.Core.Cards.Factories.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Factories
+    name: Factories
+    href: CardGame.Core.Cards.Factories.html
+- uid: CardGame.Core.Application.GameEngine.Rng*
+  commentId: Overload:CardGame.Core.Application.GameEngine.Rng
+  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_Rng
+  name: Rng
+  nameWithType: GameEngine.Rng
+  fullName: CardGame.Core.Application.GameEngine.Rng
+- uid: CardGame.Core.Application.DeterministicRng
+  commentId: T:CardGame.Core.Application.DeterministicRng
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.DeterministicRng.html
+  name: DeterministicRng
+  nameWithType: DeterministicRng
+  fullName: CardGame.Core.Application.DeterministicRng
+- uid: CardGame.Core.Application.GameEngine.#ctor*
+  commentId: Overload:CardGame.Core.Application.GameEngine.#ctor
+  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine__ctor_CardGame_Core_State_Models_GameState_System_Int32_
+  name: GameEngine
+  nameWithType: GameEngine.GameEngine
+  fullName: CardGame.Core.Application.GameEngine.GameEngine
+  nameWithType.vb: GameEngine.New
+  fullName.vb: CardGame.Core.Application.GameEngine.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Application.GameEngine.ExecuteCommand*
+  commentId: Overload:CardGame.Core.Application.GameEngine.ExecuteCommand
+  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_ExecuteCommand_CardGame_Core_Commands_Interfaces_IGameCommand_
+  name: ExecuteCommand
+  nameWithType: GameEngine.ExecuteCommand
+  fullName: CardGame.Core.Application.GameEngine.ExecuteCommand
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand
+  commentId: T:CardGame.Core.Commands.Interfaces.IGameCommand
+  parent: CardGame.Core.Commands.Interfaces
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: IGameCommand
+  nameWithType: IGameCommand
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand
+- uid: CardGame.Core.Application.ExecutionResult
+  commentId: T:CardGame.Core.Application.ExecutionResult
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.ExecutionResult.html
+  name: ExecutionResult
+  nameWithType: ExecutionResult
+  fullName: CardGame.Core.Application.ExecutionResult
+- uid: CardGame.Core.Commands.Interfaces
+  commentId: N:CardGame.Core.Commands.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Commands.Interfaces
+  nameWithType: CardGame.Core.Commands.Interfaces
+  fullName: CardGame.Core.Commands.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+- uid: CardGame.Core.Application.GameEngine.Update*
+  commentId: Overload:CardGame.Core.Application.GameEngine.Update
+  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_Update_System_Single_
+  name: Update
+  nameWithType: GameEngine.Update
+  fullName: CardGame.Core.Application.GameEngine.Update
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

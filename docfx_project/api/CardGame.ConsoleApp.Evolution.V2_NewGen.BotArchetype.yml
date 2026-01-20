@@ -1,0 +1,439 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  id: BotArchetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.#ctor(System.String)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BuildDeck(System.Int32[],System.Random)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.CreateStrategy(System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.Name
+  langs:
+  - csharp
+  - vb
+  name: BotArchetype
+  nameWithType: BotArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BotArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4658
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class BotArchetype
+    content.vb: Public Class BotArchetype
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.Name
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.Name
+  id: Name
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: BotArchetype.Name
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.Name
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Name
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4660
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Name As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.Name*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.#ctor(System.String)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  langs:
+  - csharp
+  - vb
+  name: BotArchetype(string)
+  nameWithType: BotArchetype.BotArchetype(string)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BotArchetype(string)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4662
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public BotArchetype(string name)
+    parameters:
+    - id: name
+      type: System.String
+    content.vb: Public Sub New(name As String)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.#ctor*
+  nameWithType.vb: BotArchetype.New(String)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.New(String)
+  name.vb: New(String)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BuildDeck(System.Int32[],System.Random)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BuildDeck(System.Int32[],System.Random)
+  id: BuildDeck(System.Int32[],System.Random)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  langs:
+  - csharp
+  - vb
+  name: BuildDeck(int[], Random)
+  nameWithType: BotArchetype.BuildDeck(int[], Random)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BuildDeck(int[], System.Random)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BuildDeck
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4667
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int[] BuildDeck(int[] cardPool, Random rng)
+    parameters:
+    - id: cardPool
+      type: System.Int32[]
+    - id: rng
+      type: System.Random
+    return:
+      type: System.Int32[]
+    content.vb: Public Function BuildDeck(cardPool As Integer(), rng As Random) As Integer()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BuildDeck*
+  nameWithType.vb: BotArchetype.BuildDeck(Integer(), Random)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BuildDeck(Integer(), System.Random)
+  name.vb: BuildDeck(Integer(), Random)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.CreateStrategy(System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.CreateStrategy(System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  id: CreateStrategy(System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  langs:
+  - csharp
+  - vb
+  name: CreateStrategy(Dictionary<int, CardStatsEnhanced>)
+  nameWithType: BotArchetype.CreateStrategy(Dictionary<int, CardStatsEnhanced>)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.CreateStrategy(System.Collections.Generic.Dictionary<int, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CreateStrategy
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4703
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public IAIStrategy CreateStrategy(Dictionary<int, CardStatsEnhanced> cardStats = null)
+    parameters:
+    - id: cardStats
+      type: System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+    return:
+      type: CardGame.Core.AI.Interfaces.IAIStrategy
+    content.vb: Public Function CreateStrategy(cardStats As Dictionary(Of Integer, CardStatsEnhanced) = Nothing) As IAIStrategy
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.CreateStrategy*
+  nameWithType.vb: BotArchetype.CreateStrategy(Dictionary(Of Integer, CardStatsEnhanced))
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.CreateStrategy(System.Collections.Generic.Dictionary(Of Integer, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced))
+  name.vb: CreateStrategy(Dictionary(Of Integer, CardStatsEnhanced))
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.Name*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.Name
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetype_Name
+  name: Name
+  nameWithType: BotArchetype.Name
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.#ctor*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.#ctor
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetype__ctor_System_String_
+  name: BotArchetype
+  nameWithType: BotArchetype.BotArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BotArchetype
+  nameWithType.vb: BotArchetype.New
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.New
+  name.vb: New
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BuildDeck*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BuildDeck
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetype_BuildDeck_System_Int32___System_Random_
+  name: BuildDeck
+  nameWithType: BotArchetype.BuildDeck
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.BuildDeck
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Random
+  commentId: T:System.Random
+  parent: System
+  isExternal: true
+  name: Random
+  nameWithType: Random
+  fullName: System.Random
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.CreateStrategy*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.CreateStrategy
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetype_CreateStrategy_System_Collections_Generic_Dictionary_System_Int32_CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced__
+  name: CreateStrategy
+  nameWithType: BotArchetype.CreateStrategy
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.CreateStrategy
+- uid: System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+  commentId: T:System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  name: Dictionary<int, CardStatsEnhanced>
+  nameWithType: Dictionary<int, CardStatsEnhanced>
+  fullName: System.Collections.Generic.Dictionary<int, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced>
+  nameWithType.vb: Dictionary(Of Integer, CardStatsEnhanced)
+  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced)
+  name.vb: Dictionary(Of Integer, CardStatsEnhanced)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+    name: CardStatsEnhanced
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+    name: CardStatsEnhanced
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  - name: )
+- uid: CardGame.Core.AI.Interfaces.IAIStrategy
+  commentId: T:CardGame.Core.AI.Interfaces.IAIStrategy
+  parent: CardGame.Core.AI.Interfaces
+  href: CardGame.Core.AI.Interfaces.IAIStrategy.html
+  name: IAIStrategy
+  nameWithType: IAIStrategy
+  fullName: CardGame.Core.AI.Interfaces.IAIStrategy
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.AI.Interfaces
+  commentId: N:CardGame.Core.AI.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.AI.Interfaces
+  nameWithType: CardGame.Core.AI.Interfaces
+  fullName: CardGame.Core.AI.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html

@@ -1,0 +1,349 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.ResourceChangedEvent
+  commentId: T:CardGame.Core.Events.ResourceChangedEvent
+  id: ResourceChangedEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.ResourceChangedEvent.#ctor(System.Int32,System.Int32,System.Int32)
+  - CardGame.Core.Events.ResourceChangedEvent.NewValue
+  - CardGame.Core.Events.ResourceChangedEvent.OldValue
+  - CardGame.Core.Events.ResourceChangedEvent.PlayerId
+  - CardGame.Core.Events.ResourceChangedEvent.SourcePlayerId
+  langs:
+  - csharp
+  - vb
+  name: ResourceChangedEvent
+  nameWithType: ResourceChangedEvent
+  fullName: CardGame.Core.Events.ResourceChangedEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/ResourceChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ResourceChangedEvent
+    path: ../Source/CardGame.Core/Events/ResourceChangedEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs when a player's resource count changes.
+  example: []
+  syntax:
+    content: 'public class ResourceChangedEvent : IGameEvent'
+    content.vb: Public Class ResourceChangedEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.ResourceChangedEvent.PlayerId
+  commentId: P:CardGame.Core.Events.ResourceChangedEvent.PlayerId
+  id: PlayerId
+  parent: CardGame.Core.Events.ResourceChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: PlayerId
+  nameWithType: ResourceChangedEvent.PlayerId
+  fullName: CardGame.Core.Events.ResourceChangedEvent.PlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/ResourceChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PlayerId
+    path: ../Source/CardGame.Core/Events/ResourceChangedEvent.cs
+    startLine: 14
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player whose resources changed.
+  example: []
+  syntax:
+    content: public int PlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PlayerId As Integer
+  overload: CardGame.Core.Events.ResourceChangedEvent.PlayerId*
+- uid: CardGame.Core.Events.ResourceChangedEvent.OldValue
+  commentId: P:CardGame.Core.Events.ResourceChangedEvent.OldValue
+  id: OldValue
+  parent: CardGame.Core.Events.ResourceChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: OldValue
+  nameWithType: ResourceChangedEvent.OldValue
+  fullName: CardGame.Core.Events.ResourceChangedEvent.OldValue
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/ResourceChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OldValue
+    path: ../Source/CardGame.Core/Events/ResourceChangedEvent.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the resource value before the change.
+  example: []
+  syntax:
+    content: public int OldValue { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property OldValue As Integer
+  overload: CardGame.Core.Events.ResourceChangedEvent.OldValue*
+- uid: CardGame.Core.Events.ResourceChangedEvent.NewValue
+  commentId: P:CardGame.Core.Events.ResourceChangedEvent.NewValue
+  id: NewValue
+  parent: CardGame.Core.Events.ResourceChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: NewValue
+  nameWithType: ResourceChangedEvent.NewValue
+  fullName: CardGame.Core.Events.ResourceChangedEvent.NewValue
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/ResourceChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: NewValue
+    path: ../Source/CardGame.Core/Events/ResourceChangedEvent.cs
+    startLine: 24
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the resource value after the change.
+  example: []
+  syntax:
+    content: public int NewValue { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property NewValue As Integer
+  overload: CardGame.Core.Events.ResourceChangedEvent.NewValue*
+- uid: CardGame.Core.Events.ResourceChangedEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.ResourceChangedEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.ResourceChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: ResourceChangedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.ResourceChangedEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/ResourceChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/ResourceChangedEvent.cs
+    startLine: 29
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who caused the resource change.
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.ResourceChangedEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.ResourceChangedEvent.#ctor(System.Int32,System.Int32,System.Int32)
+  commentId: M:CardGame.Core.Events.ResourceChangedEvent.#ctor(System.Int32,System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32,System.Int32)'
+  parent: CardGame.Core.Events.ResourceChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: ResourceChangedEvent(int, int, int)
+  nameWithType: ResourceChangedEvent.ResourceChangedEvent(int, int, int)
+  fullName: CardGame.Core.Events.ResourceChangedEvent.ResourceChangedEvent(int, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/ResourceChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/ResourceChangedEvent.cs
+    startLine: 37
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the ResourceChangedEvent class.
+  example: []
+  syntax:
+    content: public ResourceChangedEvent(int playerId, int oldValue, int newValue)
+    parameters:
+    - id: playerId
+      type: System.Int32
+      description: The ID of the player whose resources changed.
+    - id: oldValue
+      type: System.Int32
+      description: The previous resource value.
+    - id: newValue
+      type: System.Int32
+      description: The new resource value.
+    content.vb: Public Sub New(playerId As Integer, oldValue As Integer, newValue As Integer)
+  overload: CardGame.Core.Events.ResourceChangedEvent.#ctor*
+  nameWithType.vb: ResourceChangedEvent.New(Integer, Integer, Integer)
+  fullName.vb: CardGame.Core.Events.ResourceChangedEvent.New(Integer, Integer, Integer)
+  name.vb: New(Integer, Integer, Integer)
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.ResourceChangedEvent.PlayerId*
+  commentId: Overload:CardGame.Core.Events.ResourceChangedEvent.PlayerId
+  href: CardGame.Core.Events.ResourceChangedEvent.html#CardGame_Core_Events_ResourceChangedEvent_PlayerId
+  name: PlayerId
+  nameWithType: ResourceChangedEvent.PlayerId
+  fullName: CardGame.Core.Events.ResourceChangedEvent.PlayerId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.ResourceChangedEvent.OldValue*
+  commentId: Overload:CardGame.Core.Events.ResourceChangedEvent.OldValue
+  href: CardGame.Core.Events.ResourceChangedEvent.html#CardGame_Core_Events_ResourceChangedEvent_OldValue
+  name: OldValue
+  nameWithType: ResourceChangedEvent.OldValue
+  fullName: CardGame.Core.Events.ResourceChangedEvent.OldValue
+- uid: CardGame.Core.Events.ResourceChangedEvent.NewValue*
+  commentId: Overload:CardGame.Core.Events.ResourceChangedEvent.NewValue
+  href: CardGame.Core.Events.ResourceChangedEvent.html#CardGame_Core_Events_ResourceChangedEvent_NewValue
+  name: NewValue
+  nameWithType: ResourceChangedEvent.NewValue
+  fullName: CardGame.Core.Events.ResourceChangedEvent.NewValue
+- uid: CardGame.Core.Events.ResourceChangedEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.ResourceChangedEvent.SourcePlayerId
+  href: CardGame.Core.Events.ResourceChangedEvent.html#CardGame_Core_Events_ResourceChangedEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: ResourceChangedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.ResourceChangedEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.ResourceChangedEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.ResourceChangedEvent.#ctor
+  href: CardGame.Core.Events.ResourceChangedEvent.html#CardGame_Core_Events_ResourceChangedEvent__ctor_System_Int32_System_Int32_System_Int32_
+  name: ResourceChangedEvent
+  nameWithType: ResourceChangedEvent.ResourceChangedEvent
+  fullName: CardGame.Core.Events.ResourceChangedEvent.ResourceChangedEvent
+  nameWithType.vb: ResourceChangedEvent.New
+  fullName.vb: CardGame.Core.Events.ResourceChangedEvent.New
+  name.vb: New

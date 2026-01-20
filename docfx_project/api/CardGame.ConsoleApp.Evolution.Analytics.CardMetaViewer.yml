@@ -1,0 +1,119 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer
+  commentId: T:CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer
+  id: CardMetaViewer
+  parent: CardGame.ConsoleApp.Evolution.Analytics
+  children:
+  - CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.ViewMeta
+  langs:
+  - csharp
+  - vb
+  name: CardMetaViewer
+  nameWithType: CardMetaViewer
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardMetaViewer.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardMetaViewer
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardMetaViewer.cs
+    startLine: 10
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public static class CardMetaViewer
+    content.vb: Public Module CardMetaViewer
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.ViewMeta
+  commentId: M:CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.ViewMeta
+  id: ViewMeta
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer
+  langs:
+  - csharp
+  - vb
+  name: ViewMeta()
+  nameWithType: CardMetaViewer.ViewMeta()
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.ViewMeta()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardMetaViewer.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ViewMeta
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardMetaViewer.cs
+    startLine: 18
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public static void ViewMeta()
+    content.vb: Public Shared Sub ViewMeta()
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.ViewMeta*
+references:
+- uid: CardGame.ConsoleApp.Evolution.Analytics
+  commentId: N:CardGame.ConsoleApp.Evolution.Analytics
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.Analytics
+  nameWithType: CardGame.ConsoleApp.Evolution.Analytics
+  fullName: CardGame.ConsoleApp.Evolution.Analytics
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.Analytics
+    name: Analytics
+    href: CardGame.ConsoleApp.Evolution.Analytics.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.Analytics
+    name: Analytics
+    href: CardGame.ConsoleApp.Evolution.Analytics.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.ViewMeta*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.ViewMeta
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.html#CardGame_ConsoleApp_Evolution_Analytics_CardMetaViewer_ViewMeta
+  name: ViewMeta
+  nameWithType: CardMetaViewer.ViewMeta
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.ViewMeta

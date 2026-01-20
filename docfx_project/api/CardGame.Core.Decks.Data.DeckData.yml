@@ -1,0 +1,332 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Decks.Data.DeckData
+  commentId: T:CardGame.Core.Decks.Data.DeckData
+  id: DeckData
+  parent: CardGame.Core.Decks.Data
+  children:
+  - CardGame.Core.Decks.Data.DeckData.CardIds
+  - CardGame.Core.Decks.Data.DeckData.Description
+  - CardGame.Core.Decks.Data.DeckData.Id
+  - CardGame.Core.Decks.Data.DeckData.Name
+  langs:
+  - csharp
+  - vb
+  name: DeckData
+  nameWithType: DeckData
+  fullName: CardGame.Core.Decks.Data.DeckData
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/Data/DeckData.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DeckData
+    path: ../Source/CardGame.Core/Decks/Data/DeckData.cs
+    startLine: 5
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks.Data
+  syntax:
+    content: public class DeckData
+    content.vb: Public Class DeckData
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Decks.Data.DeckData.Id
+  commentId: P:CardGame.Core.Decks.Data.DeckData.Id
+  id: Id
+  parent: CardGame.Core.Decks.Data.DeckData
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: DeckData.Id
+  fullName: CardGame.Core.Decks.Data.DeckData.Id
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/Data/DeckData.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Id
+    path: ../Source/CardGame.Core/Decks/Data/DeckData.cs
+    startLine: 7
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks.Data
+  syntax:
+    content: public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: CardGame.Core.Decks.Data.DeckData.Id*
+- uid: CardGame.Core.Decks.Data.DeckData.Name
+  commentId: P:CardGame.Core.Decks.Data.DeckData.Name
+  id: Name
+  parent: CardGame.Core.Decks.Data.DeckData
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: DeckData.Name
+  fullName: CardGame.Core.Decks.Data.DeckData.Name
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/Data/DeckData.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Name
+    path: ../Source/CardGame.Core/Decks/Data/DeckData.cs
+    startLine: 8
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks.Data
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: CardGame.Core.Decks.Data.DeckData.Name*
+- uid: CardGame.Core.Decks.Data.DeckData.Description
+  commentId: P:CardGame.Core.Decks.Data.DeckData.Description
+  id: Description
+  parent: CardGame.Core.Decks.Data.DeckData
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: DeckData.Description
+  fullName: CardGame.Core.Decks.Data.DeckData.Description
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/Data/DeckData.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Description
+    path: ../Source/CardGame.Core/Decks/Data/DeckData.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks.Data
+  syntax:
+    content: public string Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: CardGame.Core.Decks.Data.DeckData.Description*
+- uid: CardGame.Core.Decks.Data.DeckData.CardIds
+  commentId: P:CardGame.Core.Decks.Data.DeckData.CardIds
+  id: CardIds
+  parent: CardGame.Core.Decks.Data.DeckData
+  langs:
+  - csharp
+  - vb
+  name: CardIds
+  nameWithType: DeckData.CardIds
+  fullName: CardGame.Core.Decks.Data.DeckData.CardIds
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/Data/DeckData.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardIds
+    path: ../Source/CardGame.Core/Decks/Data/DeckData.cs
+    startLine: 11
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks.Data
+  syntax:
+    content: public List<int> CardIds { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Int32}
+    content.vb: Public Property CardIds As List(Of Integer)
+  overload: CardGame.Core.Decks.Data.DeckData.CardIds*
+references:
+- uid: CardGame.Core.Decks.Data
+  commentId: N:CardGame.Core.Decks.Data
+  href: CardGame.html
+  name: CardGame.Core.Decks.Data
+  nameWithType: CardGame.Core.Decks.Data
+  fullName: CardGame.Core.Decks.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Decks.Data.DeckData.Id*
+  commentId: Overload:CardGame.Core.Decks.Data.DeckData.Id
+  href: CardGame.Core.Decks.Data.DeckData.html#CardGame_Core_Decks_Data_DeckData_Id
+  name: Id
+  nameWithType: DeckData.Id
+  fullName: CardGame.Core.Decks.Data.DeckData.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.Core.Decks.Data.DeckData.Name*
+  commentId: Overload:CardGame.Core.Decks.Data.DeckData.Name
+  href: CardGame.Core.Decks.Data.DeckData.html#CardGame_Core_Decks_Data_DeckData_Name
+  name: Name
+  nameWithType: DeckData.Name
+  fullName: CardGame.Core.Decks.Data.DeckData.Name
+- uid: CardGame.Core.Decks.Data.DeckData.Description*
+  commentId: Overload:CardGame.Core.Decks.Data.DeckData.Description
+  href: CardGame.Core.Decks.Data.DeckData.html#CardGame_Core_Decks_Data_DeckData_Description
+  name: Description
+  nameWithType: DeckData.Description
+  fullName: CardGame.Core.Decks.Data.DeckData.Description
+- uid: CardGame.Core.Decks.Data.DeckData.CardIds*
+  commentId: Overload:CardGame.Core.Decks.Data.DeckData.CardIds
+  href: CardGame.Core.Decks.Data.DeckData.html#CardGame_Core_Decks_Data_DeckData_CardIds
+  name: CardIds
+  nameWithType: DeckData.CardIds
+  fullName: CardGame.Core.Decks.Data.DeckData.CardIds
+- uid: System.Collections.Generic.List{System.Int32}
+  commentId: T:System.Collections.Generic.List{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<int>
+  nameWithType: List<int>
+  fullName: System.Collections.Generic.List<int>
+  nameWithType.vb: List(Of Integer)
+  fullName.vb: System.Collections.Generic.List(Of Integer)
+  name.vb: List(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

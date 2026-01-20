@@ -1,0 +1,359 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Logic.EvaluatedMove
+  commentId: T:CardGame.Core.AI.Logic.EvaluatedMove
+  id: EvaluatedMove
+  parent: CardGame.Core.AI.Logic
+  children:
+  - CardGame.Core.AI.Logic.EvaluatedMove.#ctor(CardGame.Core.Commands.Interfaces.IGameCommand,System.Single,System.String,System.String)
+  - CardGame.Core.AI.Logic.EvaluatedMove.Command
+  - CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning
+  - CardGame.Core.AI.Logic.EvaluatedMove.Description
+  - CardGame.Core.AI.Logic.EvaluatedMove.Score
+  langs:
+  - csharp
+  - vb
+  name: EvaluatedMove
+  nameWithType: EvaluatedMove
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EvaluatedMove
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 16
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Represents a game move along with its AI evaluation score and descriptive information.
+  example: []
+  syntax:
+    content: public class EvaluatedMove
+    content.vb: Public Class EvaluatedMove
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.AI.Logic.EvaluatedMove.Command
+  commentId: P:CardGame.Core.AI.Logic.EvaluatedMove.Command
+  id: Command
+  parent: CardGame.Core.AI.Logic.EvaluatedMove
+  langs:
+  - csharp
+  - vb
+  name: Command
+  nameWithType: EvaluatedMove.Command
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove.Command
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Command
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 21
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Gets the command representing the game move.
+  example: []
+  syntax:
+    content: public IGameCommand Command { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Commands.Interfaces.IGameCommand
+    content.vb: Public ReadOnly Property Command As IGameCommand
+  overload: CardGame.Core.AI.Logic.EvaluatedMove.Command*
+- uid: CardGame.Core.AI.Logic.EvaluatedMove.Score
+  commentId: P:CardGame.Core.AI.Logic.EvaluatedMove.Score
+  id: Score
+  parent: CardGame.Core.AI.Logic.EvaluatedMove
+  langs:
+  - csharp
+  - vb
+  name: Score
+  nameWithType: EvaluatedMove.Score
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove.Score
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Score
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 26
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Gets the AI evaluation score for this move.
+  example: []
+  syntax:
+    content: public float Score { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property Score As Single
+  overload: CardGame.Core.AI.Logic.EvaluatedMove.Score*
+- uid: CardGame.Core.AI.Logic.EvaluatedMove.Description
+  commentId: P:CardGame.Core.AI.Logic.EvaluatedMove.Description
+  id: Description
+  parent: CardGame.Core.AI.Logic.EvaluatedMove
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: EvaluatedMove.Description
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove.Description
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Description
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 31
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Gets a brief description of the move.
+  example: []
+  syntax:
+    content: public string Description { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Description As String
+  overload: CardGame.Core.AI.Logic.EvaluatedMove.Description*
+- uid: CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning
+  commentId: P:CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning
+  id: DeepReasoning
+  parent: CardGame.Core.AI.Logic.EvaluatedMove
+  langs:
+  - csharp
+  - vb
+  name: DeepReasoning
+  nameWithType: EvaluatedMove.DeepReasoning
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DeepReasoning
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 36
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Gets detailed reasoning behind the AI's evaluation.
+  example: []
+  syntax:
+    content: public string DeepReasoning { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DeepReasoning As String
+  overload: CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning*
+- uid: CardGame.Core.AI.Logic.EvaluatedMove.#ctor(CardGame.Core.Commands.Interfaces.IGameCommand,System.Single,System.String,System.String)
+  commentId: M:CardGame.Core.AI.Logic.EvaluatedMove.#ctor(CardGame.Core.Commands.Interfaces.IGameCommand,System.Single,System.String,System.String)
+  id: '#ctor(CardGame.Core.Commands.Interfaces.IGameCommand,System.Single,System.String,System.String)'
+  parent: CardGame.Core.AI.Logic.EvaluatedMove
+  langs:
+  - csharp
+  - vb
+  name: EvaluatedMove(IGameCommand, float, string, string)
+  nameWithType: EvaluatedMove.EvaluatedMove(IGameCommand, float, string, string)
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove.EvaluatedMove(CardGame.Core.Commands.Interfaces.IGameCommand, float, string, string)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 45
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Initializes a new instance of the EvaluatedMove class.
+  example: []
+  syntax:
+    content: public EvaluatedMove(IGameCommand command, float score, string description = "", string deepReasoning = "")
+    parameters:
+    - id: command
+      type: CardGame.Core.Commands.Interfaces.IGameCommand
+      description: The game command to execute.
+    - id: score
+      type: System.Single
+      description: The evaluation score for this move.
+    - id: description
+      type: System.String
+      description: Optional brief description of the move.
+    - id: deepReasoning
+      type: System.String
+      description: Optional detailed reasoning for the evaluation.
+    content.vb: Public Sub New(command As IGameCommand, score As Single, description As String = "", deepReasoning As String = "")
+  overload: CardGame.Core.AI.Logic.EvaluatedMove.#ctor*
+  nameWithType.vb: EvaluatedMove.New(IGameCommand, Single, String, String)
+  fullName.vb: CardGame.Core.AI.Logic.EvaluatedMove.New(CardGame.Core.Commands.Interfaces.IGameCommand, Single, String, String)
+  name.vb: New(IGameCommand, Single, String, String)
+references:
+- uid: CardGame.Core.AI.Logic
+  commentId: N:CardGame.Core.AI.Logic
+  href: CardGame.html
+  name: CardGame.Core.AI.Logic
+  nameWithType: CardGame.Core.AI.Logic
+  fullName: CardGame.Core.AI.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.AI.Logic.EvaluatedMove.Command*
+  commentId: Overload:CardGame.Core.AI.Logic.EvaluatedMove.Command
+  href: CardGame.Core.AI.Logic.EvaluatedMove.html#CardGame_Core_AI_Logic_EvaluatedMove_Command
+  name: Command
+  nameWithType: EvaluatedMove.Command
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove.Command
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand
+  commentId: T:CardGame.Core.Commands.Interfaces.IGameCommand
+  parent: CardGame.Core.Commands.Interfaces
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: IGameCommand
+  nameWithType: IGameCommand
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand
+- uid: CardGame.Core.Commands.Interfaces
+  commentId: N:CardGame.Core.Commands.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Commands.Interfaces
+  nameWithType: CardGame.Core.Commands.Interfaces
+  fullName: CardGame.Core.Commands.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+- uid: CardGame.Core.AI.Logic.EvaluatedMove.Score*
+  commentId: Overload:CardGame.Core.AI.Logic.EvaluatedMove.Score
+  href: CardGame.Core.AI.Logic.EvaluatedMove.html#CardGame_Core_AI_Logic_EvaluatedMove_Score
+  name: Score
+  nameWithType: EvaluatedMove.Score
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove.Score
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.Core.AI.Logic.EvaluatedMove.Description*
+  commentId: Overload:CardGame.Core.AI.Logic.EvaluatedMove.Description
+  href: CardGame.Core.AI.Logic.EvaluatedMove.html#CardGame_Core_AI_Logic_EvaluatedMove_Description
+  name: Description
+  nameWithType: EvaluatedMove.Description
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove.Description
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning*
+  commentId: Overload:CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning
+  href: CardGame.Core.AI.Logic.EvaluatedMove.html#CardGame_Core_AI_Logic_EvaluatedMove_DeepReasoning
+  name: DeepReasoning
+  nameWithType: EvaluatedMove.DeepReasoning
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning
+- uid: CardGame.Core.AI.Logic.EvaluatedMove.#ctor*
+  commentId: Overload:CardGame.Core.AI.Logic.EvaluatedMove.#ctor
+  href: CardGame.Core.AI.Logic.EvaluatedMove.html#CardGame_Core_AI_Logic_EvaluatedMove__ctor_CardGame_Core_Commands_Interfaces_IGameCommand_System_Single_System_String_System_String_
+  name: EvaluatedMove
+  nameWithType: EvaluatedMove.EvaluatedMove
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove.EvaluatedMove
+  nameWithType.vb: EvaluatedMove.New
+  fullName.vb: CardGame.Core.AI.Logic.EvaluatedMove.New
+  name.vb: New

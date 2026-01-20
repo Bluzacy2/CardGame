@@ -1,0 +1,399 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  id: V2_NewGen
+  parent: CardGame.ConsoleApp.Evolution
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionRunnerV2
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.PopulationData
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.Species
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  langs:
+  - csharp
+  - vb
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  type: Namespace
+  assemblies:
+  - CardGame.ConsoleApp
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.html
+  name: AdaptiveFitnessOptimizer
+  nameWithType: AdaptiveFitnessOptimizer
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html
+  name: ArchetypeChampion
+  nameWithType: ArchetypeChampion
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.html
+  name: ArchetypeHallOfFame
+  nameWithType: ArchetypeHallOfFame
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.html
+  name: ArchetypePurityCalculator
+  nameWithType: ArchetypePurityCalculator
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.html
+  name: ArchetypeSpecialistOptimizer
+  nameWithType: ArchetypeSpecialistOptimizer
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.html
+  name: ArchetypeSpecialistOptimizer.SpecialistTarget
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  spec.csharp:
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer
+    name: ArchetypeSpecialistOptimizer
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+    name: SpecialistTarget
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.html
+  spec.vb:
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer
+    name: ArchetypeSpecialistOptimizer
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+    name: SpecialistTarget
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.html
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.html
+  name: ArchetypeStatistic
+  nameWithType: ArchetypeStatistic
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html
+  name: BotArchetype
+  nameWithType: BotArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.html
+  name: BotArchetypePool
+  nameWithType: BotArchetypePool
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html
+  name: CardAnalyticsData
+  nameWithType: CardAnalyticsData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.html
+  name: CardAnalyticsV2
+  nameWithType: CardAnalyticsV2
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.html
+  name: CardCache
+  nameWithType: CardCache
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.html
+  name: CardExplorationSystem
+  nameWithType: CardExplorationSystem
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.html
+  name: CardExplorationSystem.ExplorationCandidate
+  nameWithType: CardExplorationSystem.ExplorationCandidate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  spec.csharp:
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem
+    name: CardExplorationSystem
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+    name: ExplorationCandidate
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.html
+  spec.vb:
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem
+    name: CardExplorationSystem
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+    name: ExplorationCandidate
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.html
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html
+  name: CardStatistic
+  nameWithType: CardStatistic
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  name: CardStatsEnhanced
+  nameWithType: CardStatsEnhanced
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html
+  name: CardSynergy
+  nameWithType: CardSynergy
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData.html
+  name: ChampionData
+  nameWithType: ChampionData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.html
+  name: CrossArchetypeStats
+  nameWithType: CrossArchetypeStats
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.html
+  name: DeckCardInfo
+  nameWithType: DeckCardInfo
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo.html
+  name: DeckInfo
+  nameWithType: DeckInfo
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.html
+  name: DiversityEnforcer
+  nameWithType: DiversityEnforcer
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.html
+  name: EvolutionCheckpoint
+  nameWithType: EvolutionCheckpoint
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionRunnerV2
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionRunnerV2
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionRunnerV2.html
+  name: EvolutionRunnerV2
+  nameWithType: EvolutionRunnerV2
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionRunnerV2
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.html
+  name: EvolvableIndividualConverter
+  nameWithType: EvolvableIndividualConverter
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.html
+  name: GameResult
+  nameWithType: GameResult
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.html
+  name: GameStateExtensions
+  nameWithType: GameStateExtensions
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.html
+  name: HallOfFameData
+  nameWithType: HallOfFameData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html
+  name: HybridDiscoveryEngine
+  nameWithType: HybridDiscoveryEngine
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html
+  name: HybridDiscoveryEngine.HybridPattern
+  nameWithType: HybridDiscoveryEngine.HybridPattern
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+  spec.csharp:
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+    name: HybridDiscoveryEngine
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+    name: HybridPattern
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html
+  spec.vb:
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+    name: HybridDiscoveryEngine
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+    name: HybridPattern
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.html
+  name: IntraArchetypeNoveltyArchive
+  nameWithType: IntraArchetypeNoveltyArchive
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.html
+  name: MetagameTracker
+  nameWithType: MetagameTracker
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html
+  name: NewDna
+  nameWithType: NewDna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.html
+  name: PerformanceMetrics
+  nameWithType: PerformanceMetrics
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.html
+  name: PerformanceMonitor
+  nameWithType: PerformanceMonitor
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PopulationData
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.PopulationData
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.PopulationData.html
+  name: PopulationData
+  nameWithType: PopulationData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.PopulationData
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.Species
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.Species
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.Species.html
+  name: Species
+  nameWithType: Species
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.Species
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.html
+  name: SpeciesSnapshot
+  nameWithType: SpeciesSnapshot
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.html
+  name: SynergyLearner
+  nameWithType: SynergyLearner
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html
+  name: WinRateCardStat
+  nameWithType: WinRateCardStat
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html

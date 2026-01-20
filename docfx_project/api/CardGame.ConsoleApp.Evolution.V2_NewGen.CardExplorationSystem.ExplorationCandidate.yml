@@ -1,0 +1,332 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  id: CardExplorationSystem.ExplorationCandidate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardId
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardName
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CurrentUseRate
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.ExplorationScore
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.Reason
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.WinRate
+  langs:
+  - csharp
+  - vb
+  name: CardExplorationSystem.ExplorationCandidate
+  nameWithType: CardExplorationSystem.ExplorationCandidate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ExplorationCandidate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 98
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class CardExplorationSystem.ExplorationCandidate
+    content.vb: Public Class CardExplorationSystem.ExplorationCandidate
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardId
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardId
+  id: CardId
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  langs:
+  - csharp
+  - vb
+  name: CardId
+  nameWithType: CardExplorationSystem.ExplorationCandidate.CardId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardId
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 100
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int CardId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property CardId As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardId*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardName
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardName
+  id: CardName
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  langs:
+  - csharp
+  - vb
+  name: CardName
+  nameWithType: CardExplorationSystem.ExplorationCandidate.CardName
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardName
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardName
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 101
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string CardName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CardName As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardName*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CurrentUseRate
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CurrentUseRate
+  id: CurrentUseRate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  langs:
+  - csharp
+  - vb
+  name: CurrentUseRate
+  nameWithType: CardExplorationSystem.ExplorationCandidate.CurrentUseRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CurrentUseRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CurrentUseRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 102
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float CurrentUseRate { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property CurrentUseRate As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CurrentUseRate*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.WinRate
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.WinRate
+  id: WinRate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  langs:
+  - csharp
+  - vb
+  name: WinRate
+  nameWithType: CardExplorationSystem.ExplorationCandidate.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.WinRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WinRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 103
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float WinRate { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property WinRate As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.WinRate*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.ExplorationScore
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.ExplorationScore
+  id: ExplorationScore
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  langs:
+  - csharp
+  - vb
+  name: ExplorationScore
+  nameWithType: CardExplorationSystem.ExplorationCandidate.ExplorationScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.ExplorationScore
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ExplorationScore
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 104
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float ExplorationScore { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property ExplorationScore As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.ExplorationScore*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.Reason
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.Reason
+  id: Reason
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+  langs:
+  - csharp
+  - vb
+  name: Reason
+  nameWithType: CardExplorationSystem.ExplorationCandidate.Reason
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.Reason
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Reason
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 105
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string Reason { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Reason As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.Reason*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardId*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardId
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardExplorationSystem_ExplorationCandidate_CardId
+  name: CardId
+  nameWithType: CardExplorationSystem.ExplorationCandidate.CardId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardName*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardName
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardExplorationSystem_ExplorationCandidate_CardName
+  name: CardName
+  nameWithType: CardExplorationSystem.ExplorationCandidate.CardName
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CardName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CurrentUseRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CurrentUseRate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardExplorationSystem_ExplorationCandidate_CurrentUseRate
+  name: CurrentUseRate
+  nameWithType: CardExplorationSystem.ExplorationCandidate.CurrentUseRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.CurrentUseRate
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.WinRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.WinRate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardExplorationSystem_ExplorationCandidate_WinRate
+  name: WinRate
+  nameWithType: CardExplorationSystem.ExplorationCandidate.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.WinRate
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.ExplorationScore*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.ExplorationScore
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardExplorationSystem_ExplorationCandidate_ExplorationScore
+  name: ExplorationScore
+  nameWithType: CardExplorationSystem.ExplorationCandidate.ExplorationScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.ExplorationScore
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.Reason*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.Reason
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardExplorationSystem_ExplorationCandidate_Reason
+  name: Reason
+  nameWithType: CardExplorationSystem.ExplorationCandidate.Reason
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.Reason

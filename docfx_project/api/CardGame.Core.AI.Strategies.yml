@@ -1,0 +1,52 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Strategies
+  commentId: N:CardGame.Core.AI.Strategies
+  id: Strategies
+  parent: CardGame.Core.AI
+  children:
+  - CardGame.Core.AI.Strategies.BalanceStrategy
+  - CardGame.Core.AI.Strategies.EvolvableStrategy
+  - CardGame.Core.AI.Strategies.OptimizedNewEvolvableStrategy
+  - CardGame.Core.AI.Strategies.RandomStrategy
+  - CardGame.Core.AI.Strategies.StandardStrategy
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.AI.Strategies
+  nameWithType: CardGame.Core.AI.Strategies
+  fullName: CardGame.Core.AI.Strategies
+  type: Namespace
+  assemblies:
+  - CardGame.ConsoleApp
+references:
+- uid: CardGame.Core.AI.Strategies.BalanceStrategy
+  commentId: T:CardGame.Core.AI.Strategies.BalanceStrategy
+  href: CardGame.Core.AI.Strategies.BalanceStrategy.html
+  name: BalanceStrategy
+  nameWithType: BalanceStrategy
+  fullName: CardGame.Core.AI.Strategies.BalanceStrategy
+- uid: CardGame.Core.AI.Strategies.EvolvableStrategy
+  commentId: T:CardGame.Core.AI.Strategies.EvolvableStrategy
+  href: CardGame.Core.AI.Strategies.EvolvableStrategy.html
+  name: EvolvableStrategy
+  nameWithType: EvolvableStrategy
+  fullName: CardGame.Core.AI.Strategies.EvolvableStrategy
+- uid: CardGame.Core.AI.Strategies.OptimizedNewEvolvableStrategy
+  commentId: T:CardGame.Core.AI.Strategies.OptimizedNewEvolvableStrategy
+  href: CardGame.Core.AI.Strategies.OptimizedNewEvolvableStrategy.html
+  name: OptimizedNewEvolvableStrategy
+  nameWithType: OptimizedNewEvolvableStrategy
+  fullName: CardGame.Core.AI.Strategies.OptimizedNewEvolvableStrategy
+- uid: CardGame.Core.AI.Strategies.RandomStrategy
+  commentId: T:CardGame.Core.AI.Strategies.RandomStrategy
+  href: CardGame.Core.AI.Strategies.RandomStrategy.html
+  name: RandomStrategy
+  nameWithType: RandomStrategy
+  fullName: CardGame.Core.AI.Strategies.RandomStrategy
+- uid: CardGame.Core.AI.Strategies.StandardStrategy
+  commentId: T:CardGame.Core.AI.Strategies.StandardStrategy
+  href: CardGame.Core.AI.Strategies.StandardStrategy.html
+  name: StandardStrategy
+  nameWithType: StandardStrategy
+  fullName: CardGame.Core.AI.Strategies.StandardStrategy

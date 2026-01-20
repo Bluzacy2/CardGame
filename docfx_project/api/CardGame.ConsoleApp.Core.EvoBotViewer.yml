@@ -1,0 +1,111 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Core.EvoBotViewer
+  commentId: T:CardGame.ConsoleApp.Core.EvoBotViewer
+  id: EvoBotViewer
+  parent: CardGame.ConsoleApp.Core
+  children:
+  - CardGame.ConsoleApp.Core.EvoBotViewer.ViewBestBot
+  langs:
+  - csharp
+  - vb
+  name: EvoBotViewer
+  nameWithType: EvoBotViewer
+  fullName: CardGame.ConsoleApp.Core.EvoBotViewer
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Core/EvoBotViewer.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EvoBotViewer
+    path: ../Source/CardGame.ConsoleApp/Core/EvoBotViewer.cs
+    startLine: 12
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Core
+  syntax:
+    content: public static class EvoBotViewer
+    content.vb: Public Module EvoBotViewer
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Core.EvoBotViewer.ViewBestBot
+  commentId: M:CardGame.ConsoleApp.Core.EvoBotViewer.ViewBestBot
+  id: ViewBestBot
+  parent: CardGame.ConsoleApp.Core.EvoBotViewer
+  langs:
+  - csharp
+  - vb
+  name: ViewBestBot()
+  nameWithType: EvoBotViewer.ViewBestBot()
+  fullName: CardGame.ConsoleApp.Core.EvoBotViewer.ViewBestBot()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Core/EvoBotViewer.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ViewBestBot
+    path: ../Source/CardGame.ConsoleApp/Core/EvoBotViewer.cs
+    startLine: 21
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Core
+  syntax:
+    content: public static void ViewBestBot()
+    content.vb: Public Shared Sub ViewBestBot()
+  overload: CardGame.ConsoleApp.Core.EvoBotViewer.ViewBestBot*
+references:
+- uid: CardGame.ConsoleApp.Core
+  commentId: N:CardGame.ConsoleApp.Core
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Core
+  nameWithType: CardGame.ConsoleApp.Core
+  fullName: CardGame.ConsoleApp.Core
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Core
+    name: Core
+    href: CardGame.ConsoleApp.Core.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Core
+    name: Core
+    href: CardGame.ConsoleApp.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Core.EvoBotViewer.ViewBestBot*
+  commentId: Overload:CardGame.ConsoleApp.Core.EvoBotViewer.ViewBestBot
+  href: CardGame.ConsoleApp.Core.EvoBotViewer.html#CardGame_ConsoleApp_Core_EvoBotViewer_ViewBestBot
+  name: ViewBestBot
+  nameWithType: EvoBotViewer.ViewBestBot
+  fullName: CardGame.ConsoleApp.Core.EvoBotViewer.ViewBestBot

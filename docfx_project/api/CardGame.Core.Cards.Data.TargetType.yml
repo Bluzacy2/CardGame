@@ -1,0 +1,562 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.TargetType
+  commentId: T:CardGame.Core.Cards.Data.TargetType
+  id: TargetType
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.TargetType.AdjacentEnemyUnits
+  - CardGame.Core.Cards.Data.TargetType.AllEnemyUnits
+  - CardGame.Core.Cards.Data.TargetType.AllFriendlyUnits
+  - CardGame.Core.Cards.Data.TargetType.AllUnitsOnBoard
+  - CardGame.Core.Cards.Data.TargetType.Choice
+  - CardGame.Core.Cards.Data.TargetType.EmptyLane
+  - CardGame.Core.Cards.Data.TargetType.EnemyHero
+  - CardGame.Core.Cards.Data.TargetType.EnemySpellsInHand
+  - CardGame.Core.Cards.Data.TargetType.FriendlyHero
+  - CardGame.Core.Cards.Data.TargetType.FriendlySpellsInHand
+  - CardGame.Core.Cards.Data.TargetType.OppositeEnemyUnit
+  - CardGame.Core.Cards.Data.TargetType.OtherFriendlyUnits
+  - CardGame.Core.Cards.Data.TargetType.RandomEmptyLane
+  - CardGame.Core.Cards.Data.TargetType.RandomFriendlyUnit
+  - CardGame.Core.Cards.Data.TargetType.SelectedTarget
+  - CardGame.Core.Cards.Data.TargetType.Self
+  - CardGame.Core.Cards.Data.TargetType.TargetEnemyUnit
+  - CardGame.Core.Cards.Data.TargetType.TargetFriendlyUnit
+  langs:
+  - csharp
+  - vb
+  name: TargetType
+  nameWithType: TargetType
+  fullName: CardGame.Core.Cards.Data.TargetType
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TargetType
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 103
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Represents the valid targets for a card's action.
+  example: []
+  syntax:
+    content: public enum TargetType
+    content.vb: Public Enum TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.Self
+  commentId: F:CardGame.Core.Cards.Data.TargetType.Self
+  id: Self
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: Self
+  nameWithType: TargetType.Self
+  fullName: CardGame.Core.Cards.Data.TargetType.Self
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Self
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 105
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Self = 0
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.TargetEnemyUnit
+  commentId: F:CardGame.Core.Cards.Data.TargetType.TargetEnemyUnit
+  id: TargetEnemyUnit
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: TargetEnemyUnit
+  nameWithType: TargetType.TargetEnemyUnit
+  fullName: CardGame.Core.Cards.Data.TargetType.TargetEnemyUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TargetEnemyUnit
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 106
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: TargetEnemyUnit = 1
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.TargetFriendlyUnit
+  commentId: F:CardGame.Core.Cards.Data.TargetType.TargetFriendlyUnit
+  id: TargetFriendlyUnit
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: TargetFriendlyUnit
+  nameWithType: TargetType.TargetFriendlyUnit
+  fullName: CardGame.Core.Cards.Data.TargetType.TargetFriendlyUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TargetFriendlyUnit
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 107
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: TargetFriendlyUnit = 2
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.AllEnemyUnits
+  commentId: F:CardGame.Core.Cards.Data.TargetType.AllEnemyUnits
+  id: AllEnemyUnits
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: AllEnemyUnits
+  nameWithType: TargetType.AllEnemyUnits
+  fullName: CardGame.Core.Cards.Data.TargetType.AllEnemyUnits
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AllEnemyUnits
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 108
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: AllEnemyUnits = 3
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.AllFriendlyUnits
+  commentId: F:CardGame.Core.Cards.Data.TargetType.AllFriendlyUnits
+  id: AllFriendlyUnits
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: AllFriendlyUnits
+  nameWithType: TargetType.AllFriendlyUnits
+  fullName: CardGame.Core.Cards.Data.TargetType.AllFriendlyUnits
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AllFriendlyUnits
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 109
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: AllFriendlyUnits = 4
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.EnemyHero
+  commentId: F:CardGame.Core.Cards.Data.TargetType.EnemyHero
+  id: EnemyHero
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: EnemyHero
+  nameWithType: TargetType.EnemyHero
+  fullName: CardGame.Core.Cards.Data.TargetType.EnemyHero
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EnemyHero
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 110
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: EnemyHero = 5
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.FriendlyHero
+  commentId: F:CardGame.Core.Cards.Data.TargetType.FriendlyHero
+  id: FriendlyHero
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: FriendlyHero
+  nameWithType: TargetType.FriendlyHero
+  fullName: CardGame.Core.Cards.Data.TargetType.FriendlyHero
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: FriendlyHero
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 111
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: FriendlyHero = 6
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.SelectedTarget
+  commentId: F:CardGame.Core.Cards.Data.TargetType.SelectedTarget
+  id: SelectedTarget
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: SelectedTarget
+  nameWithType: TargetType.SelectedTarget
+  fullName: CardGame.Core.Cards.Data.TargetType.SelectedTarget
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SelectedTarget
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 112
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: SelectedTarget = 7
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.OtherFriendlyUnits
+  commentId: F:CardGame.Core.Cards.Data.TargetType.OtherFriendlyUnits
+  id: OtherFriendlyUnits
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: OtherFriendlyUnits
+  nameWithType: TargetType.OtherFriendlyUnits
+  fullName: CardGame.Core.Cards.Data.TargetType.OtherFriendlyUnits
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OtherFriendlyUnits
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 113
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OtherFriendlyUnits = 8
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.AdjacentEnemyUnits
+  commentId: F:CardGame.Core.Cards.Data.TargetType.AdjacentEnemyUnits
+  id: AdjacentEnemyUnits
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: AdjacentEnemyUnits
+  nameWithType: TargetType.AdjacentEnemyUnits
+  fullName: CardGame.Core.Cards.Data.TargetType.AdjacentEnemyUnits
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AdjacentEnemyUnits
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 114
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: AdjacentEnemyUnits = 9
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.AllUnitsOnBoard
+  commentId: F:CardGame.Core.Cards.Data.TargetType.AllUnitsOnBoard
+  id: AllUnitsOnBoard
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: AllUnitsOnBoard
+  nameWithType: TargetType.AllUnitsOnBoard
+  fullName: CardGame.Core.Cards.Data.TargetType.AllUnitsOnBoard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AllUnitsOnBoard
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 115
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: AllUnitsOnBoard = 10
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.Choice
+  commentId: F:CardGame.Core.Cards.Data.TargetType.Choice
+  id: Choice
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: Choice
+  nameWithType: TargetType.Choice
+  fullName: CardGame.Core.Cards.Data.TargetType.Choice
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Choice
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 116
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Choice = 11
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.FriendlySpellsInHand
+  commentId: F:CardGame.Core.Cards.Data.TargetType.FriendlySpellsInHand
+  id: FriendlySpellsInHand
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: FriendlySpellsInHand
+  nameWithType: TargetType.FriendlySpellsInHand
+  fullName: CardGame.Core.Cards.Data.TargetType.FriendlySpellsInHand
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: FriendlySpellsInHand
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 117
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: FriendlySpellsInHand = 12
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.EnemySpellsInHand
+  commentId: F:CardGame.Core.Cards.Data.TargetType.EnemySpellsInHand
+  id: EnemySpellsInHand
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: EnemySpellsInHand
+  nameWithType: TargetType.EnemySpellsInHand
+  fullName: CardGame.Core.Cards.Data.TargetType.EnemySpellsInHand
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EnemySpellsInHand
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 118
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: EnemySpellsInHand = 13
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.EmptyLane
+  commentId: F:CardGame.Core.Cards.Data.TargetType.EmptyLane
+  id: EmptyLane
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: EmptyLane
+  nameWithType: TargetType.EmptyLane
+  fullName: CardGame.Core.Cards.Data.TargetType.EmptyLane
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EmptyLane
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 119
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: EmptyLane = 14
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.RandomEmptyLane
+  commentId: F:CardGame.Core.Cards.Data.TargetType.RandomEmptyLane
+  id: RandomEmptyLane
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: RandomEmptyLane
+  nameWithType: TargetType.RandomEmptyLane
+  fullName: CardGame.Core.Cards.Data.TargetType.RandomEmptyLane
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: RandomEmptyLane
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 120
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: RandomEmptyLane = 15
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.OppositeEnemyUnit
+  commentId: F:CardGame.Core.Cards.Data.TargetType.OppositeEnemyUnit
+  id: OppositeEnemyUnit
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: OppositeEnemyUnit
+  nameWithType: TargetType.OppositeEnemyUnit
+  fullName: CardGame.Core.Cards.Data.TargetType.OppositeEnemyUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OppositeEnemyUnit
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 121
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: OppositeEnemyUnit = 16
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.TargetType.RandomFriendlyUnit
+  commentId: F:CardGame.Core.Cards.Data.TargetType.RandomFriendlyUnit
+  id: RandomFriendlyUnit
+  parent: CardGame.Core.Cards.Data.TargetType
+  langs:
+  - csharp
+  - vb
+  name: RandomFriendlyUnit
+  nameWithType: TargetType.RandomFriendlyUnit
+  fullName: CardGame.Core.Cards.Data.TargetType.RandomFriendlyUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: RandomFriendlyUnit
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 122
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: RandomFriendlyUnit = 17
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Cards.Data.TargetType
+  commentId: T:CardGame.Core.Cards.Data.TargetType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.TargetType.html
+  name: TargetType
+  nameWithType: TargetType
+  fullName: CardGame.Core.Cards.Data.TargetType

@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CardInstance | CardGame Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CardInstance | CardGame Docs ">
+      
+      <meta name="description" content="Represents an instance of a card in the game with mutable state such as damage taken and buffs. Each card instance is immutable and returns new instances when modified.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bluzacy2/CardGame/new/main/apiSpec/new?filename=CardGame_Core_Cards_Models_CardInstance.md&amp;value=---%0Auid%3A%20CardGame.Core.Cards.Models.CardInstance%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="CardGame.Core.Cards.Models.CardInstance">
+
+
+
+  <h1 id="CardGame_Core_Cards_Models_CardInstance" data-uid="CardGame.Core.Cards.Models.CardInstance" class="text-break">
+Class CardInstance  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="CardGame.html">CardGame</a>.<a class="xref" href="CardGame.Core.html">Core</a>.<a class="xref" href="CardGame.Core.Cards.html">Cards</a>.<a class="xref" href="CardGame.Core.Cards.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>CardGame.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents an instance of a card in the game with mutable state such as damage taken and buffs.
+Each card instance is immutable and returns new instances when modified.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CardInstance</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><span class="xref">object</span></div>
+      <div><span class="xref">CardInstance</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance__ctor_" data-uid="CardGame.Core.Cards.Models.CardInstance.#ctor*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance__ctor_System_Int32_System_Int32_CardGame_Core_Cards_Models_CardDefinition_" data-uid="CardGame.Core.Cards.Models.CardInstance.#ctor(System.Int32,System.Int32,CardGame.Core.Cards.Models.CardDefinition)">
+  CardInstance(int, int, CardDefinition)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the CardInstance class with default values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardInstance(int instanceId, int ownerPlayerId, CardDefinition definition)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>instanceId</code> <span class="xref">int</span></dt>
+    <dd><p>The unique identifier for this card instance.</p>
+</dd>
+    <dt><code>ownerPlayerId</code> <span class="xref">int</span></dt>
+    <dd><p>The ID of the player who owns this card.</p>
+</dd>
+    <dt><code>definition</code> <a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.html">CardDefinition</a></dt>
+    <dd><p>The static definition of the card.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_AuraKeywords_" data-uid="CardGame.Core.Cards.Models.CardInstance.AuraKeywords*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_AuraKeywords" data-uid="CardGame.Core.Cards.Models.CardInstance.AuraKeywords">
+  AuraKeywords
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the keywords applied to this card via auras from other units.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;Keyword&gt; AuraKeywords { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="CardGame.Core.Cards.Data.Keyword.html">Keyword</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_CostReduction_" data-uid="CardGame.Core.Cards.Models.CardInstance.CostReduction*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_CostReduction" data-uid="CardGame.Core.Cards.Models.CardInstance.CostReduction">
+  CostReduction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the cost reduction applied to this card (immutable once set).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CostReduction { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_CurrentStats_" data-uid="CardGame.Core.Cards.Models.CardInstance.CurrentStats*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_CurrentStats" data-uid="CardGame.Core.Cards.Models.CardInstance.CurrentStats">
+  CurrentStats
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current calculated stats of the card, accounting for buffs, damage, and silenced state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardStats CurrentStats { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardStats.html">CardStats</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_DamageTaken_" data-uid="CardGame.Core.Cards.Models.CardInstance.DamageTaken*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_DamageTaken" data-uid="CardGame.Core.Cards.Models.CardInstance.DamageTaken">
+  DamageTaken
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the amount of damage this card has taken.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DamageTaken { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_Definition_" data-uid="CardGame.Core.Cards.Models.CardInstance.Definition*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_Definition" data-uid="CardGame.Core.Cards.Models.CardInstance.Definition">
+  Definition
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the static definition of the card (base stats, effects, etc.).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardDefinition Definition { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.html">CardDefinition</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_InstanceId_" data-uid="CardGame.Core.Cards.Models.CardInstance.InstanceId*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_InstanceId" data-uid="CardGame.Core.Cards.Models.CardInstance.InstanceId">
+  InstanceId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the unique identifier for this card instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int InstanceId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_IsSilenced_" data-uid="CardGame.Core.Cards.Models.CardInstance.IsSilenced*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_IsSilenced" data-uid="CardGame.Core.Cards.Models.CardInstance.IsSilenced">
+  IsSilenced
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a value indicating whether this card is silenced (ignores all buffs and keywords).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSilenced { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">bool</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_MaxHealth_" data-uid="CardGame.Core.Cards.Models.CardInstance.MaxHealth*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_MaxHealth" data-uid="CardGame.Core.Cards.Models.CardInstance.MaxHealth">
+  MaxHealth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the maximum health of the card (base health + permanent buffs, ignoring damage taken).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxHealth { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_OwnerPlayerId_" data-uid="CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_OwnerPlayerId" data-uid="CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId">
+  OwnerPlayerId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the ID of the player who owns this card.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OwnerPlayerId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_PermanentBuffs_" data-uid="CardGame.Core.Cards.Models.CardInstance.PermanentBuffs*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_PermanentBuffs" data-uid="CardGame.Core.Cards.Models.CardInstance.PermanentBuffs">
+  PermanentBuffs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the permanent stat buffs applied to this card.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardStats PermanentBuffs { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardStats.html">CardStats</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_SuppressedKeywords_" data-uid="CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_SuppressedKeywords" data-uid="CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords">
+  SuppressedKeywords
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the keywords that have been temporarily suppressed on this card.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;Keyword&gt; SuppressedKeywords { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="CardGame.Core.Cards.Data.Keyword.html">Keyword</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_AddPermanentBuff_" data-uid="CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_AddPermanentBuff_CardGame_Core_Cards_Models_CardStats_" data-uid="CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff(CardGame.Core.Cards.Models.CardStats)">
+  AddPermanentBuff(CardStats)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a permanent stat buff to the card and returns a new instance.
+Silenced cards cannot receive buffs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardInstance AddPermanentBuff(CardStats buff)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>buff</code> <a class="xref" href="CardGame.Core.Cards.Models.CardStats.html">CardStats</a></dt>
+    <dd><p>The stat buff to apply.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
+    <dd><p>A new CardInstance with the buff applied, or the same instance if silenced.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_Heal_" data-uid="CardGame.Core.Cards.Models.CardInstance.Heal*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_Heal_System_Int32_" data-uid="CardGame.Core.Cards.Models.CardInstance.Heal(System.Int32)">
+  Heal(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L198"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Heals the card and returns a new instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardInstance Heal(int amount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>amount</code> <span class="xref">int</span></dt>
+    <dd><p>The amount of health to restore.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
+    <dd><p>A new CardInstance with reduced damage taken.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_MoveAndReset_" data-uid="CardGame.Core.Cards.Models.CardInstance.MoveAndReset*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_MoveAndReset" data-uid="CardGame.Core.Cards.Models.CardInstance.MoveAndReset">
+  MoveAndReset()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new card instance with all state reset to default (except InstanceId, Owner, and Definition).
+Typically used when moving a card between zones.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardInstance MoveAndReset()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
+    <dd><p>A new CardInstance with reset state.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_Silence_" data-uid="CardGame.Core.Cards.Models.CardInstance.Silence*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_Silence" data-uid="CardGame.Core.Cards.Models.CardInstance.Silence">
+  Silence()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L281"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Silences the card, removing all buffs, keywords, and auras, and returns a new instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardInstance Silence()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
+    <dd><p>A new silenced CardInstance with all state reset except damage taken.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_SuppressKeyword_" data-uid="CardGame.Core.Cards.Models.CardInstance.SuppressKeyword*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_SuppressKeyword_CardGame_Core_Cards_Data_Keyword_" data-uid="CardGame.Core.Cards.Models.CardInstance.SuppressKeyword(CardGame.Core.Cards.Data.Keyword)">
+  SuppressKeyword(Keyword)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L260"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Temporarily suppresses a keyword on the card and returns a new instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardInstance SuppressKeyword(Keyword keyword)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>keyword</code> <a class="xref" href="CardGame.Core.Cards.Data.Keyword.html">Keyword</a></dt>
+    <dd><p>The keyword to suppress.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
+    <dd><p>A new CardInstance with the keyword added to suppressed keywords.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_TakeDamage_" data-uid="CardGame.Core.Cards.Models.CardInstance.TakeDamage*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_TakeDamage_System_Int32_" data-uid="CardGame.Core.Cards.Models.CardInstance.TakeDamage(System.Int32)">
+  TakeDamage(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L191"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Applies damage to the card and returns a new instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardInstance TakeDamage(int amount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>amount</code> <span class="xref">int</span></dt>
+    <dd><p>The amount of damage to apply.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
+    <dd><p>A new CardInstance with increased damage taken.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_WithAuras_" data-uid="CardGame.Core.Cards.Models.CardInstance.WithAuras*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_WithAuras_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Data_Keyword__" data-uid="CardGame.Core.Cards.Models.CardInstance.WithAuras(System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword})">
+  WithAuras(IEnumerable&lt;Keyword&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the aura keywords on the card and returns a new instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardInstance WithAuras(IEnumerable&lt;Keyword&gt; newAuras)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newAuras</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Data.Keyword.html">Keyword</a>&gt;</dt>
+    <dd><p>The new aura keywords to apply.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
+    <dd><p>A new CardInstance with the updated aura keywords.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_WithCostReduction_" data-uid="CardGame.Core.Cards.Models.CardInstance.WithCostReduction*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_WithCostReduction_System_Int32_" data-uid="CardGame.Core.Cards.Models.CardInstance.WithCostReduction(System.Int32)">
+  WithCostReduction(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the cost reduction on the card and returns a new instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardInstance WithCostReduction(int costReduction)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>costReduction</code> <span class="xref">int</span></dt>
+    <dd><p>The new cost reduction value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
+    <dd><p>A new CardInstance with the updated cost reduction.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_Cards_Models_CardInstance_WithDamage_" data-uid="CardGame.Core.Cards.Models.CardInstance.WithDamage*"></a>
+
+  <h3 id="CardGame_Core_Cards_Models_CardInstance_WithDamage_System_Int32_" data-uid="CardGame.Core.Cards.Models.CardInstance.WithDamage(System.Int32)">
+  WithDamage(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new card instance with the specified total damage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardInstance WithDamage(int totalDamage)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>totalDamage</code> <span class="xref">int</span></dt>
+    <dd><p>The total damage the card has taken.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
+    <dd><p>A new CardInstance with the specified damage.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardInstance.cs/#L12" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

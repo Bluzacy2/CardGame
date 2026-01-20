@@ -1,0 +1,919 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  id: EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Int32,System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.BaseFitness
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Behaviors
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Clone
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.CompositeFitness
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DeckNoveltyScore
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DiversityScore
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Dna
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Generation
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Id
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.NoveltyScore
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.RecordBehavior(System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult})
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.ResetFitness
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SetNextId(System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SpeciesId
+  langs:
+  - csharp
+  - vb
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EvolvableIndividual
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4469
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class EvolvableIndividual
+    content.vb: Public Class EvolvableIndividual
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Dna
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Dna
+  id: Dna
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: Dna
+  nameWithType: EvolvableIndividual.Dna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Dna
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Dna
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4471
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public NewDna Dna { get; set; }
+    parameters: []
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    content.vb: Public Property Dna As NewDna
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Dna*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.BaseFitness
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.BaseFitness
+  id: BaseFitness
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: BaseFitness
+  nameWithType: EvolvableIndividual.BaseFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.BaseFitness
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BaseFitness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4472
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float BaseFitness { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property BaseFitness As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.BaseFitness*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.NoveltyScore
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.NoveltyScore
+  id: NoveltyScore
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: NoveltyScore
+  nameWithType: EvolvableIndividual.NoveltyScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.NoveltyScore
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: NoveltyScore
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4473
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float NoveltyScore { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property NoveltyScore As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.NoveltyScore*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DiversityScore
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DiversityScore
+  id: DiversityScore
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: DiversityScore
+  nameWithType: EvolvableIndividual.DiversityScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DiversityScore
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DiversityScore
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4474
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float DiversityScore { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property DiversityScore As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DiversityScore*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DeckNoveltyScore
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DeckNoveltyScore
+  id: DeckNoveltyScore
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: DeckNoveltyScore
+  nameWithType: EvolvableIndividual.DeckNoveltyScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DeckNoveltyScore
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DeckNoveltyScore
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4475
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float DeckNoveltyScore { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property DeckNoveltyScore As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DeckNoveltyScore*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.CompositeFitness
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.CompositeFitness
+  id: CompositeFitness
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: CompositeFitness
+  nameWithType: EvolvableIndividual.CompositeFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.CompositeFitness
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CompositeFitness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4476
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float CompositeFitness { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property CompositeFitness As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.CompositeFitness*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Id
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Id
+  id: Id
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: EvolvableIndividual.Id
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Id
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Id
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4477
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Id { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Id As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Id*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Generation
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Generation
+  id: Generation
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: Generation
+  nameWithType: EvolvableIndividual.Generation
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Generation
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Generation
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4478
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Generation { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Generation As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Generation*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SpeciesId
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SpeciesId
+  id: SpeciesId
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: SpeciesId
+  nameWithType: EvolvableIndividual.SpeciesId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SpeciesId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SpeciesId
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4479
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public Guid? SpeciesId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property SpeciesId As Guid?
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SpeciesId*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Behaviors
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Behaviors
+  id: Behaviors
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: Behaviors
+  nameWithType: EvolvableIndividual.Behaviors
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Behaviors
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Behaviors
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4480
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<float> Behaviors { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Single}
+    content.vb: Public Property Behaviors As List(Of Single)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Behaviors*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Int32)
+  id: '#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Int32)'
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: EvolvableIndividual(NewDna, int)
+  nameWithType: EvolvableIndividual.EvolvableIndividual(NewDna, int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.EvolvableIndividual(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4484
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public EvolvableIndividual(NewDna dna, int generation)
+    parameters:
+    - id: dna
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    - id: generation
+      type: System.Int32
+    content.vb: Public Sub New(dna As NewDna, generation As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.#ctor*
+  nameWithType.vb: EvolvableIndividual.New(NewDna, Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.New(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, Integer)
+  name.vb: New(NewDna, Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Int32,System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Int32,System.Int32)
+  id: '#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.Int32,System.Int32)'
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: EvolvableIndividual(NewDna, int, int)
+  nameWithType: EvolvableIndividual.EvolvableIndividual(NewDna, int, int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.EvolvableIndividual(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4491
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: >-
+      [JsonConstructor]
+
+      public EvolvableIndividual(NewDna dna, int generation, int id)
+    parameters:
+    - id: dna
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    - id: generation
+      type: System.Int32
+    - id: id
+      type: System.Int32
+    content.vb: >-
+      <JsonConstructor>
+
+      Public Sub New(dna As NewDna, generation As Integer, id As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.#ctor*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonConstructorAttribute
+    ctor: System.Text.Json.Serialization.JsonConstructorAttribute.#ctor
+    arguments: []
+  nameWithType.vb: EvolvableIndividual.New(NewDna, Integer, Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.New(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, Integer, Integer)
+  name.vb: New(NewDna, Integer, Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.ResetFitness
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.ResetFitness
+  id: ResetFitness
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: ResetFitness()
+  nameWithType: EvolvableIndividual.ResetFitness()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.ResetFitness()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ResetFitness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4501
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void ResetFitness()
+    content.vb: Public Sub ResetFitness()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.ResetFitness*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.RecordBehavior(System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult})
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.RecordBehavior(System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult})
+  id: RecordBehavior(System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult})
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: RecordBehavior((float score, GameResult result))
+  nameWithType: EvolvableIndividual.RecordBehavior((float score, GameResult result))
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.RecordBehavior((float score, CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult result))
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: RecordBehavior
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4510
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void RecordBehavior((float score, GameResult result) matchResult)
+    parameters:
+    - id: matchResult
+      type: System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult}
+    content.vb: Public Sub RecordBehavior(matchResult As (score As Single, result As GameResult))
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.RecordBehavior*
+  nameWithType.vb: EvolvableIndividual.RecordBehavior((score As Single, result As GameResult))
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.RecordBehavior((score As Single, result As CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult))
+  name.vb: RecordBehavior((score As Single, result As GameResult))
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Clone
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Clone
+  id: Clone
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: EvolvableIndividual.Clone()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Clone()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Clone
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4518
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public EvolvableIndividual Clone()
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    content.vb: Public Function Clone() As EvolvableIndividual
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Clone*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SetNextId(System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SetNextId(System.Int32)
+  id: SetNextId(System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  langs:
+  - csharp
+  - vb
+  name: SetNextId(int)
+  nameWithType: EvolvableIndividual.SetNextId(int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SetNextId(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SetNextId
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4531
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static void SetNextId(int nextId)
+    parameters:
+    - id: nextId
+      type: System.Int32
+    content.vb: Public Shared Sub SetNextId(nextId As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SetNextId*
+  nameWithType.vb: EvolvableIndividual.SetNextId(Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SetNextId(Integer)
+  name.vb: SetNextId(Integer)
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Dna*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Dna
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_Dna
+  name: Dna
+  nameWithType: EvolvableIndividual.Dna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Dna
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html
+  name: NewDna
+  nameWithType: NewDna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.BaseFitness*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.BaseFitness
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_BaseFitness
+  name: BaseFitness
+  nameWithType: EvolvableIndividual.BaseFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.BaseFitness
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.NoveltyScore*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.NoveltyScore
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_NoveltyScore
+  name: NoveltyScore
+  nameWithType: EvolvableIndividual.NoveltyScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.NoveltyScore
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DiversityScore*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DiversityScore
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_DiversityScore
+  name: DiversityScore
+  nameWithType: EvolvableIndividual.DiversityScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DiversityScore
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DeckNoveltyScore*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DeckNoveltyScore
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_DeckNoveltyScore
+  name: DeckNoveltyScore
+  nameWithType: EvolvableIndividual.DeckNoveltyScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.DeckNoveltyScore
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.CompositeFitness*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.CompositeFitness
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_CompositeFitness
+  name: CompositeFitness
+  nameWithType: EvolvableIndividual.CompositeFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.CompositeFitness
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Id*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Id
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_Id
+  name: Id
+  nameWithType: EvolvableIndividual.Id
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Generation*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Generation
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_Generation
+  name: Generation
+  nameWithType: EvolvableIndividual.Generation
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Generation
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SpeciesId*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SpeciesId
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_SpeciesId
+  name: SpeciesId
+  nameWithType: EvolvableIndividual.SpeciesId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SpeciesId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Behaviors*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Behaviors
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_Behaviors
+  name: Behaviors
+  nameWithType: EvolvableIndividual.Behaviors
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Behaviors
+- uid: System.Collections.Generic.List{System.Single}
+  commentId: T:System.Collections.Generic.List{System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<float>
+  nameWithType: List<float>
+  fullName: System.Collections.Generic.List<float>
+  nameWithType.vb: List(Of Single)
+  fullName.vb: System.Collections.Generic.List(Of Single)
+  name.vb: List(Of Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.#ctor*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.#ctor
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual__ctor_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_System_Int32_
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual.EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.EvolvableIndividual
+  nameWithType.vb: EvolvableIndividual.New
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.New
+  name.vb: New
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.ResetFitness*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.ResetFitness
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_ResetFitness
+  name: ResetFitness
+  nameWithType: EvolvableIndividual.ResetFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.ResetFitness
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.RecordBehavior*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.RecordBehavior
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_RecordBehavior_System_ValueTuple_System_Single_CardGame_ConsoleApp_Evolution_V2_NewGen_GameResult__
+  name: RecordBehavior
+  nameWithType: EvolvableIndividual.RecordBehavior
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.RecordBehavior
+- uid: System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult}
+  commentId: T:System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult}
+  parent: System
+  definition: System.ValueTuple`2
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.html
+  name: (float score, GameResult result)
+  nameWithType: (float score, GameResult result)
+  fullName: (float score, CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult result)
+  nameWithType.vb: (score As Single, result As GameResult)
+  fullName.vb: (score As Single, result As CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult)
+  name.vb: (score As Single, result As GameResult)
+  spec.csharp:
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: " "
+  - uid: System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult}.score
+    name: score
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+    name: GameResult
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.html
+  - name: " "
+  - uid: System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult}.result
+    name: result
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult}.score
+    name: score
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Single,CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult}.result
+    name: result
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+    name: GameResult
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.html
+  - name: )
+- uid: System.ValueTuple`2
+  commentId: T:System.ValueTuple`2
+  name: (T1, T2)
+  nameWithType: (T1, T2)
+  fullName: (T1, T2)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Clone*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Clone
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_Clone
+  name: Clone
+  nameWithType: EvolvableIndividual.Clone
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.Clone
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SetNextId*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SetNextId
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_SetNextId_System_Int32_
+  name: SetNextId
+  nameWithType: EvolvableIndividual.SetNextId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.SetNextId

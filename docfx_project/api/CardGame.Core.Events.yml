@@ -1,0 +1,260 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  id: Events
+  parent: CardGame.Core
+  children:
+  - CardGame.Core.Events.BattleClashEvent
+  - CardGame.Core.Events.CardCreatedEvent
+  - CardGame.Core.Events.CardDrawnEvent
+  - CardGame.Core.Events.CardMovedEvent
+  - CardGame.Core.Events.CardPlayedEvent
+  - CardGame.Core.Events.CardZone
+  - CardGame.Core.Events.EventBus
+  - CardGame.Core.Events.GameOverEvent
+  - CardGame.Core.Events.InteractionRequiredEvent
+  - CardGame.Core.Events.Interfaces
+  - CardGame.Core.Events.PhaseChangedEvent
+  - CardGame.Core.Events.PreLineCombatEvent
+  - CardGame.Core.Events.ResourceChangedEvent
+  - CardGame.Core.Events.TargetSelectedEvent
+  - CardGame.Core.Events.TriggerActivatedEvent
+  - CardGame.Core.Events.Triggers
+  - CardGame.Core.Events.TurnStartedEvent
+  - CardGame.Core.Events.UnitDestroyedEvent
+  - CardGame.Core.Events.UnitDiedEvent
+  - CardGame.Core.Events.UnitSacrificedEvent
+  - CardGame.Core.Events.UnitStatsChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.Triggers
+  commentId: N:CardGame.Core.Events.Triggers
+  href: CardGame.html
+  name: CardGame.Core.Events.Triggers
+  nameWithType: CardGame.Core.Events.Triggers
+  fullName: CardGame.Core.Events.Triggers
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Triggers
+    name: Triggers
+    href: CardGame.Core.Events.Triggers.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Triggers
+    name: Triggers
+    href: CardGame.Core.Events.Triggers.html
+- uid: CardGame.Core.Events.BattleClashEvent
+  commentId: T:CardGame.Core.Events.BattleClashEvent
+  href: CardGame.Core.Events.BattleClashEvent.html
+  name: BattleClashEvent
+  nameWithType: BattleClashEvent
+  fullName: CardGame.Core.Events.BattleClashEvent
+- uid: CardGame.Core.Events.CardCreatedEvent
+  commentId: T:CardGame.Core.Events.CardCreatedEvent
+  href: CardGame.Core.Events.CardCreatedEvent.html
+  name: CardCreatedEvent
+  nameWithType: CardCreatedEvent
+  fullName: CardGame.Core.Events.CardCreatedEvent
+- uid: CardGame.Core.Events.CardDrawnEvent
+  commentId: T:CardGame.Core.Events.CardDrawnEvent
+  href: CardGame.Core.Events.CardDrawnEvent.html
+  name: CardDrawnEvent
+  nameWithType: CardDrawnEvent
+  fullName: CardGame.Core.Events.CardDrawnEvent
+- uid: CardGame.Core.Events.CardMovedEvent
+  commentId: T:CardGame.Core.Events.CardMovedEvent
+  href: CardGame.Core.Events.CardMovedEvent.html
+  name: CardMovedEvent
+  nameWithType: CardMovedEvent
+  fullName: CardGame.Core.Events.CardMovedEvent
+- uid: CardGame.Core.Events.CardPlayedEvent
+  commentId: T:CardGame.Core.Events.CardPlayedEvent
+  href: CardGame.Core.Events.CardPlayedEvent.html
+  name: CardPlayedEvent
+  nameWithType: CardPlayedEvent
+  fullName: CardGame.Core.Events.CardPlayedEvent
+- uid: CardGame.Core.Events.CardZone
+  commentId: T:CardGame.Core.Events.CardZone
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.CardZone.html
+  name: CardZone
+  nameWithType: CardZone
+  fullName: CardGame.Core.Events.CardZone
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+- uid: CardGame.Core.Events.GameOverEvent
+  commentId: T:CardGame.Core.Events.GameOverEvent
+  href: CardGame.Core.Events.GameOverEvent.html
+  name: GameOverEvent
+  nameWithType: GameOverEvent
+  fullName: CardGame.Core.Events.GameOverEvent
+- uid: CardGame.Core.Events.InteractionRequiredEvent
+  commentId: T:CardGame.Core.Events.InteractionRequiredEvent
+  href: CardGame.Core.Events.InteractionRequiredEvent.html
+  name: InteractionRequiredEvent
+  nameWithType: InteractionRequiredEvent
+  fullName: CardGame.Core.Events.InteractionRequiredEvent
+- uid: CardGame.Core.Events.PhaseChangedEvent
+  commentId: T:CardGame.Core.Events.PhaseChangedEvent
+  href: CardGame.Core.Events.PhaseChangedEvent.html
+  name: PhaseChangedEvent
+  nameWithType: PhaseChangedEvent
+  fullName: CardGame.Core.Events.PhaseChangedEvent
+- uid: CardGame.Core.Events.PreLineCombatEvent
+  commentId: T:CardGame.Core.Events.PreLineCombatEvent
+  href: CardGame.Core.Events.PreLineCombatEvent.html
+  name: PreLineCombatEvent
+  nameWithType: PreLineCombatEvent
+  fullName: CardGame.Core.Events.PreLineCombatEvent
+- uid: CardGame.Core.Events.ResourceChangedEvent
+  commentId: T:CardGame.Core.Events.ResourceChangedEvent
+  href: CardGame.Core.Events.ResourceChangedEvent.html
+  name: ResourceChangedEvent
+  nameWithType: ResourceChangedEvent
+  fullName: CardGame.Core.Events.ResourceChangedEvent
+- uid: CardGame.Core.Events.TargetSelectedEvent
+  commentId: T:CardGame.Core.Events.TargetSelectedEvent
+  href: CardGame.Core.Events.TargetSelectedEvent.html
+  name: TargetSelectedEvent
+  nameWithType: TargetSelectedEvent
+  fullName: CardGame.Core.Events.TargetSelectedEvent
+- uid: CardGame.Core.Events.TriggerActivatedEvent
+  commentId: T:CardGame.Core.Events.TriggerActivatedEvent
+  href: CardGame.Core.Events.TriggerActivatedEvent.html
+  name: TriggerActivatedEvent
+  nameWithType: TriggerActivatedEvent
+  fullName: CardGame.Core.Events.TriggerActivatedEvent
+- uid: CardGame.Core.Events.TurnStartedEvent
+  commentId: T:CardGame.Core.Events.TurnStartedEvent
+  href: CardGame.Core.Events.TurnStartedEvent.html
+  name: TurnStartedEvent
+  nameWithType: TurnStartedEvent
+  fullName: CardGame.Core.Events.TurnStartedEvent
+- uid: CardGame.Core.Events.UnitDestroyedEvent
+  commentId: T:CardGame.Core.Events.UnitDestroyedEvent
+  href: CardGame.Core.Events.UnitDestroyedEvent.html
+  name: UnitDestroyedEvent
+  nameWithType: UnitDestroyedEvent
+  fullName: CardGame.Core.Events.UnitDestroyedEvent
+- uid: CardGame.Core.Events.UnitDiedEvent
+  commentId: T:CardGame.Core.Events.UnitDiedEvent
+  href: CardGame.Core.Events.UnitDiedEvent.html
+  name: UnitDiedEvent
+  nameWithType: UnitDiedEvent
+  fullName: CardGame.Core.Events.UnitDiedEvent
+- uid: CardGame.Core.Events.UnitSacrificedEvent
+  commentId: T:CardGame.Core.Events.UnitSacrificedEvent
+  href: CardGame.Core.Events.UnitSacrificedEvent.html
+  name: UnitSacrificedEvent
+  nameWithType: UnitSacrificedEvent
+  fullName: CardGame.Core.Events.UnitSacrificedEvent
+- uid: CardGame.Core.Events.UnitStatsChangedEvent
+  commentId: T:CardGame.Core.Events.UnitStatsChangedEvent
+  href: CardGame.Core.Events.UnitStatsChangedEvent.html
+  name: UnitStatsChangedEvent
+  nameWithType: UnitStatsChangedEvent
+  fullName: CardGame.Core.Events.UnitStatsChangedEvent
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html

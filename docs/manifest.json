@@ -1,0 +1,3303 @@
+{
+  "source_base_path": "C:/Users/cyunc/source/repos/CardGame/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.AIBattleRunner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.AIBattleRunner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.AIBattleRunner",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.AIBattleRunnerII.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.AIBattleRunnerII.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.AIBattleRunnerII",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.AIBattleRunnerIII.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.AIBattleRunnerIII.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.AIBattleRunnerIII",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.BalanceAITester.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.BalanceAITester.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.BalanceAITester",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Core.AIvsEvolutionRunner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Core.AIvsEvolutionRunner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Core.AIvsEvolutionRunner",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Core.EvoBotViewer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Core.EvoBotViewer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Core.EvoBotViewer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Core.EvolutionLeague.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Core.EvolutionLeague.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Core.EvolutionLeague",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Core.EvolutionLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Core.EvolutionLogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Core.EvolutionLogger",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Core.HallOfFame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Core.HallOfFame.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Core.HallOfFame",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Core.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Core",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.Analytics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.Analytics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.Analytics",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V1_Legacy.DNA.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V1_Legacy.DNA",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V1_Legacy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V1_Legacy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V1_Legacy",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionRunnerV2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionRunnerV2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionRunnerV2",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.PopulationData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.PopulationData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.PopulationData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.Species.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.Species.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.Species",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.V2_NewGen.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.Evolution.V2_NewGen",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.Evolution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.Evolution.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.MechanicsTester.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.MechanicsTester.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.MechanicsTester",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.OptimizedAILogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.OptimizedAILogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp.OptimizedAILogger",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.ConsoleApp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.ConsoleApp.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.ConsoleApp",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.AIPlayerController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.AIPlayerController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.AIPlayerController",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.AIPlayerController.yml\" sourcestartlinenumber=\"1\">Controls AI player behavior and decision making during gameplay.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.AISolverType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.AISolverType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.AISolverType",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.AISolverType.yml\" sourcestartlinenumber=\"1\">Specifies the AI solver algorithm to use for decision making.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Interfaces.IAIStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Interfaces.IAIStrategy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Interfaces.IAIStrategy",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Interfaces.IAIStrategy.yml\" sourcestartlinenumber=\"1\">Defines the contract for AI strategies that evaluate game states and make decisions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Logic.BotSolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Logic.BotSolver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Logic.BotSolver",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Logic.BotSolver.yml\" sourcestartlinenumber=\"1\">AI solver that uses beam search and simulation to evaluate potential game moves.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Logic.EvaluatedMove.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Logic.EvaluatedMove.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Logic.EvaluatedMove",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Logic.EvaluatedMove.yml\" sourcestartlinenumber=\"1\">Represents a game move along with its AI evaluation score and descriptive information.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Logic.Mcts.MctsNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Logic.Mcts.MctsNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Logic.Mcts.MctsNode",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Logic.Mcts.MctsNode.yml\" sourcestartlinenumber=\"1\">Represents a node in the Monte Carlo Tree Search algorithm.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Logic.Mcts.MctsSolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Logic.Mcts.MctsSolver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Logic.Mcts.MctsSolver",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Logic.Mcts.MctsSolver.yml\" sourcestartlinenumber=\"1\">Monte Carlo Tree Search implementation for evaluating and selecting optimal game moves.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Logic.Mcts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Logic.Mcts.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Logic.Mcts",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Logic.MoveGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Logic.MoveGenerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Logic.MoveGenerator",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Logic.MoveGenerator.yml\" sourcestartlinenumber=\"1\">Generates all legal game commands for a player in a given game state.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Logic.SimulationNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Logic.SimulationNode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Logic.SimulationNode",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Logic.SimulationNode.yml\" sourcestartlinenumber=\"1\">Mutable class for node pooling to reduce garbage collection during AI simulations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Logic.VirtualOpponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Logic.VirtualOpponent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Logic.VirtualOpponent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Logic.VirtualOpponent.yml\" sourcestartlinenumber=\"1\">Simulates a realistic opponent for AI decision making by injecting likely dangerous cards into the opponent's hand.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Logic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Logic.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Logic",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Strategies.BalanceStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Strategies.BalanceStrategy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Strategies.BalanceStrategy",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Strategies.BalanceStrategy.yml\" sourcestartlinenumber=\"1\">Provides a balanced AI strategy that evaluates game states with emphasis on resource management and tactical positioning.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Strategies.EvolvableStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Strategies.EvolvableStrategy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Strategies.EvolvableStrategy",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Strategies.OptimizedNewEvolvableStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Strategies.OptimizedNewEvolvableStrategy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Strategies.OptimizedNewEvolvableStrategy",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Strategies.RandomStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Strategies.RandomStrategy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Strategies.RandomStrategy",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Strategies.RandomStrategy.yml\" sourcestartlinenumber=\"1\">Provides random evaluation for AI decisions, creating unpredictable and chaotic behavior.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Strategies.StandardStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Strategies.StandardStrategy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Strategies.StandardStrategy",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.AI.Strategies.StandardStrategy.yml\" sourcestartlinenumber=\"1\">Standard AI strategy implementation with configurable weight-based evaluation.\nPrioritizes board control, resource efficiency, and threat assessment.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.Strategies.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.Strategies.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI.Strategies",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.AI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.AI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.AI",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Application.DeterministicRng.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Application.DeterministicRng.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Application.DeterministicRng",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Application.DeterministicRng.yml\" sourcestartlinenumber=\"1\">Provides deterministic random number generation for game simulation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Application.ExecutionResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Application.ExecutionResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Application.ExecutionResult",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Application.ExecutionResult.yml\" sourcestartlinenumber=\"1\">Represents the result of executing a game action, including the updated state and generated events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Application.GameContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Application.GameContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Application.GameContext",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Application.GameContext.yml\" sourcestartlinenumber=\"1\">Provides centralized access to game systems, services, and registries used throughout the application.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Application.GameEngine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Application.GameEngine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Application.GameEngine",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Application.GameEngine.yml\" sourcestartlinenumber=\"1\">The core orchestrator of the card game.\nManages state transitions, command execution, and the resolution of triggered effects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Application.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Application.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Application",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Component.Actions.IActionHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Component.Actions.IActionHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Component.Actions.IActionHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Component.Actions.IActionHandler.yml\" sourcestartlinenumber=\"1\">Defines the contract for handlers that execute specific card actions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Component.Actions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Component.Actions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Component.Actions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Component.ICardComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Component.ICardComponent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Component.ICardComponent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Component.ICardComponent.yml\" sourcestartlinenumber=\"1\">Defines the contract for card components that can respond to game events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Component.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Component.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Component",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.yml\" sourcestartlinenumber=\"1\">Registry for managing and retrieving action handlers for card effects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.AbsorbStatsHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.AbsorbStatsHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.AbsorbStatsHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.AbsorbStatsHandler.yml\" sourcestartlinenumber=\"1\">Handles the AbsorbStats action, transferring stats from one unit to another.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.AddCardToHandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.AddCardToHandHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.AddCardToHandHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.AddCardToHandHandler.yml\" sourcestartlinenumber=\"1\">Handles the AddCardToHand action, creating new card instances and adding them to a player's hand.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.AddResourceHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.AddResourceHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.AddResourceHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.AddResourceHandler.yml\" sourcestartlinenumber=\"1\">Handles the AddResource action, increasing a player's available resources.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.ApplyStatusHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.ApplyStatusHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.ApplyStatusHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.ApplyStatusHandler.yml\" sourcestartlinenumber=\"1\">Handles the ApplyStatus action, applying keyword status effects to units.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.BonusAttackHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.BonusAttackHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.BonusAttackHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.BonusAttackHandler.yml\" sourcestartlinenumber=\"1\">Handles the BonusAttack action, allowing units to attack multiple times or out of sequence.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.BuffStatsHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.BuffStatsHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.BuffStatsHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.BuffStatsHandler.yml\" sourcestartlinenumber=\"1\">Handles the BuffStats action, applying permanent attack and health bonuses to units.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.DealDamageHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.DealDamageHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.DealDamageHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.DealDamageHandler.yml\" sourcestartlinenumber=\"1\">Handles the DealDamage action, applying damage to player heroes or units.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.DestroyUnitHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.DestroyUnitHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.DestroyUnitHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.DestroyUnitHandler.yml\" sourcestartlinenumber=\"1\">Handles the DestroyUnit action, immediately removing units from the board regardless of health.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.yml\" sourcestartlinenumber=\"1\">Handles the DrawCard action, allowing players to draw cards from their deck.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.DrawFromDiscardHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.DrawFromDiscardHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.DrawFromDiscardHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.DrawFromDiscardHandler.yml\" sourcestartlinenumber=\"1\">Handles the DrawFromDiscard action, allowing players to draw cards from their discard pile.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.GiveToOpponentHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.GiveToOpponentHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.GiveToOpponentHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.GiveToOpponentHandler.yml\" sourcestartlinenumber=\"1\">Handles the GiveToOpponent action, transferring a card from one player to another.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.HealHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.HealHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.HealHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.HealHandler.yml\" sourcestartlinenumber=\"1\">Handles the Heal action, restoring health to players and units.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.HealToFullHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.HealToFullHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.HealToFullHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.HealToFullHandler.yml\" sourcestartlinenumber=\"1\">Handles the HealToFull action, restoring a unit's health to maximum.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.MakeAUnitHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.MakeAUnitHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.MakeAUnitHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.MakeAUnitHandler.yml\" sourcestartlinenumber=\"1\">Handles the MakeAUnit action, creating token units on the board with various placement rules.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.ModifyGlobalBuffHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.ModifyGlobalBuffHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.ModifyGlobalBuffHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.ModifyGlobalBuffHandler.yml\" sourcestartlinenumber=\"1\">Handles the ModifyGlobalBuff action, applying permanent stat bonuses to all units of a player.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.MoveRightHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.MoveRightHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.MoveRightHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.MoveRightHandler.yml\" sourcestartlinenumber=\"1\">Handles the MoveRight action, moving units one lane to the right on the board.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.ReturnToHandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.ReturnToHandHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.ReturnToHandHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.ReturnToHandHandler.yml\" sourcestartlinenumber=\"1\">Handles the ReturnToHand action, moving units from the board back to their owner's hand.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler.yml\" sourcestartlinenumber=\"1\">Handles the SacrificeUnit action, voluntarily destroying a friendly unit for an effect.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.ShuffleDeckHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.ShuffleDeckHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.ShuffleDeckHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.ShuffleDeckHandler.yml\" sourcestartlinenumber=\"1\">Handles the ShuffleDeck action, randomizing the order of cards in a player's draw pile.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.SilenceHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.SilenceHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.SilenceHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.SilenceHandler.yml\" sourcestartlinenumber=\"1\">Handles the Silence action, removing abilities and status effects from units.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.SummonUnitHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.SummonUnitHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.SummonUnitHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.SummonUnitHandler.yml\" sourcestartlinenumber=\"1\">Handles the SummonUnit action, which places a unit card from hand onto the board.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.TutorCardHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.TutorCardHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers.TutorCardHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Actions.Handlers.TutorCardHandler.yml\" sourcestartlinenumber=\"1\">Handler for the TutorCard action, which allows a player to search their deck for a specific card.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.Handlers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions.Handlers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Actions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Actions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Actions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Implementations.JsonEffectComponent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.yml\" sourcestartlinenumber=\"1\">Component that handles the execution of card effects defined in JSON data.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.Implementations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.Implementations.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Components.Implementations",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Components.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.ActionData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.ActionData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.ActionData",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.ActionData.yml\" sourcestartlinenumber=\"1\">Represents a single game action within an effect.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.ActionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.ActionType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.ActionType",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.ActionType.yml\" sourcestartlinenumber=\"1\">Represents the type of action a card can perform.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.CardData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.CardData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.CardData",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.CardData.yml\" sourcestartlinenumber=\"1\">Represents the complete data definition for a card.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.CardLibrary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.CardLibrary.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.CardLibrary",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.CardLibrary.yml\" sourcestartlinenumber=\"1\">Manages the collection of all available card definitions and provides methods for card creation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.CardType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.CardType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.CardType",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.CardType.yml\" sourcestartlinenumber=\"1\">Represents the type of a card.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.ConditionData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.ConditionData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.ConditionData",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.ConditionData.yml\" sourcestartlinenumber=\"1\">Represents a logical condition for effect activation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.ConditionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.ConditionType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.ConditionType",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.ConditionType.yml\" sourcestartlinenumber=\"1\">Represents logical conditions for targeting or effect activation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.DeckValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.DeckValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.DeckValidator",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.DeckValidator.yml\" sourcestartlinenumber=\"1\">Provides validation logic for deck construction rules.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.EffectData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.EffectData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.EffectData",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.EffectData.yml\" sourcestartlinenumber=\"1\">Represents a triggered effect with conditions and actions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.EffectZone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.EffectZone.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.EffectZone",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.EffectZone.yml\" sourcestartlinenumber=\"1\">Represents the game zones where effects can occur.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.Keyword.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.Keyword.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.Keyword",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.Keyword.yml\" sourcestartlinenumber=\"1\">Represents special abilities or statuses that can be applied to cards.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.ResourceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.ResourceType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.ResourceType",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.ResourceType.yml\" sourcestartlinenumber=\"1\">Represents the type of resource used in the game.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.TargetType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.TargetType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.TargetType",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.TargetType.yml\" sourcestartlinenumber=\"1\">Represents the valid targets for a card's action.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.TriggerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.TriggerType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data.TriggerType",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Data.TriggerType.yml\" sourcestartlinenumber=\"1\">Represents the timing or condition when an ability activates.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Data.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Data",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Factories.CardFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Factories.CardFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Factories.CardFactory",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Factories.CardFactory.yml\" sourcestartlinenumber=\"1\">Factory for creating card instances from definitions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Factories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Factories.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Factories",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.EffectTargetResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.EffectTargetResolver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.EffectTargetResolver",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.EffectTargetResolver.yml\" sourcestartlinenumber=\"1\">Resolves effect targets based on targeting types, game state, and context events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.EffectTargets.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.EffectTargets.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.EffectTargets",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.EffectTargets.yml\" sourcestartlinenumber=\"1\">Contains the resolved targets for an effect, including player and unit targets.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.ArmoredHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.ArmoredHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.Handlers.ArmoredHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.Keywords.Handlers.ArmoredHandler.yml\" sourcestartlinenumber=\"1\">Handles the Armored keyword which reduces incoming combat damage by a fixed amount.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.BurnSourceHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.BurnSourceHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.Handlers.BurnSourceHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.Keywords.Handlers.BurnSourceHandler.yml\" sourcestartlinenumber=\"1\">Handles the BurnSource keyword which applies the Burning status to attacked units.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.BurningHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.BurningHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.Handlers.BurningHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.Keywords.Handlers.BurningHandler.yml\" sourcestartlinenumber=\"1\">Handles the Burning keyword which deals 1 damage to the unit at the end of each round.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.MarkedHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.MarkedHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.Handlers.MarkedHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.Keywords.Handlers.MarkedHandler.yml\" sourcestartlinenumber=\"1\">Handles the Marked keyword which doubles incoming damage to the unit.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.SoulGuardHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.SoulGuardHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.Handlers.SoulGuardHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.Keywords.Handlers.SoulGuardHandler.yml\" sourcestartlinenumber=\"1\">Handles the SoulGuard keyword which prevents death once per game (unless depleted or sacrificed).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.yml\" sourcestartlinenumber=\"1\">Handles the SplashDamage keyword which deals damage to adjacent enemy units when attacking.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler.yml\" sourcestartlinenumber=\"1\">Handles the Stunned keyword which prevents a unit from attacking on its next turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.yml\" sourcestartlinenumber=\"1\">Handles the Unkillable keyword which returns the unit to hand instead of dying.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.Handlers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.Handlers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.IKeywordHandler",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.yml\" sourcestartlinenumber=\"1\">Defines the contract for keyword handlers that process keyword-specific effects and interactions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords.KeywordProcessor",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.yml\" sourcestartlinenumber=\"1\">Processes keyword effects and delegates to registered keyword handlers for various game events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.Keywords.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.Keywords.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.Keywords",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.PlayValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.PlayValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.PlayValidator",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.PlayValidator.yml\" sourcestartlinenumber=\"1\">Validates whether a card can be played in the current game state.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.TriggerLogic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.TriggerLogic.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic.TriggerLogic",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Logic.TriggerLogic.yml\" sourcestartlinenumber=\"1\">Contains logic for evaluating whether card effects should trigger based on game events and conditions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Logic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Logic.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Logic",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Models.CardDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Models.CardDefinition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Models.CardDefinition",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Models.CardDefinition.yml\" sourcestartlinenumber=\"1\">Represents the static definition of a card, containing all immutable data required to create card instances.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Models.CardInstance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Models.CardInstance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Models.CardInstance",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Models.CardInstance.yml\" sourcestartlinenumber=\"1\">Represents an instance of a card in the game with mutable state such as damage taken and buffs.\nEach card instance is immutable and returns new instances when modified.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Models.CardStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Models.CardStats.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Models.CardStats",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Cards.Models.CardStats.yml\" sourcestartlinenumber=\"1\">Represents the statistics and attributes of a card, including attack, health, cost, and keywords.\nThis struct is immutable; all modification operations return new instances.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Cards.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Cards.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Cards.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Combat.CombatOrchestrator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Combat.CombatOrchestrator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Combat.CombatOrchestrator",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Combat.CombatOrchestrator.yml\" sourcestartlinenumber=\"1\">Orchestrates the combat phase by resolving battles across all board lines and handling associated triggers.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Combat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Combat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Combat",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Commands.Implementations.ConfirmMulliganCommand",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.yml\" sourcestartlinenumber=\"1\">Command to confirm mulligan choices and replace specified cards from the player's hand.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Commands.Implementations.EndPhaseCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Commands.Implementations.EndPhaseCommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Commands.Implementations.EndPhaseCommand",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Commands.Implementations.EndPhaseCommand.yml\" sourcestartlinenumber=\"1\">Command that signals the state machine to end the current game phase and transition to the next phase.\nUnlike other commands, it does not modify game state directly but triggers a phase transition.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Commands.Implementations.PlaySpellCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Commands.Implementations.PlaySpellCommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Commands.Implementations.PlaySpellCommand",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Commands.Implementations.PlaySpellCommand.yml\" sourcestartlinenumber=\"1\">Command to play a spell card from the player's hand, moving it to the spell stack and paying its cost.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Commands.Implementations.PlayUnitCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Commands.Implementations.PlayUnitCommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Commands.Implementations.PlayUnitCommand",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Commands.Implementations.PlayUnitCommand.yml\" sourcestartlinenumber=\"1\">Command to play a unit card from the player's hand onto a specified board line.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Commands.Implementations.SelectTargetCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Commands.Implementations.SelectTargetCommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Commands.Implementations.SelectTargetCommand",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Commands.Implementations.SelectTargetCommand.yml\" sourcestartlinenumber=\"1\">Command to select a target for a pending interaction (e.g., spell targeting or unit ability).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Commands.Implementations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Commands.Implementations.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Commands.Implementations",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Commands.Interfaces.IGameCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Commands.Interfaces.IGameCommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Commands.Interfaces.IGameCommand",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Commands.Interfaces.IGameCommand.yml\" sourcestartlinenumber=\"1\">Defines the contract for game commands that can be executed to modify the game state.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Commands.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Commands.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Commands.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Commands.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Commands.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Decks.Data.DeckData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Decks.Data.DeckData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Decks.Data.DeckData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Decks.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Decks.Data.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Decks.Data",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Decks.DeckRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Decks.DeckRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Decks.DeckRepository",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Decks.DeckRepository.yml\" sourcestartlinenumber=\"1\">Repository for loading and accessing deck data definitions from JSON files.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Decks.DeckService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Decks.DeckService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Decks.DeckService",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Decks.DeckService.yml\" sourcestartlinenumber=\"1\">Service for creating decks of card instances from deck data definitions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Decks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Decks.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Decks",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.BattleClashEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.BattleClashEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.BattleClashEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.BattleClashEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs during combat when units clash.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.CardCreatedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.CardCreatedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.CardCreatedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.CardCreatedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a new card instance is created.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.CardDrawnEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.CardDrawnEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.CardDrawnEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.CardDrawnEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a player draws a card.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.CardMovedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.CardMovedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.CardMovedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.CardMovedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a card moves between game zones.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.CardPlayedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.CardPlayedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.CardPlayedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.CardPlayedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a card is played from hand to the board.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.CardZone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.CardZone.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.CardZone",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.CardZone.yml\" sourcestartlinenumber=\"1\">Represents the game zones where a card can be located.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.EventBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.EventBus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.EventBus",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.EventBus.yml\" sourcestartlinenumber=\"1\">Manages the publishing and processing of game events with both short-term and global history tracking.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.GameOverEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.GameOverEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.GameOverEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.GameOverEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when the game ends.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.InteractionRequiredEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.InteractionRequiredEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.InteractionRequiredEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.InteractionRequiredEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when player interaction is required to proceed with the game.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.Interfaces.IGameEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.Interfaces.IGameEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.Interfaces.IGameEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.Interfaces.IGameEvent.yml\" sourcestartlinenumber=\"1\">Defines the contract for all game events, providing information about the player who caused the event.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.PhaseChangedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.PhaseChangedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.PhaseChangedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.PhaseChangedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when the game phase changes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.PreLineCombatEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.PreLineCombatEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.PreLineCombatEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.PreLineCombatEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs before combat is resolved in a specific board lane.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.ResourceChangedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.ResourceChangedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.ResourceChangedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.ResourceChangedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a player's resource count changes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.TargetSelectedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.TargetSelectedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.TargetSelectedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.TargetSelectedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a player selects a target for an effect or ability.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.TriggerActivatedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.TriggerActivatedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.TriggerActivatedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.TriggerActivatedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a card's trigger condition is activated.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.Triggers.TriggerSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.Triggers.TriggerSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.Triggers.TriggerSystem",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.Triggers.TriggerSystem.yml\" sourcestartlinenumber=\"1\">Handles event-triggered effects and processes them according to game state.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.Triggers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.Triggers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.Triggers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.TurnStartedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.TurnStartedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.TurnStartedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.TurnStartedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a player's turn starts.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.UnitDestroyedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.UnitDestroyedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.UnitDestroyedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.UnitDestroyedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a unit is destroyed by a game effect.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.UnitDiedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.UnitDiedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.UnitDiedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.UnitDiedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a unit dies.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.UnitSacrificedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.UnitSacrificedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.UnitSacrificedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.UnitSacrificedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a unit is sacrificed (destroyed by its owner for an effect).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.UnitStatsChangedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.UnitStatsChangedEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events.UnitStatsChangedEvent",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.Events.UnitStatsChangedEvent.yml\" sourcestartlinenumber=\"1\">Represents an event that occurs when a unit's statistics (attack/health) change.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.Events.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.Events",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.Auras.AuraSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.Auras.AuraSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.GameRules.Auras.AuraSystem",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.GameRules.Auras.AuraSystem.yml\" sourcestartlinenumber=\"1\">Manages aura calculations and updates, including hand cost modifiers and status keyword applications.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.Auras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.Auras.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.GameRules.Auras",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.Battle.BattleService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.Battle.BattleService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.GameRules.Battle.BattleService",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.GameRules.Battle.BattleService.yml\" sourcestartlinenumber=\"1\">Handles combat resolution between units, including damage calculation, flying mechanics, and stun effects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.Battle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.Battle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.GameRules.Battle",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.Damage.DamageCalculator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.Damage.DamageCalculator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.GameRules.Damage.DamageCalculator",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.GameRules.Damage.DamageCalculator.yml\" sourcestartlinenumber=\"1\">Calculates final damage values by applying keyword and effect modifiers to raw damage amounts.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.Damage.DamageContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.Damage.DamageContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.GameRules.Damage.DamageContext",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.GameRules.Damage.DamageContext.yml\" sourcestartlinenumber=\"1\">Contains contextual information about a damage event, including source, target, amount, and type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.Damage.DamageType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.Damage.DamageType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.GameRules.Damage.DamageType",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.GameRules.Damage.DamageType.yml\" sourcestartlinenumber=\"1\">Represents the different types of damage that can be dealt in the game.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.Damage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.Damage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.GameRules.Damage",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.Death.DeathResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.Death.DeathResolver.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.GameRules.Death.DeathResolver",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.GameRules.Death.DeathResolver.yml\" sourcestartlinenumber=\"1\">Handles unit death resolution, including death prevention checks and cleanup operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.Death.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.Death.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.GameRules.Death",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.GameRules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.GameRules.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.State.Enums.GamePhase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.State.Enums.GamePhase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.State.Enums.GamePhase",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.State.Enums.GamePhase.yml\" sourcestartlinenumber=\"1\">Represents the different phases of a game turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.State.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.State.Enums.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.State.Enums",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.State.Models.BoardState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.State.Models.BoardState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.State.Models.BoardState",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.State.Models.BoardState.yml\" sourcestartlinenumber=\"1\">Represents the current state of the game board, including all lines and units.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.State.Models.GameState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.State.Models.GameState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.State.Models.GameState",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.State.Models.GameState.yml\" sourcestartlinenumber=\"1\">Represents the complete state of a game, including board, players, and game phase information.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.State.Models.Line.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.State.Models.Line.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.State.Models.Line",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.State.Models.Line.yml\" sourcestartlinenumber=\"1\">Represents a single battle line on the game board that can hold units from both players.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.State.Models.PendingInteraction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.State.Models.PendingInteraction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.State.Models.PendingInteraction",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.State.Models.PendingInteraction.yml\" sourcestartlinenumber=\"1\">Represents a pending interaction that requires player input, such as target selection for a spell or ability.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.State.Models.PlayerState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.State.Models.PlayerState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.State.Models.PlayerState",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.State.Models.PlayerState.yml\" sourcestartlinenumber=\"1\">Represents the state of a single player in the game, including resources, cards, and buffs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.State.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.State.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.State.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.State.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.State.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.StateMachine.GameStateMachine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.StateMachine.GameStateMachine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.StateMachine.GameStateMachine",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.StateMachine.GameStateMachine.yml\" sourcestartlinenumber=\"1\">Factory that returns the appropriate phase state implementation for a given game phase.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.StateMachine.Interfaces.IPhaseState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.StateMachine.Interfaces.IPhaseState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.StateMachine.Interfaces.IPhaseState",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.StateMachine.Interfaces.IPhaseState.yml\" sourcestartlinenumber=\"1\">Defines the contract for game phase states, handling command validation and phase transitions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.StateMachine.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.StateMachine.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.StateMachine.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.StateMachine.Phases.ActionPhaseState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.StateMachine.Phases.ActionPhaseState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.StateMachine.Phases.ActionPhaseState",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.StateMachine.Phases.ActionPhaseState.yml\" sourcestartlinenumber=\"1\">Handles the Action Phase where players can only play action cards (spells) and not units.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.StateMachine.Phases.BothPhaseState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.StateMachine.Phases.BothPhaseState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.StateMachine.Phases.BothPhaseState",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.StateMachine.Phases.BothPhaseState.yml\" sourcestartlinenumber=\"1\">Handles the Combined Phase where players can play both units and action cards (spells).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.StateMachine.Phases.CombatPhaseState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.StateMachine.Phases.CombatPhaseState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.StateMachine.Phases.CombatPhaseState",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.StateMachine.Phases.CombatPhaseState.yml\" sourcestartlinenumber=\"1\">Handles the Combat Phase where units battle each other and the phase transitions to the next round.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.StateMachine.Phases.MulliganPhaseState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.StateMachine.Phases.MulliganPhaseState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.StateMachine.Phases.MulliganPhaseState",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.StateMachine.Phases.MulliganPhaseState.yml\" sourcestartlinenumber=\"1\">Handles the Mulligan Phase where players can replace cards from their initial hand before the game begins.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.StateMachine.Phases.UnitPhaseState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.StateMachine.Phases.UnitPhaseState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.StateMachine.Phases.UnitPhaseState",
+      "Summary": "<p sourcefile=\"api/CardGame.Core.StateMachine.Phases.UnitPhaseState.yml\" sourcestartlinenumber=\"1\">Handles the Unit Phase where players can only play unit cards and not action cards.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.StateMachine.Phases.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.StateMachine.Phases.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.StateMachine.Phases",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.StateMachine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.StateMachine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CardGame.Core.StateMachine",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.Core.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CardGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CardGame.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

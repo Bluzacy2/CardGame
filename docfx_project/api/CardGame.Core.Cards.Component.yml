@@ -1,0 +1,71 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Component
+  commentId: N:CardGame.Core.Cards.Component
+  id: Component
+  parent: CardGame.Core.Cards
+  children:
+  - CardGame.Core.Cards.Component.Actions
+  - CardGame.Core.Cards.Component.ICardComponent
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Cards.Component
+  nameWithType: CardGame.Core.Cards.Component
+  fullName: CardGame.Core.Cards.Component
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Cards.Component.Actions
+  commentId: N:CardGame.Core.Cards.Component.Actions
+  href: CardGame.html
+  name: CardGame.Core.Cards.Component.Actions
+  nameWithType: CardGame.Core.Cards.Component.Actions
+  fullName: CardGame.Core.Cards.Component.Actions
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component
+    name: Component
+    href: CardGame.Core.Cards.Component.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Component.Actions.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component
+    name: Component
+    href: CardGame.Core.Cards.Component.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Component.Actions.html
+- uid: CardGame.Core.Cards.Component.ICardComponent
+  commentId: T:CardGame.Core.Cards.Component.ICardComponent
+  href: CardGame.Core.Cards.Component.ICardComponent.html
+  name: ICardComponent
+  nameWithType: ICardComponent
+  fullName: CardGame.Core.Cards.Component.ICardComponent

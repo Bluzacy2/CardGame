@@ -1,0 +1,353 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.CardCreatedEvent
+  commentId: T:CardGame.Core.Events.CardCreatedEvent
+  id: CardCreatedEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.CardCreatedEvent.#ctor(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  - CardGame.Core.Events.CardCreatedEvent.Card
+  - CardGame.Core.Events.CardCreatedEvent.OwnerId
+  - CardGame.Core.Events.CardCreatedEvent.SourcePlayerId
+  langs:
+  - csharp
+  - vb
+  name: CardCreatedEvent
+  nameWithType: CardCreatedEvent
+  fullName: CardGame.Core.Events.CardCreatedEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardCreatedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardCreatedEvent
+    path: ../Source/CardGame.Core/Events/CardCreatedEvent.cs
+    startLine: 10
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs when a new card instance is created.
+  example: []
+  syntax:
+    content: 'public class CardCreatedEvent : IGameEvent'
+    content.vb: Public Class CardCreatedEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.CardCreatedEvent.#ctor(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  commentId: M:CardGame.Core.Events.CardCreatedEvent.#ctor(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  id: '#ctor(CardGame.Core.Cards.Models.CardInstance,System.Int32)'
+  parent: CardGame.Core.Events.CardCreatedEvent
+  langs:
+  - csharp
+  - vb
+  name: CardCreatedEvent(CardInstance, int)
+  nameWithType: CardCreatedEvent.CardCreatedEvent(CardInstance, int)
+  fullName: CardGame.Core.Events.CardCreatedEvent.CardCreatedEvent(CardGame.Core.Cards.Models.CardInstance, int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardCreatedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/CardCreatedEvent.cs
+    startLine: 17
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the CardCreatedEvent class.
+  example: []
+  syntax:
+    content: public CardCreatedEvent(CardInstance card, int ownerId)
+    parameters:
+    - id: card
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The card instance that was created.
+    - id: ownerId
+      type: System.Int32
+      description: The ID of the player who owns the card.
+    content.vb: Public Sub New(card As CardInstance, ownerId As Integer)
+  overload: CardGame.Core.Events.CardCreatedEvent.#ctor*
+  nameWithType.vb: CardCreatedEvent.New(CardInstance, Integer)
+  fullName.vb: CardGame.Core.Events.CardCreatedEvent.New(CardGame.Core.Cards.Models.CardInstance, Integer)
+  name.vb: New(CardInstance, Integer)
+- uid: CardGame.Core.Events.CardCreatedEvent.Card
+  commentId: P:CardGame.Core.Events.CardCreatedEvent.Card
+  id: Card
+  parent: CardGame.Core.Events.CardCreatedEvent
+  langs:
+  - csharp
+  - vb
+  name: Card
+  nameWithType: CardCreatedEvent.Card
+  fullName: CardGame.Core.Events.CardCreatedEvent.Card
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardCreatedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Card
+    path: ../Source/CardGame.Core/Events/CardCreatedEvent.cs
+    startLine: 26
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the card instance that was created.
+  example: []
+  syntax:
+    content: public CardInstance Card { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+    content.vb: Public ReadOnly Property Card As CardInstance
+  overload: CardGame.Core.Events.CardCreatedEvent.Card*
+- uid: CardGame.Core.Events.CardCreatedEvent.OwnerId
+  commentId: P:CardGame.Core.Events.CardCreatedEvent.OwnerId
+  id: OwnerId
+  parent: CardGame.Core.Events.CardCreatedEvent
+  langs:
+  - csharp
+  - vb
+  name: OwnerId
+  nameWithType: CardCreatedEvent.OwnerId
+  fullName: CardGame.Core.Events.CardCreatedEvent.OwnerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardCreatedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: OwnerId
+    path: ../Source/CardGame.Core/Events/CardCreatedEvent.cs
+    startLine: 31
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who owns the card.
+  example: []
+  syntax:
+    content: public int OwnerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property OwnerId As Integer
+  overload: CardGame.Core.Events.CardCreatedEvent.OwnerId*
+- uid: CardGame.Core.Events.CardCreatedEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.CardCreatedEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.CardCreatedEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: CardCreatedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.CardCreatedEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardCreatedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/CardCreatedEvent.cs
+    startLine: 36
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who owns the card.
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.CardCreatedEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.CardCreatedEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.CardCreatedEvent.#ctor
+  href: CardGame.Core.Events.CardCreatedEvent.html#CardGame_Core_Events_CardCreatedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_
+  name: CardCreatedEvent
+  nameWithType: CardCreatedEvent.CardCreatedEvent
+  fullName: CardGame.Core.Events.CardCreatedEvent.CardCreatedEvent
+  nameWithType.vb: CardCreatedEvent.New
+  fullName.vb: CardGame.Core.Events.CardCreatedEvent.New
+  name.vb: New
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: CardGame.Core.Events.CardCreatedEvent.Card*
+  commentId: Overload:CardGame.Core.Events.CardCreatedEvent.Card
+  href: CardGame.Core.Events.CardCreatedEvent.html#CardGame_Core_Events_CardCreatedEvent_Card
+  name: Card
+  nameWithType: CardCreatedEvent.Card
+  fullName: CardGame.Core.Events.CardCreatedEvent.Card
+- uid: CardGame.Core.Events.CardCreatedEvent.OwnerId*
+  commentId: Overload:CardGame.Core.Events.CardCreatedEvent.OwnerId
+  href: CardGame.Core.Events.CardCreatedEvent.html#CardGame_Core_Events_CardCreatedEvent_OwnerId
+  name: OwnerId
+  nameWithType: CardCreatedEvent.OwnerId
+  fullName: CardGame.Core.Events.CardCreatedEvent.OwnerId
+- uid: CardGame.Core.Events.CardCreatedEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.CardCreatedEvent.SourcePlayerId
+  href: CardGame.Core.Events.CardCreatedEvent.html#CardGame_Core_Events_CardCreatedEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: CardCreatedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.CardCreatedEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId

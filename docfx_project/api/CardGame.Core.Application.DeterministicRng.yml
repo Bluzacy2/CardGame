@@ -1,0 +1,304 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Application.DeterministicRng
+  commentId: T:CardGame.Core.Application.DeterministicRng
+  id: DeterministicRng
+  parent: CardGame.Core.Application
+  children:
+  - CardGame.Core.Application.DeterministicRng.#ctor(System.Int32)
+  - CardGame.Core.Application.DeterministicRng.Next(System.Int32,System.Int32)
+  - CardGame.Core.Application.DeterministicRng.NextId
+  - CardGame.Core.Application.DeterministicRng.NextMax(System.Int32)
+  - CardGame.Core.Application.DeterministicRng.Seed
+  langs:
+  - csharp
+  - vb
+  name: DeterministicRng
+  nameWithType: DeterministicRng
+  fullName: CardGame.Core.Application.DeterministicRng
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/DeterministicRng.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DeterministicRng
+    path: ../Source/CardGame.Core/Application/DeterministicRng.cs
+    startLine: 7
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Provides deterministic random number generation for game simulation.
+  example: []
+  syntax:
+    content: public class DeterministicRng
+    content.vb: Public Class DeterministicRng
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Application.DeterministicRng.Seed
+  commentId: P:CardGame.Core.Application.DeterministicRng.Seed
+  id: Seed
+  parent: CardGame.Core.Application.DeterministicRng
+  langs:
+  - csharp
+  - vb
+  name: Seed
+  nameWithType: DeterministicRng.Seed
+  fullName: CardGame.Core.Application.DeterministicRng.Seed
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/DeterministicRng.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Seed
+    path: ../Source/CardGame.Core/Application/DeterministicRng.cs
+    startLine: 14
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Gets the seed value used to initialize the random number generator.
+  example: []
+  syntax:
+    content: public int Seed { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Seed As Integer
+  overload: CardGame.Core.Application.DeterministicRng.Seed*
+- uid: CardGame.Core.Application.DeterministicRng.#ctor(System.Int32)
+  commentId: M:CardGame.Core.Application.DeterministicRng.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: CardGame.Core.Application.DeterministicRng
+  langs:
+  - csharp
+  - vb
+  name: DeterministicRng(int)
+  nameWithType: DeterministicRng.DeterministicRng(int)
+  fullName: CardGame.Core.Application.DeterministicRng.DeterministicRng(int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/DeterministicRng.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Application/DeterministicRng.cs
+    startLine: 20
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Initializes a new instance of the DeterministicRng class with a specific seed.
+  example: []
+  syntax:
+    content: public DeterministicRng(int seed)
+    parameters:
+    - id: seed
+      type: System.Int32
+      description: The seed value for reproducible random sequences.
+    content.vb: Public Sub New(seed As Integer)
+  overload: CardGame.Core.Application.DeterministicRng.#ctor*
+  nameWithType.vb: DeterministicRng.New(Integer)
+  fullName.vb: CardGame.Core.Application.DeterministicRng.New(Integer)
+  name.vb: New(Integer)
+- uid: CardGame.Core.Application.DeterministicRng.Next(System.Int32,System.Int32)
+  commentId: M:CardGame.Core.Application.DeterministicRng.Next(System.Int32,System.Int32)
+  id: Next(System.Int32,System.Int32)
+  parent: CardGame.Core.Application.DeterministicRng
+  langs:
+  - csharp
+  - vb
+  name: Next(int, int)
+  nameWithType: DeterministicRng.Next(int, int)
+  fullName: CardGame.Core.Application.DeterministicRng.Next(int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/DeterministicRng.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Next
+    path: ../Source/CardGame.Core/Application/DeterministicRng.cs
+    startLine: 34
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Returns a random integer within the specified range.
+  example: []
+  syntax:
+    content: public int Next(int minValue, int maxValue)
+    parameters:
+    - id: minValue
+      type: System.Int32
+      description: The inclusive lower bound of the random number returned.
+    - id: maxValue
+      type: System.Int32
+      description: The exclusive upper bound of the random number returned.
+    return:
+      type: System.Int32
+      description: A random integer between minValue (inclusive) and maxValue (exclusive).
+    content.vb: Public Function [Next](minValue As Integer, maxValue As Integer) As Integer
+  overload: CardGame.Core.Application.DeterministicRng.Next*
+  nameWithType.vb: DeterministicRng.Next(Integer, Integer)
+  fullName.vb: CardGame.Core.Application.DeterministicRng.Next(Integer, Integer)
+  name.vb: Next(Integer, Integer)
+- uid: CardGame.Core.Application.DeterministicRng.NextMax(System.Int32)
+  commentId: M:CardGame.Core.Application.DeterministicRng.NextMax(System.Int32)
+  id: NextMax(System.Int32)
+  parent: CardGame.Core.Application.DeterministicRng
+  langs:
+  - csharp
+  - vb
+  name: NextMax(int)
+  nameWithType: DeterministicRng.NextMax(int)
+  fullName: CardGame.Core.Application.DeterministicRng.NextMax(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/DeterministicRng.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: NextMax
+    path: ../Source/CardGame.Core/Application/DeterministicRng.cs
+    startLine: 42
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Returns a non-negative random integer less than the specified maximum.
+  example: []
+  syntax:
+    content: public int NextMax(int maxValue)
+    parameters:
+    - id: maxValue
+      type: System.Int32
+      description: The exclusive upper bound of the random number to be generated.
+    return:
+      type: System.Int32
+      description: A random integer between 0 (inclusive) and maxValue (exclusive).
+    content.vb: Public Function NextMax(maxValue As Integer) As Integer
+  overload: CardGame.Core.Application.DeterministicRng.NextMax*
+  nameWithType.vb: DeterministicRng.NextMax(Integer)
+  fullName.vb: CardGame.Core.Application.DeterministicRng.NextMax(Integer)
+  name.vb: NextMax(Integer)
+- uid: CardGame.Core.Application.DeterministicRng.NextId
+  commentId: M:CardGame.Core.Application.DeterministicRng.NextId
+  id: NextId
+  parent: CardGame.Core.Application.DeterministicRng
+  langs:
+  - csharp
+  - vb
+  name: NextId()
+  nameWithType: DeterministicRng.NextId()
+  fullName: CardGame.Core.Application.DeterministicRng.NextId()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/DeterministicRng.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: NextId
+    path: ../Source/CardGame.Core/Application/DeterministicRng.cs
+    startLine: 49
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Generates a unique identifier within a specific range.
+  example: []
+  syntax:
+    content: public int NextId()
+    return:
+      type: System.Int32
+      description: A random integer between 100,000 and 999,999 inclusive.
+    content.vb: Public Function NextId() As Integer
+  overload: CardGame.Core.Application.DeterministicRng.NextId*
+references:
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Application.DeterministicRng.Seed*
+  commentId: Overload:CardGame.Core.Application.DeterministicRng.Seed
+  href: CardGame.Core.Application.DeterministicRng.html#CardGame_Core_Application_DeterministicRng_Seed
+  name: Seed
+  nameWithType: DeterministicRng.Seed
+  fullName: CardGame.Core.Application.DeterministicRng.Seed
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Application.DeterministicRng.#ctor*
+  commentId: Overload:CardGame.Core.Application.DeterministicRng.#ctor
+  href: CardGame.Core.Application.DeterministicRng.html#CardGame_Core_Application_DeterministicRng__ctor_System_Int32_
+  name: DeterministicRng
+  nameWithType: DeterministicRng.DeterministicRng
+  fullName: CardGame.Core.Application.DeterministicRng.DeterministicRng
+  nameWithType.vb: DeterministicRng.New
+  fullName.vb: CardGame.Core.Application.DeterministicRng.New
+  name.vb: New
+- uid: CardGame.Core.Application.DeterministicRng.Next*
+  commentId: Overload:CardGame.Core.Application.DeterministicRng.Next
+  href: CardGame.Core.Application.DeterministicRng.html#CardGame_Core_Application_DeterministicRng_Next_System_Int32_System_Int32_
+  name: Next
+  nameWithType: DeterministicRng.Next
+  fullName: CardGame.Core.Application.DeterministicRng.Next
+- uid: CardGame.Core.Application.DeterministicRng.NextMax*
+  commentId: Overload:CardGame.Core.Application.DeterministicRng.NextMax
+  href: CardGame.Core.Application.DeterministicRng.html#CardGame_Core_Application_DeterministicRng_NextMax_System_Int32_
+  name: NextMax
+  nameWithType: DeterministicRng.NextMax
+  fullName: CardGame.Core.Application.DeterministicRng.NextMax
+- uid: CardGame.Core.Application.DeterministicRng.NextId*
+  commentId: Overload:CardGame.Core.Application.DeterministicRng.NextId
+  href: CardGame.Core.Application.DeterministicRng.html#CardGame_Core_Application_DeterministicRng_NextId
+  name: NextId
+  nameWithType: DeterministicRng.NextId
+  fullName: CardGame.Core.Application.DeterministicRng.NextId

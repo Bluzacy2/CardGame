@@ -1,0 +1,440 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  commentId: T:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  id: CardAnalytics.CardEntry
+  parent: CardGame.ConsoleApp.Evolution.Analytics
+  children:
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.AvgDensity
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.DecksCount
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Id
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Name
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalCopies
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalGames
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalWins
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.UsageRate
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.WinRate
+  langs:
+  - csharp
+  - vb
+  name: CardAnalytics.CardEntry
+  nameWithType: CardAnalytics.CardEntry
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardEntry
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 12
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public class CardAnalytics.CardEntry
+    content.vb: Public Class CardAnalytics.CardEntry
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Id
+  commentId: P:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Id
+  id: Id
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: CardAnalytics.CardEntry.Id
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Id
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Id
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 14
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public int Id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Id As Integer
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Id*
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Name
+  commentId: P:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Name
+  id: Name
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: CardAnalytics.CardEntry.Name
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Name
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Name
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 15
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Name*
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.DecksCount
+  commentId: P:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.DecksCount
+  id: DecksCount
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  langs:
+  - csharp
+  - vb
+  name: DecksCount
+  nameWithType: CardAnalytics.CardEntry.DecksCount
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.DecksCount
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: DecksCount
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 16
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public int DecksCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DecksCount As Integer
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.DecksCount*
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalCopies
+  commentId: P:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalCopies
+  id: TotalCopies
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  langs:
+  - csharp
+  - vb
+  name: TotalCopies
+  nameWithType: CardAnalytics.CardEntry.TotalCopies
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalCopies
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TotalCopies
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 17
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public int TotalCopies { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalCopies As Integer
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalCopies*
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalWins
+  commentId: P:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalWins
+  id: TotalWins
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  langs:
+  - csharp
+  - vb
+  name: TotalWins
+  nameWithType: CardAnalytics.CardEntry.TotalWins
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalWins
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TotalWins
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 18
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public int TotalWins { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalWins As Integer
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalWins*
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalGames
+  commentId: P:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalGames
+  id: TotalGames
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  langs:
+  - csharp
+  - vb
+  name: TotalGames
+  nameWithType: CardAnalytics.CardEntry.TotalGames
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalGames
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TotalGames
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 19
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public int TotalGames { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalGames As Integer
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalGames*
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.WinRate
+  commentId: P:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.WinRate
+  id: WinRate
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  langs:
+  - csharp
+  - vb
+  name: WinRate
+  nameWithType: CardAnalytics.CardEntry.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.WinRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: WinRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 21
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public float WinRate { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property WinRate As Single
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.WinRate*
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.UsageRate
+  commentId: P:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.UsageRate
+  id: UsageRate
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  langs:
+  - csharp
+  - vb
+  name: UsageRate
+  nameWithType: CardAnalytics.CardEntry.UsageRate
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.UsageRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: UsageRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 22
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public float UsageRate { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property UsageRate As Single
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.UsageRate*
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.AvgDensity
+  commentId: P:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.AvgDensity
+  id: AvgDensity
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  langs:
+  - csharp
+  - vb
+  name: AvgDensity
+  nameWithType: CardAnalytics.CardEntry.AvgDensity
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.AvgDensity
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AvgDensity
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 23
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public float AvgDensity { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property AvgDensity As Single
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.AvgDensity*
+references:
+- uid: CardGame.ConsoleApp.Evolution.Analytics
+  commentId: N:CardGame.ConsoleApp.Evolution.Analytics
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.Analytics
+  nameWithType: CardGame.ConsoleApp.Evolution.Analytics
+  fullName: CardGame.ConsoleApp.Evolution.Analytics
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.Analytics
+    name: Analytics
+    href: CardGame.ConsoleApp.Evolution.Analytics.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.Analytics
+    name: Analytics
+    href: CardGame.ConsoleApp.Evolution.Analytics.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Id*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Id
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html#CardGame_ConsoleApp_Evolution_Analytics_CardAnalytics_CardEntry_Id
+  name: Id
+  nameWithType: CardAnalytics.CardEntry.Id
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Name*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Name
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html#CardGame_ConsoleApp_Evolution_Analytics_CardAnalytics_CardEntry_Name
+  name: Name
+  nameWithType: CardAnalytics.CardEntry.Name
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.DecksCount*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.DecksCount
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html#CardGame_ConsoleApp_Evolution_Analytics_CardAnalytics_CardEntry_DecksCount
+  name: DecksCount
+  nameWithType: CardAnalytics.CardEntry.DecksCount
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.DecksCount
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalCopies*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalCopies
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html#CardGame_ConsoleApp_Evolution_Analytics_CardAnalytics_CardEntry_TotalCopies
+  name: TotalCopies
+  nameWithType: CardAnalytics.CardEntry.TotalCopies
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalCopies
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalWins*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalWins
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html#CardGame_ConsoleApp_Evolution_Analytics_CardAnalytics_CardEntry_TotalWins
+  name: TotalWins
+  nameWithType: CardAnalytics.CardEntry.TotalWins
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalWins
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalGames*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalGames
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html#CardGame_ConsoleApp_Evolution_Analytics_CardAnalytics_CardEntry_TotalGames
+  name: TotalGames
+  nameWithType: CardAnalytics.CardEntry.TotalGames
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.TotalGames
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.WinRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.WinRate
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html#CardGame_ConsoleApp_Evolution_Analytics_CardAnalytics_CardEntry_WinRate
+  name: WinRate
+  nameWithType: CardAnalytics.CardEntry.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.WinRate
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.UsageRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.UsageRate
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html#CardGame_ConsoleApp_Evolution_Analytics_CardAnalytics_CardEntry_UsageRate
+  name: UsageRate
+  nameWithType: CardAnalytics.CardEntry.UsageRate
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.UsageRate
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.AvgDensity*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.AvgDensity
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html#CardGame_ConsoleApp_Evolution_Analytics_CardAnalytics_CardEntry_AvgDensity
+  name: AvgDensity
+  nameWithType: CardAnalytics.CardEntry.AvgDensity
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.AvgDensity

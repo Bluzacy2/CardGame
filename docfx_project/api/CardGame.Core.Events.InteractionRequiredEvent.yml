@@ -1,0 +1,312 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.InteractionRequiredEvent
+  commentId: T:CardGame.Core.Events.InteractionRequiredEvent
+  id: InteractionRequiredEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.InteractionRequiredEvent.#ctor(CardGame.Core.State.Models.PendingInteraction)
+  - CardGame.Core.Events.InteractionRequiredEvent.Interaction
+  - CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId
+  langs:
+  - csharp
+  - vb
+  name: InteractionRequiredEvent
+  nameWithType: InteractionRequiredEvent
+  fullName: CardGame.Core.Events.InteractionRequiredEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/InteractionRequiredEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: InteractionRequiredEvent
+    path: ../Source/CardGame.Core/Events/InteractionRequiredEvent.cs
+    startLine: 10
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs when player interaction is required to proceed with the game.
+  example: []
+  syntax:
+    content: 'public class InteractionRequiredEvent : IGameEvent'
+    content.vb: Public Class InteractionRequiredEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.InteractionRequiredEvent.Interaction
+  commentId: P:CardGame.Core.Events.InteractionRequiredEvent.Interaction
+  id: Interaction
+  parent: CardGame.Core.Events.InteractionRequiredEvent
+  langs:
+  - csharp
+  - vb
+  name: Interaction
+  nameWithType: InteractionRequiredEvent.Interaction
+  fullName: CardGame.Core.Events.InteractionRequiredEvent.Interaction
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/InteractionRequiredEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Interaction
+    path: ../Source/CardGame.Core/Events/InteractionRequiredEvent.cs
+    startLine: 15
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the pending interaction data that requires player input.
+  example: []
+  syntax:
+    content: public PendingInteraction Interaction { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Models.PendingInteraction
+    content.vb: Public ReadOnly Property Interaction As PendingInteraction
+  overload: CardGame.Core.Events.InteractionRequiredEvent.Interaction*
+- uid: CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.InteractionRequiredEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: InteractionRequiredEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/InteractionRequiredEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/InteractionRequiredEvent.cs
+    startLine: 20
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who caused the event (0 indicates a system event).
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.InteractionRequiredEvent.#ctor(CardGame.Core.State.Models.PendingInteraction)
+  commentId: M:CardGame.Core.Events.InteractionRequiredEvent.#ctor(CardGame.Core.State.Models.PendingInteraction)
+  id: '#ctor(CardGame.Core.State.Models.PendingInteraction)'
+  parent: CardGame.Core.Events.InteractionRequiredEvent
+  langs:
+  - csharp
+  - vb
+  name: InteractionRequiredEvent(PendingInteraction)
+  nameWithType: InteractionRequiredEvent.InteractionRequiredEvent(PendingInteraction)
+  fullName: CardGame.Core.Events.InteractionRequiredEvent.InteractionRequiredEvent(CardGame.Core.State.Models.PendingInteraction)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/InteractionRequiredEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/InteractionRequiredEvent.cs
+    startLine: 26
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the InteractionRequiredEvent class.
+  example: []
+  syntax:
+    content: public InteractionRequiredEvent(PendingInteraction interaction)
+    parameters:
+    - id: interaction
+      type: CardGame.Core.State.Models.PendingInteraction
+      description: The pending interaction data.
+    content.vb: Public Sub New(interaction As PendingInteraction)
+  overload: CardGame.Core.Events.InteractionRequiredEvent.#ctor*
+  nameWithType.vb: InteractionRequiredEvent.New(PendingInteraction)
+  fullName.vb: CardGame.Core.Events.InteractionRequiredEvent.New(CardGame.Core.State.Models.PendingInteraction)
+  name.vb: New(PendingInteraction)
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.InteractionRequiredEvent.Interaction*
+  commentId: Overload:CardGame.Core.Events.InteractionRequiredEvent.Interaction
+  href: CardGame.Core.Events.InteractionRequiredEvent.html#CardGame_Core_Events_InteractionRequiredEvent_Interaction
+  name: Interaction
+  nameWithType: InteractionRequiredEvent.Interaction
+  fullName: CardGame.Core.Events.InteractionRequiredEvent.Interaction
+- uid: CardGame.Core.State.Models.PendingInteraction
+  commentId: T:CardGame.Core.State.Models.PendingInteraction
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.PendingInteraction.html
+  name: PendingInteraction
+  nameWithType: PendingInteraction
+  fullName: CardGame.Core.State.Models.PendingInteraction
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId
+  href: CardGame.Core.Events.InteractionRequiredEvent.html#CardGame_Core_Events_InteractionRequiredEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: InteractionRequiredEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.InteractionRequiredEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.InteractionRequiredEvent.#ctor
+  href: CardGame.Core.Events.InteractionRequiredEvent.html#CardGame_Core_Events_InteractionRequiredEvent__ctor_CardGame_Core_State_Models_PendingInteraction_
+  name: InteractionRequiredEvent
+  nameWithType: InteractionRequiredEvent.InteractionRequiredEvent
+  fullName: CardGame.Core.Events.InteractionRequiredEvent.InteractionRequiredEvent
+  nameWithType.vb: InteractionRequiredEvent.New
+  fullName.vb: CardGame.Core.Events.InteractionRequiredEvent.New
+  name.vb: New

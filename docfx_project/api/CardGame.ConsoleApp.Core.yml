@@ -1,0 +1,52 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Core
+  commentId: N:CardGame.ConsoleApp.Core
+  id: Core
+  parent: CardGame.ConsoleApp
+  children:
+  - CardGame.ConsoleApp.Core.AIvsEvolutionRunner
+  - CardGame.ConsoleApp.Core.EvoBotViewer
+  - CardGame.ConsoleApp.Core.EvolutionLeague
+  - CardGame.ConsoleApp.Core.EvolutionLogger
+  - CardGame.ConsoleApp.Core.HallOfFame
+  langs:
+  - csharp
+  - vb
+  name: CardGame.ConsoleApp.Core
+  nameWithType: CardGame.ConsoleApp.Core
+  fullName: CardGame.ConsoleApp.Core
+  type: Namespace
+  assemblies:
+  - CardGame.ConsoleApp
+references:
+- uid: CardGame.ConsoleApp.Core.AIvsEvolutionRunner
+  commentId: T:CardGame.ConsoleApp.Core.AIvsEvolutionRunner
+  href: CardGame.ConsoleApp.Core.AIvsEvolutionRunner.html
+  name: AIvsEvolutionRunner
+  nameWithType: AIvsEvolutionRunner
+  fullName: CardGame.ConsoleApp.Core.AIvsEvolutionRunner
+- uid: CardGame.ConsoleApp.Core.EvoBotViewer
+  commentId: T:CardGame.ConsoleApp.Core.EvoBotViewer
+  href: CardGame.ConsoleApp.Core.EvoBotViewer.html
+  name: EvoBotViewer
+  nameWithType: EvoBotViewer
+  fullName: CardGame.ConsoleApp.Core.EvoBotViewer
+- uid: CardGame.ConsoleApp.Core.EvolutionLeague
+  commentId: T:CardGame.ConsoleApp.Core.EvolutionLeague
+  href: CardGame.ConsoleApp.Core.EvolutionLeague.html
+  name: EvolutionLeague
+  nameWithType: EvolutionLeague
+  fullName: CardGame.ConsoleApp.Core.EvolutionLeague
+- uid: CardGame.ConsoleApp.Core.EvolutionLogger
+  commentId: T:CardGame.ConsoleApp.Core.EvolutionLogger
+  href: CardGame.ConsoleApp.Core.EvolutionLogger.html
+  name: EvolutionLogger
+  nameWithType: EvolutionLogger
+  fullName: CardGame.ConsoleApp.Core.EvolutionLogger
+- uid: CardGame.ConsoleApp.Core.HallOfFame
+  commentId: T:CardGame.ConsoleApp.Core.HallOfFame
+  href: CardGame.ConsoleApp.Core.HallOfFame.html
+  name: HallOfFame
+  nameWithType: HallOfFame
+  fullName: CardGame.ConsoleApp.Core.HallOfFame

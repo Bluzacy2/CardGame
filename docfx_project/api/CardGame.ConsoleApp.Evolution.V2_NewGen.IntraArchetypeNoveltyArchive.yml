@@ -1,0 +1,272 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive
+  id: IntraArchetypeNoveltyArchive
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.CalculateNovelty(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.Clear
+  langs:
+  - csharp
+  - vb
+  name: IntraArchetypeNoveltyArchive
+  nameWithType: IntraArchetypeNoveltyArchive
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: IntraArchetypeNoveltyArchive
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1853
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class IntraArchetypeNoveltyArchive
+    content.vb: Public Class IntraArchetypeNoveltyArchive
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.CalculateNovelty(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.CalculateNovelty(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  id: CalculateNovelty(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive
+  langs:
+  - csharp
+  - vb
+  name: CalculateNovelty(EvolvableIndividual, List<EvolvableIndividual>)
+  nameWithType: IntraArchetypeNoveltyArchive.CalculateNovelty(EvolvableIndividual, List<EvolvableIndividual>)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.CalculateNovelty(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CalculateNovelty
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1859
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float CalculateNovelty(EvolvableIndividual individual, List<EvolvableIndividual> population)
+    parameters:
+    - id: individual
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    - id: population
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+    return:
+      type: System.Single
+    content.vb: Public Function CalculateNovelty(individual As EvolvableIndividual, population As List(Of EvolvableIndividual)) As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.CalculateNovelty*
+  nameWithType.vb: IntraArchetypeNoveltyArchive.CalculateNovelty(EvolvableIndividual, List(Of EvolvableIndividual))
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.CalculateNovelty(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual))
+  name.vb: CalculateNovelty(EvolvableIndividual, List(Of EvolvableIndividual))
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.Clear
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.Clear
+  id: Clear
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: IntraArchetypeNoveltyArchive.Clear()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.Clear()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Clear
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1949
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.Clear*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.CalculateNovelty*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.CalculateNovelty
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.html#CardGame_ConsoleApp_Evolution_V2_NewGen_IntraArchetypeNoveltyArchive_CalculateNovelty_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_System_Collections_Generic_List_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual__
+  name: CalculateNovelty
+  nameWithType: IntraArchetypeNoveltyArchive.CalculateNovelty
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.CalculateNovelty
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: List<EvolvableIndividual>
+  nameWithType: List<EvolvableIndividual>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>
+  nameWithType.vb: List(Of EvolvableIndividual)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  name.vb: List(Of EvolvableIndividual)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: )
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.Clear*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.Clear
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.html#CardGame_ConsoleApp_Evolution_V2_NewGen_IntraArchetypeNoveltyArchive_Clear
+  name: Clear
+  nameWithType: IntraArchetypeNoveltyArchive.Clear
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive.Clear

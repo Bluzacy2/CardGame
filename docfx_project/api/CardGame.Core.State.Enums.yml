@@ -1,0 +1,63 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.State.Enums
+  commentId: N:CardGame.Core.State.Enums
+  id: Enums
+  parent: CardGame.Core.State
+  children:
+  - CardGame.Core.State.Enums.GamePhase
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.State.Enums
+  nameWithType: CardGame.Core.State.Enums
+  fullName: CardGame.Core.State.Enums
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.State.Enums.GamePhase
+  commentId: T:CardGame.Core.State.Enums.GamePhase
+  parent: CardGame.Core.State.Enums
+  href: CardGame.Core.State.Enums.GamePhase.html
+  name: GamePhase
+  nameWithType: GamePhase
+  fullName: CardGame.Core.State.Enums.GamePhase
+- uid: CardGame.Core.State.Enums
+  commentId: N:CardGame.Core.State.Enums
+  href: CardGame.html
+  name: CardGame.Core.State.Enums
+  nameWithType: CardGame.Core.State.Enums
+  fullName: CardGame.Core.State.Enums
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Enums
+    name: Enums
+    href: CardGame.Core.State.Enums.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Enums
+    name: Enums
+    href: CardGame.Core.State.Enums.html

@@ -1,0 +1,52 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Commands.Implementations
+  commentId: N:CardGame.Core.Commands.Implementations
+  id: Implementations
+  parent: CardGame.Core.Commands
+  children:
+  - CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+  - CardGame.Core.Commands.Implementations.EndPhaseCommand
+  - CardGame.Core.Commands.Implementations.PlaySpellCommand
+  - CardGame.Core.Commands.Implementations.PlayUnitCommand
+  - CardGame.Core.Commands.Implementations.SelectTargetCommand
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Commands.Implementations
+  nameWithType: CardGame.Core.Commands.Implementations
+  fullName: CardGame.Core.Commands.Implementations
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+  commentId: T:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.html
+  name: ConfirmMulliganCommand
+  nameWithType: ConfirmMulliganCommand
+  fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+- uid: CardGame.Core.Commands.Implementations.EndPhaseCommand
+  commentId: T:CardGame.Core.Commands.Implementations.EndPhaseCommand
+  href: CardGame.Core.Commands.Implementations.EndPhaseCommand.html
+  name: EndPhaseCommand
+  nameWithType: EndPhaseCommand
+  fullName: CardGame.Core.Commands.Implementations.EndPhaseCommand
+- uid: CardGame.Core.Commands.Implementations.PlaySpellCommand
+  commentId: T:CardGame.Core.Commands.Implementations.PlaySpellCommand
+  href: CardGame.Core.Commands.Implementations.PlaySpellCommand.html
+  name: PlaySpellCommand
+  nameWithType: PlaySpellCommand
+  fullName: CardGame.Core.Commands.Implementations.PlaySpellCommand
+- uid: CardGame.Core.Commands.Implementations.PlayUnitCommand
+  commentId: T:CardGame.Core.Commands.Implementations.PlayUnitCommand
+  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.html
+  name: PlayUnitCommand
+  nameWithType: PlayUnitCommand
+  fullName: CardGame.Core.Commands.Implementations.PlayUnitCommand
+- uid: CardGame.Core.Commands.Implementations.SelectTargetCommand
+  commentId: T:CardGame.Core.Commands.Implementations.SelectTargetCommand
+  href: CardGame.Core.Commands.Implementations.SelectTargetCommand.html
+  name: SelectTargetCommand
+  nameWithType: SelectTargetCommand
+  fullName: CardGame.Core.Commands.Implementations.SelectTargetCommand

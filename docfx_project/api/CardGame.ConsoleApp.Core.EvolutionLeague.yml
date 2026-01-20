@@ -1,0 +1,233 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Core.EvolutionLeague
+  commentId: T:CardGame.ConsoleApp.Core.EvolutionLeague
+  id: EvolutionLeague
+  parent: CardGame.ConsoleApp.Core
+  children:
+  - CardGame.ConsoleApp.Core.EvolutionLeague.#ctor
+  - CardGame.ConsoleApp.Core.EvolutionLeague.AddChampion(CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual)
+  - CardGame.ConsoleApp.Core.EvolutionLeague.GetRandomLegend
+  langs:
+  - csharp
+  - vb
+  name: EvolutionLeague
+  nameWithType: EvolutionLeague
+  fullName: CardGame.ConsoleApp.Core.EvolutionLeague
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Core/EvolutionLeague.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: EvolutionLeague
+    path: ../Source/CardGame.ConsoleApp/Core/EvolutionLeague.cs
+    startLine: 8
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Core
+  syntax:
+    content: public class EvolutionLeague
+    content.vb: Public Class EvolutionLeague
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Core.EvolutionLeague.#ctor
+  commentId: M:CardGame.ConsoleApp.Core.EvolutionLeague.#ctor
+  id: '#ctor'
+  parent: CardGame.ConsoleApp.Core.EvolutionLeague
+  langs:
+  - csharp
+  - vb
+  name: EvolutionLeague()
+  nameWithType: EvolutionLeague.EvolutionLeague()
+  fullName: CardGame.ConsoleApp.Core.EvolutionLeague.EvolutionLeague()
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Core/EvolutionLeague.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Core/EvolutionLeague.cs
+    startLine: 13
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Core
+  syntax:
+    content: public EvolutionLeague()
+    content.vb: Public Sub New()
+  overload: CardGame.ConsoleApp.Core.EvolutionLeague.#ctor*
+  nameWithType.vb: EvolutionLeague.New()
+  fullName.vb: CardGame.ConsoleApp.Core.EvolutionLeague.New()
+  name.vb: New()
+- uid: CardGame.ConsoleApp.Core.EvolutionLeague.AddChampion(CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual)
+  commentId: M:CardGame.ConsoleApp.Core.EvolutionLeague.AddChampion(CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual)
+  id: AddChampion(CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual)
+  parent: CardGame.ConsoleApp.Core.EvolutionLeague
+  langs:
+  - csharp
+  - vb
+  name: AddChampion(GeneticIndividual)
+  nameWithType: EvolutionLeague.AddChampion(GeneticIndividual)
+  fullName: CardGame.ConsoleApp.Core.EvolutionLeague.AddChampion(CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Core/EvolutionLeague.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: AddChampion
+    path: ../Source/CardGame.ConsoleApp/Core/EvolutionLeague.cs
+    startLine: 19
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Core
+  syntax:
+    content: public void AddChampion(GeneticIndividual champion)
+    parameters:
+    - id: champion
+      type: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+    content.vb: Public Sub AddChampion(champion As GeneticIndividual)
+  overload: CardGame.ConsoleApp.Core.EvolutionLeague.AddChampion*
+- uid: CardGame.ConsoleApp.Core.EvolutionLeague.GetRandomLegend
+  commentId: M:CardGame.ConsoleApp.Core.EvolutionLeague.GetRandomLegend
+  id: GetRandomLegend
+  parent: CardGame.ConsoleApp.Core.EvolutionLeague
+  langs:
+  - csharp
+  - vb
+  name: GetRandomLegend()
+  nameWithType: EvolutionLeague.GetRandomLegend()
+  fullName: CardGame.ConsoleApp.Core.EvolutionLeague.GetRandomLegend()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Core/EvolutionLeague.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: GetRandomLegend
+    path: ../Source/CardGame.ConsoleApp/Core/EvolutionLeague.cs
+    startLine: 30
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Core
+  syntax:
+    content: public GeneticIndividual GetRandomLegend()
+    return:
+      type: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+    content.vb: Public Function GetRandomLegend() As GeneticIndividual
+  overload: CardGame.ConsoleApp.Core.EvolutionLeague.GetRandomLegend*
+references:
+- uid: CardGame.ConsoleApp.Core
+  commentId: N:CardGame.ConsoleApp.Core
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Core
+  nameWithType: CardGame.ConsoleApp.Core
+  fullName: CardGame.ConsoleApp.Core
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Core
+    name: Core
+    href: CardGame.ConsoleApp.Core.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Core
+    name: Core
+    href: CardGame.ConsoleApp.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Core.EvolutionLeague.#ctor*
+  commentId: Overload:CardGame.ConsoleApp.Core.EvolutionLeague.#ctor
+  href: CardGame.ConsoleApp.Core.EvolutionLeague.html#CardGame_ConsoleApp_Core_EvolutionLeague__ctor
+  name: EvolutionLeague
+  nameWithType: EvolutionLeague.EvolutionLeague
+  fullName: CardGame.ConsoleApp.Core.EvolutionLeague.EvolutionLeague
+  nameWithType.vb: EvolutionLeague.New
+  fullName.vb: CardGame.ConsoleApp.Core.EvolutionLeague.New
+  name.vb: New
+- uid: CardGame.ConsoleApp.Core.EvolutionLeague.AddChampion*
+  commentId: Overload:CardGame.ConsoleApp.Core.EvolutionLeague.AddChampion
+  href: CardGame.ConsoleApp.Core.EvolutionLeague.html#CardGame_ConsoleApp_Core_EvolutionLeague_AddChampion_CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_
+  name: AddChampion
+  nameWithType: EvolutionLeague.AddChampion
+  fullName: CardGame.ConsoleApp.Core.EvolutionLeague.AddChampion
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html
+  name: GeneticIndividual
+  nameWithType: GeneticIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+  commentId: N:CardGame.ConsoleApp.Evolution.V1_Legacy
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V1_Legacy
+  nameWithType: CardGame.ConsoleApp.Evolution.V1_Legacy
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
+- uid: CardGame.ConsoleApp.Core.EvolutionLeague.GetRandomLegend*
+  commentId: Overload:CardGame.ConsoleApp.Core.EvolutionLeague.GetRandomLegend
+  href: CardGame.ConsoleApp.Core.EvolutionLeague.html#CardGame_ConsoleApp_Core_EvolutionLeague_GetRandomLegend
+  name: GetRandomLegend
+  nameWithType: EvolutionLeague.GetRandomLegend
+  fullName: CardGame.ConsoleApp.Core.EvolutionLeague.GetRandomLegend

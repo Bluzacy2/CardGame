@@ -1,0 +1,353 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.PhaseChangedEvent
+  commentId: T:CardGame.Core.Events.PhaseChangedEvent
+  id: PhaseChangedEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.PhaseChangedEvent.#ctor(CardGame.Core.State.Enums.GamePhase,System.Int32)
+  - CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId
+  - CardGame.Core.Events.PhaseChangedEvent.NewPhase
+  - CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId
+  langs:
+  - csharp
+  - vb
+  name: PhaseChangedEvent
+  nameWithType: PhaseChangedEvent
+  fullName: CardGame.Core.Events.PhaseChangedEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/PhaseChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: PhaseChangedEvent
+    path: ../Source/CardGame.Core/Events/PhaseChangedEvent.cs
+    startLine: 10
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs when the game phase changes.
+  example: []
+  syntax:
+    content: 'public class PhaseChangedEvent : IGameEvent'
+    content.vb: Public Class PhaseChangedEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.PhaseChangedEvent.NewPhase
+  commentId: P:CardGame.Core.Events.PhaseChangedEvent.NewPhase
+  id: NewPhase
+  parent: CardGame.Core.Events.PhaseChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: NewPhase
+  nameWithType: PhaseChangedEvent.NewPhase
+  fullName: CardGame.Core.Events.PhaseChangedEvent.NewPhase
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/PhaseChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: NewPhase
+    path: ../Source/CardGame.Core/Events/PhaseChangedEvent.cs
+    startLine: 15
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the new game phase.
+  example: []
+  syntax:
+    content: public GamePhase NewPhase { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Enums.GamePhase
+    content.vb: Public ReadOnly Property NewPhase As GamePhase
+  overload: CardGame.Core.Events.PhaseChangedEvent.NewPhase*
+- uid: CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId
+  commentId: P:CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId
+  id: ActivePlayerId
+  parent: CardGame.Core.Events.PhaseChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: ActivePlayerId
+  nameWithType: PhaseChangedEvent.ActivePlayerId
+  fullName: CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/PhaseChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ActivePlayerId
+    path: ../Source/CardGame.Core/Events/PhaseChangedEvent.cs
+    startLine: 20
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the active player during the phase change.
+  example: []
+  syntax:
+    content: public int ActivePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ActivePlayerId As Integer
+  overload: CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId*
+- uid: CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.PhaseChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: PhaseChangedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/PhaseChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/PhaseChangedEvent.cs
+    startLine: 25
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who caused the phase change.
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.PhaseChangedEvent.#ctor(CardGame.Core.State.Enums.GamePhase,System.Int32)
+  commentId: M:CardGame.Core.Events.PhaseChangedEvent.#ctor(CardGame.Core.State.Enums.GamePhase,System.Int32)
+  id: '#ctor(CardGame.Core.State.Enums.GamePhase,System.Int32)'
+  parent: CardGame.Core.Events.PhaseChangedEvent
+  langs:
+  - csharp
+  - vb
+  name: PhaseChangedEvent(GamePhase, int)
+  nameWithType: PhaseChangedEvent.PhaseChangedEvent(GamePhase, int)
+  fullName: CardGame.Core.Events.PhaseChangedEvent.PhaseChangedEvent(CardGame.Core.State.Enums.GamePhase, int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/PhaseChangedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/PhaseChangedEvent.cs
+    startLine: 32
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the PhaseChangedEvent class.
+  example: []
+  syntax:
+    content: public PhaseChangedEvent(GamePhase newPhase, int activePlayerId)
+    parameters:
+    - id: newPhase
+      type: CardGame.Core.State.Enums.GamePhase
+      description: The new game phase.
+    - id: activePlayerId
+      type: System.Int32
+      description: The ID of the active player.
+    content.vb: Public Sub New(newPhase As GamePhase, activePlayerId As Integer)
+  overload: CardGame.Core.Events.PhaseChangedEvent.#ctor*
+  nameWithType.vb: PhaseChangedEvent.New(GamePhase, Integer)
+  fullName.vb: CardGame.Core.Events.PhaseChangedEvent.New(CardGame.Core.State.Enums.GamePhase, Integer)
+  name.vb: New(GamePhase, Integer)
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.PhaseChangedEvent.NewPhase*
+  commentId: Overload:CardGame.Core.Events.PhaseChangedEvent.NewPhase
+  href: CardGame.Core.Events.PhaseChangedEvent.html#CardGame_Core_Events_PhaseChangedEvent_NewPhase
+  name: NewPhase
+  nameWithType: PhaseChangedEvent.NewPhase
+  fullName: CardGame.Core.Events.PhaseChangedEvent.NewPhase
+- uid: CardGame.Core.State.Enums.GamePhase
+  commentId: T:CardGame.Core.State.Enums.GamePhase
+  parent: CardGame.Core.State.Enums
+  href: CardGame.Core.State.Enums.GamePhase.html
+  name: GamePhase
+  nameWithType: GamePhase
+  fullName: CardGame.Core.State.Enums.GamePhase
+- uid: CardGame.Core.State.Enums
+  commentId: N:CardGame.Core.State.Enums
+  href: CardGame.html
+  name: CardGame.Core.State.Enums
+  nameWithType: CardGame.Core.State.Enums
+  fullName: CardGame.Core.State.Enums
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Enums
+    name: Enums
+    href: CardGame.Core.State.Enums.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Enums
+    name: Enums
+    href: CardGame.Core.State.Enums.html
+- uid: CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId*
+  commentId: Overload:CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId
+  href: CardGame.Core.Events.PhaseChangedEvent.html#CardGame_Core_Events_PhaseChangedEvent_ActivePlayerId
+  name: ActivePlayerId
+  nameWithType: PhaseChangedEvent.ActivePlayerId
+  fullName: CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId
+  href: CardGame.Core.Events.PhaseChangedEvent.html#CardGame_Core_Events_PhaseChangedEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: PhaseChangedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.PhaseChangedEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.PhaseChangedEvent.#ctor
+  href: CardGame.Core.Events.PhaseChangedEvent.html#CardGame_Core_Events_PhaseChangedEvent__ctor_CardGame_Core_State_Enums_GamePhase_System_Int32_
+  name: PhaseChangedEvent
+  nameWithType: PhaseChangedEvent.PhaseChangedEvent
+  fullName: CardGame.Core.Events.PhaseChangedEvent.PhaseChangedEvent
+  nameWithType.vb: PhaseChangedEvent.New
+  fullName.vb: CardGame.Core.Events.PhaseChangedEvent.New
+  name.vb: New

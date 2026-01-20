@@ -1,0 +1,102 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.StateMachine
+  commentId: N:CardGame.Core.StateMachine
+  id: StateMachine
+  parent: CardGame.Core
+  children:
+  - CardGame.Core.StateMachine.GameStateMachine
+  - CardGame.Core.StateMachine.Interfaces
+  - CardGame.Core.StateMachine.Phases
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.StateMachine
+  nameWithType: CardGame.Core.StateMachine
+  fullName: CardGame.Core.StateMachine
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.StateMachine.Interfaces
+  commentId: N:CardGame.Core.StateMachine.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.StateMachine.Interfaces
+  nameWithType: CardGame.Core.StateMachine.Interfaces
+  fullName: CardGame.Core.StateMachine.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Interfaces
+    name: Interfaces
+    href: CardGame.Core.StateMachine.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Interfaces
+    name: Interfaces
+    href: CardGame.Core.StateMachine.Interfaces.html
+- uid: CardGame.Core.StateMachine.Phases
+  commentId: N:CardGame.Core.StateMachine.Phases
+  href: CardGame.html
+  name: CardGame.Core.StateMachine.Phases
+  nameWithType: CardGame.Core.StateMachine.Phases
+  fullName: CardGame.Core.StateMachine.Phases
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Phases
+    name: Phases
+    href: CardGame.Core.StateMachine.Phases.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Phases
+    name: Phases
+    href: CardGame.Core.StateMachine.Phases.html
+- uid: CardGame.Core.StateMachine.GameStateMachine
+  commentId: T:CardGame.Core.StateMachine.GameStateMachine
+  href: CardGame.Core.StateMachine.GameStateMachine.html
+  name: GameStateMachine
+  nameWithType: GameStateMachine
+  fullName: CardGame.Core.StateMachine.GameStateMachine

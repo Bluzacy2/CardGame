@@ -1,0 +1,63 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Interfaces
+  commentId: N:CardGame.Core.AI.Interfaces
+  id: Interfaces
+  parent: CardGame.Core.AI
+  children:
+  - CardGame.Core.AI.Interfaces.IAIStrategy
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.AI.Interfaces
+  nameWithType: CardGame.Core.AI.Interfaces
+  fullName: CardGame.Core.AI.Interfaces
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.AI.Interfaces.IAIStrategy
+  commentId: T:CardGame.Core.AI.Interfaces.IAIStrategy
+  parent: CardGame.Core.AI.Interfaces
+  href: CardGame.Core.AI.Interfaces.IAIStrategy.html
+  name: IAIStrategy
+  nameWithType: IAIStrategy
+  fullName: CardGame.Core.AI.Interfaces.IAIStrategy
+- uid: CardGame.Core.AI.Interfaces
+  commentId: N:CardGame.Core.AI.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.AI.Interfaces
+  nameWithType: CardGame.Core.AI.Interfaces
+  fullName: CardGame.Core.AI.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html

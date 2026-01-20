@@ -1,0 +1,382 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.GameRules.Battle.BattleService
+  commentId: T:CardGame.Core.GameRules.Battle.BattleService
+  id: BattleService
+  parent: CardGame.Core.GameRules.Battle
+  children:
+  - CardGame.Core.GameRules.Battle.BattleService.ResolveBonusStrike(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  - CardGame.Core.GameRules.Battle.BattleService.ResolveCombatDuel(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  langs:
+  - csharp
+  - vb
+  name: BattleService
+  nameWithType: BattleService
+  fullName: CardGame.Core.GameRules.Battle.BattleService
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/GameRules/Battle/BattleService.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: BattleService
+    path: ../Source/CardGame.Core/GameRules/Battle/BattleService.cs
+    startLine: 15
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.GameRules.Battle
+  summary: Handles combat resolution between units, including damage calculation, flying mechanics, and stun effects.
+  example: []
+  syntax:
+    content: public class BattleService
+    content.vb: Public Class BattleService
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.GameRules.Battle.BattleService.ResolveCombatDuel(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.GameRules.Battle.BattleService.ResolveCombatDuel(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  id: ResolveCombatDuel(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.GameRules.Battle.BattleService
+  langs:
+  - csharp
+  - vb
+  name: ResolveCombatDuel(GameState, CardInstance, CardInstance, int, EventBus, GameContext)
+  nameWithType: BattleService.ResolveCombatDuel(GameState, CardInstance, CardInstance, int, EventBus, GameContext)
+  fullName: CardGame.Core.GameRules.Battle.BattleService.ResolveCombatDuel(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance, int, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/GameRules/Battle/BattleService.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ResolveCombatDuel
+    path: ../Source/CardGame.Core/GameRules/Battle/BattleService.cs
+    startLine: 32
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.GameRules.Battle
+  summary: Resolves combat between two units on the same line, applying damage and status effects.
+  example: []
+  syntax:
+    content: public GameState ResolveCombatDuel(GameState state, CardInstance unit1, CardInstance unit2, int lineIndex, EventBus events, GameContext context)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    - id: unit1
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The first unit in the combat.
+    - id: unit2
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The second unit in the combat.
+    - id: lineIndex
+      type: System.Int32
+      description: The index of the battle line.
+    - id: events
+      type: CardGame.Core.Events.EventBus
+      description: Event bus for publishing combat events.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: Game context for damage calculation and keyword processing.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state after resolving the combat duel.
+    content.vb: Public Function ResolveCombatDuel(state As GameState, unit1 As CardInstance, unit2 As CardInstance, lineIndex As Integer, events As EventBus, context As GameContext) As GameState
+  overload: CardGame.Core.GameRules.Battle.BattleService.ResolveCombatDuel*
+  nameWithType.vb: BattleService.ResolveCombatDuel(GameState, CardInstance, CardInstance, Integer, EventBus, GameContext)
+  fullName.vb: CardGame.Core.GameRules.Battle.BattleService.ResolveCombatDuel(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance, Integer, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  name.vb: ResolveCombatDuel(GameState, CardInstance, CardInstance, Integer, EventBus, GameContext)
+- uid: CardGame.Core.GameRules.Battle.BattleService.ResolveBonusStrike(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.GameRules.Battle.BattleService.ResolveBonusStrike(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  id: ResolveBonusStrike(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.GameRules.Battle.BattleService
+  langs:
+  - csharp
+  - vb
+  name: ResolveBonusStrike(GameState, CardInstance, CardInstance?, int, EventBus, GameContext)
+  nameWithType: BattleService.ResolveBonusStrike(GameState, CardInstance, CardInstance?, int, EventBus, GameContext)
+  fullName: CardGame.Core.GameRules.Battle.BattleService.ResolveBonusStrike(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance?, int, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/GameRules/Battle/BattleService.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ResolveBonusStrike
+    path: ../Source/CardGame.Core/GameRules/Battle/BattleService.cs
+    startLine: 123
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.GameRules.Battle
+  summary: Resolves a bonus strike from a unit to either another unit or the opponent's hero.
+  example: []
+  syntax:
+    content: public GameState ResolveBonusStrike(GameState state, CardInstance attacker, CardInstance? defender, int lineIndex, EventBus events, GameContext context)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    - id: attacker
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The unit making the bonus attack.
+    - id: defender
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The target unit, or null to attack the hero.
+    - id: lineIndex
+      type: System.Int32
+      description: The index of the battle line.
+    - id: events
+      type: CardGame.Core.Events.EventBus
+      description: Event bus for publishing combat events.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: Game context for damage calculation and keyword processing.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state after resolving the bonus strike.
+    content.vb: Public Function ResolveBonusStrike(state As GameState, attacker As CardInstance, defender As CardInstance, lineIndex As Integer, events As EventBus, context As GameContext) As GameState
+  overload: CardGame.Core.GameRules.Battle.BattleService.ResolveBonusStrike*
+  nameWithType.vb: BattleService.ResolveBonusStrike(GameState, CardInstance, CardInstance, Integer, EventBus, GameContext)
+  fullName.vb: CardGame.Core.GameRules.Battle.BattleService.ResolveBonusStrike(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance, Integer, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  name.vb: ResolveBonusStrike(GameState, CardInstance, CardInstance, Integer, EventBus, GameContext)
+references:
+- uid: CardGame.Core.GameRules.Battle
+  commentId: N:CardGame.Core.GameRules.Battle
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Battle
+  nameWithType: CardGame.Core.GameRules.Battle
+  fullName: CardGame.Core.GameRules.Battle
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Battle
+    name: Battle
+    href: CardGame.Core.GameRules.Battle.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Battle
+    name: Battle
+    href: CardGame.Core.GameRules.Battle.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.GameRules.Battle.BattleService.ResolveCombatDuel*
+  commentId: Overload:CardGame.Core.GameRules.Battle.BattleService.ResolveCombatDuel
+  href: CardGame.Core.GameRules.Battle.BattleService.html#CardGame_Core_GameRules_Battle_BattleService_ResolveCombatDuel_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  name: ResolveCombatDuel
+  nameWithType: BattleService.ResolveCombatDuel
+  fullName: CardGame.Core.GameRules.Battle.BattleService.ResolveCombatDuel
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: CardGame.Core.GameRules.Battle.BattleService.ResolveBonusStrike*
+  commentId: Overload:CardGame.Core.GameRules.Battle.BattleService.ResolveBonusStrike
+  href: CardGame.Core.GameRules.Battle.BattleService.html#CardGame_Core_GameRules_Battle_BattleService_ResolveBonusStrike_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  name: ResolveBonusStrike
+  nameWithType: BattleService.ResolveBonusStrike
+  fullName: CardGame.Core.GameRules.Battle.BattleService.ResolveBonusStrike

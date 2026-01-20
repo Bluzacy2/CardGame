@@ -1,0 +1,544 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  commentId: T:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  id: KeywordProcessor
+  parent: CardGame.Core.Cards.Logic.Keywords
+  children:
+  - CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  - CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  - CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+  - CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler(CardGame.Core.Cards.Logic.Keywords.IKeywordHandler)
+  - CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: KeywordProcessor
+  nameWithType: KeywordProcessor
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: KeywordProcessor
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+    startLine: 13
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords
+  summary: Processes keyword effects and delegates to registered keyword handlers for various game events.
+  example: []
+  syntax:
+    content: public class KeywordProcessor
+    content.vb: Public Class KeywordProcessor
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler(CardGame.Core.Cards.Logic.Keywords.IKeywordHandler)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler(CardGame.Core.Cards.Logic.Keywords.IKeywordHandler)
+  id: RegisterHandler(CardGame.Core.Cards.Logic.Keywords.IKeywordHandler)
+  parent: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  langs:
+  - csharp
+  - vb
+  name: RegisterHandler(IKeywordHandler)
+  nameWithType: KeywordProcessor.RegisterHandler(IKeywordHandler)
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler(CardGame.Core.Cards.Logic.Keywords.IKeywordHandler)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: RegisterHandler
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+    startLine: 24
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords
+  summary: Registers a keyword handler for a specific keyword type.
+  example: []
+  syntax:
+    content: public void RegisterHandler(IKeywordHandler handler)
+    parameters:
+    - id: handler
+      type: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+      description: The handler to register.
+    content.vb: Public Sub RegisterHandler(handler As IKeywordHandler)
+  overload: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler*
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  id: ProcessDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
+  parent: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  langs:
+  - csharp
+  - vb
+  name: ProcessDamageTaken(int, DamageContext)
+  nameWithType: KeywordProcessor.ProcessDamageTaken(int, DamageContext)
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken(int, CardGame.Core.GameRules.Damage.DamageContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ProcessDamageTaken
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+    startLine: 34
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords
+  summary: Processes damage taken by applying keyword-based damage modifications.
+  example: []
+  syntax:
+    content: public int ProcessDamageTaken(int amount, DamageContext context)
+    parameters:
+    - id: amount
+      type: System.Int32
+      description: The initial damage amount.
+    - id: context
+      type: CardGame.Core.GameRules.Damage.DamageContext
+      description: The damage context containing source, target, and damage type.
+    return:
+      type: System.Int32
+      description: The final damage amount after keyword modifications.
+    content.vb: Public Function ProcessDamageTaken(amount As Integer, context As DamageContext) As Integer
+  overload: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken*
+  nameWithType.vb: KeywordProcessor.ProcessDamageTaken(Integer, DamageContext)
+  fullName.vb: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken(Integer, CardGame.Core.GameRules.Damage.DamageContext)
+  name.vb: ProcessDamageTaken(Integer, DamageContext)
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  id: ProcessPostAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  langs:
+  - csharp
+  - vb
+  name: ProcessPostAttack(GameState, CardInstance, CardInstance?, int, GameContext)
+  nameWithType: KeywordProcessor.ProcessPostAttack(GameState, CardInstance, CardInstance?, int, GameContext)
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance?, int, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ProcessPostAttack
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+    startLine: 56
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords
+  summary: Processes post-attack keyword effects after a unit attacks.
+  example: []
+  syntax:
+    content: public GameState ProcessPostAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    - id: attacker
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The unit that performed the attack.
+    - id: victim
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The target of the attack, or null if attacking a hero.
+    - id: lineIndex
+      type: System.Int32
+      description: The line index where the attack occurred.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: The game context with additional services.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state after processing post-attack keyword effects.
+    content.vb: Public Function ProcessPostAttack(state As GameState, attacker As CardInstance, victim As CardInstance, lineIndex As Integer, context As GameContext) As GameState
+  overload: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack*
+  nameWithType.vb: KeywordProcessor.ProcessPostAttack(GameState, CardInstance, CardInstance, Integer, GameContext)
+  fullName.vb: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance, Integer, CardGame.Core.Application.GameContext)
+  name.vb: ProcessPostAttack(GameState, CardInstance, CardInstance, Integer, GameContext)
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+  id: ProcessRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  langs:
+  - csharp
+  - vb
+  name: ProcessRoundEnd(GameState, CardInstance, GameContext)
+  nameWithType: KeywordProcessor.ProcessRoundEnd(GameState, CardInstance, GameContext)
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: ProcessRoundEnd
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+    startLine: 76
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords
+  summary: Processes round-end keyword effects for a specific unit.
+  example: []
+  syntax:
+    content: public GameState ProcessRoundEnd(GameState state, CardInstance unit, GameContext context)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    - id: unit
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The unit to process round-end effects for.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: The game context with additional services.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state after processing round-end keyword effects.
+    content.vb: Public Function ProcessRoundEnd(state As GameState, unit As CardInstance, context As GameContext) As GameState
+  overload: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd*
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  commentId: M:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  id: TryPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
+  parent: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  langs:
+  - csharp
+  - vb
+  name: TryPreventDeath(ref GameState, CardInstance, GameContext, bool)
+  nameWithType: KeywordProcessor.TryPreventDeath(ref GameState, CardInstance, GameContext, bool)
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath(ref CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext, bool)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: TryPreventDeath
+    path: ../Source/CardGame.Core/Cards/Logic/Keywords/KeywordProcessor.cs
+    startLine: 98
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Logic.Keywords
+  summary: >-
+    Attempts to prevent a unit's death using keyword-based death prevention effects.
+
+    Combines keywords from the current stats and the base card definition.
+  example: []
+  syntax:
+    content: public bool TryPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state (passed by reference for potential modification).
+    - id: unit
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The unit that is about to die.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: The game context with additional services.
+    - id: isSacrifice
+      type: System.Boolean
+      description: Whether the death is due to a sacrifice effect.
+    return:
+      type: System.Boolean
+      description: True if death was prevented, otherwise false.
+    content.vb: Public Function TryPreventDeath(state As GameState, unit As CardInstance, context As GameContext, isSacrifice As Boolean) As Boolean
+  overload: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath*
+  nameWithType.vb: KeywordProcessor.TryPreventDeath(GameState, CardInstance, GameContext, Boolean)
+  fullName.vb: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext, Boolean)
+  name.vb: TryPreventDeath(GameState, CardInstance, GameContext, Boolean)
+references:
+- uid: CardGame.Core.Cards.Logic.Keywords
+  commentId: N:CardGame.Core.Cards.Logic.Keywords
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic.Keywords
+  nameWithType: CardGame.Core.Cards.Logic.Keywords
+  fullName: CardGame.Core.Cards.Logic.Keywords
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler*
+  commentId: Overload:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_RegisterHandler_CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_
+  name: RegisterHandler
+  nameWithType: KeywordProcessor.RegisterHandler
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler
+- uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  commentId: T:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+  parent: CardGame.Core.Cards.Logic.Keywords
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html
+  name: IKeywordHandler
+  nameWithType: IKeywordHandler
+  fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken*
+  commentId: Overload:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_ProcessDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+  name: ProcessDamageTaken
+  nameWithType: KeywordProcessor.ProcessDamageTaken
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.GameRules.Damage.DamageContext
+  commentId: T:CardGame.Core.GameRules.Damage.DamageContext
+  parent: CardGame.Core.GameRules.Damage
+  href: CardGame.Core.GameRules.Damage.DamageContext.html
+  name: DamageContext
+  nameWithType: DamageContext
+  fullName: CardGame.Core.GameRules.Damage.DamageContext
+- uid: CardGame.Core.GameRules.Damage
+  commentId: N:CardGame.Core.GameRules.Damage
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Damage
+  nameWithType: CardGame.Core.GameRules.Damage
+  fullName: CardGame.Core.GameRules.Damage
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack*
+  commentId: Overload:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_ProcessPostAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+  name: ProcessPostAttack
+  nameWithType: KeywordProcessor.ProcessPostAttack
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd*
+  commentId: Overload:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_ProcessRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+  name: ProcessRoundEnd
+  nameWithType: KeywordProcessor.ProcessRoundEnd
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath*
+  commentId: Overload:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_TryPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+  name: TryPreventDeath
+  nameWithType: KeywordProcessor.TryPreventDeath
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

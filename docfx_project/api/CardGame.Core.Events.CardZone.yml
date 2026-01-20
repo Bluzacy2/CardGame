@@ -1,0 +1,203 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.CardZone
+  commentId: T:CardGame.Core.Events.CardZone
+  id: CardZone
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.CardZone.Board
+  - CardGame.Core.Events.CardZone.Deck
+  - CardGame.Core.Events.CardZone.Graveyard
+  - CardGame.Core.Events.CardZone.Hand
+  - CardGame.Core.Events.CardZone.Stack
+  langs:
+  - csharp
+  - vb
+  name: CardZone
+  nameWithType: CardZone
+  fullName: CardGame.Core.Events.CardZone
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: CardZone
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents the game zones where a card can be located.
+  example: []
+  syntax:
+    content: public enum CardZone
+    content.vb: Public Enum CardZone
+- uid: CardGame.Core.Events.CardZone.Deck
+  commentId: F:CardGame.Core.Events.CardZone.Deck
+  id: Deck
+  parent: CardGame.Core.Events.CardZone
+  langs:
+  - csharp
+  - vb
+  name: Deck
+  nameWithType: CardZone.Deck
+  fullName: CardGame.Core.Events.CardZone.Deck
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Deck
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  syntax:
+    content: Deck = 0
+    return:
+      type: CardGame.Core.Events.CardZone
+- uid: CardGame.Core.Events.CardZone.Hand
+  commentId: F:CardGame.Core.Events.CardZone.Hand
+  id: Hand
+  parent: CardGame.Core.Events.CardZone
+  langs:
+  - csharp
+  - vb
+  name: Hand
+  nameWithType: CardZone.Hand
+  fullName: CardGame.Core.Events.CardZone.Hand
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Hand
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  syntax:
+    content: Hand = 1
+    return:
+      type: CardGame.Core.Events.CardZone
+- uid: CardGame.Core.Events.CardZone.Board
+  commentId: F:CardGame.Core.Events.CardZone.Board
+  id: Board
+  parent: CardGame.Core.Events.CardZone
+  langs:
+  - csharp
+  - vb
+  name: Board
+  nameWithType: CardZone.Board
+  fullName: CardGame.Core.Events.CardZone.Board
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Board
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  syntax:
+    content: Board = 2
+    return:
+      type: CardGame.Core.Events.CardZone
+- uid: CardGame.Core.Events.CardZone.Graveyard
+  commentId: F:CardGame.Core.Events.CardZone.Graveyard
+  id: Graveyard
+  parent: CardGame.Core.Events.CardZone
+  langs:
+  - csharp
+  - vb
+  name: Graveyard
+  nameWithType: CardZone.Graveyard
+  fullName: CardGame.Core.Events.CardZone.Graveyard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Graveyard
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  syntax:
+    content: Graveyard = 3
+    return:
+      type: CardGame.Core.Events.CardZone
+- uid: CardGame.Core.Events.CardZone.Stack
+  commentId: F:CardGame.Core.Events.CardZone.Stack
+  id: Stack
+  parent: CardGame.Core.Events.CardZone
+  langs:
+  - csharp
+  - vb
+  name: Stack
+  nameWithType: CardZone.Stack
+  fullName: CardGame.Core.Events.CardZone.Stack
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame.git
+    id: Stack
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  syntax:
+    content: Stack = 4
+    return:
+      type: CardGame.Core.Events.CardZone
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: CardGame.Core.Events.CardZone
+  commentId: T:CardGame.Core.Events.CardZone
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.CardZone.html
+  name: CardZone
+  nameWithType: CardZone
+  fullName: CardGame.Core.Events.CardZone
