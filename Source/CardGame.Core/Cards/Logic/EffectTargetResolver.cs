@@ -190,25 +190,25 @@ namespace CardGame.Core.Cards.Logic
         #region Private Methods
         public static int GetOwner(GameState state, int instanceId, IGameEvent? contextEvent = null)
         {
-            // 1. Priority: Check the context event (Deaths/Sacrifices)
-            if (contextEvent is UnitDiedEvent unitDiedEvent && unitDiedEvent.Unit.InstanceId == instanceId)
-                return unitDiedEvent.Unit.OwnerPlayerId;
-            if (contextEvent is UnitSacrificedEvent unitSacrificedEvent && unitSacrificedEvent.Unit.InstanceId == instanceId)
-                return unitSacrificedEvent.Unit.OwnerPlayerId;
-            if (contextEvent is TargetSelectedEvent tse && tse.SourceCardId == instanceId)
-                return tse.SourcePlayerId;
+            // 1. PRIORITY: If the event explicitly tells us who the source player is 
+            // (e.g. CardPlayedEvent), use that!
+            if (contextEvent != null && contextEvent.SourcePlayerId != 0)
+                return contextEvent.SourcePlayerId;
 
             // 2. Check the Board
             var unit = state.Board.GetAllUnits().FirstOrDefault(x => x.InstanceId == instanceId);
             if (unit != null) return unit.OwnerPlayerId;
 
-            // 3. Check Hands/Discard
+            // 3. Check Hands/Discard (Check Player A then B)
             if (state.PlayerA.Hand.Any(x => x.InstanceId == instanceId) ||
                 state.PlayerA.DiscardPile.Any(x => x.InstanceId == instanceId)) return 1;
             if (state.PlayerB.Hand.Any(x => x.InstanceId == instanceId) ||
                 state.PlayerB.DiscardPile.Any(x => x.InstanceId == instanceId)) return 2;
 
-            // 4. Fallback: The player whose turn it is
+            // 4. Check the Spell Stack
+            var stackSpell = state.SpellStack.FirstOrDefault(x => x.InstanceId == instanceId);
+            if (stackSpell != null) return stackSpell.OwnerPlayerId;
+
             return state.ActivePlayerId;
         }
         #endregion

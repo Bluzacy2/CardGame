@@ -227,7 +227,7 @@
 
   {
 	"Id": 13,
-	"Name": "Critical Thinking",
+	"Name": "Seek",
 	"Type": "Spell",
 	"Cost": 1,
 	"Description": "Pick a Card from Deck, Draw it, Shuffle.",
@@ -300,7 +300,7 @@
 
   {
 	"Id": 17,
-	"Name": "Megumin",
+	"Name": "Magician",
 	"Type": "Unit",
 	"Subtypes": [ "Mercenary", "Human" ],
 	"Cost": 4,
@@ -738,7 +738,7 @@
   },
   {
 	"Id": 42,
-	"Name": "Soldat",
+	"Name": "Pilot",
 	"Type": "Unit",
 	"Subtypes": ["Mercenary", "Human" ],
 	"Cost": 1, "Attack": 2, "Health": 2,
@@ -775,7 +775,7 @@
   },
   {
 	"Id": 44,
-	"Name": "Machine Bomber",
+	"Name": "Drone",
 	"Type": "Unit",
 	"Subtypes": ["Machine"],
 	"Cost": 1, "Attack": 1, "Health": 2,
@@ -945,7 +945,7 @@
 
   {
 	"Id": 52,
-	"Name": "Little Bob",
+	"Name": "Roomba",
 	"Type": "Unit",
 	"Subtypes": ["Machine"],
 	"Cost": 1,
@@ -1189,16 +1189,16 @@
   "Health": 1,
   "Description": "When Destroyed: Stun the Enemy Unit here.",
   "Effects": [
-    {
-      "Trigger": "OnDeath",
-      "Actions": [
-        {
-          "Type": "ApplyStatus",
-          "Target": "OppositeEnemyUnit",
-          "StatusKeyword": "Stunned"
-        }
-      ]
-    }
+	{
+	  "Trigger": "OnDeath",
+	  "Actions": [
+		{
+		  "Type": "ApplyStatus",
+		  "Target": "OppositeEnemyUnit",
+		  "StatusKeyword": "Stunned"
+		}
+	  ]
+	}
   ]
 },
   {

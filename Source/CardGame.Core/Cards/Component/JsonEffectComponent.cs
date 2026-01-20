@@ -72,46 +72,44 @@ namespace CardGame.Core.Cards.Components.Implementations
         {
             GameState workingState = state.With(clearPending: true);
 
-            // 1. Handle the initial choice selection (ActionIndex was -1)
-            if (_data.Targeting == TargetType.Choice &&
-                evt is TargetSelectedEvent tse &&
-                state.PendingInteraction?.ActionIndex == -1)
+            if (_data.Targeting == TargetType.Choice && evt is TargetSelectedEvent tse && state.PendingInteraction?.ActionIndex == -1)
             {
                 int choiceIdx = tse.SelectedTargetId;
-
                 if (choiceIdx >= 0 && choiceIdx < _data.Actions.Count)
                 {
-                    // IMPORTANT: We return immediately after executing the chosen action.
-                    // This prevents the engine from looping into the other choices.
                     return ExecuteAction(workingState, context, _data.Actions[choiceIdx], evt, choiceIdx);
                 }
-
                 return workingState;
             }
 
-            // 2. Handle returning from a manual target selection (ActionIndex >= 0)
-            // If the card is a Choice card, we ONLY want to execute the specific action 
-            // we just picked a target for, then stop.
-            if (_data.Targeting == TargetType.Choice)
-            {
-                return ExecuteAction(workingState, context, _data.Actions[startIndex], evt, startIndex);
-            }
-
-            // 3. Sequential logic for standard cards (Non-Choice)
-            // Cards like "Mark an enemy AND deal damage" use this loop.
             for (int i = startIndex; i < _data.Actions.Count; i++)
             {
-                workingState = ExecuteAction(workingState, context, _data.Actions[i], evt, i);
+                var action = _data.Actions[i];
+                var nextState = ExecuteAction(workingState, context, action, evt, i);
 
-                // If an action requires a target, stop and wait for player.
-                if (workingState.PendingInteraction != null)
+                if (nextState == workingState && IsTargetedAction(action))
                 {
                     return workingState;
                 }
+
+                workingState = nextState;
+
+                if (workingState.PendingInteraction != null)
+                    return workingState;
             }
 
             return workingState;
         }
+
+        private bool IsTargetedAction(ActionData action)
+        {
+            return action.Target == TargetType.TargetEnemyUnit ||
+                   action.Target == TargetType.TargetFriendlyUnit ||
+                   action.Target == TargetType.SelectedTarget ||
+                   action.Target == TargetType.OtherFriendlyUnits ||
+                   action.Type == ActionType.SacrificeUnit;
+        }
+
 
         #endregion
 
@@ -152,11 +150,11 @@ namespace CardGame.Core.Cards.Components.Implementations
                     state.With(clearPending: true), context, action, resolved, _sourceId, evt);
             }
 
-            if (IsManualTarget(targetType))
+            if (IsManualTarget(targetType) || targetType == TargetType.TargetEnemyUnit || targetType == TargetType.TargetFriendlyUnit)
             {
                 var potential = EffectTargetResolver.GetPotentialTargets(targetType, state, _sourceId);
 
-                if (potential.Count == 0) 
+                if (potential.Count == 0 && !resolved.UnitTargets.Any()) 
                 {
                     return state;
                 }

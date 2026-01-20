@@ -49,10 +49,11 @@ namespace CardGame.Core.Events.Triggers
 
                 var evt = eventBus.Pop();
                 var types = GetRelevantTriggerTypes(evt);
+                var map = BuildTriggerMap(workingState, evt);
 
                 foreach (var type in types)
                 {
-                    var map = BuildTriggerMap(workingState, evt);
+                   
                     if (!map.TryGetValue(type, out var sources)) continue;
 
                     foreach (var source in sources)

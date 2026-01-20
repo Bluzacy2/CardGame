@@ -59,10 +59,7 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             #endregion
 
             var unitToSummon = targets.TargetUnit;
-            if (unitToSummon == null || lineIdx < 0)
-            {
-                return state;
-            }
+            if (unitToSummon == null || lineIdx < 0 || lineIdx > 3) return state;
 
             // GET THE FRESHEST PLAYER FROM STATE (fixes WomboCombo)
             var owner = state.GetPlayer(unitToSummon.OwnerPlayerId);
@@ -73,14 +70,11 @@ namespace CardGame.Core.Cards.Components.Actions.Handlers
             }
 
             var cardInHand = owner.Hand.FirstOrDefault(c => c.InstanceId == unitToSummon.InstanceId);
-            if (cardInHand == null)
-            {
-                return state;
-            }
+            if (cardInHand == null) return state;
 
             var newOwner = owner.WithCardRemovedFromHand(cardInHand);
             return state.UpdatePlayer(newOwner)
-                       .UpdateBoard(state.Board.WithUnitPlacedAt(lineIdx, owner.PlayerId, cardInHand));
+               .UpdateBoard(state.Board.WithUnitPlacedAt(lineIdx, owner.PlayerId, cardInHand));
         }
     }
 }
