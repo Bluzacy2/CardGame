@@ -11,411 +11,394 @@ using CardGame.Core.Cards.Logic;
 
 public partial class InputController : Node
 {
-	public enum InputState { Idle, Normal, TargetingCard, PendingTarget, Mulligan }
+    public enum InputState { Idle, Normal, TargetingCard, PendingTarget, Mulligan }
 
-	private InputState _currentState = InputState.Idle;
-	private int _playerId;
-	private UIManager _ui;
-	private GameState _latestGameState;
+    private InputState _currentState = InputState.Idle;
+    private int _playerId;
+    private UIManager _ui;
+    private GameState _latestGameState;
 
-	private CardInstance _selectedCardHand;
-	private int? _pendingUnitLineIdx;
-	private PendingInteraction _currentPending;
+    private CardInstance _selectedCardHand;
+    private int? _pendingUnitLineIdx;
 
-	// Mulligan
-	private List<int> _mulliganSelection = new List<int>();
-	private const int MAX_MULLIGAN_SWAPS = 3;
-	private List<CardInstance> _mulliganHandCache;
+    private PendingInteraction _currentPending;
 
-	public event Action<IGameCommand> OnPlayerCommand;
+    // Mulligan
+    private List<int> _mulliganSelection = new List<int>();
+    private const int MAX_MULLIGAN_SWAPS = 3;
+    private List<CardInstance> _mulliganHandCache;
 
-	public void Initialize(int playerId, UIManager uiManager)
-	{
-		_playerId = playerId;
-		_ui = uiManager;
-	}
+    public event Action<IGameCommand> OnPlayerCommand;
 
-	public override void _Process(double delta)
-	{
-		// Rysuj strzałkę TYLKO jeśli celujemy w planszę
-		// Jeśli mamy PendingTarget typu CHOICE (Menu), nie rysuj strzałki!
-		bool isChoiceMode = _currentState == InputState.PendingTarget &&
-							_currentPending?.RequiredTargetType == TargetType.Choice;
+    public void Initialize(int playerId, UIManager uiManager)
+    {
+        _playerId = playerId;
+        _ui = uiManager;
+    }
 
-		if ((_currentState == InputState.TargetingCard || _currentState == InputState.PendingTarget) && !isChoiceMode)
-		{
-			UpdateTargetingArrow();
-		}
-		else
-		{
-			_ui.HideTargetingArrow();
-		}
-	}
+    public override void _Process(double delta)
+    {
+        bool isChoiceMode = _currentState == InputState.PendingTarget &&
+                            _currentPending?.RequiredTargetType == TargetType.Choice;
 
-	public override void _UnhandledInput(InputEvent @event)
-	{
-		if (@event is InputEventMouseButton mb && mb.Pressed)
-		{
-			// Prawy Przycisk: Anuluj
-			if (mb.ButtonIndex == MouseButton.Right)
-			{
-				if (_currentState == InputState.TargetingCard) CancelTargeting();
-			}
-			// Lewy Przycisk: TERAZ OBSŁUGIWANY PRZEZ ON_CLICKED
-			// Usuwamy stąd TrySelectTargetUnderMouse, bo kliknięcie w kartę
-			// zostanie przechwycone przez Control (MouseFilter Stop) i nie dotrze tutaj.
-			// Zostawiamy to puste lub obsługujemy kliknięcie w "pustkę" (anulowanie).
-		}
-	}
+        if ((_currentState == InputState.TargetingCard || _currentState == InputState.PendingTarget) && !isChoiceMode)
+        {
+            UpdateTargetingArrow();
+        }
+        else
+        {
+            _ui.HideTargetingArrow();
+        }
+    }
 
-	public void UpdateState(GameState gameState)
-	{
-		_latestGameState = gameState;
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton mb && mb.Pressed)
+        {
+            if (mb.ButtonIndex == MouseButton.Right)
+            {
+                if (_currentState == InputState.TargetingCard) CancelTargeting();
+            }
+            else if (mb.ButtonIndex == MouseButton.Left)
+            {
+                if (_currentState == InputState.TargetingCard || _currentState == InputState.PendingTarget)
+                {
+                    TrySelectTargetUnderMouse();
+                }
+            }
+        }
+    }
 
-		// 1. Priorytet: Mulligan
-		if (gameState.CurrentPhase == CardGame.Core.State.Enums.GamePhase.Mulligan)
-		{
-			if (_currentState != InputState.Mulligan)
-				StartMulligan(gameState.PlayerA.Hand.ToList());
-			return;
-		}
+    public void UpdateState(GameState gameState)
+    {
+        _latestGameState = gameState;
 
-		// 2. Priorytet: Pending Interaction (Wybory/Cele)
-		if (gameState.PendingInteraction != null)
-		{
-			// --- FIX: STRAŻNIK PRZED PĘTLĄ ---
-			// Jeśli już jesteśmy w trakcie obsługi TEJ SAMEJ interakcji, nie rób nic!
-			// Sprawdzamy czy stan to PendingTarget I czy obiekt interakcji jest ten sam (referencja)
-			// (Jeśli w C# obiekty są różne co update, sprawdźmy chociaż typ i sourceId)
+        // 1. Priorytet: Mulligan
+        if (gameState.CurrentPhase == CardGame.Core.State.Enums.GamePhase.Mulligan)
+        {
+            if (_currentState != InputState.Mulligan)
+                StartMulligan(gameState.PlayerA.Hand.ToList());
+            return;
+        }
 
-			bool isSameInteraction = _currentPending != null &&
-									 _currentPending.SourceCardInstanceId == gameState.PendingInteraction.SourceCardInstanceId &&
-									 _currentPending.RequiredTargetType == gameState.PendingInteraction.RequiredTargetType;
+        // 2. Priorytet: Pending Interaction (Wybory/Cele)
+        if (gameState.PendingInteraction != null)
+        {
+            // --- FIX: UKRYWANIE AKCJI BOTA ---
+            // Jeśli gra czeka na decyzję, ale to tura Bota, nie wyświetlamy UI dla gracza.
+            // Bot sam sobie poradzi przez AI Controller.
+            if (gameState.ActivePlayerId != _playerId)
+            {
+                // Upewniamy się tylko, że UI gracza jest czyste
+                if (_currentState != InputState.Idle)
+                {
+                    _currentState = InputState.Idle;
+                    _ui.HideChoiceModal();
+                    _ui.HideTargetingArrow();
+                    _ui.ClearHighlights();
+                }
+                return;
+            }
+            // ---------------------------------
 
-			if (_currentState == InputState.PendingTarget && isSameInteraction)
-			{
-				return; // JUŻ TO ROBIMY -> WYJDŹ
-			}
-			// ---------------------------------
+            // Strażnik przed pętlą (ten sam obiekt interaction)
+            bool isSameInteraction = _currentPending != null &&
+                                     _currentPending.SourceCardInstanceId == gameState.PendingInteraction.SourceCardInstanceId &&
+                                     _currentPending.RequiredTargetType == gameState.PendingInteraction.RequiredTargetType;
 
-			// Jeśli to nowa interakcja, zresetuj stare celowanie
-			if (_currentState == InputState.TargetingCard) CancelTargeting();
+            if (_currentState == InputState.PendingTarget && isSameInteraction)
+            {
+                return;
+            }
 
-			StartPendingResolution(gameState.PendingInteraction);
-			return;
-		}
+            if (_currentState == InputState.TargetingCard) CancelTargeting();
 
-		// Jeśli Pending zniknął (jest null), a my wciąż myślimy, że jest PendingTarget -> Wyjdź z tego stanu
-		if (_currentState == InputState.PendingTarget && gameState.PendingInteraction == null)
-		{
-			_currentPending = null;
-			_currentState = InputState.Normal;
-			_ui.HideChoiceModal(); // Na wszelki wypadek zamykamy modal
-			_ui.HideTargetingArrow();
-			_ui.ClearHighlights();
-			_ui.ShowBigMessage("", 0);
-		}
+            StartPendingResolution(gameState.PendingInteraction);
+            return;
+        }
 
-		// 3. Normalna tura gracza
-		if (gameState.ActivePlayerId == _playerId)
-		{
-			if (_currentState != InputState.TargetingCard && _currentState != InputState.PendingTarget)
-			{
-				_currentState = InputState.Normal;
-			}
-		}
-		else
-		{
-			_currentState = InputState.Idle;
-			_ui.HideTargetingArrow();
-			_ui.ClearHighlights();
-		}
-	}
+        // Reset jeśli Pending zniknął
+        if (_currentState == InputState.PendingTarget && gameState.PendingInteraction == null)
+        {
+            _currentPending = null;
+            _currentState = InputState.Normal;
+            _ui.HideChoiceModal();
+            _ui.HideTargetingArrow();
+            _ui.ClearHighlights();
+            _ui.ShowBigMessage("", 0);
+        }
 
-	public void HandleCardClick(CardInstance card)
-	{
-		// 1. Mulligan (bez zmian)
-		if (_currentState == InputState.Mulligan)
-		{
-			ProcessMulliganClick(card);
-			return;
-		}
+        // 3. Normalna tura gracza
+        if (gameState.ActivePlayerId == _playerId)
+        {
+            if (_currentState != InputState.TargetingCard && _currentState != InputState.PendingTarget)
+            {
+                _currentState = InputState.Normal;
+            }
+        }
+        else
+        {
+            _currentState = InputState.Idle;
+            _ui.HideTargetingArrow();
+            _ui.ClearHighlights();
+        }
+    }
 
-		// 2. Wybieranie Celu (TO JEST NOWOŚĆ)
-		// Jeśli jesteśmy w trybie celowania i kliknięto kartę...
-		if (_currentState == InputState.TargetingCard || _currentState == InputState.PendingTarget)
-		{
-			// Nie pozwól wybrać Ducha jako celu
-			if (_ui.GetGhostUnit() != null && _ui.GetGhostUnit().MyCardData == card) return;
+    public void HandleCardClick(CardInstance card)
+    {
+        if (_currentState == InputState.Mulligan)
+        {
+            ProcessMulliganClick(card);
+            return;
+        }
 
-			SubmitTarget(card.InstanceId);
-			return;
-		}
+        if (_currentState == InputState.Normal)
+        {
+            if (card.OwnerPlayerId == _playerId && _ui.IsCardInHand(card))
+            {
+                if (card.Definition.Type == CardType.Spell)
+                    TryPlayCardFromHand(card, null);
+            }
+        }
+    }
 
-		// 3. Zagrywanie z ręki (Normal)
-		if (_currentState == InputState.Normal)
-		{
-			if (card.OwnerPlayerId == _playerId && _ui.IsCardInHand(card))
-			{
-				if (card.Definition.Type == CardType.Spell)
-					TryPlayCardFromHand(card, null);
-			}
-		}
-	}
+    public void HandleCardDrop(CardInstance card, int lineIdx)
+    {
+        if (_currentState != InputState.Normal) return;
 
-	public void HandleCardDrop(CardInstance card, int lineIdx)
-	{
-		if (_currentState != InputState.Normal) return;
+        if (card.Definition.Type == CardType.Unit)
+        {
+            bool needsTarget = HasManualTarget(card);
+            bool hasValidTargets = CheckIfHasValidTargetsOnBoard(card);
 
-		if (card.Definition.Type == CardType.Unit)
-		{
-			// Sprawdzamy czy Unit wymaga celu (np. Polar Bear)
-			bool needsTarget = HasManualTarget(card);
-			bool hasValidTargets = CheckIfHasValidTargetsOnBoard(card);
+            if (needsTarget && hasValidTargets)
+            {
+                // Tryb celowania z Duchem
+                TryPlayCardFromHand(card, lineIdx);
+            }
+            else
+            {
+                OnPlayerCommand?.Invoke(new PlayUnitCommand(_playerId, card.InstanceId, lineIdx));
+            }
+        }
+        else if (card.Definition.Type == CardType.Spell)
+        {
+            TryPlayCardFromHand(card, null);
+        }
+    }
 
-			if (needsTarget && hasValidTargets)
-			{
-				// Tryb celowania z Duchem
-				TryPlayCardFromHand(card, lineIdx);
-			}
-			else
-			{
-				// Graj natychmiast
-				OnPlayerCommand?.Invoke(new PlayUnitCommand(_playerId, card.InstanceId, lineIdx));
-			}
-		}
-		else if (card.Definition.Type == CardType.Spell)
-		{
-			TryPlayCardFromHand(card, null);
-		}
-	}
+    private void TryPlayCardFromHand(CardInstance card, int? unitLineIdx)
+    {
+        bool needsTarget = HasManualTarget(card);
+        bool hasValidTargets = CheckIfHasValidTargetsOnBoard(card);
 
-	private void TryPlayCardFromHand(CardInstance card, int? unitLineIdx)
-	{
-		bool needsTarget = HasManualTarget(card);
+        // Jeśli karta wymaga celu I są cele na stole
+        if (needsTarget && hasValidTargets)
+        {
+            _currentState = InputState.TargetingCard;
+            _selectedCardHand = card;
+            _pendingUnitLineIdx = unitLineIdx;
 
-		// Critical Thinking Fix: HasManualTarget zwróci false, więc wejdzie do else -> PlaySpellCommand
+            // --- FIX: DUCH TYLKO DLA JEDNOSTEK ---
+            // Nie twórz ducha dla czarów, bo to zostawiało "kwadrat"
+            if (card.Definition.Type == CardType.Unit && unitLineIdx.HasValue)
+            {
+                _ui.CreateGhostUnit(card, unitLineIdx.Value);
+            }
+            // -------------------------------------
 
-		if (needsTarget && CheckIfHasValidTargetsOnBoard(card))
-		{
-			_currentState = InputState.TargetingCard;
-			_selectedCardHand = card;
-			_pendingUnitLineIdx = unitLineIdx;
+            _ui.ShowBigMessage("WYBIERZ CEL", 0, Colors.Yellow);
+            _ui.SetCancelButtonVisible(true);
+            _ui.HighlightTargets(GetTargetTypeForCard(card), _playerId);
+        }
+        else
+        {
+            // Zagranie bez celowania (Global Spell lub Unit bez celu)
+            if (card.Definition.Type == CardType.Spell)
+            {
+                // --- FIX: CZYSTE ZAGRANIE ---
+                // Upewniamy się, że nie ma resztek UI przed wysłaniem
+                CancelTargeting();
+                OnPlayerCommand?.Invoke(new PlaySpellCommand(_playerId, card.InstanceId));
+            }
+            // Unity bez celu są obsłużone w HandleCardDrop
+        }
+    }
 
-			// Tworzymy ducha TYLKO jeśli to Unit i mamy linię
-			if (card.Definition.Type == CardType.Unit && unitLineIdx.HasValue)
-			{
-				_ui.CreateGhostUnit(card, unitLineIdx.Value);
-			}
+    public void CancelTargeting()
+    {
+        _currentState = InputState.Normal;
+        _selectedCardHand = null;
+        _pendingUnitLineIdx = null;
 
-			_ui.ShowBigMessage("WYBIERZ CEL", 0, Colors.Yellow);
-			_ui.SetCancelButtonVisible(true);
-			_ui.HighlightTargets(GetTargetTypeForCard(card), _playerId);
-		}
-		else
-		{
-			// Zagranie bez celowania (Critical Thinking, Final Mission bez celów itp.)
-			if (card.Definition.Type == CardType.Spell)
-			{
-				OnPlayerCommand?.Invoke(new PlaySpellCommand(_playerId, card.InstanceId));
-			}
-			// Unity bez celu poszły w HandleCardDrop, tutaj nic nie robimy
-		}
-	}
+        _ui.RemoveGhostUnit();
+        _ui.HideTargetingArrow();
+        _ui.SetCancelButtonVisible(false);
+        _ui.ClearHighlights();
+        _ui.ShowBigMessage("", 0);
+    }
 
-	public void CancelTargeting()
-	{
-		_currentState = InputState.Normal;
-		_selectedCardHand = null;
-		_pendingUnitLineIdx = null;
+    private void UpdateTargetingArrow()
+    {
+        Vector2 start = _ui.GetArrowStartPosition();
+        _ui.UpdateTargetingArrow(start, GetViewport().GetMousePosition());
+    }
 
-		_ui.RemoveGhostUnit();
-		_ui.HideTargetingArrow();
-		_ui.SetCancelButtonVisible(false);
-		_ui.ClearHighlights();
-		_ui.ShowBigMessage("", 0);
-	}
+    private void TrySelectTargetUnderMouse()
+    {
+        var mousePos = GetViewport().GetMousePosition();
+        var targetCard = _ui.FindCardUnderMouse(mousePos);
 
-	private void UpdateTargetingArrow()
-	{
-		Vector2 start = _ui.GetArrowStartPosition();
-		_ui.UpdateTargetingArrow(start, GetViewport().GetMousePosition());
-	}
+        if (targetCard != null && targetCard.MyCardData != null)
+        {
+            if (targetCard == _ui.GetGhostUnit()) return;
+            SubmitTarget(targetCard.MyCardData.InstanceId);
+        }
+    }
 
-	private void TrySelectTargetUnderMouse()
-	{
-		var mousePos = GetViewport().GetMousePosition();
-		var targetCard = _ui.FindCardUnderMouse(mousePos);
+    private void SubmitTarget(int targetId)
+    {
+        if (_currentState == InputState.TargetingCard)
+        {
+            if (_selectedCardHand.Definition.Type == CardType.Unit)
+            {
+                int line = _pendingUnitLineIdx ?? 0;
+                OnPlayerCommand?.Invoke(new PlayUnitCommand(_playerId, _selectedCardHand.InstanceId, line, targetId));
+            }
+            else if (_selectedCardHand.Definition.Type == CardType.Spell)
+            {
+                OnPlayerCommand?.Invoke(new PlaySpellCommand(_playerId, _selectedCardHand.InstanceId, targetId));
+            }
 
-		if (targetCard != null && targetCard.MyCardData != null)
-		{
-			// Nie pozwól celować w ducha!
-			if (targetCard == _ui.GetGhostUnit()) return;
+            _ui.RemoveGhostUnit();
+            CancelTargeting();
+        }
+        else if (_currentState == InputState.PendingTarget)
+        {
+            OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, targetId));
 
-			SubmitTarget(targetCard.MyCardData.InstanceId);
-		}
-	}
+            _ui.ClearHighlights();
+            _ui.ShowBigMessage("", 0);
+            _ui.HideTargetingArrow();
+        }
+    }
 
-	private void SubmitTarget(int targetId)
-	{
-		if (_currentState == InputState.TargetingCard)
-		{
-			if (_selectedCardHand.Definition.Type == CardType.Unit)
-			{
-				int line = _pendingUnitLineIdx ?? 0;
-				OnPlayerCommand?.Invoke(new PlayUnitCommand(_playerId, _selectedCardHand.InstanceId, line, targetId));
-			}
-			else if (_selectedCardHand.Definition.Type == CardType.Spell)
-			{
-				OnPlayerCommand?.Invoke(new PlaySpellCommand(_playerId, _selectedCardHand.InstanceId, targetId));
-			}
+    private void StartPendingResolution(PendingInteraction pending)
+    {
+        _currentPending = pending;
+        _currentState = InputState.PendingTarget;
 
-			// WAŻNE: Nie usuwamy Ducha tutaj. Zrobi to UIManager przy aktualizacji stanu (UpdateDisplay),
-			// gdy prawdziwa jednostka pojawi się na stole.
-			// _ui.RemoveGhostUnit(); <--- USUNIĘTE
+        GD.Print($"[INPUT] StartPendingResolution. Typ: {pending.RequiredTargetType}, Opcji: {pending.Options.Count}");
 
-			// Resetujemy tylko stan logiczny, UI wyczyści się przy UpdateDisplay
-			_currentState = InputState.Normal;
-			_selectedCardHand = null;
-			_ui.HideTargetingArrow();
-			_ui.SetCancelButtonVisible(false);
-			_ui.ClearHighlights();
-			_ui.ShowBigMessage("", 0);
-		}
-		else if (_currentState == InputState.PendingTarget)
-		{
-			OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, targetId));
+        if (pending.RequiredTargetType == TargetType.Choice)
+        {
+            _ui.HideTargetingArrow();
 
-			_ui.ClearHighlights();
-			_ui.ShowBigMessage("", 0);
-			_ui.HideTargetingArrow();
-		}
-	}
+            // HEURYSTYKA: Tutor czy Modal?
+            if (pending.Options.Count > 4)
+            {
+                var deck = _latestGameState.PlayerA.DrawPile.ToList();
 
-	private void StartPendingResolution(PendingInteraction pending)
-	{
-		if (_currentState == InputState.PendingTarget && _currentPending == pending) return;
+                // Tutor (Siatka Kart)
+                _ui.ShowCardSelectionModal(deck, (index) =>
+                {
+                    OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, index));
+                    _ui.HideChoiceModal();
+                });
+                return;
+            }
+            else
+            {
+                // Modal (Przyciski) - np. Expectancy
+                var player = _latestGameState.PlayerA;
+                List<bool> optionValidity = new List<bool>();
 
-		_currentPending = pending;
-		_currentState = InputState.PendingTarget;
+                foreach (var opt in pending.Options)
+                {
+                    bool isValid = true;
+                    // Prosta walidacja po tekście (można rozbudować)
+                    if (opt.Contains("Discard", StringComparison.OrdinalIgnoreCase) && player.DiscardPile.Count == 0) isValid = false;
+                    else if (opt.Contains("Deck", StringComparison.OrdinalIgnoreCase) && player.DrawPile.Count == 0) isValid = false;
+                    optionValidity.Add(isValid);
+                }
 
-		if (pending.RequiredTargetType == TargetType.Choice)
-		{
-			_ui.HideTargetingArrow();
+                _ui.ShowChoiceModal(pending.Options, (index) =>
+                {
+                    OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, index));
+                    _ui.HideChoiceModal();
+                }, optionValidity);
+            }
+            return;
+        }
 
-			// --- HEURYSTYKA WYBORU TRYBU ---
-			// Jeśli opcji jest dużo (> 4), zakładamy, że to Tutor (wybór z talii).
-			// Wtedy pobieramy karty z talii gracza i wyświetlamy je graficznie.
+        // Zwykłe celowanie (np. 2 etap Final Mission)
+        _ui.ShowBigMessage("WYBIERZ CEL EFEKTU", 0, Colors.Orange);
+        _ui.HighlightTargets(pending.RequiredTargetType, _playerId);
+    }
 
-			if (pending.Options.Count > 4)
-			{
-				var deck = _latestGameState.PlayerA.DrawPile.ToList();
+    // --- HELPERY ---
+    private bool HasManualTarget(CardInstance c)
+    {
+        return c.Definition.Effects.Any(e => e.Actions.Any(a => IsManualTarget(a.Target)));
+    }
 
-				// Pokaż okno
-				_ui.ShowCardSelectionModal(deck, (index) =>
-				{
-					// --- DEBUG START ---
-					GD.Print($"[INPUT] Wybrano kartę z gridu. Index: {index}");
-					GD.Print($"[INPUT] Karta pod tym indeksem w kliencie: {deck[index].Definition.Name}");
-					GD.Print($"[INPUT] Wysyłam SelectTargetCommand(PlayerId: {_playerId}, TargetId: {index})");
-					// --- DEBUG END ---
+    private bool IsManualTarget(TargetType t) =>
+        t == TargetType.TargetEnemyUnit ||
+        t == TargetType.TargetFriendlyUnit ||
+        t == TargetType.SelectedTarget ||
+        t == TargetType.OtherFriendlyUnits;
 
-					OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, index));
-					_ui.HideChoiceModal();
-				});
-				return;
-			}
-			else
-			{
-				// Mało opcji = Zwykły Modal (Expectancy)
+    private TargetType GetTargetTypeForCard(CardInstance c)
+    {
+        foreach (var e in c.Definition.Effects)
+            foreach (var a in e.Actions)
+                if (IsManualTarget(a.Target)) return a.Target;
+        return TargetType.SelectedTarget;
+    }
 
-				// ... (Twoja logika walidacji EnabledStates z poprzedniego kroku) ...
-				var player = _latestGameState.PlayerA;
-				List<bool> optionValidity = new List<bool>();
-				foreach (var opt in pending.Options)
-				{
-					bool isValid = true;
-					if (opt.Contains("Discard", StringComparison.OrdinalIgnoreCase) && player.DiscardPile.Count == 0) isValid = false;
-					else if (opt.Contains("Deck", StringComparison.OrdinalIgnoreCase) && player.DrawPile.Count == 0) isValid = false;
-					optionValidity.Add(isValid);
-				}
+    private bool CheckIfHasValidTargetsOnBoard(CardInstance card)
+    {
+        if (_latestGameState == null) return false;
+        foreach (var effect in card.Definition.Effects)
+        {
+            if (effect.Trigger != TriggerType.OnPlayed) continue;
+            var tType = effect.Targeting;
 
-				_ui.ShowChoiceModal(pending.Options, (index) =>
-				{
-					OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, index));
-					_ui.HideChoiceModal();
-				}, optionValidity);
-			}
-			return;
-		}
+            if (tType == TargetType.Self)
+            {
+                var action = effect.Actions.FirstOrDefault(a => IsManualTarget(a.Target));
+                if (action != null) tType = action.Target;
+            }
 
-		_ui.ShowBigMessage("WYBIERZ CEL EFEKTU", 0, Colors.Orange);
-		_ui.HighlightTargets(pending.RequiredTargetType, _playerId);
-	}
+            var targets = EffectTargetResolver.GetPotentialTargets(tType, _latestGameState, card.InstanceId);
+            if (targets.Count > 0) return true;
+        }
+        return false;
+    }
 
-	// --- HELPERY ---
-	private bool HasManualTarget(CardInstance c)
-	{
-		return c.Definition.Effects.Any(e => e.Actions.Any(a => IsManualTarget(a.Target)));
-	}
-
-	private bool IsManualTarget(TargetType t) =>
-		t == TargetType.TargetEnemyUnit ||
-		t == TargetType.TargetFriendlyUnit ||
-		t == TargetType.SelectedTarget ||
-		t == TargetType.OtherFriendlyUnits;
-
-	private TargetType GetTargetTypeForCard(CardInstance c)
-	{
-		foreach (var e in c.Definition.Effects)
-			foreach (var a in e.Actions)
-				if (IsManualTarget(a.Target)) return a.Target;
-		return TargetType.SelectedTarget;
-	}
-
-	private bool CheckIfHasValidTargetsOnBoard(CardInstance card)
-	{
-		if (_latestGameState == null) return false;
-		foreach (var effect in card.Definition.Effects)
-		{
-			if (effect.Trigger != TriggerType.OnPlayed) continue;
-			var tType = effect.Targeting;
-
-			if (tType == TargetType.Self)
-			{
-				var action = effect.Actions.FirstOrDefault(a => IsManualTarget(a.Target));
-				if (action != null) tType = action.Target;
-			}
-
-			var targets = EffectTargetResolver.GetPotentialTargets(tType, _latestGameState, card.InstanceId);
-			if (targets.Count > 0) return true;
-		}
-		return false;
-	}
-
-	// Mulligan...
-	public void StartMulligan(List<CardInstance> hand)
-	{
-		_currentState = InputState.Mulligan;
-		_mulliganSelection.Clear();
-		_mulliganHandCache = hand;
-		_ui.ToggleMulliganPanel(true);
-		_ui.UpdateMulliganCounter(0, MAX_MULLIGAN_SWAPS);
-		_ui.RenderMulliganCards(hand, _mulliganSelection);
-	}
-	private void ProcessMulliganClick(CardInstance card)
-	{
-		int id = card.InstanceId;
-		if (_mulliganSelection.Contains(id)) _mulliganSelection.Remove(id);
-		else if (_mulliganSelection.Count < MAX_MULLIGAN_SWAPS) _mulliganSelection.Add(id);
-		_ui.UpdateMulliganCounter(_mulliganSelection.Count, MAX_MULLIGAN_SWAPS);
-		_ui.RenderMulliganCards(_mulliganHandCache, _mulliganSelection);
-	}
-	public void ConfirmMulligan()
-	{
-		if (_currentState != InputState.Mulligan) return;
-		var cmd = new ConfirmMulliganCommand(_playerId, new List<int>(_mulliganSelection));
-		OnPlayerCommand?.Invoke(cmd);
-		_ui.ToggleMulliganPanel(false);
-	}
+    // Mulligan...
+    public void StartMulligan(List<CardInstance> hand)
+    {
+        _currentState = InputState.Mulligan;
+        _mulliganSelection.Clear();
+        _mulliganHandCache = hand;
+        _ui.ToggleMulliganPanel(true);
+        _ui.UpdateMulliganCounter(0, MAX_MULLIGAN_SWAPS);
+        _ui.RenderMulliganCards(hand, _mulliganSelection);
+    }
+    private void ProcessMulliganClick(CardInstance card)
+    {
+        int id = card.InstanceId;
+        if (_mulliganSelection.Contains(id)) _mulliganSelection.Remove(id);
+        else if (_mulliganSelection.Count < MAX_MULLIGAN_SWAPS) _mulliganSelection.Add(id);
+        _ui.UpdateMulliganCounter(_mulliganSelection.Count, MAX_MULLIGAN_SWAPS);
+        _ui.RenderMulliganCards(_mulliganHandCache, _mulliganSelection);
+    }
+    public void ConfirmMulligan()
+    {
+        if (_currentState != InputState.Mulligan) return;
+        var cmd = new ConfirmMulliganCommand(_playerId, new List<int>(_mulliganSelection));
+        OnPlayerCommand?.Invoke(cmd);
+        _ui.ToggleMulliganPanel(false);
+    }
 }

@@ -376,34 +376,43 @@ public partial class UIManager : Node
 		return FindCardUnderMouseRecursive(BoardContainer, mousePos);
 	}
 
-	public void ShowBigMessage(string text, float duration = 0f, Color? color = null)
-	{
-		if (MessagePanel == null || MessageLabel == null) return;
+    public void ShowBigMessage(string text, float duration = 0f, Color? color = null)
+    {
+        if (MessagePanel == null || MessageLabel == null) return;
 
-		if (_activeMessageTween != null && _activeMessageTween.IsValid()) _activeMessageTween.Kill();
+        if (_activeMessageTween != null && _activeMessageTween.IsValid()) _activeMessageTween.Kill();
 
-		MessageLabel.Text = text;
-		MessageLabel.Modulate = color ?? Colors.White;
-		MessagePanel.Visible = true;
-		MessagePanel.Modulate = new Color(1, 1, 1, 1);
-		MessagePanel.Scale = Vector2.One;
+        // --- FIX: Jeśli tekst pusty, ukryj panel i wyjdź ---
+        if (string.IsNullOrEmpty(text))
+        {
+            MessagePanel.Visible = false;
+            return;
+        }
+        // ----------------------------------------------------
 
-		if (duration > 0f)
-		{
-			_activeMessageTween = CreateTween();
-			_activeMessageTween.TweenProperty(MessagePanel, "scale", Vector2.One, 0.3f)
-				.SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.Out);
-			_activeMessageTween.TweenInterval(duration);
-			_activeMessageTween.TweenProperty(MessagePanel, "modulate:a", 0.0f, 0.5f);
-			_activeMessageTween.TweenCallback(Callable.From(() => MessagePanel.Visible = false));
-		}
-		else
-		{
-			MessagePanel.Scale = Vector2.One;
-		}
-	}
+        MessageLabel.Text = text;
+        MessageLabel.Modulate = color ?? Colors.White;
 
-	public void ShowGameOverScreen(int? winnerId, int playerId, int botId)
+        MessagePanel.Visible = true;
+        MessagePanel.Modulate = new Color(1, 1, 1, 1);
+        MessagePanel.Scale = Vector2.One;
+
+        if (duration > 0f)
+        {
+            _activeMessageTween = CreateTween();
+            _activeMessageTween.TweenProperty(MessagePanel, "scale", Vector2.One, 0.3f)
+                .SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.Out);
+            _activeMessageTween.TweenInterval(duration);
+            _activeMessageTween.TweenProperty(MessagePanel, "modulate:a", 0.0f, 0.5f);
+            _activeMessageTween.TweenCallback(Callable.From(() => MessagePanel.Visible = false));
+        }
+        else
+        {
+            MessagePanel.Scale = Vector2.One;
+        }
+    }
+
+    public void ShowGameOverScreen(int? winnerId, int playerId, int botId)
 	{
 		string msg = "REMIS";
 		Color col = Colors.Gray;
