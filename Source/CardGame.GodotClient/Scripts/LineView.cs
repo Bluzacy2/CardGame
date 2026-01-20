@@ -12,19 +12,28 @@ public partial class LineView : Control
 	[Signal] public delegate void CardDroppedOnLineEventHandler(int cardInstanceId, int lineIndex);
 
 	private int _myIndex;
-
-	public override void _Ready()
+    private readonly string[] RomanNumerals = { "I", "II", "III", "IV" };
+    public override void _Ready()
 	{
 		MouseFilter = MouseFilterEnum.Stop;
 	}
 
-	// --- ZMIANA: Dodano parametr onClickHandler ---
-	public void Render(Line lineData, PackedScene cardScene, Action<CardView> onClickHandler)
-	{
-		_myIndex = lineData.Index;
-		if (InfoLabel != null) InfoLabel.Text = $"L{_myIndex}";
+    // --- ZMIANA: Dodano parametr onClickHandler ---
+    public void Render(Line lineData, PackedScene cardScene, Action<CardView> onClickHandler)
+    {
+        _myIndex = lineData.Index;
 
-		ClearSlot(EnemySlot);
+        if (InfoLabel != null)
+        {
+            // Ustawienie tekstu na I, II, III lub IV
+            InfoLabel.Text = RomanNumerals[_myIndex];
+
+            // Stylizacja (duży font, szary kolor, wyśrodkowanie)
+            InfoLabel.HorizontalAlignment = HorizontalAlignment.Center;
+            InfoLabel.Modulate = new Color(1, 1, 1, 0.2f); // Przezroczystość 20%
+        }
+
+        ClearSlot(EnemySlot);
 		ClearSlot(PlayerSlot);
 
 		// 2. Wrogowie (Góra)

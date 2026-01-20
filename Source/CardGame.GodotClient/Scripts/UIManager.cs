@@ -9,6 +9,7 @@ using CardGame.Core.State.Enums;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.Events;
 
+
 public partial class UIManager : Node
 {
 	// --- REFERENCJE DO SCENY ---
@@ -45,11 +46,15 @@ public partial class UIManager : Node
 	[Export] public Button ConfirmMulliganButton;
 	[Export] public Label MulliganCounterLabel;
 
-	
-	
+    [ExportGroup("Nowe Elementy Stylu")]
+    [Export] public Control PlayerBloodGrid;
+    [Export] public Control EnemyBloodGrid;
+    [Export] public Control GraveyardContainer;
+    [Export] public Label DeckCountLabel;
+    [Export] public Label PersistentPhaseLabel;
 
-	// --- NOWE: GHOST UNIT ---
-	private CardView _ghostUnit;
+    // --- NOWE: GHOST UNIT ---
+    private CardView _ghostUnit;
 	private int _ghostLineIdx = -1;
 	public CardView GetGhostUnit() => _ghostUnit;
 
@@ -286,16 +291,47 @@ public partial class UIManager : Node
 			}
 		}
 
-		if (_lastRenderedState != null) CheckPhaseChange(currentState, _lastRenderedState, playerId);
-		UpdateStats(currentState, playerId);
-		RenderHand(currentState, playerId);
-		RenderEnemyHand(currentState, playerId);
-		RenderBoard(currentState);
+        if (MessagePanel != null && MessageLabel != null)
+        {
+            string who = currentState.ActivePlayerId == playerId ? "TWOJA TURA" : "TURA BOTA";
+            string faza = GetPhaseFriendlyName(currentState.CurrentPhase);
 
-		_lastRenderedState = currentState;
-	}
+            // Używamy \n aby przenieść tekst do nowej linii
+            MessageLabel.Text = $"FAZA:{faza}\n{who}\nRUNDA {currentState.TurnNumber}";
 
-	public void ToggleMulliganPanel(bool visible)
+            // Wyśrodkowanie tekstu wewnątrz Label (na wypadek gdyby nie było ustawione)
+            MessageLabel.HorizontalAlignment = HorizontalAlignment.Center;
+
+            // Wymuszamy widoczność
+            MessagePanel.Visible = true;
+            MessagePanel.Modulate = new Color(1, 1, 1, 1);
+
+            // Zatrzymujemy animację znikania
+            if (_activeMessageTween != null && _activeMessageTween.IsValid())
+                _activeMessageTween.Kill();
+        }
+
+        UpdateStats(currentState, playerId);
+        RenderHand(currentState, playerId);
+        RenderEnemyHand(currentState, playerId);
+        RenderBoard(currentState);
+        RenderPiles(currentState, playerId); // Wyświetlanie decku
+
+        _lastRenderedState = currentState;
+    }
+    private string GetPhaseFriendlyName(GamePhase phase)
+    {
+        switch (phase)
+        {
+            case GamePhase.Mulligan: return "WYMIANA";
+            case GamePhase.UnitOnly: return "JEDNOSTKI";
+            case GamePhase.UnitAndAction: return "MIESZANA";
+            case GamePhase.ActionOnly: return "AKCJE";
+            default: return phase.ToString().ToUpper();
+        }
+    }
+
+    public void ToggleMulliganPanel(bool visible)
 	{
 		if (MulliganPanel != null) MulliganPanel.Visible = visible;
 	}
@@ -324,8 +360,27 @@ public partial class UIManager : Node
 			view.OnClicked += (v) => OnCardClicked?.Invoke(v);
 		}
 	}
+    private void RenderPiles(GameState state, int playerId)
+    {
+        var player = state.GetPlayer(playerId);
 
-	public void UpdateTargetingArrow(Vector2 start, Vector2 end)
+        // Licznik talii
+        if (DeckCountLabel != null)
+            DeckCountLabel.Text = $"{player.DrawPile.Count}x";
+
+        // Ostatnia karta na cmentarzu
+        if (GraveyardContainer != null && player.DiscardPile.Any())
+        {
+            foreach (Node child in GraveyardContainer.GetChildren()) child.QueueFree();
+            var lastDead = player.DiscardPile.Last();
+            var view = CardSceneTemplate.Instantiate<CardView>();
+            GraveyardContainer.AddChild(view);
+            view.Render(lastDead);
+            view.Modulate = new Color(0.5f, 0.5f, 0.5f);
+        }
+    }
+
+    public void UpdateTargetingArrow(Vector2 start, Vector2 end)
 	{
 		if (TargetingArrow != null)
 		{
@@ -485,18 +540,67 @@ public partial class UIManager : Node
 		return null;
 	}
 
-	private void UpdateStats(GameState state, int playerId)
-	{
-		var p1 = state.GetPlayer(playerId);
-		var p2 = state.GetOpponent(playerId);
+    private void DrawBlood(Control grid, int current, int max)
+    {
+        if (grid == null) return;
+        foreach (Node child in grid.GetChildren()) child.QueueFree();
 
-		if (PlayerHpLabel != null) PlayerHpLabel.Text = $"HP: {p1.Health}";
-		if (PlayerManaLabel != null) PlayerManaLabel.Text = $"Krew: {p1.CurrentBlood}/{p1.MaxBlood}";
-		if (EnemyHpLabel != null) EnemyHpLabel.Text = $"Wróg HP: {p2.Health}";
-		if (EnemyManaLabel != null) EnemyManaLabel.Text = $"Krew: {p2.CurrentBlood}/{p2.MaxBlood}";
-	}
+        for (int i = 0; i < max; i++)
+        {
+            var tr = new TextureRect();
+            tr.CustomMinimumSize = new Vector2(25, 25); // Rozmiar ikonki
+            tr.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
 
-	private void RenderHand(GameState state, int playerId)
+            if (i < current)
+                tr.Texture = GD.Load<Texture2D>("res://Assets/Menus/Game/bloodPoint.png");
+            else
+                tr.Texture = GD.Load<Texture2D>("res://Assets/Menus/Game/bloodUnactive.png");
+
+            grid.AddChild(tr);
+        }
+    }
+
+    private void UpdateStats(GameState state, int playerId)
+    {
+        var p1 = state.GetPlayer(playerId);
+        var p2 = state.GetOpponent(playerId);
+
+        if (PlayerHpLabel != null) PlayerHpLabel.Text = p1.Health.ToString();
+        if (EnemyHpLabel != null) EnemyHpLabel.Text = p2.Health.ToString();
+
+        // Rysowanie kropelek
+        DrawBlood(PlayerBloodGrid, p1.CurrentBlood, p1.MaxBlood);
+        DrawBlood(EnemyBloodGrid, p2.CurrentBlood, p2.MaxBlood);
+    }
+
+    private void RenderBloodIcons(Control grid, int current, int max)
+    {
+        if (grid == null) return;
+        foreach (Node child in grid.GetChildren()) child.QueueFree();
+
+        for (int i = 0; i < max; i++)
+        {
+            var tr = new TextureRect();
+            tr.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+            tr.Texture = GD.Load<Texture2D>(i < current ?
+                "res://Assets/Menus/Game/bloodPoint.png" :
+                "res://Assets/Menus/Game/bloodUnactive.png");
+            grid.AddChild(tr);
+        }
+    }
+    private void RenderGraveyard(List<CardInstance> discard)
+    {
+        if (GraveyardContainer == null || !discard.Any()) return;
+        foreach (Node child in GraveyardContainer.GetChildren()) child.QueueFree();
+
+        var lastDead = discard.Last();
+        var view = CardSceneTemplate.Instantiate<CardView>();
+        GraveyardContainer.AddChild(view);
+        view.Render(lastDead);
+        view.Modulate = new Color(0.4f, 0.4f, 0.4f); // Cmentarz jest ciemniejszy
+    }
+
+    private void RenderHand(GameState state, int playerId)
 	{
 		if (HandContainer == null || CardSceneTemplate == null) return;
 
