@@ -8,21 +8,32 @@ using CardGame.Core.State.Models;
 using CardGame.Core.State.Enums;
 using CardGame.Core.Events.Interfaces;
 using CardGame.Core.Events;
-
+/// <summary>
+/// Manages the entire visual presentation of the gameplay scene.
+/// Acts as the View layer, rendering the GameState and handling UI interactions.
+/// </summary>
 public partial class UIManager : Node
 {
-	// --- REFERENCJE DO SCENY ---
+	
 	[ExportGroup("Kontenery")]
-	[Export] public Control HandContainer;
-	[Export] public Control BoardContainer;
-	[Export] public Control EnemyHandContainer;
-	[Export] public Control VFXContainer;
+    /// <summary>Container for the local player's hand cards.</summary>
+    [Export] public Control HandContainer;
+    /// <summary>Container for the board lines (lanes).</summary>
+    [Export] public Control BoardContainer;
+    /// <summary>Container for the opponent's hand (card backs).</summary>
+    [Export] public Control EnemyHandContainer;
+    /// <summary>Container for floating texts and visual effects.</summary>
+    [Export] public Control VFXContainer;
 
 	[ExportGroup("UI Elementy")]
-	[Export] public Button EndTurnButton;
-	[Export] public Button CancelSpellButton;
-	[Export] public Button RestartButton;
-	[Export] public Line2D TargetingArrow;
+    /// <summary>Button to end the current phase/turn.</summary>
+    [Export] public Button EndTurnButton;
+    /// <summary>Button to cancel the current spell casting or targeting action.</summary>
+    [Export] public Button CancelSpellButton;
+    /// <summary>Button shown at game over to restart the match.</summary>
+    [Export] public Button RestartButton;
+    /// <summary>Line2D used to draw a visual arrow during targeting.</summary>
+    [Export] public Line2D TargetingArrow;
 
 	[ExportSubgroup("Etykiety")]
 	[Export] public Label PlayerHpLabel;
@@ -31,14 +42,18 @@ public partial class UIManager : Node
 	[Export] public Label EnemyManaLabel;
 
 	[ExportGroup("System Powiadomień")]
-	[Export] public Control NotificationLayer;
+    /// <summary>Layer for modal popups and large messages, rendered on top.</summary>
+    [Export] public Control NotificationLayer;
 	[Export] public Control MessagePanel;
 	[Export] public Label MessageLabel;
 
 	[ExportGroup("Szablony")]
-	[Export] public PackedScene CardSceneTemplate;
-	[Export] public PackedScene LineSceneTemplate;
-	[Export] public PackedScene ChoiceModalScene;
+    /// <summary>The PackedScene used to instantiate individual cards.</summary>
+    [Export] public PackedScene CardSceneTemplate;
+    /// <summary>The PackedScene used to instantiate board lines.</summary>
+    [Export] public PackedScene LineSceneTemplate;
+    /// <summary>The PackedScene used to instantiate the Choice Modal.</summary>
+    [Export] public PackedScene ChoiceModalScene;
 	[ExportGroup("Mulligan UI")]
 	[Export] public Control MulliganPanel;
 	[Export] public Control MulliganCardsContainer;
@@ -48,30 +63,35 @@ public partial class UIManager : Node
 	[Export] public Control PlayerBloodGrid;     
 	[Export] public Control EnemyBloodGrid;     
 	[Export] public Label DeckCountLabel;       
-	[Export] public Control GraveyardContainer;  
+	[Export] public Control GraveyardContainer;
 
 
 
-	// --- NOWE: GHOST UNIT ---
-	private CardView _ghostUnit;
+    // Ghost Unit State (Visual placeholder during targeting)
+    private CardView _ghostUnit;
 	private int _ghostLineIdx = -1;
 	public CardView GetGhostUnit() => _ghostUnit;
 
 
-	// --- ZDARZENIA UI ---
-	public event Action<CardView> OnCardClicked;
-	public event Action OnEndTurnClicked;
-	public event Action OnRestartClicked;
-	public event Action OnCancelSpellClicked;
-	public event Action OnConfirmMulliganClicked;
+    /// <summary>Fired when a CardView (in hand or on board) is clicked.</summary>
+    public event Action<CardView> OnCardClicked;
+    /// <summary>Fired when the End Turn button is clicked.</summary>
+    public event Action OnEndTurnClicked;
+    /// <summary>Fired when the Restart button is clicked.</summary>
+    public event Action OnRestartClicked;
+    /// <summary>Fired when the Cancel Spell button is clicked.</summary>
+    public event Action OnCancelSpellClicked;
+    /// <summary>Fired when the Confirm Mulligan button is clicked.</summary>
+    public event Action OnConfirmMulliganClicked;
 	private ChoiceModal _choiceModalInstance;
 
 	private GameState _lastRenderedState;
 	private Tween _activeMessageTween;
-
-	public override void _Ready()
+    /// <summary>
+    /// Initializes UI components, hides overlays, connects internal signals, and instantiates the ChoiceModal.
+    /// </summary>
+    public override void _Ready()
 	{
-		// Konfiguracja początkowa
 		if (NotificationLayer != null)
 		{
 			NotificationLayer.Visible = true;
@@ -87,13 +107,12 @@ public partial class UIManager : Node
 		if (EndTurnButton != null) EndTurnButton.Pressed += () => OnEndTurnClicked?.Invoke();
 		if (RestartButton != null) RestartButton.Pressed += () => OnRestartClicked?.Invoke();
 		if (CancelSpellButton != null) CancelSpellButton.Pressed += () => OnCancelSpellClicked?.Invoke();
-
-		SetCancelButtonVisible(false);
+        // Initialize Choice Modal (hidden by default)
+        SetCancelButtonVisible(false);
 		if (MulliganPanel != null) MulliganPanel.Visible = false;
 		if (ConfirmMulliganButton != null)
 			ConfirmMulliganButton.Pressed += () => OnConfirmMulliganClicked?.Invoke();
 
-		// --- INICJALIZACJA MODALA ---
 		if (ChoiceModalScene != null && NotificationLayer != null)
 		{
 			var instance = ChoiceModalScene.Instantiate();
@@ -102,15 +121,18 @@ public partial class UIManager : Node
 			if (_choiceModalInstance != null)
 			{
 				NotificationLayer.AddChild(_choiceModalInstance);
-				// TO JEST KLUCZOWE:
 				_choiceModalInstance.Visible = false;
 			}
 		}
 	}
 
-	// --- PUBLICZNE API (Metody używane przez InputController i GameBootstrap) ---
-
-	public void CreateGhostUnit(CardInstance card, int lineIdx)
+    /// <summary>
+    /// Creates a semi-transparent "Ghost" unit on the board.
+    /// Used to visualize where a unit will be placed while the player is selecting a target for its Battlecry.
+    /// </summary>
+    /// <param name="card">The card data to visualize.</param>
+    /// <param name="lineIdx">The board line index where the ghost should appear.</param>
+    public void CreateGhostUnit(CardInstance card, int lineIdx)
 	{
 		if (BoardContainer == null || CardSceneTemplate == null) return;
 
@@ -120,30 +142,30 @@ public partial class UIManager : Node
 		{
 			var lineView = BoardContainer.GetChild(lineIdx) as LineView;
 
-			// Sprawdzamy czy LineView ma przypisany PlayerSlot
 			if (lineView != null && lineView.PlayerSlot != null)
 			{
 				_ghostUnit = CardSceneTemplate.Instantiate<CardView>();
 
-				// Dodajemy ducha do dolnego slotu
-				// CenterContainer sam wycentruje go idealnie na środku dolnej połowy
-				lineView.PlayerSlot.AddChild(_ghostUnit);
+                // Add to player slot (bottom of lane)
+                lineView.PlayerSlot.AddChild(_ghostUnit);
 
 				_ghostUnit.Render(card);
-				_ghostUnit.Modulate = new Color(1, 1, 1, 0.5f); // Półprzezroczysty
-				_ghostUnit.MouseFilter = Control.MouseFilterEnum.Ignore;
+				_ghostUnit.Modulate = new Color(1, 1, 1, 0.5f);  // Semi-transparent
+                _ghostUnit.MouseFilter = Control.MouseFilterEnum.Ignore; // Ignore mouse events so we can target through it
 
-				_ghostLineIdx = lineIdx;
+                _ghostLineIdx = lineIdx;
 			}
 		}
 	}
-
-	public void RemoveGhostUnit()
+    /// <summary>
+    /// Removes the current ghost unit from the board.
+    /// </summary>
+    public void RemoveGhostUnit()
 	{
 		if (_ghostUnit != null)
 		{
-			// Próba znalezienia i usunięcia spacera
-			var parent = _ghostUnit.GetParent();
+            // Optional spacer cleanup if used in previous iterations
+            var parent = _ghostUnit.GetParent();
 			if (parent != null)
 			{
 				var spacer = parent.GetNodeOrNull("GhostSpacer");
@@ -155,7 +177,11 @@ public partial class UIManager : Node
 			_ghostLineIdx = -1;
 		}
 	}
-	public Vector2 GetArrowStartPosition()
+    /// <summary>
+    /// Returns the screen position from which the targeting arrow should originate.
+    /// If a Ghost Unit exists, returns its center. Otherwise, returns a default position (hand).
+    /// </summary>
+    public Vector2 GetArrowStartPosition()
 	{
 		if (_ghostUnit != null && IsInstanceValid(_ghostUnit))
 		{
@@ -163,29 +189,45 @@ public partial class UIManager : Node
 		}
 		return new Vector2(GetViewport().GetVisibleRect().Size.X / 2, GetViewport().GetVisibleRect().Size.Y - 100);
 	}
-
-	public void ShowChoiceModal(IEnumerable<string> options, Action<int> onSelected)
+    /// <summary>
+    /// Displays the choice modal with text options (e.g., for Expectancy card).
+    /// </summary>
+    /// <param name="options">List of option texts.</param>
+    /// <param name="onSelected">Callback action with the selected index.</param>
+    /// <param name="enabledStates">List of booleans indicating which options are enabled.</param>
+    public void ShowChoiceModal(IEnumerable<string> options, Action<int> onSelected)
 	{
 		if (_choiceModalInstance == null) return;
 		_choiceModalInstance.SetCallback(onSelected);
 		_choiceModalInstance.ShowOptions(options);
 	}
-	public void ShowCardSelectionModal(List<CardInstance> cards, Action<int> onSelected)
+    /// <summary>
+    /// Displays the choice modal with a grid of cards (e.g., for Tutor/Search effects).
+    /// </summary>
+    /// <param name="cards">List of cards to display.</param>
+    /// <param name="onSelected">Callback action with the selected index.</param>
+    public void ShowCardSelectionModal(List<CardInstance> cards, Action<int> onSelected)
 	{
 		if (_choiceModalInstance == null) return;
 
-		// DEBUG: Sprawdź czy mamy szablon
 		if (CardSceneTemplate == null) GD.PrintErr("[UI] CardSceneTemplate is missing in UIManager!");
 
 		_choiceModalInstance.SetCallback(onSelected);
 		_choiceModalInstance.ShowCardGrid(cards, CardSceneTemplate);
 	}
-	public void HideChoiceModal()
+    /// <summary>
+    /// Hides the choice modal.
+    /// </summary>
+    public void HideChoiceModal()
 	{
 		if (_choiceModalInstance != null) _choiceModalInstance.HideModal();
 	}
-
-	public void HighlightTargets(TargetType type, int playerId)
+    /// <summary>
+    /// Highlights valid targets on the board with a colored border.
+    /// </summary>
+    /// <param name="type">The type of targets to highlight (Enemy, Friendly, etc.).</param>
+    /// <param name="playerId">The local player's ID.</param>
+    public void HighlightTargets(TargetType type, int playerId)
 	{
 		var allViews = GetAllCardViewsOnBoard();
 		ClearHighlights();
@@ -214,15 +256,17 @@ public partial class UIManager : Node
 		}
 	}
 
-	// Ta metoda była zdublowana jako HighlightValidTargets - usuwamy duplikat, zostawiamy tę
-	public void HighlightValidTargets(CardInstance spell, int playerId)
+    /// <summary>
+    /// Helper for legacy calls. Highlights valid targets for a spell.
+    /// </summary>
+    public void HighlightValidTargets(CardInstance spell, int playerId)
 	{
-		// Kompatybilność wsteczna - delegujemy do nowej logiki (uproszczone)
-		// Lepiej używać HighlightTargets(TargetType)
 		HighlightTargets(TargetType.SelectedTarget, playerId);
 	}
-
-	public void ClearHighlights()
+    /// <summary>
+    /// Removes highlights from all cards on the board.
+    /// </summary>
+    public void ClearHighlights()
 	{
 		var allViews = GetAllCardViewsOnBoard();
 		foreach (var view in allViews)
@@ -230,19 +274,24 @@ public partial class UIManager : Node
 			view.SetHighlight(false, Colors.White);
 		}
 	}
-
-	public bool IsCardInHand(CardInstance card)
+    /// <summary>
+    /// Checks if a given card instance is currently visually in the player's hand.
+    /// </summary>
+    public bool IsCardInHand(CardInstance card)
 	{
 		if (HandContainer == null) return false;
 		return HandContainer.GetChildren()
 			.OfType<CardView>()
 			.Any(cv => cv.MyCardData?.InstanceId == card.InstanceId);
 	}
-	private void RenderBoard(GameState state)
+    /// <summary>
+    /// Renders the board lines and units.
+    /// </summary>
+    private void RenderBoard(GameState state)
 	{
 		if (BoardContainer == null || LineSceneTemplate == null) return;
-
-		if (BoardContainer.GetChildCount() < 4)
+        // Ensure 4 lines exist
+        if (BoardContainer.GetChildCount() < 4)
 		{
 			for (int i = BoardContainer.GetChildCount(); i < 4; i++)
 			{
@@ -255,8 +304,8 @@ public partial class UIManager : Node
 		{
 			if (child is LineView lineView && lineIdx < state.Board.Lines.Count)
 			{
-				// --- ZMIANA: Przekazujemy lambda, która odpali zdarzenie OnCardClicked ---
-				lineView.Render(
+                // Pass a lambda to handle clicks, bubbling the event up to UIManager
+                lineView.Render(
 					state.Board.Lines[lineIdx],
 					CardSceneTemplate,
 					(clickedCardView) => OnCardClicked?.Invoke(clickedCardView)
@@ -265,29 +314,29 @@ public partial class UIManager : Node
 			}
 		}
 	}
-	public void UpdateDisplay(GameState currentState, int playerId)
+    /// <summary>
+    /// Main render loop. Updates the entire UI based on the current GameState.
+    /// </summary>
+    /// <param name="currentState">The current game state to render.</param>
+    /// <param name="playerId">The local player's ID.</param>
+    public void UpdateDisplay(GameState currentState, int playerId)
 	{
 		if (currentState == null) return;
-
-		// LOGIKA CZYSZCZENIA DUCHA:
-		// Jeśli mieliśmy ducha na linii X, a w nowym stanie na linii X pojawiła się prawdziwa jednostka gracza,
-		// to możemy usunąć ducha, bo RenderBoard zaraz narysuje prawdziwą kartę.
-		if (_ghostUnit != null && _ghostLineIdx != -1)
+        // GHOST UNIT LOGIC:
+        // If a ghost exists at a specific line, check if a real unit has replaced it.
+        // If yes -> Remove Ghost.
+        // If no -> Skip rendering board for that frame to avoid flickering/deleting the ghost.
+        if (_ghostUnit != null && _ghostLineIdx != -1)
 		{
-			var realUnit = currentState.Board.Lines[_ghostLineIdx].Player1Unit; // Zakładamy Player 1
-			if (realUnit != null)
+			var realUnit = currentState.Board.Lines[_ghostLineIdx].Player1Unit; // Assuming Player 1 is always local
+            if (realUnit != null)
 			{
 				RemoveGhostUnit();
 			}
 			else
 			{
-				// Jeśli wciąż celujemy (nie ma jednostki), nie odświeżaj tej jednej linii, żeby duch nie zniknął
-				// Ale RenderBoard i tak czyści kontenery...
-				// Rozwiązanie: Pozwól RenderBoard wyczyścić wszystko, a potem przywróć Ducha?
-				// Nie, prościej: Jeśli jest duch, po prostu nie rób RenderBoard.
-				// Gra i tak jest "zablokowana" w trybie celowania.
-				return;
-			}
+				return; // Wait for the real unit to appear
+            }
 		}
 		if (MessagePanel != null && MessageLabel != null)
 		{
@@ -307,12 +356,14 @@ public partial class UIManager : Node
 		RenderHand(currentState, playerId);
 		RenderEnemyHand(currentState, playerId);
 		RenderBoard(currentState);
-		RenderPiles(currentState, playerId); // Nowa metoda do Decku/Cmentarza
+		RenderPiles(currentState, playerId); 
 
 		_lastRenderedState = currentState;
 	}
-
-	private void RenderPiles(GameState state, int playerId)
+    /// <summary>
+    /// Renders the deck count and the top card of the graveyard.
+    /// </summary>
+    private void RenderPiles(GameState state, int playerId)
 	{
 		var p1 = state.GetPlayer(playerId);
 		if (DeckCountLabel != null)
@@ -384,8 +435,10 @@ public partial class UIManager : Node
 	{
 		if (EndTurnButton != null) EndTurnButton.Disabled = !enabled;
 	}
-
-	public void ShowFloatingText(string text, Vector2 pos, Color color)
+    /// <summary>
+    /// Displays floating text (e.g. damage numbers) at a specific position.
+    /// </summary>
+    public void ShowFloatingText(string text, Vector2 pos, Color color)
 	{
 		if (VFXContainer == null) return;
 		var label = new Label();
@@ -409,20 +462,20 @@ public partial class UIManager : Node
 		if (BoardContainer == null) return null;
 		return FindCardUnderMouseRecursive(BoardContainer, mousePos);
 	}
-
+    /// <summary>
+    /// Displays a large message in the center of the screen (e.g., "Your Turn").
+    /// </summary>
     public void ShowBigMessage(string text, float duration = 0f, Color? color = null)
     {
         if (MessagePanel == null || MessageLabel == null) return;
 
         if (_activeMessageTween != null && _activeMessageTween.IsValid()) _activeMessageTween.Kill();
 
-        // --- FIX: Jeśli tekst pusty, ukryj panel i wyjdź ---
         if (string.IsNullOrEmpty(text))
         {
             MessagePanel.Visible = false;
             return;
         }
-        // ----------------------------------------------------
 
         MessageLabel.Text = text;
         MessageLabel.Modulate = color ?? Colors.White;
@@ -475,8 +528,6 @@ public partial class UIManager : Node
 		}
 	}
 
-	// --- HELPERY PRYWATNE ---
-
 	private List<CardView> GetAllCardViewsOnBoard()
 	{
 		var list = new List<CardView>();
@@ -503,7 +554,7 @@ public partial class UIManager : Node
 
 	private Vector2 FindVisualPosition(int cardId, int playerId)
 	{
-		if (cardId == -1) // Bohater
+		if (cardId == -1)
 			return new Vector2(GetViewport().GetVisibleRect().Size.X / 2, GetViewport().GetVisibleRect().Size.Y / 2);
 
 		Vector2 fallback = GetViewport().GetVisibleRect().Size.X > 0 ? GetViewport().GetVisibleRect().Size / 2 : new Vector2(500, 300);
@@ -527,8 +578,10 @@ public partial class UIManager : Node
 		}
 		return null;
 	}
-
-	private void UpdateStats(GameState state, int playerId)
+    /// <summary>
+    /// Updates labels for HP, Mana, and Blood resources.
+    /// </summary>
+    private void UpdateStats(GameState state, int playerId)
 	{
 		var p1 = state.GetPlayer(playerId);
 		var p2 = state.GetOpponent(playerId);
@@ -551,8 +604,10 @@ public partial class UIManager : Node
 			default: return phase.ToString().ToUpper();
 		}
 	}
-
-	private void DrawBlood(Control grid, int current, int max)
+    /// <summary>
+    /// Draws blood icons for the resource UI.
+    /// </summary>
+    private void DrawBlood(Control grid, int current, int max)
 	{
 		if (grid == null) return;
 		foreach (Node child in grid.GetChildren()) child.QueueFree();
@@ -568,8 +623,10 @@ public partial class UIManager : Node
 			grid.AddChild(tr);
 		}
 	}
-
-	private void RenderHand(GameState state, int playerId)
+    /// <summary>
+    /// Renders the local player's hand.
+    /// </summary>
+    private void RenderHand(GameState state, int playerId)
 	{
 		if (HandContainer == null || CardSceneTemplate == null) return;
 
@@ -591,8 +648,10 @@ public partial class UIManager : Node
 				cardVis.Modulate = new Color(1, 1, 1);
 		}
 	}
-
-	private void RenderEnemyHand(GameState state, int playerId)
+    /// <summary>
+    /// Renders the opponent's hand as card backs.
+    /// </summary>
+    private void RenderEnemyHand(GameState state, int playerId)
 	{
 		if (EnemyHandContainer == null || CardSceneTemplate == null) return;
 		var p2 = state.GetOpponent(playerId);

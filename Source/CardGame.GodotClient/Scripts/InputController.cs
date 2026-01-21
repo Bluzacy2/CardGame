@@ -9,27 +9,66 @@ using CardGame.Core.Commands.Interfaces;
 using CardGame.Core.State.Models;
 using CardGame.Core.Cards.Logic;
 
+/// <summary>
+/// Controls player input and translates it into game commands.
+/// Manages input states (Idle, Targeting, Pending), card interactions, and mulligan phase.
+/// Acts as the bridge between the UI events and the Game Engine.
+/// </summary>
 public partial class InputController : Node
 {
-    public enum InputState { Idle, Normal, TargetingCard, PendingTarget, Mulligan }
+    #region Enums & Fields
+
+    /// <summary>
+    /// Represents the current state of player input.
+    /// </summary>
+    public enum InputState
+    {
+        /// <summary>Waiting for turn or animation, no input allowed.</summary>
+        Idle,
+        /// <summary>Standard turn state, can play cards from hand.</summary>
+        Normal,
+        /// <summary>Player selected a card and is choosing a target.</summary>
+        TargetingCard,
+        /// <summary>Engine requested a decision (choice or target) from the player.</summary>
+        PendingTarget,
+        /// <summary>Initial mulligan phase for card replacement.</summary>
+        Mulligan
+    }
 
     private InputState _currentState = InputState.Idle;
     private int _playerId;
     private UIManager _ui;
     private GameState _latestGameState;
 
+    // Temporary state for current action
     private CardInstance _selectedCardHand;
     private int? _pendingUnitLineIdx;
 
     private PendingInteraction _currentPending;
 
-    // Mulligan
+    // Mulligan State
     private List<int> _mulliganSelection = new List<int>();
     private const int MAX_MULLIGAN_SWAPS = 3;
     private List<CardInstance> _mulliganHandCache;
 
+    #endregion
+
+    #region Events
+
+    /// <summary>
+    /// Event triggered when the player completes a valid action, producing a command for the engine.
+    /// </summary>
     public event Action<IGameCommand> OnPlayerCommand;
 
+    #endregion
+
+    #region Initialization & Lifecycle
+
+    /// <summary>
+    /// Initializes the controller with player ID and UI manager reference.
+    /// </summary>
+    /// <param name="playerId">The local player's ID.</param>
+    /// <param name="uiManager">Reference to the UIManager for visual feedback.</param>
     public void Initialize(int playerId, UIManager uiManager)
     {
         _playerId = playerId;
@@ -69,11 +108,20 @@ public partial class InputController : Node
         }
     }
 
+    #endregion
+
+    #region State Management
+
+    /// <summary>
+    /// Updates the controller state based on the latest GameState from the engine.
+    /// Handles phase transitions and pending interactions.
+    /// </summary>
+    /// <param name="gameState">The current state of the game.</param>
     public void UpdateState(GameState gameState)
     {
         _latestGameState = gameState;
 
-        // 1. Priorytet: Mulligan
+        // 1. Priority: Mulligan Phase
         if (gameState.CurrentPhase == CardGame.Core.State.Enums.GamePhase.Mulligan)
         {
             if (_currentState != InputState.Mulligan)
@@ -81,15 +129,12 @@ public partial class InputController : Node
             return;
         }
 
-        // 2. Priorytet: Pending Interaction (Wybory/Cele)
+        // 2. Priority: Pending Interaction (Choices/Targets)
         if (gameState.PendingInteraction != null)
         {
-            // --- FIX: UKRYWANIE AKCJI BOTA ---
-            // Jeśli gra czeka na decyzję, ale to tura Bota, nie wyświetlamy UI dla gracza.
-            // Bot sam sobie poradzi przez AI Controller.
+            // HIDE BOT ACTIONS: If it's bot's turn to choose, disable player UI
             if (gameState.ActivePlayerId != _playerId)
             {
-                // Upewniamy się tylko, że UI gracza jest czyste
                 if (_currentState != InputState.Idle)
                 {
                     _currentState = InputState.Idle;
@@ -99,9 +144,8 @@ public partial class InputController : Node
                 }
                 return;
             }
-            // ---------------------------------
 
-            // Strażnik przed pętlą (ten sam obiekt interaction)
+            // Guard against re-initializing the same interaction
             bool isSameInteraction = _currentPending != null &&
                                      _currentPending.SourceCardInstanceId == gameState.PendingInteraction.SourceCardInstanceId &&
                                      _currentPending.RequiredTargetType == gameState.PendingInteraction.RequiredTargetType;
@@ -117,7 +161,7 @@ public partial class InputController : Node
             return;
         }
 
-        // Reset jeśli Pending zniknął
+        // Reset if pending interaction was resolved
         if (_currentState == InputState.PendingTarget && gameState.PendingInteraction == null)
         {
             _currentPending = null;
@@ -128,7 +172,7 @@ public partial class InputController : Node
             _ui.ShowBigMessage("", 0);
         }
 
-        // 3. Normalna tura gracza
+        // 3. Normal Player Turn
         if (gameState.ActivePlayerId == _playerId)
         {
             if (_currentState != InputState.TargetingCard && _currentState != InputState.PendingTarget)
@@ -144,6 +188,14 @@ public partial class InputController : Node
         }
     }
 
+    #endregion
+
+    #region Input Handlers
+
+    /// <summary>
+    /// Handles click events on cards (from hand or board).
+    /// </summary>
+    /// <param name="card">The clicked card instance.</param>
     public void HandleCardClick(CardInstance card)
     {
         if (_currentState == InputState.Mulligan)
@@ -162,6 +214,11 @@ public partial class InputController : Node
         }
     }
 
+    /// <summary>
+    /// Handles dropping a card onto a specific board line.
+    /// </summary>
+    /// <param name="card">The dropped card.</param>
+    /// <param name="lineIdx">The target line index.</param>
     public void HandleCardDrop(CardInstance card, int lineIdx)
     {
         if (_currentState != InputState.Normal) return;
@@ -173,7 +230,7 @@ public partial class InputController : Node
 
             if (needsTarget && hasValidTargets)
             {
-                // Tryb celowania z Duchem
+                // Enter targeting mode with Ghost Unit
                 TryPlayCardFromHand(card, lineIdx);
             }
             else
@@ -187,25 +244,27 @@ public partial class InputController : Node
         }
     }
 
+    #endregion
+
+    #region Gameplay Logic
+
     private void TryPlayCardFromHand(CardInstance card, int? unitLineIdx)
     {
         bool needsTarget = HasManualTarget(card);
         bool hasValidTargets = CheckIfHasValidTargetsOnBoard(card);
 
-        // Jeśli karta wymaga celu I są cele na stole
+        // If card needs a target AND there are valid targets -> Enter targeting mode
         if (needsTarget && hasValidTargets)
         {
             _currentState = InputState.TargetingCard;
             _selectedCardHand = card;
             _pendingUnitLineIdx = unitLineIdx;
 
-            // --- FIX: DUCH TYLKO DLA JEDNOSTEK ---
-            // Nie twórz ducha dla czarów, bo to zostawiało "kwadrat"
+            // Create Ghost Unit only for Unit cards
             if (card.Definition.Type == CardType.Unit && unitLineIdx.HasValue)
             {
                 _ui.CreateGhostUnit(card, unitLineIdx.Value);
             }
-            // -------------------------------------
 
             _ui.ShowBigMessage("WYBIERZ CEL", 0, Colors.Yellow);
             _ui.SetCancelButtonVisible(true);
@@ -213,18 +272,20 @@ public partial class InputController : Node
         }
         else
         {
-            // Zagranie bez celowania (Global Spell lub Unit bez celu)
+            // Play immediately (Global Spell or Unit without targets)
             if (card.Definition.Type == CardType.Spell)
             {
-                // --- FIX: CZYSTE ZAGRANIE ---
-                // Upewniamy się, że nie ma resztek UI przed wysłaniem
+                // Ensure clean state before firing command
                 CancelTargeting();
                 OnPlayerCommand?.Invoke(new PlaySpellCommand(_playerId, card.InstanceId));
             }
-            // Unity bez celu są obsłużone w HandleCardDrop
+            // Units without targets are handled in HandleCardDrop
         }
     }
 
+    /// <summary>
+    /// Cancels the current targeting action and resets UI.
+    /// </summary>
     public void CancelTargeting()
     {
         _currentState = InputState.Normal;
@@ -294,12 +355,12 @@ public partial class InputController : Node
         {
             _ui.HideTargetingArrow();
 
-            // HEURYSTYKA: Tutor czy Modal?
+            // HEURISTIC: Tutor (Card Grid) vs Modal (Buttons)
             if (pending.Options.Count > 4)
             {
                 var deck = _latestGameState.PlayerA.DrawPile.ToList();
 
-                // Tutor (Siatka Kart)
+                // Show Card Grid
                 _ui.ShowCardSelectionModal(deck, (index) =>
                 {
                     OnPlayerCommand?.Invoke(new SelectTargetCommand(_playerId, index));
@@ -309,14 +370,14 @@ public partial class InputController : Node
             }
             else
             {
-                // Modal (Przyciski) - np. Expectancy
+                // Show Buttons
                 var player = _latestGameState.PlayerA;
                 List<bool> optionValidity = new List<bool>();
 
                 foreach (var opt in pending.Options)
                 {
                     bool isValid = true;
-                    // Prosta walidacja po tekście (można rozbudować)
+                    // Basic text-based validation
                     if (opt.Contains("Discard", StringComparison.OrdinalIgnoreCase) && player.DiscardPile.Count == 0) isValid = false;
                     else if (opt.Contains("Deck", StringComparison.OrdinalIgnoreCase) && player.DrawPile.Count == 0) isValid = false;
                     optionValidity.Add(isValid);
@@ -331,12 +392,15 @@ public partial class InputController : Node
             return;
         }
 
-        // Zwykłe celowanie (np. 2 etap Final Mission)
+        // Standard targeting interaction
         _ui.ShowBigMessage("WYBIERZ CEL EFEKTU", 0, Colors.Orange);
         _ui.HighlightTargets(pending.RequiredTargetType, _playerId);
     }
 
-    // --- HELPERY ---
+    #endregion
+
+    #region Helpers
+
     private bool HasManualTarget(CardInstance c)
     {
         return c.Definition.Effects.Any(e => e.Actions.Any(a => IsManualTarget(a.Target)));
@@ -376,7 +440,10 @@ public partial class InputController : Node
         return false;
     }
 
-    // Mulligan...
+    #endregion
+
+    #region Mulligan Logic
+
     public void StartMulligan(List<CardInstance> hand)
     {
         _currentState = InputState.Mulligan;
@@ -386,6 +453,7 @@ public partial class InputController : Node
         _ui.UpdateMulliganCounter(0, MAX_MULLIGAN_SWAPS);
         _ui.RenderMulliganCards(hand, _mulliganSelection);
     }
+
     private void ProcessMulliganClick(CardInstance card)
     {
         int id = card.InstanceId;
@@ -394,6 +462,7 @@ public partial class InputController : Node
         _ui.UpdateMulliganCounter(_mulliganSelection.Count, MAX_MULLIGAN_SWAPS);
         _ui.RenderMulliganCards(_mulliganHandCache, _mulliganSelection);
     }
+
     public void ConfirmMulligan()
     {
         if (_currentState != InputState.Mulligan) return;
@@ -401,4 +470,6 @@ public partial class InputController : Node
         OnPlayerCommand?.Invoke(cmd);
         _ui.ToggleMulliganPanel(false);
     }
+
+    #endregion
 }

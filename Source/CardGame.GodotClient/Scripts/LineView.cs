@@ -2,14 +2,19 @@ using Godot;
 using System;
 using CardGame.Core.State.Models;
 using CardGame.Core.Cards.Models;
-
+/// <summary>
+/// Visual representation of a single board line (lane).
+/// Manages two slots: one for the enemy unit (Top) and one for the player unit (Bottom).
+/// </summary>
 public partial class LineView : Control
 {
 	[Export] public Label InfoLabel;
 	[Export] public Control EnemySlot;
 	[Export] public Control PlayerSlot;
-
-	[Signal] public delegate void CardDroppedOnLineEventHandler(int cardInstanceId, int lineIndex);
+    /// <summary>
+    /// Signal emitted when a card is dropped onto this line.
+    /// </summary>
+    [Signal] public delegate void CardDroppedOnLineEventHandler(int cardInstanceId, int lineIndex);
 
 	private int _myIndex;
 	private readonly string[] _romans = { "I", "II", "III", "IV" };
@@ -19,8 +24,13 @@ public partial class LineView : Control
 		MouseFilter = MouseFilterEnum.Stop;
 	}
 
-	// --- ZMIANA: Dodano parametr onClickHandler ---
-	public void Render(Line lineData, PackedScene cardScene, Action<CardView> onClickHandler)
+    /// <summary>
+    /// Renders the current state of the line based on game data.
+    /// </summary>
+    /// <param name="lineData">Data model for the line.</param>
+    /// <param name="cardScene">Template scene for instantiating cards.</param>
+    /// <param name="onClickHandler">Action to bind to card click events (for targeting).</param>
+    public void Render(Line lineData, PackedScene cardScene, Action<CardView> onClickHandler)
 	{
 		_myIndex = lineData.Index;
 
@@ -35,22 +45,17 @@ public partial class LineView : Control
 
 		ClearSlot(EnemySlot);
 		ClearSlot(PlayerSlot);
-
-		// 2. Wrogowie (Góra)
 		if (lineData.Player2Unit != null)
 		{
 			var botUnit = cardScene.Instantiate<CardView>();
 			EnemySlot.AddChild(botUnit);
 			botUnit.Render(lineData.Player2Unit);
 
-			botUnit.MouseFilter = MouseFilterEnum.Stop; // Musi być Stop, żeby odebrać kliknięcie
+			botUnit.MouseFilter = MouseFilterEnum.Stop; 
 			botUnit.Modulate = new Color(1, 0.8f, 0.8f);
 
-			// PODPINAMY KLIKNIĘCIE
 			if (onClickHandler != null) botUnit.OnClicked += onClickHandler;
 		}
-
-		// 3. Gracz (Dół)
 		if (lineData.Player1Unit != null)
 		{
 			var myUnit = cardScene.Instantiate<CardView>();
@@ -58,8 +63,6 @@ public partial class LineView : Control
 			myUnit.Render(lineData.Player1Unit);
 
 			myUnit.MouseFilter = MouseFilterEnum.Stop;
-
-			// PODPINAMY KLIKNIĘCIE
 			if (onClickHandler != null) myUnit.OnClicked += onClickHandler;
 		}
 	}
@@ -69,8 +72,9 @@ public partial class LineView : Control
 		if (slot == null) return;
 		foreach (Node child in slot.GetChildren())
 		{
-			// Omijamy Ducha (rozpoznajemy po przezroczystości)
-			if (child is CardView cv && cv.Modulate.A < 0.9f) continue;
+            // Preserve the Ghost Unit (recognized by transparency)
+            // UIManager manages the Ghost lifecycle, LineView shouldn't delete it during re-render
+            if (child is CardView cv && cv.Modulate.A < 0.9f) continue;
 			child.QueueFree();
 		}
 	}

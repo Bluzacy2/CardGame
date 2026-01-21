@@ -1,4 +1,4 @@
-﻿
+
 
 ========================================
 FILE: CardGame.GodotClient.csproj
@@ -6,12 +6,12 @@ PATH: C:\Users\bluza\Desktop\CardGame\CardGame\Source\CardGame.GodotClient\CardG
 ========================================
 <Project Sdk="Godot.NET.Sdk/4.5.1">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
-    <EnableDynamicLoading>true</EnableDynamicLoading>
+	<TargetFramework>net8.0</TargetFramework>
+	<TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+	<EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CardGame.Core\CardGame.Core.csproj" />
+	<ProjectReference Include="..\CardGame.Core\CardGame.Core.csproj" />
   </ItemGroup>
 </Project>
 
@@ -25,36 +25,36 @@ PATH: C:\Users\bluza\Desktop\CardGame\CardGame\Source\CardGame.GodotClient\Data\
   "Name": "test",
   "Description": "",
   "CardIds": [
-    7,
-    7,
-    7,
-    13,
-    13,
-    13,
-    15,
-    15,
-    15,
-    16,
-    16,
-    16,
-    31,
-    31,
-    31,
-    32,
-    32,
-    32,
-    50,
-    50,
-    50,
-    53,
-    53,
-    53,
-    57,
-    57,
-    57,
-    60,
-    60,
-    60
+	7,
+	7,
+	7,
+	13,
+	13,
+	13,
+	15,
+	15,
+	15,
+	16,
+	16,
+	16,
+	31,
+	31,
+	31,
+	32,
+	32,
+	32,
+	50,
+	50,
+	50,
+	53,
+	53,
+	53,
+	57,
+	57,
+	57,
+	60,
+	60,
+	60
   ]
 }
 
@@ -1291,36 +1291,36 @@ PATH: C:\Users\bluza\Desktop\CardGame\CardGame\Source\CardGame.GodotClient\Data\
   "Name": "CollectorSpam",
   "Description": "",
   "CardIds": [
-    1,
-    1,
-    1,
-    3,
-    3,
-    3,
-    7,
-    7,
-    7,
-    15,
-    15,
-    16,
-    16,
-    17,
-    17,
-    20,
-    20,
-    31,
-    31,
-    31,
-    34,
-    34,
-    45,
-    45,
-    45,
-    56,
-    56,
-    56,
-    58,
-    58
+	1,
+	1,
+	1,
+	3,
+	3,
+	3,
+	7,
+	7,
+	7,
+	15,
+	15,
+	16,
+	16,
+	17,
+	17,
+	20,
+	20,
+	31,
+	31,
+	31,
+	34,
+	34,
+	45,
+	45,
+	45,
+	56,
+	56,
+	56,
+	58,
+	58
   ]
 }
 
@@ -1334,36 +1334,36 @@ PATH: C:\Users\bluza\Desktop\CardGame\CardGame\Source\CardGame.GodotClient\Data\
   "Name": "DeathParadise",
   "Description": "",
   "CardIds": [
-    9,
-    9,
-    9,
-    10,
-    10,
-    10,
-    12,
-    12,
-    12,
-    13,
-    18,
-    18,
-    18,
-    36,
-    36,
-    36,
-    39,
-    39,
-    39,
-    40,
-    40,
-    40,
-    45,
-    45,
-    48,
-    48,
-    48,
-    51,
-    51,
-    51
+	9,
+	9,
+	9,
+	10,
+	10,
+	10,
+	12,
+	12,
+	12,
+	13,
+	18,
+	18,
+	18,
+	36,
+	36,
+	36,
+	39,
+	39,
+	39,
+	40,
+	40,
+	40,
+	45,
+	45,
+	48,
+	48,
+	48,
+	51,
+	51,
+	51
   ]
 }
 
@@ -1377,36 +1377,36 @@ PATH: C:\Users\bluza\Desktop\CardGame\CardGame\Source\CardGame.GodotClient\Data\
   "Name": "MachineAggro",
   "Description": "",
   "CardIds": [
-    2,
-    2,
-    2,
-    7,
-    13,
-    13,
-    15,
-    15,
-    15,
-    19,
-    19,
-    31,
-    31,
-    42,
-    42,
-    42,
-    44,
-    44,
-    45,
-    50,
-    50,
-    51,
-    51,
-    51,
-    52,
-    52,
-    52,
-    54,
-    54,
-    54
+	2,
+	2,
+	2,
+	7,
+	13,
+	13,
+	15,
+	15,
+	15,
+	19,
+	19,
+	31,
+	31,
+	42,
+	42,
+	42,
+	44,
+	44,
+	45,
+	50,
+	50,
+	51,
+	51,
+	51,
+	52,
+	52,
+	52,
+	54,
+	54,
+	54
   ]
 }
 
@@ -1420,36 +1420,36 @@ PATH: C:\Users\bluza\Desktop\CardGame\CardGame\Source\CardGame.GodotClient\Data\
   "Name": "Magician\u0027s Debug",
   "Description": "",
   "CardIds": [
-    7,
-    7,
-    7,
-    13,
-    13,
-    13,
-    15,
-    15,
-    15,
-    17,
-    17,
-    17,
-    19,
-    19,
-    19,
-    31,
-    31,
-    43,
-    45,
-    45,
-    45,
-    46,
-    46,
-    46,
-    47,
-    47,
-    47,
-    58,
-    58,
-    58
+	7,
+	7,
+	7,
+	13,
+	13,
+	13,
+	15,
+	15,
+	15,
+	17,
+	17,
+	17,
+	19,
+	19,
+	19,
+	31,
+	31,
+	43,
+	45,
+	45,
+	45,
+	46,
+	46,
+	46,
+	47,
+	47,
+	47,
+	58,
+	58,
+	58
   ]
 }
 
@@ -1463,36 +1463,36 @@ PATH: C:\Users\bluza\Desktop\CardGame\CardGame\Source\CardGame.GodotClient\Data\
   "Name": "TeaMaidCombo",
   "Description": "",
   "CardIds": [
-    7,
-    7,
-    7,
-    13,
-    15,
-    15,
-    15,
-    16,
-    16,
-    19,
-    31,
-    32,
-    32,
-    34,
-    34,
-    34,
-    45,
-    45,
-    45,
-    46,
-    46,
-    46,
-    47,
-    47,
-    47,
-    50,
-    56,
-    58,
-    58,
-    58
+	7,
+	7,
+	7,
+	13,
+	15,
+	15,
+	15,
+	16,
+	16,
+	19,
+	31,
+	32,
+	32,
+	34,
+	34,
+	34,
+	45,
+	45,
+	45,
+	46,
+	46,
+	46,
+	47,
+	47,
+	47,
+	50,
+	56,
+	58,
+	58,
+	58
   ]
 }
 
@@ -1513,60 +1513,60 @@ using CardGame.Core.Commands.Implementations;
 
 public partial class BotCoordinator : Node
 {
-    private GameEngine _engine;
-    private AIPlayerController _aiController;
-    private int _botId;
+	private GameEngine _engine;
+	private AIPlayerController _aiController;
+	private int _botId;
 
-    // Zdarzenie, gdy bot chce wykonaÄ‡ komendÄ™ (Bootstrap przekaĹĽe to do silnika)
-    public event Action<IGameCommand> OnBotCommand;
+	// Zdarzenie, gdy bot chce wykonaÄ‡ komendÄ™ (Bootstrap przekaĹĽe to do silnika)
+	public event Action<IGameCommand> OnBotCommand;
 
-    public bool IsThinking { get; private set; } = false;
+	public bool IsThinking { get; private set; } = false;
 
-    public void Initialize(GameEngine engine, int botId, AIPlayerController aiController)
-    {
-        _engine = engine;
-        _botId = botId;
-        _aiController = aiController;
-    }
+	public void Initialize(GameEngine engine, int botId, AIPlayerController aiController)
+	{
+		_engine = engine;
+		_botId = botId;
+		_aiController = aiController;
+	}
 
-    public async void PlayTurn()
-    {
-        if (IsThinking) return;
-        IsThinking = true;
+	public async void PlayTurn()
+	{
+		if (IsThinking) return;
+		IsThinking = true;
 
-        // Symulacja czasu reakcji
-        await Task.Delay(800);
+		// Symulacja czasu reakcji
+		await Task.Delay(800);
 
-        // Obliczenia w tle (nie blokujÄ… UI)
-        await Task.Run(() =>
-        {
-            var moves = _aiController.BeamSolver.FindBestMoves(_engine.CurrentState);
-            IGameCommand cmd = moves.Any() ? moves.First().Command : new EndPhaseCommand(_botId);
+		// Obliczenia w tle (nie blokujÄ… UI)
+		await Task.Run(() =>
+		{
+			var moves = _aiController.BeamSolver.FindBestMoves(_engine.CurrentState);
+			IGameCommand cmd = moves.Any() ? moves.First().Command : new EndPhaseCommand(_botId);
 
-            // WywoĹ‚anie na gĹ‚Ăłwnym wÄ…tku
-            Callable.From(() => ExecuteBestMove(cmd)).CallDeferred();
-        });
-    }
+			// WywoĹ‚anie na gĹ‚Ăłwnym wÄ…tku
+			Callable.From(() => ExecuteBestMove(cmd)).CallDeferred();
+		});
+	}
 
-    // Metoda wywoĹ‚ywana przez CallDeferred (musi przyjmowaÄ‡ Variant lub byÄ‡ wrapperem)
-    // Ale my uĹĽyjemy prostszego triku z przekazaniem obiektu C#
-    private void EmitCommand(Variant commandObj)
-    {
-        // Uwaga: Godot Marshalling moĹĽe byÄ‡ tricky dla interfejsĂłw.
-        // Bezpieczniej uĹĽyÄ‡ Callable.From w Task.Run (jak mieliĹ›my wczeĹ›niej).
-        // Ale dla czystoĹ›ci klasy, zrĂłbmy publicznÄ… metodÄ™, ktĂłrÄ… wywoĹ‚a Callable.
-    }
+	// Metoda wywoĹ‚ywana przez CallDeferred (musi przyjmowaÄ‡ Variant lub byÄ‡ wrapperem)
+	// Ale my uĹĽyjemy prostszego triku z przekazaniem obiektu C#
+	private void EmitCommand(Variant commandObj)
+	{
+		// Uwaga: Godot Marshalling moĹĽe byÄ‡ tricky dla interfejsĂłw.
+		// Bezpieczniej uĹĽyÄ‡ Callable.From w Task.Run (jak mieliĹ›my wczeĹ›niej).
+		// Ale dla czystoĹ›ci klasy, zrĂłbmy publicznÄ… metodÄ™, ktĂłrÄ… wywoĹ‚a Callable.
+	}
 
-    // Wersja bezpieczna dla Task.Run + Callable
-    public void ExecuteBestMove(IGameCommand cmd)
-    {
-        OnBotCommand?.Invoke(cmd);
+	// Wersja bezpieczna dla Task.Run + Callable
+	public void ExecuteBestMove(IGameCommand cmd)
+	{
+		OnBotCommand?.Invoke(cmd);
 
-        // JeĹ›li bot zagraĹ‚ EndPhase, koĹ„czy myĹ›lenie.
-        // JeĹ›li zagraĹ‚ kartÄ™, IsThinking pozostaje true (lub false, jeĹ›li chcesz pozwoliÄ‡ mu graÄ‡ seriami).
-        // W naszej logice bot gra jeden ruch na "tik" pÄ™tli gry, wiÄ™c resetujemy flagÄ™.
-        IsThinking = false;
-    }
+		// JeĹ›li bot zagraĹ‚ EndPhase, koĹ„czy myĹ›lenie.
+		// JeĹ›li zagraĹ‚ kartÄ™, IsThinking pozostaje true (lub false, jeĹ›li chcesz pozwoliÄ‡ mu graÄ‡ seriami).
+		// W naszej logice bot gra jeden ruch na "tik" pÄ™tli gry, wiÄ™c resetujemy flagÄ™.
+		IsThinking = false;
+	}
 }
 
 
@@ -1580,49 +1580,49 @@ using CardGame.Core.Cards.Models;
 
 public partial class CardSlot : PanelContainer
 {
-    [Signal] public delegate void CardDroppedInSlotEventHandler(int cardDefId, CardSlot slot);
-    // Usuwamy sygnaĹ‚ usuniÄ™cia przez klikniÄ™cie, bo robimy to przez panel biblioteki (-)
-    // [Signal] public delegate void CardRemovedFromSlotEventHandler(CardSlot slot); 
+	[Signal] public delegate void CardDroppedInSlotEventHandler(int cardDefId, CardSlot slot);
+	// Usuwamy sygnaĹ‚ usuniÄ™cia przez klikniÄ™cie, bo robimy to przez panel biblioteki (-)
+	// [Signal] public delegate void CardRemovedFromSlotEventHandler(CardSlot slot); 
 
-    public CardView HostedCardView { get; private set; }
-    public int? CardDefId { get; private set; }
+	public CardView HostedCardView { get; private set; }
+	public int? CardDefId { get; private set; }
 
-    public override void _Ready()
-    {
-        MouseFilter = MouseFilterEnum.Stop; // Musi Ĺ‚apaÄ‡ Drop
-    }
+	public override void _Ready()
+	{
+		MouseFilter = MouseFilterEnum.Stop; // Musi Ĺ‚apaÄ‡ Drop
+	}
 
-    public void PlaceCard(CardView cardVisual, int cardId)
-    {
-        ClearSlot();
-        CardDefId = cardId;
-        HostedCardView = cardVisual;
-        AddChild(HostedCardView);
+	public void PlaceCard(CardView cardVisual, int cardId)
+	{
+		ClearSlot();
+		CardDefId = cardId;
+		HostedCardView = cardVisual;
+		AddChild(HostedCardView);
 
-        // Karta w slocie nie powinna byÄ‡ interaktywna
-        HostedCardView.MouseFilter = MouseFilterEnum.Ignore;
-    }
+		// Karta w slocie nie powinna byÄ‡ interaktywna
+		HostedCardView.MouseFilter = MouseFilterEnum.Ignore;
+	}
 
-    public void ClearSlot()
-    {
-        if (HostedCardView != null)
-        {
-            HostedCardView.QueueFree();
-            HostedCardView = null;
-        }
-        CardDefId = null;
-    }
+	public void ClearSlot()
+	{
+		if (HostedCardView != null)
+		{
+			HostedCardView.QueueFree();
+			HostedCardView = null;
+		}
+		CardDefId = null;
+	}
 
-    public override bool _CanDropData(Vector2 atPosition, Variant data)
-    {
-        return data.VariantType == Variant.Type.Int;
-    }
+	public override bool _CanDropData(Vector2 atPosition, Variant data)
+	{
+		return data.VariantType == Variant.Type.Int;
+	}
 
-    public override void _DropData(Vector2 atPosition, Variant data)
-    {
-        int cardId = (int)data;
-        EmitSignal(SignalName.CardDroppedInSlot, cardId, this);
-    }
+	public override void _DropData(Vector2 atPosition, Variant data)
+	{
+		int cardId = (int)data;
+		EmitSignal(SignalName.CardDroppedInSlot, cardId, this);
+	}
 }
 
 
@@ -2398,194 +2398,194 @@ using System.Text.Json;
 
 public partial class DeckSelection : Control
 {
-    [Export] public Control DeckListContainer;
-    [Export] public Button NewDeckButton;
-    [Export] public Button BackButton;
+	[Export] public Control DeckListContainer;
+	[Export] public Button NewDeckButton;
+	[Export] public Button BackButton;
 
-    [Export] public PackedScene DeckEditorScene;
+	[Export] public PackedScene DeckEditorScene;
 
-    // ĹšcieĹĽka do Menu GĹ‚Ăłwnego
-    private const string MAIN_MENU_PATH = "res://Scenes/MainMenu.tscn";
+	// ĹšcieĹĽka do Menu GĹ‚Ăłwnego
+	private const string MAIN_MENU_PATH = "res://Scenes/MainMenu.tscn";
 
-    public override void _Ready()
-    {
-        if (DeckEditorScene == null)
-        {
-            GD.PrintErr("CRITICAL: Nie przypisano DeckEditorScene w DeckSelection!");
-            return;
-        }
+	public override void _Ready()
+	{
+		if (DeckEditorScene == null)
+		{
+			GD.PrintErr("CRITICAL: Nie przypisano DeckEditorScene w DeckSelection!");
+			return;
+		}
 
-        // Najpierw Ĺ‚adujemy bibliotekÄ™ kart (moĹĽe byÄ‡ potrzebna do metadanych)
-        LoadCardLibrary();
+		// Najpierw Ĺ‚adujemy bibliotekÄ™ kart (moĹĽe byÄ‡ potrzebna do metadanych)
+		LoadCardLibrary();
 
-        LoadDecks();
+		LoadDecks();
 
-        if (NewDeckButton != null)
-            NewDeckButton.Pressed += () => LoadEditor(null);
+		if (NewDeckButton != null)
+			NewDeckButton.Pressed += () => LoadEditor(null);
 
-        if (BackButton != null)
-            BackButton.Pressed += () => GetTree().ChangeSceneToFile(MAIN_MENU_PATH);
-    }
+		if (BackButton != null)
+			BackButton.Pressed += () => GetTree().ChangeSceneToFile(MAIN_MENU_PATH);
+	}
 
-    private void LoadCardLibrary()
-    {
-        string jsonPath = ProjectSettings.GlobalizePath("res://Data/Cards/cards.json");
-        try { CardGame.Core.Cards.Data.CardLibrary.Instance.LoadFromJson(jsonPath); }
-        catch { }
-    }
+	private void LoadCardLibrary()
+	{
+		string jsonPath = ProjectSettings.GlobalizePath("res://Data/Cards/cards.json");
+		try { CardGame.Core.Cards.Data.CardLibrary.Instance.LoadFromJson(jsonPath); }
+		catch { }
+	}
 
-    private void LoadDecks()
-    {
-        if (DeckListContainer == null) return;
+	private void LoadDecks()
+	{
+		if (DeckListContainer == null) return;
 
-        // CzyĹ›cimy starÄ… listÄ™
-        foreach (Node child in DeckListContainer.GetChildren()) child.QueueFree();
+		// CzyĹ›cimy starÄ… listÄ™
+		foreach (Node child in DeckListContainer.GetChildren()) child.QueueFree();
 
-        // --- ZMIANA ĹšCIEĹ»KI NA PROJEKTOWÄ„ (res://Data/Decks/) ---
-        string path = ProjectSettings.GlobalizePath("res://Data/Decks/");
+		// --- ZMIANA ĹšCIEĹ»KI NA PROJEKTOWÄ„ (res://Data/Decks/) ---
+		string path = ProjectSettings.GlobalizePath("res://Data/Decks/");
 
-        // Upewnij siÄ™, ĹĽe katalog istnieje
-        if (!System.IO.Directory.Exists(path))
-            System.IO.Directory.CreateDirectory(path);
+		// Upewnij siÄ™, ĹĽe katalog istnieje
+		if (!System.IO.Directory.Exists(path))
+			System.IO.Directory.CreateDirectory(path);
 
-        var files = System.IO.Directory.GetFiles(path, "*.json");
+		var files = System.IO.Directory.GetFiles(path, "*.json");
 
-        if (files.Length == 0)
-        {
-            // Opcjonalnie: Label "Brak talii"
-        }
+		if (files.Length == 0)
+		{
+			// Opcjonalnie: Label "Brak talii"
+		}
 
-        foreach (var file in files)
-        {
-            try
-            {
-                string json = System.IO.File.ReadAllText(file);
-                var deckData = JsonSerializer.Deserialize<DeckData>(json);
+		foreach (var file in files)
+		{
+			try
+			{
+				string json = System.IO.File.ReadAllText(file);
+				var deckData = JsonSerializer.Deserialize<DeckData>(json);
 
-                if (deckData != null)
-                {
-                    // Przekazujemy Ĺ›cieĹĽkÄ™ pliku, aby mĂłc go usunÄ…Ä‡
-                    CreateDeckRow(deckData, file);
-                }
-            }
-            catch (Exception ex)
-            {
-                GD.PrintErr($"BĹ‚Ä…d odczytu pliku {file}: {ex.Message}");
-            }
-        }
-    }
+				if (deckData != null)
+				{
+					// Przekazujemy Ĺ›cieĹĽkÄ™ pliku, aby mĂłc go usunÄ…Ä‡
+					CreateDeckRow(deckData, file);
+				}
+			}
+			catch (Exception ex)
+			{
+				GD.PrintErr($"BĹ‚Ä…d odczytu pliku {file}: {ex.Message}");
+			}
+		}
+	}
 
-    private void CreateDeckRow(DeckData data, string filePath)
-    {
-        var mainFont = GD.Load<Font>("res://Assets/Fonts/Ari-CBold.ttf");
+	private void CreateDeckRow(DeckData data, string filePath)
+	{
+		var mainFont = GD.Load<Font>("res://Assets/Fonts/Ari-CBold.ttf");
 
-        // --- STYLE DLA PRZYCISKU WYBORU (SELECT) ---
-        var styleNormal = new StyleBoxFlat();
-        styleNormal.BgColor = Color.FromHtml("#000000");
-        styleNormal.BorderColor = Color.FromHtml("#404040");
-        styleNormal.SetBorderWidthAll(2);
-        styleNormal.ContentMarginLeft = 20;
+		// --- STYLE DLA PRZYCISKU WYBORU (SELECT) ---
+		var styleNormal = new StyleBoxFlat();
+		styleNormal.BgColor = Color.FromHtml("#000000");
+		styleNormal.BorderColor = Color.FromHtml("#404040");
+		styleNormal.SetBorderWidthAll(2);
+		styleNormal.ContentMarginLeft = 20;
 
-        var styleHover = new StyleBoxFlat();
-        styleHover.BgColor = Color.FromHtml("#cccccc");
-        styleHover.SetBorderWidthAll(0);
-        styleHover.ContentMarginLeft = 20;
+		var styleHover = new StyleBoxFlat();
+		styleHover.BgColor = Color.FromHtml("#cccccc");
+		styleHover.SetBorderWidthAll(0);
+		styleHover.ContentMarginLeft = 20;
 
-        // --- STYLE DLA PRZYCISKU USUĹ (DELETE) ---
-        var styleDeleteNormal = new StyleBoxFlat();
-        styleDeleteNormal.BgColor = Color.FromHtml("#880000");
-        styleDeleteNormal.BorderColor = Color.FromHtml("#404040");
-        styleDeleteNormal.SetBorderWidthAll(2);
+		// --- STYLE DLA PRZYCISKU USUĹ (DELETE) ---
+		var styleDeleteNormal = new StyleBoxFlat();
+		styleDeleteNormal.BgColor = Color.FromHtml("#880000");
+		styleDeleteNormal.BorderColor = Color.FromHtml("#404040");
+		styleDeleteNormal.SetBorderWidthAll(2);
 
-        var styleDeleteHover = new StyleBoxFlat();
-        styleDeleteHover.BgColor = Color.FromHtml("#ff3333");
-        styleDeleteHover.SetBorderWidthAll(0);
+		var styleDeleteHover = new StyleBoxFlat();
+		styleDeleteHover.BgColor = Color.FromHtml("#ff3333");
+		styleDeleteHover.SetBorderWidthAll(0);
 
-        // Pusty styl dla fokusu (ĹĽeby nie byĹ‚o niebieskiej ramki i znikania tekstu)
-        var styleEmpty = new StyleBoxEmpty();
+		// Pusty styl dla fokusu (ĹĽeby nie byĹ‚o niebieskiej ramki i znikania tekstu)
+		var styleEmpty = new StyleBoxEmpty();
 
-        var row = new HBoxContainer();
-        row.CustomMinimumSize = new Vector2(0, 60);
-        row.AddThemeConstantOverride("separation", 10);
+		var row = new HBoxContainer();
+		row.CustomMinimumSize = new Vector2(0, 60);
+		row.AddThemeConstantOverride("separation", 10);
 
-        // --- KONFIGURACJA PRZYCISKU WYBORU ---
-        var selectBtn = new Button();
-        selectBtn.Text = $"{data.Name} ({data.CardIds.Count} KART)";
-        selectBtn.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        selectBtn.Alignment = HorizontalAlignment.Left;
+		// --- KONFIGURACJA PRZYCISKU WYBORU ---
+		var selectBtn = new Button();
+		selectBtn.Text = $"{data.Name} ({data.CardIds.Count} KART)";
+		selectBtn.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+		selectBtn.Alignment = HorizontalAlignment.Left;
 
-        // Przypisanie stylĂłw graficznych
-        selectBtn.AddThemeStyleboxOverride("normal", styleNormal);
-        selectBtn.AddThemeStyleboxOverride("hover", styleHover);
-        selectBtn.AddThemeStyleboxOverride("pressed", styleHover);
-        selectBtn.AddThemeStyleboxOverride("focus", styleEmpty); // WYĹÄ„CZENIE RAMKI FOKUSU
+		// Przypisanie stylĂłw graficznych
+		selectBtn.AddThemeStyleboxOverride("normal", styleNormal);
+		selectBtn.AddThemeStyleboxOverride("hover", styleHover);
+		selectBtn.AddThemeStyleboxOverride("pressed", styleHover);
+		selectBtn.AddThemeStyleboxOverride("focus", styleEmpty); // WYĹÄ„CZENIE RAMKI FOKUSU
 
-        // PEĹNE NADPISANIE KOLORĂ“W CZCIONKI (wszystkie stany)
-        selectBtn.AddThemeColorOverride("font_color", Colors.White);           // Normalny
-        selectBtn.AddThemeColorOverride("font_hover_color", Colors.Black);     // Najechanie
-        selectBtn.AddThemeColorOverride("font_pressed_color", Colors.Black);   // KlikniÄ™cie
-        selectBtn.AddThemeColorOverride("font_focus_color", Colors.Black);     // Zostanie po klikniÄ™ciu
-        selectBtn.AddThemeColorOverride("font_hover_pressed_color", Colors.Black); // WaĹĽne!
+		// PEĹNE NADPISANIE KOLORĂ“W CZCIONKI (wszystkie stany)
+		selectBtn.AddThemeColorOverride("font_color", Colors.White);           // Normalny
+		selectBtn.AddThemeColorOverride("font_hover_color", Colors.Black);     // Najechanie
+		selectBtn.AddThemeColorOverride("font_pressed_color", Colors.Black);   // KlikniÄ™cie
+		selectBtn.AddThemeColorOverride("font_focus_color", Colors.Black);     // Zostanie po klikniÄ™ciu
+		selectBtn.AddThemeColorOverride("font_hover_pressed_color", Colors.Black); // WaĹĽne!
 
-        if (mainFont != null) selectBtn.AddThemeFontOverride("font", mainFont);
+		if (mainFont != null) selectBtn.AddThemeFontOverride("font", mainFont);
 
-        // --- KONFIGURACJA PRZYCISKU USUĹ ---
-        var deleteBtn = new Button();
-        deleteBtn.Text = "USUĹ";
-        deleteBtn.CustomMinimumSize = new Vector2(100, 0);
+		// --- KONFIGURACJA PRZYCISKU USUĹ ---
+		var deleteBtn = new Button();
+		deleteBtn.Text = "USUĹ";
+		deleteBtn.CustomMinimumSize = new Vector2(100, 0);
 
-        deleteBtn.AddThemeStyleboxOverride("normal", styleDeleteNormal);
-        deleteBtn.AddThemeStyleboxOverride("hover", styleDeleteHover);
-        deleteBtn.AddThemeStyleboxOverride("pressed", styleDeleteHover);
-        deleteBtn.AddThemeStyleboxOverride("focus", styleEmpty); // WYĹÄ„CZENIE RAMKI FOKUSU
+		deleteBtn.AddThemeStyleboxOverride("normal", styleDeleteNormal);
+		deleteBtn.AddThemeStyleboxOverride("hover", styleDeleteHover);
+		deleteBtn.AddThemeStyleboxOverride("pressed", styleDeleteHover);
+		deleteBtn.AddThemeStyleboxOverride("focus", styleEmpty); // WYĹÄ„CZENIE RAMKI FOKUSU
 
-        deleteBtn.AddThemeColorOverride("font_color", Colors.White);
-        deleteBtn.AddThemeColorOverride("font_hover_color", Colors.White);
-        deleteBtn.AddThemeColorOverride("font_pressed_color", Colors.Black);
-        deleteBtn.AddThemeColorOverride("font_focus_color", Colors.White);
-        deleteBtn.AddThemeColorOverride("font_hover_pressed_color", Colors.Black);
+		deleteBtn.AddThemeColorOverride("font_color", Colors.White);
+		deleteBtn.AddThemeColorOverride("font_hover_color", Colors.White);
+		deleteBtn.AddThemeColorOverride("font_pressed_color", Colors.Black);
+		deleteBtn.AddThemeColorOverride("font_focus_color", Colors.White);
+		deleteBtn.AddThemeColorOverride("font_hover_pressed_color", Colors.Black);
 
-        if (mainFont != null) deleteBtn.AddThemeFontOverride("font", mainFont);
+		if (mainFont != null) deleteBtn.AddThemeFontOverride("font", mainFont);
 
-        // --- LOGIKA I SKĹADANIE ---
-        selectBtn.Pressed += () => LoadEditor(data);
-        deleteBtn.Pressed += () => DeleteDeck(filePath);
+		// --- LOGIKA I SKĹADANIE ---
+		selectBtn.Pressed += () => LoadEditor(data);
+		deleteBtn.Pressed += () => DeleteDeck(filePath);
 
-        row.AddChild(selectBtn);
-        row.AddChild(deleteBtn);
-        DeckListContainer.AddChild(row);
-    }
+		row.AddChild(selectBtn);
+		row.AddChild(deleteBtn);
+		DeckListContainer.AddChild(row);
+	}
 
-    private void DeleteDeck(string filePath)
-    {
-        try
-        {
-            if (System.IO.File.Exists(filePath))
-            {
-                System.IO.File.Delete(filePath);
-                GD.Print($"UsuniÄ™to taliÄ™: {filePath}");
+	private void DeleteDeck(string filePath)
+	{
+		try
+		{
+			if (System.IO.File.Exists(filePath))
+			{
+				System.IO.File.Delete(filePath);
+				GD.Print($"UsuniÄ™to taliÄ™: {filePath}");
 
-                // OdĹ›wieĹĽamy listÄ™ natychmiast
-                LoadDecks();
-            }
-        }
-        catch (Exception ex)
-        {
-            GD.PrintErr($"Nie udaĹ‚o siÄ™ usunÄ…Ä‡ pliku: {ex.Message}");
-        }
-    }
+				// OdĹ›wieĹĽamy listÄ™ natychmiast
+				LoadDecks();
+			}
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr($"Nie udaĹ‚o siÄ™ usunÄ…Ä‡ pliku: {ex.Message}");
+		}
+	}
 
-    private void LoadEditor(DeckData data)
-    {
-        var editor = DeckEditorScene.Instantiate<DeckEditor>();
+	private void LoadEditor(DeckData data)
+	{
+		var editor = DeckEditorScene.Instantiate<DeckEditor>();
 
-        if (data != null)
-            editor.PreloadedDeck = data;
+		if (data != null)
+			editor.PreloadedDeck = data;
 
-        GetTree().Root.AddChild(editor);
-        GetTree().CurrentScene.QueueFree();
-        GetTree().CurrentScene = editor;
-    }
+		GetTree().Root.AddChild(editor);
+		GetTree().CurrentScene.QueueFree();
+		GetTree().CurrentScene = editor;
+	}
 }
 
 
@@ -2857,4 +2857,3 @@ public partial class GameBootstrap : Node2D
 		return instances;
 	}
 }
-

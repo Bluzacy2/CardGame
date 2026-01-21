@@ -4,370 +4,420 @@ using System.Linq;
 using CardGame.Core.Cards.Models;
 using CardGame.Core.Cards.Data;
 using System.Text.RegularExpressions;
-using System.Text.RegularExpressions;
 
+/// <summary>
+/// Controls the visual representation of a single card in the game UI.
+/// Handles rendering card data (stats, text, art), input interactions (hover, click),
+/// and visual states (highlighting, selection).
+/// </summary>
 public partial class CardView : Control
 {
-	[ExportGroup("UI Elements")]
-	[Export] public Label NameLabel;
-	[Export] public Label CostLabel;
-	[Export] public Label HpLabel;
-	[Export] public Label AtkLabel;
-	[Export] public RichTextLabel DescLabel;          // Zmienione na Label (zgodnie z Twoją prośbą)
-	[Export] public RichTextLabel SubtypeLabel; // Nowe: RichTextLabel dla podtypów
-	[Export] public RichTextLabel KeywordsLabel;
+    #region UI Elements (Exports)
+    [ExportGroup("UI Elements")]
+    /// <summary>Label displaying the card's name.</summary>
+    [Export] public Label NameLabel;
+    /// <summary>Label displaying the mana/blood cost.</summary>
+    [Export] public Label CostLabel;
+    /// <summary>Label displaying current health.</summary>
+    [Export] public Label HpLabel;
+    /// <summary>Label displaying current attack power.</summary>
+    [Export] public Label AtkLabel;
+    /// <summary>Label for card description/flavor text.</summary>
+    [Export] public RichTextLabel DescLabel;
+    /// <summary>Label for card subtypes (e.g. "Monster Animal").</summary>
+    [Export] public RichTextLabel SubtypeLabel;
+    /// <summary>Label for displaying keywords (e.g. "Flying, Armored").</summary>
+    [Export] public RichTextLabel KeywordsLabel;
 
-	[Export] public TextureRect Background;    // ZMIENIONE: TextureRect zamiast ColorRect
-	[Export] public TextureRect Illustration;  // Nowe: Miejsce na obrazek potwora
-	[Export] public TextureRect AttackSquare;  // Nowe: Ramka ataku
-	[Export] public TextureRect HealthSquare;  // Nowe: Ramka HP
+    /// <summary>The main background texture or frame of the card.</summary>
+    [Export] public TextureRect Background;
+    /// <summary>The texture displaying the card's illustration/art.</summary>
+    [Export] public TextureRect Illustration;
+    /// <summary>Icon/Frame for the attack value.</summary>
+    [Export] public TextureRect AttackSquare;
+    /// <summary>Icon/Frame for the health value.</summary>
+    [Export] public TextureRect HealthSquare;
 
-	[Export] public Control HighlightBorder;
-	[Export] public HBoxContainer KeywordContainer;
-	[Export] public Control XOverlay;
-	[Export] public Label CountBadge;
+    /// <summary>Border control used for targeting highlights.</summary>
+    [Export] public Control HighlightBorder;
+    /// <summary>Container for keyword icons (optional/future use).</summary>
+    [Export] public HBoxContainer KeywordContainer;
+    /// <summary>Overlay used to indicate selection (e.g. during Mulligan).</summary>
+    [Export] public Control XOverlay;
+    /// <summary>Badge displaying card count (used in Deck Editor).</summary>
+    [Export] public Label CountBadge;
+    #endregion
 
-	public CardInstance MyCardData { get; private set; }
-	public event Action<CardView> OnClicked;
-	private Vector2 _baseScale = Vector2.One;
-	//public override void _Ready()
-	//{
-	// To jest baza - mniejsza karta w edytorze talii
-	//Vector2 baseSize = new Vector2(200, 280);
-	//CustomMinimumSize = baseSize;
+    #region Properties & Events
+    /// <summary>
+    /// Gets the data model associated with this card view.
+    /// </summary>
+    public CardInstance MyCardData { get; private set; }
 
-	// Pozwalamy karcie wypełniać miejsce, które dostanie od rodzica
-	//SizeFlagsHorizontal = SizeFlags.Expand | SizeFlags.Fill;
-	//SizeFlagsVertical = SizeFlags.Expand | SizeFlags.Fill;
+    /// <summary>
+    /// Event triggered when the card is clicked.
+    /// </summary>
+    public event Action<CardView> OnClicked;
 
-	//MouseFilter = MouseFilterEnum.Stop;
+    private Vector2 _baseScale = Vector2.One;
+    #endregion
 
-	// To sprawia, że ramka zawsze wypełnia kartę, nieważne jaki ma rozmiar
-	// if (Background != null)
-	//{
-	//    Background.SetAnchorsPreset(LayoutPreset.FullRect);
-	//    Background.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
-	//    Background.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
-	//}
-	//}
+    #region Lifecycle Methods
 
-	public override void _Ready()
-	{
-		// 1. Podstawowy rozmiar (zmieniony na 200x280 dla lepszej wydajności w Gridzie)
-		CustomMinimumSize = new Vector2(200, 280);
-		MouseFilter = MouseFilterEnum.Stop;
-		ClipContents = true; // To "obetnie" rogi ilustracji, jeśli ramka ma być na wierzchu
+    /// <summary>
+    /// Initializes the card view, setting default size, mouse filter, and visual properties.
+    /// Configures child controls to scale properly.
+    /// </summary>
+    public override void _Ready()
+    {
+        // 1. Basic size setup (200x280 for Grid performance)
+        CustomMinimumSize = new Vector2(200, 280);
+        MouseFilter = MouseFilterEnum.Stop; // Allows catching input events
+        ClipContents = true; // Clips children (like art) to card boundaries
 
-		// 2. Naprawa Background (Twoje działające linie)
-		if (Background != null)
-		{
-			Background.SetAnchorsPreset(LayoutPreset.FullRect);
-			Background.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
-			Background.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+        // 2. Background setup
+        if (Background != null)
+        {
+            Background.SetAnchorsPreset(LayoutPreset.FullRect);
+            Background.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+            Background.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+        }
 
-			// OPCJONALNIE: Jeśli chcesz, by ramka przycinała rogi dzieci:
-			// Background.ClipChildren = FillModeEnum.ClipAndDraw;
-		}
-		MouseEntered += OnHoverEnter;
-		MouseExited += OnHoverExit;
-		// 3. AUTOMATYCZNA NAPRAWA DZIECI (Illustration, Atk, Hp itd.)
-		// Ta pętla przejdzie przez wszystko co wrzuciłeś do środka karty
-		foreach (var child in GetChildren())
-		{
-			if (child is Control control && child != Background)
-			{
-				// Pozwalamy kontenerom (np. Gridowi) zarządzać rozmiarem karty
-				control.SizeFlagsHorizontal = SizeFlags.Expand | SizeFlags.Fill;
-				control.SizeFlagsVertical = SizeFlags.Expand | SizeFlags.Fill;
+        // 3. Setup hover events
+        MouseEntered += OnHoverEnter;
+        MouseExited += OnHoverExit;
 
-				// Jeśli element nie jest jeszcze dzieckiem tła, 
-				// to jego 'procentowe' pozycjonowanie może szaleć.
-				// Najlepiej ustawić im wszystkim Anchors w edytorze na 'Layout -> Anchors to Selection'
-			}
-		}
-	}
-	private void OnHoverEnter()
-	{
-		// Powiększaj tylko karty w Twojej ręce (HandContainer)
-		if (GetParent() != null && GetParent().Name == "HandContainer")
-		{
-			ZIndex = 100;
-			var tween = CreateTween();
-			tween.SetParallel(true);
-			tween.TweenProperty(this, "scale", new Vector2(1.2f, 1.2f), 0.1f);
-			tween.TweenProperty(this, "position:y", -100, 0.1f);
-		}
-	}
+        // 4. Auto-configure children layout
+        foreach (var child in GetChildren())
+        {
+            if (child is Control control && child != Background)
+            {
+                // Allow containers (e.g., Grid) to manage card size
+                control.SizeFlagsHorizontal = SizeFlags.Expand | SizeFlags.Fill;
+                control.SizeFlagsVertical = SizeFlags.Expand | SizeFlags.Fill;
+            }
+        }
+    }
 
-	private void OnHoverExit()
-	{
-		if (GetParent() != null && GetParent().Name == "HandContainer")
-		{
-			ZIndex = 0;
-			var tween = CreateTween();
-			tween.SetParallel(true);
-			tween.TweenProperty(this, "scale", Vector2.One, 0.1f);
-			tween.TweenProperty(this, "position:y", 0, 0.1f);
-		}
-	}
+    /// <summary>
+    /// Handles GUI input events directly on the card control.
+    /// Detects left clicks to trigger interaction.
+    /// </summary>
+    public override void _GuiInput(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton mb && mb.Pressed && mb.ButtonIndex == MouseButton.Left)
+        {
+            OnClicked?.Invoke(this);
+        }
+    }
 
-	public override void _GuiInput(InputEvent @event)
-	{
-		if (@event is InputEventMouseButton mb && mb.Pressed && mb.ButtonIndex == MouseButton.Left)
-		{
-			OnClicked?.Invoke(this);
-		}
-	}
+    #endregion
 
-	public void Render(CardInstance card)
-	{
-		if (card == null) return;
-		MyCardData = card;
+    #region Rendering Logic
 
-		if (Background != null) Background.Visible = true;
-		// 1. Podstawowe teksty
-		if (NameLabel != null) NameLabel.Text = card.Definition.Name.ToUpper();
-		if (DescLabel != null) DescLabel.Text = card.Definition.Description;
+    /// <summary>
+    /// Updates the card's visual state based on the provided card data.
+    /// Sets text, stats, colors, and art.
+    /// </summary>
+    /// <param name="card">The card data instance to display.</param>
+    public void Render(CardInstance card)
+    {
+        if (card == null) return;
+        MyCardData = card;
 
-		if (SubtypeLabel != null)
-	{
-		SubtypeLabel.BbcodeEnabled = true;
-		string subtypeText = "";
+        if (Background != null) Background.Visible = true;
 
-		if (card.Definition.Type == CardType.Spell)
-		{
-			subtypeText = "Action";
-		}
-		else if (card.Definition.Subtypes != null && card.Definition.Subtypes.Any())
-		{
-			// Łączymy spacją (" "), nie przecinkiem
-			var formattedSubtypes = card.Definition.Subtypes.Select(s => ToTitleCase(s));
-			subtypeText = string.Join(" ", formattedSubtypes);
-		}
+        // 1. Basic Text
+        if (NameLabel != null) NameLabel.Text = card.Definition.Name.ToUpper();
+        if (DescLabel != null) DescLabel.Text = card.Definition.Description;
 
-		SubtypeLabel.Text = !string.IsNullOrEmpty(subtypeText) ? $"[center]- {subtypeText} -[/center]" : "";
-	}
+        if (SubtypeLabel != null)
+        {
+            SubtypeLabel.BbcodeEnabled = true;
+            string subtypeText = "";
 
-	// --- KEYWORDY (Z kropkami: "Flying. Armored.") ---
-	if (KeywordsLabel != null)
-{
-	KeywordsLabel.BbcodeEnabled = true;
-	
-	var keywords = card.CurrentStats.Keywords
-		.Where(k => k != Keyword.None && k != Keyword.SoulGuardDepleted && k != Keyword.BurnSource)
-		.Select(k => GetKeywordDisplayText(k, card)) // <--- CHANGED THIS LINE
-		.ToList();
+            if (card.Definition.Type == CardType.Spell)
+            {
+                subtypeText = "Action";
+            }
+            else if (card.Definition.Subtypes != null && card.Definition.Subtypes.Any())
+            {
+                // Join subtypes with spaces, formatted to Title Case
+                var formattedSubtypes = card.Definition.Subtypes.Select(s => ToTitleCase(s));
+                subtypeText = string.Join(" ", formattedSubtypes);
+            }
 
-	if (keywords.Count > 0)
-	{
-		string kwRaw = string.Join(". ", keywords) + ".";
-		ApplySmartFontSize(KeywordsLabel, kwRaw, 15);
-		KeywordsLabel.Text = $"[center][b]{kwRaw}[/b][/center]";
-		KeywordsLabel.Visible = true;
-	}
-	else KeywordsLabel.Visible = false;
-}
+            SubtypeLabel.Text = !string.IsNullOrEmpty(subtypeText) ? $"[center]- {subtypeText} -[/center]" : "";
+        }
 
+        // --- KEYWORDS ---
+        if (KeywordsLabel != null)
+        {
+            KeywordsLabel.BbcodeEnabled = true;
 
+            var keywords = card.CurrentStats.Keywords
+                .Where(k => k != Keyword.None && k != Keyword.SoulGuardDepleted && k != Keyword.BurnSource)
+                .Select(k => GetKeywordDisplayText(k, card))
+                .ToList();
 
-		// 2. Koszt i rzymska mana
-		if (CostLabel != null)
-	{
-		CostLabel.Text = IntToRoman(card.CurrentStats.BloodCost);
-		
-		// Jeśli aktualny koszt jest mniejszy niż bazowy z definicji
-		if (card.CurrentStats.BloodCost < card.Definition.BaseStats.BloodCost)
-		{
-			CostLabel.Modulate = Colors.Green;
-		}
-		else
-		{
-			CostLabel.Modulate = Colors.Red; // Bazowy (lub zwiększony) koszt jest czerwony
-		}
-	}
+            if (keywords.Count > 0)
+            {
+                string kwRaw = string.Join(". ", keywords) + ".";
+                ApplySmartFontSize(KeywordsLabel, kwRaw, 15);
+                KeywordsLabel.Text = $"[center][b]{kwRaw}[/b][/center]";
+                KeywordsLabel.Visible = true;
+            }
+            else KeywordsLabel.Visible = false;
+        }
 
-		// 3. Statystyki Jednostek
-		if (card.Definition.Type == CardType.Unit)
-		{
-			ShowUnitStats(true);
-			if (AtkLabel != null)
-			{
-				AtkLabel.Text = card.CurrentStats.Attack.ToString();
-				AtkLabel.Modulate = card.CurrentStats.Attack > card.Definition.BaseStats.Attack ? Colors.Green : Colors.White;
-			}
-			if (HpLabel != null)
-			{
-				HpLabel.Text = card.CurrentStats.Health.ToString();
-				if (card.DamageTaken > 0) HpLabel.Modulate = Colors.Red;
-				else if (card.CurrentStats.Health > card.Definition.BaseStats.Health) HpLabel.Modulate = Colors.Green;
-				else HpLabel.Modulate = Colors.White;
-			}
-			// Kolor ramki (SelfModulate zamiast Color)
-			if (Background != null) Background.SelfModulate = Colors.White;
-		}
-		else
-		{
-			ShowUnitStats(false);
-			if (Background != null) Background.SelfModulate = new Color(0.6f, 0.6f, 1.0f); // Niebieski dla czarów
-		}
+        // 2. Cost and Roman Numeral Logic
+        if (CostLabel != null)
+        {
+            CostLabel.Text = IntToRoman(card.CurrentStats.BloodCost);
 
-		// 4. Obrazek (Path: res://Assets/Cards/Cards/CardImages/id.png)
-		if (Illustration != null)
-		{
-			string imgPath = $"res://Assets/Cards/Cards/CardImages/{card.Definition.Id}.png";
-			if (FileAccess.FileExists(imgPath))
-				Illustration.Texture = GD.Load<Texture2D>(imgPath);
-			else
-				Illustration.Texture = GD.Load<Texture2D>("res://Assets/Cards/Cards/missing_texture.png");
-		}
+            // Color logic: Green if cheaper, Red if more expensive or base
+            if (card.CurrentStats.BloodCost < card.Definition.BaseStats.BloodCost)
+            {
+                CostLabel.Modulate = Colors.Green;
+            }
+            else
+            {
+                CostLabel.Modulate = Colors.Red;
+            }
+        }
 
-		RenderKeywords(card);
-	}
+        // 3. Unit Statistics
+        if (card.Definition.Type == CardType.Unit)
+        {
+            ShowUnitStats(true);
+            if (AtkLabel != null)
+            {
+                AtkLabel.Text = card.CurrentStats.Attack.ToString();
+                AtkLabel.Modulate = card.CurrentStats.Attack > card.Definition.BaseStats.Attack ? Colors.Green : Colors.White;
+            }
+            if (HpLabel != null)
+            {
+                HpLabel.Text = card.CurrentStats.Health.ToString();
+                if (card.DamageTaken > 0) HpLabel.Modulate = Colors.Red;
+                else if (card.CurrentStats.Health > card.Definition.BaseStats.Health) HpLabel.Modulate = Colors.Green;
+                else HpLabel.Modulate = Colors.White;
+            }
 
-	private void ShowUnitStats(bool show)
-	{
-		if (AtkLabel != null) AtkLabel.Visible = show;
-		if (HpLabel != null) HpLabel.Visible = show;
-		if (AttackSquare != null) AttackSquare.Visible = show; // Ukrywamy też kwadraty
-		if (HealthSquare != null) HealthSquare.Visible = show;
-	}
+            if (Background != null) Background.SelfModulate = Colors.White;
+        }
+        else
+        {
+            ShowUnitStats(false);
+            if (Background != null) Background.SelfModulate = new Color(0.6f, 0.6f, 1.0f); // Blue tint for Spells
+        }
 
-	private string IntToRoman(int n)
-	{
-		string[] romans = { "0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" };
-		return (n >= 0 && n < romans.Length) ? romans[n] : n.ToString();
-	}
+        // 4. Artwork Loading
+        if (Illustration != null)
+        {
+            string imgPath = $"res://Assets/Cards/Cards/CardImages/{card.Definition.Id}.png";
+            if (FileAccess.FileExists(imgPath))
+                Illustration.Texture = GD.Load<Texture2D>(imgPath);
+            else
+                Illustration.Texture = GD.Load<Texture2D>("res://Assets/Cards/Cards/missing_texture.png");
+        }
 
-	// --- LOGIKA ORYGINALNA (Highlight, Drag&Drop, Count) ---
+        RenderKeywords(card);
+    }
 
+    /// <summary>
+    /// Renders the card back (face down state).
+    /// Hides all stats and text, shows a card back texture or color.
+    /// </summary>
+    public void RenderCardBack()
+    {
+        MyCardData = null;
+        ShowUnitStats(false);
 
-	public void RenderCardBack()
-{
-	MyCardData = null;
-	ShowUnitStats(false);
+        // Hide all text elements
+        if (NameLabel != null) { NameLabel.Text = ""; NameLabel.Visible = false; }
+        if (DescLabel != null) { DescLabel.Text = ""; DescLabel.Visible = false; }
+        if (CostLabel != null) { CostLabel.Visible = false; }
+        if (SubtypeLabel != null) SubtypeLabel.Visible = false;
+        if (KeywordsLabel != null) KeywordsLabel.Visible = false;
+        if (AttackSquare != null) AttackSquare.Visible = false;
+        if (HealthSquare != null) HealthSquare.Visible = false;
 
-	// Wyłączamy wszystkie teksty
-	if (NameLabel != null) { NameLabel.Text = ""; NameLabel.Visible = false; }
-	if (DescLabel != null) { DescLabel.Text = ""; DescLabel.Visible = false; }
-	if (CostLabel != null) { CostLabel.Visible = false; }
-	if (SubtypeLabel != null) SubtypeLabel.Visible = false;
-	if (KeywordsLabel != null) KeywordsLabel.Visible = false;
-	if (AttackSquare != null) AttackSquare.Visible = false;
-	if (HealthSquare != null) HealthSquare.Visible = false;
-	
-	// Jeśli masz osobny obiekt tła, ukryj go, żeby nie przeszkadzał
-	if (Background != null) Background.Visible = false;
+        if (Background != null) Background.Visible = false;
 
-	// --- FIX: UŻYWAMY GŁÓWNEJ ILUSTRACJI ---
-	if (Illustration != null)
-	{
-		Illustration.Visible = true;
-		
-		// 1. Tworzymy obrazek 1x1 w kolorze CZARNYM
-		var image = Image.Create(1, 1, false, Image.Format.Rgba8);
-		image.Fill(Colors.Black);
-		var texture = ImageTexture.CreateFromImage(image);
+        // Use Illustration as Card Back
+        if (Illustration != null)
+        {
+            Illustration.Visible = true;
 
-		// 2. Przypisujemy go
-		Illustration.Texture = texture;
-		
-		// 3. Resetujemy kolory (żeby nie był np. przyciemniony)
-		Illustration.SelfModulate = Colors.White;
-		Illustration.Modulate = Colors.White;
+            // Create a 1x1 Black texture
+            var image = Image.Create(1, 1, false, Image.Format.Rgba8);
+            image.Fill(Colors.Black);
+            var texture = ImageTexture.CreateFromImage(image);
 
-		// 4. KLUCZOWE: Rozciąganie
-		// To sprawi, że ten mały czarny piksel wypełni całą kartę
-		Illustration.SetAnchorsPreset(LayoutPreset.FullRect);
-		Illustration.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
-		Illustration.StretchMode = TextureRect.StretchModeEnum.Scale;
-	}
-}
+            Illustration.Texture = texture;
+            Illustration.SelfModulate = Colors.White;
+            Illustration.Modulate = Colors.White;
 
-	public void SetMulliganSelected(bool selected)
-	{
-		if (XOverlay != null) XOverlay.Visible = selected;
-		Modulate = selected ? new Color(0.6f, 0.6f, 0.6f) : new Color(1, 1, 1);
-	}
+            // Stretch to fill card
+            Illustration.SetAnchorsPreset(LayoutPreset.FullRect);
+            Illustration.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+            Illustration.StretchMode = TextureRect.StretchModeEnum.Scale;
+        }
+    }
 
-	public void SetHighlight(bool active, Color color)
-	{
-		if (HighlightBorder != null)
-		{
-			HighlightBorder.Visible = active;
-			HighlightBorder.Modulate = color;
-		}
-	}
+    #endregion
 
-	private void RenderKeywords(CardInstance card)
-	{
-		if (card.CurrentStats.Keywords.Contains(Keyword.SoulGuard)) SetHighlight(true, Colors.Gray);
-		else if (card.CurrentStats.Keywords.Contains(Keyword.Marked)) SetHighlight(true, Colors.Red);
-		else SetHighlight(false, Colors.White);
-	}
+    #region Visual Effects & Interaction
 
-	public override Variant _GetDragData(Vector2 atPosition)
-	{
-		if (MyCardData == null) return default;
-		var preview = new Control();
-		var visual = (Control)Duplicate();
-		preview.AddChild(visual);
-		visual.MouseFilter = MouseFilterEnum.Ignore;
-		visual.Position = new Vector2(-100, -140);
-		visual.Modulate = new Color(1, 1, 1, 0.8f);
-		visual.RotationDegrees = 5;
-		SetDragPreview(preview);
-		return MyCardData.InstanceId;
-	}
+    private void OnHoverEnter()
+    {
+        // Enlarge only cards in the player's hand
+        if (GetParent() != null && GetParent().Name == "HandContainer")
+        {
+            ZIndex = 100;
+            var tween = CreateTween();
+            tween.SetParallel(true);
+            tween.TweenProperty(this, "scale", new Vector2(1.2f, 1.2f), 0.1f);
+            tween.TweenProperty(this, "position:y", -100, 0.1f);
+        }
+    }
 
-	public void UpdateCount(int current, int max)
-	{
-		if (CountBadge == null) return;
-		CountBadge.Visible = true;
-		CountBadge.Text = $"{current}/{max}";
-		CountBadge.Modulate = current >= max ? Colors.Red : Colors.White;
-		Modulate = current >= max ? new Color(0.5f, 0.5f, 0.5f) : Colors.White;
-	}
-	private string ToTitleCase(string input)
-	{
-		if (string.IsNullOrEmpty(input)) return "";
-		return char.ToUpper(input[0]) + input.Substring(1).ToLower();
-	}
-	private string FormatText(string input)
-	{
-		if (string.IsNullOrEmpty(input)) return "";
-	   
-		string spaced = Regex.Replace(input, "([a-z])([A-Z])", "$1 $2");
-		return char.ToUpper(spaced[0]) + spaced.Substring(1).ToLower();
-	}
-	private void ApplySmartFontSize(RichTextLabel label, string text, int baseSize)
-	{
-		if (label == null) return;
-		
-		int length = text.Length;
-		int fontSize = baseSize;
+    private void OnHoverExit()
+    {
+        if (GetParent() != null && GetParent().Name == "HandContainer")
+        {
+            ZIndex = 0;
+            var tween = CreateTween();
+            tween.SetParallel(true);
+            tween.TweenProperty(this, "scale", Vector2.One, 0.1f);
+            tween.TweenProperty(this, "position:y", 0, 0.1f);
+        }
+    }
 
-		// Agresywne progi skalowania
-		if (length > 60) fontSize = (int)(baseSize * 0.5f);      // Bardzo długi tekst (50% rozmiaru)
-		else if (length > 45) fontSize = (int)(baseSize * 0.65f); // Długi tekst
-		else if (length > 30) fontSize = (int)(baseSize * 0.8f);  // Średni tekst
-		
-		label.AddThemeFontSizeOverride("normal_font_size", fontSize);
-		label.AddThemeFontSizeOverride("bold_font_size", fontSize);
-		label.AddThemeFontSizeOverride("italics_font_size", fontSize);
-	}
-	private string GetKeywordDisplayText(Keyword k, CardInstance card)
-{
-	// 1. Get the readable name (e.g. "SplashDamage" -> "Splash Damage")
-	string text = FormatText(k.ToString());
+    /// <summary>
+    /// Toggles the visual highlight effect on the card border.
+    /// </summary>
+    /// <param name="active">True to show highlight, false to hide.</param>
+    /// <param name="color">The color of the highlight.</param>
+    public void SetHighlight(bool active, Color color)
+    {
+        if (HighlightBorder != null)
+        {
+            HighlightBorder.Visible = active;
+            HighlightBorder.Modulate = color;
+        }
+    }
 
-	// 2. Check if this keyword has a parameter value (e.g., 2, 3)
-	if (card.CurrentStats.KeywordParams.TryGetValue(k, out int value))
-	{
-		// Return "Armor 2" or "Splash Damage 3"
-		return $"{text} {value}";
-	}
+    /// <summary>
+    /// Sets the visual state for Mulligan selection (e.g., overlay X).
+    /// </summary>
+    public void SetMulliganSelected(bool selected)
+    {
+        if (XOverlay != null) XOverlay.Visible = selected;
+        Modulate = selected ? new Color(0.6f, 0.6f, 0.6f) : new Color(1, 1, 1);
+    }
 
-	// Return just "Flying" or "Unkillable"
-	return text;
-}
+    /// <summary>
+    /// Updates the visual count badge (used in Deck Editor).
+    /// </summary>
+    public void UpdateCount(int current, int max)
+    {
+        if (CountBadge == null) return;
+        CountBadge.Visible = true;
+        CountBadge.Text = $"{current}/{max}";
+        CountBadge.Modulate = current >= max ? Colors.Red : Colors.White;
+        Modulate = current >= max ? new Color(0.5f, 0.5f, 0.5f) : Colors.White;
+    }
+
+    #endregion
+
+    #region Drag & Drop
+
+    /// <summary>
+    /// Generates drag data when the user starts dragging the card.
+    /// Creates a visual preview of the card under the cursor.
+    /// </summary>
+    /// <returns>The InstanceID of the card data.</returns>
+    public override Variant _GetDragData(Vector2 atPosition)
+    {
+        if (MyCardData == null) return default;
+
+        var preview = new Control();
+        var visual = (Control)Duplicate();
+        preview.AddChild(visual);
+
+        visual.MouseFilter = MouseFilterEnum.Ignore;
+        visual.Position = new Vector2(-100, -140);
+        visual.Modulate = new Color(1, 1, 1, 0.8f);
+        visual.RotationDegrees = 5;
+
+        SetDragPreview(preview);
+        return MyCardData.InstanceId;
+    }
+
+    #endregion
+
+    #region Private Helper Methods
+
+    private void ShowUnitStats(bool show)
+    {
+        if (AtkLabel != null) AtkLabel.Visible = show;
+        if (HpLabel != null) HpLabel.Visible = show;
+        if (AttackSquare != null) AttackSquare.Visible = show;
+        if (HealthSquare != null) HealthSquare.Visible = show;
+    }
+
+    private void RenderKeywords(CardInstance card)
+    {
+        if (card.CurrentStats.Keywords.Contains(Keyword.SoulGuard)) SetHighlight(true, Colors.Gray);
+        else if (card.CurrentStats.Keywords.Contains(Keyword.Marked)) SetHighlight(true, Colors.Red);
+        else SetHighlight(false, Colors.White);
+    }
+
+    private string IntToRoman(int n)
+    {
+        string[] romans = { "0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" };
+        return (n >= 0 && n < romans.Length) ? romans[n] : n.ToString();
+    }
+
+    private string ToTitleCase(string input)
+    {
+        if (string.IsNullOrEmpty(input)) return "";
+        return char.ToUpper(input[0]) + input.Substring(1).ToLower();
+    }
+
+    private string FormatText(string input)
+    {
+        if (string.IsNullOrEmpty(input)) return "";
+        string spaced = Regex.Replace(input, "([a-z])([A-Z])", "$1 $2");
+        return char.ToUpper(spaced[0]) + spaced.Substring(1).ToLower();
+    }
+
+    private string GetKeywordDisplayText(Keyword k, CardInstance card)
+    {
+        string text = FormatText(k.ToString());
+        if (card.CurrentStats.KeywordParams.TryGetValue(k, out int value))
+        {
+            return $"{text} {value}";
+        }
+        return text;
+    }
+
+    private void ApplySmartFontSize(RichTextLabel label, string text, int baseSize)
+    {
+        if (label == null) return;
+
+        int length = text.Length;
+        int fontSize = baseSize;
+
+        if (length > 60) fontSize = (int)(baseSize * 0.5f);
+        else if (length > 45) fontSize = (int)(baseSize * 0.65f);
+        else if (length > 30) fontSize = (int)(baseSize * 0.8f);
+
+        label.AddThemeFontSizeOverride("normal_font_size", fontSize);
+        label.AddThemeFontSizeOverride("bold_font_size", fontSize);
+        label.AddThemeFontSizeOverride("italics_font_size", fontSize);
+    }
+
+    #endregion
 }

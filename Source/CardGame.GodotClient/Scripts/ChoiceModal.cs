@@ -2,14 +2,15 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CardGame.Core.Cards.Models; // Potrzebne do CardInstance
-
+using CardGame.Core.Cards.Models; 
+/// <summary>
+/// UI Component responsible for displaying modal choices to the player.
+/// Supports both text-based options (buttons) and card selection grids (tutor).
+/// </summary>
 public partial class ChoiceModal : Control
 {
 	[Export] public Control ButtonContainer;
 	[Export] public Label TitleLabel;
-
-	// --- NOWE REFERENCJE (Przypisz w Inspektorze!) ---
 	[Export] public ScrollContainer CardGridScroll;
 	[Export] public Control CardGrid;
 
@@ -21,23 +22,23 @@ public partial class ChoiceModal : Control
 		SetAnchorsPreset(LayoutPreset.FullRect);
 		MouseFilter = MouseFilterEnum.Stop;
 	}
-
-	public void SetCallback(Action<int> callback)
+    /// <summary>
+    /// Sets the callback function to be executed when an option is selected.
+    /// </summary>
+    /// <param name="callback">Action receiving the selected index.</param>
+    public void SetCallback(Action<int> callback)
 	{
 		_currentCallback = callback;
 	}
-
-	// Tryb 1: Przyciski (Expectancy)
-	public void ShowOptions(IEnumerable<string> options, List<bool> enabledStates = null)
+    /// <summary>
+    /// Displays a list of text-based options as buttons (e.g., for modal spells like 'Expectancy').
+    /// </summary>
+    /// <param name="options">List of option text labels.</param>
+    /// <param name="enabledStates">Optional list of booleans enabling/disabling specific options.</param>
+    public void ShowOptions(IEnumerable<string> options, List<bool> enabledStates = null)
 	{
 		SetupView(mode: 0); // 0 = Buttons
-
-		// ... (Twój istniejący kod pętli tworzenia przycisków) ...
-		// ... (Wklej tu zawartość poprzedniej metody ShowOptions) ...
-		// Pamiętaj tylko o dodaniu czyszczenia CardGrid:
 		foreach (Node child in CardGrid.GetChildren()) child.QueueFree();
-
-		// --- Skrócona wersja dla kontekstu (użyj swojej pełnej z poprzedniego kroku) ---
 		Visible = true;
 		MoveToFront();
 		if (ButtonContainer == null) return;
@@ -51,7 +52,6 @@ public partial class ChoiceModal : Control
 			btn.Text = txt;
 			btn.CustomMinimumSize = new Vector2(300, 60);
 
-			// Logika enabled...
 			bool isEnabled = (enabledStates == null) || (index >= enabledStates.Count) || enabledStates[index];
 			btn.Disabled = !isEnabled;
 
@@ -62,12 +62,16 @@ public partial class ChoiceModal : Control
 		}
 	}
 
-	// Tryb 2: Siatka Kart (Critical Thinking)
-	public void ShowCardGrid(List<CardInstance> cards, PackedScene cardTemplate)
+    /// <summary>
+    /// Displays a grid of cards for selection (e.g., for Tutor effects like 'Critical Thinking').
+    /// </summary>
+    /// <param name="cards">List of card instances to display.</param>
+    /// <param name="cardTemplate">The scene template used to instantiate card visuals.</param>
+    public void ShowCardGrid(List<CardInstance> cards, PackedScene cardTemplate)
 	{
-		SetupView(mode: 1); // Włączamy widok Grid
+		SetupView(mode: 1); 
 
-		// DIAGNOSTYKA
+
 		if (CardGrid == null)
 		{
 			GD.PrintErr("CRITICAL: CardGrid is null! Przypisz go w Inspektorze w ChoiceModal.tscn");
@@ -81,7 +85,6 @@ public partial class ChoiceModal : Control
 
 		GD.Print($"[MODAL] Wyświetlam Grid. Liczba kart: {cards.Count}");
 
-		// Czyścimy stare dzieci
 		foreach (Node child in CardGrid.GetChildren())
 			child.QueueFree();
 
@@ -90,7 +93,6 @@ public partial class ChoiceModal : Control
 		{
 			try
 			{
-				// BEZPIECZNE INSTANCJONOWANIE (Bez generyka <T>)
 				var node = cardTemplate.Instantiate();
 				var cardView = node as CardView;
 
@@ -102,19 +104,13 @@ public partial class ChoiceModal : Control
 
 				CardGrid.AddChild(cardView);
 
-				// Konfiguracja karty
 				cardView.Render(card);
-				cardView.CustomMinimumSize = new Vector2(140, 190); // Wymuś rozmiar
+				cardView.CustomMinimumSize = new Vector2(140, 190);
 
-				// Mysz musi działać
 				cardView.MouseFilter = MouseFilterEnum.Stop;
 
-				// Callback
 				int capturedIndex = index;
 				cardView.OnClicked += (cv) => OptionClicked(capturedIndex);
-
-				// Opcjonalnie: Wyłączamy mechanikę Drag&Drop w oknie wyboru, żeby nie psuć UI
-				// (Wymagałoby dodania flagi w CardView, ale na razie zostawmy)
 
 				index++;
 			}
@@ -123,12 +119,12 @@ public partial class ChoiceModal : Control
 				GD.PrintErr($"[MODAL] Wyjątek przy tworzeniu karty: {e.Message}");
 			}
 		}
-
-		// Wymuszenie przeliczenia układu
 		if (CardGrid is Container c) c.QueueSort();
 	}
-
-	private void SetupView(int mode)
+    /// <summary>
+    /// Switches visibility between Button mode and Grid mode.
+    /// </summary>
+    private void SetupView(int mode)
 	{
 		Visible = true;
 		MoveToFront();

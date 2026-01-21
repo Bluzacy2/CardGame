@@ -8,212 +8,275 @@ using CardGame.Core.Cards.Models;
 using CardGame.Core.Decks.Data;
 using System.Text.Json;
 
+/// <summary>
+/// Manages the deck building interface, allowing players to create, edit, and save card decks.
+/// Handles the visualization of the card library, the current deck slots, and file I/O operations.
+/// </summary>
 public partial class DeckEditor : Control
 {
-	[ExportGroup("Kontenery")]
-	[Export] public Control LibraryGrid;
-	[Export] public Control DeckSlotsGrid;
+    #region Scene References
 
-	[ExportGroup("UI Elementy")]
-	[Export] public LineEdit DeckNameInput;
-	[Export] public Label CardCountLabel;
-	[Export] public Button SaveButton;
-	[Export] public Button ExitButton;
+    [ExportGroup("Kontenery")]
+    /// <summary>Container for displaying the list of available cards (Library).</summary>
+    [Export] public Control LibraryGrid;
+    /// <summary>Container for displaying the cards currently in the deck.</summary>
+    [Export] public Control DeckSlotsGrid;
 
-	[ExportGroup("Szablony")]
-	[Export] public PackedScene CardScene;
-	[Export] public PackedScene SlotScene;
-	[Export] public PackedScene LibraryEntryScene;
+    [ExportGroup("UI Elementy")]
+    /// <summary>Input field for the deck name.</summary>
+    [Export] public LineEdit DeckNameInput;
+    /// <summary>Label displaying the current card count (e.g., "15/30").</summary>
+    [Export] public Label CardCountLabel;
+    /// <summary>Button to save the current deck to a JSON file.</summary>
+    [Export] public Button SaveButton;
+    /// <summary>Button to exit the editor and return to deck selection.</summary>
+    [Export] public Button ExitButton;
 
-	private const string DECK_SELECTION_PATH = "res://Scenes/DeckSelection.tscn";
+    [ExportGroup("Szablony")]
+    /// <summary>Template scene for instantiating visual card representations.</summary>
+    [Export] public PackedScene CardScene;
+    /// <summary>Template scene for instantiating empty card slots in the deck grid.</summary>
+    [Export] public PackedScene SlotScene;
+    /// <summary>Template scene for instantiating library entries.</summary>
+    [Export] public PackedScene LibraryEntryScene;
 
-	public DeckData PreloadedDeck { get; set; }
+    #endregion
 
-	private List<int> _currentDeckList = new List<int>();
-	private const int MAX_CARDS = 30;
-	private const int MAX_COPIES = 3;
+    #region Constants and Fields
 
-	private List<CardSlot> _slots = new List<CardSlot>();
+    private const string DECK_SELECTION_PATH = "res://Scenes/DeckSelection.tscn";
 
-	public override void _Ready()
-	{
-		string jsonPath = ProjectSettings.GlobalizePath("res://Data/Cards/cards.json");
-		try { CardLibrary.Instance.LoadFromJson(jsonPath); } catch { }
+    /// <summary>
+    /// Optional deck data loaded when opening the editor to edit an existing deck.
+    /// If null, a new deck is created.
+    /// </summary>
+    public DeckData PreloadedDeck { get; set; }
 
-		InitializeSlots();
-		LoadLibrary();
+    private List<int> _currentDeckList = new List<int>();
+    private const int MAX_CARDS = 30;
+    private const int MAX_COPIES = 3;
 
-		if (PreloadedDeck != null)
-		{
-			_currentDeckList = new List<int>(PreloadedDeck.CardIds);
-			if (DeckNameInput != null) DeckNameInput.Text = PreloadedDeck.Name;
-		}
-		else
-		{
-			if (DeckNameInput != null) DeckNameInput.Text = "Nowa Talia";
-		}
+    private List<CardSlot> _slots = new List<CardSlot>();
 
-		UpdateUI();
+    #endregion
 
-		if (SaveButton != null) SaveButton.Pressed += SaveDeck;
-		if (ExitButton != null)
-			ExitButton.Pressed += () => GetTree().ChangeSceneToFile(DECK_SELECTION_PATH);
-	}
+    #region Initialization
 
-	private void InitializeSlots()
-	{
-		if (DeckSlotsGrid == null || SlotScene == null) return;
-		foreach (Node child in DeckSlotsGrid.GetChildren()) child.QueueFree();
+    /// <summary>
+    /// Initializes the editor, loads the card library, sets up slots, and populates UI if a deck is preloaded.
+    /// </summary>
+    public override void _Ready()
+    {
+        string jsonPath = ProjectSettings.GlobalizePath("res://Data/Cards/cards.json");
+        try { CardLibrary.Instance.LoadFromJson(jsonPath); } catch { }
 
-		for (int i = 0; i < MAX_CARDS; i++)
-		{
-			var slot = SlotScene.Instantiate<CardSlot>();
-			DeckSlotsGrid.AddChild(slot);
-			_slots.Add(slot);
+        InitializeSlots();
+        LoadLibrary();
 
-			// Podpinamy TYLKO dodawanie (Drop)
-			slot.CardDroppedInSlot += OnCardAddedToDeck;
+        if (PreloadedDeck != null)
+        {
+            _currentDeckList = new List<int>(PreloadedDeck.CardIds);
+            if (DeckNameInput != null) DeckNameInput.Text = PreloadedDeck.Name;
+        }
+        else
+        {
+            if (DeckNameInput != null) DeckNameInput.Text = "Nowa Talia";
+        }
 
-			// USUNIĘTO BŁĘDNĄ LINIĘ: slot.CardRemovedFromSlot...
-			// Usuwanie odbywa się teraz przyciskiem "-" w bibliotece
-		}
-	}
+        UpdateUI();
 
-	private void LoadLibrary()
-	{
-		if (LibraryGrid == null || CardScene == null || LibraryEntryScene == null) return;
+        if (SaveButton != null) SaveButton.Pressed += SaveDeck;
+        if (ExitButton != null)
+            ExitButton.Pressed += () => GetTree().ChangeSceneToFile(DECK_SELECTION_PATH);
+    }
 
-		foreach (Node child in LibraryGrid.GetChildren()) child.QueueFree();
+    /// <summary>
+    /// Creates the empty slots in the deck grid based on MAX_CARDS constant.
+    /// </summary>
+    private void InitializeSlots()
+    {
+        if (DeckSlotsGrid == null || SlotScene == null) return;
+        foreach (Node child in DeckSlotsGrid.GetChildren()) child.QueueFree();
 
-		var allIds = CardLibrary.Instance.GetAllIds()
-			.Where(id => id < 900)
-			.OrderBy(id => CardLibrary.Instance.GetCard(id).Cost) 
-			.ThenBy(id => CardLibrary.Instance.GetCard(id).Name);
+        for (int i = 0; i < MAX_CARDS; i++)
+        {
+            var slot = SlotScene.Instantiate<CardSlot>();
+            DeckSlotsGrid.AddChild(slot);
+            _slots.Add(slot);
 
-		foreach (var id in allIds)
-		{
-			var dummyInstance = new CardInstance(id, 1, CardLibrary.Instance.CreateDefinition(id));
-			var entry = LibraryEntryScene.Instantiate<LibraryCardEntry>();
-			LibraryGrid.AddChild(entry);
+            // Bind drag & drop event
+            slot.CardDroppedInSlot += OnCardAddedToDeck;
 
-			entry.Setup(dummyInstance, CardScene);
-			entry.SetMeta("CardId", id);
+            // REMOVED: slot.CardRemovedFromSlot...
+            // Removal is handled via the "-" button in the library entry
+        }
+    }
 
-			// Podpinamy przyciski z biblioteki
-			entry.OnAddRequest += AddCardById;
-			entry.OnRemoveRequest += RemoveCardById;
-		}
-	}
+    /// <summary>
+    /// Populates the library grid with all available collectible cards, sorted by cost and name.
+    /// </summary>
+    private void LoadLibrary()
+    {
+        if (LibraryGrid == null || CardScene == null || LibraryEntryScene == null) return;
 
-	// --- LOGIKA EDYCJI ---
+        foreach (Node child in LibraryGrid.GetChildren()) child.QueueFree();
 
-	private void AddCardById(int id)
-	{
-		if (_currentDeckList.Count >= MAX_CARDS) return;
-		if (_currentDeckList.Count(x => x == id) >= MAX_COPIES) return;
+        var allIds = CardLibrary.Instance.GetAllIds()
+            .Where(id => id < 900) // Exclude non-collectible tokens
+            .OrderBy(id => CardLibrary.Instance.GetCard(id).Cost)
+            .ThenBy(id => CardLibrary.Instance.GetCard(id).Name);
 
-		_currentDeckList.Add(id);
-		_currentDeckList.Sort();
-		UpdateUI();
-	}
+        foreach (var id in allIds)
+        {
+            var dummyInstance = new CardInstance(id, 1, CardLibrary.Instance.CreateDefinition(id));
+            var entry = LibraryEntryScene.Instantiate<LibraryCardEntry>();
+            LibraryGrid.AddChild(entry);
 
-	private void RemoveCardById(int id)
-	{
-		if (_currentDeckList.Contains(id))
-		{
-			_currentDeckList.Remove(id);
-			_currentDeckList.Sort();
-			UpdateUI();
-		}
-	}
+            entry.Setup(dummyInstance, CardScene);
+            entry.SetMeta("CardId", id);
 
-	// Obsługa Drag & Drop (Drop na slot wywołuje dodanie)
-	private void OnCardAddedToDeck(int cardId, CardSlot targetSlot)
-	{
-		AddCardById(cardId);
-	}
+            // Bind library buttons
+            entry.OnAddRequest += AddCardById;
+            entry.OnRemoveRequest += RemoveCardById;
+        }
+    }
 
-	// --- AKTUALIZACJA UI ---
+    #endregion
 
-	private void UpdateUI()
-	{
-		// 1. Sloty
-		for (int i = 0; i < MAX_CARDS; i++)
-		{
-			if (i < _currentDeckList.Count)
-			{
-				int id = _currentDeckList[i];
-				var dummyInstance = new CardInstance(id, 1, CardLibrary.Instance.CreateDefinition(id));
+    #region Deck Management Logic
 
-				var cv = CardScene.Instantiate<CardView>();
-				cv.Render(dummyInstance);
-				cv.MouseFilter = Control.MouseFilterEnum.Ignore;
+    /// <summary>
+    /// Adds a card to the deck list if limits (max size, max copies) allow.
+    /// </summary>
+    /// <param name="id">The card definition ID.</param>
+    private void AddCardById(int id)
+    {
+        if (_currentDeckList.Count >= MAX_CARDS) return;
+        if (_currentDeckList.Count(x => x == id) >= MAX_COPIES) return;
 
-				_slots[i].PlaceCard(cv, id);
-			}
-			else
-			{
-				_slots[i].ClearSlot();
-			}
-		}
+        _currentDeckList.Add(id);
+        _currentDeckList.Sort();
+        UpdateUI();
+    }
 
-		// 2. Biblioteka
-		foreach (Node node in LibraryGrid.GetChildren())
-		{
-			if (node is LibraryCardEntry entry)
-			{
-				if (entry.HasMeta("CardId"))
-				{
-					int id = (int)entry.GetMeta("CardId");
-					int currentCount = _currentDeckList.Count(x => x == id);
-					entry.UpdateCounter(currentCount, MAX_COPIES);
-				}
-			}
-		}
+    /// <summary>
+    /// Removes a card from the deck list if it exists.
+    /// </summary>
+    /// <param name="id">The card definition ID.</param>
+    private void RemoveCardById(int id)
+    {
+        if (_currentDeckList.Contains(id))
+        {
+            _currentDeckList.Remove(id);
+            _currentDeckList.Sort();
+            UpdateUI();
+        }
+    }
 
-		// 3. Statystyki
-		if (CardCountLabel != null)
-		{
-			CardCountLabel.Text = $"Karty: {_currentDeckList.Count} / {MAX_CARDS}";
-			CardCountLabel.Modulate = _currentDeckList.Count == MAX_CARDS ? Colors.Green : Colors.White;
-		}
-	}
+    /// <summary>
+    /// Handler for drag-and-drop events dropping a card into a slot.
+    /// </summary>
+    /// <param name="cardId">The dropped card ID.</param>
+    /// <param name="targetSlot">The target slot (unused in logic, just for signature).</param>
+    private void OnCardAddedToDeck(int cardId, CardSlot targetSlot)
+    {
+        AddCardById(cardId);
+    }
 
-	// --- ZAPIS ---
-	private void SaveDeck()
-	{
-		string name = DeckNameInput.Text;
-		if (string.IsNullOrWhiteSpace(name)) name = "Nowa Talia";
+    #endregion
 
-		string deckId = (PreloadedDeck != null && !string.IsNullOrEmpty(PreloadedDeck.Id))
-						? PreloadedDeck.Id
-						: Guid.NewGuid().ToString();
+    #region UI Updates
 
-		var deckData = new DeckData
-		{
-			Id = deckId,
-			Name = name,
-			CardIds = new List<int>(_currentDeckList)
-		};
+    /// <summary>
+    /// Refreshes the deck slots, library counters, and status labels based on the current deck state.
+    /// </summary>
+    private void UpdateUI()
+    {
+        // 1. Update Slots
+        for (int i = 0; i < MAX_CARDS; i++)
+        {
+            if (i < _currentDeckList.Count)
+            {
+                int id = _currentDeckList[i];
+                var dummyInstance = new CardInstance(id, 1, CardLibrary.Instance.CreateDefinition(id));
 
-		var options = new JsonSerializerOptions { WriteIndented = true };
-		string json = JsonSerializer.Serialize(deckData, options);
+                var cv = CardScene.Instantiate<CardView>();
+                cv.Render(dummyInstance);
+                cv.MouseFilter = Control.MouseFilterEnum.Ignore;
 
-		string decksDir = ProjectSettings.GlobalizePath("res://Data/Decks/");
-		if (!System.IO.Directory.Exists(decksDir))
-			System.IO.Directory.CreateDirectory(decksDir);
+                _slots[i].PlaceCard(cv, id);
+            }
+            else
+            {
+                _slots[i].ClearSlot();
+            }
+        }
 
-		string safeName = string.Join("_", name.Split(System.IO.Path.GetInvalidFileNameChars()));
-		string fullPath = System.IO.Path.Combine(decksDir, $"{safeName}.json");
+        // 2. Update Library Counters
+        foreach (Node node in LibraryGrid.GetChildren())
+        {
+            if (node is LibraryCardEntry entry)
+            {
+                if (entry.HasMeta("CardId"))
+                {
+                    int id = (int)entry.GetMeta("CardId");
+                    int currentCount = _currentDeckList.Count(x => x == id);
+                    entry.UpdateCounter(currentCount, MAX_COPIES);
+                }
+            }
+        }
 
-		try
-		{
-			System.IO.File.WriteAllText(fullPath, json);
-			GD.Print($"Zapisano talię pomyślnie: {fullPath}");
-		}
-		catch (Exception ex)
-		{
-			GD.PrintErr($"Błąd zapisu: {ex.Message}");
-		}
-	}
+        // 3. Update Statistics Labels
+        if (CardCountLabel != null)
+        {
+            CardCountLabel.Text = $"Karty: {_currentDeckList.Count} / {MAX_CARDS}";
+            CardCountLabel.Modulate = _currentDeckList.Count == MAX_CARDS ? Colors.Green : Colors.White;
+        }
+    }
+
+    #endregion
+
+    #region IO Operations
+
+    /// <summary>
+    /// Saves the current deck configuration to a JSON file.
+    /// </summary>
+    private void SaveDeck()
+    {
+        string name = DeckNameInput.Text;
+        if (string.IsNullOrWhiteSpace(name)) name = "Nowa Talia";
+
+        string deckId = (PreloadedDeck != null && !string.IsNullOrEmpty(PreloadedDeck.Id))
+                        ? PreloadedDeck.Id
+                        : Guid.NewGuid().ToString();
+
+        var deckData = new DeckData
+        {
+            Id = deckId,
+            Name = name,
+            CardIds = new List<int>(_currentDeckList)
+        };
+
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        string json = JsonSerializer.Serialize(deckData, options);
+
+        string decksDir = ProjectSettings.GlobalizePath("res://Data/Decks/");
+        if (!System.IO.Directory.Exists(decksDir))
+            System.IO.Directory.CreateDirectory(decksDir);
+
+        string safeName = string.Join("_", name.Split(System.IO.Path.GetInvalidFileNameChars()));
+        string fullPath = System.IO.Path.Combine(decksDir, $"{safeName}.json");
+
+        try
+        {
+            System.IO.File.WriteAllText(fullPath, json);
+            GD.Print($"Zapisano talię pomyślnie: {fullPath}");
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"Błąd zapisu: {ex.Message}");
+        }
+    }
+
+    #endregion
 }

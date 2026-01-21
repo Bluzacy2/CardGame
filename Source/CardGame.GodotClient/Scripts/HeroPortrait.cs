@@ -1,6 +1,9 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Visual component representing a player's hero, displaying Health, Resources (Blood), and Avatar.
+/// Handles interactions like targeting the hero with spells.
+/// </summary>
 public partial class HeroPortrait : Control
 {
     [Export] public Label HpLabel;
@@ -8,17 +11,18 @@ public partial class HeroPortrait : Control
     [Export] public TextureRect Avatar;
     [Export] public Control HighlightBorder;
 
-    // ID gracza, którego ten portret reprezentuje (1 lub 2)
+    /// <summary>
+    /// Gets or sets the ID of the player this portrait represents.
+    /// </summary>
     public int OwnerId { get; set; }
-
-    // Zdarzenie kliknięcia (dla targetowania czarami w bohatera)
+    /// <summary>
+    /// Event triggered when the hero portrait is clicked (e.g., for targeting).
+    /// </summary>
     public event Action<int> OnHeroClicked;
 
     public override void _Ready()
     {
         if (HighlightBorder != null) HighlightBorder.Visible = false;
-
-        // Obsługa kliknięcia (wymaga, aby Control miał MouseFilter = Stop)
         this.GuiInput += (eventData) =>
         {
             if (eventData is InputEventMouseButton mb
@@ -29,13 +33,17 @@ public partial class HeroPortrait : Control
             }
         };
     }
-
+    /// <summary>
+    /// Updates the visual statistics of the hero.
+    /// </summary>
+    /// <param name="hp">Current health points.</param>
+    /// <param name="currentMana">Current available blood/mana.</param>
+    /// <param name="maxMana">Maximum blood/mana capacity.</param>
     public void UpdateStats(int hp, int currentMana, int maxMana)
     {
         if (HpLabel != null)
         {
             HpLabel.Text = hp.ToString();
-            // Prosta wizualizacja niskiego HP
             HpLabel.Modulate = hp <= 10 ? Colors.Red : Colors.White;
         }
 
@@ -44,7 +52,11 @@ public partial class HeroPortrait : Control
             ManaLabel.Text = $"{currentMana}/{maxMana}";
         }
     }
-
+    /// <summary>
+    /// Toggles the targeting highlight effect on the portrait.
+    /// </summary>
+    /// <param name="active">True to show highlight, false to hide.</param>
+    /// <param name="color">The color of the highlight border.</param>
     public void SetHighlight(bool active, Color color)
     {
         if (HighlightBorder != null)
@@ -53,17 +65,14 @@ public partial class HeroPortrait : Control
             HighlightBorder.Modulate = color;
         }
     }
-
-    // Metoda pomocnicza dla Drop Data (jeśli w przyszłości będziesz przeciągać kartę na bohatera)
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
-        return data.VariantType == Variant.Type.Int; // ID karty
+        return data.VariantType == Variant.Type.Int; 
     }
 
     public override void _DropData(Vector2 atPosition, Variant data)
     {
         int cardId = (int)data;
-        // W przyszłości można tu dodać emitowanie sygnału o zagraniu jednostki/czaru na bohatera
         GD.Print($"[UI] Upuszczono kartę {cardId} na bohatera {OwnerId}");
     }
 }

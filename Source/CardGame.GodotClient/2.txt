@@ -1,4 +1,4 @@
-﻿
+
 
 ========================================
 FILE: GameDeckSelector.cs
@@ -14,31 +14,31 @@ using System.Linq;
 
 public partial class GameDeckSelector : Control
 {
-    // --- REFERENCJE UI ---
-    [Export] public VBoxContainer DeckListContainer;
-    [Export] public Button StartGameButton;
-    [Export] public Button BackButton;
+	// --- REFERENCJE UI ---
+	[Export] public VBoxContainer DeckListContainer;
+	[Export] public Button StartGameButton;
+	[Export] public Button BackButton;
 
-    [Export] public Label PlayerSelectedLabel;
-    [Export] public Label BotSelectedLabel;
+	[Export] public Label PlayerSelectedLabel;
+	[Export] public Label BotSelectedLabel;
 
-    // --- ĹšCIEĹ»KI ---
-    private const string MAIN_MENU_PATH = "res://Scenes/MainMenu.tscn";
-    private const string GAME_SCENE_PATH = "res://Scenes/Main.tscn";
+	// --- ĹšCIEĹ»KI ---
+	private const string MAIN_MENU_PATH = "res://Scenes/MainMenu.tscn";
+	private const string GAME_SCENE_PATH = "res://Scenes/Main.tscn";
 
-    // --- STAN ---
-    private DeckData _playerChoice;
-    private DeckData _botChoice;
+	// --- STAN ---
+	private DeckData _playerChoice;
+	private DeckData _botChoice;
 
-    private Dictionary<string, Button> _deckButtons = new();
+	private Dictionary<string, Button> _deckButtons = new();
 
-    // Kolory
-    private readonly Color _colPlayer = new Color(0.2f, 0.9f, 0.2f); // Zielony
-    private readonly Color _colBot = new Color(0.9f, 0.2f, 0.2f);    // Czerwony
-    private readonly Color _colDark = new Color(0.15f, 0.15f, 0.15f); // TĹ‚o
+	// Kolory
+	private readonly Color _colPlayer = new Color(0.2f, 0.9f, 0.2f); // Zielony
+	private readonly Color _colBot = new Color(0.9f, 0.2f, 0.2f);    // Czerwony
+	private readonly Color _colDark = new Color(0.15f, 0.15f, 0.15f); // TĹ‚o
 
-    // --- SHADER SDF (Rounded Box + Gradient) ---
-    private const string BORDER_SHADER_CODE = @"
+	// --- SHADER SDF (Rounded Box + Gradient) ---
+	private const string BORDER_SHADER_CODE = @"
         shader_type canvas_item;
         
         uniform vec4 color_left : source_color;
@@ -84,244 +84,244 @@ public partial class GameDeckSelector : Control
                 COLOR = bg_color;
             }
         }
-    ";
+	";
 
-    private ShaderMaterial _baseShaderMaterial;
+	private ShaderMaterial _baseShaderMaterial;
 
-    public override void _Ready()
-    {
-        // Kompilacja Shadera raz na starcie
-        var shader = new Shader();
-        shader.Code = BORDER_SHADER_CODE;
-        _baseShaderMaterial = new ShaderMaterial();
-        _baseShaderMaterial.Shader = shader;
+	public override void _Ready()
+	{
+		// Kompilacja Shadera raz na starcie
+		var shader = new Shader();
+		shader.Code = BORDER_SHADER_CODE;
+		_baseShaderMaterial = new ShaderMaterial();
+		_baseShaderMaterial.Shader = shader;
 
-        // Ustawiamy staĹ‚e kolory
-        _baseShaderMaterial.SetShaderParameter("color_left", _colPlayer);
-        _baseShaderMaterial.SetShaderParameter("color_right", _colBot);
-        _baseShaderMaterial.SetShaderParameter("bg_color", _colDark);
+		// Ustawiamy staĹ‚e kolory
+		_baseShaderMaterial.SetShaderParameter("color_left", _colPlayer);
+		_baseShaderMaterial.SetShaderParameter("color_right", _colBot);
+		_baseShaderMaterial.SetShaderParameter("bg_color", _colDark);
 
-        if (StartGameButton != null) StartGameButton.CustomMinimumSize = new Vector2(200, 60);
-        if (BackButton != null) BackButton.CustomMinimumSize = new Vector2(200, 60);
+		if (StartGameButton != null) StartGameButton.CustomMinimumSize = new Vector2(200, 60);
+		if (BackButton != null) BackButton.CustomMinimumSize = new Vector2(200, 60);
 
-        LoadDecks();
-        UpdateSelectionInfo();
+		LoadDecks();
+		UpdateSelectionInfo();
 
-        if (StartGameButton != null)
-        {
-            StartGameButton.Pressed += OnStartGamePressed;
-            StartGameButton.Disabled = true;
-        }
+		if (StartGameButton != null)
+		{
+			StartGameButton.Pressed += OnStartGamePressed;
+			StartGameButton.Disabled = true;
+		}
 
-        if (BackButton != null)
-            BackButton.Pressed += () => GetTree().ChangeSceneToFile(MAIN_MENU_PATH);
-    }
+		if (BackButton != null)
+			BackButton.Pressed += () => GetTree().ChangeSceneToFile(MAIN_MENU_PATH);
+	}
 
-    private void LoadDecks()
-    {
-        if (DeckListContainer == null) return;
+	private void LoadDecks()
+	{
+		if (DeckListContainer == null) return;
 
-        foreach (Node child in DeckListContainer.GetChildren()) child.QueueFree();
-        _deckButtons.Clear();
+		foreach (Node child in DeckListContainer.GetChildren()) child.QueueFree();
+		_deckButtons.Clear();
 
-        string path = ProjectSettings.GlobalizePath("res://Data/Decks/");
-        if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+		string path = ProjectSettings.GlobalizePath("res://Data/Decks/");
+		if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
-        var files = Directory.GetFiles(path, "*.json");
+		var files = Directory.GetFiles(path, "*.json");
 
-        foreach (var file in files)
-        {
-            try
-            {
-                string json = File.ReadAllText(file);
-                var deckData = JsonSerializer.Deserialize<DeckData>(json);
-                if (deckData != null)
-                {
-                    CreateDeckButton(deckData);
-                }
-            }
-            catch { }
-        }
-    }
+		foreach (var file in files)
+		{
+			try
+			{
+				string json = File.ReadAllText(file);
+				var deckData = JsonSerializer.Deserialize<DeckData>(json);
+				if (deckData != null)
+				{
+					CreateDeckButton(deckData);
+				}
+			}
+			catch { }
+		}
+	}
 
-    private void CreateDeckButton(DeckData deck)
-    {
-        var mainFont = GD.Load<Font>("res://Assets/Fonts/Ari-CBold.ttf");
+	private void CreateDeckButton(DeckData deck)
+	{
+		var mainFont = GD.Load<Font>("res://Assets/Fonts/Ari-CBold.ttf");
 
-        var btn = new Button();
-        btn.Text = $"{deck.Name.ToUpper()} ({deck.CardIds.Count} KART)";
-        btn.CustomMinimumSize = new Vector2(0, 60);
-        btn.Alignment = HorizontalAlignment.Left;
-        btn.ActionMode = BaseButton.ActionModeEnum.Press;
-        btn.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+		var btn = new Button();
+		btn.Text = $"{deck.Name.ToUpper()} ({deck.CardIds.Count} KART)";
+		btn.CustomMinimumSize = new Vector2(0, 60);
+		btn.Alignment = HorizontalAlignment.Left;
+		btn.ActionMode = BaseButton.ActionModeEnum.Press;
+		btn.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 
-        // --- CHILD COLOR RECT (Twoja specjalna obramĂłwka z Shaderem) ---
-        var gradientRect = new ColorRect();
-        gradientRect.Name = "GradientBorder";
-        gradientRect.MouseFilter = MouseFilterEnum.Ignore;
-        gradientRect.SetAnchorsPreset(LayoutPreset.FullRect);
-        gradientRect.ShowBehindParent = true;
-        gradientRect.Visible = false;
-        gradientRect.Material = (Material)_baseShaderMaterial.Duplicate();
+		// --- CHILD COLOR RECT (Twoja specjalna obramĂłwka z Shaderem) ---
+		var gradientRect = new ColorRect();
+		gradientRect.Name = "GradientBorder";
+		gradientRect.MouseFilter = MouseFilterEnum.Ignore;
+		gradientRect.SetAnchorsPreset(LayoutPreset.FullRect);
+		gradientRect.ShowBehindParent = true;
+		gradientRect.Visible = false;
+		gradientRect.Material = (Material)_baseShaderMaterial.Duplicate();
 
-        btn.AddChild(gradientRect);
+		btn.AddChild(gradientRect);
 
-        // Czcionka
-        if (mainFont != null)
-        {
-            btn.AddThemeFontOverride("font", mainFont);
-            btn.AddThemeFontSizeOverride("font_size", 22);
-        }
+		// Czcionka
+		if (mainFont != null)
+		{
+			btn.AddThemeFontOverride("font", mainFont);
+			btn.AddThemeFontSizeOverride("font_size", 22);
+		}
 
-        // ObsĹ‚uga sygnaĹ‚Ăłw
-        btn.Resized += () => UpdateShaderSize(btn, gradientRect);
-        btn.GuiInput += (inputEvent) => OnDeckRowClicked(inputEvent, deck);
+		// ObsĹ‚uga sygnaĹ‚Ăłw
+		btn.Resized += () => UpdateShaderSize(btn, gradientRect);
+		btn.GuiInput += (inputEvent) => OnDeckRowClicked(inputEvent, deck);
 
-        _deckButtons[deck.Id] = btn;
-        DeckListContainer.AddChild(btn);
+		_deckButtons[deck.Id] = btn;
+		DeckListContainer.AddChild(btn);
 
-        ApplyButtonStyle(btn, false, false);
-    }
+		ApplyButtonStyle(btn, false, false);
+	}
 
-    private void UpdateShaderSize(Button btn, ColorRect rect)
-    {
-        // Przekazujemy aktualny rozmiar przycisku do shadera, ĹĽeby zaokrÄ…glenia byĹ‚y Ĺ‚adne
-        if (rect.Material is ShaderMaterial mat)
-        {
-            mat.SetShaderParameter("size", btn.Size);
-        }
-    }
+	private void UpdateShaderSize(Button btn, ColorRect rect)
+	{
+		// Przekazujemy aktualny rozmiar przycisku do shadera, ĹĽeby zaokrÄ…glenia byĹ‚y Ĺ‚adne
+		if (rect.Material is ShaderMaterial mat)
+		{
+			mat.SetShaderParameter("size", btn.Size);
+		}
+	}
 
-    private void OnDeckRowClicked(InputEvent inputEvent, DeckData deck)
-    {
-        if (inputEvent is InputEventMouseButton mb && mb.Pressed)
-        {
-            if (mb.ButtonIndex == MouseButton.Left)
-            {
-                _playerChoice = deck;
-                if (_botChoice == null) _botChoice = deck;
-            }
-            else if (mb.ButtonIndex == MouseButton.Right)
-            {
-                _botChoice = deck;
-            }
+	private void OnDeckRowClicked(InputEvent inputEvent, DeckData deck)
+	{
+		if (inputEvent is InputEventMouseButton mb && mb.Pressed)
+		{
+			if (mb.ButtonIndex == MouseButton.Left)
+			{
+				_playerChoice = deck;
+				if (_botChoice == null) _botChoice = deck;
+			}
+			else if (mb.ButtonIndex == MouseButton.Right)
+			{
+				_botChoice = deck;
+			}
 
-            UpdateAllButtonsVisuals();
-            UpdateSelectionInfo();
-        }
-    }
+			UpdateAllButtonsVisuals();
+			UpdateSelectionInfo();
+		}
+	}
 
-    private void UpdateAllButtonsVisuals()
-    {
-        foreach (var kvp in _deckButtons)
-        {
-            string deckId = kvp.Key;
-            Button btn = kvp.Value;
+	private void UpdateAllButtonsVisuals()
+	{
+		foreach (var kvp in _deckButtons)
+		{
+			string deckId = kvp.Key;
+			Button btn = kvp.Value;
 
-            bool isPlayer = _playerChoice != null && _playerChoice.Id == deckId;
-            bool isBot = _botChoice != null && _botChoice.Id == deckId;
+			bool isPlayer = _playerChoice != null && _playerChoice.Id == deckId;
+			bool isBot = _botChoice != null && _botChoice.Id == deckId;
 
-            ApplyButtonStyle(btn, isPlayer, isBot);
-        }
-    }
+			ApplyButtonStyle(btn, isPlayer, isBot);
+		}
+	}
 
-    private void ApplyButtonStyle(Button btn, bool isPlayer, bool isBot)
-    {
-        var gradientRect = btn.GetNode<ColorRect>("GradientBorder");
-        btn.RemoveThemeColorOverride("font_color");
+	private void ApplyButtonStyle(Button btn, bool isPlayer, bool isBot)
+	{
+		var gradientRect = btn.GetNode<ColorRect>("GradientBorder");
+		btn.RemoveThemeColorOverride("font_color");
 
-        // Bazowy styl (Flat) dla pojedynczych wyborĂłw
-        var style = new StyleBoxFlat();
-        style.CornerRadiusTopLeft = 8; style.CornerRadiusTopRight = 8;
-        style.CornerRadiusBottomRight = 8; style.CornerRadiusBottomLeft = 8;
-        style.ContentMarginLeft = 15;
+		// Bazowy styl (Flat) dla pojedynczych wyborĂłw
+		var style = new StyleBoxFlat();
+		style.CornerRadiusTopLeft = 8; style.CornerRadiusTopRight = 8;
+		style.CornerRadiusBottomRight = 8; style.CornerRadiusBottomLeft = 8;
+		style.ContentMarginLeft = 15;
 
-        style.BorderWidthBottom = 2; style.BorderWidthTop = 2;
-        style.BorderWidthLeft = 2; style.BorderWidthRight = 2;
+		style.BorderWidthBottom = 2; style.BorderWidthTop = 2;
+		style.BorderWidthLeft = 2; style.BorderWidthRight = 2;
 
-        if (isPlayer && isBot)
-        {
-            // --- OBOJE: WĹ‚Ä…czamy Shader ---
-            gradientRect.Visible = true;
-            UpdateShaderSize(btn, gradientRect); // Upewniamy siÄ™, ĹĽe rozmiar jest aktualny
+		if (isPlayer && isBot)
+		{
+			// --- OBOJE: WĹ‚Ä…czamy Shader ---
+			gradientRect.Visible = true;
+			UpdateShaderSize(btn, gradientRect); // Upewniamy siÄ™, ĹĽe rozmiar jest aktualny
 
-            style.BgColor = new Color(0, 0, 0, 0); // Przezroczyste tĹ‚o przycisku
-            style.BorderWidthBottom = 0; style.BorderWidthTop = 0; // WyĹ‚Ä…czamy ramkÄ™ StyleBoxa
-            style.BorderWidthLeft = 0; style.BorderWidthRight = 0;
+			style.BgColor = new Color(0, 0, 0, 0); // Przezroczyste tĹ‚o przycisku
+			style.BorderWidthBottom = 0; style.BorderWidthTop = 0; // WyĹ‚Ä…czamy ramkÄ™ StyleBoxa
+			style.BorderWidthLeft = 0; style.BorderWidthRight = 0;
 
-            btn.AddThemeColorOverride("font_color", new Color(1, 1, 0.6f));
-        }
-        else
-        {
-            // --- POJEDYNCZY: WyĹ‚Ä…czamy Shader, uĹĽywamy StyleBox ---
-            gradientRect.Visible = false;
-            style.BgColor = _colDark;
+			btn.AddThemeColorOverride("font_color", new Color(1, 1, 0.6f));
+		}
+		else
+		{
+			// --- POJEDYNCZY: WyĹ‚Ä…czamy Shader, uĹĽywamy StyleBox ---
+			gradientRect.Visible = false;
+			style.BgColor = _colDark;
 
-            if (isPlayer)
-            {
-                style.BorderColor = _colPlayer;
-                btn.AddThemeColorOverride("font_color", _colPlayer);
-                btn.AddThemeColorOverride("font_color", _colPlayer);
-                btn.AddThemeColorOverride("font_focus_color", _colPlayer);
-            }
-            else if (isBot)
-            {
-                style.BorderColor = _colBot;
-                btn.AddThemeColorOverride("font_color", _colBot);
-                btn.AddThemeColorOverride("font_color", _colBot);
-                btn.AddThemeColorOverride("font_focus_color", _colBot);
-            }
-            else
-            {
-                // NIKT
-                style.BorderColor = new Color(0.3f, 0.3f, 0.3f);
-                style.BorderWidthBottom = 1; style.BorderWidthTop = 1;
-                style.BorderWidthLeft = 1; style.BorderWidthRight = 1;
-                btn.AddThemeColorOverride("font_color", new Color(1, 1, 0.6f));
-                btn.AddThemeColorOverride("font_focus_color", new Color(1, 1, 0.6f));
-            }
-        }
+			if (isPlayer)
+			{
+				style.BorderColor = _colPlayer;
+				btn.AddThemeColorOverride("font_color", _colPlayer);
+				btn.AddThemeColorOverride("font_color", _colPlayer);
+				btn.AddThemeColorOverride("font_focus_color", _colPlayer);
+			}
+			else if (isBot)
+			{
+				style.BorderColor = _colBot;
+				btn.AddThemeColorOverride("font_color", _colBot);
+				btn.AddThemeColorOverride("font_color", _colBot);
+				btn.AddThemeColorOverride("font_focus_color", _colBot);
+			}
+			else
+			{
+				// NIKT
+				style.BorderColor = new Color(0.3f, 0.3f, 0.3f);
+				style.BorderWidthBottom = 1; style.BorderWidthTop = 1;
+				style.BorderWidthLeft = 1; style.BorderWidthRight = 1;
+				btn.AddThemeColorOverride("font_color", new Color(1, 1, 0.6f));
+				btn.AddThemeColorOverride("font_focus_color", new Color(1, 1, 0.6f));
+			}
+		}
 
-        btn.AddThemeStyleboxOverride("normal", style);
-        btn.AddThemeStyleboxOverride("hover", style);
-        btn.AddThemeStyleboxOverride("pressed", style);
-        btn.AddThemeStyleboxOverride("focus", style);
-    }
+		btn.AddThemeStyleboxOverride("normal", style);
+		btn.AddThemeStyleboxOverride("hover", style);
+		btn.AddThemeStyleboxOverride("pressed", style);
+		btn.AddThemeStyleboxOverride("focus", style);
+	}
 
-    private void UpdateSelectionInfo()
-    {
-        if (PlayerSelectedLabel != null)
-        {
-            PlayerSelectedLabel.Text = _playerChoice != null ? _playerChoice.Name : "-";
-            PlayerSelectedLabel.Modulate = _playerChoice != null ? _colPlayer : Colors.Gray;
-        }
+	private void UpdateSelectionInfo()
+	{
+		if (PlayerSelectedLabel != null)
+		{
+			PlayerSelectedLabel.Text = _playerChoice != null ? _playerChoice.Name : "-";
+			PlayerSelectedLabel.Modulate = _playerChoice != null ? _colPlayer : Colors.Gray;
+		}
 
-        if (BotSelectedLabel != null)
-        {
-            BotSelectedLabel.Text = _botChoice != null ? _botChoice.Name : "-";
-            BotSelectedLabel.Modulate = _botChoice != null ? _colBot : Colors.Gray;
-        }
+		if (BotSelectedLabel != null)
+		{
+			BotSelectedLabel.Text = _botChoice != null ? _botChoice.Name : "-";
+			BotSelectedLabel.Modulate = _botChoice != null ? _colBot : Colors.Gray;
+		}
 
-        if (StartGameButton != null)
-        {
-            bool ready = _playerChoice != null && _botChoice != null;
-            StartGameButton.Disabled = !ready;
-            StartGameButton.Modulate = ready ? Colors.White : new Color(1, 1, 1, 0.5f);
-        }
-    }
+		if (StartGameButton != null)
+		{
+			bool ready = _playerChoice != null && _botChoice != null;
+			StartGameButton.Disabled = !ready;
+			StartGameButton.Modulate = ready ? Colors.White : new Color(1, 1, 1, 0.5f);
+		}
+	}
 
-    private void OnStartGamePressed()
-    {
-        if (_playerChoice == null || _botChoice == null) return;
+	private void OnStartGamePressed()
+	{
+		if (_playerChoice == null || _botChoice == null) return;
 
-        if (GameSession.Instance != null)
-        {
-            GameSession.Instance.SelectedPlayerDeck = _playerChoice;
-            GameSession.Instance.SelectedBotDeck = _botChoice;
-        }
+		if (GameSession.Instance != null)
+		{
+			GameSession.Instance.SelectedPlayerDeck = _playerChoice;
+			GameSession.Instance.SelectedBotDeck = _botChoice;
+		}
 
-        GetTree().ChangeSceneToFile(GAME_SCENE_PATH);
-    }
+		GetTree().ChangeSceneToFile(GAME_SCENE_PATH);
+	}
 }
 
 
@@ -335,22 +335,22 @@ using CardGame.Core.Decks.Data;
 // Ten skrypt musi byÄ‡ ustawiony jako Autoload w ustawieniach projektu!
 public partial class GameSession : Node
 {
-    public static GameSession Instance { get; private set; }
+	public static GameSession Instance { get; private set; }
 
-    // Wybrane talie do przekazania do sceny gry
-    public DeckData SelectedPlayerDeck { get; set; }
-    public DeckData SelectedBotDeck { get; set; }
+	// Wybrane talie do przekazania do sceny gry
+	public DeckData SelectedPlayerDeck { get; set; }
+	public DeckData SelectedBotDeck { get; set; }
 
-    public override void _Ready()
-    {
-        Instance = this;
-    }
+	public override void _Ready()
+	{
+		Instance = this;
+	}
 
-    public void Reset()
-    {
-        SelectedPlayerDeck = null;
-        SelectedBotDeck = null;
-    }
+	public void Reset()
+	{
+		SelectedPlayerDeck = null;
+		SelectedBotDeck = null;
+	}
 }
 
 
@@ -363,69 +363,69 @@ using System;
 
 public partial class HeroPortrait : Control
 {
-    [Export] public Label HpLabel;
-    [Export] public Label ManaLabel;
-    [Export] public TextureRect Avatar;
-    [Export] public Control HighlightBorder;
+	[Export] public Label HpLabel;
+	[Export] public Label ManaLabel;
+	[Export] public TextureRect Avatar;
+	[Export] public Control HighlightBorder;
 
-    // ID gracza, ktĂłrego ten portret reprezentuje (1 lub 2)
-    public int OwnerId { get; set; }
+	// ID gracza, ktĂłrego ten portret reprezentuje (1 lub 2)
+	public int OwnerId { get; set; }
 
-    // Zdarzenie klikniÄ™cia (dla targetowania czarami w bohatera)
-    public event Action<int> OnHeroClicked;
+	// Zdarzenie klikniÄ™cia (dla targetowania czarami w bohatera)
+	public event Action<int> OnHeroClicked;
 
-    public override void _Ready()
-    {
-        if (HighlightBorder != null) HighlightBorder.Visible = false;
+	public override void _Ready()
+	{
+		if (HighlightBorder != null) HighlightBorder.Visible = false;
 
-        // ObsĹ‚uga klikniÄ™cia (wymaga, aby Control miaĹ‚ MouseFilter = Stop)
-        this.GuiInput += (eventData) =>
-        {
-            if (eventData is InputEventMouseButton mb
-                && mb.Pressed
-                && mb.ButtonIndex == MouseButton.Left)
-            {
-                OnHeroClicked?.Invoke(OwnerId);
-            }
-        };
-    }
+		// ObsĹ‚uga klikniÄ™cia (wymaga, aby Control miaĹ‚ MouseFilter = Stop)
+		this.GuiInput += (eventData) =>
+		{
+			if (eventData is InputEventMouseButton mb
+				&& mb.Pressed
+				&& mb.ButtonIndex == MouseButton.Left)
+			{
+				OnHeroClicked?.Invoke(OwnerId);
+			}
+		};
+	}
 
-    public void UpdateStats(int hp, int currentMana, int maxMana)
-    {
-        if (HpLabel != null)
-        {
-            HpLabel.Text = hp.ToString();
-            // Prosta wizualizacja niskiego HP
-            HpLabel.Modulate = hp <= 10 ? Colors.Red : Colors.White;
-        }
+	public void UpdateStats(int hp, int currentMana, int maxMana)
+	{
+		if (HpLabel != null)
+		{
+			HpLabel.Text = hp.ToString();
+			// Prosta wizualizacja niskiego HP
+			HpLabel.Modulate = hp <= 10 ? Colors.Red : Colors.White;
+		}
 
-        if (ManaLabel != null)
-        {
-            ManaLabel.Text = $"{currentMana}/{maxMana}";
-        }
-    }
+		if (ManaLabel != null)
+		{
+			ManaLabel.Text = $"{currentMana}/{maxMana}";
+		}
+	}
 
-    public void SetHighlight(bool active, Color color)
-    {
-        if (HighlightBorder != null)
-        {
-            HighlightBorder.Visible = active;
-            HighlightBorder.Modulate = color;
-        }
-    }
+	public void SetHighlight(bool active, Color color)
+	{
+		if (HighlightBorder != null)
+		{
+			HighlightBorder.Visible = active;
+			HighlightBorder.Modulate = color;
+		}
+	}
 
-    // Metoda pomocnicza dla Drop Data (jeĹ›li w przyszĹ‚oĹ›ci bÄ™dziesz przeciÄ…gaÄ‡ kartÄ™ na bohatera)
-    public override bool _CanDropData(Vector2 atPosition, Variant data)
-    {
-        return data.VariantType == Variant.Type.Int; // ID karty
-    }
+	// Metoda pomocnicza dla Drop Data (jeĹ›li w przyszĹ‚oĹ›ci bÄ™dziesz przeciÄ…gaÄ‡ kartÄ™ na bohatera)
+	public override bool _CanDropData(Vector2 atPosition, Variant data)
+	{
+		return data.VariantType == Variant.Type.Int; // ID karty
+	}
 
-    public override void _DropData(Vector2 atPosition, Variant data)
-    {
-        int cardId = (int)data;
-        // W przyszĹ‚oĹ›ci moĹĽna tu dodaÄ‡ emitowanie sygnaĹ‚u o zagraniu jednostki/czaru na bohatera
-        GD.Print($"[UI] Upuszczono kartÄ™ {cardId} na bohatera {OwnerId}");
-    }
+	public override void _DropData(Vector2 atPosition, Variant data)
+	{
+		int cardId = (int)data;
+		// W przyszĹ‚oĹ›ci moĹĽna tu dodaÄ‡ emitowanie sygnaĹ‚u o zagraniu jednostki/czaru na bohatera
+		GD.Print($"[UI] Upuszczono kartÄ™ {cardId} na bohatera {OwnerId}");
+	}
 }
 
 
@@ -867,47 +867,47 @@ using CardGame.Core.Cards.Models;
 
 public partial class LibraryCardEntry : VBoxContainer
 {
-    [Export] public Control CardHolder;
-    [Export] public Label CountLabel;
-    [Export] public Button AddBtn;
-    [Export] public Button RemoveBtn;
+	[Export] public Control CardHolder;
+	[Export] public Label CountLabel;
+	[Export] public Button AddBtn;
+	[Export] public Button RemoveBtn;
 
-    public event Action<int> OnAddRequest;
-    public event Action<int> OnRemoveRequest;
+	public event Action<int> OnAddRequest;
+	public event Action<int> OnRemoveRequest;
 
-    private int _cardId;
+	private int _cardId;
 
-    public override void _Ready()
-    {
-        if (AddBtn != null) AddBtn.Pressed += () => OnAddRequest?.Invoke(_cardId);
-        if (RemoveBtn != null) RemoveBtn.Pressed += () => OnRemoveRequest?.Invoke(_cardId);
-    }
+	public override void _Ready()
+	{
+		if (AddBtn != null) AddBtn.Pressed += () => OnAddRequest?.Invoke(_cardId);
+		if (RemoveBtn != null) RemoveBtn.Pressed += () => OnRemoveRequest?.Invoke(_cardId);
+	}
 
-    public void Setup(CardInstance card, PackedScene cardScene)
-    {
-        _cardId = card.InstanceId;
+	public void Setup(CardInstance card, PackedScene cardScene)
+	{
+		_cardId = card.InstanceId;
 
-        foreach (Node child in CardHolder.GetChildren()) child.QueueFree();
+		foreach (Node child in CardHolder.GetChildren()) child.QueueFree();
 
-        var cardView = cardScene.Instantiate<CardView>();
-        CardHolder.AddChild(cardView);
-        cardView.Render(card);
+		var cardView = cardScene.Instantiate<CardView>();
+		CardHolder.AddChild(cardView);
+		cardView.Render(card);
 
-        // WaĹĽne: Karta w bibliotece ma pozwalaÄ‡ na Drag&Drop, wiÄ™c Stop.
-        // PoniewaĹĽ usunÄ™liĹ›my _GuiInput z tego skryptu, nie bÄ™dzie konfliktu.
-        cardView.MouseFilter = MouseFilterEnum.Stop;
-    }
+		// WaĹĽne: Karta w bibliotece ma pozwalaÄ‡ na Drag&Drop, wiÄ™c Stop.
+		// PoniewaĹĽ usunÄ™liĹ›my _GuiInput z tego skryptu, nie bÄ™dzie konfliktu.
+		cardView.MouseFilter = MouseFilterEnum.Stop;
+	}
 
-    public void UpdateCounter(int current, int max)
-    {
-        if (CountLabel != null)
-        {
-            CountLabel.Text = $"{current} / {max}";
-            CountLabel.Modulate = current == max ? Colors.Green : (current > 0 ? Colors.Yellow : Colors.White);
-        }
-        if (AddBtn != null) AddBtn.Disabled = (current >= max);
-        if (RemoveBtn != null) RemoveBtn.Disabled = (current <= 0);
-    }
+	public void UpdateCounter(int current, int max)
+	{
+		if (CountLabel != null)
+		{
+			CountLabel.Text = $"{current} / {max}";
+			CountLabel.Modulate = current == max ? Colors.Green : (current > 0 ? Colors.Yellow : Colors.White);
+		}
+		if (AddBtn != null) AddBtn.Disabled = (current >= max);
+		if (RemoveBtn != null) RemoveBtn.Disabled = (current <= 0);
+	}
 }
 
 
@@ -1015,52 +1015,52 @@ using System;
 
 public partial class MainMenu : Control
 {
-    [Export] public Button PlayButton;
-    [Export] public Button DeckEditorButton;
-    [Export] public Button QuitButton;
-    [Export(PropertyHint.File, "*.tscn")]
-    public string DeckSelectionEditorPath = "res://Scenes/DeckSelection.tscn";
+	[Export] public Button PlayButton;
+	[Export] public Button DeckEditorButton;
+	[Export] public Button QuitButton;
+	[Export(PropertyHint.File, "*.tscn")]
+	public string DeckSelectionEditorPath = "res://Scenes/DeckSelection.tscn";
 
-    [Export(PropertyHint.File, "*.tscn")]
-    public string GameSetupPath = "res://Scenes/GameDeckSelector.tscn";
-    public override void _Ready()
-    {
-        if (PlayButton != null)
-            PlayButton.Pressed += OnPlayPressed;
+	[Export(PropertyHint.File, "*.tscn")]
+	public string GameSetupPath = "res://Scenes/GameDeckSelector.tscn";
+	public override void _Ready()
+	{
+		if (PlayButton != null)
+			PlayButton.Pressed += OnPlayPressed;
 
-        if (DeckEditorButton != null)
-            DeckEditorButton.Pressed += OnEditorPressed;
+		if (DeckEditorButton != null)
+			DeckEditorButton.Pressed += OnEditorPressed;
 
-        if (QuitButton != null)
-            QuitButton.Pressed += OnQuitPressed;
-    }
+		if (QuitButton != null)
+			QuitButton.Pressed += OnQuitPressed;
+	}
 
-    private void OnPlayPressed()
-    {
-        if (string.IsNullOrEmpty(GameSetupPath))
-        {
-            GD.PrintErr("Brak Ĺ›cieĹĽki do GameSetup w MainMenu!");
-            return;
-        }
-        // Przekierowanie do wyboru talii (GameDeckSelector), a nie bezpoĹ›rednio do gry
-        GetTree().ChangeSceneToFile(GameSetupPath);
-    }
+	private void OnPlayPressed()
+	{
+		if (string.IsNullOrEmpty(GameSetupPath))
+		{
+			GD.PrintErr("Brak Ĺ›cieĹĽki do GameSetup w MainMenu!");
+			return;
+		}
+		// Przekierowanie do wyboru talii (GameDeckSelector), a nie bezpoĹ›rednio do gry
+		GetTree().ChangeSceneToFile(GameSetupPath);
+	}
 
-    private void OnEditorPressed()
-    {
-        if (string.IsNullOrEmpty(DeckSelectionEditorPath))
-        {
-            GD.PrintErr("Brak Ĺ›cieĹĽki do DeckSelectionEditor w MainMenu!");
-            return;
-        }
-        GetTree().ChangeSceneToFile(DeckSelectionEditorPath);
-    }
+	private void OnEditorPressed()
+	{
+		if (string.IsNullOrEmpty(DeckSelectionEditorPath))
+		{
+			GD.PrintErr("Brak Ĺ›cieĹĽki do DeckSelectionEditor w MainMenu!");
+			return;
+		}
+		GetTree().ChangeSceneToFile(DeckSelectionEditorPath);
+	}
 
-    private void OnQuitPressed()
-    {
-        GD.Print("Wychodzenie z gry...");
-        GetTree().Quit();
-    }
+	private void OnQuitPressed()
+	{
+		GD.Print("Wychodzenie z gry...");
+		GetTree().Quit();
+	}
 }
 
 
@@ -1705,4 +1705,3 @@ public partial class UIManager : Node
 		}
 	}
 }
-

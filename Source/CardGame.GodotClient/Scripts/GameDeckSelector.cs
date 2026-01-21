@@ -6,16 +6,29 @@ using CardGame.Core.Decks.Data;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// Manages the deck selection screen before a match starts.
+/// Allows the player to choose their own deck (Left Click) and the bot's deck (Right Click).
+/// Features a custom shader for visual feedback on selection states (Player, Bot, or Both).
+/// </summary>
 public partial class GameDeckSelector : Control
 {
+    #region Scene References
     // --- REFERENCJE UI ---
+    /// <summary>Container for the list of available decks.</summary>
     [Export] public VBoxContainer DeckListContainer;
+    /// <summary>Button to start the game (disabled until decks are selected).</summary>
     [Export] public Button StartGameButton;
+    /// <summary>Button to return to the main menu.</summary>
     [Export] public Button BackButton;
 
+    /// <summary>Label displaying the currently selected player deck name.</summary>
     [Export] public Label PlayerSelectedLabel;
+    /// <summary>Label displaying the currently selected bot deck name.</summary>
     [Export] public Label BotSelectedLabel;
+    #endregion
 
+    #region Constants & Fields
     // --- ŚCIEŻKI ---
     private const string MAIN_MENU_PATH = "res://Scenes/MainMenu.tscn";
     private const string GAME_SCENE_PATH = "res://Scenes/Main.tscn";
@@ -32,6 +45,10 @@ public partial class GameDeckSelector : Control
     private readonly Color _colDark = new Color(0.15f, 0.15f, 0.15f); // Tło
 
     // --- SHADER SDF (Rounded Box + Gradient) ---
+    /// <summary>
+    /// Shader code for rendering a dynamic, rounded gradient border.
+    /// Used when both Player and Bot select the same deck to show a split color effect.
+    /// </summary>
     private const string BORDER_SHADER_CODE = @"
         shader_type canvas_item;
         
@@ -81,7 +98,13 @@ public partial class GameDeckSelector : Control
     ";
 
     private ShaderMaterial _baseShaderMaterial;
+    #endregion
 
+    #region Lifecycle Methods
+
+    /// <summary>
+    /// Initializes the shader material, UI button sizes, loads decks, and connects signals.
+    /// </summary>
     public override void _Ready()
     {
         // Kompilacja Shadera raz na starcie
@@ -111,6 +134,13 @@ public partial class GameDeckSelector : Control
             BackButton.Pressed += () => GetTree().ChangeSceneToFile(MAIN_MENU_PATH);
     }
 
+    #endregion
+
+    #region Deck Loading
+
+    /// <summary>
+    /// Scans the persistent data directory for deck JSON files and creates buttons for them.
+    /// </summary>
     private void LoadDecks()
     {
         if (DeckListContainer == null) return;
@@ -138,6 +168,10 @@ public partial class GameDeckSelector : Control
         }
     }
 
+    /// <summary>
+    /// Creates a button for a specific deck, including the hidden shader rectangle for the "Both Selected" effect.
+    /// </summary>
+    /// <param name="deck">The deck data.</param>
     private void CreateDeckButton(DeckData deck)
     {
         var mainFont = GD.Load<Font>("res://Assets/Fonts/Ari-CBold.ttf");
@@ -156,9 +190,12 @@ public partial class GameDeckSelector : Control
         gradientRect.SetAnchorsPreset(LayoutPreset.FullRect);
         gradientRect.ShowBehindParent = true;
         gradientRect.Visible = false;
+
+        // WAŻNE: Klonujemy materiał dla każdego przycisku, bo każdy ma inny rozmiar (size uniform)
         gradientRect.Material = (Material)_baseShaderMaterial.Duplicate();
 
         btn.AddChild(gradientRect);
+        // --------------------------------------
 
         // Czcionka
         if (mainFont != null)
@@ -168,7 +205,9 @@ public partial class GameDeckSelector : Control
         }
 
         // Obsługa sygnałów
+        // Podpinamy sygnał zmiany rozmiaru, żeby aktualizować shader
         btn.Resized += () => UpdateShaderSize(btn, gradientRect);
+
         btn.GuiInput += (inputEvent) => OnDeckRowClicked(inputEvent, deck);
 
         _deckButtons[deck.Id] = btn;
@@ -177,6 +216,9 @@ public partial class GameDeckSelector : Control
         ApplyButtonStyle(btn, false, false);
     }
 
+    /// <summary>
+    /// Updates the shader parameters with the current button size to ensure correct border rendering.
+    /// </summary>
     private void UpdateShaderSize(Button btn, ColorRect rect)
     {
         // Przekazujemy aktualny rozmiar przycisku do shadera, żeby zaokrąglenia były ładne
@@ -186,6 +228,13 @@ public partial class GameDeckSelector : Control
         }
     }
 
+    #endregion
+
+    #region Input Handling
+
+    /// <summary>
+    /// Handles clicks on deck rows. Left Click selects for Player, Right Click selects for Bot.
+    /// </summary>
     private void OnDeckRowClicked(InputEvent inputEvent, DeckData deck)
     {
         if (inputEvent is InputEventMouseButton mb && mb.Pressed)
@@ -193,7 +242,7 @@ public partial class GameDeckSelector : Control
             if (mb.ButtonIndex == MouseButton.Left)
             {
                 _playerChoice = deck;
-                if (_botChoice == null) _botChoice = deck;
+                if (_botChoice == null) _botChoice = deck; // Auto-pick dla bota
             }
             else if (mb.ButtonIndex == MouseButton.Right)
             {
@@ -205,6 +254,13 @@ public partial class GameDeckSelector : Control
         }
     }
 
+    #endregion
+
+    #region Visual Updates
+
+    /// <summary>
+    /// Updates the visual style of all deck buttons based on the current selection.
+    /// </summary>
     private void UpdateAllButtonsVisuals()
     {
         foreach (var kvp in _deckButtons)
@@ -219,6 +275,10 @@ public partial class GameDeckSelector : Control
         }
     }
 
+    /// <summary>
+    /// Applies a specific visual style to a button based on who selected it.
+    /// Toggles the shader effect for "Both Selected" or applies StyleBoxFlat for single selection.
+    /// </summary>
     private void ApplyButtonStyle(Button btn, bool isPlayer, bool isBot)
     {
         var gradientRect = btn.GetNode<ColorRect>("GradientBorder");
@@ -282,6 +342,9 @@ public partial class GameDeckSelector : Control
         btn.AddThemeStyleboxOverride("focus", style);
     }
 
+    /// <summary>
+    /// Updates the info labels with the names of the selected decks and enables the start button.
+    /// </summary>
     private void UpdateSelectionInfo()
     {
         if (PlayerSelectedLabel != null)
@@ -304,6 +367,9 @@ public partial class GameDeckSelector : Control
         }
     }
 
+    /// <summary>
+    /// Saves the selected decks to the GameSession and switches to the main game scene.
+    /// </summary>
     private void OnStartGamePressed()
     {
         if (_playerChoice == null || _botChoice == null) return;
@@ -316,4 +382,6 @@ public partial class GameDeckSelector : Control
 
         GetTree().ChangeSceneToFile(GAME_SCENE_PATH);
     }
+
+    #endregion
 }
