@@ -1,0 +1,746 @@
+### YamlMime:TableOfContent
+items:
+- uid: CardGame
+  name: CardGame
+  type: Namespace
+  items:
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    type: Namespace
+    items:
+    - uid: CardGame.ConsoleApp.Core
+      name: Core
+      type: Namespace
+      items:
+      - uid: CardGame.ConsoleApp.Core.AIvsEvolutionRunner
+        name: AIvsEvolutionRunner
+        type: Class
+      - uid: CardGame.ConsoleApp.Core.EvoBotViewer
+        name: EvoBotViewer
+        type: Class
+      - uid: CardGame.ConsoleApp.Core.EvolutionLeague
+        name: EvolutionLeague
+        type: Class
+      - uid: CardGame.ConsoleApp.Core.EvolutionLogger
+        name: EvolutionLogger
+        type: Class
+      - uid: CardGame.ConsoleApp.Core.HallOfFame
+        name: HallOfFame
+        type: Class
+    - uid: CardGame.ConsoleApp.Evolution
+      name: Evolution
+      type: Namespace
+      items:
+      - uid: CardGame.ConsoleApp.Evolution.Analytics
+        name: Analytics
+        type: Namespace
+        items:
+        - uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+          name: CardAnalytics
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+          name: CardAnalytics.CardEntry
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer
+          name: CardMetaViewer
+          type: Class
+      - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+        name: V1_Legacy
+        type: Namespace
+        items:
+        - uid: CardGame.ConsoleApp.Evolution.V1_Legacy.DNA
+          name: DNA
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V1_Legacy.EvolutionRunner
+          name: EvolutionRunner
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+          name: GeneticIndividual
+          type: Class
+      - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+        name: V2_NewGen
+        type: Namespace
+        items:
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.AdaptiveFitnessOptimizer
+          name: AdaptiveFitnessOptimizer
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+          name: ArchetypeChampion
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+          name: ArchetypeHallOfFame
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+          name: ArchetypePurityCalculator
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer
+          name: ArchetypeSpecialistOptimizer
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+          name: ArchetypeSpecialistOptimizer.SpecialistTarget
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+          name: ArchetypeStatistic
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+          name: BotArchetype
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+          name: BotArchetypePool
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData
+          name: CardAnalyticsData
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+          name: CardAnalyticsV2
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+          name: CardCache
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem
+          name: CardExplorationSystem
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardExplorationSystem.ExplorationCandidate
+          name: CardExplorationSystem.ExplorationCandidate
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+          name: CardStatistic
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+          name: CardStatsEnhanced
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+          name: CardSynergy
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+          name: ChampionData
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+          name: CrossArchetypeStats
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+          name: DeckCardInfo
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo
+          name: DeckInfo
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer
+          name: DiversityEnforcer
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+          name: EvolutionCheckpoint
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionRunnerV2
+          name: EvolutionRunnerV2
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+          name: EvolvableIndividual
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter
+          name: EvolvableIndividualConverter
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+          name: GameResult
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions
+          name: GameStateExtensions
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData
+          name: HallOfFameData
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+          name: HybridDiscoveryEngine
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+          name: HybridDiscoveryEngine.HybridPattern
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.IntraArchetypeNoveltyArchive
+          name: IntraArchetypeNoveltyArchive
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.MetagameTracker
+          name: MetagameTracker
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+          name: NewDna
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMetrics
+          name: PerformanceMetrics
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PerformanceMonitor
+          name: PerformanceMonitor
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.PopulationData
+          name: PopulationData
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.Species
+          name: Species
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+          name: SpeciesSnapshot
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner
+          name: SynergyLearner
+          type: Class
+        - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+          name: WinRateCardStat
+          type: Class
+    - uid: CardGame.ConsoleApp.AIBattleRunner
+      name: AIBattleRunner
+      type: Class
+    - uid: CardGame.ConsoleApp.AIBattleRunnerII
+      name: AIBattleRunnerII
+      type: Class
+    - uid: CardGame.ConsoleApp.AIBattleRunnerIII
+      name: AIBattleRunnerIII
+      type: Class
+    - uid: CardGame.ConsoleApp.BalanceAITester
+      name: BalanceAITester
+      type: Class
+    - uid: CardGame.ConsoleApp.MechanicsTester
+      name: MechanicsTester
+      type: Class
+    - uid: CardGame.ConsoleApp.OptimizedAILogger
+      name: OptimizedAILogger
+      type: Class
+  - uid: CardGame.Core
+    name: Core
+    type: Namespace
+    items:
+    - uid: CardGame.Core.AI
+      name: AI
+      type: Namespace
+      items:
+      - uid: CardGame.Core.AI.Interfaces
+        name: Interfaces
+        type: Namespace
+        items:
+        - uid: CardGame.Core.AI.Interfaces.IAIStrategy
+          name: IAIStrategy
+          type: Interface
+      - uid: CardGame.Core.AI.Logic
+        name: Logic
+        type: Namespace
+        items:
+        - uid: CardGame.Core.AI.Logic.Mcts
+          name: Mcts
+          type: Namespace
+          items:
+          - uid: CardGame.Core.AI.Logic.Mcts.MctsNode
+            name: MctsNode
+            type: Class
+          - uid: CardGame.Core.AI.Logic.Mcts.MctsSolver
+            name: MctsSolver
+            type: Class
+        - uid: CardGame.Core.AI.Logic.BotSolver
+          name: BotSolver
+          type: Class
+        - uid: CardGame.Core.AI.Logic.EvaluatedMove
+          name: EvaluatedMove
+          type: Class
+        - uid: CardGame.Core.AI.Logic.MoveGenerator
+          name: MoveGenerator
+          type: Class
+        - uid: CardGame.Core.AI.Logic.SimulationNode
+          name: SimulationNode
+          type: Class
+        - uid: CardGame.Core.AI.Logic.VirtualOpponent
+          name: VirtualOpponent
+          type: Class
+      - uid: CardGame.Core.AI.Strategies
+        name: Strategies
+        type: Namespace
+        items:
+        - uid: CardGame.Core.AI.Strategies.BalanceStrategy
+          name: BalanceStrategy
+          type: Class
+        - uid: CardGame.Core.AI.Strategies.EvolvableStrategy
+          name: EvolvableStrategy
+          type: Class
+        - uid: CardGame.Core.AI.Strategies.OptimizedNewEvolvableStrategy
+          name: OptimizedNewEvolvableStrategy
+          type: Class
+        - uid: CardGame.Core.AI.Strategies.RandomStrategy
+          name: RandomStrategy
+          type: Class
+        - uid: CardGame.Core.AI.Strategies.StandardStrategy
+          name: StandardStrategy
+          type: Class
+      - uid: CardGame.Core.AI.AIPlayerController
+        name: AIPlayerController
+        type: Class
+      - uid: CardGame.Core.AI.AISolverType
+        name: AISolverType
+        type: Enum
+    - uid: CardGame.Core.Application
+      name: Application
+      type: Namespace
+      items:
+      - uid: CardGame.Core.Application.DeterministicRng
+        name: DeterministicRng
+        type: Class
+      - uid: CardGame.Core.Application.ExecutionResult
+        name: ExecutionResult
+        type: Class
+      - uid: CardGame.Core.Application.GameContext
+        name: GameContext
+        type: Class
+      - uid: CardGame.Core.Application.GameEngine
+        name: GameEngine
+        type: Class
+    - uid: CardGame.Core.Cards
+      name: Cards
+      type: Namespace
+      items:
+      - uid: CardGame.Core.Cards.Component
+        name: Component
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Cards.Component.Actions
+          name: Actions
+          type: Namespace
+          items:
+          - uid: CardGame.Core.Cards.Component.Actions.IActionHandler
+            name: IActionHandler
+            type: Interface
+        - uid: CardGame.Core.Cards.Component.ICardComponent
+          name: ICardComponent
+          type: Interface
+      - uid: CardGame.Core.Cards.Components
+        name: Components
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Cards.Components.Actions
+          name: Actions
+          type: Namespace
+          items:
+          - uid: CardGame.Core.Cards.Components.Actions.Handlers
+            name: Handlers
+            type: Namespace
+            items:
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.AbsorbStatsHandler
+              name: AbsorbStatsHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.AddCardToHandHandler
+              name: AddCardToHandHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.AddResourceHandler
+              name: AddResourceHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.ApplyStatusHandler
+              name: ApplyStatusHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.BonusAttackHandler
+              name: BonusAttackHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.BuffStatsHandler
+              name: BuffStatsHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.DealDamageHandler
+              name: DealDamageHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.DestroyUnitHandler
+              name: DestroyUnitHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler
+              name: DrawCardHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.DrawFromDiscardHandler
+              name: DrawFromDiscardHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.GiveToOpponentHandler
+              name: GiveToOpponentHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.HealHandler
+              name: HealHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.HealToFullHandler
+              name: HealToFullHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.MakeAUnitHandler
+              name: MakeAUnitHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.ModifyGlobalBuffHandler
+              name: ModifyGlobalBuffHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.MoveRightHandler
+              name: MoveRightHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.ReturnToHandHandler
+              name: ReturnToHandHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.SacrificeUnitHandler
+              name: SacrificeUnitHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.ShuffleDeckHandler
+              name: ShuffleDeckHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.SilenceHandler
+              name: SilenceHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.SummonUnitHandler
+              name: SummonUnitHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Components.Actions.Handlers.TutorCardHandler
+              name: TutorCardHandler
+              type: Class
+          - uid: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+            name: ActionHandlerRegistry
+            type: Class
+        - uid: CardGame.Core.Cards.Components.Implementations
+          name: Implementations
+          type: Namespace
+          items:
+          - uid: CardGame.Core.Cards.Components.Implementations.JsonEffectComponent
+            name: JsonEffectComponent
+            type: Class
+      - uid: CardGame.Core.Cards.Data
+        name: Data
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Cards.Data.ActionData
+          name: ActionData
+          type: Class
+        - uid: CardGame.Core.Cards.Data.ActionType
+          name: ActionType
+          type: Enum
+        - uid: CardGame.Core.Cards.Data.CardData
+          name: CardData
+          type: Class
+        - uid: CardGame.Core.Cards.Data.CardLibrary
+          name: CardLibrary
+          type: Class
+        - uid: CardGame.Core.Cards.Data.CardType
+          name: CardType
+          type: Enum
+        - uid: CardGame.Core.Cards.Data.ConditionData
+          name: ConditionData
+          type: Class
+        - uid: CardGame.Core.Cards.Data.ConditionType
+          name: ConditionType
+          type: Enum
+        - uid: CardGame.Core.Cards.Data.DeckValidator
+          name: DeckValidator
+          type: Class
+        - uid: CardGame.Core.Cards.Data.EffectData
+          name: EffectData
+          type: Class
+        - uid: CardGame.Core.Cards.Data.EffectZone
+          name: EffectZone
+          type: Enum
+        - uid: CardGame.Core.Cards.Data.Keyword
+          name: Keyword
+          type: Enum
+        - uid: CardGame.Core.Cards.Data.ResourceType
+          name: ResourceType
+          type: Enum
+        - uid: CardGame.Core.Cards.Data.TargetType
+          name: TargetType
+          type: Enum
+        - uid: CardGame.Core.Cards.Data.TriggerType
+          name: TriggerType
+          type: Enum
+      - uid: CardGame.Core.Cards.Factories
+        name: Factories
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Cards.Factories.CardFactory
+          name: CardFactory
+          type: Class
+      - uid: CardGame.Core.Cards.Logic
+        name: Logic
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Cards.Logic.Keywords
+          name: Keywords
+          type: Namespace
+          items:
+          - uid: CardGame.Core.Cards.Logic.Keywords.Handlers
+            name: Handlers
+            type: Namespace
+            items:
+            - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.ArmoredHandler
+              name: ArmoredHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.BurnSourceHandler
+              name: BurnSourceHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.BurningHandler
+              name: BurningHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.MarkedHandler
+              name: MarkedHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.SoulGuardHandler
+              name: SoulGuardHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler
+              name: SplashDamageHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.StunnedHandler
+              name: StunnedHandler
+              type: Class
+            - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler
+              name: UnkillableHandler
+              type: Class
+          - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
+            name: IKeywordHandler
+            type: Interface
+          - uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+            name: KeywordProcessor
+            type: Class
+        - uid: CardGame.Core.Cards.Logic.EffectTargetResolver
+          name: EffectTargetResolver
+          type: Class
+        - uid: CardGame.Core.Cards.Logic.EffectTargets
+          name: EffectTargets
+          type: Class
+        - uid: CardGame.Core.Cards.Logic.PlayValidator
+          name: PlayValidator
+          type: Class
+        - uid: CardGame.Core.Cards.Logic.TriggerLogic
+          name: TriggerLogic
+          type: Class
+      - uid: CardGame.Core.Cards.Models
+        name: Models
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Cards.Models.CardDefinition
+          name: CardDefinition
+          type: Class
+        - uid: CardGame.Core.Cards.Models.CardInstance
+          name: CardInstance
+          type: Class
+        - uid: CardGame.Core.Cards.Models.CardStats
+          name: CardStats
+          type: Struct
+    - uid: CardGame.Core.Combat
+      name: Combat
+      type: Namespace
+      items:
+      - uid: CardGame.Core.Combat.CombatOrchestrator
+        name: CombatOrchestrator
+        type: Class
+    - uid: CardGame.Core.Commands
+      name: Commands
+      type: Namespace
+      items:
+      - uid: CardGame.Core.Commands.Implementations
+        name: Implementations
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+          name: ConfirmMulliganCommand
+          type: Class
+        - uid: CardGame.Core.Commands.Implementations.EndPhaseCommand
+          name: EndPhaseCommand
+          type: Class
+        - uid: CardGame.Core.Commands.Implementations.PlaySpellCommand
+          name: PlaySpellCommand
+          type: Class
+        - uid: CardGame.Core.Commands.Implementations.PlayUnitCommand
+          name: PlayUnitCommand
+          type: Class
+        - uid: CardGame.Core.Commands.Implementations.SelectTargetCommand
+          name: SelectTargetCommand
+          type: Class
+      - uid: CardGame.Core.Commands.Interfaces
+        name: Interfaces
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Commands.Interfaces.IGameCommand
+          name: IGameCommand
+          type: Interface
+    - uid: CardGame.Core.Decks
+      name: Decks
+      type: Namespace
+      items:
+      - uid: CardGame.Core.Decks.Data
+        name: Data
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Decks.Data.DeckData
+          name: DeckData
+          type: Class
+      - uid: CardGame.Core.Decks.DeckRepository
+        name: DeckRepository
+        type: Class
+      - uid: CardGame.Core.Decks.DeckService
+        name: DeckService
+        type: Class
+    - uid: CardGame.Core.Events
+      name: Events
+      type: Namespace
+      items:
+      - uid: CardGame.Core.Events.Interfaces
+        name: Interfaces
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Events.Interfaces.IGameEvent
+          name: IGameEvent
+          type: Interface
+      - uid: CardGame.Core.Events.Triggers
+        name: Triggers
+        type: Namespace
+        items:
+        - uid: CardGame.Core.Events.Triggers.TriggerSystem
+          name: TriggerSystem
+          type: Class
+      - uid: CardGame.Core.Events.BattleClashEvent
+        name: BattleClashEvent
+        type: Class
+      - uid: CardGame.Core.Events.CardCreatedEvent
+        name: CardCreatedEvent
+        type: Class
+      - uid: CardGame.Core.Events.CardDrawnEvent
+        name: CardDrawnEvent
+        type: Class
+      - uid: CardGame.Core.Events.CardMovedEvent
+        name: CardMovedEvent
+        type: Class
+      - uid: CardGame.Core.Events.CardPlayedEvent
+        name: CardPlayedEvent
+        type: Class
+      - uid: CardGame.Core.Events.CardZone
+        name: CardZone
+        type: Enum
+      - uid: CardGame.Core.Events.EventBus
+        name: EventBus
+        type: Class
+      - uid: CardGame.Core.Events.GameOverEvent
+        name: GameOverEvent
+        type: Class
+      - uid: CardGame.Core.Events.InteractionRequiredEvent
+        name: InteractionRequiredEvent
+        type: Class
+      - uid: CardGame.Core.Events.PhaseChangedEvent
+        name: PhaseChangedEvent
+        type: Class
+      - uid: CardGame.Core.Events.PreLineCombatEvent
+        name: PreLineCombatEvent
+        type: Class
+      - uid: CardGame.Core.Events.ResourceChangedEvent
+        name: ResourceChangedEvent
+        type: Class
+      - uid: CardGame.Core.Events.TargetSelectedEvent
+        name: TargetSelectedEvent
+        type: Class
+      - uid: CardGame.Core.Events.TriggerActivatedEvent
+        name: TriggerActivatedEvent
+        type: Class
+      - uid: CardGame.Core.Events.TurnStartedEvent
+        name: TurnStartedEvent
+        type: Class
+      - uid: CardGame.Core.Events.UnitDestroyedEvent
+        name: UnitDestroyedEvent
+        type: Class
+      - uid: CardGame.Core.Events.UnitDiedEvent
+        name: UnitDiedEvent
+        type: Class
+      - uid: CardGame.Core.Events.UnitSacrificedEvent
+        name: UnitSacrificedEvent
+        type: Class
+      - uid: CardGame.Core.Events.UnitStatsChangedEvent
+        name: UnitStatsChangedEvent
+        type: Class
+    - uid: CardGame.Core.GameRules
+      name: GameRules
+      type: Namespace
+      items:
+      - uid: CardGame.Core.GameRules.Auras
+        name: Auras
+        type: Namespace
+        items:
+        - uid: CardGame.Core.GameRules.Auras.AuraSystem
+          name: AuraSystem
+          type: Class
+      - uid: CardGame.Core.GameRules.Battle
+        name: Battle
+        type: Namespace
+        items:
+        - uid: CardGame.Core.GameRules.Battle.BattleService
+          name: BattleService
+          type: Class
+      - uid: CardGame.Core.GameRules.Damage
+        name: Damage
+        type: Namespace
+        items:
+        - uid: CardGame.Core.GameRules.Damage.DamageCalculator
+          name: DamageCalculator
+          type: Class
+        - uid: CardGame.Core.GameRules.Damage.DamageContext
+          name: DamageContext
+          type: Class
+        - uid: CardGame.Core.GameRules.Damage.DamageType
+          name: DamageType
+          type: Enum
+      - uid: CardGame.Core.GameRules.Death
+        name: Death
+        type: Namespace
+        items:
+        - uid: CardGame.Core.GameRules.Death.DeathResolver
+          name: DeathResolver
+          type: Class
+    - uid: CardGame.Core.State
+      name: State
+      type: Namespace
+      items:
+      - uid: CardGame.Core.State.Enums
+        name: Enums
+        type: Namespace
+        items:
+        - uid: CardGame.Core.State.Enums.GamePhase
+          name: GamePhase
+          type: Enum
+      - uid: CardGame.Core.State.Models
+        name: Models
+        type: Namespace
+        items:
+        - uid: CardGame.Core.State.Models.BoardState
+          name: BoardState
+          type: Class
+        - uid: CardGame.Core.State.Models.GameState
+          name: GameState
+          type: Class
+        - uid: CardGame.Core.State.Models.Line
+          name: Line
+          type: Class
+        - uid: CardGame.Core.State.Models.PendingInteraction
+          name: PendingInteraction
+          type: Class
+        - uid: CardGame.Core.State.Models.PlayerState
+          name: PlayerState
+          type: Class
+    - uid: CardGame.Core.StateMachine
+      name: StateMachine
+      type: Namespace
+      items:
+      - uid: CardGame.Core.StateMachine.Interfaces
+        name: Interfaces
+        type: Namespace
+        items:
+        - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState
+          name: IPhaseState
+          type: Interface
+      - uid: CardGame.Core.StateMachine.Phases
+        name: Phases
+        type: Namespace
+        items:
+        - uid: CardGame.Core.StateMachine.Phases.ActionPhaseState
+          name: ActionPhaseState
+          type: Class
+        - uid: CardGame.Core.StateMachine.Phases.BothPhaseState
+          name: BothPhaseState
+          type: Class
+        - uid: CardGame.Core.StateMachine.Phases.CombatPhaseState
+          name: CombatPhaseState
+          type: Class
+        - uid: CardGame.Core.StateMachine.Phases.MulliganPhaseState
+          name: MulliganPhaseState
+          type: Class
+        - uid: CardGame.Core.StateMachine.Phases.UnitPhaseState
+          name: UnitPhaseState
+          type: Class
+      - uid: CardGame.Core.StateMachine.GameStateMachine
+        name: GameStateMachine
+        type: Class
+memberLayout: SamePage

@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame
+  id: CardGame
+  children:
+  - CardGame.ConsoleApp
+  - CardGame.Core
+  langs:
+  - csharp
+  - vb
+  name: CardGame
+  type: Namespace
+references:
+- uid: CardGame.ConsoleApp
+  commentId: N:CardGame.ConsoleApp
+  href: CardGame.html
+  name: CardGame.ConsoleApp
+  nameWithType: CardGame.ConsoleApp
+  fullName: CardGame.ConsoleApp
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+- uid: CardGame.Core
+  isExternal: true

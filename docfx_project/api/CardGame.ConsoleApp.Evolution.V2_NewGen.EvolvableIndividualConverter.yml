@@ -1,0 +1,557 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter
+  id: EvolvableIndividualConverter
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Write(System.Text.Json.Utf8JsonWriter,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Text.Json.JsonSerializerOptions)
+  langs:
+  - csharp
+  - vb
+  name: EvolvableIndividualConverter
+  nameWithType: EvolvableIndividualConverter
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EvolvableIndividualConverter
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4364
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: 'public class EvolvableIndividualConverter : JsonConverter<EvolvableIndividual>'
+    content.vb: Public Class EvolvableIndividualConverter Inherits JsonConverter(Of EvolvableIndividual)
+  inheritance:
+  - System.Object
+  - System.Text.Json.Serialization.JsonConverter
+  - System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  id: Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter
+  langs:
+  - csharp
+  - vb
+  name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  nameWithType: EvolvableIndividualConverter.Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Read(ref System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Read
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4366
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  summary: Reads and converts the JSON to type <xref href="CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public override EvolvableIndividual Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    parameters:
+    - id: reader
+      type: System.Text.Json.Utf8JsonReader
+      description: The reader.
+    - id: typeToConvert
+      type: System.Type
+      description: The type to convert.
+    - id: options
+      type: System.Text.Json.JsonSerializerOptions
+      description: An object that specifies serialization options to use.
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+      description: The converted value.
+    content.vb: Public Overrides Function Read(reader As Utf8JsonReader, typeToConvert As Type, options As JsonSerializerOptions) As EvolvableIndividual
+  overridden: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Read*
+  nameWithType.vb: EvolvableIndividualConverter.Read(Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Read(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  name.vb: Read(Utf8JsonReader, Type, JsonSerializerOptions)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Write(System.Text.Json.Utf8JsonWriter,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Text.Json.JsonSerializerOptions)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Write(System.Text.Json.Utf8JsonWriter,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Text.Json.JsonSerializerOptions)
+  id: Write(System.Text.Json.Utf8JsonWriter,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Text.Json.JsonSerializerOptions)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter
+  langs:
+  - csharp
+  - vb
+  name: Write(Utf8JsonWriter, EvolvableIndividual, JsonSerializerOptions)
+  nameWithType: EvolvableIndividualConverter.Write(Utf8JsonWriter, EvolvableIndividual, JsonSerializerOptions)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Write(System.Text.Json.Utf8JsonWriter, CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, System.Text.Json.JsonSerializerOptions)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Write
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4433
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  summary: Writes a specified value as JSON.
+  example: []
+  syntax:
+    content: public override void Write(Utf8JsonWriter writer, EvolvableIndividual value, JsonSerializerOptions options)
+    parameters:
+    - id: writer
+      type: System.Text.Json.Utf8JsonWriter
+      description: The writer to write to.
+    - id: value
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+      description: The value to convert to JSON.
+    - id: options
+      type: System.Text.Json.JsonSerializerOptions
+      description: An object that specifies serialization options to use.
+    content.vb: Public Overrides Sub Write(writer As Utf8JsonWriter, value As EvolvableIndividual, options As JsonSerializerOptions)
+  overridden: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}.Write(System.Text.Json.Utf8JsonWriter,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Text.Json.JsonSerializerOptions)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Write*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Text.Json.Serialization.JsonConverter
+  commentId: T:System.Text.Json.Serialization.JsonConverter
+  parent: System.Text.Json.Serialization
+  isExternal: true
+  name: JsonConverter
+  nameWithType: JsonConverter
+  fullName: System.Text.Json.Serialization.JsonConverter
+- uid: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  commentId: T:System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  parent: System.Text.Json.Serialization
+  definition: System.Text.Json.Serialization.JsonConverter`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: JsonConverter<EvolvableIndividual>
+  nameWithType: JsonConverter<EvolvableIndividual>
+  fullName: System.Text.Json.Serialization.JsonConverter<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>
+  nameWithType.vb: JsonConverter(Of EvolvableIndividual)
+  fullName.vb: System.Text.Json.Serialization.JsonConverter(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  name.vb: JsonConverter(Of EvolvableIndividual)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.JsonConverter`1
+    name: JsonConverter
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.JsonConverter`1
+    name: JsonConverter
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Text.Json.Serialization
+  commentId: N:System.Text.Json.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text.Json.Serialization
+  nameWithType: System.Text.Json.Serialization
+  fullName: System.Text.Json.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+  - name: .
+  - uid: System.Text.Json.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+  - name: .
+  - uid: System.Text.Json.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization
+- uid: System.Text.Json.Serialization.JsonConverter`1
+  commentId: T:System.Text.Json.Serialization.JsonConverter`1
+  isExternal: true
+  name: JsonConverter<T>
+  nameWithType: JsonConverter<T>
+  fullName: System.Text.Json.Serialization.JsonConverter<T>
+  nameWithType.vb: JsonConverter(Of T)
+  fullName.vb: System.Text.Json.Serialization.JsonConverter(Of T)
+  name.vb: JsonConverter(Of T)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.JsonConverter`1
+    name: JsonConverter
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Text.Json.Serialization.JsonConverter`1
+    name: JsonConverter
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+- uid: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  commentId: M:System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  parent: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  definition: System.Text.Json.Serialization.JsonConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  nameWithType: JsonConverter<EvolvableIndividual>.Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName: System.Text.Json.Serialization.JsonConverter<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>.Read(ref System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  nameWithType.vb: JsonConverter(Of EvolvableIndividual).Read(Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName.vb: System.Text.Json.Serialization.JsonConverter(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual).Read(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  name.vb: Read(Utf8JsonReader, Type, JsonSerializerOptions)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+    name: Read
+    isExternal: true
+  - name: (
+  - name: ref
+  - name: " "
+  - uid: System.Text.Json.Utf8JsonReader
+    name: Utf8JsonReader
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Text.Json.JsonSerializerOptions
+    name: JsonSerializerOptions
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+    name: Read
+    isExternal: true
+  - name: (
+  - uid: System.Text.Json.Utf8JsonReader
+    name: Utf8JsonReader
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Text.Json.JsonSerializerOptions
+    name: JsonSerializerOptions
+    isExternal: true
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Read*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Read
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividualConverter_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_
+  name: Read
+  nameWithType: EvolvableIndividualConverter.Read
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Read
+- uid: System.Text.Json.Utf8JsonReader
+  commentId: T:System.Text.Json.Utf8JsonReader
+  parent: System.Text.Json
+  isExternal: true
+  name: Utf8JsonReader
+  nameWithType: Utf8JsonReader
+  fullName: System.Text.Json.Utf8JsonReader
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Text.Json.JsonSerializerOptions
+  commentId: T:System.Text.Json.JsonSerializerOptions
+  parent: System.Text.Json
+  isExternal: true
+  name: JsonSerializerOptions
+  nameWithType: JsonSerializerOptions
+  fullName: System.Text.Json.JsonSerializerOptions
+- uid: System.Text.Json.Serialization.JsonConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  commentId: M:System.Text.Json.Serialization.JsonConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  isExternal: true
+  name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  nameWithType: JsonConverter<T>.Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName: System.Text.Json.Serialization.JsonConverter<T>.Read(ref System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  nameWithType.vb: JsonConverter(Of T).Read(Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName.vb: System.Text.Json.Serialization.JsonConverter(Of T).Read(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  name.vb: Read(Utf8JsonReader, Type, JsonSerializerOptions)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.JsonConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+    name: Read
+    isExternal: true
+  - name: (
+  - name: ref
+  - name: " "
+  - uid: System.Text.Json.Utf8JsonReader
+    name: Utf8JsonReader
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Text.Json.JsonSerializerOptions
+    name: JsonSerializerOptions
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Text.Json.Serialization.JsonConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+    name: Read
+    isExternal: true
+  - name: (
+  - uid: System.Text.Json.Utf8JsonReader
+    name: Utf8JsonReader
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Text.Json.JsonSerializerOptions
+    name: JsonSerializerOptions
+    isExternal: true
+  - name: )
+- uid: System.Text.Json
+  commentId: N:System.Text.Json
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text.Json
+  nameWithType: System.Text.Json
+  fullName: System.Text.Json
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+- uid: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}.Write(System.Text.Json.Utf8JsonWriter,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Text.Json.JsonSerializerOptions)
+  commentId: M:System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}.Write(System.Text.Json.Utf8JsonWriter,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Text.Json.JsonSerializerOptions)
+  parent: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  definition: System.Text.Json.Serialization.JsonConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: Write(Utf8JsonWriter, EvolvableIndividual, JsonSerializerOptions)
+  nameWithType: JsonConverter<EvolvableIndividual>.Write(Utf8JsonWriter, EvolvableIndividual, JsonSerializerOptions)
+  fullName: System.Text.Json.Serialization.JsonConverter<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>.Write(System.Text.Json.Utf8JsonWriter, CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, System.Text.Json.JsonSerializerOptions)
+  nameWithType.vb: JsonConverter(Of EvolvableIndividual).Write(Utf8JsonWriter, EvolvableIndividual, JsonSerializerOptions)
+  fullName.vb: System.Text.Json.Serialization.JsonConverter(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual).Write(System.Text.Json.Utf8JsonWriter, CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, System.Text.Json.JsonSerializerOptions)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}.Write(System.Text.Json.Utf8JsonWriter,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Text.Json.JsonSerializerOptions)
+    name: Write
+    isExternal: true
+  - name: (
+  - uid: System.Text.Json.Utf8JsonWriter
+    name: Utf8JsonWriter
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: ','
+  - name: " "
+  - uid: System.Text.Json.JsonSerializerOptions
+    name: JsonSerializerOptions
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Text.Json.Serialization.JsonConverter{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}.Write(System.Text.Json.Utf8JsonWriter,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Text.Json.JsonSerializerOptions)
+    name: Write
+    isExternal: true
+  - name: (
+  - uid: System.Text.Json.Utf8JsonWriter
+    name: Utf8JsonWriter
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: ','
+  - name: " "
+  - uid: System.Text.Json.JsonSerializerOptions
+    name: JsonSerializerOptions
+    isExternal: true
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Write*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Write
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividualConverter_Write_System_Text_Json_Utf8JsonWriter_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_System_Text_Json_JsonSerializerOptions_
+  name: Write
+  nameWithType: EvolvableIndividualConverter.Write
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividualConverter.Write
+- uid: System.Text.Json.Utf8JsonWriter
+  commentId: T:System.Text.Json.Utf8JsonWriter
+  parent: System.Text.Json
+  isExternal: true
+  name: Utf8JsonWriter
+  nameWithType: Utf8JsonWriter
+  fullName: System.Text.Json.Utf8JsonWriter
+- uid: System.Text.Json.Serialization.JsonConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)
+  commentId: M:System.Text.Json.Serialization.JsonConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)
+  isExternal: true
+  name: Write(Utf8JsonWriter, T, JsonSerializerOptions)
+  nameWithType: JsonConverter<T>.Write(Utf8JsonWriter, T, JsonSerializerOptions)
+  fullName: System.Text.Json.Serialization.JsonConverter<T>.Write(System.Text.Json.Utf8JsonWriter, T, System.Text.Json.JsonSerializerOptions)
+  nameWithType.vb: JsonConverter(Of T).Write(Utf8JsonWriter, T, JsonSerializerOptions)
+  fullName.vb: System.Text.Json.Serialization.JsonConverter(Of T).Write(System.Text.Json.Utf8JsonWriter, T, System.Text.Json.JsonSerializerOptions)
+  spec.csharp:
+  - uid: System.Text.Json.Serialization.JsonConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)
+    name: Write
+    isExternal: true
+  - name: (
+  - uid: System.Text.Json.Utf8JsonWriter
+    name: Utf8JsonWriter
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Text.Json.JsonSerializerOptions
+    name: JsonSerializerOptions
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.Text.Json.Serialization.JsonConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)
+    name: Write
+    isExternal: true
+  - name: (
+  - uid: System.Text.Json.Utf8JsonWriter
+    name: Utf8JsonWriter
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Text.Json.JsonSerializerOptions
+    name: JsonSerializerOptions
+    isExternal: true
+  - name: )

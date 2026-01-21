@@ -1,0 +1,158 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner
+  id: SynergyLearner
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.LearnFromGame(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Int32[],System.Int32[])
+  langs:
+  - csharp
+  - vb
+  name: SynergyLearner
+  nameWithType: SynergyLearner
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SynergyLearner
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1038
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class SynergyLearner
+    content.vb: Public Class SynergyLearner
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.LearnFromGame(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Int32[],System.Int32[])
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.LearnFromGame(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Int32[],System.Int32[])
+  id: LearnFromGame(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Int32[],System.Int32[])
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner
+  langs:
+  - csharp
+  - vb
+  name: LearnFromGame(EvolvableIndividual, EvolvableIndividual, int[], int[])
+  nameWithType: SynergyLearner.LearnFromGame(EvolvableIndividual, EvolvableIndividual, int[], int[])
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.LearnFromGame(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, int[], int[])
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LearnFromGame
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1044
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void LearnFromGame(EvolvableIndividual winner, EvolvableIndividual loser, int[] winnerDeck, int[] loserDeck)
+    parameters:
+    - id: winner
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    - id: loser
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    - id: winnerDeck
+      type: System.Int32[]
+    - id: loserDeck
+      type: System.Int32[]
+    content.vb: Public Sub LearnFromGame(winner As EvolvableIndividual, loser As EvolvableIndividual, winnerDeck As Integer(), loserDeck As Integer())
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.LearnFromGame*
+  nameWithType.vb: SynergyLearner.LearnFromGame(EvolvableIndividual, EvolvableIndividual, Integer(), Integer())
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.LearnFromGame(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, Integer(), Integer())
+  name.vb: LearnFromGame(EvolvableIndividual, EvolvableIndividual, Integer(), Integer())
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.LearnFromGame*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.LearnFromGame
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.html#CardGame_ConsoleApp_Evolution_V2_NewGen_SynergyLearner_LearnFromGame_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_System_Int32___System_Int32___
+  name: LearnFromGame
+  nameWithType: SynergyLearner.LearnFromGame
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SynergyLearner.LearnFromGame
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )

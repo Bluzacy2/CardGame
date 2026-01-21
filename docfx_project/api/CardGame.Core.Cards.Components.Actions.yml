@@ -1,0 +1,126 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Components.Actions
+  commentId: N:CardGame.Core.Cards.Components.Actions
+  id: Actions
+  parent: CardGame.Core.Cards.Components
+  children:
+  - CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+  - CardGame.Core.Cards.Components.Actions.Handlers
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Cards.Components.Actions
+  nameWithType: CardGame.Core.Cards.Components.Actions
+  fullName: CardGame.Core.Cards.Components.Actions
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Cards.Components.Actions.Handlers
+  commentId: N:CardGame.Core.Cards.Components.Actions.Handlers
+  href: CardGame.html
+  name: CardGame.Core.Cards.Components.Actions.Handlers
+  nameWithType: CardGame.Core.Cards.Components.Actions.Handlers
+  fullName: CardGame.Core.Cards.Components.Actions.Handlers
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components
+    name: Components
+    href: CardGame.Core.Cards.Components.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Components.Actions.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions.Handlers
+    name: Handlers
+    href: CardGame.Core.Cards.Components.Actions.Handlers.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components
+    name: Components
+    href: CardGame.Core.Cards.Components.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Components.Actions.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions.Handlers
+    name: Handlers
+    href: CardGame.Core.Cards.Components.Actions.Handlers.html
+- uid: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+  commentId: T:CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+  parent: CardGame.Core.Cards.Components.Actions
+  href: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.html
+  name: ActionHandlerRegistry
+  nameWithType: ActionHandlerRegistry
+  fullName: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+- uid: CardGame.Core.Cards.Components.Actions
+  commentId: N:CardGame.Core.Cards.Components.Actions
+  href: CardGame.html
+  name: CardGame.Core.Cards.Components.Actions
+  nameWithType: CardGame.Core.Cards.Components.Actions
+  fullName: CardGame.Core.Cards.Components.Actions
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components
+    name: Components
+    href: CardGame.Core.Cards.Components.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Components.Actions.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components
+    name: Components
+    href: CardGame.Core.Cards.Components.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Components.Actions.html

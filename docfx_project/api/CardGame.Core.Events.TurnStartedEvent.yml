@@ -1,0 +1,308 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.TurnStartedEvent
+  commentId: T:CardGame.Core.Events.TurnStartedEvent
+  id: TurnStartedEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.TurnStartedEvent.#ctor(System.Int32,System.Int32)
+  - CardGame.Core.Events.TurnStartedEvent.ActivePlayerId
+  - CardGame.Core.Events.TurnStartedEvent.SourcePlayerId
+  - CardGame.Core.Events.TurnStartedEvent.TurnNumer
+  langs:
+  - csharp
+  - vb
+  name: TurnStartedEvent
+  nameWithType: TurnStartedEvent
+  fullName: CardGame.Core.Events.TurnStartedEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/TurnStartedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: TurnStartedEvent
+    path: ../Source/CardGame.Core/Events/TurnStartedEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs when a player's turn starts.
+  example: []
+  syntax:
+    content: 'public class TurnStartedEvent : IGameEvent'
+    content.vb: Public Class TurnStartedEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.TurnStartedEvent.TurnNumer
+  commentId: P:CardGame.Core.Events.TurnStartedEvent.TurnNumer
+  id: TurnNumer
+  parent: CardGame.Core.Events.TurnStartedEvent
+  langs:
+  - csharp
+  - vb
+  name: TurnNumer
+  nameWithType: TurnStartedEvent.TurnNumer
+  fullName: CardGame.Core.Events.TurnStartedEvent.TurnNumer
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/TurnStartedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: TurnNumer
+    path: ../Source/CardGame.Core/Events/TurnStartedEvent.cs
+    startLine: 14
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the current turn number.
+  example: []
+  syntax:
+    content: public int TurnNumer { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property TurnNumer As Integer
+  overload: CardGame.Core.Events.TurnStartedEvent.TurnNumer*
+- uid: CardGame.Core.Events.TurnStartedEvent.ActivePlayerId
+  commentId: P:CardGame.Core.Events.TurnStartedEvent.ActivePlayerId
+  id: ActivePlayerId
+  parent: CardGame.Core.Events.TurnStartedEvent
+  langs:
+  - csharp
+  - vb
+  name: ActivePlayerId
+  nameWithType: TurnStartedEvent.ActivePlayerId
+  fullName: CardGame.Core.Events.TurnStartedEvent.ActivePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/TurnStartedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ActivePlayerId
+    path: ../Source/CardGame.Core/Events/TurnStartedEvent.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player whose turn is starting.
+  example: []
+  syntax:
+    content: public int ActivePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ActivePlayerId As Integer
+  overload: CardGame.Core.Events.TurnStartedEvent.ActivePlayerId*
+- uid: CardGame.Core.Events.TurnStartedEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.TurnStartedEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.TurnStartedEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: TurnStartedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.TurnStartedEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/TurnStartedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/TurnStartedEvent.cs
+    startLine: 24
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who caused the event (the player whose turn is starting).
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.TurnStartedEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.TurnStartedEvent.#ctor(System.Int32,System.Int32)
+  commentId: M:CardGame.Core.Events.TurnStartedEvent.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: CardGame.Core.Events.TurnStartedEvent
+  langs:
+  - csharp
+  - vb
+  name: TurnStartedEvent(int, int)
+  nameWithType: TurnStartedEvent.TurnStartedEvent(int, int)
+  fullName: CardGame.Core.Events.TurnStartedEvent.TurnStartedEvent(int, int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/TurnStartedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/TurnStartedEvent.cs
+    startLine: 31
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the TurnStartedEvent class.
+  example: []
+  syntax:
+    content: public TurnStartedEvent(int turnNumer, int activePlayerId)
+    parameters:
+    - id: turnNumer
+      type: System.Int32
+      description: The current turn number.
+    - id: activePlayerId
+      type: System.Int32
+      description: The ID of the active player.
+    content.vb: Public Sub New(turnNumer As Integer, activePlayerId As Integer)
+  overload: CardGame.Core.Events.TurnStartedEvent.#ctor*
+  nameWithType.vb: TurnStartedEvent.New(Integer, Integer)
+  fullName.vb: CardGame.Core.Events.TurnStartedEvent.New(Integer, Integer)
+  name.vb: New(Integer, Integer)
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.TurnStartedEvent.TurnNumer*
+  commentId: Overload:CardGame.Core.Events.TurnStartedEvent.TurnNumer
+  href: CardGame.Core.Events.TurnStartedEvent.html#CardGame_Core_Events_TurnStartedEvent_TurnNumer
+  name: TurnNumer
+  nameWithType: TurnStartedEvent.TurnNumer
+  fullName: CardGame.Core.Events.TurnStartedEvent.TurnNumer
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.TurnStartedEvent.ActivePlayerId*
+  commentId: Overload:CardGame.Core.Events.TurnStartedEvent.ActivePlayerId
+  href: CardGame.Core.Events.TurnStartedEvent.html#CardGame_Core_Events_TurnStartedEvent_ActivePlayerId
+  name: ActivePlayerId
+  nameWithType: TurnStartedEvent.ActivePlayerId
+  fullName: CardGame.Core.Events.TurnStartedEvent.ActivePlayerId
+- uid: CardGame.Core.Events.TurnStartedEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.TurnStartedEvent.SourcePlayerId
+  href: CardGame.Core.Events.TurnStartedEvent.html#CardGame_Core_Events_TurnStartedEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: TurnStartedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.TurnStartedEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.TurnStartedEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.TurnStartedEvent.#ctor
+  href: CardGame.Core.Events.TurnStartedEvent.html#CardGame_Core_Events_TurnStartedEvent__ctor_System_Int32_System_Int32_
+  name: TurnStartedEvent
+  nameWithType: TurnStartedEvent.TurnStartedEvent
+  fullName: CardGame.Core.Events.TurnStartedEvent.TurnStartedEvent
+  nameWithType.vb: TurnStartedEvent.New
+  fullName.vb: CardGame.Core.Events.TurnStartedEvent.New
+  name.vb: New

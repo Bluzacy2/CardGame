@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.EffectZone
+  commentId: T:CardGame.Core.Cards.Data.EffectZone
+  id: EffectZone
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.EffectZone.Any
+  - CardGame.Core.Cards.Data.EffectZone.Board
+  - CardGame.Core.Cards.Data.EffectZone.Graveyard
+  - CardGame.Core.Cards.Data.EffectZone.Hand
+  langs:
+  - csharp
+  - vb
+  name: EffectZone
+  nameWithType: EffectZone
+  fullName: CardGame.Core.Cards.Data.EffectZone
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EffectZone
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 147
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Represents the game zones where effects can occur.
+  example: []
+  syntax:
+    content: public enum EffectZone
+    content.vb: Public Enum EffectZone
+- uid: CardGame.Core.Cards.Data.EffectZone.Board
+  commentId: F:CardGame.Core.Cards.Data.EffectZone.Board
+  id: Board
+  parent: CardGame.Core.Cards.Data.EffectZone
+  langs:
+  - csharp
+  - vb
+  name: Board
+  nameWithType: EffectZone.Board
+  fullName: CardGame.Core.Cards.Data.EffectZone.Board
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Board
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 149
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Board = 0
+    return:
+      type: CardGame.Core.Cards.Data.EffectZone
+- uid: CardGame.Core.Cards.Data.EffectZone.Hand
+  commentId: F:CardGame.Core.Cards.Data.EffectZone.Hand
+  id: Hand
+  parent: CardGame.Core.Cards.Data.EffectZone
+  langs:
+  - csharp
+  - vb
+  name: Hand
+  nameWithType: EffectZone.Hand
+  fullName: CardGame.Core.Cards.Data.EffectZone.Hand
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Hand
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 150
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Hand = 1
+    return:
+      type: CardGame.Core.Cards.Data.EffectZone
+- uid: CardGame.Core.Cards.Data.EffectZone.Graveyard
+  commentId: F:CardGame.Core.Cards.Data.EffectZone.Graveyard
+  id: Graveyard
+  parent: CardGame.Core.Cards.Data.EffectZone
+  langs:
+  - csharp
+  - vb
+  name: Graveyard
+  nameWithType: EffectZone.Graveyard
+  fullName: CardGame.Core.Cards.Data.EffectZone.Graveyard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Graveyard
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 151
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Graveyard = 2
+    return:
+      type: CardGame.Core.Cards.Data.EffectZone
+- uid: CardGame.Core.Cards.Data.EffectZone.Any
+  commentId: F:CardGame.Core.Cards.Data.EffectZone.Any
+  id: Any
+  parent: CardGame.Core.Cards.Data.EffectZone
+  langs:
+  - csharp
+  - vb
+  name: Any
+  nameWithType: EffectZone.Any
+  fullName: CardGame.Core.Cards.Data.EffectZone.Any
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Any
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 152
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Any = 3
+    return:
+      type: CardGame.Core.Cards.Data.EffectZone
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Cards.Data.EffectZone
+  commentId: T:CardGame.Core.Cards.Data.EffectZone
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.EffectZone.html
+  name: EffectZone
+  nameWithType: EffectZone
+  fullName: CardGame.Core.Cards.Data.EffectZone

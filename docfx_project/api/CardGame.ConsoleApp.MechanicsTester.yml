@@ -1,0 +1,103 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.MechanicsTester
+  commentId: T:CardGame.ConsoleApp.MechanicsTester
+  id: MechanicsTester
+  parent: CardGame.ConsoleApp
+  children:
+  - CardGame.ConsoleApp.MechanicsTester.Run
+  langs:
+  - csharp
+  - vb
+  name: MechanicsTester
+  nameWithType: MechanicsTester
+  fullName: CardGame.ConsoleApp.MechanicsTester
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/MechanicsTester.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MechanicsTester
+    path: ../Source/CardGame.ConsoleApp/MechanicsTester.cs
+    startLine: 14
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp
+  syntax:
+    content: public static class MechanicsTester
+    content.vb: Public Module MechanicsTester
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.MechanicsTester.Run
+  commentId: M:CardGame.ConsoleApp.MechanicsTester.Run
+  id: Run
+  parent: CardGame.ConsoleApp.MechanicsTester
+  langs:
+  - csharp
+  - vb
+  name: Run()
+  nameWithType: MechanicsTester.Run()
+  fullName: CardGame.ConsoleApp.MechanicsTester.Run()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/MechanicsTester.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Run
+    path: ../Source/CardGame.ConsoleApp/MechanicsTester.cs
+    startLine: 16
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp
+  syntax:
+    content: public static void Run()
+    content.vb: Public Shared Sub Run()
+  overload: CardGame.ConsoleApp.MechanicsTester.Run*
+references:
+- uid: CardGame.ConsoleApp
+  commentId: N:CardGame.ConsoleApp
+  href: CardGame.html
+  name: CardGame.ConsoleApp
+  nameWithType: CardGame.ConsoleApp
+  fullName: CardGame.ConsoleApp
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.MechanicsTester.Run*
+  commentId: Overload:CardGame.ConsoleApp.MechanicsTester.Run
+  href: CardGame.ConsoleApp.MechanicsTester.html#CardGame_ConsoleApp_MechanicsTester_Run
+  name: Run
+  nameWithType: MechanicsTester.Run
+  fullName: CardGame.ConsoleApp.MechanicsTester.Run

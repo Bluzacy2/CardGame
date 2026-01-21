@@ -1,0 +1,63 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Factories
+  commentId: N:CardGame.Core.Cards.Factories
+  id: Factories
+  parent: CardGame.Core.Cards
+  children:
+  - CardGame.Core.Cards.Factories.CardFactory
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Cards.Factories
+  nameWithType: CardGame.Core.Cards.Factories
+  fullName: CardGame.Core.Cards.Factories
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Cards.Factories.CardFactory
+  commentId: T:CardGame.Core.Cards.Factories.CardFactory
+  parent: CardGame.Core.Cards.Factories
+  href: CardGame.Core.Cards.Factories.CardFactory.html
+  name: CardFactory
+  nameWithType: CardFactory
+  fullName: CardGame.Core.Cards.Factories.CardFactory
+- uid: CardGame.Core.Cards.Factories
+  commentId: N:CardGame.Core.Cards.Factories
+  href: CardGame.html
+  name: CardGame.Core.Cards.Factories
+  nameWithType: CardGame.Core.Cards.Factories
+  fullName: CardGame.Core.Cards.Factories
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Factories
+    name: Factories
+    href: CardGame.Core.Cards.Factories.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Factories
+    name: Factories
+    href: CardGame.Core.Cards.Factories.html

@@ -1,0 +1,130 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.CardType
+  commentId: T:CardGame.Core.Cards.Data.CardType
+  id: CardType
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.CardType.Spell
+  - CardGame.Core.Cards.Data.CardType.Unit
+  langs:
+  - csharp
+  - vb
+  name: CardType
+  nameWithType: CardType
+  fullName: CardGame.Core.Cards.Data.CardType
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardType
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 7
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Represents the type of a card.
+  example: []
+  syntax:
+    content: public enum CardType
+    content.vb: Public Enum CardType
+- uid: CardGame.Core.Cards.Data.CardType.Unit
+  commentId: F:CardGame.Core.Cards.Data.CardType.Unit
+  id: Unit
+  parent: CardGame.Core.Cards.Data.CardType
+  langs:
+  - csharp
+  - vb
+  name: Unit
+  nameWithType: CardType.Unit
+  fullName: CardGame.Core.Cards.Data.CardType.Unit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Unit
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Unit = 0
+    return:
+      type: CardGame.Core.Cards.Data.CardType
+- uid: CardGame.Core.Cards.Data.CardType.Spell
+  commentId: F:CardGame.Core.Cards.Data.CardType.Spell
+  id: Spell
+  parent: CardGame.Core.Cards.Data.CardType
+  langs:
+  - csharp
+  - vb
+  name: Spell
+  nameWithType: CardType.Spell
+  fullName: CardGame.Core.Cards.Data.CardType.Spell
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Spell
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 10
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Spell = 1
+    return:
+      type: CardGame.Core.Cards.Data.CardType
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Cards.Data.CardType
+  commentId: T:CardGame.Core.Cards.Data.CardType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.CardType.html
+  name: CardType
+  nameWithType: CardType
+  fullName: CardGame.Core.Cards.Data.CardType

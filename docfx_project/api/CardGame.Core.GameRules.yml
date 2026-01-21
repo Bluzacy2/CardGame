@@ -1,0 +1,168 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.GameRules
+  id: GameRules
+  parent: CardGame.Core
+  children:
+  - CardGame.Core.GameRules.Auras
+  - CardGame.Core.GameRules.Battle
+  - CardGame.Core.GameRules.Damage
+  - CardGame.Core.GameRules.Death
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.GameRules
+  type: Namespace
+references:
+- uid: CardGame.Core.GameRules.Auras
+  commentId: N:CardGame.Core.GameRules.Auras
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Auras
+  nameWithType: CardGame.Core.GameRules.Auras
+  fullName: CardGame.Core.GameRules.Auras
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Auras
+    name: Auras
+    href: CardGame.Core.GameRules.Auras.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Auras
+    name: Auras
+    href: CardGame.Core.GameRules.Auras.html
+- uid: CardGame.Core.GameRules.Battle
+  commentId: N:CardGame.Core.GameRules.Battle
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Battle
+  nameWithType: CardGame.Core.GameRules.Battle
+  fullName: CardGame.Core.GameRules.Battle
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Battle
+    name: Battle
+    href: CardGame.Core.GameRules.Battle.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Battle
+    name: Battle
+    href: CardGame.Core.GameRules.Battle.html
+- uid: CardGame.Core.GameRules.Damage
+  commentId: N:CardGame.Core.GameRules.Damage
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Damage
+  nameWithType: CardGame.Core.GameRules.Damage
+  fullName: CardGame.Core.GameRules.Damage
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+- uid: CardGame.Core.GameRules.Death
+  commentId: N:CardGame.Core.GameRules.Death
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Death
+  nameWithType: CardGame.Core.GameRules.Death
+  fullName: CardGame.Core.GameRules.Death
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Death
+    name: Death
+    href: CardGame.Core.GameRules.Death.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Death
+    name: Death
+    href: CardGame.Core.GameRules.Death.html

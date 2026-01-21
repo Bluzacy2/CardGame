@@ -1,0 +1,103 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.ResourceType
+  commentId: T:CardGame.Core.Cards.Data.ResourceType
+  id: ResourceType
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.ResourceType.Blood
+  langs:
+  - csharp
+  - vb
+  name: ResourceType
+  nameWithType: ResourceType
+  fullName: CardGame.Core.Cards.Data.ResourceType
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ResourceType
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 16
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Represents the type of resource used in the game.
+  example: []
+  syntax:
+    content: public enum ResourceType
+    content.vb: Public Enum ResourceType
+- uid: CardGame.Core.Cards.Data.ResourceType.Blood
+  commentId: F:CardGame.Core.Cards.Data.ResourceType.Blood
+  id: Blood
+  parent: CardGame.Core.Cards.Data.ResourceType
+  langs:
+  - csharp
+  - vb
+  name: Blood
+  nameWithType: ResourceType.Blood
+  fullName: CardGame.Core.Cards.Data.ResourceType.Blood
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Blood
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 18
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Blood = 0
+    return:
+      type: CardGame.Core.Cards.Data.ResourceType
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Cards.Data.ResourceType
+  commentId: T:CardGame.Core.Cards.Data.ResourceType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ResourceType.html
+  name: ResourceType
+  nameWithType: ResourceType
+  fullName: CardGame.Core.Cards.Data.ResourceType

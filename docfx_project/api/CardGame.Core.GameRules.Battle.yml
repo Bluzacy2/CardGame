@@ -1,0 +1,63 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.GameRules.Battle
+  commentId: N:CardGame.Core.GameRules.Battle
+  id: Battle
+  parent: CardGame.Core.GameRules
+  children:
+  - CardGame.Core.GameRules.Battle.BattleService
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.GameRules.Battle
+  nameWithType: CardGame.Core.GameRules.Battle
+  fullName: CardGame.Core.GameRules.Battle
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.GameRules.Battle.BattleService
+  commentId: T:CardGame.Core.GameRules.Battle.BattleService
+  parent: CardGame.Core.GameRules.Battle
+  href: CardGame.Core.GameRules.Battle.BattleService.html
+  name: BattleService
+  nameWithType: BattleService
+  fullName: CardGame.Core.GameRules.Battle.BattleService
+- uid: CardGame.Core.GameRules.Battle
+  commentId: N:CardGame.Core.GameRules.Battle
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Battle
+  nameWithType: CardGame.Core.GameRules.Battle
+  fullName: CardGame.Core.GameRules.Battle
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Battle
+    name: Battle
+    href: CardGame.Core.GameRules.Battle.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Battle
+    name: Battle
+    href: CardGame.Core.GameRules.Battle.html

@@ -1,0 +1,556 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  id: BotArchetypePool
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.ClassifyArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Count
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetAllArchetypes
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetArchetype(System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetLeastUsedArchetype(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetype(System.Random)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetypes(System.Int32,System.Random)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Initialize
+  langs:
+  - csharp
+  - vb
+  name: BotArchetypePool
+  nameWithType: BotArchetypePool
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BotArchetypePool
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4611
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class BotArchetypePool
+    content.vb: Public Class BotArchetypePool
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Count
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Count
+  id: Count
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: BotArchetypePool.Count
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Count
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Count
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4615
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Count*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Initialize
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Initialize
+  id: Initialize
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: BotArchetypePool.Initialize()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Initialize()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Initialize
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4617
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void Initialize()
+    content.vb: Public Sub Initialize()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Initialize*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetAllArchetypes
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetAllArchetypes
+  id: GetAllArchetypes
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  langs:
+  - csharp
+  - vb
+  name: GetAllArchetypes()
+  nameWithType: BotArchetypePool.GetAllArchetypes()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetAllArchetypes()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetAllArchetypes
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4626
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<BotArchetype> GetAllArchetypes()
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype}
+    content.vb: Public Function GetAllArchetypes() As List(Of BotArchetype)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetAllArchetypes*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetArchetype(System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetArchetype(System.Int32)
+  id: GetArchetype(System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  langs:
+  - csharp
+  - vb
+  name: GetArchetype(int)
+  nameWithType: BotArchetypePool.GetArchetype(int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetArchetype(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4628
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public BotArchetype GetArchetype(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+    content.vb: Public Function GetArchetype(index As Integer) As BotArchetype
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetArchetype*
+  nameWithType.vb: BotArchetypePool.GetArchetype(Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetArchetype(Integer)
+  name.vb: GetArchetype(Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetype(System.Random)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetype(System.Random)
+  id: GetRandomArchetype(System.Random)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  langs:
+  - csharp
+  - vb
+  name: GetRandomArchetype(Random)
+  nameWithType: BotArchetypePool.GetRandomArchetype(Random)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetype(System.Random)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetRandomArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4631
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public BotArchetype GetRandomArchetype(Random rng)
+    parameters:
+    - id: rng
+      type: System.Random
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+    content.vb: Public Function GetRandomArchetype(rng As Random) As BotArchetype
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetype*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetypes(System.Int32,System.Random)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetypes(System.Int32,System.Random)
+  id: GetRandomArchetypes(System.Int32,System.Random)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  langs:
+  - csharp
+  - vb
+  name: GetRandomArchetypes(int, Random)
+  nameWithType: BotArchetypePool.GetRandomArchetypes(int, Random)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetypes(int, System.Random)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetRandomArchetypes
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4634
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<BotArchetype> GetRandomArchetypes(int count, Random rng)
+    parameters:
+    - id: count
+      type: System.Int32
+    - id: rng
+      type: System.Random
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype}
+    content.vb: Public Function GetRandomArchetypes(count As Integer, rng As Random) As List(Of BotArchetype)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetypes*
+  nameWithType.vb: BotArchetypePool.GetRandomArchetypes(Integer, Random)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetypes(Integer, System.Random)
+  name.vb: GetRandomArchetypes(Integer, Random)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetLeastUsedArchetype(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetLeastUsedArchetype(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  id: GetLeastUsedArchetype(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual})
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  langs:
+  - csharp
+  - vb
+  name: GetLeastUsedArchetype(List<EvolvableIndividual>)
+  nameWithType: BotArchetypePool.GetLeastUsedArchetype(List<EvolvableIndividual>)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetLeastUsedArchetype(System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetLeastUsedArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4637
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public BotArchetype GetLeastUsedArchetype(List<EvolvableIndividual> population)
+    parameters:
+    - id: population
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+    content.vb: Public Function GetLeastUsedArchetype(population As List(Of EvolvableIndividual)) As BotArchetype
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetLeastUsedArchetype*
+  nameWithType.vb: BotArchetypePool.GetLeastUsedArchetype(List(Of EvolvableIndividual))
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetLeastUsedArchetype(System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual))
+  name.vb: GetLeastUsedArchetype(List(Of EvolvableIndividual))
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.ClassifyArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.ClassifyArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  id: ClassifyArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool
+  langs:
+  - csharp
+  - vb
+  name: ClassifyArchetype(NewDna)
+  nameWithType: BotArchetypePool.ClassifyArchetype(NewDna)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.ClassifyArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ClassifyArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4652
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string ClassifyArchetype(NewDna dna)
+    parameters:
+    - id: dna
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    return:
+      type: System.String
+    content.vb: Public Function ClassifyArchetype(dna As NewDna) As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.ClassifyArchetype*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Count*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Count
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetypePool_Count
+  name: Count
+  nameWithType: BotArchetypePool.Count
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Initialize*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Initialize
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetypePool_Initialize
+  name: Initialize
+  nameWithType: BotArchetypePool.Initialize
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.Initialize
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetAllArchetypes*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetAllArchetypes
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetypePool_GetAllArchetypes
+  name: GetAllArchetypes
+  nameWithType: BotArchetypePool.GetAllArchetypes
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetAllArchetypes
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html
+  name: List<BotArchetype>
+  nameWithType: List<BotArchetype>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype>
+  nameWithType.vb: List(Of BotArchetype)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype)
+  name.vb: List(Of BotArchetype)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+    name: BotArchetype
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+    name: BotArchetype
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetArchetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetypePool_GetArchetype_System_Int32_
+  name: GetArchetype
+  nameWithType: BotArchetypePool.GetArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetArchetype
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype.html
+  name: BotArchetype
+  nameWithType: BotArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetype
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetypePool_GetRandomArchetype_System_Random_
+  name: GetRandomArchetype
+  nameWithType: BotArchetypePool.GetRandomArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetype
+- uid: System.Random
+  commentId: T:System.Random
+  parent: System
+  isExternal: true
+  name: Random
+  nameWithType: Random
+  fullName: System.Random
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetypes*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetypes
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetypePool_GetRandomArchetypes_System_Int32_System_Random_
+  name: GetRandomArchetypes
+  nameWithType: BotArchetypePool.GetRandomArchetypes
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetRandomArchetypes
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetLeastUsedArchetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetLeastUsedArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetypePool_GetLeastUsedArchetype_System_Collections_Generic_List_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual__
+  name: GetLeastUsedArchetype
+  nameWithType: BotArchetypePool.GetLeastUsedArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.GetLeastUsedArchetype
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: List<EvolvableIndividual>
+  nameWithType: List<EvolvableIndividual>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>
+  nameWithType.vb: List(Of EvolvableIndividual)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  name.vb: List(Of EvolvableIndividual)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.ClassifyArchetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.ClassifyArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.html#CardGame_ConsoleApp_Evolution_V2_NewGen_BotArchetypePool_ClassifyArchetype_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_
+  name: ClassifyArchetype
+  nameWithType: BotArchetypePool.ClassifyArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.BotArchetypePool.ClassifyArchetype
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html
+  name: NewDna
+  nameWithType: NewDna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

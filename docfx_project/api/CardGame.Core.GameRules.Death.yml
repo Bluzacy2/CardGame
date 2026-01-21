@@ -1,0 +1,63 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.GameRules.Death
+  commentId: N:CardGame.Core.GameRules.Death
+  id: Death
+  parent: CardGame.Core.GameRules
+  children:
+  - CardGame.Core.GameRules.Death.DeathResolver
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.GameRules.Death
+  nameWithType: CardGame.Core.GameRules.Death
+  fullName: CardGame.Core.GameRules.Death
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.GameRules.Death.DeathResolver
+  commentId: T:CardGame.Core.GameRules.Death.DeathResolver
+  parent: CardGame.Core.GameRules.Death
+  href: CardGame.Core.GameRules.Death.DeathResolver.html
+  name: DeathResolver
+  nameWithType: DeathResolver
+  fullName: CardGame.Core.GameRules.Death.DeathResolver
+- uid: CardGame.Core.GameRules.Death
+  commentId: N:CardGame.Core.GameRules.Death
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Death
+  nameWithType: CardGame.Core.GameRules.Death
+  fullName: CardGame.Core.GameRules.Death
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Death
+    name: Death
+    href: CardGame.Core.GameRules.Death.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Death
+    name: Death
+    href: CardGame.Core.GameRules.Death.html

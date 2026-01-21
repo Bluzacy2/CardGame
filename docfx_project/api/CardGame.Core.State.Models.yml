@@ -1,0 +1,95 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  id: Models
+  parent: CardGame.Core.State
+  children:
+  - CardGame.Core.State.Models.BoardState
+  - CardGame.Core.State.Models.GameState
+  - CardGame.Core.State.Models.Line
+  - CardGame.Core.State.Models.PendingInteraction
+  - CardGame.Core.State.Models.PlayerState
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.State.Models.BoardState
+  commentId: T:CardGame.Core.State.Models.BoardState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.BoardState.html
+  name: BoardState
+  nameWithType: BoardState
+  fullName: CardGame.Core.State.Models.BoardState
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.State.Models.Line
+  commentId: T:CardGame.Core.State.Models.Line
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.Line.html
+  name: Line
+  nameWithType: Line
+  fullName: CardGame.Core.State.Models.Line
+- uid: CardGame.Core.State.Models.PendingInteraction
+  commentId: T:CardGame.Core.State.Models.PendingInteraction
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.PendingInteraction.html
+  name: PendingInteraction
+  nameWithType: PendingInteraction
+  fullName: CardGame.Core.State.Models.PendingInteraction
+- uid: CardGame.Core.State.Models.PlayerState
+  commentId: T:CardGame.Core.State.Models.PlayerState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.PlayerState.html
+  name: PlayerState
+  nameWithType: PlayerState
+  fullName: CardGame.Core.State.Models.PlayerState
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html

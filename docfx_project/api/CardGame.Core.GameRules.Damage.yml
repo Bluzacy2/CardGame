@@ -1,0 +1,79 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.GameRules.Damage
+  commentId: N:CardGame.Core.GameRules.Damage
+  id: Damage
+  parent: CardGame.Core.GameRules
+  children:
+  - CardGame.Core.GameRules.Damage.DamageCalculator
+  - CardGame.Core.GameRules.Damage.DamageContext
+  - CardGame.Core.GameRules.Damage.DamageType
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.GameRules.Damage
+  nameWithType: CardGame.Core.GameRules.Damage
+  fullName: CardGame.Core.GameRules.Damage
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.GameRules.Damage.DamageCalculator
+  commentId: T:CardGame.Core.GameRules.Damage.DamageCalculator
+  parent: CardGame.Core.GameRules.Damage
+  href: CardGame.Core.GameRules.Damage.DamageCalculator.html
+  name: DamageCalculator
+  nameWithType: DamageCalculator
+  fullName: CardGame.Core.GameRules.Damage.DamageCalculator
+- uid: CardGame.Core.GameRules.Damage.DamageContext
+  commentId: T:CardGame.Core.GameRules.Damage.DamageContext
+  parent: CardGame.Core.GameRules.Damage
+  href: CardGame.Core.GameRules.Damage.DamageContext.html
+  name: DamageContext
+  nameWithType: DamageContext
+  fullName: CardGame.Core.GameRules.Damage.DamageContext
+- uid: CardGame.Core.GameRules.Damage.DamageType
+  commentId: T:CardGame.Core.GameRules.Damage.DamageType
+  parent: CardGame.Core.GameRules.Damage
+  href: CardGame.Core.GameRules.Damage.DamageType.html
+  name: DamageType
+  nameWithType: DamageType
+  fullName: CardGame.Core.GameRules.Damage.DamageType
+- uid: CardGame.Core.GameRules.Damage
+  commentId: N:CardGame.Core.GameRules.Damage
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Damage
+  nameWithType: CardGame.Core.GameRules.Damage
+  fullName: CardGame.Core.GameRules.Damage
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html

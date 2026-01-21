@@ -1,0 +1,397 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+  id: ArchetypePurityCalculator
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.CalculatePurity(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.EnforceArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String,System.Random,System.Single)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetAllArchetypeStrengths(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetArchetypeStrength(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String)
+  langs:
+  - csharp
+  - vb
+  name: ArchetypePurityCalculator
+  nameWithType: ArchetypePurityCalculator
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ArchetypePurityCalculator
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1692
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static class ArchetypePurityCalculator
+    content.vb: Public Module ArchetypePurityCalculator
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.CalculatePurity(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.CalculatePurity(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String)
+  id: CalculatePurity(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+  langs:
+  - csharp
+  - vb
+  name: CalculatePurity(NewDna, string)
+  nameWithType: ArchetypePurityCalculator.CalculatePurity(NewDna, string)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.CalculatePurity(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, string)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CalculatePurity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1697
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static float CalculatePurity(NewDna dna, string targetArchetype)
+    parameters:
+    - id: dna
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    - id: targetArchetype
+      type: System.String
+    return:
+      type: System.Single
+    content.vb: Public Shared Function CalculatePurity(dna As NewDna, targetArchetype As String) As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.CalculatePurity*
+  nameWithType.vb: ArchetypePurityCalculator.CalculatePurity(NewDna, String)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.CalculatePurity(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, String)
+  name.vb: CalculatePurity(NewDna, String)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetArchetypeStrength(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetArchetypeStrength(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String)
+  id: GetArchetypeStrength(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+  langs:
+  - csharp
+  - vb
+  name: GetArchetypeStrength(NewDna, string)
+  nameWithType: ArchetypePurityCalculator.GetArchetypeStrength(NewDna, string)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetArchetypeStrength(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, string)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetArchetypeStrength
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1722
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static float GetArchetypeStrength(NewDna dna, string archetype)
+    parameters:
+    - id: dna
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    - id: archetype
+      type: System.String
+    return:
+      type: System.Single
+    content.vb: Public Shared Function GetArchetypeStrength(dna As NewDna, archetype As String) As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetArchetypeStrength*
+  nameWithType.vb: ArchetypePurityCalculator.GetArchetypeStrength(NewDna, String)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetArchetypeStrength(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, String)
+  name.vb: GetArchetypeStrength(NewDna, String)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetAllArchetypeStrengths(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetAllArchetypeStrengths(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  id: GetAllArchetypeStrengths(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+  langs:
+  - csharp
+  - vb
+  name: GetAllArchetypeStrengths(NewDna)
+  nameWithType: ArchetypePurityCalculator.GetAllArchetypeStrengths(NewDna)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetAllArchetypeStrengths(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetAllArchetypeStrengths
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1744
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static Dictionary<string, float> GetAllArchetypeStrengths(NewDna dna)
+    parameters:
+    - id: dna
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Single}
+    content.vb: Public Shared Function GetAllArchetypeStrengths(dna As NewDna) As Dictionary(Of String, Single)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetAllArchetypeStrengths*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.EnforceArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String,System.Random,System.Single)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.EnforceArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String,System.Random,System.Single)
+  id: EnforceArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna,System.String,System.Random,System.Single)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator
+  langs:
+  - csharp
+  - vb
+  name: EnforceArchetype(NewDna, string, Random, float)
+  nameWithType: ArchetypePurityCalculator.EnforceArchetype(NewDna, string, Random, float)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.EnforceArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, string, System.Random, float)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnforceArchetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1763
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static void EnforceArchetype(NewDna dna, string archetype, Random rng, float strength = 0.8)
+    parameters:
+    - id: dna
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    - id: archetype
+      type: System.String
+    - id: rng
+      type: System.Random
+    - id: strength
+      type: System.Single
+    content.vb: Public Shared Sub EnforceArchetype(dna As NewDna, archetype As String, rng As Random, strength As Single = 0.8)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.EnforceArchetype*
+  nameWithType.vb: ArchetypePurityCalculator.EnforceArchetype(NewDna, String, Random, Single)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.EnforceArchetype(CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna, String, System.Random, Single)
+  name.vb: EnforceArchetype(NewDna, String, Random, Single)
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.CalculatePurity*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.CalculatePurity
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypePurityCalculator_CalculatePurity_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_System_String_
+  name: CalculatePurity
+  nameWithType: ArchetypePurityCalculator.CalculatePurity
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.CalculatePurity
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html
+  name: NewDna
+  nameWithType: NewDna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetArchetypeStrength*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetArchetypeStrength
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypePurityCalculator_GetArchetypeStrength_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_System_String_
+  name: GetArchetypeStrength
+  nameWithType: ArchetypePurityCalculator.GetArchetypeStrength
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetArchetypeStrength
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetAllArchetypeStrengths*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetAllArchetypeStrengths
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypePurityCalculator_GetAllArchetypeStrengths_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_
+  name: GetAllArchetypeStrengths
+  nameWithType: ArchetypePurityCalculator.GetAllArchetypeStrengths
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.GetAllArchetypeStrengths
+- uid: System.Collections.Generic.Dictionary{System.String,System.Single}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<string, float>
+  nameWithType: Dictionary<string, float>
+  fullName: System.Collections.Generic.Dictionary<string, float>
+  nameWithType.vb: Dictionary(Of String, Single)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Single)
+  name.vb: Dictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.EnforceArchetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.EnforceArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypePurityCalculator_EnforceArchetype_CardGame_ConsoleApp_Evolution_V2_NewGen_NewDna_System_String_System_Random_System_Single_
+  name: EnforceArchetype
+  nameWithType: ArchetypePurityCalculator.EnforceArchetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypePurityCalculator.EnforceArchetype
+- uid: System.Random
+  commentId: T:System.Random
+  parent: System
+  isExternal: true
+  name: Random
+  nameWithType: Random
+  fullName: System.Random

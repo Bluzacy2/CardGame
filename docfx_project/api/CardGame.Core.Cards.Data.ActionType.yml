@@ -1,0 +1,778 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.ActionType
+  commentId: T:CardGame.Core.Cards.Data.ActionType
+  id: ActionType
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.ActionType.AbsorbStats
+  - CardGame.Core.Cards.Data.ActionType.AddCardToHand
+  - CardGame.Core.Cards.Data.ActionType.AddResource
+  - CardGame.Core.Cards.Data.ActionType.ApplyStatus
+  - CardGame.Core.Cards.Data.ActionType.BonusAttack
+  - CardGame.Core.Cards.Data.ActionType.BuffStats
+  - CardGame.Core.Cards.Data.ActionType.ConjureCard
+  - CardGame.Core.Cards.Data.ActionType.DealDamage
+  - CardGame.Core.Cards.Data.ActionType.DestroyUnit
+  - CardGame.Core.Cards.Data.ActionType.DiscardCard
+  - CardGame.Core.Cards.Data.ActionType.DrawCard
+  - CardGame.Core.Cards.Data.ActionType.DrawFromDiscard
+  - CardGame.Core.Cards.Data.ActionType.GiveToOpponent
+  - CardGame.Core.Cards.Data.ActionType.Heal
+  - CardGame.Core.Cards.Data.ActionType.HealToFull
+  - CardGame.Core.Cards.Data.ActionType.MakeAUnit
+  - CardGame.Core.Cards.Data.ActionType.ModifyGlobalBuff
+  - CardGame.Core.Cards.Data.ActionType.MoveLeft
+  - CardGame.Core.Cards.Data.ActionType.MoveRight
+  - CardGame.Core.Cards.Data.ActionType.ReturnToHand
+  - CardGame.Core.Cards.Data.ActionType.SacrificeUnit
+  - CardGame.Core.Cards.Data.ActionType.ShuffleDeck
+  - CardGame.Core.Cards.Data.ActionType.Silence
+  - CardGame.Core.Cards.Data.ActionType.SummonUnit
+  - CardGame.Core.Cards.Data.ActionType.Transform
+  - CardGame.Core.Cards.Data.ActionType.TutorCard
+  langs:
+  - csharp
+  - vb
+  name: ActionType
+  nameWithType: ActionType
+  fullName: CardGame.Core.Cards.Data.ActionType
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ActionType
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 70
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Represents the type of action a card can perform.
+  example: []
+  syntax:
+    content: public enum ActionType
+    content.vb: Public Enum ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.DealDamage
+  commentId: F:CardGame.Core.Cards.Data.ActionType.DealDamage
+  id: DealDamage
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: DealDamage
+  nameWithType: ActionType.DealDamage
+  fullName: CardGame.Core.Cards.Data.ActionType.DealDamage
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DealDamage
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 72
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: DealDamage = 0
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.Heal
+  commentId: F:CardGame.Core.Cards.Data.ActionType.Heal
+  id: Heal
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: Heal
+  nameWithType: ActionType.Heal
+  fullName: CardGame.Core.Cards.Data.ActionType.Heal
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Heal
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 73
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Heal = 1
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.ConjureCard
+  commentId: F:CardGame.Core.Cards.Data.ActionType.ConjureCard
+  id: ConjureCard
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: ConjureCard
+  nameWithType: ActionType.ConjureCard
+  fullName: CardGame.Core.Cards.Data.ActionType.ConjureCard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ConjureCard
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 74
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: ConjureCard = 2
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.DestroyUnit
+  commentId: F:CardGame.Core.Cards.Data.ActionType.DestroyUnit
+  id: DestroyUnit
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: DestroyUnit
+  nameWithType: ActionType.DestroyUnit
+  fullName: CardGame.Core.Cards.Data.ActionType.DestroyUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DestroyUnit
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 75
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: DestroyUnit = 3
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.DiscardCard
+  commentId: F:CardGame.Core.Cards.Data.ActionType.DiscardCard
+  id: DiscardCard
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: DiscardCard
+  nameWithType: ActionType.DiscardCard
+  fullName: CardGame.Core.Cards.Data.ActionType.DiscardCard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DiscardCard
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 76
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: DiscardCard = 4
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.Transform
+  commentId: F:CardGame.Core.Cards.Data.ActionType.Transform
+  id: Transform
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: Transform
+  nameWithType: ActionType.Transform
+  fullName: CardGame.Core.Cards.Data.ActionType.Transform
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Transform
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 77
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Transform = 5
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.SummonUnit
+  commentId: F:CardGame.Core.Cards.Data.ActionType.SummonUnit
+  id: SummonUnit
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: SummonUnit
+  nameWithType: ActionType.SummonUnit
+  fullName: CardGame.Core.Cards.Data.ActionType.SummonUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SummonUnit
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 78
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: SummonUnit = 6
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.BuffStats
+  commentId: F:CardGame.Core.Cards.Data.ActionType.BuffStats
+  id: BuffStats
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: BuffStats
+  nameWithType: ActionType.BuffStats
+  fullName: CardGame.Core.Cards.Data.ActionType.BuffStats
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BuffStats
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 79
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: BuffStats = 7
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.AddCardToHand
+  commentId: F:CardGame.Core.Cards.Data.ActionType.AddCardToHand
+  id: AddCardToHand
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: AddCardToHand
+  nameWithType: ActionType.AddCardToHand
+  fullName: CardGame.Core.Cards.Data.ActionType.AddCardToHand
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AddCardToHand
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 80
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: AddCardToHand = 8
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.ApplyStatus
+  commentId: F:CardGame.Core.Cards.Data.ActionType.ApplyStatus
+  id: ApplyStatus
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: ApplyStatus
+  nameWithType: ActionType.ApplyStatus
+  fullName: CardGame.Core.Cards.Data.ActionType.ApplyStatus
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ApplyStatus
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 81
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: ApplyStatus = 9
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.ModifyGlobalBuff
+  commentId: F:CardGame.Core.Cards.Data.ActionType.ModifyGlobalBuff
+  id: ModifyGlobalBuff
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: ModifyGlobalBuff
+  nameWithType: ActionType.ModifyGlobalBuff
+  fullName: CardGame.Core.Cards.Data.ActionType.ModifyGlobalBuff
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ModifyGlobalBuff
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 82
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: ModifyGlobalBuff = 10
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.DrawCard
+  commentId: F:CardGame.Core.Cards.Data.ActionType.DrawCard
+  id: DrawCard
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: DrawCard
+  nameWithType: ActionType.DrawCard
+  fullName: CardGame.Core.Cards.Data.ActionType.DrawCard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DrawCard
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 83
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: DrawCard = 11
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.SacrificeUnit
+  commentId: F:CardGame.Core.Cards.Data.ActionType.SacrificeUnit
+  id: SacrificeUnit
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: SacrificeUnit
+  nameWithType: ActionType.SacrificeUnit
+  fullName: CardGame.Core.Cards.Data.ActionType.SacrificeUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SacrificeUnit
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 84
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: SacrificeUnit = 12
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.AbsorbStats
+  commentId: F:CardGame.Core.Cards.Data.ActionType.AbsorbStats
+  id: AbsorbStats
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: AbsorbStats
+  nameWithType: ActionType.AbsorbStats
+  fullName: CardGame.Core.Cards.Data.ActionType.AbsorbStats
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AbsorbStats
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 85
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: AbsorbStats = 13
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.ShuffleDeck
+  commentId: F:CardGame.Core.Cards.Data.ActionType.ShuffleDeck
+  id: ShuffleDeck
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: ShuffleDeck
+  nameWithType: ActionType.ShuffleDeck
+  fullName: CardGame.Core.Cards.Data.ActionType.ShuffleDeck
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ShuffleDeck
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 86
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: ShuffleDeck = 14
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.ReturnToHand
+  commentId: F:CardGame.Core.Cards.Data.ActionType.ReturnToHand
+  id: ReturnToHand
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: ReturnToHand
+  nameWithType: ActionType.ReturnToHand
+  fullName: CardGame.Core.Cards.Data.ActionType.ReturnToHand
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ReturnToHand
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 87
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: ReturnToHand = 15
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.TutorCard
+  commentId: F:CardGame.Core.Cards.Data.ActionType.TutorCard
+  id: TutorCard
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: TutorCard
+  nameWithType: ActionType.TutorCard
+  fullName: CardGame.Core.Cards.Data.ActionType.TutorCard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: TutorCard
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 88
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: TutorCard = 16
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.DrawFromDiscard
+  commentId: F:CardGame.Core.Cards.Data.ActionType.DrawFromDiscard
+  id: DrawFromDiscard
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: DrawFromDiscard
+  nameWithType: ActionType.DrawFromDiscard
+  fullName: CardGame.Core.Cards.Data.ActionType.DrawFromDiscard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DrawFromDiscard
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 89
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: DrawFromDiscard = 17
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.BonusAttack
+  commentId: F:CardGame.Core.Cards.Data.ActionType.BonusAttack
+  id: BonusAttack
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: BonusAttack
+  nameWithType: ActionType.BonusAttack
+  fullName: CardGame.Core.Cards.Data.ActionType.BonusAttack
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BonusAttack
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 90
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: BonusAttack = 18
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.HealToFull
+  commentId: F:CardGame.Core.Cards.Data.ActionType.HealToFull
+  id: HealToFull
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: HealToFull
+  nameWithType: ActionType.HealToFull
+  fullName: CardGame.Core.Cards.Data.ActionType.HealToFull
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HealToFull
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 91
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: HealToFull = 19
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.MoveRight
+  commentId: F:CardGame.Core.Cards.Data.ActionType.MoveRight
+  id: MoveRight
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: MoveRight
+  nameWithType: ActionType.MoveRight
+  fullName: CardGame.Core.Cards.Data.ActionType.MoveRight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MoveRight
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 92
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: MoveRight = 20
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.GiveToOpponent
+  commentId: F:CardGame.Core.Cards.Data.ActionType.GiveToOpponent
+  id: GiveToOpponent
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: GiveToOpponent
+  nameWithType: ActionType.GiveToOpponent
+  fullName: CardGame.Core.Cards.Data.ActionType.GiveToOpponent
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GiveToOpponent
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 93
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: GiveToOpponent = 21
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.Silence
+  commentId: F:CardGame.Core.Cards.Data.ActionType.Silence
+  id: Silence
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: Silence
+  nameWithType: ActionType.Silence
+  fullName: CardGame.Core.Cards.Data.ActionType.Silence
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Silence
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 94
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Silence = 22
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.AddResource
+  commentId: F:CardGame.Core.Cards.Data.ActionType.AddResource
+  id: AddResource
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: AddResource
+  nameWithType: ActionType.AddResource
+  fullName: CardGame.Core.Cards.Data.ActionType.AddResource
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AddResource
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 95
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: AddResource = 23
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.MakeAUnit
+  commentId: F:CardGame.Core.Cards.Data.ActionType.MakeAUnit
+  id: MakeAUnit
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: MakeAUnit
+  nameWithType: ActionType.MakeAUnit
+  fullName: CardGame.Core.Cards.Data.ActionType.MakeAUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MakeAUnit
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 96
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: MakeAUnit = 24
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionType.MoveLeft
+  commentId: F:CardGame.Core.Cards.Data.ActionType.MoveLeft
+  id: MoveLeft
+  parent: CardGame.Core.Cards.Data.ActionType
+  langs:
+  - csharp
+  - vb
+  name: MoveLeft
+  nameWithType: ActionType.MoveLeft
+  fullName: CardGame.Core.Cards.Data.ActionType.MoveLeft
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MoveLeft
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 97
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: MoveLeft = 25
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Cards.Data.ActionType
+  commentId: T:CardGame.Core.Cards.Data.ActionType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ActionType.html
+  name: ActionType
+  nameWithType: ActionType
+  fullName: CardGame.Core.Cards.Data.ActionType

@@ -1,0 +1,321 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Factories.CardFactory
+  commentId: T:CardGame.Core.Cards.Factories.CardFactory
+  id: CardFactory
+  parent: CardGame.Core.Cards.Factories
+  children:
+  - CardGame.Core.Cards.Factories.CardFactory.#ctor(CardGame.Core.Cards.Data.CardLibrary,CardGame.Core.Application.DeterministicRng)
+  - CardGame.Core.Cards.Factories.CardFactory.CreateCard(System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: CardFactory
+  nameWithType: CardFactory
+  fullName: CardGame.Core.Cards.Factories.CardFactory
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Factories/CardFactory.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardFactory
+    path: ../Source/CardGame.Core/Cards/Factories/CardFactory.cs
+    startLine: 10
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Factories
+  summary: Factory for creating card instances from definitions.
+  example: []
+  syntax:
+    content: public class CardFactory
+    content.vb: Public Class CardFactory
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Factories.CardFactory.#ctor(CardGame.Core.Cards.Data.CardLibrary,CardGame.Core.Application.DeterministicRng)
+  commentId: M:CardGame.Core.Cards.Factories.CardFactory.#ctor(CardGame.Core.Cards.Data.CardLibrary,CardGame.Core.Application.DeterministicRng)
+  id: '#ctor(CardGame.Core.Cards.Data.CardLibrary,CardGame.Core.Application.DeterministicRng)'
+  parent: CardGame.Core.Cards.Factories.CardFactory
+  langs:
+  - csharp
+  - vb
+  name: CardFactory(CardLibrary, DeterministicRng)
+  nameWithType: CardFactory.CardFactory(CardLibrary, DeterministicRng)
+  fullName: CardGame.Core.Cards.Factories.CardFactory.CardFactory(CardGame.Core.Cards.Data.CardLibrary, CardGame.Core.Application.DeterministicRng)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Factories/CardFactory.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/Cards/Factories/CardFactory.cs
+    startLine: 20
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Factories
+  summary: Initializes a new instance of the CardFactory class.
+  example: []
+  syntax:
+    content: public CardFactory(CardLibrary library, DeterministicRng rng)
+    parameters:
+    - id: library
+      type: CardGame.Core.Cards.Data.CardLibrary
+      description: The card library containing definitions.
+    - id: rng
+      type: CardGame.Core.Application.DeterministicRng
+      description: The random number generator for instance IDs.
+    content.vb: Public Sub New(library As CardLibrary, rng As DeterministicRng)
+  overload: CardGame.Core.Cards.Factories.CardFactory.#ctor*
+  nameWithType.vb: CardFactory.New(CardLibrary, DeterministicRng)
+  fullName.vb: CardGame.Core.Cards.Factories.CardFactory.New(CardGame.Core.Cards.Data.CardLibrary, CardGame.Core.Application.DeterministicRng)
+  name.vb: New(CardLibrary, DeterministicRng)
+- uid: CardGame.Core.Cards.Factories.CardFactory.CreateCard(System.Int32,System.Int32)
+  commentId: M:CardGame.Core.Cards.Factories.CardFactory.CreateCard(System.Int32,System.Int32)
+  id: CreateCard(System.Int32,System.Int32)
+  parent: CardGame.Core.Cards.Factories.CardFactory
+  langs:
+  - csharp
+  - vb
+  name: CreateCard(int, int)
+  nameWithType: CardFactory.CreateCard(int, int)
+  fullName: CardGame.Core.Cards.Factories.CardFactory.CreateCard(int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Factories/CardFactory.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CreateCard
+    path: ../Source/CardGame.Core/Cards/Factories/CardFactory.cs
+    startLine: 34
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Factories
+  summary: Creates a new card instance from a definition ID.
+  example: []
+  syntax:
+    content: public CardInstance CreateCard(int definitionId, int ownerPlayerId)
+    parameters:
+    - id: definitionId
+      type: System.Int32
+      description: The ID of the card definition.
+    - id: ownerPlayerId
+      type: System.Int32
+      description: The ID of the player who owns this card.
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: A new CardInstance with a unique ID.
+    content.vb: Public Function CreateCard(definitionId As Integer, ownerPlayerId As Integer) As CardInstance
+  overload: CardGame.Core.Cards.Factories.CardFactory.CreateCard*
+  nameWithType.vb: CardFactory.CreateCard(Integer, Integer)
+  fullName.vb: CardGame.Core.Cards.Factories.CardFactory.CreateCard(Integer, Integer)
+  name.vb: CreateCard(Integer, Integer)
+references:
+- uid: CardGame.Core.Cards.Factories
+  commentId: N:CardGame.Core.Cards.Factories
+  href: CardGame.html
+  name: CardGame.Core.Cards.Factories
+  nameWithType: CardGame.Core.Cards.Factories
+  fullName: CardGame.Core.Cards.Factories
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Factories
+    name: Factories
+    href: CardGame.Core.Cards.Factories.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Factories
+    name: Factories
+    href: CardGame.Core.Cards.Factories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Factories.CardFactory.#ctor*
+  commentId: Overload:CardGame.Core.Cards.Factories.CardFactory.#ctor
+  href: CardGame.Core.Cards.Factories.CardFactory.html#CardGame_Core_Cards_Factories_CardFactory__ctor_CardGame_Core_Cards_Data_CardLibrary_CardGame_Core_Application_DeterministicRng_
+  name: CardFactory
+  nameWithType: CardFactory.CardFactory
+  fullName: CardGame.Core.Cards.Factories.CardFactory.CardFactory
+  nameWithType.vb: CardFactory.New
+  fullName.vb: CardGame.Core.Cards.Factories.CardFactory.New
+  name.vb: New
+- uid: CardGame.Core.Cards.Data.CardLibrary
+  commentId: T:CardGame.Core.Cards.Data.CardLibrary
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.CardLibrary.html
+  name: CardLibrary
+  nameWithType: CardLibrary
+  fullName: CardGame.Core.Cards.Data.CardLibrary
+- uid: CardGame.Core.Application.DeterministicRng
+  commentId: T:CardGame.Core.Application.DeterministicRng
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.DeterministicRng.html
+  name: DeterministicRng
+  nameWithType: DeterministicRng
+  fullName: CardGame.Core.Application.DeterministicRng
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: CardGame.Core.Cards.Factories.CardFactory.CreateCard*
+  commentId: Overload:CardGame.Core.Cards.Factories.CardFactory.CreateCard
+  href: CardGame.Core.Cards.Factories.CardFactory.html#CardGame_Core_Cards_Factories_CardFactory_CreateCard_System_Int32_System_Int32_
+  name: CreateCard
+  nameWithType: CardFactory.CreateCard
+  fullName: CardGame.Core.Cards.Factories.CardFactory.CreateCard
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html

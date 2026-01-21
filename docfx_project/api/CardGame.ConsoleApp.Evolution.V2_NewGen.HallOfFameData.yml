@@ -1,0 +1,286 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData
+  id: HallOfFameData
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.BestHybrid
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.PureChampions
+  langs:
+  - csharp
+  - vb
+  name: HallOfFameData
+  nameWithType: HallOfFameData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HallOfFameData
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1673
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class HallOfFameData
+    content.vb: Public Class HallOfFameData
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.PureChampions
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.PureChampions
+  id: PureChampions
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData
+  langs:
+  - csharp
+  - vb
+  name: PureChampions
+  nameWithType: HallOfFameData.PureChampions
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.PureChampions
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PureChampions
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1675
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public Dictionary<string, List<ChampionData>> PureChampions { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData}}
+    content.vb: Public Property PureChampions As Dictionary(Of String, List(Of ChampionData))
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.PureChampions*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.BestHybrid
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.BestHybrid
+  id: BestHybrid
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData
+  langs:
+  - csharp
+  - vb
+  name: BestHybrid
+  nameWithType: HallOfFameData.BestHybrid
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.BestHybrid
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BestHybrid
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1676
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public ChampionData BestHybrid { get; set; }
+    parameters: []
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+    content.vb: Public Property BestHybrid As ChampionData
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.BestHybrid*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.PureChampions*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.PureChampions
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HallOfFameData_PureChampions
+  name: PureChampions
+  nameWithType: HallOfFameData.PureChampions
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.PureChampions
+- uid: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData}}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData.html
+  name: Dictionary<string, List<ChampionData>>
+  nameWithType: Dictionary<string, List<ChampionData>>
+  fullName: System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData>>
+  nameWithType.vb: Dictionary(Of String, List(Of ChampionData))
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData))
+  name.vb: Dictionary(Of String, List(Of ChampionData))
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+    name: ChampionData
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+    name: ChampionData
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData.html
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.BestHybrid*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.BestHybrid
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HallOfFameData_BestHybrid
+  name: BestHybrid
+  nameWithType: HallOfFameData.BestHybrid
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HallOfFameData.BestHybrid
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData.html
+  name: ChampionData
+  nameWithType: ChampionData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData

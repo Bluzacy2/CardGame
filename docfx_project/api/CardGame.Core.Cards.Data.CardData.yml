@@ -1,0 +1,804 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.CardData
+  commentId: T:CardGame.Core.Cards.Data.CardData
+  id: CardData
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.CardData.Attack
+  - CardGame.Core.Cards.Data.CardData.Cost
+  - CardGame.Core.Cards.Data.CardData.CostType
+  - CardGame.Core.Cards.Data.CardData.Description
+  - CardGame.Core.Cards.Data.CardData.Effects
+  - CardGame.Core.Cards.Data.CardData.Health
+  - CardGame.Core.Cards.Data.CardData.Id
+  - CardGame.Core.Cards.Data.CardData.KeywordParams
+  - CardGame.Core.Cards.Data.CardData.Keywords
+  - CardGame.Core.Cards.Data.CardData.Name
+  - CardGame.Core.Cards.Data.CardData.Subtypes
+  - CardGame.Core.Cards.Data.CardData.Type
+  langs:
+  - csharp
+  - vb
+  name: CardData
+  nameWithType: CardData
+  fullName: CardGame.Core.Cards.Data.CardData
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardData
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 10
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Represents the complete data definition for a card.
+  example: []
+  syntax:
+    content: public class CardData
+    content.vb: Public Class CardData
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Data.CardData.Id
+  commentId: P:CardGame.Core.Cards.Data.CardData.Id
+  id: Id
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: CardData.Id
+  fullName: CardGame.Core.Cards.Data.CardData.Id
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Id
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 15
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the unique identifier of the card.
+  example: []
+  syntax:
+    content: public int Id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Id As Integer
+  overload: CardGame.Core.Cards.Data.CardData.Id*
+- uid: CardGame.Core.Cards.Data.CardData.Name
+  commentId: P:CardGame.Core.Cards.Data.CardData.Name
+  id: Name
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: CardData.Name
+  fullName: CardGame.Core.Cards.Data.CardData.Name
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Name
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 20
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the display name of the card.
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: CardGame.Core.Cards.Data.CardData.Name*
+- uid: CardGame.Core.Cards.Data.CardData.Type
+  commentId: P:CardGame.Core.Cards.Data.CardData.Type
+  id: Type
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: CardData.Type
+  fullName: CardGame.Core.Cards.Data.CardData.Type
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Type
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 25
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the type of card (Unit or Spell).
+  example: []
+  syntax:
+    content: public CardType Type { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.CardType
+    content.vb: Public Property Type As CardType
+  overload: CardGame.Core.Cards.Data.CardData.Type*
+- uid: CardGame.Core.Cards.Data.CardData.Subtypes
+  commentId: P:CardGame.Core.Cards.Data.CardData.Subtypes
+  id: Subtypes
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: Subtypes
+  nameWithType: CardData.Subtypes
+  fullName: CardGame.Core.Cards.Data.CardData.Subtypes
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Subtypes
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 30
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the list of subtype classifications.
+  example: []
+  syntax:
+    content: public List<string> Subtypes { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Property Subtypes As List(Of String)
+  overload: CardGame.Core.Cards.Data.CardData.Subtypes*
+- uid: CardGame.Core.Cards.Data.CardData.Cost
+  commentId: P:CardGame.Core.Cards.Data.CardData.Cost
+  id: Cost
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: Cost
+  nameWithType: CardData.Cost
+  fullName: CardGame.Core.Cards.Data.CardData.Cost
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Cost
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 35
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the resource cost to play the card.
+  example: []
+  syntax:
+    content: public int Cost { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Cost As Integer
+  overload: CardGame.Core.Cards.Data.CardData.Cost*
+- uid: CardGame.Core.Cards.Data.CardData.CostType
+  commentId: P:CardGame.Core.Cards.Data.CardData.CostType
+  id: CostType
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: CostType
+  nameWithType: CardData.CostType
+  fullName: CardGame.Core.Cards.Data.CardData.CostType
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CostType
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 40
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the type of resource required.
+  example: []
+  syntax:
+    content: public ResourceType CostType { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.ResourceType
+    content.vb: Public Property CostType As ResourceType
+  overload: CardGame.Core.Cards.Data.CardData.CostType*
+- uid: CardGame.Core.Cards.Data.CardData.Attack
+  commentId: P:CardGame.Core.Cards.Data.CardData.Attack
+  id: Attack
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: Attack
+  nameWithType: CardData.Attack
+  fullName: CardGame.Core.Cards.Data.CardData.Attack
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Attack
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 45
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the attack value for unit cards.
+  example: []
+  syntax:
+    content: public int Attack { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Attack As Integer
+  overload: CardGame.Core.Cards.Data.CardData.Attack*
+- uid: CardGame.Core.Cards.Data.CardData.Health
+  commentId: P:CardGame.Core.Cards.Data.CardData.Health
+  id: Health
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: Health
+  nameWithType: CardData.Health
+  fullName: CardGame.Core.Cards.Data.CardData.Health
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Health
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 50
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the health value for unit cards.
+  example: []
+  syntax:
+    content: public int Health { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Health As Integer
+  overload: CardGame.Core.Cards.Data.CardData.Health*
+- uid: CardGame.Core.Cards.Data.CardData.Keywords
+  commentId: P:CardGame.Core.Cards.Data.CardData.Keywords
+  id: Keywords
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: Keywords
+  nameWithType: CardData.Keywords
+  fullName: CardGame.Core.Cards.Data.CardData.Keywords
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Keywords
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 55
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the list of keywords/abilities on the card.
+  example: []
+  syntax:
+    content: public List<Keyword> Keywords { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Data.Keyword}
+    content.vb: Public Property Keywords As List(Of Keyword)
+  overload: CardGame.Core.Cards.Data.CardData.Keywords*
+- uid: CardGame.Core.Cards.Data.CardData.KeywordParams
+  commentId: P:CardGame.Core.Cards.Data.CardData.KeywordParams
+  id: KeywordParams
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: KeywordParams
+  nameWithType: CardData.KeywordParams
+  fullName: CardGame.Core.Cards.Data.CardData.KeywordParams
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: KeywordParams
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 60
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the parameters for specific keywords.
+  example: []
+  syntax:
+    content: public Dictionary<Keyword, int> KeywordParams { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{CardGame.Core.Cards.Data.Keyword,System.Int32}
+    content.vb: Public Property KeywordParams As Dictionary(Of Keyword, Integer)
+  overload: CardGame.Core.Cards.Data.CardData.KeywordParams*
+- uid: CardGame.Core.Cards.Data.CardData.Description
+  commentId: P:CardGame.Core.Cards.Data.CardData.Description
+  id: Description
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: CardData.Description
+  fullName: CardGame.Core.Cards.Data.CardData.Description
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Description
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 65
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the descriptive text displayed to players.
+  example: []
+  syntax:
+    content: public string Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: CardGame.Core.Cards.Data.CardData.Description*
+- uid: CardGame.Core.Cards.Data.CardData.Effects
+  commentId: P:CardGame.Core.Cards.Data.CardData.Effects
+  id: Effects
+  parent: CardGame.Core.Cards.Data.CardData
+  langs:
+  - csharp
+  - vb
+  name: Effects
+  nameWithType: CardData.Effects
+  fullName: CardGame.Core.Cards.Data.CardData.Effects
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Effects
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 70
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the list of effects that the card can trigger.
+  example: []
+  syntax:
+    content: public List<EffectData> Effects { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Data.EffectData}
+    content.vb: Public Property Effects As List(Of EffectData)
+  overload: CardGame.Core.Cards.Data.CardData.Effects*
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Data.CardData.Id*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.Id
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Id
+  name: Id
+  nameWithType: CardData.Id
+  fullName: CardGame.Core.Cards.Data.CardData.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Data.CardData.Name*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.Name
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Name
+  name: Name
+  nameWithType: CardData.Name
+  fullName: CardGame.Core.Cards.Data.CardData.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.Core.Cards.Data.CardData.Type*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.Type
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Type
+  name: Type
+  nameWithType: CardData.Type
+  fullName: CardGame.Core.Cards.Data.CardData.Type
+- uid: CardGame.Core.Cards.Data.CardType
+  commentId: T:CardGame.Core.Cards.Data.CardType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.CardType.html
+  name: CardType
+  nameWithType: CardType
+  fullName: CardGame.Core.Cards.Data.CardType
+- uid: CardGame.Core.Cards.Data.CardData.Subtypes*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.Subtypes
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Subtypes
+  name: Subtypes
+  nameWithType: CardData.Subtypes
+  fullName: CardGame.Core.Cards.Data.CardData.Subtypes
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.Cards.Data.CardData.Cost*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.Cost
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Cost
+  name: Cost
+  nameWithType: CardData.Cost
+  fullName: CardGame.Core.Cards.Data.CardData.Cost
+- uid: CardGame.Core.Cards.Data.CardData.CostType*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.CostType
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_CostType
+  name: CostType
+  nameWithType: CardData.CostType
+  fullName: CardGame.Core.Cards.Data.CardData.CostType
+- uid: CardGame.Core.Cards.Data.ResourceType
+  commentId: T:CardGame.Core.Cards.Data.ResourceType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ResourceType.html
+  name: ResourceType
+  nameWithType: ResourceType
+  fullName: CardGame.Core.Cards.Data.ResourceType
+- uid: CardGame.Core.Cards.Data.CardData.Attack*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.Attack
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Attack
+  name: Attack
+  nameWithType: CardData.Attack
+  fullName: CardGame.Core.Cards.Data.CardData.Attack
+- uid: CardGame.Core.Cards.Data.CardData.Health*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.Health
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Health
+  name: Health
+  nameWithType: CardData.Health
+  fullName: CardGame.Core.Cards.Data.CardData.Health
+- uid: CardGame.Core.Cards.Data.CardData.Keywords*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.Keywords
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Keywords
+  name: Keywords
+  nameWithType: CardData.Keywords
+  fullName: CardGame.Core.Cards.Data.CardData.Keywords
+- uid: System.Collections.Generic.List{CardGame.Core.Cards.Data.Keyword}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Cards.Data.Keyword}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: List<Keyword>
+  nameWithType: List<Keyword>
+  fullName: System.Collections.Generic.List<CardGame.Core.Cards.Data.Keyword>
+  nameWithType.vb: List(Of Keyword)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Cards.Data.Keyword)
+  name.vb: List(Of Keyword)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: )
+- uid: CardGame.Core.Cards.Data.CardData.KeywordParams*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.KeywordParams
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_KeywordParams
+  name: KeywordParams
+  nameWithType: CardData.KeywordParams
+  fullName: CardGame.Core.Cards.Data.CardData.KeywordParams
+- uid: System.Collections.Generic.Dictionary{CardGame.Core.Cards.Data.Keyword,System.Int32}
+  commentId: T:System.Collections.Generic.Dictionary{CardGame.Core.Cards.Data.Keyword,System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: Dictionary<Keyword, int>
+  nameWithType: Dictionary<Keyword, int>
+  fullName: System.Collections.Generic.Dictionary<CardGame.Core.Cards.Data.Keyword, int>
+  nameWithType.vb: Dictionary(Of Keyword, Integer)
+  fullName.vb: System.Collections.Generic.Dictionary(Of CardGame.Core.Cards.Data.Keyword, Integer)
+  name.vb: Dictionary(Of Keyword, Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: CardGame.Core.Cards.Data.CardData.Description*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.Description
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Description
+  name: Description
+  nameWithType: CardData.Description
+  fullName: CardGame.Core.Cards.Data.CardData.Description
+- uid: CardGame.Core.Cards.Data.CardData.Effects*
+  commentId: Overload:CardGame.Core.Cards.Data.CardData.Effects
+  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Effects
+  name: Effects
+  nameWithType: CardData.Effects
+  fullName: CardGame.Core.Cards.Data.CardData.Effects
+- uid: System.Collections.Generic.List{CardGame.Core.Cards.Data.EffectData}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Cards.Data.EffectData}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Cards.Data.EffectData.html
+  name: List<EffectData>
+  nameWithType: List<EffectData>
+  fullName: System.Collections.Generic.List<CardGame.Core.Cards.Data.EffectData>
+  nameWithType.vb: List(Of EffectData)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Cards.Data.EffectData)
+  name.vb: List(Of EffectData)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.EffectData
+    name: EffectData
+    href: CardGame.Core.Cards.Data.EffectData.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.EffectData
+    name: EffectData
+    href: CardGame.Core.Cards.Data.EffectData.html
+  - name: )

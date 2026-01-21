@@ -1,0 +1,440 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  id: CardStatistic
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.AverageCopiesPerDeck
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardId
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardName
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.DeckCount
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.GamesPlayed
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.PercentageInDecks
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.TotalCopies
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.WinRate
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.Wins
+  langs:
+  - csharp
+  - vb
+  name: CardStatistic
+  nameWithType: CardStatistic
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardStatistic
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 723
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class CardStatistic
+    content.vb: Public Class CardStatistic
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardId
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardId
+  id: CardId
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  langs:
+  - csharp
+  - vb
+  name: CardId
+  nameWithType: CardStatistic.CardId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardId
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 725
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int CardId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property CardId As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardId*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardName
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardName
+  id: CardName
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  langs:
+  - csharp
+  - vb
+  name: CardName
+  nameWithType: CardStatistic.CardName
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardName
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardName
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 726
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string CardName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CardName As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardName*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.DeckCount
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.DeckCount
+  id: DeckCount
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  langs:
+  - csharp
+  - vb
+  name: DeckCount
+  nameWithType: CardStatistic.DeckCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.DeckCount
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckCount
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 727
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int DeckCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DeckCount As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.DeckCount*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.TotalCopies
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.TotalCopies
+  id: TotalCopies
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  langs:
+  - csharp
+  - vb
+  name: TotalCopies
+  nameWithType: CardStatistic.TotalCopies
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.TotalCopies
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: TotalCopies
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 728
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int TotalCopies { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalCopies As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.TotalCopies*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.PercentageInDecks
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.PercentageInDecks
+  id: PercentageInDecks
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  langs:
+  - csharp
+  - vb
+  name: PercentageInDecks
+  nameWithType: CardStatistic.PercentageInDecks
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.PercentageInDecks
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PercentageInDecks
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 729
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double PercentageInDecks { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property PercentageInDecks As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.PercentageInDecks*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.AverageCopiesPerDeck
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.AverageCopiesPerDeck
+  id: AverageCopiesPerDeck
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  langs:
+  - csharp
+  - vb
+  name: AverageCopiesPerDeck
+  nameWithType: CardStatistic.AverageCopiesPerDeck
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.AverageCopiesPerDeck
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AverageCopiesPerDeck
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 730
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double AverageCopiesPerDeck { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property AverageCopiesPerDeck As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.AverageCopiesPerDeck*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.WinRate
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.WinRate
+  id: WinRate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  langs:
+  - csharp
+  - vb
+  name: WinRate
+  nameWithType: CardStatistic.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.WinRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: WinRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 731
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double WinRate { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property WinRate As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.WinRate*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.GamesPlayed
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.GamesPlayed
+  id: GamesPlayed
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  langs:
+  - csharp
+  - vb
+  name: GamesPlayed
+  nameWithType: CardStatistic.GamesPlayed
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.GamesPlayed
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GamesPlayed
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 732
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int GamesPlayed { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property GamesPlayed As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.GamesPlayed*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.Wins
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.Wins
+  id: Wins
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic
+  langs:
+  - csharp
+  - vb
+  name: Wins
+  nameWithType: CardStatistic.Wins
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.Wins
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Wins
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 733
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Wins { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Wins As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.Wins*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardId*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardId
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatistic_CardId
+  name: CardId
+  nameWithType: CardStatistic.CardId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardName*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardName
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatistic_CardName
+  name: CardName
+  nameWithType: CardStatistic.CardName
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.CardName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.DeckCount*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.DeckCount
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatistic_DeckCount
+  name: DeckCount
+  nameWithType: CardStatistic.DeckCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.DeckCount
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.TotalCopies*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.TotalCopies
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatistic_TotalCopies
+  name: TotalCopies
+  nameWithType: CardStatistic.TotalCopies
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.TotalCopies
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.PercentageInDecks*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.PercentageInDecks
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatistic_PercentageInDecks
+  name: PercentageInDecks
+  nameWithType: CardStatistic.PercentageInDecks
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.PercentageInDecks
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.AverageCopiesPerDeck*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.AverageCopiesPerDeck
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatistic_AverageCopiesPerDeck
+  name: AverageCopiesPerDeck
+  nameWithType: CardStatistic.AverageCopiesPerDeck
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.AverageCopiesPerDeck
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.WinRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.WinRate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatistic_WinRate
+  name: WinRate
+  nameWithType: CardStatistic.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.WinRate
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.GamesPlayed*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.GamesPlayed
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatistic_GamesPlayed
+  name: GamesPlayed
+  nameWithType: CardStatistic.GamesPlayed
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.GamesPlayed
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.Wins*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.Wins
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatistic_Wins
+  name: Wins
+  nameWithType: CardStatistic.Wins
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatistic.Wins

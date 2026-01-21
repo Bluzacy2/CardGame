@@ -1,0 +1,420 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  id: EvolutionCheckpoint
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.BestFitness
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Generation
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Population
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Species
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Timestamp
+  langs:
+  - csharp
+  - vb
+  name: EvolutionCheckpoint
+  nameWithType: EvolutionCheckpoint
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EvolutionCheckpoint
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4711
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class EvolutionCheckpoint
+    content.vb: Public Class EvolutionCheckpoint
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Generation
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Generation
+  id: Generation
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  langs:
+  - csharp
+  - vb
+  name: Generation
+  nameWithType: EvolutionCheckpoint.Generation
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Generation
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Generation
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4713
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Generation { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Generation As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Generation*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Population
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Population
+  id: Population
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  langs:
+  - csharp
+  - vb
+  name: Population
+  nameWithType: EvolutionCheckpoint.Population
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Population
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Population
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4714
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<EvolvableIndividual> Population { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+    content.vb: Public Property Population As List(Of EvolvableIndividual)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Population*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Species
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Species
+  id: Species
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  langs:
+  - csharp
+  - vb
+  name: Species
+  nameWithType: EvolutionCheckpoint.Species
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Species
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Species
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4715
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<SpeciesSnapshot> Species { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot}
+    content.vb: Public Property Species As List(Of SpeciesSnapshot)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Species*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.BestFitness
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.BestFitness
+  id: BestFitness
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  langs:
+  - csharp
+  - vb
+  name: BestFitness
+  nameWithType: EvolutionCheckpoint.BestFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.BestFitness
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BestFitness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4716
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float BestFitness { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property BestFitness As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.BestFitness*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Timestamp
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Timestamp
+  id: Timestamp
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: EvolutionCheckpoint.Timestamp
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Timestamp
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Timestamp
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4717
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public DateTime Timestamp { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property Timestamp As Date
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Timestamp*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Generation*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Generation
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolutionCheckpoint_Generation
+  name: Generation
+  nameWithType: EvolutionCheckpoint.Generation
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Generation
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Population*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Population
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolutionCheckpoint_Population
+  name: Population
+  nameWithType: EvolutionCheckpoint.Population
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Population
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: List<EvolvableIndividual>
+  nameWithType: List<EvolvableIndividual>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>
+  nameWithType.vb: List(Of EvolvableIndividual)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  name.vb: List(Of EvolvableIndividual)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Species*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Species
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolutionCheckpoint_Species
+  name: Species
+  nameWithType: EvolutionCheckpoint.Species
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Species
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.html
+  name: List<SpeciesSnapshot>
+  nameWithType: List<SpeciesSnapshot>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot>
+  nameWithType.vb: List(Of SpeciesSnapshot)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot)
+  name.vb: List(Of SpeciesSnapshot)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+    name: SpeciesSnapshot
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+    name: SpeciesSnapshot
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.html
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.BestFitness*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.BestFitness
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolutionCheckpoint_BestFitness
+  name: BestFitness
+  nameWithType: EvolutionCheckpoint.BestFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.BestFitness
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Timestamp*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Timestamp
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.html#CardGame_ConsoleApp_Evolution_V2_NewGen_EvolutionCheckpoint_Timestamp
+  name: Timestamp
+  nameWithType: EvolutionCheckpoint.Timestamp
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolutionCheckpoint.Timestamp
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date

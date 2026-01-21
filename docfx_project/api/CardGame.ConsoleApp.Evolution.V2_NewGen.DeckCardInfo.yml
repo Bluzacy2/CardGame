@@ -1,0 +1,250 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+  id: DeckCardInfo
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.CardId
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Cost
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Count
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Name
+  langs:
+  - csharp
+  - vb
+  name: DeckCardInfo
+  nameWithType: DeckCardInfo
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckCardInfo
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 777
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class DeckCardInfo
+    content.vb: Public Class DeckCardInfo
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.CardId
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.CardId
+  id: CardId
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+  langs:
+  - csharp
+  - vb
+  name: CardId
+  nameWithType: DeckCardInfo.CardId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.CardId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardId
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 779
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int CardId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property CardId As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.CardId*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Name
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Name
+  id: Name
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: DeckCardInfo.Name
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Name
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Name
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 780
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Name*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Cost
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Cost
+  id: Cost
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+  langs:
+  - csharp
+  - vb
+  name: Cost
+  nameWithType: DeckCardInfo.Cost
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Cost
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Cost
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 781
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Cost { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Cost As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Cost*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Count
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Count
+  id: Count
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: DeckCardInfo.Count
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Count
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Count
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 782
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Count { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Count As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Count*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.CardId*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.CardId
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.html#CardGame_ConsoleApp_Evolution_V2_NewGen_DeckCardInfo_CardId
+  name: CardId
+  nameWithType: DeckCardInfo.CardId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.CardId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Name*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Name
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.html#CardGame_ConsoleApp_Evolution_V2_NewGen_DeckCardInfo_Name
+  name: Name
+  nameWithType: DeckCardInfo.Name
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Cost*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Cost
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.html#CardGame_ConsoleApp_Evolution_V2_NewGen_DeckCardInfo_Cost
+  name: Cost
+  nameWithType: DeckCardInfo.Cost
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Cost
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Count*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Count
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.html#CardGame_ConsoleApp_Evolution_V2_NewGen_DeckCardInfo_Count
+  name: Count
+  nameWithType: DeckCardInfo.Count
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckCardInfo.Count

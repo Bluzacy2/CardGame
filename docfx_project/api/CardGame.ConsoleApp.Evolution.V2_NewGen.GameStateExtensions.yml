@@ -1,0 +1,180 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions
+  id: GameStateExtensions
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.IsGameOver(CardGame.Core.State.Models.GameState)
+  langs:
+  - csharp
+  - vb
+  name: GameStateExtensions
+  nameWithType: GameStateExtensions
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GameStateExtensions
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1964
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static class GameStateExtensions
+    content.vb: Public Module GameStateExtensions
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.IsGameOver(CardGame.Core.State.Models.GameState)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.IsGameOver(CardGame.Core.State.Models.GameState)
+  id: IsGameOver(CardGame.Core.State.Models.GameState)
+  isExtensionMethod: true
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsGameOver(GameState)
+  nameWithType: GameStateExtensions.IsGameOver(GameState)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.IsGameOver(CardGame.Core.State.Models.GameState)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: IsGameOver
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1966
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static bool IsGameOver(this GameState state)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsGameOver(state As GameState) As Boolean
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.IsGameOver*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.IsGameOver*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.IsGameOver
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.html#CardGame_ConsoleApp_Evolution_V2_NewGen_GameStateExtensions_IsGameOver_CardGame_Core_State_Models_GameState_
+  name: IsGameOver
+  nameWithType: GameStateExtensions.IsGameOver
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameStateExtensions.IsGameOver
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html

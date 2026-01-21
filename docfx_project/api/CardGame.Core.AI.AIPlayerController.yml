@@ -1,0 +1,381 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.AIPlayerController
+  commentId: T:CardGame.Core.AI.AIPlayerController
+  id: AIPlayerController
+  parent: CardGame.Core.AI
+  children:
+  - CardGame.Core.AI.AIPlayerController.#ctor(CardGame.Core.Application.GameEngine,System.Int32,CardGame.Core.AI.Interfaces.IAIStrategy,CardGame.Core.AI.AISolverType)
+  - CardGame.Core.AI.AIPlayerController.BeamSolver
+  - CardGame.Core.AI.AIPlayerController.BotPlayerId
+  - CardGame.Core.AI.AIPlayerController.StartAutoPlay
+  langs:
+  - csharp
+  - vb
+  name: AIPlayerController
+  nameWithType: AIPlayerController
+  fullName: CardGame.Core.AI.AIPlayerController
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/AIPlayerController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AIPlayerController
+    path: ../Source/CardGame.Core/AI/AIPlayerController.cs
+    startLine: 40
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI
+  summary: Controls AI player behavior and decision making during gameplay.
+  example: []
+  syntax:
+    content: public class AIPlayerController
+    content.vb: Public Class AIPlayerController
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.AI.AIPlayerController.BotPlayerId
+  commentId: P:CardGame.Core.AI.AIPlayerController.BotPlayerId
+  id: BotPlayerId
+  parent: CardGame.Core.AI.AIPlayerController
+  langs:
+  - csharp
+  - vb
+  name: BotPlayerId
+  nameWithType: AIPlayerController.BotPlayerId
+  fullName: CardGame.Core.AI.AIPlayerController.BotPlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/AIPlayerController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BotPlayerId
+    path: ../Source/CardGame.Core/AI/AIPlayerController.cs
+    startLine: 45
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI
+  summary: Gets the player ID controlled by this AI.
+  example: []
+  syntax:
+    content: public int BotPlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property BotPlayerId As Integer
+  overload: CardGame.Core.AI.AIPlayerController.BotPlayerId*
+- uid: CardGame.Core.AI.AIPlayerController.BeamSolver
+  commentId: F:CardGame.Core.AI.AIPlayerController.BeamSolver
+  id: BeamSolver
+  parent: CardGame.Core.AI.AIPlayerController
+  langs:
+  - csharp
+  - vb
+  name: BeamSolver
+  nameWithType: AIPlayerController.BeamSolver
+  fullName: CardGame.Core.AI.AIPlayerController.BeamSolver
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/AIPlayerController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BeamSolver
+    path: ../Source/CardGame.Core/AI/AIPlayerController.cs
+    startLine: 50
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI
+  summary: Gets the beam search solver for heuristic-based decisions.
+  example: []
+  syntax:
+    content: public readonly BotSolver BeamSolver
+    return:
+      type: CardGame.Core.AI.Logic.BotSolver
+    content.vb: Public ReadOnly BeamSolver As BotSolver
+- uid: CardGame.Core.AI.AIPlayerController.#ctor(CardGame.Core.Application.GameEngine,System.Int32,CardGame.Core.AI.Interfaces.IAIStrategy,CardGame.Core.AI.AISolverType)
+  commentId: M:CardGame.Core.AI.AIPlayerController.#ctor(CardGame.Core.Application.GameEngine,System.Int32,CardGame.Core.AI.Interfaces.IAIStrategy,CardGame.Core.AI.AISolverType)
+  id: '#ctor(CardGame.Core.Application.GameEngine,System.Int32,CardGame.Core.AI.Interfaces.IAIStrategy,CardGame.Core.AI.AISolverType)'
+  parent: CardGame.Core.AI.AIPlayerController
+  langs:
+  - csharp
+  - vb
+  name: AIPlayerController(GameEngine, int, IAIStrategy, AISolverType)
+  nameWithType: AIPlayerController.AIPlayerController(GameEngine, int, IAIStrategy, AISolverType)
+  fullName: CardGame.Core.AI.AIPlayerController.AIPlayerController(CardGame.Core.Application.GameEngine, int, CardGame.Core.AI.Interfaces.IAIStrategy, CardGame.Core.AI.AISolverType)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/AIPlayerController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/AI/AIPlayerController.cs
+    startLine: 64
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI
+  summary: Initializes a new instance of the AIPlayerController class.
+  example: []
+  syntax:
+    content: public AIPlayerController(GameEngine gameEngine, int botPlayerId, IAIStrategy strategy, AISolverType solverType)
+    parameters:
+    - id: gameEngine
+      type: CardGame.Core.Application.GameEngine
+      description: The game engine managing the current game.
+    - id: botPlayerId
+      type: System.Int32
+      description: The player ID this AI controls.
+    - id: strategy
+      type: CardGame.Core.AI.Interfaces.IAIStrategy
+      description: The strategy used for AI decision evaluation.
+    - id: solverType
+      type: CardGame.Core.AI.AISolverType
+      description: The type of solver algorithm to use.
+    content.vb: Public Sub New(gameEngine As GameEngine, botPlayerId As Integer, strategy As IAIStrategy, solverType As AISolverType)
+  overload: CardGame.Core.AI.AIPlayerController.#ctor*
+  nameWithType.vb: AIPlayerController.New(GameEngine, Integer, IAIStrategy, AISolverType)
+  fullName.vb: CardGame.Core.AI.AIPlayerController.New(CardGame.Core.Application.GameEngine, Integer, CardGame.Core.AI.Interfaces.IAIStrategy, CardGame.Core.AI.AISolverType)
+  name.vb: New(GameEngine, Integer, IAIStrategy, AISolverType)
+- uid: CardGame.Core.AI.AIPlayerController.StartAutoPlay
+  commentId: M:CardGame.Core.AI.AIPlayerController.StartAutoPlay
+  id: StartAutoPlay
+  parent: CardGame.Core.AI.AIPlayerController
+  langs:
+  - csharp
+  - vb
+  name: StartAutoPlay()
+  nameWithType: AIPlayerController.StartAutoPlay()
+  fullName: CardGame.Core.AI.AIPlayerController.StartAutoPlay()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/AIPlayerController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: StartAutoPlay
+    path: ../Source/CardGame.Core/AI/AIPlayerController.cs
+    startLine: 87
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI
+  summary: Starts automatic gameplay for the AI player.
+  example: []
+  syntax:
+    content: public void StartAutoPlay()
+    content.vb: Public Sub StartAutoPlay()
+  overload: CardGame.Core.AI.AIPlayerController.StartAutoPlay*
+references:
+- uid: CardGame.Core.AI
+  commentId: N:CardGame.Core.AI
+  href: CardGame.html
+  name: CardGame.Core.AI
+  nameWithType: CardGame.Core.AI
+  fullName: CardGame.Core.AI
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.AI.AIPlayerController.BotPlayerId*
+  commentId: Overload:CardGame.Core.AI.AIPlayerController.BotPlayerId
+  href: CardGame.Core.AI.AIPlayerController.html#CardGame_Core_AI_AIPlayerController_BotPlayerId
+  name: BotPlayerId
+  nameWithType: AIPlayerController.BotPlayerId
+  fullName: CardGame.Core.AI.AIPlayerController.BotPlayerId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.AI.Logic.BotSolver
+  commentId: T:CardGame.Core.AI.Logic.BotSolver
+  parent: CardGame.Core.AI.Logic
+  href: CardGame.Core.AI.Logic.BotSolver.html
+  name: BotSolver
+  nameWithType: BotSolver
+  fullName: CardGame.Core.AI.Logic.BotSolver
+- uid: CardGame.Core.AI.Logic
+  commentId: N:CardGame.Core.AI.Logic
+  href: CardGame.html
+  name: CardGame.Core.AI.Logic
+  nameWithType: CardGame.Core.AI.Logic
+  fullName: CardGame.Core.AI.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+- uid: CardGame.Core.AI.AIPlayerController.#ctor*
+  commentId: Overload:CardGame.Core.AI.AIPlayerController.#ctor
+  href: CardGame.Core.AI.AIPlayerController.html#CardGame_Core_AI_AIPlayerController__ctor_CardGame_Core_Application_GameEngine_System_Int32_CardGame_Core_AI_Interfaces_IAIStrategy_CardGame_Core_AI_AISolverType_
+  name: AIPlayerController
+  nameWithType: AIPlayerController.AIPlayerController
+  fullName: CardGame.Core.AI.AIPlayerController.AIPlayerController
+  nameWithType.vb: AIPlayerController.New
+  fullName.vb: CardGame.Core.AI.AIPlayerController.New
+  name.vb: New
+- uid: CardGame.Core.Application.GameEngine
+  commentId: T:CardGame.Core.Application.GameEngine
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameEngine.html
+  name: GameEngine
+  nameWithType: GameEngine
+  fullName: CardGame.Core.Application.GameEngine
+- uid: CardGame.Core.AI.Interfaces.IAIStrategy
+  commentId: T:CardGame.Core.AI.Interfaces.IAIStrategy
+  parent: CardGame.Core.AI.Interfaces
+  href: CardGame.Core.AI.Interfaces.IAIStrategy.html
+  name: IAIStrategy
+  nameWithType: IAIStrategy
+  fullName: CardGame.Core.AI.Interfaces.IAIStrategy
+- uid: CardGame.Core.AI.AISolverType
+  commentId: T:CardGame.Core.AI.AISolverType
+  parent: CardGame.Core.AI
+  href: CardGame.Core.AI.AISolverType.html
+  name: AISolverType
+  nameWithType: AISolverType
+  fullName: CardGame.Core.AI.AISolverType
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: CardGame.Core.AI.Interfaces
+  commentId: N:CardGame.Core.AI.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.AI.Interfaces
+  nameWithType: CardGame.Core.AI.Interfaces
+  fullName: CardGame.Core.AI.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+- uid: CardGame.Core.AI.AIPlayerController.StartAutoPlay*
+  commentId: Overload:CardGame.Core.AI.AIPlayerController.StartAutoPlay
+  href: CardGame.Core.AI.AIPlayerController.html#CardGame_Core_AI_AIPlayerController_StartAutoPlay
+  name: StartAutoPlay
+  nameWithType: AIPlayerController.StartAutoPlay
+  fullName: CardGame.Core.AI.AIPlayerController.StartAutoPlay

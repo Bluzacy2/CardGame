@@ -1,0 +1,332 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  id: WinRateCardStat
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.AverageDensity
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardId
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardName
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.GamesPlayed
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.UseRate
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.WinRate
+  langs:
+  - csharp
+  - vb
+  name: WinRateCardStat
+  nameWithType: WinRateCardStat
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: WinRateCardStat
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 758
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class WinRateCardStat
+    content.vb: Public Class WinRateCardStat
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardId
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardId
+  id: CardId
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  langs:
+  - csharp
+  - vb
+  name: CardId
+  nameWithType: WinRateCardStat.CardId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardId
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 760
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int CardId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property CardId As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardId*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardName
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardName
+  id: CardName
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  langs:
+  - csharp
+  - vb
+  name: CardName
+  nameWithType: WinRateCardStat.CardName
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardName
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardName
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 761
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string CardName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CardName As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardName*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.WinRate
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.WinRate
+  id: WinRate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  langs:
+  - csharp
+  - vb
+  name: WinRate
+  nameWithType: WinRateCardStat.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.WinRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: WinRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 762
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double WinRate { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property WinRate As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.WinRate*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.GamesPlayed
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.GamesPlayed
+  id: GamesPlayed
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  langs:
+  - csharp
+  - vb
+  name: GamesPlayed
+  nameWithType: WinRateCardStat.GamesPlayed
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.GamesPlayed
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GamesPlayed
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 763
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int GamesPlayed { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property GamesPlayed As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.GamesPlayed*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.UseRate
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.UseRate
+  id: UseRate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  langs:
+  - csharp
+  - vb
+  name: UseRate
+  nameWithType: WinRateCardStat.UseRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.UseRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UseRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 764
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double UseRate { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property UseRate As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.UseRate*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.AverageDensity
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.AverageDensity
+  id: AverageDensity
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat
+  langs:
+  - csharp
+  - vb
+  name: AverageDensity
+  nameWithType: WinRateCardStat.AverageDensity
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.AverageDensity
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AverageDensity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 765
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double AverageDensity { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property AverageDensity As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.AverageDensity*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardId*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardId
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html#CardGame_ConsoleApp_Evolution_V2_NewGen_WinRateCardStat_CardId
+  name: CardId
+  nameWithType: WinRateCardStat.CardId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardName*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardName
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html#CardGame_ConsoleApp_Evolution_V2_NewGen_WinRateCardStat_CardName
+  name: CardName
+  nameWithType: WinRateCardStat.CardName
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.CardName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.WinRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.WinRate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html#CardGame_ConsoleApp_Evolution_V2_NewGen_WinRateCardStat_WinRate
+  name: WinRate
+  nameWithType: WinRateCardStat.WinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.WinRate
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.GamesPlayed*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.GamesPlayed
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html#CardGame_ConsoleApp_Evolution_V2_NewGen_WinRateCardStat_GamesPlayed
+  name: GamesPlayed
+  nameWithType: WinRateCardStat.GamesPlayed
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.GamesPlayed
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.UseRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.UseRate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html#CardGame_ConsoleApp_Evolution_V2_NewGen_WinRateCardStat_UseRate
+  name: UseRate
+  nameWithType: WinRateCardStat.UseRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.UseRate
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.AverageDensity*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.AverageDensity
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.html#CardGame_ConsoleApp_Evolution_V2_NewGen_WinRateCardStat_AverageDensity
+  name: AverageDensity
+  nameWithType: WinRateCardStat.AverageDensity
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.WinRateCardStat.AverageDensity

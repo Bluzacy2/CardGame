@@ -1,0 +1,584 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+  commentId: T:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+  id: ConfirmMulliganCommand
+  parent: CardGame.Core.Commands.Implementations
+  children:
+  - CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.#ctor(System.Int32,System.Collections.Generic.List{System.Int32})
+  - CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  - CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId
+  - CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds
+  langs:
+  - csharp
+  - vb
+  name: ConfirmMulliganCommand
+  nameWithType: ConfirmMulliganCommand
+  fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/ConfirmMulliganCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ConfirmMulliganCommand
+    path: ../Source/CardGame.Core/Commands/Implementations/ConfirmMulliganCommand.cs
+    startLine: 11
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Command to confirm mulligan choices and replace specified cards from the player's hand.
+  example: []
+  syntax:
+    content: 'public class ConfirmMulliganCommand : IGameCommand'
+    content.vb: Public Class ConfirmMulliganCommand Implements IGameCommand
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Commands.Interfaces.IGameCommand
+- uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId
+  commentId: P:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId
+  id: PlayerId
+  parent: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+  langs:
+  - csharp
+  - vb
+  name: PlayerId
+  nameWithType: ConfirmMulliganCommand.PlayerId
+  fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/ConfirmMulliganCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerId
+    path: ../Source/CardGame.Core/Commands/Implementations/ConfirmMulliganCommand.cs
+    startLine: 17
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Gets the ID of the player confirming the mulligan.
+  example: []
+  syntax:
+    content: public int PlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PlayerId As Integer
+  overload: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId*
+  implements:
+  - CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
+- uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds
+  commentId: P:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds
+  id: RejectedCardIds
+  parent: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+  langs:
+  - csharp
+  - vb
+  name: RejectedCardIds
+  nameWithType: ConfirmMulliganCommand.RejectedCardIds
+  fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/ConfirmMulliganCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: RejectedCardIds
+    path: ../Source/CardGame.Core/Commands/Implementations/ConfirmMulliganCommand.cs
+    startLine: 22
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Gets the list of card instance IDs to be replaced during the mulligan.
+  example: []
+  syntax:
+    content: public List<int> RejectedCardIds { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Int32}
+    content.vb: Public ReadOnly Property RejectedCardIds As List(Of Integer)
+  overload: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds*
+- uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.#ctor(System.Int32,System.Collections.Generic.List{System.Int32})
+  commentId: M:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.#ctor(System.Int32,System.Collections.Generic.List{System.Int32})
+  id: '#ctor(System.Int32,System.Collections.Generic.List{System.Int32})'
+  parent: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+  langs:
+  - csharp
+  - vb
+  name: ConfirmMulliganCommand(int, List<int>)
+  nameWithType: ConfirmMulliganCommand.ConfirmMulliganCommand(int, List<int>)
+  fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.ConfirmMulliganCommand(int, System.Collections.Generic.List<int>)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/ConfirmMulliganCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/Commands/Implementations/ConfirmMulliganCommand.cs
+    startLine: 31
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Initializes a new instance of the ConfirmMulliganCommand class.
+  example: []
+  syntax:
+    content: public ConfirmMulliganCommand(int playerId, List<int> rejectedCardIds)
+    parameters:
+    - id: playerId
+      type: System.Int32
+      description: The ID of the player confirming the mulligan.
+    - id: rejectedCardIds
+      type: System.Collections.Generic.List{System.Int32}
+      description: The list of card instance IDs to be replaced, or null for an empty list.
+    content.vb: Public Sub New(playerId As Integer, rejectedCardIds As List(Of Integer))
+  overload: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.#ctor*
+  nameWithType.vb: ConfirmMulliganCommand.New(Integer, List(Of Integer))
+  fullName.vb: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.New(Integer, System.Collections.Generic.List(Of Integer))
+  name.vb: New(Integer, List(Of Integer))
+- uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  id: Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand
+  langs:
+  - csharp
+  - vb
+  name: Execute(GameState, EventBus, GameContext)
+  nameWithType: ConfirmMulliganCommand.Execute(GameState, EventBus, GameContext)
+  fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Commands/Implementations/ConfirmMulliganCommand.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Execute
+    path: ../Source/CardGame.Core/Commands/Implementations/ConfirmMulliganCommand.cs
+    startLine: 46
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Commands.Implementations
+  summary: Executes the mulligan confirmation, replacing specified cards and marking the player as ready.
+  example: []
+  syntax:
+    content: public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)
+    parameters:
+    - id: currentState
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    - id: eventBus
+      type: CardGame.Core.Events.EventBus
+      description: The event bus for publishing game events.
+    - id: context
+      type: CardGame.Core.Application.GameContext
+      description: The game context with additional services.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state after performing the mulligan.
+    content.vb: Public Function Execute(currentState As GameState, eventBus As EventBus, context As GameContext) As GameState
+  overload: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute*
+  implements:
+  - CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+references:
+- uid: CardGame.Core.Commands.Implementations
+  commentId: N:CardGame.Core.Commands.Implementations
+  href: CardGame.html
+  name: CardGame.Core.Commands.Implementations
+  nameWithType: CardGame.Core.Commands.Implementations
+  fullName: CardGame.Core.Commands.Implementations
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Implementations
+    name: Implementations
+    href: CardGame.Core.Commands.Implementations.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Implementations
+    name: Implementations
+    href: CardGame.Core.Commands.Implementations.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand
+  commentId: T:CardGame.Core.Commands.Interfaces.IGameCommand
+  parent: CardGame.Core.Commands.Interfaces
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: IGameCommand
+  nameWithType: IGameCommand
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Commands.Interfaces
+  commentId: N:CardGame.Core.Commands.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Commands.Interfaces
+  nameWithType: CardGame.Core.Commands.Interfaces
+  fullName: CardGame.Core.Commands.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+- uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId*
+  commentId: Overload:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId
+  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand_PlayerId
+  name: PlayerId
+  nameWithType: ConfirmMulliganCommand.PlayerId
+  fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
+  commentId: P:CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
+  parent: CardGame.Core.Commands.Interfaces.IGameCommand
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_PlayerId
+  name: PlayerId
+  nameWithType: IGameCommand.PlayerId
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds*
+  commentId: Overload:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds
+  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand_RejectedCardIds
+  name: RejectedCardIds
+  nameWithType: ConfirmMulliganCommand.RejectedCardIds
+  fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds
+- uid: System.Collections.Generic.List{System.Int32}
+  commentId: T:System.Collections.Generic.List{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<int>
+  nameWithType: List<int>
+  fullName: System.Collections.Generic.List<int>
+  nameWithType.vb: List(Of Integer)
+  fullName.vb: System.Collections.Generic.List(Of Integer)
+  name.vb: List(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.#ctor*
+  commentId: Overload:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.#ctor
+  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand__ctor_System_Int32_System_Collections_Generic_List_System_Int32__
+  name: ConfirmMulliganCommand
+  nameWithType: ConfirmMulliganCommand.ConfirmMulliganCommand
+  fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.ConfirmMulliganCommand
+  nameWithType.vb: ConfirmMulliganCommand.New
+  fullName.vb: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.New
+  name.vb: New
+- uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute*
+  commentId: Overload:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute
+  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  name: Execute
+  nameWithType: ConfirmMulliganCommand.Execute
+  fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  commentId: M:CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+  parent: CardGame.Core.Commands.Interfaces.IGameCommand
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  name: Execute(GameState, EventBus, GameContext)
+  nameWithType: IGameCommand.Execute(GameState, EventBus, GameContext)
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
+  spec.csharp:
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+    name: Execute
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Events.EventBus
+    name: EventBus
+    href: CardGame.Core.Events.EventBus.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: )
+  spec.vb:
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
+    name: Execute
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  - name: (
+  - uid: CardGame.Core.State.Models.GameState
+    name: GameState
+    href: CardGame.Core.State.Models.GameState.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Events.EventBus
+    name: EventBus
+    href: CardGame.Core.Events.EventBus.html
+  - name: ','
+  - name: " "
+  - uid: CardGame.Core.Application.GameContext
+    name: GameContext
+    href: CardGame.Core.Application.GameContext.html
+  - name: )
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html

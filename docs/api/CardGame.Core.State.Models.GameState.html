@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class GameState | CardGame Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class GameState | CardGame Docs ">
+      
+      <meta name="description" content="Represents the complete state of a game, including board, players, and game phase information.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Bluzacy2/CardGame/new/main/apiSpec/new?filename=CardGame_Core_State_Models_GameState.md&amp;value=---%0Auid%3A%20CardGame.Core.State.Models.GameState%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="CardGame.Core.State.Models.GameState">
+
+
+
+  <h1 id="CardGame_Core_State_Models_GameState" data-uid="CardGame.Core.State.Models.GameState" class="text-break">
+Class GameState  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="CardGame.html">CardGame</a>.<a class="xref" href="CardGame.Core.html">Core</a>.<a class="xref" href="CardGame.Core.State.html">State</a>.<a class="xref" href="CardGame.Core.State.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>CardGame.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents the complete state of a game, including board, players, and game phase information.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class GameState</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><span class="xref">object</span></div>
+      <div><span class="xref">GameState</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="CardGame_Core_State_Models_GameState__ctor_" data-uid="CardGame.Core.State.Models.GameState.#ctor*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState__ctor_System_Int32_CardGame_Core_State_Enums_GamePhase_System_Int32_CardGame_Core_State_Models_BoardState_CardGame_Core_State_Models_PlayerState_CardGame_Core_State_Models_PlayerState_System_Collections_Generic_IEnumerable_System_Int32__CardGame_Core_State_Models_PendingInteraction_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Int32_System_Int32_System_Int32_" data-uid="CardGame.Core.State.Models.GameState.#ctor(System.Int32,CardGame.Core.State.Enums.GamePhase,System.Int32,CardGame.Core.State.Models.BoardState,CardGame.Core.State.Models.PlayerState,CardGame.Core.State.Models.PlayerState,System.Collections.Generic.IEnumerable{System.Int32},CardGame.Core.State.Models.PendingInteraction,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Int32,System.Int32,System.Int32)">
+  GameState(int, GamePhase, int, BoardState, PlayerState, PlayerState, IEnumerable&lt;int&gt;?, PendingInteraction?, IEnumerable&lt;CardInstance&gt;?, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the GameState class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GameState(int turnNumber, GamePhase currentPhase, int activePlayerId, BoardState board, PlayerState playerA, PlayerState playerB, IEnumerable&lt;int&gt;? playersReady = null, PendingInteraction? pendingInteraction = null, IEnumerable&lt;CardInstance&gt;? spellStack = null, int roundStartingPlayerId = 1, int combatLineIndex = 0, int combatStep = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>turnNumber</code> <span class="xref">int</span></dt>
+    <dd><p>The current turn number.</p>
+</dd>
+    <dt><code>currentPhase</code> <a class="xref" href="CardGame.Core.State.Enums.GamePhase.html">GamePhase</a></dt>
+    <dd><p>The current phase of the game.</p>
+</dd>
+    <dt><code>activePlayerId</code> <span class="xref">int</span></dt>
+    <dd><p>The ID of the active player.</p>
+</dd>
+    <dt><code>board</code> <a class="xref" href="CardGame.Core.State.Models.BoardState.html">BoardState</a></dt>
+    <dd><p>The current board state.</p>
+</dd>
+    <dt><code>playerA</code> <a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
+    <dd><p>The state of player A.</p>
+</dd>
+    <dt><code>playerB</code> <a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
+    <dd><p>The state of player B.</p>
+</dd>
+    <dt><code>playersReady</code> <span class="xref">IEnumerable</span>&lt;<span class="xref">int</span>&gt;</dt>
+    <dd><p>Optional list of players who are ready.</p>
+</dd>
+    <dt><code>pendingInteraction</code> <a class="xref" href="CardGame.Core.State.Models.PendingInteraction.html">PendingInteraction</a></dt>
+    <dd><p>Optional pending interaction.</p>
+</dd>
+    <dt><code>spellStack</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
+    <dd><p>Optional current spell stack.</p>
+</dd>
+    <dt><code>roundStartingPlayerId</code> <span class="xref">int</span></dt>
+    <dd><p>The ID of the player who started this round.</p>
+</dd>
+    <dt><code>combatLineIndex</code> <span class="xref">int</span></dt>
+    <dd></dd>
+    <dt><code>combatStep</code> <span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="CardGame_Core_State_Models_GameState_ActivePlayerId_" data-uid="CardGame.Core.State.Models.GameState.ActivePlayerId*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_ActivePlayerId" data-uid="CardGame.Core.State.Models.GameState.ActivePlayerId">
+  ActivePlayerId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the ID of the player whose turn it is (1 or 2).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ActivePlayerId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_Board_" data-uid="CardGame.Core.State.Models.GameState.Board*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_Board" data-uid="CardGame.Core.State.Models.GameState.Board">
+  Board
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current state of the game board.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BoardState Board { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.BoardState.html">BoardState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_CombatLineIndex_" data-uid="CardGame.Core.State.Models.GameState.CombatLineIndex*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_CombatLineIndex" data-uid="CardGame.Core.State.Models.GameState.CombatLineIndex">
+  CombatLineIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CombatLineIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_CombatStep_" data-uid="CardGame.Core.State.Models.GameState.CombatStep*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_CombatStep" data-uid="CardGame.Core.State.Models.GameState.CombatStep">
+  CombatStep
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CombatStep { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_CurrentPhase_" data-uid="CardGame.Core.State.Models.GameState.CurrentPhase*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_CurrentPhase" data-uid="CardGame.Core.State.Models.GameState.CurrentPhase">
+  CurrentPhase
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current phase of the game (Mulligan, Main, Combat, etc.).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GamePhase CurrentPhase { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Enums.GamePhase.html">GamePhase</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_PendingInteraction_" data-uid="CardGame.Core.State.Models.GameState.PendingInteraction*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_PendingInteraction" data-uid="CardGame.Core.State.Models.GameState.PendingInteraction">
+  PendingInteraction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current pending interaction, if any (e.g., target selection).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PendingInteraction? PendingInteraction { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PendingInteraction.html">PendingInteraction</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_PlayerA_" data-uid="CardGame.Core.State.Models.GameState.PlayerA*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_PlayerA" data-uid="CardGame.Core.State.Models.GameState.PlayerA">
+  PlayerA
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the state of player A.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PlayerState PlayerA { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_PlayerB_" data-uid="CardGame.Core.State.Models.GameState.PlayerB*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_PlayerB" data-uid="CardGame.Core.State.Models.GameState.PlayerB">
+  PlayerB
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the state of player B.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PlayerState PlayerB { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_PlayersReady_" data-uid="CardGame.Core.State.Models.GameState.PlayersReady*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_PlayersReady" data-uid="CardGame.Core.State.Models.GameState.PlayersReady">
+  PlayersReady
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the list of player IDs who have confirmed their mulligan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;int&gt; PlayersReady { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IReadOnlyList</span>&lt;<span class="xref">int</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_RoundStartingPlayerId_" data-uid="CardGame.Core.State.Models.GameState.RoundStartingPlayerId*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_RoundStartingPlayerId" data-uid="CardGame.Core.State.Models.GameState.RoundStartingPlayerId">
+  RoundStartingPlayerId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the ID of the player who started the current round (1 or 2).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RoundStartingPlayerId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_SpellStack_" data-uid="CardGame.Core.State.Models.GameState.SpellStack*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_SpellStack" data-uid="CardGame.Core.State.Models.GameState.SpellStack">
+  SpellStack
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current spell stack (for resolving spell chains).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;CardInstance&gt; SpellStack { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_TurnNumber_" data-uid="CardGame.Core.State.Models.GameState.TurnNumber*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_TurnNumber" data-uid="CardGame.Core.State.Models.GameState.TurnNumber">
+  TurnNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current turn number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TurnNumber { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="CardGame_Core_State_Models_GameState_GetOpponent_" data-uid="CardGame.Core.State.Models.GameState.GetOpponent*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_GetOpponent_System_Int32_" data-uid="CardGame.Core.State.Models.GameState.GetOpponent(System.Int32)">
+  GetOpponent(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L217"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the state of the opponent of the specified player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PlayerState GetOpponent(int playerId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerId</code> <span class="xref">int</span></dt>
+    <dd><p>The ID of the player to get the opponent of.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
+    <dd><p>The PlayerState for the opponent.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_GetPlayer_" data-uid="CardGame.Core.State.Models.GameState.GetPlayer*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_GetPlayer_System_Int32_" data-uid="CardGame.Core.State.Models.GameState.GetPlayer(System.Int32)">
+  GetPlayer(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the state of the specified player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PlayerState GetPlayer(int playerId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerId</code> <span class="xref">int</span></dt>
+    <dd><p>The ID of the player (1 or 2).</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
+    <dd><p>The PlayerState for the specified player.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_Initial_" data-uid="CardGame.Core.State.Models.GameState.Initial*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_Initial_System_Int32_System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__CardGame_Core_Application_DeterministicRng_" data-uid="CardGame.Core.State.Models.GameState.Initial(System.Int32,System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},CardGame.Core.Application.DeterministicRng)">
+  Initial(int, List&lt;CardInstance&gt;, List&lt;CardInstance&gt;, DeterministicRng)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates the initial game state for a new game.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GameState Initial(int startingPlayerId, List&lt;CardInstance&gt; deckA, List&lt;CardInstance&gt; deckB, DeterministicRng rng)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startingPlayerId</code> <span class="xref">int</span></dt>
+    <dd><p>The ID of the player who goes first (1 or 2).</p>
+</dd>
+    <dt><code>deckA</code> <span class="xref">List</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
+    <dd><p>The deck for player A.</p>
+</dd>
+    <dt><code>deckB</code> <span class="xref">List</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
+    <dd><p>The deck for player B.</p>
+</dd>
+    <dt><code>rng</code> <a class="xref" href="CardGame.Core.Application.DeterministicRng.html">DeterministicRng</a></dt>
+    <dd><p>The random number generator for deck shuffling.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
+    <dd><p>A new GameState representing the start of a game.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_MarkPlayerAsReady_" data-uid="CardGame.Core.State.Models.GameState.MarkPlayerAsReady*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_MarkPlayerAsReady_System_Int32_" data-uid="CardGame.Core.State.Models.GameState.MarkPlayerAsReady(System.Int32)">
+  MarkPlayerAsReady(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Marks a player as ready (e.g., after mulligan).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GameState MarkPlayerAsReady(int playerId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerId</code> <span class="xref">int</span></dt>
+    <dd><p>The ID of the player to mark as ready.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
+    <dd><p>A new GameState with the player added to the ready list.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_UpdateBoard_" data-uid="CardGame.Core.State.Models.GameState.UpdateBoard*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_UpdateBoard_CardGame_Core_State_Models_BoardState_" data-uid="CardGame.Core.State.Models.GameState.UpdateBoard(CardGame.Core.State.Models.BoardState)">
+  UpdateBoard(BoardState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L232"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the board state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GameState UpdateBoard(BoardState newBoard)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newBoard</code> <a class="xref" href="CardGame.Core.State.Models.BoardState.html">BoardState</a></dt>
+    <dd><p>The new board state.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
+    <dd><p>A new GameState with the updated board.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_UpdatePlayer_" data-uid="CardGame.Core.State.Models.GameState.UpdatePlayer*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_UpdatePlayer_CardGame_Core_State_Models_PlayerState_" data-uid="CardGame.Core.State.Models.GameState.UpdatePlayer(CardGame.Core.State.Models.PlayerState)">
+  UpdatePlayer(PlayerState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the state of a player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GameState UpdatePlayer(PlayerState newPlayerState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newPlayerState</code> <a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
+    <dd><p>The new player state.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
+    <dd><p>A new GameState with the updated player.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CardGame_Core_State_Models_GameState_With_" data-uid="CardGame.Core.State.Models.GameState.With*"></a>
+
+  <h3 id="CardGame_Core_State_Models_GameState_With_System_Nullable_System_Int32__System_Nullable_CardGame_Core_State_Enums_GamePhase__System_Nullable_System_Int32__CardGame_Core_State_Models_BoardState_CardGame_Core_State_Models_PlayerState_CardGame_Core_State_Models_PlayerState_System_Collections_Generic_IEnumerable_System_Int32__CardGame_Core_State_Models_PendingInteraction_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_System_Int32__System_Boolean_System_Nullable_System_Int32__System_Nullable_System_Int32__" data-uid="CardGame.Core.State.Models.GameState.With(System.Nullable{System.Int32},System.Nullable{CardGame.Core.State.Enums.GamePhase},System.Nullable{System.Int32},CardGame.Core.State.Models.BoardState,CardGame.Core.State.Models.PlayerState,CardGame.Core.State.Models.PlayerState,System.Collections.Generic.IEnumerable{System.Int32},CardGame.Core.State.Models.PendingInteraction,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Nullable{System.Int32},System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+  With(int?, GamePhase?, int?, BoardState?, PlayerState?, PlayerState?, IEnumerable&lt;int&gt;?, PendingInteraction?, IEnumerable&lt;CardInstance&gt;?, int?, bool, int?, int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new GameState with the specified properties modified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GameState With(int? turnNumber = null, GamePhase? currentPhase = null, int? activePlayerId = null, BoardState? board = null, PlayerState? playerA = null, PlayerState? playerB = null, IEnumerable&lt;int&gt;? playersReady = null, PendingInteraction? pendingInteraction = null, IEnumerable&lt;CardInstance&gt;? spellStack = null, int? roundStartingPlayerId = null, bool clearPending = false, int? combatLineIndex = null, int? combatStep = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>turnNumber</code> <span class="xref">int</span>?</dt>
+    <dd><p>Optional new turn number.</p>
+</dd>
+    <dt><code>currentPhase</code> <a class="xref" href="CardGame.Core.State.Enums.GamePhase.html">GamePhase</a>?</dt>
+    <dd><p>Optional new game phase.</p>
+</dd>
+    <dt><code>activePlayerId</code> <span class="xref">int</span>?</dt>
+    <dd><p>Optional new active player ID.</p>
+</dd>
+    <dt><code>board</code> <a class="xref" href="CardGame.Core.State.Models.BoardState.html">BoardState</a></dt>
+    <dd><p>Optional new board state.</p>
+</dd>
+    <dt><code>playerA</code> <a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
+    <dd><p>Optional new player A state.</p>
+</dd>
+    <dt><code>playerB</code> <a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
+    <dd><p>Optional new player B state.</p>
+</dd>
+    <dt><code>playersReady</code> <span class="xref">IEnumerable</span>&lt;<span class="xref">int</span>&gt;</dt>
+    <dd><p>Optional new players ready list.</p>
+</dd>
+    <dt><code>pendingInteraction</code> <a class="xref" href="CardGame.Core.State.Models.PendingInteraction.html">PendingInteraction</a></dt>
+    <dd><p>Optional new pending interaction.</p>
+</dd>
+    <dt><code>spellStack</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
+    <dd><p>Optional new spell stack.</p>
+</dd>
+    <dt><code>roundStartingPlayerId</code> <span class="xref">int</span>?</dt>
+    <dd><p>Optional new round starting player ID.</p>
+</dd>
+    <dt><code>clearPending</code> <span class="xref">bool</span></dt>
+    <dd><p>Whether to clear any pending interaction.</p>
+</dd>
+    <dt><code>combatLineIndex</code> <span class="xref">int</span>?</dt>
+    <dd></dd>
+    <dt><code>combatStep</code> <span class="xref">int</span>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
+    <dd><p>A new GameState with the specified modifications.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/GameState.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

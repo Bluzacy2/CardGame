@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.Triggers
+  commentId: N:CardGame.Core.Events.Triggers
+  id: Triggers
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.Triggers.TriggerSystem
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Events.Triggers
+  nameWithType: CardGame.Core.Events.Triggers
+  fullName: CardGame.Core.Events.Triggers
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Events.Triggers.TriggerSystem
+  commentId: T:CardGame.Core.Events.Triggers.TriggerSystem
+  href: CardGame.Core.Events.Triggers.TriggerSystem.html
+  name: TriggerSystem
+  nameWithType: TriggerSystem
+  fullName: CardGame.Core.Events.Triggers.TriggerSystem

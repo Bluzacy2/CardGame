@@ -1,0 +1,587 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  id: ArchetypeChampion
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Archetype
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.CompositeFitness
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Dna
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.FromData(CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.GenerationAdded
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Individual
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsHybrid
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsSpecialist
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.LastUpdated
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.PurityScore
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.ToData
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.VersatilityScore
+  langs:
+  - csharp
+  - vb
+  name: ArchetypeChampion
+  nameWithType: ArchetypeChampion
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ArchetypeChampion
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1626
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class ArchetypeChampion
+    content.vb: Public Class ArchetypeChampion
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Individual
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Individual
+  id: Individual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: Individual
+  nameWithType: ArchetypeChampion.Individual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Individual
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Individual
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1628
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public EvolvableIndividual Individual { get; set; }
+    parameters: []
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    content.vb: Public Property Individual As EvolvableIndividual
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Individual*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.GenerationAdded
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.GenerationAdded
+  id: GenerationAdded
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: GenerationAdded
+  nameWithType: ArchetypeChampion.GenerationAdded
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.GenerationAdded
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GenerationAdded
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1629
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int GenerationAdded { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property GenerationAdded As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.GenerationAdded*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.PurityScore
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.PurityScore
+  id: PurityScore
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: PurityScore
+  nameWithType: ArchetypeChampion.PurityScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.PurityScore
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PurityScore
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1630
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float PurityScore { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property PurityScore As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.PurityScore*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsHybrid
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsHybrid
+  id: IsHybrid
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: IsHybrid
+  nameWithType: ArchetypeChampion.IsHybrid
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsHybrid
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: IsHybrid
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1631
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public bool IsHybrid { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsHybrid As Boolean
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsHybrid*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Archetype
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Archetype
+  id: Archetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: Archetype
+  nameWithType: ArchetypeChampion.Archetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Archetype
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Archetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1632
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string Archetype { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Archetype As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Archetype*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.VersatilityScore
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.VersatilityScore
+  id: VersatilityScore
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: VersatilityScore
+  nameWithType: ArchetypeChampion.VersatilityScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.VersatilityScore
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: VersatilityScore
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1633
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float VersatilityScore { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property VersatilityScore As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.VersatilityScore*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.LastUpdated
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.LastUpdated
+  id: LastUpdated
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: LastUpdated
+  nameWithType: ArchetypeChampion.LastUpdated
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.LastUpdated
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LastUpdated
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1634
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int LastUpdated { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property LastUpdated As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.LastUpdated*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsSpecialist
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsSpecialist
+  id: IsSpecialist
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: IsSpecialist
+  nameWithType: ArchetypeChampion.IsSpecialist
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsSpecialist
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: IsSpecialist
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1635
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public bool IsSpecialist { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsSpecialist As Boolean
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsSpecialist*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.CompositeFitness
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.CompositeFitness
+  id: CompositeFitness
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: CompositeFitness
+  nameWithType: ArchetypeChampion.CompositeFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.CompositeFitness
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CompositeFitness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1636
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float CompositeFitness { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property CompositeFitness As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.CompositeFitness*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Dna
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Dna
+  id: Dna
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: Dna
+  nameWithType: ArchetypeChampion.Dna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Dna
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Dna
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1638
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public NewDna Dna { get; }
+    parameters: []
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+    content.vb: Public ReadOnly Property Dna As NewDna
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Dna*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.ToData
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.ToData
+  id: ToData
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: ToData()
+  nameWithType: ArchetypeChampion.ToData()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.ToData()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ToData
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1640
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public ChampionData ToData()
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+    content.vb: Public Function ToData() As ChampionData
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.ToData*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.FromData(CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.FromData(CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData)
+  id: FromData(CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  langs:
+  - csharp
+  - vb
+  name: FromData(ChampionData)
+  nameWithType: ArchetypeChampion.FromData(ChampionData)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.FromData(CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: FromData
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1656
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static ArchetypeChampion FromData(ChampionData data)
+    parameters:
+    - id: data
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+    content.vb: Public Shared Function FromData(data As ChampionData) As ArchetypeChampion
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.FromData*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Individual*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Individual
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_Individual
+  name: Individual
+  nameWithType: ArchetypeChampion.Individual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Individual
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.GenerationAdded*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.GenerationAdded
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_GenerationAdded
+  name: GenerationAdded
+  nameWithType: ArchetypeChampion.GenerationAdded
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.GenerationAdded
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.PurityScore*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.PurityScore
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_PurityScore
+  name: PurityScore
+  nameWithType: ArchetypeChampion.PurityScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.PurityScore
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsHybrid*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsHybrid
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_IsHybrid
+  name: IsHybrid
+  nameWithType: ArchetypeChampion.IsHybrid
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsHybrid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Archetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Archetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_Archetype
+  name: Archetype
+  nameWithType: ArchetypeChampion.Archetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Archetype
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.VersatilityScore*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.VersatilityScore
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_VersatilityScore
+  name: VersatilityScore
+  nameWithType: ArchetypeChampion.VersatilityScore
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.VersatilityScore
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.LastUpdated*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.LastUpdated
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_LastUpdated
+  name: LastUpdated
+  nameWithType: ArchetypeChampion.LastUpdated
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.LastUpdated
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsSpecialist*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsSpecialist
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_IsSpecialist
+  name: IsSpecialist
+  nameWithType: ArchetypeChampion.IsSpecialist
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.IsSpecialist
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.CompositeFitness*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.CompositeFitness
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_CompositeFitness
+  name: CompositeFitness
+  nameWithType: ArchetypeChampion.CompositeFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.CompositeFitness
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Dna*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Dna
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_Dna
+  name: Dna
+  nameWithType: ArchetypeChampion.Dna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.Dna
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna.html
+  name: NewDna
+  nameWithType: NewDna
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.NewDna
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.ToData*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.ToData
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_ToData
+  name: ToData
+  nameWithType: ArchetypeChampion.ToData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.ToData
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData.html
+  name: ChampionData
+  nameWithType: ChampionData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ChampionData
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.FromData*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.FromData
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeChampion_FromData_CardGame_ConsoleApp_Evolution_V2_NewGen_ChampionData_
+  name: FromData
+  nameWithType: ArchetypeChampion.FromData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.FromData
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion.html
+  name: ArchetypeChampion
+  nameWithType: ArchetypeChampion
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeChampion

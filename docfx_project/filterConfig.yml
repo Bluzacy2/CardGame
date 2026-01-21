@@ -1,0 +1,17 @@
+apiRules:
+# 1. Najpierw WŁĄCZAMY nasze główne przestrzenie nazw
+- include:
+    uidRegex: ^CardGame
+    type: Namespace
+
+# 2. Wykluczamy testy (wszystko co ma Tests w nazwie lub namespace)
+- exclude:
+    uidRegex: .*Tests.*
+
+# 3. Wykluczamy biblioteki systemowe i zewnętrzne (zazwyczaj DocFX robi to sam, ale dla pewności)
+- exclude:
+    uidRegex: ^System
+- exclude:
+    uidRegex: ^Microsoft
+- exclude:
+    uidRegex: ^Godot

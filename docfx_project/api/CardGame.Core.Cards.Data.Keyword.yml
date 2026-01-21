@@ -1,0 +1,427 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.Keyword
+  commentId: T:CardGame.Core.Cards.Data.Keyword
+  id: Keyword
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.Keyword.Armor2
+  - CardGame.Core.Cards.Data.Keyword.Armored
+  - CardGame.Core.Cards.Data.Keyword.BurnSource
+  - CardGame.Core.Cards.Data.Keyword.Burning
+  - CardGame.Core.Cards.Data.Keyword.DoubleStrike
+  - CardGame.Core.Cards.Data.Keyword.Flying
+  - CardGame.Core.Cards.Data.Keyword.Marked
+  - CardGame.Core.Cards.Data.Keyword.None
+  - CardGame.Core.Cards.Data.Keyword.SoulGuard
+  - CardGame.Core.Cards.Data.Keyword.SoulGuardDepleted
+  - CardGame.Core.Cards.Data.Keyword.SplashDamage
+  - CardGame.Core.Cards.Data.Keyword.Stunned
+  - CardGame.Core.Cards.Data.Keyword.Unkillable
+  langs:
+  - csharp
+  - vb
+  name: Keyword
+  nameWithType: Keyword
+  fullName: CardGame.Core.Cards.Data.Keyword
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Keyword
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 24
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Represents special abilities or statuses that can be applied to cards.
+  example: []
+  syntax:
+    content: public enum Keyword
+    content.vb: Public Enum Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.None
+  commentId: F:CardGame.Core.Cards.Data.Keyword.None
+  id: None
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: Keyword.None
+  fullName: CardGame.Core.Cards.Data.Keyword.None
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: None
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 26
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: None = 0
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.Armored
+  commentId: F:CardGame.Core.Cards.Data.Keyword.Armored
+  id: Armored
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: Armored
+  nameWithType: Keyword.Armored
+  fullName: CardGame.Core.Cards.Data.Keyword.Armored
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Armored
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 27
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Armored = 1
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.Armor2
+  commentId: F:CardGame.Core.Cards.Data.Keyword.Armor2
+  id: Armor2
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: Armor2
+  nameWithType: Keyword.Armor2
+  fullName: CardGame.Core.Cards.Data.Keyword.Armor2
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Armor2
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 28
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Armor2 = 2
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.DoubleStrike
+  commentId: F:CardGame.Core.Cards.Data.Keyword.DoubleStrike
+  id: DoubleStrike
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: DoubleStrike
+  nameWithType: Keyword.DoubleStrike
+  fullName: CardGame.Core.Cards.Data.Keyword.DoubleStrike
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DoubleStrike
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 29
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: DoubleStrike = 3
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.SoulGuard
+  commentId: F:CardGame.Core.Cards.Data.Keyword.SoulGuard
+  id: SoulGuard
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: SoulGuard
+  nameWithType: Keyword.SoulGuard
+  fullName: CardGame.Core.Cards.Data.Keyword.SoulGuard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SoulGuard
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 30
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: SoulGuard = 4
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.Unkillable
+  commentId: F:CardGame.Core.Cards.Data.Keyword.Unkillable
+  id: Unkillable
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: Unkillable
+  nameWithType: Keyword.Unkillable
+  fullName: CardGame.Core.Cards.Data.Keyword.Unkillable
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Unkillable
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 31
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Unkillable = 5
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.Marked
+  commentId: F:CardGame.Core.Cards.Data.Keyword.Marked
+  id: Marked
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: Marked
+  nameWithType: Keyword.Marked
+  fullName: CardGame.Core.Cards.Data.Keyword.Marked
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Marked
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 32
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Marked = 6
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.SoulGuardDepleted
+  commentId: F:CardGame.Core.Cards.Data.Keyword.SoulGuardDepleted
+  id: SoulGuardDepleted
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: SoulGuardDepleted
+  nameWithType: Keyword.SoulGuardDepleted
+  fullName: CardGame.Core.Cards.Data.Keyword.SoulGuardDepleted
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SoulGuardDepleted
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 33
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: SoulGuardDepleted = 7
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.Burning
+  commentId: F:CardGame.Core.Cards.Data.Keyword.Burning
+  id: Burning
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: Burning
+  nameWithType: Keyword.Burning
+  fullName: CardGame.Core.Cards.Data.Keyword.Burning
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Burning
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 34
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Burning = 8
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.SplashDamage
+  commentId: F:CardGame.Core.Cards.Data.Keyword.SplashDamage
+  id: SplashDamage
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: SplashDamage
+  nameWithType: Keyword.SplashDamage
+  fullName: CardGame.Core.Cards.Data.Keyword.SplashDamage
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SplashDamage
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 35
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: SplashDamage = 9
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.BurnSource
+  commentId: F:CardGame.Core.Cards.Data.Keyword.BurnSource
+  id: BurnSource
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: BurnSource
+  nameWithType: Keyword.BurnSource
+  fullName: CardGame.Core.Cards.Data.Keyword.BurnSource
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BurnSource
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 36
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: BurnSource = 10
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.Stunned
+  commentId: F:CardGame.Core.Cards.Data.Keyword.Stunned
+  id: Stunned
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: Stunned
+  nameWithType: Keyword.Stunned
+  fullName: CardGame.Core.Cards.Data.Keyword.Stunned
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Stunned
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 37
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Stunned = 11
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Data.Keyword.Flying
+  commentId: F:CardGame.Core.Cards.Data.Keyword.Flying
+  id: Flying
+  parent: CardGame.Core.Cards.Data.Keyword
+  langs:
+  - csharp
+  - vb
+  name: Flying
+  nameWithType: Keyword.Flying
+  fullName: CardGame.Core.Cards.Data.Keyword.Flying
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/Enums.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Flying
+    path: ../Source/CardGame.Core/Cards/Data/Enums.cs
+    startLine: 38
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  syntax:
+    content: Flying = 12
+    return:
+      type: CardGame.Core.Cards.Data.Keyword
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.Core.Cards.Data.Keyword
+  commentId: T:CardGame.Core.Cards.Data.Keyword
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: Keyword
+  nameWithType: Keyword
+  fullName: CardGame.Core.Cards.Data.Keyword

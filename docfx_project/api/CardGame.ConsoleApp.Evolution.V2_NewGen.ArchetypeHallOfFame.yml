@@ -1,0 +1,591 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  id: ArchetypeHallOfFame
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.AddCandidate(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Int32,System.Single,System.Single)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetAllChampions
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBest(System.String)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestHybrid
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestSpecialist(System.String)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes(System.Collections.Generic.Dictionary{System.String,System.Single})
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.Initialize
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.PrintStatus
+  langs:
+  - csharp
+  - vb
+  name: ArchetypeHallOfFame
+  nameWithType: ArchetypeHallOfFame
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ArchetypeHallOfFame
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1267
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class ArchetypeHallOfFame
+    content.vb: Public Class ArchetypeHallOfFame
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.Initialize
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.Initialize
+  id: Initialize
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: ArchetypeHallOfFame.Initialize()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.Initialize()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Initialize
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1274
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void Initialize()
+    content.vb: Public Sub Initialize()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.Initialize*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.AddCandidate(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Int32,System.Single,System.Single)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.AddCandidate(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Int32,System.Single,System.Single)
+  id: AddCandidate(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual,System.Int32,System.Single,System.Single)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  langs:
+  - csharp
+  - vb
+  name: AddCandidate(EvolvableIndividual, int, float, float)
+  nameWithType: ArchetypeHallOfFame.AddCandidate(EvolvableIndividual, int, float, float)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.AddCandidate(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, int, float, float)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AddCandidate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1283
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void AddCandidate(EvolvableIndividual candidate, int generation, float avgPopulationFitness, float versatilityScore)
+    parameters:
+    - id: candidate
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    - id: generation
+      type: System.Int32
+    - id: avgPopulationFitness
+      type: System.Single
+    - id: versatilityScore
+      type: System.Single
+    content.vb: Public Sub AddCandidate(candidate As EvolvableIndividual, generation As Integer, avgPopulationFitness As Single, versatilityScore As Single)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.AddCandidate*
+  nameWithType.vb: ArchetypeHallOfFame.AddCandidate(EvolvableIndividual, Integer, Single, Single)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.AddCandidate(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual, Integer, Single, Single)
+  name.vb: AddCandidate(EvolvableIndividual, Integer, Single, Single)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBest(System.String)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBest(System.String)
+  id: GetBest(System.String)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  langs:
+  - csharp
+  - vb
+  name: GetBest(string)
+  nameWithType: ArchetypeHallOfFame.GetBest(string)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBest(string)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetBest
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1478
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public EvolvableIndividual GetBest(string archetype)
+    parameters:
+    - id: archetype
+      type: System.String
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    content.vb: Public Function GetBest(archetype As String) As EvolvableIndividual
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBest*
+  nameWithType.vb: ArchetypeHallOfFame.GetBest(String)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBest(String)
+  name.vb: GetBest(String)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestSpecialist(System.String)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestSpecialist(System.String)
+  id: GetBestSpecialist(System.String)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  langs:
+  - csharp
+  - vb
+  name: GetBestSpecialist(string)
+  nameWithType: ArchetypeHallOfFame.GetBestSpecialist(string)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestSpecialist(string)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetBestSpecialist
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1486
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public EvolvableIndividual GetBestSpecialist(string archetype)
+    parameters:
+    - id: archetype
+      type: System.String
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    content.vb: Public Function GetBestSpecialist(archetype As String) As EvolvableIndividual
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestSpecialist*
+  nameWithType.vb: ArchetypeHallOfFame.GetBestSpecialist(String)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestSpecialist(String)
+  name.vb: GetBestSpecialist(String)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestHybrid
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestHybrid
+  id: GetBestHybrid
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  langs:
+  - csharp
+  - vb
+  name: GetBestHybrid()
+  nameWithType: ArchetypeHallOfFame.GetBestHybrid()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestHybrid()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetBestHybrid
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1496
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public EvolvableIndividual GetBestHybrid()
+    return:
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    content.vb: Public Function GetBestHybrid() As EvolvableIndividual
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestHybrid*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetAllChampions
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetAllChampions
+  id: GetAllChampions
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  langs:
+  - csharp
+  - vb
+  name: GetAllChampions()
+  nameWithType: ArchetypeHallOfFame.GetAllChampions()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetAllChampions()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetAllChampions
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1501
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<EvolvableIndividual> GetAllChampions()
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+    content.vb: Public Function GetAllChampions() As List(Of EvolvableIndividual)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetAllChampions*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes(System.Collections.Generic.Dictionary{System.String,System.Single})
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes(System.Collections.Generic.Dictionary{System.String,System.Single})
+  id: GetSpecialistsForUnderrepresentedArchetypes(System.Collections.Generic.Dictionary{System.String,System.Single})
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  langs:
+  - csharp
+  - vb
+  name: GetSpecialistsForUnderrepresentedArchetypes(Dictionary<string, float>)
+  nameWithType: ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes(Dictionary<string, float>)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes(System.Collections.Generic.Dictionary<string, float>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetSpecialistsForUnderrepresentedArchetypes
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1516
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<EvolvableIndividual> GetSpecialistsForUnderrepresentedArchetypes(Dictionary<string, float> archetypePrevalence)
+    parameters:
+    - id: archetypePrevalence
+      type: System.Collections.Generic.Dictionary{System.String,System.Single}
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+    content.vb: Public Function GetSpecialistsForUnderrepresentedArchetypes(archetypePrevalence As Dictionary(Of String, Single)) As List(Of EvolvableIndividual)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes*
+  nameWithType.vb: ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes(Dictionary(Of String, Single))
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes(System.Collections.Generic.Dictionary(Of String, Single))
+  name.vb: GetSpecialistsForUnderrepresentedArchetypes(Dictionary(Of String, Single))
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.PrintStatus
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.PrintStatus
+  id: PrintStatus
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame
+  langs:
+  - csharp
+  - vb
+  name: PrintStatus()
+  nameWithType: ArchetypeHallOfFame.PrintStatus()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.PrintStatus()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PrintStatus
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1533
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void PrintStatus()
+    content.vb: Public Sub PrintStatus()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.PrintStatus*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.Initialize*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.Initialize
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeHallOfFame_Initialize
+  name: Initialize
+  nameWithType: ArchetypeHallOfFame.Initialize
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.Initialize
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.AddCandidate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.AddCandidate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeHallOfFame_AddCandidate_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_System_Int32_System_Single_System_Single_
+  name: AddCandidate
+  nameWithType: ArchetypeHallOfFame.AddCandidate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.AddCandidate
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBest*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBest
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeHallOfFame_GetBest_System_String_
+  name: GetBest
+  nameWithType: ArchetypeHallOfFame.GetBest
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBest
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestSpecialist*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestSpecialist
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeHallOfFame_GetBestSpecialist_System_String_
+  name: GetBestSpecialist
+  nameWithType: ArchetypeHallOfFame.GetBestSpecialist
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestSpecialist
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestHybrid*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestHybrid
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeHallOfFame_GetBestHybrid
+  name: GetBestHybrid
+  nameWithType: ArchetypeHallOfFame.GetBestHybrid
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetBestHybrid
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetAllChampions*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetAllChampions
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeHallOfFame_GetAllChampions
+  name: GetAllChampions
+  nameWithType: ArchetypeHallOfFame.GetAllChampions
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetAllChampions
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: List<EvolvableIndividual>
+  nameWithType: List<EvolvableIndividual>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>
+  nameWithType.vb: List(Of EvolvableIndividual)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  name.vb: List(Of EvolvableIndividual)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeHallOfFame_GetSpecialistsForUnderrepresentedArchetypes_System_Collections_Generic_Dictionary_System_String_System_Single__
+  name: GetSpecialistsForUnderrepresentedArchetypes
+  nameWithType: ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.GetSpecialistsForUnderrepresentedArchetypes
+- uid: System.Collections.Generic.Dictionary{System.String,System.Single}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<string, float>
+  nameWithType: Dictionary<string, float>
+  fullName: System.Collections.Generic.Dictionary<string, float>
+  nameWithType.vb: Dictionary(Of String, Single)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Single)
+  name.vb: Dictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.PrintStatus*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.PrintStatus
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeHallOfFame_PrintStatus
+  name: PrintStatus
+  nameWithType: ArchetypeHallOfFame.PrintStatus
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeHallOfFame.PrintStatus

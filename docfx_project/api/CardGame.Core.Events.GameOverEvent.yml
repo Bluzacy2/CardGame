@@ -1,0 +1,312 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.GameOverEvent
+  commentId: T:CardGame.Core.Events.GameOverEvent
+  id: GameOverEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.GameOverEvent.#ctor(System.Nullable{System.Int32})
+  - CardGame.Core.Events.GameOverEvent.SourcePlayerId
+  - CardGame.Core.Events.GameOverEvent.WinnerId
+  langs:
+  - csharp
+  - vb
+  name: GameOverEvent
+  nameWithType: GameOverEvent
+  fullName: CardGame.Core.Events.GameOverEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/GameOverEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GameOverEvent
+    path: ../Source/CardGame.Core/Events/GameOverEvent.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs when the game ends.
+  example: []
+  syntax:
+    content: 'public class GameOverEvent : IGameEvent'
+    content.vb: Public Class GameOverEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.GameOverEvent.WinnerId
+  commentId: P:CardGame.Core.Events.GameOverEvent.WinnerId
+  id: WinnerId
+  parent: CardGame.Core.Events.GameOverEvent
+  langs:
+  - csharp
+  - vb
+  name: WinnerId
+  nameWithType: GameOverEvent.WinnerId
+  fullName: CardGame.Core.Events.GameOverEvent.WinnerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/GameOverEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: WinnerId
+    path: ../Source/CardGame.Core/Events/GameOverEvent.cs
+    startLine: 14
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the winning player, or null if the game ended in a draw.
+  example: []
+  syntax:
+    content: public int? WinnerId { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property WinnerId As Integer?
+  overload: CardGame.Core.Events.GameOverEvent.WinnerId*
+- uid: CardGame.Core.Events.GameOverEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.GameOverEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.GameOverEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: GameOverEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.GameOverEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/GameOverEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/GameOverEvent.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who caused the game to end (the winner, or 0 for draw).
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.GameOverEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.GameOverEvent.#ctor(System.Nullable{System.Int32})
+  commentId: M:CardGame.Core.Events.GameOverEvent.#ctor(System.Nullable{System.Int32})
+  id: '#ctor(System.Nullable{System.Int32})'
+  parent: CardGame.Core.Events.GameOverEvent
+  langs:
+  - csharp
+  - vb
+  name: GameOverEvent(int?)
+  nameWithType: GameOverEvent.GameOverEvent(int?)
+  fullName: CardGame.Core.Events.GameOverEvent.GameOverEvent(int?)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/GameOverEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/GameOverEvent.cs
+    startLine: 25
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the GameOverEvent class.
+  example: []
+  syntax:
+    content: public GameOverEvent(int? winnerId)
+    parameters:
+    - id: winnerId
+      type: System.Nullable{System.Int32}
+      description: The ID of the winning player, or null for a draw.
+    content.vb: Public Sub New(winnerId As Integer?)
+  overload: CardGame.Core.Events.GameOverEvent.#ctor*
+  nameWithType.vb: GameOverEvent.New(Integer?)
+  fullName.vb: CardGame.Core.Events.GameOverEvent.New(Integer?)
+  name.vb: New(Integer?)
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.GameOverEvent.WinnerId*
+  commentId: Overload:CardGame.Core.Events.GameOverEvent.WinnerId
+  href: CardGame.Core.Events.GameOverEvent.html#CardGame_Core_Events_GameOverEvent_WinnerId
+  name: WinnerId
+  nameWithType: GameOverEvent.WinnerId
+  fullName: CardGame.Core.Events.GameOverEvent.WinnerId
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Events.GameOverEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.GameOverEvent.SourcePlayerId
+  href: CardGame.Core.Events.GameOverEvent.html#CardGame_Core_Events_GameOverEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: GameOverEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.GameOverEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.GameOverEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.GameOverEvent.#ctor
+  href: CardGame.Core.Events.GameOverEvent.html#CardGame_Core_Events_GameOverEvent__ctor_System_Nullable_System_Int32__
+  name: GameOverEvent
+  nameWithType: GameOverEvent.GameOverEvent
+  fullName: CardGame.Core.Events.GameOverEvent.GameOverEvent
+  nameWithType.vb: GameOverEvent.New
+  fullName.vb: CardGame.Core.Events.GameOverEvent.New
+  name.vb: New

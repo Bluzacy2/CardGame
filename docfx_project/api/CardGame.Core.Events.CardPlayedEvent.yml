@@ -1,0 +1,480 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.CardPlayedEvent
+  commentId: T:CardGame.Core.Events.CardPlayedEvent
+  id: CardPlayedEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.CardPlayedEvent.#ctor(System.Int32,CardGame.Core.Cards.Models.CardInstance,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  - CardGame.Core.Events.CardPlayedEvent.Card
+  - CardGame.Core.Events.CardPlayedEvent.LineIndex
+  - CardGame.Core.Events.CardPlayedEvent.PlayerId
+  - CardGame.Core.Events.CardPlayedEvent.SelectedTargetId
+  - CardGame.Core.Events.CardPlayedEvent.SourcePlayerId
+  langs:
+  - csharp
+  - vb
+  name: CardPlayedEvent
+  nameWithType: CardPlayedEvent
+  fullName: CardGame.Core.Events.CardPlayedEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardPlayedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardPlayedEvent
+    path: ../Source/CardGame.Core/Events/CardPlayedEvent.cs
+    startLine: 10
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs when a card is played from hand to the board.
+  example: []
+  syntax:
+    content: 'public class CardPlayedEvent : IGameEvent'
+    content.vb: Public Class CardPlayedEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.CardPlayedEvent.#ctor(System.Int32,CardGame.Core.Cards.Models.CardInstance,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  commentId: M:CardGame.Core.Events.CardPlayedEvent.#ctor(System.Int32,CardGame.Core.Cards.Models.CardInstance,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  id: '#ctor(System.Int32,CardGame.Core.Cards.Models.CardInstance,System.Nullable{System.Int32},System.Nullable{System.Int32})'
+  parent: CardGame.Core.Events.CardPlayedEvent
+  langs:
+  - csharp
+  - vb
+  name: CardPlayedEvent(int, CardInstance, int?, int?)
+  nameWithType: CardPlayedEvent.CardPlayedEvent(int, CardInstance, int?, int?)
+  fullName: CardGame.Core.Events.CardPlayedEvent.CardPlayedEvent(int, CardGame.Core.Cards.Models.CardInstance, int?, int?)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardPlayedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/CardPlayedEvent.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the CardPlayedEvent class.
+  example: []
+  syntax:
+    content: public CardPlayedEvent(int playerId, CardInstance card, int? lineIndex, int? selectedTargetId)
+    parameters:
+    - id: playerId
+      type: System.Int32
+      description: The ID of the player who played the card.
+    - id: card
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The card instance that was played.
+    - id: lineIndex
+      type: System.Nullable{System.Int32}
+      description: The optional board lane index for unit placement.
+    - id: selectedTargetId
+      type: System.Nullable{System.Int32}
+      description: The optional target ID for card effects.
+    content.vb: Public Sub New(playerId As Integer, card As CardInstance, lineIndex As Integer?, selectedTargetId As Integer?)
+  overload: CardGame.Core.Events.CardPlayedEvent.#ctor*
+  nameWithType.vb: CardPlayedEvent.New(Integer, CardInstance, Integer?, Integer?)
+  fullName.vb: CardGame.Core.Events.CardPlayedEvent.New(Integer, CardGame.Core.Cards.Models.CardInstance, Integer?, Integer?)
+  name.vb: New(Integer, CardInstance, Integer?, Integer?)
+- uid: CardGame.Core.Events.CardPlayedEvent.PlayerId
+  commentId: P:CardGame.Core.Events.CardPlayedEvent.PlayerId
+  id: PlayerId
+  parent: CardGame.Core.Events.CardPlayedEvent
+  langs:
+  - csharp
+  - vb
+  name: PlayerId
+  nameWithType: CardPlayedEvent.PlayerId
+  fullName: CardGame.Core.Events.CardPlayedEvent.PlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardPlayedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerId
+    path: ../Source/CardGame.Core/Events/CardPlayedEvent.cs
+    startLine: 30
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who played the card.
+  example: []
+  syntax:
+    content: public int PlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PlayerId As Integer
+  overload: CardGame.Core.Events.CardPlayedEvent.PlayerId*
+- uid: CardGame.Core.Events.CardPlayedEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.CardPlayedEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.CardPlayedEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: CardPlayedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.CardPlayedEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardPlayedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/CardPlayedEvent.cs
+    startLine: 35
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who played the card.
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.CardPlayedEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.CardPlayedEvent.Card
+  commentId: P:CardGame.Core.Events.CardPlayedEvent.Card
+  id: Card
+  parent: CardGame.Core.Events.CardPlayedEvent
+  langs:
+  - csharp
+  - vb
+  name: Card
+  nameWithType: CardPlayedEvent.Card
+  fullName: CardGame.Core.Events.CardPlayedEvent.Card
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardPlayedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Card
+    path: ../Source/CardGame.Core/Events/CardPlayedEvent.cs
+    startLine: 40
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the card instance that was played.
+  example: []
+  syntax:
+    content: public CardInstance Card { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+    content.vb: Public ReadOnly Property Card As CardInstance
+  overload: CardGame.Core.Events.CardPlayedEvent.Card*
+- uid: CardGame.Core.Events.CardPlayedEvent.LineIndex
+  commentId: P:CardGame.Core.Events.CardPlayedEvent.LineIndex
+  id: LineIndex
+  parent: CardGame.Core.Events.CardPlayedEvent
+  langs:
+  - csharp
+  - vb
+  name: LineIndex
+  nameWithType: CardPlayedEvent.LineIndex
+  fullName: CardGame.Core.Events.CardPlayedEvent.LineIndex
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardPlayedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LineIndex
+    path: ../Source/CardGame.Core/Events/CardPlayedEvent.cs
+    startLine: 45
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the optional board lane index where the unit was placed.
+  example: []
+  syntax:
+    content: public int? LineIndex { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property LineIndex As Integer?
+  overload: CardGame.Core.Events.CardPlayedEvent.LineIndex*
+- uid: CardGame.Core.Events.CardPlayedEvent.SelectedTargetId
+  commentId: P:CardGame.Core.Events.CardPlayedEvent.SelectedTargetId
+  id: SelectedTargetId
+  parent: CardGame.Core.Events.CardPlayedEvent
+  langs:
+  - csharp
+  - vb
+  name: SelectedTargetId
+  nameWithType: CardPlayedEvent.SelectedTargetId
+  fullName: CardGame.Core.Events.CardPlayedEvent.SelectedTargetId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardPlayedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SelectedTargetId
+    path: ../Source/CardGame.Core/Events/CardPlayedEvent.cs
+    startLine: 50
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the optional ID of a selected target for the card effect.
+  example: []
+  syntax:
+    content: public int? SelectedTargetId { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property SelectedTargetId As Integer?
+  overload: CardGame.Core.Events.CardPlayedEvent.SelectedTargetId*
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.CardPlayedEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.CardPlayedEvent.#ctor
+  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent__ctor_System_Int32_CardGame_Core_Cards_Models_CardInstance_System_Nullable_System_Int32__System_Nullable_System_Int32__
+  name: CardPlayedEvent
+  nameWithType: CardPlayedEvent.CardPlayedEvent
+  fullName: CardGame.Core.Events.CardPlayedEvent.CardPlayedEvent
+  nameWithType.vb: CardPlayedEvent.New
+  fullName.vb: CardGame.Core.Events.CardPlayedEvent.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Events.CardPlayedEvent.PlayerId*
+  commentId: Overload:CardGame.Core.Events.CardPlayedEvent.PlayerId
+  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent_PlayerId
+  name: PlayerId
+  nameWithType: CardPlayedEvent.PlayerId
+  fullName: CardGame.Core.Events.CardPlayedEvent.PlayerId
+- uid: CardGame.Core.Events.CardPlayedEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.CardPlayedEvent.SourcePlayerId
+  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: CardPlayedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.CardPlayedEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+- uid: CardGame.Core.Events.CardPlayedEvent.Card*
+  commentId: Overload:CardGame.Core.Events.CardPlayedEvent.Card
+  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent_Card
+  name: Card
+  nameWithType: CardPlayedEvent.Card
+  fullName: CardGame.Core.Events.CardPlayedEvent.Card
+- uid: CardGame.Core.Events.CardPlayedEvent.LineIndex*
+  commentId: Overload:CardGame.Core.Events.CardPlayedEvent.LineIndex
+  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent_LineIndex
+  name: LineIndex
+  nameWithType: CardPlayedEvent.LineIndex
+  fullName: CardGame.Core.Events.CardPlayedEvent.LineIndex
+- uid: CardGame.Core.Events.CardPlayedEvent.SelectedTargetId*
+  commentId: Overload:CardGame.Core.Events.CardPlayedEvent.SelectedTargetId
+  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent_SelectedTargetId
+  name: SelectedTargetId
+  nameWithType: CardPlayedEvent.SelectedTargetId
+  fullName: CardGame.Core.Events.CardPlayedEvent.SelectedTargetId

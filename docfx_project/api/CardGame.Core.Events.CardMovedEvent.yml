@@ -1,0 +1,438 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Events.CardMovedEvent
+  commentId: T:CardGame.Core.Events.CardMovedEvent
+  id: CardMovedEvent
+  parent: CardGame.Core.Events
+  children:
+  - CardGame.Core.Events.CardMovedEvent.#ctor(System.Int32,System.Int32,CardGame.Core.Events.CardZone,CardGame.Core.Events.CardZone,System.Int32)
+  - CardGame.Core.Events.CardMovedEvent.CardId
+  - CardGame.Core.Events.CardMovedEvent.From
+  - CardGame.Core.Events.CardMovedEvent.OwnerId
+  - CardGame.Core.Events.CardMovedEvent.SourcePlayerId
+  - CardGame.Core.Events.CardMovedEvent.To
+  - CardGame.Core.Events.CardMovedEvent.ToIndex
+  langs:
+  - csharp
+  - vb
+  name: CardMovedEvent
+  nameWithType: CardMovedEvent
+  fullName: CardGame.Core.Events.CardMovedEvent
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardMovedEvent
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 14
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Represents an event that occurs when a card moves between game zones.
+  example: []
+  syntax:
+    content: 'public class CardMovedEvent : IGameEvent'
+    content.vb: Public Class CardMovedEvent Implements IGameEvent
+  inheritance:
+  - System.Object
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent
+- uid: CardGame.Core.Events.CardMovedEvent.#ctor(System.Int32,System.Int32,CardGame.Core.Events.CardZone,CardGame.Core.Events.CardZone,System.Int32)
+  commentId: M:CardGame.Core.Events.CardMovedEvent.#ctor(System.Int32,System.Int32,CardGame.Core.Events.CardZone,CardGame.Core.Events.CardZone,System.Int32)
+  id: '#ctor(System.Int32,System.Int32,CardGame.Core.Events.CardZone,CardGame.Core.Events.CardZone,System.Int32)'
+  parent: CardGame.Core.Events.CardMovedEvent
+  langs:
+  - csharp
+  - vb
+  name: CardMovedEvent(int, int, CardZone, CardZone, int)
+  nameWithType: CardMovedEvent.CardMovedEvent(int, int, CardZone, CardZone, int)
+  fullName: CardGame.Core.Events.CardMovedEvent.CardMovedEvent(int, int, CardGame.Core.Events.CardZone, CardGame.Core.Events.CardZone, int)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 24
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Initializes a new instance of the CardMovedEvent class.
+  example: []
+  syntax:
+    content: public CardMovedEvent(int cardId, int ownerId, CardZone from, CardZone to, int toIndex = -1)
+    parameters:
+    - id: cardId
+      type: System.Int32
+      description: The instance ID of the card that moved.
+    - id: ownerId
+      type: System.Int32
+      description: The ID of the player who owns the card.
+    - id: from
+      type: CardGame.Core.Events.CardZone
+      description: The zone the card moved from.
+    - id: to
+      type: CardGame.Core.Events.CardZone
+      description: The zone the card moved to.
+    - id: toIndex
+      type: System.Int32
+      description: The optional index position within the destination zone.
+    content.vb: Public Sub New(cardId As Integer, ownerId As Integer, from As CardZone, [to] As CardZone, toIndex As Integer = -1)
+  overload: CardGame.Core.Events.CardMovedEvent.#ctor*
+  nameWithType.vb: CardMovedEvent.New(Integer, Integer, CardZone, CardZone, Integer)
+  fullName.vb: CardGame.Core.Events.CardMovedEvent.New(Integer, Integer, CardGame.Core.Events.CardZone, CardGame.Core.Events.CardZone, Integer)
+  name.vb: New(Integer, Integer, CardZone, CardZone, Integer)
+- uid: CardGame.Core.Events.CardMovedEvent.CardId
+  commentId: P:CardGame.Core.Events.CardMovedEvent.CardId
+  id: CardId
+  parent: CardGame.Core.Events.CardMovedEvent
+  langs:
+  - csharp
+  - vb
+  name: CardId
+  nameWithType: CardMovedEvent.CardId
+  fullName: CardGame.Core.Events.CardMovedEvent.CardId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardId
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 36
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the instance ID of the card that moved.
+  example: []
+  syntax:
+    content: public int CardId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property CardId As Integer
+  overload: CardGame.Core.Events.CardMovedEvent.CardId*
+- uid: CardGame.Core.Events.CardMovedEvent.OwnerId
+  commentId: P:CardGame.Core.Events.CardMovedEvent.OwnerId
+  id: OwnerId
+  parent: CardGame.Core.Events.CardMovedEvent
+  langs:
+  - csharp
+  - vb
+  name: OwnerId
+  nameWithType: CardMovedEvent.OwnerId
+  fullName: CardGame.Core.Events.CardMovedEvent.OwnerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OwnerId
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 41
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who owns the card.
+  example: []
+  syntax:
+    content: public int OwnerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property OwnerId As Integer
+  overload: CardGame.Core.Events.CardMovedEvent.OwnerId*
+- uid: CardGame.Core.Events.CardMovedEvent.From
+  commentId: P:CardGame.Core.Events.CardMovedEvent.From
+  id: From
+  parent: CardGame.Core.Events.CardMovedEvent
+  langs:
+  - csharp
+  - vb
+  name: From
+  nameWithType: CardMovedEvent.From
+  fullName: CardGame.Core.Events.CardMovedEvent.From
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: From
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 46
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the zone the card moved from.
+  example: []
+  syntax:
+    content: public CardZone From { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Events.CardZone
+    content.vb: Public ReadOnly Property From As CardZone
+  overload: CardGame.Core.Events.CardMovedEvent.From*
+- uid: CardGame.Core.Events.CardMovedEvent.To
+  commentId: P:CardGame.Core.Events.CardMovedEvent.To
+  id: To
+  parent: CardGame.Core.Events.CardMovedEvent
+  langs:
+  - csharp
+  - vb
+  name: To
+  nameWithType: CardMovedEvent.To
+  fullName: CardGame.Core.Events.CardMovedEvent.To
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: To
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 51
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the zone the card moved to.
+  example: []
+  syntax:
+    content: public CardZone To { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Events.CardZone
+    content.vb: Public ReadOnly Property [To] As CardZone
+  overload: CardGame.Core.Events.CardMovedEvent.To*
+- uid: CardGame.Core.Events.CardMovedEvent.ToIndex
+  commentId: P:CardGame.Core.Events.CardMovedEvent.ToIndex
+  id: ToIndex
+  parent: CardGame.Core.Events.CardMovedEvent
+  langs:
+  - csharp
+  - vb
+  name: ToIndex
+  nameWithType: CardMovedEvent.ToIndex
+  fullName: CardGame.Core.Events.CardMovedEvent.ToIndex
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ToIndex
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 56
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the optional index position within the destination zone.
+  example: []
+  syntax:
+    content: public int ToIndex { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ToIndex As Integer
+  overload: CardGame.Core.Events.CardMovedEvent.ToIndex*
+- uid: CardGame.Core.Events.CardMovedEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.CardMovedEvent.SourcePlayerId
+  id: SourcePlayerId
+  parent: CardGame.Core.Events.CardMovedEvent
+  langs:
+  - csharp
+  - vb
+  name: SourcePlayerId
+  nameWithType: CardMovedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.CardMovedEvent.SourcePlayerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Events/CardMovedEvent.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SourcePlayerId
+    path: ../Source/CardGame.Core/Events/CardMovedEvent.cs
+    startLine: 61
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Events
+  summary: Gets the ID of the player who owns the card.
+  example: []
+  syntax:
+    content: public int SourcePlayerId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SourcePlayerId As Integer
+  overload: CardGame.Core.Events.CardMovedEvent.SourcePlayerId*
+  implements:
+  - CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+references:
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: CardGame.Core.Events.Interfaces.IGameEvent
+  commentId: T:CardGame.Core.Events.Interfaces.IGameEvent
+  parent: CardGame.Core.Events.Interfaces
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IGameEvent
+  nameWithType: IGameEvent
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Events.Interfaces
+  commentId: N:CardGame.Core.Events.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Events.Interfaces
+  nameWithType: CardGame.Core.Events.Interfaces
+  fullName: CardGame.Core.Events.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  - name: .
+  - uid: CardGame.Core.Events.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Events.Interfaces.html
+- uid: CardGame.Core.Events.CardMovedEvent.#ctor*
+  commentId: Overload:CardGame.Core.Events.CardMovedEvent.#ctor
+  href: CardGame.Core.Events.CardMovedEvent.html#CardGame_Core_Events_CardMovedEvent__ctor_System_Int32_System_Int32_CardGame_Core_Events_CardZone_CardGame_Core_Events_CardZone_System_Int32_
+  name: CardMovedEvent
+  nameWithType: CardMovedEvent.CardMovedEvent
+  fullName: CardGame.Core.Events.CardMovedEvent.CardMovedEvent
+  nameWithType.vb: CardMovedEvent.New
+  fullName.vb: CardGame.Core.Events.CardMovedEvent.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Events.CardZone
+  commentId: T:CardGame.Core.Events.CardZone
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.CardZone.html
+  name: CardZone
+  nameWithType: CardZone
+  fullName: CardGame.Core.Events.CardZone
+- uid: CardGame.Core.Events.CardMovedEvent.CardId*
+  commentId: Overload:CardGame.Core.Events.CardMovedEvent.CardId
+  href: CardGame.Core.Events.CardMovedEvent.html#CardGame_Core_Events_CardMovedEvent_CardId
+  name: CardId
+  nameWithType: CardMovedEvent.CardId
+  fullName: CardGame.Core.Events.CardMovedEvent.CardId
+- uid: CardGame.Core.Events.CardMovedEvent.OwnerId*
+  commentId: Overload:CardGame.Core.Events.CardMovedEvent.OwnerId
+  href: CardGame.Core.Events.CardMovedEvent.html#CardGame_Core_Events_CardMovedEvent_OwnerId
+  name: OwnerId
+  nameWithType: CardMovedEvent.OwnerId
+  fullName: CardGame.Core.Events.CardMovedEvent.OwnerId
+- uid: CardGame.Core.Events.CardMovedEvent.From*
+  commentId: Overload:CardGame.Core.Events.CardMovedEvent.From
+  href: CardGame.Core.Events.CardMovedEvent.html#CardGame_Core_Events_CardMovedEvent_From
+  name: From
+  nameWithType: CardMovedEvent.From
+  fullName: CardGame.Core.Events.CardMovedEvent.From
+- uid: CardGame.Core.Events.CardMovedEvent.To*
+  commentId: Overload:CardGame.Core.Events.CardMovedEvent.To
+  href: CardGame.Core.Events.CardMovedEvent.html#CardGame_Core_Events_CardMovedEvent_To
+  name: To
+  nameWithType: CardMovedEvent.To
+  fullName: CardGame.Core.Events.CardMovedEvent.To
+- uid: CardGame.Core.Events.CardMovedEvent.ToIndex*
+  commentId: Overload:CardGame.Core.Events.CardMovedEvent.ToIndex
+  href: CardGame.Core.Events.CardMovedEvent.html#CardGame_Core_Events_CardMovedEvent_ToIndex
+  name: ToIndex
+  nameWithType: CardMovedEvent.ToIndex
+  fullName: CardGame.Core.Events.CardMovedEvent.ToIndex
+- uid: CardGame.Core.Events.CardMovedEvent.SourcePlayerId*
+  commentId: Overload:CardGame.Core.Events.CardMovedEvent.SourcePlayerId
+  href: CardGame.Core.Events.CardMovedEvent.html#CardGame_Core_Events_CardMovedEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: CardMovedEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.CardMovedEvent.SourcePlayerId
+- uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+  parent: CardGame.Core.Events.Interfaces.IGameEvent
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  name: SourcePlayerId
+  nameWithType: IGameEvent.SourcePlayerId
+  fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId

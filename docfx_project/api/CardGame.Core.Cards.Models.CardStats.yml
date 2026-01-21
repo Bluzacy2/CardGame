@@ -1,0 +1,873 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Models.CardStats
+  commentId: T:CardGame.Core.Cards.Models.CardStats
+  id: CardStats
+  parent: CardGame.Core.Cards.Models
+  children:
+  - CardGame.Core.Cards.Models.CardStats.#ctor(System.Int32,System.Int32,System.Int32,CardGame.Core.Cards.Data.ResourceType)
+  - CardGame.Core.Cards.Models.CardStats.#ctor(System.Int32,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword},System.Collections.Generic.Dictionary{CardGame.Core.Cards.Data.Keyword,System.Int32},CardGame.Core.Cards.Data.ResourceType)
+  - CardGame.Core.Cards.Models.CardStats.Attack
+  - CardGame.Core.Cards.Models.CardStats.BloodCost
+  - CardGame.Core.Cards.Models.CardStats.CostType
+  - CardGame.Core.Cards.Models.CardStats.Health
+  - CardGame.Core.Cards.Models.CardStats.KeywordParams
+  - CardGame.Core.Cards.Models.CardStats.Keywords
+  - CardGame.Core.Cards.Models.CardStats.WithKeyword(CardGame.Core.Cards.Data.Keyword)
+  - CardGame.Core.Cards.Models.CardStats.op_Addition(CardGame.Core.Cards.Models.CardStats,CardGame.Core.Cards.Models.CardStats)
+  langs:
+  - csharp
+  - vb
+  name: CardStats
+  nameWithType: CardStats
+  fullName: CardGame.Core.Cards.Models.CardStats
+  type: Struct
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardStats
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 9
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: >-
+    Represents the statistics and attributes of a card, including attack, health, cost, and keywords.
+
+    This struct is immutable; all modification operations return new instances.
+  example: []
+  syntax:
+    content: public struct CardStats
+    content.vb: Public Structure CardStats
+- uid: CardGame.Core.Cards.Models.CardStats.#ctor(System.Int32,System.Int32,System.Int32,CardGame.Core.Cards.Data.ResourceType)
+  commentId: M:CardGame.Core.Cards.Models.CardStats.#ctor(System.Int32,System.Int32,System.Int32,CardGame.Core.Cards.Data.ResourceType)
+  id: '#ctor(System.Int32,System.Int32,System.Int32,CardGame.Core.Cards.Data.ResourceType)'
+  parent: CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: CardStats(int, int, int, ResourceType)
+  nameWithType: CardStats.CardStats(int, int, int, ResourceType)
+  fullName: CardGame.Core.Cards.Models.CardStats.CardStats(int, int, int, CardGame.Core.Cards.Data.ResourceType)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Initializes a new instance of the CardStats struct with basic stats and no keywords.
+  example: []
+  syntax:
+    content: public CardStats(int attack, int health, int bloodCost, ResourceType costType = ResourceType.Blood)
+    parameters:
+    - id: attack
+      type: System.Int32
+      description: The attack value of the card.
+    - id: health
+      type: System.Int32
+      description: The health value of the card.
+    - id: bloodCost
+      type: System.Int32
+      description: The blood cost to play the card. Changed from Cost to BloodCost.
+    - id: costType
+      type: CardGame.Core.Cards.Data.ResourceType
+      description: The type of resource required to play the card (defaults to Blood).
+    content.vb: Public Sub New(attack As Integer, health As Integer, bloodCost As Integer, costType As ResourceType = ResourceType.Blood)
+  overload: CardGame.Core.Cards.Models.CardStats.#ctor*
+  nameWithType.vb: CardStats.New(Integer, Integer, Integer, ResourceType)
+  fullName.vb: CardGame.Core.Cards.Models.CardStats.New(Integer, Integer, Integer, CardGame.Core.Cards.Data.ResourceType)
+  name.vb: New(Integer, Integer, Integer, ResourceType)
+- uid: CardGame.Core.Cards.Models.CardStats.#ctor(System.Int32,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword},System.Collections.Generic.Dictionary{CardGame.Core.Cards.Data.Keyword,System.Int32},CardGame.Core.Cards.Data.ResourceType)
+  commentId: M:CardGame.Core.Cards.Models.CardStats.#ctor(System.Int32,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword},System.Collections.Generic.Dictionary{CardGame.Core.Cards.Data.Keyword,System.Int32},CardGame.Core.Cards.Data.ResourceType)
+  id: '#ctor(System.Int32,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword},System.Collections.Generic.Dictionary{CardGame.Core.Cards.Data.Keyword,System.Int32},CardGame.Core.Cards.Data.ResourceType)'
+  parent: CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: CardStats(int, int, int, IEnumerable<Keyword>?, Dictionary<Keyword, int>?, ResourceType)
+  nameWithType: CardStats.CardStats(int, int, int, IEnumerable<Keyword>?, Dictionary<Keyword, int>?, ResourceType)
+  fullName: CardGame.Core.Cards.Models.CardStats.CardStats(int, int, int, System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Data.Keyword>?, System.Collections.Generic.Dictionary<CardGame.Core.Cards.Data.Keyword, int>?, CardGame.Core.Cards.Data.ResourceType)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 38
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Initializes a new instance of the CardStats struct with keywords and parameters.
+  example: []
+  syntax:
+    content: public CardStats(int attack, int health, int bloodCost, IEnumerable<Keyword>? keywords, Dictionary<Keyword, int>? keywordParams = null, ResourceType costType = ResourceType.Blood)
+    parameters:
+    - id: attack
+      type: System.Int32
+      description: The attack value of the card.
+    - id: health
+      type: System.Int32
+      description: The health value of the card.
+    - id: bloodCost
+      type: System.Int32
+      description: The blood cost to play the card.
+    - id: keywords
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword}
+      description: Optional collection of keywords associated with the card.
+    - id: keywordParams
+      type: System.Collections.Generic.Dictionary{CardGame.Core.Cards.Data.Keyword,System.Int32}
+      description: Optional dictionary of keyword parameters.
+    - id: costType
+      type: CardGame.Core.Cards.Data.ResourceType
+      description: The type of resource required to play the card (defaults to Blood).
+    content.vb: Public Sub New(attack As Integer, health As Integer, bloodCost As Integer, keywords As IEnumerable(Of Keyword), keywordParams As Dictionary(Of Keyword, Integer) = Nothing, costType As ResourceType = ResourceType.Blood)
+  overload: CardGame.Core.Cards.Models.CardStats.#ctor*
+  nameWithType.vb: CardStats.New(Integer, Integer, Integer, IEnumerable(Of Keyword), Dictionary(Of Keyword, Integer), ResourceType)
+  fullName.vb: CardGame.Core.Cards.Models.CardStats.New(Integer, Integer, Integer, System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Data.Keyword), System.Collections.Generic.Dictionary(Of CardGame.Core.Cards.Data.Keyword, Integer), CardGame.Core.Cards.Data.ResourceType)
+  name.vb: New(Integer, Integer, Integer, IEnumerable(Of Keyword), Dictionary(Of Keyword, Integer), ResourceType)
+- uid: CardGame.Core.Cards.Models.CardStats.Attack
+  commentId: P:CardGame.Core.Cards.Models.CardStats.Attack
+  id: Attack
+  parent: CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: Attack
+  nameWithType: CardStats.Attack
+  fullName: CardGame.Core.Cards.Models.CardStats.Attack
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Attack
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 59
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the attack value of the card.
+  example: []
+  syntax:
+    content: public readonly int Attack { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Attack As Integer
+  overload: CardGame.Core.Cards.Models.CardStats.Attack*
+- uid: CardGame.Core.Cards.Models.CardStats.Health
+  commentId: P:CardGame.Core.Cards.Models.CardStats.Health
+  id: Health
+  parent: CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: Health
+  nameWithType: CardStats.Health
+  fullName: CardGame.Core.Cards.Models.CardStats.Health
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Health
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 64
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the health value of the card.
+  example: []
+  syntax:
+    content: public readonly int Health { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Health As Integer
+  overload: CardGame.Core.Cards.Models.CardStats.Health*
+- uid: CardGame.Core.Cards.Models.CardStats.BloodCost
+  commentId: P:CardGame.Core.Cards.Models.CardStats.BloodCost
+  id: BloodCost
+  parent: CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: BloodCost
+  nameWithType: CardStats.BloodCost
+  fullName: CardGame.Core.Cards.Models.CardStats.BloodCost
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BloodCost
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 69
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the blood cost to play the card.
+  example: []
+  syntax:
+    content: public readonly int BloodCost { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property BloodCost As Integer
+  overload: CardGame.Core.Cards.Models.CardStats.BloodCost*
+- uid: CardGame.Core.Cards.Models.CardStats.CostType
+  commentId: P:CardGame.Core.Cards.Models.CardStats.CostType
+  id: CostType
+  parent: CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: CostType
+  nameWithType: CardStats.CostType
+  fullName: CardGame.Core.Cards.Models.CardStats.CostType
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CostType
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 74
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the type of resource required to play the card.
+  example: []
+  syntax:
+    content: public readonly ResourceType CostType { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.ResourceType
+    content.vb: Public ReadOnly Property CostType As ResourceType
+  overload: CardGame.Core.Cards.Models.CardStats.CostType*
+- uid: CardGame.Core.Cards.Models.CardStats.Keywords
+  commentId: P:CardGame.Core.Cards.Models.CardStats.Keywords
+  id: Keywords
+  parent: CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: Keywords
+  nameWithType: CardStats.Keywords
+  fullName: CardGame.Core.Cards.Models.CardStats.Keywords
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Keywords
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 79
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the list of keywords associated with the card.
+  example: []
+  syntax:
+    content: public readonly IReadOnlyList<Keyword> Keywords { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.Keyword}
+    content.vb: Public ReadOnly Property Keywords As IReadOnlyList(Of Keyword)
+  overload: CardGame.Core.Cards.Models.CardStats.Keywords*
+- uid: CardGame.Core.Cards.Models.CardStats.KeywordParams
+  commentId: P:CardGame.Core.Cards.Models.CardStats.KeywordParams
+  id: KeywordParams
+  parent: CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: KeywordParams
+  nameWithType: CardStats.KeywordParams
+  fullName: CardGame.Core.Cards.Models.CardStats.KeywordParams
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: KeywordParams
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 84
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the dictionary of keyword parameters.
+  example: []
+  syntax:
+    content: public readonly IReadOnlyDictionary<Keyword, int> KeywordParams { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{CardGame.Core.Cards.Data.Keyword,System.Int32}
+    content.vb: Public ReadOnly Property KeywordParams As IReadOnlyDictionary(Of Keyword, Integer)
+  overload: CardGame.Core.Cards.Models.CardStats.KeywordParams*
+- uid: CardGame.Core.Cards.Models.CardStats.WithKeyword(CardGame.Core.Cards.Data.Keyword)
+  commentId: M:CardGame.Core.Cards.Models.CardStats.WithKeyword(CardGame.Core.Cards.Data.Keyword)
+  id: WithKeyword(CardGame.Core.Cards.Data.Keyword)
+  parent: CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: WithKeyword(Keyword)
+  nameWithType: CardStats.WithKeyword(Keyword)
+  fullName: CardGame.Core.Cards.Models.CardStats.WithKeyword(CardGame.Core.Cards.Data.Keyword)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: WithKeyword
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 93
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Creates a new CardStats instance with an additional keyword added to the existing keywords.
+  example: []
+  syntax:
+    content: public CardStats WithKeyword(Keyword keyword)
+    parameters:
+    - id: keyword
+      type: CardGame.Core.Cards.Data.Keyword
+      description: The keyword to add.
+    return:
+      type: CardGame.Core.Cards.Models.CardStats
+      description: A new CardStats instance with the keyword added.
+    content.vb: Public Function WithKeyword(keyword As Keyword) As CardStats
+  overload: CardGame.Core.Cards.Models.CardStats.WithKeyword*
+- uid: CardGame.Core.Cards.Models.CardStats.op_Addition(CardGame.Core.Cards.Models.CardStats,CardGame.Core.Cards.Models.CardStats)
+  commentId: M:CardGame.Core.Cards.Models.CardStats.op_Addition(CardGame.Core.Cards.Models.CardStats,CardGame.Core.Cards.Models.CardStats)
+  id: op_Addition(CardGame.Core.Cards.Models.CardStats,CardGame.Core.Cards.Models.CardStats)
+  parent: CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: operator +(CardStats, CardStats)
+  nameWithType: CardStats.operator +(CardStats, CardStats)
+  fullName: CardGame.Core.Cards.Models.CardStats.operator +(CardGame.Core.Cards.Models.CardStats, CardGame.Core.Cards.Models.CardStats)
+  type: Operator
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardStats.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: op_Addition
+    path: ../Source/CardGame.Core/Cards/Models/CardStats.cs
+    startLine: 112
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Combines two CardStats instances by adding their numeric values and merging their keywords and parameters.
+  example: []
+  syntax:
+    content: public static CardStats operator +(CardStats first, CardStats second)
+    parameters:
+    - id: first
+      type: CardGame.Core.Cards.Models.CardStats
+      description: The first CardStats instance.
+    - id: second
+      type: CardGame.Core.Cards.Models.CardStats
+      description: The second CardStats instance.
+    return:
+      type: CardGame.Core.Cards.Models.CardStats
+      description: A new CardStats instance representing the combination of both inputs.
+    content.vb: Public Shared Operator +(first As CardStats, second As CardStats) As CardStats
+  overload: CardGame.Core.Cards.Models.CardStats.op_Addition*
+  nameWithType.vb: CardStats.+(CardStats, CardStats)
+  fullName.vb: CardGame.Core.Cards.Models.CardStats.+(CardGame.Core.Cards.Models.CardStats, CardGame.Core.Cards.Models.CardStats)
+  name.vb: +(CardStats, CardStats)
+references:
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: CardGame.Core.Cards.Models.CardStats.#ctor*
+  commentId: Overload:CardGame.Core.Cards.Models.CardStats.#ctor
+  href: CardGame.Core.Cards.Models.CardStats.html#CardGame_Core_Cards_Models_CardStats__ctor_System_Int32_System_Int32_System_Int32_CardGame_Core_Cards_Data_ResourceType_
+  name: CardStats
+  nameWithType: CardStats.CardStats
+  fullName: CardGame.Core.Cards.Models.CardStats.CardStats
+  nameWithType.vb: CardStats.New
+  fullName.vb: CardGame.Core.Cards.Models.CardStats.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Data.ResourceType
+  commentId: T:CardGame.Core.Cards.Data.ResourceType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ResourceType.html
+  name: ResourceType
+  nameWithType: ResourceType
+  fullName: CardGame.Core.Cards.Data.ResourceType
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword}
+  commentId: T:System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: IEnumerable<Keyword>
+  nameWithType: IEnumerable<Keyword>
+  fullName: System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Data.Keyword>
+  nameWithType.vb: IEnumerable(Of Keyword)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Data.Keyword)
+  name.vb: IEnumerable(Of Keyword)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary{CardGame.Core.Cards.Data.Keyword,System.Int32}
+  commentId: T:System.Collections.Generic.Dictionary{CardGame.Core.Cards.Data.Keyword,System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: Dictionary<Keyword, int>
+  nameWithType: Dictionary<Keyword, int>
+  fullName: System.Collections.Generic.Dictionary<CardGame.Core.Cards.Data.Keyword, int>
+  nameWithType.vb: Dictionary(Of Keyword, Integer)
+  fullName.vb: System.Collections.Generic.Dictionary(Of CardGame.Core.Cards.Data.Keyword, Integer)
+  name.vb: Dictionary(Of Keyword, Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: CardGame.Core.Cards.Models.CardStats.Attack*
+  commentId: Overload:CardGame.Core.Cards.Models.CardStats.Attack
+  href: CardGame.Core.Cards.Models.CardStats.html#CardGame_Core_Cards_Models_CardStats_Attack
+  name: Attack
+  nameWithType: CardStats.Attack
+  fullName: CardGame.Core.Cards.Models.CardStats.Attack
+- uid: CardGame.Core.Cards.Models.CardStats.Health*
+  commentId: Overload:CardGame.Core.Cards.Models.CardStats.Health
+  href: CardGame.Core.Cards.Models.CardStats.html#CardGame_Core_Cards_Models_CardStats_Health
+  name: Health
+  nameWithType: CardStats.Health
+  fullName: CardGame.Core.Cards.Models.CardStats.Health
+- uid: CardGame.Core.Cards.Models.CardStats.BloodCost*
+  commentId: Overload:CardGame.Core.Cards.Models.CardStats.BloodCost
+  href: CardGame.Core.Cards.Models.CardStats.html#CardGame_Core_Cards_Models_CardStats_BloodCost
+  name: BloodCost
+  nameWithType: CardStats.BloodCost
+  fullName: CardGame.Core.Cards.Models.CardStats.BloodCost
+- uid: CardGame.Core.Cards.Models.CardStats.CostType*
+  commentId: Overload:CardGame.Core.Cards.Models.CardStats.CostType
+  href: CardGame.Core.Cards.Models.CardStats.html#CardGame_Core_Cards_Models_CardStats_CostType
+  name: CostType
+  nameWithType: CardStats.CostType
+  fullName: CardGame.Core.Cards.Models.CardStats.CostType
+- uid: CardGame.Core.Cards.Models.CardStats.Keywords*
+  commentId: Overload:CardGame.Core.Cards.Models.CardStats.Keywords
+  href: CardGame.Core.Cards.Models.CardStats.html#CardGame_Core_Cards_Models_CardStats_Keywords
+  name: Keywords
+  nameWithType: CardStats.Keywords
+  fullName: CardGame.Core.Cards.Models.CardStats.Keywords
+- uid: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.Keyword}
+  commentId: T:System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.Keyword}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: IReadOnlyList<Keyword>
+  nameWithType: IReadOnlyList<Keyword>
+  fullName: System.Collections.Generic.IReadOnlyList<CardGame.Core.Cards.Data.Keyword>
+  nameWithType.vb: IReadOnlyList(Of Keyword)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of CardGame.Core.Cards.Data.Keyword)
+  name.vb: IReadOnlyList(Of Keyword)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Cards.Models.CardStats.KeywordParams*
+  commentId: Overload:CardGame.Core.Cards.Models.CardStats.KeywordParams
+  href: CardGame.Core.Cards.Models.CardStats.html#CardGame_Core_Cards_Models_CardStats_KeywordParams
+  name: KeywordParams
+  nameWithType: CardStats.KeywordParams
+  fullName: CardGame.Core.Cards.Models.CardStats.KeywordParams
+- uid: System.Collections.Generic.IReadOnlyDictionary{CardGame.Core.Cards.Data.Keyword,System.Int32}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{CardGame.Core.Cards.Data.Keyword,System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: IReadOnlyDictionary<Keyword, int>
+  nameWithType: IReadOnlyDictionary<Keyword, int>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<CardGame.Core.Cards.Data.Keyword, int>
+  nameWithType.vb: IReadOnlyDictionary(Of Keyword, Integer)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of CardGame.Core.Cards.Data.Keyword, Integer)
+  name.vb: IReadOnlyDictionary(Of Keyword, Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: CardGame.Core.Cards.Models.CardStats.WithKeyword*
+  commentId: Overload:CardGame.Core.Cards.Models.CardStats.WithKeyword
+  href: CardGame.Core.Cards.Models.CardStats.html#CardGame_Core_Cards_Models_CardStats_WithKeyword_CardGame_Core_Cards_Data_Keyword_
+  name: WithKeyword
+  nameWithType: CardStats.WithKeyword
+  fullName: CardGame.Core.Cards.Models.CardStats.WithKeyword
+- uid: CardGame.Core.Cards.Data.Keyword
+  commentId: T:CardGame.Core.Cards.Data.Keyword
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: Keyword
+  nameWithType: Keyword
+  fullName: CardGame.Core.Cards.Data.Keyword
+- uid: CardGame.Core.Cards.Models.CardStats
+  commentId: T:CardGame.Core.Cards.Models.CardStats
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardStats.html
+  name: CardStats
+  nameWithType: CardStats
+  fullName: CardGame.Core.Cards.Models.CardStats
+- uid: CardGame.Core.Cards.Models.CardStats.op_Addition*
+  commentId: Overload:CardGame.Core.Cards.Models.CardStats.op_Addition
+  href: CardGame.Core.Cards.Models.CardStats.html#CardGame_Core_Cards_Models_CardStats_op_Addition_CardGame_Core_Cards_Models_CardStats_CardGame_Core_Cards_Models_CardStats_
+  name: operator +
+  nameWithType: CardStats.operator +
+  fullName: CardGame.Core.Cards.Models.CardStats.operator +
+  nameWithType.vb: CardStats.+
+  fullName.vb: CardGame.Core.Cards.Models.CardStats.+
+  name.vb: +
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardStats.op_Addition*
+    name: +
+    href: CardGame.Core.Cards.Models.CardStats.html#CardGame_Core_Cards_Models_CardStats_op_Addition_CardGame_Core_Cards_Models_CardStats_CardGame_Core_Cards_Models_CardStats_

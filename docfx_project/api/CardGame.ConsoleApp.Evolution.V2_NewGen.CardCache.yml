@@ -1,0 +1,348 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  id: CardCache
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.Clear
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCard(System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardCost(System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardData(System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardName(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: CardCache
+  nameWithType: CardCache
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardCache
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 24
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static class CardCache
+    content.vb: Public Module CardCache
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCard(System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCard(System.Int32)
+  id: GetCard(System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  langs:
+  - csharp
+  - vb
+  name: GetCard(int)
+  nameWithType: CardCache.GetCard(int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCard(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetCard
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 31
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static CardData GetCard(int cardId)
+    parameters:
+    - id: cardId
+      type: System.Int32
+    return:
+      type: CardGame.Core.Cards.Data.CardData
+    content.vb: Public Shared Function GetCard(cardId As Integer) As CardData
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCard*
+  nameWithType.vb: CardCache.GetCard(Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCard(Integer)
+  name.vb: GetCard(Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardName(System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardName(System.Int32)
+  id: GetCardName(System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  langs:
+  - csharp
+  - vb
+  name: GetCardName(int)
+  nameWithType: CardCache.GetCardName(int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardName(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetCardName
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 36
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static string GetCardName(int cardId)
+    parameters:
+    - id: cardId
+      type: System.Int32
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetCardName(cardId As Integer) As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardName*
+  nameWithType.vb: CardCache.GetCardName(Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardName(Integer)
+  name.vb: GetCardName(Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardCost(System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardCost(System.Int32)
+  id: GetCardCost(System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  langs:
+  - csharp
+  - vb
+  name: GetCardCost(int)
+  nameWithType: CardCache.GetCardCost(int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardCost(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetCardCost
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 45
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static int GetCardCost(int cardId)
+    parameters:
+    - id: cardId
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function GetCardCost(cardId As Integer) As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardCost*
+  nameWithType.vb: CardCache.GetCardCost(Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardCost(Integer)
+  name.vb: GetCardCost(Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardData(System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardData(System.Int32)
+  id: GetCardData(System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  langs:
+  - csharp
+  - vb
+  name: GetCardData(int)
+  nameWithType: CardCache.GetCardData(int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardData(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetCardData
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 54
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static object GetCardData(int cardId)
+    parameters:
+    - id: cardId
+      type: System.Int32
+    return:
+      type: System.Object
+    content.vb: Public Shared Function GetCardData(cardId As Integer) As Object
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardData*
+  nameWithType.vb: CardCache.GetCardData(Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardData(Integer)
+  name.vb: GetCardData(Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.Clear
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.Clear
+  id: Clear
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: CardCache.Clear()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.Clear()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Clear
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 75
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static void Clear()
+    content.vb: Public Shared Sub Clear()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.Clear*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCard*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCard
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardCache_GetCard_System_Int32_
+  name: GetCard
+  nameWithType: CardCache.GetCard
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCard
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Data.CardData
+  commentId: T:CardGame.Core.Cards.Data.CardData
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.CardData.html
+  name: CardData
+  nameWithType: CardData
+  fullName: CardGame.Core.Cards.Data.CardData
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardName*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardName
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardCache_GetCardName_System_Int32_
+  name: GetCardName
+  nameWithType: CardCache.GetCardName
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardCost*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardCost
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardCache_GetCardCost_System_Int32_
+  name: GetCardCost
+  nameWithType: CardCache.GetCardCost
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardCost
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardData*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardData
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardCache_GetCardData_System_Int32_
+  name: GetCardData
+  nameWithType: CardCache.GetCardData
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.GetCardData
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.Clear*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.Clear
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardCache_Clear
+  name: Clear
+  nameWithType: CardCache.Clear
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardCache.Clear

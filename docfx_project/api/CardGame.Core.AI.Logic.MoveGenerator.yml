@@ -1,0 +1,284 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Logic.MoveGenerator
+  commentId: T:CardGame.Core.AI.Logic.MoveGenerator
+  id: MoveGenerator
+  parent: CardGame.Core.AI.Logic
+  children:
+  - CardGame.Core.AI.Logic.MoveGenerator.GenerateLegalMoves(CardGame.Core.State.Models.GameState,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: MoveGenerator
+  nameWithType: MoveGenerator
+  fullName: CardGame.Core.AI.Logic.MoveGenerator
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MoveGenerator.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MoveGenerator
+    path: ../Source/CardGame.Core/AI/Logic/MoveGenerator.cs
+    startLine: 14
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Generates all legal game commands for a player in a given game state.
+  example: []
+  syntax:
+    content: public class MoveGenerator
+    content.vb: Public Class MoveGenerator
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.AI.Logic.MoveGenerator.GenerateLegalMoves(CardGame.Core.State.Models.GameState,System.Int32)
+  commentId: M:CardGame.Core.AI.Logic.MoveGenerator.GenerateLegalMoves(CardGame.Core.State.Models.GameState,System.Int32)
+  id: GenerateLegalMoves(CardGame.Core.State.Models.GameState,System.Int32)
+  parent: CardGame.Core.AI.Logic.MoveGenerator
+  langs:
+  - csharp
+  - vb
+  name: GenerateLegalMoves(GameState, int)
+  nameWithType: MoveGenerator.GenerateLegalMoves(GameState, int)
+  fullName: CardGame.Core.AI.Logic.MoveGenerator.GenerateLegalMoves(CardGame.Core.State.Models.GameState, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MoveGenerator.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GenerateLegalMoves
+    path: ../Source/CardGame.Core/AI/Logic/MoveGenerator.cs
+    startLine: 24
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Generates all legal moves available to a player in the current game state.
+  example: []
+  syntax:
+    content: public List<IGameCommand> GenerateLegalMoves(GameState state, int playerId)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state.
+    - id: playerId
+      type: System.Int32
+      description: The ID of the player to generate moves for.
+    return:
+      type: System.Collections.Generic.List{CardGame.Core.Commands.Interfaces.IGameCommand}
+      description: A list of legal IGameCommand objects.
+    content.vb: Public Function GenerateLegalMoves(state As GameState, playerId As Integer) As List(Of IGameCommand)
+  overload: CardGame.Core.AI.Logic.MoveGenerator.GenerateLegalMoves*
+  nameWithType.vb: MoveGenerator.GenerateLegalMoves(GameState, Integer)
+  fullName.vb: CardGame.Core.AI.Logic.MoveGenerator.GenerateLegalMoves(CardGame.Core.State.Models.GameState, Integer)
+  name.vb: GenerateLegalMoves(GameState, Integer)
+references:
+- uid: CardGame.Core.AI.Logic
+  commentId: N:CardGame.Core.AI.Logic
+  href: CardGame.html
+  name: CardGame.Core.AI.Logic
+  nameWithType: CardGame.Core.AI.Logic
+  fullName: CardGame.Core.AI.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.AI.Logic.MoveGenerator.GenerateLegalMoves*
+  commentId: Overload:CardGame.Core.AI.Logic.MoveGenerator.GenerateLegalMoves
+  href: CardGame.Core.AI.Logic.MoveGenerator.html#CardGame_Core_AI_Logic_MoveGenerator_GenerateLegalMoves_CardGame_Core_State_Models_GameState_System_Int32_
+  name: GenerateLegalMoves
+  nameWithType: MoveGenerator.GenerateLegalMoves
+  fullName: CardGame.Core.AI.Logic.MoveGenerator.GenerateLegalMoves
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.List{CardGame.Core.Commands.Interfaces.IGameCommand}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Commands.Interfaces.IGameCommand}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: List<IGameCommand>
+  nameWithType: List<IGameCommand>
+  fullName: System.Collections.Generic.List<CardGame.Core.Commands.Interfaces.IGameCommand>
+  nameWithType.vb: List(Of IGameCommand)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Commands.Interfaces.IGameCommand)
+  name.vb: List(Of IGameCommand)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand
+    name: IGameCommand
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand
+    name: IGameCommand
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  - name: )
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

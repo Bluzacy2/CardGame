@@ -1,0 +1,296 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  id: ArchetypeStatistic
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Archetype
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.AvgFitness
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.BestFitness
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Count
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Percentage
+  langs:
+  - csharp
+  - vb
+  name: ArchetypeStatistic
+  nameWithType: ArchetypeStatistic
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ArchetypeStatistic
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 736
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class ArchetypeStatistic
+    content.vb: Public Class ArchetypeStatistic
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Archetype
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Archetype
+  id: Archetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  langs:
+  - csharp
+  - vb
+  name: Archetype
+  nameWithType: ArchetypeStatistic.Archetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Archetype
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Archetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 738
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string Archetype { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Archetype As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Archetype*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Count
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Count
+  id: Count
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: ArchetypeStatistic.Count
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Count
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Count
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 739
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Count { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Count As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Count*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Percentage
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Percentage
+  id: Percentage
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  langs:
+  - csharp
+  - vb
+  name: Percentage
+  nameWithType: ArchetypeStatistic.Percentage
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Percentage
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Percentage
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 740
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double Percentage { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Percentage As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Percentage*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.AvgFitness
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.AvgFitness
+  id: AvgFitness
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  langs:
+  - csharp
+  - vb
+  name: AvgFitness
+  nameWithType: ArchetypeStatistic.AvgFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.AvgFitness
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AvgFitness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 741
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double AvgFitness { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property AvgFitness As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.AvgFitness*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.BestFitness
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.BestFitness
+  id: BestFitness
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic
+  langs:
+  - csharp
+  - vb
+  name: BestFitness
+  nameWithType: ArchetypeStatistic.BestFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.BestFitness
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BestFitness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 742
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double BestFitness { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property BestFitness As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.BestFitness*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Archetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Archetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeStatistic_Archetype
+  name: Archetype
+  nameWithType: ArchetypeStatistic.Archetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Archetype
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Count*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Count
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeStatistic_Count
+  name: Count
+  nameWithType: ArchetypeStatistic.Count
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Percentage*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Percentage
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeStatistic_Percentage
+  name: Percentage
+  nameWithType: ArchetypeStatistic.Percentage
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.Percentage
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.AvgFitness*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.AvgFitness
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeStatistic_AvgFitness
+  name: AvgFitness
+  nameWithType: ArchetypeStatistic.AvgFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.AvgFitness
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.BestFitness*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.BestFitness
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeStatistic_BestFitness
+  name: BestFitness
+  nameWithType: ArchetypeStatistic.BestFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeStatistic.BestFitness

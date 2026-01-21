@@ -1,0 +1,277 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Decks.DeckRepository
+  commentId: T:CardGame.Core.Decks.DeckRepository
+  id: DeckRepository
+  parent: CardGame.Core.Decks
+  children:
+  - CardGame.Core.Decks.DeckRepository.GetDeck(System.String)
+  - CardGame.Core.Decks.DeckRepository.Instance
+  - CardGame.Core.Decks.DeckRepository.LoadDecksFromDirectory(System.String)
+  langs:
+  - csharp
+  - vb
+  name: DeckRepository
+  nameWithType: DeckRepository
+  fullName: CardGame.Core.Decks.DeckRepository
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/DeckRepository.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckRepository
+    path: ../Source/CardGame.Core/Decks/DeckRepository.cs
+    startLine: 12
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks
+  summary: Repository for loading and accessing deck data definitions from JSON files.
+  example: []
+  syntax:
+    content: public class DeckRepository
+    content.vb: Public Class DeckRepository
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Decks.DeckRepository.Instance
+  commentId: P:CardGame.Core.Decks.DeckRepository.Instance
+  id: Instance
+  parent: CardGame.Core.Decks.DeckRepository
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: DeckRepository.Instance
+  fullName: CardGame.Core.Decks.DeckRepository.Instance
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/DeckRepository.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Instance
+    path: ../Source/CardGame.Core/Decks/DeckRepository.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks
+  summary: Gets the singleton instance of the DeckRepository.
+  example: []
+  syntax:
+    content: public static DeckRepository Instance { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Decks.DeckRepository
+    content.vb: Public Shared ReadOnly Property Instance As DeckRepository
+  overload: CardGame.Core.Decks.DeckRepository.Instance*
+- uid: CardGame.Core.Decks.DeckRepository.LoadDecksFromDirectory(System.String)
+  commentId: M:CardGame.Core.Decks.DeckRepository.LoadDecksFromDirectory(System.String)
+  id: LoadDecksFromDirectory(System.String)
+  parent: CardGame.Core.Decks.DeckRepository
+  langs:
+  - csharp
+  - vb
+  name: LoadDecksFromDirectory(string)
+  nameWithType: DeckRepository.LoadDecksFromDirectory(string)
+  fullName: CardGame.Core.Decks.DeckRepository.LoadDecksFromDirectory(string)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/DeckRepository.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LoadDecksFromDirectory
+    path: ../Source/CardGame.Core/Decks/DeckRepository.cs
+    startLine: 35
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks
+  summary: Loads all deck definitions from JSON files in the specified directory.
+  example: []
+  syntax:
+    content: public void LoadDecksFromDirectory(string directoryPath)
+    parameters:
+    - id: directoryPath
+      type: System.String
+      description: The path to the directory containing deck JSON files.
+    content.vb: Public Sub LoadDecksFromDirectory(directoryPath As String)
+  overload: CardGame.Core.Decks.DeckRepository.LoadDecksFromDirectory*
+  nameWithType.vb: DeckRepository.LoadDecksFromDirectory(String)
+  fullName.vb: CardGame.Core.Decks.DeckRepository.LoadDecksFromDirectory(String)
+  name.vb: LoadDecksFromDirectory(String)
+- uid: CardGame.Core.Decks.DeckRepository.GetDeck(System.String)
+  commentId: M:CardGame.Core.Decks.DeckRepository.GetDeck(System.String)
+  id: GetDeck(System.String)
+  parent: CardGame.Core.Decks.DeckRepository
+  langs:
+  - csharp
+  - vb
+  name: GetDeck(string)
+  nameWithType: DeckRepository.GetDeck(string)
+  fullName: CardGame.Core.Decks.DeckRepository.GetDeck(string)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Decks/DeckRepository.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetDeck
+    path: ../Source/CardGame.Core/Decks/DeckRepository.cs
+    startLine: 72
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Decks
+  summary: Retrieves deck data by its unique identifier.
+  example: []
+  syntax:
+    content: public DeckData GetDeck(string deckId)
+    parameters:
+    - id: deckId
+      type: System.String
+      description: The unique identifier of the deck.
+    return:
+      type: CardGame.Core.Decks.Data.DeckData
+      description: The deck data object.
+    content.vb: Public Function GetDeck(deckId As String) As DeckData
+  overload: CardGame.Core.Decks.DeckRepository.GetDeck*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown when the deck ID is not found.
+  nameWithType.vb: DeckRepository.GetDeck(String)
+  fullName.vb: CardGame.Core.Decks.DeckRepository.GetDeck(String)
+  name.vb: GetDeck(String)
+references:
+- uid: CardGame.Core.Decks
+  commentId: N:CardGame.Core.Decks
+  href: CardGame.html
+  name: CardGame.Core.Decks
+  nameWithType: CardGame.Core.Decks
+  fullName: CardGame.Core.Decks
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Decks.DeckRepository.Instance*
+  commentId: Overload:CardGame.Core.Decks.DeckRepository.Instance
+  href: CardGame.Core.Decks.DeckRepository.html#CardGame_Core_Decks_DeckRepository_Instance
+  name: Instance
+  nameWithType: DeckRepository.Instance
+  fullName: CardGame.Core.Decks.DeckRepository.Instance
+- uid: CardGame.Core.Decks.DeckRepository
+  commentId: T:CardGame.Core.Decks.DeckRepository
+  parent: CardGame.Core.Decks
+  href: CardGame.Core.Decks.DeckRepository.html
+  name: DeckRepository
+  nameWithType: DeckRepository
+  fullName: CardGame.Core.Decks.DeckRepository
+- uid: CardGame.Core.Decks.DeckRepository.LoadDecksFromDirectory*
+  commentId: Overload:CardGame.Core.Decks.DeckRepository.LoadDecksFromDirectory
+  href: CardGame.Core.Decks.DeckRepository.html#CardGame_Core_Decks_DeckRepository_LoadDecksFromDirectory_System_String_
+  name: LoadDecksFromDirectory
+  nameWithType: DeckRepository.LoadDecksFromDirectory
+  fullName: CardGame.Core.Decks.DeckRepository.LoadDecksFromDirectory
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Exception
+  commentId: T:System.Exception
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: CardGame.Core.Decks.DeckRepository.GetDeck*
+  commentId: Overload:CardGame.Core.Decks.DeckRepository.GetDeck
+  href: CardGame.Core.Decks.DeckRepository.html#CardGame_Core_Decks_DeckRepository_GetDeck_System_String_
+  name: GetDeck
+  nameWithType: DeckRepository.GetDeck
+  fullName: CardGame.Core.Decks.DeckRepository.GetDeck
+- uid: CardGame.Core.Decks.Data.DeckData
+  commentId: T:CardGame.Core.Decks.Data.DeckData
+  parent: CardGame.Core.Decks.Data
+  href: CardGame.Core.Decks.Data.DeckData.html
+  name: DeckData
+  nameWithType: DeckData
+  fullName: CardGame.Core.Decks.Data.DeckData
+- uid: CardGame.Core.Decks.Data
+  commentId: N:CardGame.Core.Decks.Data
+  href: CardGame.html
+  name: CardGame.Core.Decks.Data
+  nameWithType: CardGame.Core.Decks.Data
+  fullName: CardGame.Core.Decks.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html

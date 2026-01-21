@@ -1,0 +1,230 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+  commentId: T:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+  id: CardAnalytics
+  parent: CardGame.ConsoleApp.Evolution.Analytics
+  children:
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.ProcessAndSave(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual},System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: CardAnalytics
+  nameWithType: CardAnalytics
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardAnalytics
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 10
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public class CardAnalytics
+    content.vb: Public Class CardAnalytics
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.ProcessAndSave(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual},System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.ProcessAndSave(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual},System.Int32)
+  id: ProcessAndSave(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual},System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+  langs:
+  - csharp
+  - vb
+  name: ProcessAndSave(List<GeneticIndividual>, int)
+  nameWithType: CardAnalytics.ProcessAndSave(List<GeneticIndividual>, int)
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.ProcessAndSave(System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual>, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ProcessAndSave
+    path: ../Source/CardGame.ConsoleApp/Evolution/Analytics/CardAnalytics.cs
+    startLine: 26
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.Analytics
+  syntax:
+    content: public static void ProcessAndSave(List<GeneticIndividual> population, int generation)
+    parameters:
+    - id: population
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual}
+    - id: generation
+      type: System.Int32
+    content.vb: Public Shared Sub ProcessAndSave(population As List(Of GeneticIndividual), generation As Integer)
+  overload: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.ProcessAndSave*
+  nameWithType.vb: CardAnalytics.ProcessAndSave(List(Of GeneticIndividual), Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.ProcessAndSave(System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual), Integer)
+  name.vb: ProcessAndSave(List(Of GeneticIndividual), Integer)
+references:
+- uid: CardGame.ConsoleApp.Evolution.Analytics
+  commentId: N:CardGame.ConsoleApp.Evolution.Analytics
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.Analytics
+  nameWithType: CardGame.ConsoleApp.Evolution.Analytics
+  fullName: CardGame.ConsoleApp.Evolution.Analytics
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.Analytics
+    name: Analytics
+    href: CardGame.ConsoleApp.Evolution.Analytics.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.Analytics
+    name: Analytics
+    href: CardGame.ConsoleApp.Evolution.Analytics.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.ProcessAndSave*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.ProcessAndSave
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.html#CardGame_ConsoleApp_Evolution_Analytics_CardAnalytics_ProcessAndSave_System_Collections_Generic_List_CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual__System_Int32_
+  name: ProcessAndSave
+  nameWithType: CardAnalytics.ProcessAndSave
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.ProcessAndSave
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html
+  name: List<GeneticIndividual>
+  nameWithType: List<GeneticIndividual>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual>
+  nameWithType.vb: List(Of GeneticIndividual)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual)
+  name.vb: List(Of GeneticIndividual)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+    name: GeneticIndividual
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+    name: GeneticIndividual
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

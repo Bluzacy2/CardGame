@@ -1,0 +1,79 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  id: Application
+  parent: CardGame.Core
+  children:
+  - CardGame.Core.Application.DeterministicRng
+  - CardGame.Core.Application.ExecutionResult
+  - CardGame.Core.Application.GameContext
+  - CardGame.Core.Application.GameEngine
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Application.DeterministicRng
+  commentId: T:CardGame.Core.Application.DeterministicRng
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.DeterministicRng.html
+  name: DeterministicRng
+  nameWithType: DeterministicRng
+  fullName: CardGame.Core.Application.DeterministicRng
+- uid: CardGame.Core.Application.ExecutionResult
+  commentId: T:CardGame.Core.Application.ExecutionResult
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.ExecutionResult.html
+  name: ExecutionResult
+  nameWithType: ExecutionResult
+  fullName: CardGame.Core.Application.ExecutionResult
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameContext.html
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+- uid: CardGame.Core.Application.GameEngine
+  commentId: T:CardGame.Core.Application.GameEngine
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameEngine.html
+  name: GameEngine
+  nameWithType: GameEngine
+  fullName: CardGame.Core.Application.GameEngine
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html

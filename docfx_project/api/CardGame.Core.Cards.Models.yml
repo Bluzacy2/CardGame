@@ -1,0 +1,79 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  id: Models
+  parent: CardGame.Core.Cards
+  children:
+  - CardGame.Core.Cards.Models.CardDefinition
+  - CardGame.Core.Cards.Models.CardInstance
+  - CardGame.Core.Cards.Models.CardStats
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Cards.Models.CardDefinition
+  commentId: T:CardGame.Core.Cards.Models.CardDefinition
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardDefinition.html
+  name: CardDefinition
+  nameWithType: CardDefinition
+  fullName: CardGame.Core.Cards.Models.CardDefinition
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: CardGame.Core.Cards.Models.CardStats
+  commentId: T:CardGame.Core.Cards.Models.CardStats
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardStats.html
+  name: CardStats
+  nameWithType: CardStats
+  fullName: CardGame.Core.Cards.Models.CardStats
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html

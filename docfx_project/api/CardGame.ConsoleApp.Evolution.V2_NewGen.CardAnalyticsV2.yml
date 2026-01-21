@@ -1,0 +1,441 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+  id: CardAnalyticsV2
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportCardStatsToCsv(System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced},System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportToCsv(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.GenerateMetaReport(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ProcessAndSave(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced},System.String)
+  langs:
+  - csharp
+  - vb
+  name: CardAnalyticsV2
+  nameWithType: CardAnalyticsV2
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardAnalyticsV2
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 10
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static class CardAnalyticsV2
+    content.vb: Public Module CardAnalyticsV2
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ProcessAndSave(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced},System.String)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ProcessAndSave(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced},System.String)
+  id: ProcessAndSave(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced},System.String)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+  langs:
+  - csharp
+  - vb
+  name: ProcessAndSave(List<EvolvableIndividual>, int, Dictionary<int, CardStatsEnhanced>, string)
+  nameWithType: CardAnalyticsV2.ProcessAndSave(List<EvolvableIndividual>, int, Dictionary<int, CardStatsEnhanced>, string)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ProcessAndSave(System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>, int, System.Collections.Generic.Dictionary<int, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced>, string)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ProcessAndSave
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 13
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static void ProcessAndSave(List<EvolvableIndividual> population, int generation, Dictionary<int, CardStatsEnhanced> cardStats = null, string fileName = null)
+    parameters:
+    - id: population
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+    - id: generation
+      type: System.Int32
+    - id: cardStats
+      type: System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+    - id: fileName
+      type: System.String
+    content.vb: Public Shared Sub ProcessAndSave(population As List(Of EvolvableIndividual), generation As Integer, cardStats As Dictionary(Of Integer, CardStatsEnhanced) = Nothing, fileName As String = Nothing)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ProcessAndSave*
+  nameWithType.vb: CardAnalyticsV2.ProcessAndSave(List(Of EvolvableIndividual), Integer, Dictionary(Of Integer, CardStatsEnhanced), String)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ProcessAndSave(System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual), Integer, System.Collections.Generic.Dictionary(Of Integer, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced), String)
+  name.vb: ProcessAndSave(List(Of EvolvableIndividual), Integer, Dictionary(Of Integer, CardStatsEnhanced), String)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportToCsv(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportToCsv(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32)
+  id: ExportToCsv(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+  langs:
+  - csharp
+  - vb
+  name: ExportToCsv(List<EvolvableIndividual>, int)
+  nameWithType: CardAnalyticsV2.ExportToCsv(List<EvolvableIndividual>, int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportToCsv(System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ExportToCsv
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 493
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static void ExportToCsv(List<EvolvableIndividual> population, int generation)
+    parameters:
+    - id: population
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+    - id: generation
+      type: System.Int32
+    content.vb: Public Shared Sub ExportToCsv(population As List(Of EvolvableIndividual), generation As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportToCsv*
+  nameWithType.vb: CardAnalyticsV2.ExportToCsv(List(Of EvolvableIndividual), Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportToCsv(System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual), Integer)
+  name.vb: ExportToCsv(List(Of EvolvableIndividual), Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportCardStatsToCsv(System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced},System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportCardStatsToCsv(System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced},System.Int32)
+  id: ExportCardStatsToCsv(System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced},System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+  langs:
+  - csharp
+  - vb
+  name: ExportCardStatsToCsv(Dictionary<int, CardStatsEnhanced>, int)
+  nameWithType: CardAnalyticsV2.ExportCardStatsToCsv(Dictionary<int, CardStatsEnhanced>, int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportCardStatsToCsv(System.Collections.Generic.Dictionary<int, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced>, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ExportCardStatsToCsv
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 527
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static void ExportCardStatsToCsv(Dictionary<int, CardStatsEnhanced> cardStats, int generation)
+    parameters:
+    - id: cardStats
+      type: System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+    - id: generation
+      type: System.Int32
+    content.vb: Public Shared Sub ExportCardStatsToCsv(cardStats As Dictionary(Of Integer, CardStatsEnhanced), generation As Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportCardStatsToCsv*
+  nameWithType.vb: CardAnalyticsV2.ExportCardStatsToCsv(Dictionary(Of Integer, CardStatsEnhanced), Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportCardStatsToCsv(System.Collections.Generic.Dictionary(Of Integer, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced), Integer)
+  name.vb: ExportCardStatsToCsv(Dictionary(Of Integer, CardStatsEnhanced), Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.GenerateMetaReport(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.GenerateMetaReport(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  id: GenerateMetaReport(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Int32,System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2
+  langs:
+  - csharp
+  - vb
+  name: GenerateMetaReport(List<EvolvableIndividual>, int, Dictionary<int, CardStatsEnhanced>)
+  nameWithType: CardAnalyticsV2.GenerateMetaReport(List<EvolvableIndividual>, int, Dictionary<int, CardStatsEnhanced>)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.GenerateMetaReport(System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>, int, System.Collections.Generic.Dictionary<int, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GenerateMetaReport
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 565
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public static void GenerateMetaReport(List<EvolvableIndividual> population, int generation, Dictionary<int, CardStatsEnhanced> cardStats = null)
+    parameters:
+    - id: population
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+    - id: generation
+      type: System.Int32
+    - id: cardStats
+      type: System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+    content.vb: Public Shared Sub GenerateMetaReport(population As List(Of EvolvableIndividual), generation As Integer, cardStats As Dictionary(Of Integer, CardStatsEnhanced) = Nothing)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.GenerateMetaReport*
+  nameWithType.vb: CardAnalyticsV2.GenerateMetaReport(List(Of EvolvableIndividual), Integer, Dictionary(Of Integer, CardStatsEnhanced))
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.GenerateMetaReport(System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual), Integer, System.Collections.Generic.Dictionary(Of Integer, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced))
+  name.vb: GenerateMetaReport(List(Of EvolvableIndividual), Integer, Dictionary(Of Integer, CardStatsEnhanced))
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ProcessAndSave*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ProcessAndSave
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsV2_ProcessAndSave_System_Collections_Generic_List_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual__System_Int32_System_Collections_Generic_Dictionary_System_Int32_CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced__System_String_
+  name: ProcessAndSave
+  nameWithType: CardAnalyticsV2.ProcessAndSave
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ProcessAndSave
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: List<EvolvableIndividual>
+  nameWithType: List<EvolvableIndividual>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>
+  nameWithType.vb: List(Of EvolvableIndividual)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  name.vb: List(Of EvolvableIndividual)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+  commentId: T:System.Collections.Generic.Dictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  name: Dictionary<int, CardStatsEnhanced>
+  nameWithType: Dictionary<int, CardStatsEnhanced>
+  fullName: System.Collections.Generic.Dictionary<int, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced>
+  nameWithType.vb: Dictionary(Of Integer, CardStatsEnhanced)
+  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced)
+  name.vb: Dictionary(Of Integer, CardStatsEnhanced)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+    name: CardStatsEnhanced
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+    name: CardStatsEnhanced
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportToCsv*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportToCsv
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsV2_ExportToCsv_System_Collections_Generic_List_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual__System_Int32_
+  name: ExportToCsv
+  nameWithType: CardAnalyticsV2.ExportToCsv
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportToCsv
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportCardStatsToCsv*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportCardStatsToCsv
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsV2_ExportCardStatsToCsv_System_Collections_Generic_Dictionary_System_Int32_CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced__System_Int32_
+  name: ExportCardStatsToCsv
+  nameWithType: CardAnalyticsV2.ExportCardStatsToCsv
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.ExportCardStatsToCsv
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.GenerateMetaReport*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.GenerateMetaReport
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsV2_GenerateMetaReport_System_Collections_Generic_List_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual__System_Int32_System_Collections_Generic_Dictionary_System_Int32_CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced__
+  name: GenerateMetaReport
+  nameWithType: CardAnalyticsV2.GenerateMetaReport
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsV2.GenerateMetaReport

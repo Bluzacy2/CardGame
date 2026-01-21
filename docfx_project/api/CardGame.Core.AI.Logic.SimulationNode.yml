@@ -1,0 +1,433 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Logic.SimulationNode
+  commentId: T:CardGame.Core.AI.Logic.SimulationNode
+  id: SimulationNode
+  parent: CardGame.Core.AI.Logic
+  children:
+  - CardGame.Core.AI.Logic.SimulationNode.#ctor
+  - CardGame.Core.AI.Logic.SimulationNode.#ctor(CardGame.Core.State.Models.GameState,CardGame.Core.Commands.Interfaces.IGameCommand,System.Single)
+  - CardGame.Core.AI.Logic.SimulationNode.InitialMove
+  - CardGame.Core.AI.Logic.SimulationNode.Score
+  - CardGame.Core.AI.Logic.SimulationNode.Set(CardGame.Core.State.Models.GameState,CardGame.Core.Commands.Interfaces.IGameCommand,System.Single)
+  - CardGame.Core.AI.Logic.SimulationNode.State
+  langs:
+  - csharp
+  - vb
+  name: SimulationNode
+  nameWithType: SimulationNode
+  fullName: CardGame.Core.AI.Logic.SimulationNode
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SimulationNode
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 57
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Mutable class for node pooling to reduce garbage collection during AI simulations.
+  example: []
+  syntax:
+    content: public class SimulationNode
+    content.vb: Public Class SimulationNode
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.AI.Logic.SimulationNode.State
+  commentId: P:CardGame.Core.AI.Logic.SimulationNode.State
+  id: State
+  parent: CardGame.Core.AI.Logic.SimulationNode
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: SimulationNode.State
+  fullName: CardGame.Core.AI.Logic.SimulationNode.State
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: State
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 62
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Gets or sets the game state at this node.
+  example: []
+  syntax:
+    content: public GameState State { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Models.GameState
+    content.vb: Public Property State As GameState
+  overload: CardGame.Core.AI.Logic.SimulationNode.State*
+- uid: CardGame.Core.AI.Logic.SimulationNode.InitialMove
+  commentId: P:CardGame.Core.AI.Logic.SimulationNode.InitialMove
+  id: InitialMove
+  parent: CardGame.Core.AI.Logic.SimulationNode
+  langs:
+  - csharp
+  - vb
+  name: InitialMove
+  nameWithType: SimulationNode.InitialMove
+  fullName: CardGame.Core.AI.Logic.SimulationNode.InitialMove
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: InitialMove
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 67
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Gets or sets the initial move that led to this game state.
+  example: []
+  syntax:
+    content: public IGameCommand? InitialMove { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Commands.Interfaces.IGameCommand
+    content.vb: Public Property InitialMove As IGameCommand
+  overload: CardGame.Core.AI.Logic.SimulationNode.InitialMove*
+- uid: CardGame.Core.AI.Logic.SimulationNode.Score
+  commentId: P:CardGame.Core.AI.Logic.SimulationNode.Score
+  id: Score
+  parent: CardGame.Core.AI.Logic.SimulationNode
+  langs:
+  - csharp
+  - vb
+  name: Score
+  nameWithType: SimulationNode.Score
+  fullName: CardGame.Core.AI.Logic.SimulationNode.Score
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Score
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 72
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Gets or sets the evaluation score for this node.
+  example: []
+  syntax:
+    content: public float Score { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Score As Single
+  overload: CardGame.Core.AI.Logic.SimulationNode.Score*
+- uid: CardGame.Core.AI.Logic.SimulationNode.#ctor
+  commentId: M:CardGame.Core.AI.Logic.SimulationNode.#ctor
+  id: '#ctor'
+  parent: CardGame.Core.AI.Logic.SimulationNode
+  langs:
+  - csharp
+  - vb
+  name: SimulationNode()
+  nameWithType: SimulationNode.SimulationNode()
+  fullName: CardGame.Core.AI.Logic.SimulationNode.SimulationNode()
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 77
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Initializes a new instance of the SimulationNode class.
+  example: []
+  syntax:
+    content: public SimulationNode()
+    content.vb: Public Sub New()
+  overload: CardGame.Core.AI.Logic.SimulationNode.#ctor*
+  nameWithType.vb: SimulationNode.New()
+  fullName.vb: CardGame.Core.AI.Logic.SimulationNode.New()
+  name.vb: New()
+- uid: CardGame.Core.AI.Logic.SimulationNode.#ctor(CardGame.Core.State.Models.GameState,CardGame.Core.Commands.Interfaces.IGameCommand,System.Single)
+  commentId: M:CardGame.Core.AI.Logic.SimulationNode.#ctor(CardGame.Core.State.Models.GameState,CardGame.Core.Commands.Interfaces.IGameCommand,System.Single)
+  id: '#ctor(CardGame.Core.State.Models.GameState,CardGame.Core.Commands.Interfaces.IGameCommand,System.Single)'
+  parent: CardGame.Core.AI.Logic.SimulationNode
+  langs:
+  - csharp
+  - vb
+  name: SimulationNode(GameState, IGameCommand?, float)
+  nameWithType: SimulationNode.SimulationNode(GameState, IGameCommand?, float)
+  fullName: CardGame.Core.AI.Logic.SimulationNode.SimulationNode(CardGame.Core.State.Models.GameState, CardGame.Core.Commands.Interfaces.IGameCommand?, float)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 85
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Initializes a new instance of the SimulationNode class with specified values.
+  example: []
+  syntax:
+    content: public SimulationNode(GameState state, IGameCommand? initialMove, float score)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The game state at this node.
+    - id: initialMove
+      type: CardGame.Core.Commands.Interfaces.IGameCommand
+      description: The initial move that led to this state.
+    - id: score
+      type: System.Single
+      description: The evaluation score for this node.
+    content.vb: Public Sub New(state As GameState, initialMove As IGameCommand, score As Single)
+  overload: CardGame.Core.AI.Logic.SimulationNode.#ctor*
+  nameWithType.vb: SimulationNode.New(GameState, IGameCommand, Single)
+  fullName.vb: CardGame.Core.AI.Logic.SimulationNode.New(CardGame.Core.State.Models.GameState, CardGame.Core.Commands.Interfaces.IGameCommand, Single)
+  name.vb: New(GameState, IGameCommand, Single)
+- uid: CardGame.Core.AI.Logic.SimulationNode.Set(CardGame.Core.State.Models.GameState,CardGame.Core.Commands.Interfaces.IGameCommand,System.Single)
+  commentId: M:CardGame.Core.AI.Logic.SimulationNode.Set(CardGame.Core.State.Models.GameState,CardGame.Core.Commands.Interfaces.IGameCommand,System.Single)
+  id: Set(CardGame.Core.State.Models.GameState,CardGame.Core.Commands.Interfaces.IGameCommand,System.Single)
+  parent: CardGame.Core.AI.Logic.SimulationNode
+  langs:
+  - csharp
+  - vb
+  name: Set(GameState, IGameCommand?, float)
+  nameWithType: SimulationNode.Set(GameState, IGameCommand?, float)
+  fullName: CardGame.Core.AI.Logic.SimulationNode.Set(CardGame.Core.State.Models.GameState, CardGame.Core.Commands.Interfaces.IGameCommand?, float)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/BotSolver.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Set
+    path: ../Source/CardGame.Core/AI/Logic/BotSolver.cs
+    startLine: 98
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic
+  summary: Updates the node with new values for reuse in the object pool.
+  example: []
+  syntax:
+    content: public void Set(GameState state, IGameCommand? initialMove, float score)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The new game state.
+    - id: initialMove
+      type: CardGame.Core.Commands.Interfaces.IGameCommand
+      description: The new initial move.
+    - id: score
+      type: System.Single
+      description: The new evaluation score.
+    content.vb: Public Sub [Set](state As GameState, initialMove As IGameCommand, score As Single)
+  overload: CardGame.Core.AI.Logic.SimulationNode.Set*
+  nameWithType.vb: SimulationNode.Set(GameState, IGameCommand, Single)
+  fullName.vb: CardGame.Core.AI.Logic.SimulationNode.Set(CardGame.Core.State.Models.GameState, CardGame.Core.Commands.Interfaces.IGameCommand, Single)
+  name.vb: Set(GameState, IGameCommand, Single)
+references:
+- uid: CardGame.Core.AI.Logic
+  commentId: N:CardGame.Core.AI.Logic
+  href: CardGame.html
+  name: CardGame.Core.AI.Logic
+  nameWithType: CardGame.Core.AI.Logic
+  fullName: CardGame.Core.AI.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.AI.Logic.SimulationNode.State*
+  commentId: Overload:CardGame.Core.AI.Logic.SimulationNode.State
+  href: CardGame.Core.AI.Logic.SimulationNode.html#CardGame_Core_AI_Logic_SimulationNode_State
+  name: State
+  nameWithType: SimulationNode.State
+  fullName: CardGame.Core.AI.Logic.SimulationNode.State
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.AI.Logic.SimulationNode.InitialMove*
+  commentId: Overload:CardGame.Core.AI.Logic.SimulationNode.InitialMove
+  href: CardGame.Core.AI.Logic.SimulationNode.html#CardGame_Core_AI_Logic_SimulationNode_InitialMove
+  name: InitialMove
+  nameWithType: SimulationNode.InitialMove
+  fullName: CardGame.Core.AI.Logic.SimulationNode.InitialMove
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand
+  commentId: T:CardGame.Core.Commands.Interfaces.IGameCommand
+  parent: CardGame.Core.Commands.Interfaces
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: IGameCommand
+  nameWithType: IGameCommand
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand
+- uid: CardGame.Core.Commands.Interfaces
+  commentId: N:CardGame.Core.Commands.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Commands.Interfaces
+  nameWithType: CardGame.Core.Commands.Interfaces
+  fullName: CardGame.Core.Commands.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+- uid: CardGame.Core.AI.Logic.SimulationNode.Score*
+  commentId: Overload:CardGame.Core.AI.Logic.SimulationNode.Score
+  href: CardGame.Core.AI.Logic.SimulationNode.html#CardGame_Core_AI_Logic_SimulationNode_Score
+  name: Score
+  nameWithType: SimulationNode.Score
+  fullName: CardGame.Core.AI.Logic.SimulationNode.Score
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.Core.AI.Logic.SimulationNode.#ctor*
+  commentId: Overload:CardGame.Core.AI.Logic.SimulationNode.#ctor
+  href: CardGame.Core.AI.Logic.SimulationNode.html#CardGame_Core_AI_Logic_SimulationNode__ctor
+  name: SimulationNode
+  nameWithType: SimulationNode.SimulationNode
+  fullName: CardGame.Core.AI.Logic.SimulationNode.SimulationNode
+  nameWithType.vb: SimulationNode.New
+  fullName.vb: CardGame.Core.AI.Logic.SimulationNode.New
+  name.vb: New
+- uid: CardGame.Core.AI.Logic.SimulationNode.Set*
+  commentId: Overload:CardGame.Core.AI.Logic.SimulationNode.Set
+  href: CardGame.Core.AI.Logic.SimulationNode.html#CardGame_Core_AI_Logic_SimulationNode_Set_CardGame_Core_State_Models_GameState_CardGame_Core_Commands_Interfaces_IGameCommand_System_Single_
+  name: Set
+  nameWithType: SimulationNode.Set
+  fullName: CardGame.Core.AI.Logic.SimulationNode.Set

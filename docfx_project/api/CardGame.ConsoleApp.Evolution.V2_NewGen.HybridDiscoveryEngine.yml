@@ -1,0 +1,569 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  id: HybridDiscoveryEngine
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.#ctor(System.Int32[])
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.AnalyzePopulationForHybrids(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.CalculateHybridPotentialBonus(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.GetPromisingHybrids(System.Int32)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.PrintDiscoveredHybrids
+  langs:
+  - csharp
+  - vb
+  name: HybridDiscoveryEngine
+  nameWithType: HybridDiscoveryEngine
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HybridDiscoveryEngine
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 772
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class HybridDiscoveryEngine
+    content.vb: Public Class HybridDiscoveryEngine
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.#ctor(System.Int32[])
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.#ctor(System.Int32[])
+  id: '#ctor(System.Int32[])'
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  langs:
+  - csharp
+  - vb
+  name: HybridDiscoveryEngine(int[])
+  nameWithType: HybridDiscoveryEngine.HybridDiscoveryEngine(int[])
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridDiscoveryEngine(int[])
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 780
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public HybridDiscoveryEngine(int[] collectibleCardIds)
+    parameters:
+    - id: collectibleCardIds
+      type: System.Int32[]
+    content.vb: Public Sub New(collectibleCardIds As Integer())
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.#ctor*
+  nameWithType.vb: HybridDiscoveryEngine.New(Integer())
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.New(Integer())
+  name.vb: New(Integer())
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.AnalyzePopulationForHybrids(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.AnalyzePopulationForHybrids(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  id: AnalyzePopulationForHybrids(System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual},System.Collections.Concurrent.ConcurrentDictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced})
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  langs:
+  - csharp
+  - vb
+  name: AnalyzePopulationForHybrids(List<EvolvableIndividual>, ConcurrentDictionary<int, CardStatsEnhanced>)
+  nameWithType: HybridDiscoveryEngine.AnalyzePopulationForHybrids(List<EvolvableIndividual>, ConcurrentDictionary<int, CardStatsEnhanced>)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.AnalyzePopulationForHybrids(System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>, System.Collections.Concurrent.ConcurrentDictionary<int, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AnalyzePopulationForHybrids
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 796
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void AnalyzePopulationForHybrids(List<EvolvableIndividual> population, ConcurrentDictionary<int, CardStatsEnhanced> cardStats)
+    parameters:
+    - id: population
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+    - id: cardStats
+      type: System.Collections.Concurrent.ConcurrentDictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+    content.vb: Public Sub AnalyzePopulationForHybrids(population As List(Of EvolvableIndividual), cardStats As ConcurrentDictionary(Of Integer, CardStatsEnhanced))
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.AnalyzePopulationForHybrids*
+  nameWithType.vb: HybridDiscoveryEngine.AnalyzePopulationForHybrids(List(Of EvolvableIndividual), ConcurrentDictionary(Of Integer, CardStatsEnhanced))
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.AnalyzePopulationForHybrids(System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual), System.Collections.Concurrent.ConcurrentDictionary(Of Integer, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced))
+  name.vb: AnalyzePopulationForHybrids(List(Of EvolvableIndividual), ConcurrentDictionary(Of Integer, CardStatsEnhanced))
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.GetPromisingHybrids(System.Int32)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.GetPromisingHybrids(System.Int32)
+  id: GetPromisingHybrids(System.Int32)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  langs:
+  - csharp
+  - vb
+  name: GetPromisingHybrids(int)
+  nameWithType: HybridDiscoveryEngine.GetPromisingHybrids(int)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.GetPromisingHybrids(int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetPromisingHybrids
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 871
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<HybridDiscoveryEngine.HybridPattern> GetPromisingHybrids(int count = 5)
+    parameters:
+    - id: count
+      type: System.Int32
+    return:
+      type: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern}
+    content.vb: Public Function GetPromisingHybrids(count As Integer = 5) As List(Of HybridDiscoveryEngine.HybridPattern)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.GetPromisingHybrids*
+  nameWithType.vb: HybridDiscoveryEngine.GetPromisingHybrids(Integer)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.GetPromisingHybrids(Integer)
+  name.vb: GetPromisingHybrids(Integer)
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.CalculateHybridPotentialBonus(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.CalculateHybridPotentialBonus(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  id: CalculateHybridPotentialBonus(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  langs:
+  - csharp
+  - vb
+  name: CalculateHybridPotentialBonus(EvolvableIndividual)
+  nameWithType: HybridDiscoveryEngine.CalculateHybridPotentialBonus(EvolvableIndividual)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.CalculateHybridPotentialBonus(CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CalculateHybridPotentialBonus
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 881
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float CalculateHybridPotentialBonus(EvolvableIndividual individual)
+    parameters:
+    - id: individual
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    return:
+      type: System.Single
+    content.vb: Public Function CalculateHybridPotentialBonus(individual As EvolvableIndividual) As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.CalculateHybridPotentialBonus*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.PrintDiscoveredHybrids
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.PrintDiscoveredHybrids
+  id: PrintDiscoveredHybrids
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+  langs:
+  - csharp
+  - vb
+  name: PrintDiscoveredHybrids()
+  nameWithType: HybridDiscoveryEngine.PrintDiscoveredHybrids()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.PrintDiscoveredHybrids()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PrintDiscoveredHybrids
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 904
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void PrintDiscoveredHybrids()
+    content.vb: Public Sub PrintDiscoveredHybrids()
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.PrintDiscoveredHybrids*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.#ctor*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.#ctor
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine__ctor_System_Int32___
+  name: HybridDiscoveryEngine
+  nameWithType: HybridDiscoveryEngine.HybridDiscoveryEngine
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridDiscoveryEngine
+  nameWithType.vb: HybridDiscoveryEngine.New
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.New
+  name.vb: New
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.AnalyzePopulationForHybrids*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.AnalyzePopulationForHybrids
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_AnalyzePopulationForHybrids_System_Collections_Generic_List_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual__System_Collections_Concurrent_ConcurrentDictionary_System_Int32_CardGame_ConsoleApp_Evolution_V2_NewGen_CardStatsEnhanced__
+  name: AnalyzePopulationForHybrids
+  nameWithType: HybridDiscoveryEngine.AnalyzePopulationForHybrids
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.AnalyzePopulationForHybrids
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: List<EvolvableIndividual>
+  nameWithType: List<EvolvableIndividual>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual>
+  nameWithType.vb: List(Of EvolvableIndividual)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual)
+  name.vb: List(Of EvolvableIndividual)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+    name: EvolvableIndividual
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  - name: )
+- uid: System.Collections.Concurrent.ConcurrentDictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+  commentId: T:System.Collections.Concurrent.ConcurrentDictionary{System.Int32,CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced}
+  parent: System.Collections.Concurrent
+  definition: System.Collections.Concurrent.ConcurrentDictionary`2
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  name: ConcurrentDictionary<int, CardStatsEnhanced>
+  nameWithType: ConcurrentDictionary<int, CardStatsEnhanced>
+  fullName: System.Collections.Concurrent.ConcurrentDictionary<int, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced>
+  nameWithType.vb: ConcurrentDictionary(Of Integer, CardStatsEnhanced)
+  fullName.vb: System.Collections.Concurrent.ConcurrentDictionary(Of Integer, CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced)
+  name.vb: ConcurrentDictionary(Of Integer, CardStatsEnhanced)
+  spec.csharp:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+    name: CardStatsEnhanced
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced
+    name: CardStatsEnhanced
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardStatsEnhanced.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Concurrent.ConcurrentDictionary`2
+  commentId: T:System.Collections.Concurrent.ConcurrentDictionary`2
+  isExternal: true
+  name: ConcurrentDictionary<TKey, TValue>
+  nameWithType: ConcurrentDictionary<TKey, TValue>
+  fullName: System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
+  nameWithType.vb: ConcurrentDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Concurrent.ConcurrentDictionary(Of TKey, TValue)
+  name.vb: ConcurrentDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Concurrent
+  commentId: N:System.Collections.Concurrent
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Concurrent
+  nameWithType: System.Collections.Concurrent
+  fullName: System.Collections.Concurrent
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Concurrent
+    name: Concurrent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Concurrent
+    name: Concurrent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.GetPromisingHybrids*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.GetPromisingHybrids
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_GetPromisingHybrids_System_Int32_
+  name: GetPromisingHybrids
+  nameWithType: HybridDiscoveryEngine.GetPromisingHybrids
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.GetPromisingHybrids
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern}
+  commentId: T:System.Collections.Generic.List{CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html
+  name: List<HybridDiscoveryEngine.HybridPattern>
+  nameWithType: List<HybridDiscoveryEngine.HybridPattern>
+  fullName: System.Collections.Generic.List<CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern>
+  nameWithType.vb: List(Of HybridDiscoveryEngine.HybridPattern)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern)
+  name.vb: List(Of HybridDiscoveryEngine.HybridPattern)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+    name: HybridDiscoveryEngine
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+    name: HybridPattern
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine
+    name: HybridDiscoveryEngine
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern
+    name: HybridPattern
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.HybridPattern.html
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.CalculateHybridPotentialBonus*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.CalculateHybridPotentialBonus
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_CalculateHybridPotentialBonus_CardGame_ConsoleApp_Evolution_V2_NewGen_EvolvableIndividual_
+  name: CalculateHybridPotentialBonus
+  nameWithType: HybridDiscoveryEngine.CalculateHybridPotentialBonus
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.CalculateHybridPotentialBonus
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual.html
+  name: EvolvableIndividual
+  nameWithType: EvolvableIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.EvolvableIndividual
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.PrintDiscoveredHybrids*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.PrintDiscoveredHybrids
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.html#CardGame_ConsoleApp_Evolution_V2_NewGen_HybridDiscoveryEngine_PrintDiscoveredHybrids
+  name: PrintDiscoveredHybrids
+  nameWithType: HybridDiscoveryEngine.PrintDiscoveredHybrids
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.HybridDiscoveryEngine.PrintDiscoveredHybrids

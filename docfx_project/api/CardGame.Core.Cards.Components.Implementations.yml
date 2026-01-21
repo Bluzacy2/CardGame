@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Components.Implementations
+  commentId: N:CardGame.Core.Cards.Components.Implementations
+  id: Implementations
+  parent: CardGame.Core.Cards.Components
+  children:
+  - CardGame.Core.Cards.Components.Implementations.JsonEffectComponent
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.Cards.Components.Implementations
+  nameWithType: CardGame.Core.Cards.Components.Implementations
+  fullName: CardGame.Core.Cards.Components.Implementations
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.Cards.Components.Implementations.JsonEffectComponent
+  commentId: T:CardGame.Core.Cards.Components.Implementations.JsonEffectComponent
+  href: CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.html
+  name: JsonEffectComponent
+  nameWithType: JsonEffectComponent
+  fullName: CardGame.Core.Cards.Components.Implementations.JsonEffectComponent

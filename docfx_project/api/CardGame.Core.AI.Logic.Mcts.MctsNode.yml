@@ -1,0 +1,916 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode
+  commentId: T:CardGame.Core.AI.Logic.Mcts.MctsNode
+  id: MctsNode
+  parent: CardGame.Core.AI.Logic.Mcts
+  children:
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.#ctor(CardGame.Core.State.Models.GameState,CardGame.Core.AI.Logic.Mcts.MctsNode,CardGame.Core.Commands.Interfaces.IGameCommand,System.Int32,CardGame.Core.AI.Logic.MoveGenerator)
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.Children
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild(System.Double)
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.Parent
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.Score
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.State
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.Update(System.Double)
+  - CardGame.Core.AI.Logic.Mcts.MctsNode.Visits
+  langs:
+  - csharp
+  - vb
+  name: MctsNode
+  nameWithType: MctsNode
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MctsNode
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 11
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Represents a node in the Monte Carlo Tree Search algorithm.
+  example: []
+  syntax:
+    content: public class MctsNode
+    content.vb: Public Class MctsNode
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.State
+  commentId: P:CardGame.Core.AI.Logic.Mcts.MctsNode.State
+  id: State
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: MctsNode.State
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.State
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: State
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 18
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Gets the game state at this node.
+  example: []
+  syntax:
+    content: public GameState State { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.State.Models.GameState
+    content.vb: Public ReadOnly Property State As GameState
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.State*
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Parent
+  commentId: P:CardGame.Core.AI.Logic.Mcts.MctsNode.Parent
+  id: Parent
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: Parent
+  nameWithType: MctsNode.Parent
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Parent
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Parent
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 23
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Gets the parent node of this node.
+  example: []
+  syntax:
+    content: public MctsNode? Parent { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.AI.Logic.Mcts.MctsNode
+    content.vb: Public ReadOnly Property Parent As MctsNode
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.Parent*
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered
+  commentId: P:CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered
+  id: MoveEntered
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: MoveEntered
+  nameWithType: MctsNode.MoveEntered
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MoveEntered
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 28
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Gets the move that led to this state.
+  example: []
+  syntax:
+    content: public IGameCommand? MoveEntered { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Commands.Interfaces.IGameCommand
+    content.vb: Public ReadOnly Property MoveEntered As IGameCommand
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered*
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved
+  commentId: P:CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved
+  id: PlayerIdJustMoved
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: PlayerIdJustMoved
+  nameWithType: MctsNode.PlayerIdJustMoved
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerIdJustMoved
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 33
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Gets the ID of the player who just moved to reach this state.
+  example: []
+  syntax:
+    content: public int PlayerIdJustMoved { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PlayerIdJustMoved As Integer
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved*
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Children
+  commentId: P:CardGame.Core.AI.Logic.Mcts.MctsNode.Children
+  id: Children
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: Children
+  nameWithType: MctsNode.Children
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Children
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Children
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 38
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Gets the child nodes of this node.
+  example: []
+  syntax:
+    content: public List<MctsNode> Children { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.Core.AI.Logic.Mcts.MctsNode}
+    content.vb: Public ReadOnly Property Children As List(Of MctsNode)
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.Children*
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves
+  commentId: P:CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves
+  id: UntriedMoves
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: UntriedMoves
+  nameWithType: MctsNode.UntriedMoves
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UntriedMoves
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 43
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Gets the list of moves that have not been tried from this node.
+  example: []
+  syntax:
+    content: public List<IGameCommand> UntriedMoves { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{CardGame.Core.Commands.Interfaces.IGameCommand}
+    content.vb: Public Property UntriedMoves As List(Of IGameCommand)
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves*
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Visits
+  commentId: P:CardGame.Core.AI.Logic.Mcts.MctsNode.Visits
+  id: Visits
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: Visits
+  nameWithType: MctsNode.Visits
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Visits
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Visits
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 48
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Gets the number of times this node has been visited during simulation.
+  example: []
+  syntax:
+    content: public int Visits { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Visits As Integer
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.Visits*
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Score
+  commentId: P:CardGame.Core.AI.Logic.Mcts.MctsNode.Score
+  id: Score
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: Score
+  nameWithType: MctsNode.Score
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Score
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Score
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 53
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Gets the cumulative score from simulations (from the perspective of the root player).
+  example: []
+  syntax:
+    content: public double Score { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Score As Double
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.Score*
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded
+  commentId: P:CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded
+  id: IsFullyExpanded
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: IsFullyExpanded
+  nameWithType: MctsNode.IsFullyExpanded
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: IsFullyExpanded
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 58
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Gets a value indicating whether all possible moves have been expanded from this node.
+  example: []
+  syntax:
+    content: public bool IsFullyExpanded { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsFullyExpanded As Boolean
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded*
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal
+  commentId: P:CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal
+  id: IsTerminal
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: IsTerminal
+  nameWithType: MctsNode.IsTerminal
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: IsTerminal
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 63
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Gets a value indicating whether this node represents a terminal game state (game over).
+  example: []
+  syntax:
+    content: public bool IsTerminal { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsTerminal As Boolean
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal*
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.#ctor(CardGame.Core.State.Models.GameState,CardGame.Core.AI.Logic.Mcts.MctsNode,CardGame.Core.Commands.Interfaces.IGameCommand,System.Int32,CardGame.Core.AI.Logic.MoveGenerator)
+  commentId: M:CardGame.Core.AI.Logic.Mcts.MctsNode.#ctor(CardGame.Core.State.Models.GameState,CardGame.Core.AI.Logic.Mcts.MctsNode,CardGame.Core.Commands.Interfaces.IGameCommand,System.Int32,CardGame.Core.AI.Logic.MoveGenerator)
+  id: '#ctor(CardGame.Core.State.Models.GameState,CardGame.Core.AI.Logic.Mcts.MctsNode,CardGame.Core.Commands.Interfaces.IGameCommand,System.Int32,CardGame.Core.AI.Logic.MoveGenerator)'
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: MctsNode(GameState, MctsNode?, IGameCommand?, int, MoveGenerator)
+  nameWithType: MctsNode.MctsNode(GameState, MctsNode?, IGameCommand?, int, MoveGenerator)
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.MctsNode(CardGame.Core.State.Models.GameState, CardGame.Core.AI.Logic.Mcts.MctsNode?, CardGame.Core.Commands.Interfaces.IGameCommand?, int, CardGame.Core.AI.Logic.MoveGenerator)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 77
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Initializes a new instance of the MctsNode class.
+  example: []
+  syntax:
+    content: public MctsNode(GameState state, MctsNode? parent, IGameCommand? move, int playerIdJustMoved, MoveGenerator moveGenerator)
+    parameters:
+    - id: state
+      type: CardGame.Core.State.Models.GameState
+      description: The game state at this node.
+    - id: parent
+      type: CardGame.Core.AI.Logic.Mcts.MctsNode
+      description: The parent node, or null if this is the root.
+    - id: move
+      type: CardGame.Core.Commands.Interfaces.IGameCommand
+      description: The move that led to this state.
+    - id: playerIdJustMoved
+      type: System.Int32
+      description: The ID of the player who just moved.
+    - id: moveGenerator
+      type: CardGame.Core.AI.Logic.MoveGenerator
+      description: The move generator for creating untried moves.
+    content.vb: Public Sub New(state As GameState, parent As MctsNode, move As IGameCommand, playerIdJustMoved As Integer, moveGenerator As MoveGenerator)
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.#ctor*
+  nameWithType.vb: MctsNode.New(GameState, MctsNode, IGameCommand, Integer, MoveGenerator)
+  fullName.vb: CardGame.Core.AI.Logic.Mcts.MctsNode.New(CardGame.Core.State.Models.GameState, CardGame.Core.AI.Logic.Mcts.MctsNode, CardGame.Core.Commands.Interfaces.IGameCommand, Integer, CardGame.Core.AI.Logic.MoveGenerator)
+  name.vb: New(GameState, MctsNode, IGameCommand, Integer, MoveGenerator)
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Update(System.Double)
+  commentId: M:CardGame.Core.AI.Logic.Mcts.MctsNode.Update(System.Double)
+  id: Update(System.Double)
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: Update(double)
+  nameWithType: MctsNode.Update(double)
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Update(double)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Update
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 101
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Updates the node's statistics with the result of a simulation.
+  example: []
+  syntax:
+    content: public void Update(double result)
+    parameters:
+    - id: result
+      type: System.Double
+      description: The result value to add (from root player's perspective).
+    content.vb: Public Sub Update(result As Double)
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.Update*
+  nameWithType.vb: MctsNode.Update(Double)
+  fullName.vb: CardGame.Core.AI.Logic.Mcts.MctsNode.Update(Double)
+  name.vb: Update(Double)
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild(System.Double)
+  commentId: M:CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild(System.Double)
+  id: GetBestChild(System.Double)
+  parent: CardGame.Core.AI.Logic.Mcts.MctsNode
+  langs:
+  - csharp
+  - vb
+  name: GetBestChild(double)
+  nameWithType: MctsNode.GetBestChild(double)
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild(double)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetBestChild
+    path: ../Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs
+    startLine: 112
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.AI.Logic.Mcts
+  summary: Selects the best child node using the UCT (Upper Confidence Bound for Trees) formula.
+  example: []
+  syntax:
+    content: public MctsNode GetBestChild(double explorationParameter = 1.41)
+    parameters:
+    - id: explorationParameter
+      type: System.Double
+      description: The exploration constant (default is √2).
+    return:
+      type: CardGame.Core.AI.Logic.Mcts.MctsNode
+      description: The child node with the highest UCT value.
+    content.vb: Public Function GetBestChild(explorationParameter As Double = 1.41) As MctsNode
+  overload: CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild*
+  nameWithType.vb: MctsNode.GetBestChild(Double)
+  fullName.vb: CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild(Double)
+  name.vb: GetBestChild(Double)
+references:
+- uid: CardGame.Core.AI.Logic.Mcts
+  commentId: N:CardGame.Core.AI.Logic.Mcts
+  href: CardGame.html
+  name: CardGame.Core.AI.Logic.Mcts
+  nameWithType: CardGame.Core.AI.Logic.Mcts
+  fullName: CardGame.Core.AI.Logic.Mcts
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic.Mcts
+    name: Mcts
+    href: CardGame.Core.AI.Logic.Mcts.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic.Mcts
+    name: Mcts
+    href: CardGame.Core.AI.Logic.Mcts.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.State*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.State
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_State
+  name: State
+  nameWithType: MctsNode.State
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.State
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Parent*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.Parent
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Parent
+  name: Parent
+  nameWithType: MctsNode.Parent
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Parent
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode
+  commentId: T:CardGame.Core.AI.Logic.Mcts.MctsNode
+  parent: CardGame.Core.AI.Logic.Mcts
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html
+  name: MctsNode
+  nameWithType: MctsNode
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_MoveEntered
+  name: MoveEntered
+  nameWithType: MctsNode.MoveEntered
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand
+  commentId: T:CardGame.Core.Commands.Interfaces.IGameCommand
+  parent: CardGame.Core.Commands.Interfaces
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: IGameCommand
+  nameWithType: IGameCommand
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand
+- uid: CardGame.Core.Commands.Interfaces
+  commentId: N:CardGame.Core.Commands.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Commands.Interfaces
+  nameWithType: CardGame.Core.Commands.Interfaces
+  fullName: CardGame.Core.Commands.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_PlayerIdJustMoved
+  name: PlayerIdJustMoved
+  nameWithType: MctsNode.PlayerIdJustMoved
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Children*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.Children
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Children
+  name: Children
+  nameWithType: MctsNode.Children
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Children
+- uid: System.Collections.Generic.List{CardGame.Core.AI.Logic.Mcts.MctsNode}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.AI.Logic.Mcts.MctsNode}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html
+  name: List<MctsNode>
+  nameWithType: List<MctsNode>
+  fullName: System.Collections.Generic.List<CardGame.Core.AI.Logic.Mcts.MctsNode>
+  nameWithType.vb: List(Of MctsNode)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.AI.Logic.Mcts.MctsNode)
+  name.vb: List(Of MctsNode)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.AI.Logic.Mcts.MctsNode
+    name: MctsNode
+    href: CardGame.Core.AI.Logic.Mcts.MctsNode.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.AI.Logic.Mcts.MctsNode
+    name: MctsNode
+    href: CardGame.Core.AI.Logic.Mcts.MctsNode.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_UntriedMoves
+  name: UntriedMoves
+  nameWithType: MctsNode.UntriedMoves
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves
+- uid: System.Collections.Generic.List{CardGame.Core.Commands.Interfaces.IGameCommand}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Commands.Interfaces.IGameCommand}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: List<IGameCommand>
+  nameWithType: List<IGameCommand>
+  fullName: System.Collections.Generic.List<CardGame.Core.Commands.Interfaces.IGameCommand>
+  nameWithType.vb: List(Of IGameCommand)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Commands.Interfaces.IGameCommand)
+  name.vb: List(Of IGameCommand)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand
+    name: IGameCommand
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand
+    name: IGameCommand
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  - name: )
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Visits*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.Visits
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Visits
+  name: Visits
+  nameWithType: MctsNode.Visits
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Visits
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Score*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.Score
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Score
+  name: Score
+  nameWithType: MctsNode.Score
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Score
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_IsFullyExpanded
+  name: IsFullyExpanded
+  nameWithType: MctsNode.IsFullyExpanded
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_IsTerminal
+  name: IsTerminal
+  nameWithType: MctsNode.IsTerminal
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.#ctor*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.#ctor
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode__ctor_CardGame_Core_State_Models_GameState_CardGame_Core_AI_Logic_Mcts_MctsNode_CardGame_Core_Commands_Interfaces_IGameCommand_System_Int32_CardGame_Core_AI_Logic_MoveGenerator_
+  name: MctsNode
+  nameWithType: MctsNode.MctsNode
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.MctsNode
+  nameWithType.vb: MctsNode.New
+  fullName.vb: CardGame.Core.AI.Logic.Mcts.MctsNode.New
+  name.vb: New
+- uid: CardGame.Core.AI.Logic.MoveGenerator
+  commentId: T:CardGame.Core.AI.Logic.MoveGenerator
+  parent: CardGame.Core.AI.Logic
+  href: CardGame.Core.AI.Logic.MoveGenerator.html
+  name: MoveGenerator
+  nameWithType: MoveGenerator
+  fullName: CardGame.Core.AI.Logic.MoveGenerator
+- uid: CardGame.Core.AI.Logic
+  commentId: N:CardGame.Core.AI.Logic
+  href: CardGame.html
+  name: CardGame.Core.AI.Logic
+  nameWithType: CardGame.Core.AI.Logic
+  fullName: CardGame.Core.AI.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Update*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.Update
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Update_System_Double_
+  name: Update
+  nameWithType: MctsNode.Update
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Update
+- uid: CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild*
+  commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_GetBestChild_System_Double_
+  name: GetBestChild
+  nameWithType: MctsNode.GetBestChild
+  fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild

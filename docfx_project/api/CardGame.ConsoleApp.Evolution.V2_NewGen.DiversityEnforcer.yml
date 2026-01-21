@@ -1,0 +1,196 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer
+  id: DiversityEnforcer
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.AddDeck(System.Int32[])
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.CalculateDeckNovelty(System.Int32[])
+  langs:
+  - csharp
+  - vb
+  name: DiversityEnforcer
+  nameWithType: DiversityEnforcer
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DiversityEnforcer
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1099
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class DiversityEnforcer
+    content.vb: Public Class DiversityEnforcer
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.CalculateDeckNovelty(System.Int32[])
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.CalculateDeckNovelty(System.Int32[])
+  id: CalculateDeckNovelty(System.Int32[])
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer
+  langs:
+  - csharp
+  - vb
+  name: CalculateDeckNovelty(int[])
+  nameWithType: DiversityEnforcer.CalculateDeckNovelty(int[])
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.CalculateDeckNovelty(int[])
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CalculateDeckNovelty
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1106
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float CalculateDeckNovelty(int[] deck)
+    parameters:
+    - id: deck
+      type: System.Int32[]
+    return:
+      type: System.Single
+    content.vb: Public Function CalculateDeckNovelty(deck As Integer()) As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.CalculateDeckNovelty*
+  nameWithType.vb: DiversityEnforcer.CalculateDeckNovelty(Integer())
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.CalculateDeckNovelty(Integer())
+  name.vb: CalculateDeckNovelty(Integer())
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.AddDeck(System.Int32[])
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.AddDeck(System.Int32[])
+  id: AddDeck(System.Int32[])
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer
+  langs:
+  - csharp
+  - vb
+  name: AddDeck(int[])
+  nameWithType: DiversityEnforcer.AddDeck(int[])
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.AddDeck(int[])
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AddDeck
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1127
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public void AddDeck(int[] deck)
+    parameters:
+    - id: deck
+      type: System.Int32[]
+    content.vb: Public Sub AddDeck(deck As Integer())
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.AddDeck*
+  nameWithType.vb: DiversityEnforcer.AddDeck(Integer())
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.AddDeck(Integer())
+  name.vb: AddDeck(Integer())
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.CalculateDeckNovelty*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.CalculateDeckNovelty
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.html#CardGame_ConsoleApp_Evolution_V2_NewGen_DiversityEnforcer_CalculateDeckNovelty_System_Int32___
+  name: CalculateDeckNovelty
+  nameWithType: DiversityEnforcer.CalculateDeckNovelty
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.CalculateDeckNovelty
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.AddDeck*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.AddDeck
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.html#CardGame_ConsoleApp_Evolution_V2_NewGen_DiversityEnforcer_AddDeck_System_Int32___
+  name: AddDeck
+  nameWithType: DiversityEnforcer.AddDeck
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.DiversityEnforcer.AddDeck

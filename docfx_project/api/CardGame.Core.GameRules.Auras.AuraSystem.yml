@@ -1,0 +1,218 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.GameRules.Auras.AuraSystem
+  commentId: T:CardGame.Core.GameRules.Auras.AuraSystem
+  id: AuraSystem
+  parent: CardGame.Core.GameRules.Auras
+  children:
+  - CardGame.Core.GameRules.Auras.AuraSystem.RecalculateAuras(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus)
+  langs:
+  - csharp
+  - vb
+  name: AuraSystem
+  nameWithType: AuraSystem
+  fullName: CardGame.Core.GameRules.Auras.AuraSystem
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/GameRules/Auras/AuraSystem.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AuraSystem
+    path: ../Source/CardGame.Core/GameRules/Auras/AuraSystem.cs
+    startLine: 13
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.GameRules.Auras
+  summary: Manages aura calculations and updates, including hand cost modifiers and status keyword applications.
+  example: []
+  syntax:
+    content: public class AuraSystem
+    content.vb: Public Class AuraSystem
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.GameRules.Auras.AuraSystem.RecalculateAuras(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus)
+  commentId: M:CardGame.Core.GameRules.Auras.AuraSystem.RecalculateAuras(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus)
+  id: RecalculateAuras(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus)
+  parent: CardGame.Core.GameRules.Auras.AuraSystem
+  langs:
+  - csharp
+  - vb
+  name: RecalculateAuras(GameState, EventBus?)
+  nameWithType: AuraSystem.RecalculateAuras(GameState, EventBus?)
+  fullName: CardGame.Core.GameRules.Auras.AuraSystem.RecalculateAuras(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus?)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/GameRules/Auras/AuraSystem.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: RecalculateAuras
+    path: ../Source/CardGame.Core/GameRules/Auras/AuraSystem.cs
+    startLine: 22
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.GameRules.Auras
+  summary: Recalculates all aura effects on the board and updates hand cost modifiers.
+  example: []
+  syntax:
+    content: public GameState RecalculateAuras(GameState currentState, EventBus? events = null)
+    parameters:
+    - id: currentState
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state to recalculate auras for.
+    - id: events
+      type: CardGame.Core.Events.EventBus
+      description: Optional event bus for publishing stat change events.
+    return:
+      type: CardGame.Core.State.Models.GameState
+      description: The updated game state with recalculated auras applied.
+    content.vb: Public Function RecalculateAuras(currentState As GameState, events As EventBus = Nothing) As GameState
+  overload: CardGame.Core.GameRules.Auras.AuraSystem.RecalculateAuras*
+  nameWithType.vb: AuraSystem.RecalculateAuras(GameState, EventBus)
+  fullName.vb: CardGame.Core.GameRules.Auras.AuraSystem.RecalculateAuras(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus)
+  name.vb: RecalculateAuras(GameState, EventBus)
+references:
+- uid: CardGame.Core.GameRules.Auras
+  commentId: N:CardGame.Core.GameRules.Auras
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Auras
+  nameWithType: CardGame.Core.GameRules.Auras
+  fullName: CardGame.Core.GameRules.Auras
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Auras
+    name: Auras
+    href: CardGame.Core.GameRules.Auras.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Auras
+    name: Auras
+    href: CardGame.Core.GameRules.Auras.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.GameRules.Auras.AuraSystem.RecalculateAuras*
+  commentId: Overload:CardGame.Core.GameRules.Auras.AuraSystem.RecalculateAuras
+  href: CardGame.Core.GameRules.Auras.AuraSystem.html#CardGame_Core_GameRules_Auras_AuraSystem_RecalculateAuras_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_
+  name: RecalculateAuras
+  nameWithType: AuraSystem.RecalculateAuras
+  fullName: CardGame.Core.GameRules.Auras.AuraSystem.RecalculateAuras
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html

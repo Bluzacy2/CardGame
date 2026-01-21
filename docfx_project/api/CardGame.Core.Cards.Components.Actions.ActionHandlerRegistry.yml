@@ -1,0 +1,289 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+  commentId: T:CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+  id: ActionHandlerRegistry
+  parent: CardGame.Core.Cards.Components.Actions
+  children:
+  - CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.GetHandler(CardGame.Core.Cards.Data.ActionType)
+  - CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.Register(CardGame.Core.Cards.Component.Actions.IActionHandler)
+  langs:
+  - csharp
+  - vb
+  name: ActionHandlerRegistry
+  nameWithType: ActionHandlerRegistry
+  fullName: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Component/Actions/ActionHandlerRegistry.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ActionHandlerRegistry
+    path: ../Source/CardGame.Core/Cards/Component/Actions/ActionHandlerRegistry.cs
+    startLine: 10
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Components.Actions
+  summary: Registry for managing and retrieving action handlers for card effects.
+  example: []
+  syntax:
+    content: public class ActionHandlerRegistry
+    content.vb: Public Class ActionHandlerRegistry
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.Register(CardGame.Core.Cards.Component.Actions.IActionHandler)
+  commentId: M:CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.Register(CardGame.Core.Cards.Component.Actions.IActionHandler)
+  id: Register(CardGame.Core.Cards.Component.Actions.IActionHandler)
+  parent: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+  langs:
+  - csharp
+  - vb
+  name: Register(IActionHandler)
+  nameWithType: ActionHandlerRegistry.Register(IActionHandler)
+  fullName: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.Register(CardGame.Core.Cards.Component.Actions.IActionHandler)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Component/Actions/ActionHandlerRegistry.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Register
+    path: ../Source/CardGame.Core/Cards/Component/Actions/ActionHandlerRegistry.cs
+    startLine: 21
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Components.Actions
+  summary: Registers an action handler for a specific action type.
+  example: []
+  syntax:
+    content: public void Register(IActionHandler handler)
+    parameters:
+    - id: handler
+      type: CardGame.Core.Cards.Component.Actions.IActionHandler
+      description: The handler to register.
+    content.vb: Public Sub Register(handler As IActionHandler)
+  overload: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.Register*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown when a handler for the action type is already registered.
+- uid: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.GetHandler(CardGame.Core.Cards.Data.ActionType)
+  commentId: M:CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.GetHandler(CardGame.Core.Cards.Data.ActionType)
+  id: GetHandler(CardGame.Core.Cards.Data.ActionType)
+  parent: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetHandler(ActionType)
+  nameWithType: ActionHandlerRegistry.GetHandler(ActionType)
+  fullName: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.GetHandler(CardGame.Core.Cards.Data.ActionType)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Component/Actions/ActionHandlerRegistry.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetHandler
+    path: ../Source/CardGame.Core/Cards/Component/Actions/ActionHandlerRegistry.cs
+    startLine: 37
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Components.Actions
+  summary: Retrieves the handler for a specific action type.
+  example: []
+  syntax:
+    content: public IActionHandler GetHandler(ActionType type)
+    parameters:
+    - id: type
+      type: CardGame.Core.Cards.Data.ActionType
+      description: The type of action.
+    return:
+      type: CardGame.Core.Cards.Component.Actions.IActionHandler
+      description: The registered IActionHandler for the specified type.
+    content.vb: Public Function GetHandler(type As ActionType) As IActionHandler
+  overload: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.GetHandler*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown when no handler is registered for the action type.
+references:
+- uid: CardGame.Core.Cards.Components.Actions
+  commentId: N:CardGame.Core.Cards.Components.Actions
+  href: CardGame.html
+  name: CardGame.Core.Cards.Components.Actions
+  nameWithType: CardGame.Core.Cards.Components.Actions
+  fullName: CardGame.Core.Cards.Components.Actions
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components
+    name: Components
+    href: CardGame.Core.Cards.Components.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Components.Actions.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components
+    name: Components
+    href: CardGame.Core.Cards.Components.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Components.Actions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Exception
+  commentId: T:System.Exception
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.Register*
+  commentId: Overload:CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.Register
+  href: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.html#CardGame_Core_Cards_Components_Actions_ActionHandlerRegistry_Register_CardGame_Core_Cards_Component_Actions_IActionHandler_
+  name: Register
+  nameWithType: ActionHandlerRegistry.Register
+  fullName: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.Register
+- uid: CardGame.Core.Cards.Component.Actions.IActionHandler
+  commentId: T:CardGame.Core.Cards.Component.Actions.IActionHandler
+  parent: CardGame.Core.Cards.Component.Actions
+  href: CardGame.Core.Cards.Component.Actions.IActionHandler.html
+  name: IActionHandler
+  nameWithType: IActionHandler
+  fullName: CardGame.Core.Cards.Component.Actions.IActionHandler
+- uid: CardGame.Core.Cards.Component.Actions
+  commentId: N:CardGame.Core.Cards.Component.Actions
+  href: CardGame.html
+  name: CardGame.Core.Cards.Component.Actions
+  nameWithType: CardGame.Core.Cards.Component.Actions
+  fullName: CardGame.Core.Cards.Component.Actions
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component
+    name: Component
+    href: CardGame.Core.Cards.Component.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Component.Actions.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component
+    name: Component
+    href: CardGame.Core.Cards.Component.html
+  - name: .
+  - uid: CardGame.Core.Cards.Component.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Component.Actions.html
+- uid: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.GetHandler*
+  commentId: Overload:CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.GetHandler
+  href: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.html#CardGame_Core_Cards_Components_Actions_ActionHandlerRegistry_GetHandler_CardGame_Core_Cards_Data_ActionType_
+  name: GetHandler
+  nameWithType: ActionHandlerRegistry.GetHandler
+  fullName: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.GetHandler
+- uid: CardGame.Core.Cards.Data.ActionType
+  commentId: T:CardGame.Core.Cards.Data.ActionType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ActionType.html
+  name: ActionType
+  nameWithType: ActionType
+  fullName: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html

@@ -1,0 +1,387 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+  id: CrossArchetypeStats
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GamesAgainst
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GetOverallWinRate
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinRates
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinsAgainst
+  langs:
+  - csharp
+  - vb
+  name: CrossArchetypeStats
+  nameWithType: CrossArchetypeStats
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CrossArchetypeStats
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1829
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class CrossArchetypeStats
+    content.vb: Public Class CrossArchetypeStats
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GamesAgainst
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GamesAgainst
+  id: GamesAgainst
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+  langs:
+  - csharp
+  - vb
+  name: GamesAgainst
+  nameWithType: CrossArchetypeStats.GamesAgainst
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GamesAgainst
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GamesAgainst
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1831
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public ConcurrentDictionary<string, int> GamesAgainst { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Concurrent.ConcurrentDictionary{System.String,System.Int32}
+    content.vb: Public Property GamesAgainst As ConcurrentDictionary(Of String, Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GamesAgainst*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinsAgainst
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinsAgainst
+  id: WinsAgainst
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+  langs:
+  - csharp
+  - vb
+  name: WinsAgainst
+  nameWithType: CrossArchetypeStats.WinsAgainst
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinsAgainst
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: WinsAgainst
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1832
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public ConcurrentDictionary<string, int> WinsAgainst { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Concurrent.ConcurrentDictionary{System.String,System.Int32}
+    content.vb: Public Property WinsAgainst As ConcurrentDictionary(Of String, Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinsAgainst*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinRates
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinRates
+  id: WinRates
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+  langs:
+  - csharp
+  - vb
+  name: WinRates
+  nameWithType: CrossArchetypeStats.WinRates
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinRates
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: WinRates
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1833
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public ConcurrentDictionary<string, float> WinRates { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Concurrent.ConcurrentDictionary{System.String,System.Single}
+    content.vb: Public Property WinRates As ConcurrentDictionary(Of String, Single)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinRates*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GetOverallWinRate
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GetOverallWinRate
+  id: GetOverallWinRate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats
+  langs:
+  - csharp
+  - vb
+  name: GetOverallWinRate()
+  nameWithType: CrossArchetypeStats.GetOverallWinRate()
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GetOverallWinRate()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetOverallWinRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 1835
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float GetOverallWinRate()
+    return:
+      type: System.Single
+    content.vb: Public Function GetOverallWinRate() As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GetOverallWinRate*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GamesAgainst*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GamesAgainst
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CrossArchetypeStats_GamesAgainst
+  name: GamesAgainst
+  nameWithType: CrossArchetypeStats.GamesAgainst
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GamesAgainst
+- uid: System.Collections.Concurrent.ConcurrentDictionary{System.String,System.Int32}
+  commentId: T:System.Collections.Concurrent.ConcurrentDictionary{System.String,System.Int32}
+  parent: System.Collections.Concurrent
+  definition: System.Collections.Concurrent.ConcurrentDictionary`2
+  name: ConcurrentDictionary<string, int>
+  nameWithType: ConcurrentDictionary<string, int>
+  fullName: System.Collections.Concurrent.ConcurrentDictionary<string, int>
+  nameWithType.vb: ConcurrentDictionary(Of String, Integer)
+  fullName.vb: System.Collections.Concurrent.ConcurrentDictionary(Of String, Integer)
+  name.vb: ConcurrentDictionary(Of String, Integer)
+  spec.csharp:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Concurrent.ConcurrentDictionary`2
+  commentId: T:System.Collections.Concurrent.ConcurrentDictionary`2
+  isExternal: true
+  name: ConcurrentDictionary<TKey, TValue>
+  nameWithType: ConcurrentDictionary<TKey, TValue>
+  fullName: System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
+  nameWithType.vb: ConcurrentDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Concurrent.ConcurrentDictionary(Of TKey, TValue)
+  name.vb: ConcurrentDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Concurrent
+  commentId: N:System.Collections.Concurrent
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Concurrent
+  nameWithType: System.Collections.Concurrent
+  fullName: System.Collections.Concurrent
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Concurrent
+    name: Concurrent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Concurrent
+    name: Concurrent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinsAgainst*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinsAgainst
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CrossArchetypeStats_WinsAgainst
+  name: WinsAgainst
+  nameWithType: CrossArchetypeStats.WinsAgainst
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinsAgainst
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinRates*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinRates
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CrossArchetypeStats_WinRates
+  name: WinRates
+  nameWithType: CrossArchetypeStats.WinRates
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.WinRates
+- uid: System.Collections.Concurrent.ConcurrentDictionary{System.String,System.Single}
+  commentId: T:System.Collections.Concurrent.ConcurrentDictionary{System.String,System.Single}
+  parent: System.Collections.Concurrent
+  definition: System.Collections.Concurrent.ConcurrentDictionary`2
+  name: ConcurrentDictionary<string, float>
+  nameWithType: ConcurrentDictionary<string, float>
+  fullName: System.Collections.Concurrent.ConcurrentDictionary<string, float>
+  nameWithType.vb: ConcurrentDictionary(Of String, Single)
+  fullName.vb: System.Collections.Concurrent.ConcurrentDictionary(Of String, Single)
+  name.vb: ConcurrentDictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GetOverallWinRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GetOverallWinRate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CrossArchetypeStats_GetOverallWinRate
+  name: GetOverallWinRate
+  nameWithType: CrossArchetypeStats.GetOverallWinRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CrossArchetypeStats.GetOverallWinRate
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

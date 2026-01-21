@@ -1,0 +1,285 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+  id: GameResult
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player1Health
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player2Health
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Turns
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.WinnerId
+  langs:
+  - csharp
+  - vb
+  name: GameResult
+  nameWithType: GameResult
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GameResult
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4734
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class GameResult
+    content.vb: Public Class GameResult
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.WinnerId
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.WinnerId
+  id: WinnerId
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+  langs:
+  - csharp
+  - vb
+  name: WinnerId
+  nameWithType: GameResult.WinnerId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.WinnerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: WinnerId
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4736
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int? WinnerId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property WinnerId As Integer?
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.WinnerId*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player1Health
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player1Health
+  id: Player1Health
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+  langs:
+  - csharp
+  - vb
+  name: Player1Health
+  nameWithType: GameResult.Player1Health
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player1Health
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Player1Health
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4737
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Player1Health { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Player1Health As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player1Health*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player2Health
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player2Health
+  id: Player2Health
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+  langs:
+  - csharp
+  - vb
+  name: Player2Health
+  nameWithType: GameResult.Player2Health
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player2Health
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Player2Health
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4738
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Player2Health { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Player2Health As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player2Health*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Turns
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Turns
+  id: Turns
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult
+  langs:
+  - csharp
+  - vb
+  name: Turns
+  nameWithType: GameResult.Turns
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Turns
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Turns
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4739
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Turns { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Turns As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Turns*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.WinnerId*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.WinnerId
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.html#CardGame_ConsoleApp_Evolution_V2_NewGen_GameResult_WinnerId
+  name: WinnerId
+  nameWithType: GameResult.WinnerId
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.WinnerId
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player1Health*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player1Health
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.html#CardGame_ConsoleApp_Evolution_V2_NewGen_GameResult_Player1Health
+  name: Player1Health
+  nameWithType: GameResult.Player1Health
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player1Health
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player2Health*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player2Health
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.html#CardGame_ConsoleApp_Evolution_V2_NewGen_GameResult_Player2Health
+  name: Player2Health
+  nameWithType: GameResult.Player2Health
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Player2Health
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Turns*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Turns
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.html#CardGame_ConsoleApp_Evolution_V2_NewGen_GameResult_Turns
+  name: Turns
+  nameWithType: GameResult.Turns
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.GameResult.Turns

@@ -1,0 +1,749 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Application.GameContext
+  commentId: T:CardGame.Core.Application.GameContext
+  id: GameContext
+  parent: CardGame.Core.Application
+  children:
+  - CardGame.Core.Application.GameContext.#ctor(CardGame.Core.Cards.Factories.CardFactory,CardGame.Core.Application.DeterministicRng,CardGame.Core.Events.EventBus)
+  - CardGame.Core.Application.GameContext.ActionRegistry
+  - CardGame.Core.Application.GameContext.Battle
+  - CardGame.Core.Application.GameContext.DamageCalculator
+  - CardGame.Core.Application.GameContext.Death
+  - CardGame.Core.Application.GameContext.Events
+  - CardGame.Core.Application.GameContext.Factory
+  - CardGame.Core.Application.GameContext.Keywords
+  - CardGame.Core.Application.GameContext.Rng
+  langs:
+  - csharp
+  - vb
+  name: GameContext
+  nameWithType: GameContext
+  fullName: CardGame.Core.Application.GameContext
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameContext.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GameContext
+    path: ../Source/CardGame.Core/Application/GameContext.cs
+    startLine: 15
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Provides centralized access to game systems, services, and registries used throughout the application.
+  example: []
+  syntax:
+    content: public class GameContext
+    content.vb: Public Class GameContext
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Application.GameContext.Factory
+  commentId: P:CardGame.Core.Application.GameContext.Factory
+  id: Factory
+  parent: CardGame.Core.Application.GameContext
+  langs:
+  - csharp
+  - vb
+  name: Factory
+  nameWithType: GameContext.Factory
+  fullName: CardGame.Core.Application.GameContext.Factory
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameContext.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Factory
+    path: ../Source/CardGame.Core/Application/GameContext.cs
+    startLine: 18
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public CardFactory Factory { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Factories.CardFactory
+    content.vb: Public ReadOnly Property Factory As CardFactory
+  overload: CardGame.Core.Application.GameContext.Factory*
+- uid: CardGame.Core.Application.GameContext.Rng
+  commentId: P:CardGame.Core.Application.GameContext.Rng
+  id: Rng
+  parent: CardGame.Core.Application.GameContext
+  langs:
+  - csharp
+  - vb
+  name: Rng
+  nameWithType: GameContext.Rng
+  fullName: CardGame.Core.Application.GameContext.Rng
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameContext.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Rng
+    path: ../Source/CardGame.Core/Application/GameContext.cs
+    startLine: 19
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public DeterministicRng Rng { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Application.DeterministicRng
+    content.vb: Public ReadOnly Property Rng As DeterministicRng
+  overload: CardGame.Core.Application.GameContext.Rng*
+- uid: CardGame.Core.Application.GameContext.Events
+  commentId: P:CardGame.Core.Application.GameContext.Events
+  id: Events
+  parent: CardGame.Core.Application.GameContext
+  langs:
+  - csharp
+  - vb
+  name: Events
+  nameWithType: GameContext.Events
+  fullName: CardGame.Core.Application.GameContext.Events
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameContext.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Events
+    path: ../Source/CardGame.Core/Application/GameContext.cs
+    startLine: 20
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public EventBus Events { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Events.EventBus
+    content.vb: Public ReadOnly Property Events As EventBus
+  overload: CardGame.Core.Application.GameContext.Events*
+- uid: CardGame.Core.Application.GameContext.DamageCalculator
+  commentId: P:CardGame.Core.Application.GameContext.DamageCalculator
+  id: DamageCalculator
+  parent: CardGame.Core.Application.GameContext
+  langs:
+  - csharp
+  - vb
+  name: DamageCalculator
+  nameWithType: GameContext.DamageCalculator
+  fullName: CardGame.Core.Application.GameContext.DamageCalculator
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameContext.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DamageCalculator
+    path: ../Source/CardGame.Core/Application/GameContext.cs
+    startLine: 21
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public DamageCalculator DamageCalculator { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.GameRules.Damage.DamageCalculator
+    content.vb: Public ReadOnly Property DamageCalculator As DamageCalculator
+  overload: CardGame.Core.Application.GameContext.DamageCalculator*
+- uid: CardGame.Core.Application.GameContext.ActionRegistry
+  commentId: P:CardGame.Core.Application.GameContext.ActionRegistry
+  id: ActionRegistry
+  parent: CardGame.Core.Application.GameContext
+  langs:
+  - csharp
+  - vb
+  name: ActionRegistry
+  nameWithType: GameContext.ActionRegistry
+  fullName: CardGame.Core.Application.GameContext.ActionRegistry
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameContext.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ActionRegistry
+    path: ../Source/CardGame.Core/Application/GameContext.cs
+    startLine: 22
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public ActionHandlerRegistry ActionRegistry { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+    content.vb: Public ReadOnly Property ActionRegistry As ActionHandlerRegistry
+  overload: CardGame.Core.Application.GameContext.ActionRegistry*
+- uid: CardGame.Core.Application.GameContext.Keywords
+  commentId: P:CardGame.Core.Application.GameContext.Keywords
+  id: Keywords
+  parent: CardGame.Core.Application.GameContext
+  langs:
+  - csharp
+  - vb
+  name: Keywords
+  nameWithType: GameContext.Keywords
+  fullName: CardGame.Core.Application.GameContext.Keywords
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameContext.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Keywords
+    path: ../Source/CardGame.Core/Application/GameContext.cs
+    startLine: 23
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public KeywordProcessor Keywords { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+    content.vb: Public ReadOnly Property Keywords As KeywordProcessor
+  overload: CardGame.Core.Application.GameContext.Keywords*
+- uid: CardGame.Core.Application.GameContext.Battle
+  commentId: P:CardGame.Core.Application.GameContext.Battle
+  id: Battle
+  parent: CardGame.Core.Application.GameContext
+  langs:
+  - csharp
+  - vb
+  name: Battle
+  nameWithType: GameContext.Battle
+  fullName: CardGame.Core.Application.GameContext.Battle
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameContext.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Battle
+    path: ../Source/CardGame.Core/Application/GameContext.cs
+    startLine: 24
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public BattleService Battle { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.GameRules.Battle.BattleService
+    content.vb: Public ReadOnly Property Battle As BattleService
+  overload: CardGame.Core.Application.GameContext.Battle*
+- uid: CardGame.Core.Application.GameContext.Death
+  commentId: P:CardGame.Core.Application.GameContext.Death
+  id: Death
+  parent: CardGame.Core.Application.GameContext
+  langs:
+  - csharp
+  - vb
+  name: Death
+  nameWithType: GameContext.Death
+  fullName: CardGame.Core.Application.GameContext.Death
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameContext.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Death
+    path: ../Source/CardGame.Core/Application/GameContext.cs
+    startLine: 25
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  syntax:
+    content: public DeathResolver Death { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.GameRules.Death.DeathResolver
+    content.vb: Public ReadOnly Property Death As DeathResolver
+  overload: CardGame.Core.Application.GameContext.Death*
+- uid: CardGame.Core.Application.GameContext.#ctor(CardGame.Core.Cards.Factories.CardFactory,CardGame.Core.Application.DeterministicRng,CardGame.Core.Events.EventBus)
+  commentId: M:CardGame.Core.Application.GameContext.#ctor(CardGame.Core.Cards.Factories.CardFactory,CardGame.Core.Application.DeterministicRng,CardGame.Core.Events.EventBus)
+  id: '#ctor(CardGame.Core.Cards.Factories.CardFactory,CardGame.Core.Application.DeterministicRng,CardGame.Core.Events.EventBus)'
+  parent: CardGame.Core.Application.GameContext
+  langs:
+  - csharp
+  - vb
+  name: GameContext(CardFactory, DeterministicRng, EventBus)
+  nameWithType: GameContext.GameContext(CardFactory, DeterministicRng, EventBus)
+  fullName: CardGame.Core.Application.GameContext.GameContext(CardGame.Core.Cards.Factories.CardFactory, CardGame.Core.Application.DeterministicRng, CardGame.Core.Events.EventBus)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Application/GameContext.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/Application/GameContext.cs
+    startLine: 35
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Application
+  summary: Initializes a new instance of the GameContext with required dependencies and registers all handlers.
+  example: []
+  syntax:
+    content: public GameContext(CardFactory factory, DeterministicRng rng, EventBus events)
+    parameters:
+    - id: factory
+      type: CardGame.Core.Cards.Factories.CardFactory
+      description: The card factory for creating card instances.
+    - id: rng
+      type: CardGame.Core.Application.DeterministicRng
+      description: The deterministic random number generator.
+    - id: events
+      type: CardGame.Core.Events.EventBus
+      description: The event bus for game event communication.
+    content.vb: Public Sub New(factory As CardFactory, rng As DeterministicRng, events As EventBus)
+  overload: CardGame.Core.Application.GameContext.#ctor*
+  nameWithType.vb: GameContext.New(CardFactory, DeterministicRng, EventBus)
+  fullName.vb: CardGame.Core.Application.GameContext.New(CardGame.Core.Cards.Factories.CardFactory, CardGame.Core.Application.DeterministicRng, CardGame.Core.Events.EventBus)
+  name.vb: New(CardFactory, DeterministicRng, EventBus)
+references:
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Application.GameContext.Factory*
+  commentId: Overload:CardGame.Core.Application.GameContext.Factory
+  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Factory
+  name: Factory
+  nameWithType: GameContext.Factory
+  fullName: CardGame.Core.Application.GameContext.Factory
+- uid: CardGame.Core.Cards.Factories.CardFactory
+  commentId: T:CardGame.Core.Cards.Factories.CardFactory
+  parent: CardGame.Core.Cards.Factories
+  href: CardGame.Core.Cards.Factories.CardFactory.html
+  name: CardFactory
+  nameWithType: CardFactory
+  fullName: CardGame.Core.Cards.Factories.CardFactory
+- uid: CardGame.Core.Cards.Factories
+  commentId: N:CardGame.Core.Cards.Factories
+  href: CardGame.html
+  name: CardGame.Core.Cards.Factories
+  nameWithType: CardGame.Core.Cards.Factories
+  fullName: CardGame.Core.Cards.Factories
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Factories
+    name: Factories
+    href: CardGame.Core.Cards.Factories.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Factories
+    name: Factories
+    href: CardGame.Core.Cards.Factories.html
+- uid: CardGame.Core.Application.GameContext.Rng*
+  commentId: Overload:CardGame.Core.Application.GameContext.Rng
+  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Rng
+  name: Rng
+  nameWithType: GameContext.Rng
+  fullName: CardGame.Core.Application.GameContext.Rng
+- uid: CardGame.Core.Application.DeterministicRng
+  commentId: T:CardGame.Core.Application.DeterministicRng
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.DeterministicRng.html
+  name: DeterministicRng
+  nameWithType: DeterministicRng
+  fullName: CardGame.Core.Application.DeterministicRng
+- uid: CardGame.Core.Application.GameContext.Events*
+  commentId: Overload:CardGame.Core.Application.GameContext.Events
+  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Events
+  name: Events
+  nameWithType: GameContext.Events
+  fullName: CardGame.Core.Application.GameContext.Events
+- uid: CardGame.Core.Events.EventBus
+  commentId: T:CardGame.Core.Events.EventBus
+  parent: CardGame.Core.Events
+  href: CardGame.Core.Events.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: CardGame.Core.Events.EventBus
+- uid: CardGame.Core.Events
+  commentId: N:CardGame.Core.Events
+  href: CardGame.html
+  name: CardGame.Core.Events
+  nameWithType: CardGame.Core.Events
+  fullName: CardGame.Core.Events
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Events
+    name: Events
+    href: CardGame.Core.Events.html
+- uid: CardGame.Core.Application.GameContext.DamageCalculator*
+  commentId: Overload:CardGame.Core.Application.GameContext.DamageCalculator
+  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_DamageCalculator
+  name: DamageCalculator
+  nameWithType: GameContext.DamageCalculator
+  fullName: CardGame.Core.Application.GameContext.DamageCalculator
+- uid: CardGame.Core.GameRules.Damage.DamageCalculator
+  commentId: T:CardGame.Core.GameRules.Damage.DamageCalculator
+  parent: CardGame.Core.GameRules.Damage
+  href: CardGame.Core.GameRules.Damage.DamageCalculator.html
+  name: DamageCalculator
+  nameWithType: DamageCalculator
+  fullName: CardGame.Core.GameRules.Damage.DamageCalculator
+- uid: CardGame.Core.GameRules.Damage
+  commentId: N:CardGame.Core.GameRules.Damage
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Damage
+  nameWithType: CardGame.Core.GameRules.Damage
+  fullName: CardGame.Core.GameRules.Damage
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Damage
+    name: Damage
+    href: CardGame.Core.GameRules.Damage.html
+- uid: CardGame.Core.Application.GameContext.ActionRegistry*
+  commentId: Overload:CardGame.Core.Application.GameContext.ActionRegistry
+  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_ActionRegistry
+  name: ActionRegistry
+  nameWithType: GameContext.ActionRegistry
+  fullName: CardGame.Core.Application.GameContext.ActionRegistry
+- uid: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+  commentId: T:CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+  parent: CardGame.Core.Cards.Components.Actions
+  href: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.html
+  name: ActionHandlerRegistry
+  nameWithType: ActionHandlerRegistry
+  fullName: CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry
+- uid: CardGame.Core.Cards.Components.Actions
+  commentId: N:CardGame.Core.Cards.Components.Actions
+  href: CardGame.html
+  name: CardGame.Core.Cards.Components.Actions
+  nameWithType: CardGame.Core.Cards.Components.Actions
+  fullName: CardGame.Core.Cards.Components.Actions
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components
+    name: Components
+    href: CardGame.Core.Cards.Components.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Components.Actions.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components
+    name: Components
+    href: CardGame.Core.Cards.Components.html
+  - name: .
+  - uid: CardGame.Core.Cards.Components.Actions
+    name: Actions
+    href: CardGame.Core.Cards.Components.Actions.html
+- uid: CardGame.Core.Application.GameContext.Keywords*
+  commentId: Overload:CardGame.Core.Application.GameContext.Keywords
+  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Keywords
+  name: Keywords
+  nameWithType: GameContext.Keywords
+  fullName: CardGame.Core.Application.GameContext.Keywords
+- uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  commentId: T:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+  parent: CardGame.Core.Cards.Logic.Keywords
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html
+  name: KeywordProcessor
+  nameWithType: KeywordProcessor
+  fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor
+- uid: CardGame.Core.Cards.Logic.Keywords
+  commentId: N:CardGame.Core.Cards.Logic.Keywords
+  href: CardGame.html
+  name: CardGame.Core.Cards.Logic.Keywords
+  nameWithType: CardGame.Core.Cards.Logic.Keywords
+  fullName: CardGame.Core.Cards.Logic.Keywords
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic
+    name: Logic
+    href: CardGame.Core.Cards.Logic.html
+  - name: .
+  - uid: CardGame.Core.Cards.Logic.Keywords
+    name: Keywords
+    href: CardGame.Core.Cards.Logic.Keywords.html
+- uid: CardGame.Core.Application.GameContext.Battle*
+  commentId: Overload:CardGame.Core.Application.GameContext.Battle
+  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Battle
+  name: Battle
+  nameWithType: GameContext.Battle
+  fullName: CardGame.Core.Application.GameContext.Battle
+- uid: CardGame.Core.GameRules.Battle.BattleService
+  commentId: T:CardGame.Core.GameRules.Battle.BattleService
+  parent: CardGame.Core.GameRules.Battle
+  href: CardGame.Core.GameRules.Battle.BattleService.html
+  name: BattleService
+  nameWithType: BattleService
+  fullName: CardGame.Core.GameRules.Battle.BattleService
+- uid: CardGame.Core.GameRules.Battle
+  commentId: N:CardGame.Core.GameRules.Battle
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Battle
+  nameWithType: CardGame.Core.GameRules.Battle
+  fullName: CardGame.Core.GameRules.Battle
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Battle
+    name: Battle
+    href: CardGame.Core.GameRules.Battle.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Battle
+    name: Battle
+    href: CardGame.Core.GameRules.Battle.html
+- uid: CardGame.Core.Application.GameContext.Death*
+  commentId: Overload:CardGame.Core.Application.GameContext.Death
+  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Death
+  name: Death
+  nameWithType: GameContext.Death
+  fullName: CardGame.Core.Application.GameContext.Death
+- uid: CardGame.Core.GameRules.Death.DeathResolver
+  commentId: T:CardGame.Core.GameRules.Death.DeathResolver
+  parent: CardGame.Core.GameRules.Death
+  href: CardGame.Core.GameRules.Death.DeathResolver.html
+  name: DeathResolver
+  nameWithType: DeathResolver
+  fullName: CardGame.Core.GameRules.Death.DeathResolver
+- uid: CardGame.Core.GameRules.Death
+  commentId: N:CardGame.Core.GameRules.Death
+  href: CardGame.html
+  name: CardGame.Core.GameRules.Death
+  nameWithType: CardGame.Core.GameRules.Death
+  fullName: CardGame.Core.GameRules.Death
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Death
+    name: Death
+    href: CardGame.Core.GameRules.Death.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.GameRules
+    name: GameRules
+    href: CardGame.Core.GameRules.html
+  - name: .
+  - uid: CardGame.Core.GameRules.Death
+    name: Death
+    href: CardGame.Core.GameRules.Death.html
+- uid: CardGame.Core.Application.GameContext.#ctor*
+  commentId: Overload:CardGame.Core.Application.GameContext.#ctor
+  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext__ctor_CardGame_Core_Cards_Factories_CardFactory_CardGame_Core_Application_DeterministicRng_CardGame_Core_Events_EventBus_
+  name: GameContext
+  nameWithType: GameContext.GameContext
+  fullName: CardGame.Core.Application.GameContext.GameContext
+  nameWithType.vb: GameContext.New
+  fullName.vb: CardGame.Core.Application.GameContext.New
+  name.vb: New

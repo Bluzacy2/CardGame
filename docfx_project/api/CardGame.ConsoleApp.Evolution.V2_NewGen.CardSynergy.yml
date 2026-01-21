@@ -1,0 +1,440 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  id: CardSynergy
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Id
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Name
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Usage
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Id
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Name
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Usage
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrence
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrenceRate
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.SynergyRatio
+  langs:
+  - csharp
+  - vb
+  name: CardSynergy
+  nameWithType: CardSynergy
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardSynergy
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 745
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class CardSynergy
+    content.vb: Public Class CardSynergy
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Id
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Id
+  id: Card1Id
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  langs:
+  - csharp
+  - vb
+  name: Card1Id
+  nameWithType: CardSynergy.Card1Id
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Id
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Card1Id
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 747
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Card1Id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Card1Id As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Id*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Name
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Name
+  id: Card1Name
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  langs:
+  - csharp
+  - vb
+  name: Card1Name
+  nameWithType: CardSynergy.Card1Name
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Name
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Card1Name
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 748
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string Card1Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Card1Name As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Name*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Id
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Id
+  id: Card2Id
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  langs:
+  - csharp
+  - vb
+  name: Card2Id
+  nameWithType: CardSynergy.Card2Id
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Id
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Card2Id
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 749
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Card2Id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Card2Id As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Id*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Name
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Name
+  id: Card2Name
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  langs:
+  - csharp
+  - vb
+  name: Card2Name
+  nameWithType: CardSynergy.Card2Name
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Name
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Card2Name
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 750
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string Card2Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Card2Name As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Name*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrence
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrence
+  id: CoOccurrence
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  langs:
+  - csharp
+  - vb
+  name: CoOccurrence
+  nameWithType: CardSynergy.CoOccurrence
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrence
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CoOccurrence
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 751
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int CoOccurrence { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property CoOccurrence As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrence*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrenceRate
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrenceRate
+  id: CoOccurrenceRate
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  langs:
+  - csharp
+  - vb
+  name: CoOccurrenceRate
+  nameWithType: CardSynergy.CoOccurrenceRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrenceRate
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CoOccurrenceRate
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 752
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double CoOccurrenceRate { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property CoOccurrenceRate As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrenceRate*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.SynergyRatio
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.SynergyRatio
+  id: SynergyRatio
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  langs:
+  - csharp
+  - vb
+  name: SynergyRatio
+  nameWithType: CardSynergy.SynergyRatio
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.SynergyRatio
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SynergyRatio
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 753
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public double SynergyRatio { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property SynergyRatio As Double
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.SynergyRatio*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Usage
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Usage
+  id: Card1Usage
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  langs:
+  - csharp
+  - vb
+  name: Card1Usage
+  nameWithType: CardSynergy.Card1Usage
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Usage
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Card1Usage
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 754
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Card1Usage { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Card1Usage As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Usage*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Usage
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Usage
+  id: Card2Usage
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy
+  langs:
+  - csharp
+  - vb
+  name: Card2Usage
+  nameWithType: CardSynergy.Card2Usage
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Usage
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Card2Usage
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/CardAnalyticsV2.cs
+    startLine: 755
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int Card2Usage { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Card2Usage As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Usage*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Id*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Id
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardSynergy_Card1Id
+  name: Card1Id
+  nameWithType: CardSynergy.Card1Id
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Name*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Name
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardSynergy_Card1Name
+  name: Card1Name
+  nameWithType: CardSynergy.Card1Name
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Id*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Id
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardSynergy_Card2Id
+  name: Card2Id
+  nameWithType: CardSynergy.Card2Id
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Id
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Name*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Name
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardSynergy_Card2Name
+  name: Card2Name
+  nameWithType: CardSynergy.Card2Name
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Name
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrence*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrence
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardSynergy_CoOccurrence
+  name: CoOccurrence
+  nameWithType: CardSynergy.CoOccurrence
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrence
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrenceRate*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrenceRate
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardSynergy_CoOccurrenceRate
+  name: CoOccurrenceRate
+  nameWithType: CardSynergy.CoOccurrenceRate
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.CoOccurrenceRate
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.SynergyRatio*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.SynergyRatio
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardSynergy_SynergyRatio
+  name: SynergyRatio
+  nameWithType: CardSynergy.SynergyRatio
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.SynergyRatio
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Usage*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Usage
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardSynergy_Card1Usage
+  name: Card1Usage
+  nameWithType: CardSynergy.Card1Usage
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card1Usage
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Usage*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Usage
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardSynergy_Card2Usage
+  name: Card2Usage
+  nameWithType: CardSynergy.Card2Usage
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardSynergy.Card2Usage

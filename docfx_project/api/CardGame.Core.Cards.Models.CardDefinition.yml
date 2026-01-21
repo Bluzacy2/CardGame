@@ -1,0 +1,791 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Models.CardDefinition
+  commentId: T:CardGame.Core.Cards.Models.CardDefinition
+  id: CardDefinition
+  parent: CardGame.Core.Cards.Models
+  children:
+  - CardGame.Core.Cards.Models.CardDefinition.#ctor(System.String,System.String,System.String,CardGame.Core.Cards.Data.CardType,System.Collections.Generic.IEnumerable{System.String},CardGame.Core.Cards.Models.CardStats,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword},System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.EffectData})
+  - CardGame.Core.Cards.Models.CardDefinition.BaseStats
+  - CardGame.Core.Cards.Models.CardDefinition.Description
+  - CardGame.Core.Cards.Models.CardDefinition.Effects
+  - CardGame.Core.Cards.Models.CardDefinition.Id
+  - CardGame.Core.Cards.Models.CardDefinition.Keywords
+  - CardGame.Core.Cards.Models.CardDefinition.Name
+  - CardGame.Core.Cards.Models.CardDefinition.Subtypes
+  - CardGame.Core.Cards.Models.CardDefinition.Type
+  langs:
+  - csharp
+  - vb
+  name: CardDefinition
+  nameWithType: CardDefinition
+  fullName: CardGame.Core.Cards.Models.CardDefinition
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardDefinition.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardDefinition
+    path: ../Source/CardGame.Core/Cards/Models/CardDefinition.cs
+    startLine: 8
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Represents the static definition of a card, containing all immutable data required to create card instances.
+  example: []
+  syntax:
+    content: public class CardDefinition
+    content.vb: Public Class CardDefinition
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Models.CardDefinition.#ctor(System.String,System.String,System.String,CardGame.Core.Cards.Data.CardType,System.Collections.Generic.IEnumerable{System.String},CardGame.Core.Cards.Models.CardStats,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword},System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.EffectData})
+  commentId: M:CardGame.Core.Cards.Models.CardDefinition.#ctor(System.String,System.String,System.String,CardGame.Core.Cards.Data.CardType,System.Collections.Generic.IEnumerable{System.String},CardGame.Core.Cards.Models.CardStats,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword},System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.EffectData})
+  id: '#ctor(System.String,System.String,System.String,CardGame.Core.Cards.Data.CardType,System.Collections.Generic.IEnumerable{System.String},CardGame.Core.Cards.Models.CardStats,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword},System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.EffectData})'
+  parent: CardGame.Core.Cards.Models.CardDefinition
+  langs:
+  - csharp
+  - vb
+  name: CardDefinition(string, string, string, CardType, IEnumerable<string>, CardStats, IEnumerable<Keyword>, IEnumerable<EffectData>)
+  nameWithType: CardDefinition.CardDefinition(string, string, string, CardType, IEnumerable<string>, CardStats, IEnumerable<Keyword>, IEnumerable<EffectData>)
+  fullName: CardGame.Core.Cards.Models.CardDefinition.CardDefinition(string, string, string, CardGame.Core.Cards.Data.CardType, System.Collections.Generic.IEnumerable<string>, CardGame.Core.Cards.Models.CardStats, System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Data.Keyword>, System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Data.EffectData>)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardDefinition.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.Core/Cards/Models/CardDefinition.cs
+    startLine: 22
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Initializes a new instance of the CardDefinition class.
+  example: []
+  syntax:
+    content: public CardDefinition(string id, string name, string description, CardType type, IEnumerable<string> subtypes, CardStats baseStats, IEnumerable<Keyword> keywords, IEnumerable<EffectData> effects)
+    parameters:
+    - id: id
+      type: System.String
+      description: The unique identifier of the card.
+    - id: name
+      type: System.String
+      description: The display name of the card.
+    - id: description
+      type: System.String
+      description: The flavor text or ability description of the card.
+    - id: type
+      type: CardGame.Core.Cards.Data.CardType
+      description: The type of card (Unit, Spell, etc.).
+    - id: subtypes
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: The subtype classifications of the card.
+    - id: baseStats
+      type: CardGame.Core.Cards.Models.CardStats
+      description: The base statistics (attack, health, cost) of the card.
+    - id: keywords
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword}
+      description: The keywords associated with the card.
+    - id: effects
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.EffectData}
+      description: The effects and abilities of the card.
+    content.vb: Public Sub New(id As String, name As String, description As String, type As CardType, subtypes As IEnumerable(Of String), baseStats As CardStats, keywords As IEnumerable(Of Keyword), effects As IEnumerable(Of EffectData))
+  overload: CardGame.Core.Cards.Models.CardDefinition.#ctor*
+  nameWithType.vb: CardDefinition.New(String, String, String, CardType, IEnumerable(Of String), CardStats, IEnumerable(Of Keyword), IEnumerable(Of EffectData))
+  fullName.vb: CardGame.Core.Cards.Models.CardDefinition.New(String, String, String, CardGame.Core.Cards.Data.CardType, System.Collections.Generic.IEnumerable(Of String), CardGame.Core.Cards.Models.CardStats, System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Data.Keyword), System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Data.EffectData))
+  name.vb: New(String, String, String, CardType, IEnumerable(Of String), CardStats, IEnumerable(Of Keyword), IEnumerable(Of EffectData))
+- uid: CardGame.Core.Cards.Models.CardDefinition.Id
+  commentId: P:CardGame.Core.Cards.Models.CardDefinition.Id
+  id: Id
+  parent: CardGame.Core.Cards.Models.CardDefinition
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: CardDefinition.Id
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Id
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardDefinition.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Id
+    path: ../Source/CardGame.Core/Cards/Models/CardDefinition.cs
+    startLine: 47
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the unique identifier of the card.
+  example: []
+  syntax:
+    content: public string Id { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Id As String
+  overload: CardGame.Core.Cards.Models.CardDefinition.Id*
+- uid: CardGame.Core.Cards.Models.CardDefinition.Name
+  commentId: P:CardGame.Core.Cards.Models.CardDefinition.Name
+  id: Name
+  parent: CardGame.Core.Cards.Models.CardDefinition
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: CardDefinition.Name
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Name
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardDefinition.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Name
+    path: ../Source/CardGame.Core/Cards/Models/CardDefinition.cs
+    startLine: 52
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the display name of the card.
+  example: []
+  syntax:
+    content: public string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Name As String
+  overload: CardGame.Core.Cards.Models.CardDefinition.Name*
+- uid: CardGame.Core.Cards.Models.CardDefinition.Description
+  commentId: P:CardGame.Core.Cards.Models.CardDefinition.Description
+  id: Description
+  parent: CardGame.Core.Cards.Models.CardDefinition
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: CardDefinition.Description
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Description
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardDefinition.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Description
+    path: ../Source/CardGame.Core/Cards/Models/CardDefinition.cs
+    startLine: 57
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the flavor text or ability description of the card.
+  example: []
+  syntax:
+    content: public string Description { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Description As String
+  overload: CardGame.Core.Cards.Models.CardDefinition.Description*
+- uid: CardGame.Core.Cards.Models.CardDefinition.Type
+  commentId: P:CardGame.Core.Cards.Models.CardDefinition.Type
+  id: Type
+  parent: CardGame.Core.Cards.Models.CardDefinition
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: CardDefinition.Type
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Type
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardDefinition.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Type
+    path: ../Source/CardGame.Core/Cards/Models/CardDefinition.cs
+    startLine: 62
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the type of card (Unit, Spell, etc.).
+  example: []
+  syntax:
+    content: public CardType Type { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.CardType
+    content.vb: Public ReadOnly Property Type As CardType
+  overload: CardGame.Core.Cards.Models.CardDefinition.Type*
+- uid: CardGame.Core.Cards.Models.CardDefinition.Subtypes
+  commentId: P:CardGame.Core.Cards.Models.CardDefinition.Subtypes
+  id: Subtypes
+  parent: CardGame.Core.Cards.Models.CardDefinition
+  langs:
+  - csharp
+  - vb
+  name: Subtypes
+  nameWithType: CardDefinition.Subtypes
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Subtypes
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardDefinition.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Subtypes
+    path: ../Source/CardGame.Core/Cards/Models/CardDefinition.cs
+    startLine: 67
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the subtype classifications of the card.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> Subtypes { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public ReadOnly Property Subtypes As IReadOnlyList(Of String)
+  overload: CardGame.Core.Cards.Models.CardDefinition.Subtypes*
+- uid: CardGame.Core.Cards.Models.CardDefinition.BaseStats
+  commentId: P:CardGame.Core.Cards.Models.CardDefinition.BaseStats
+  id: BaseStats
+  parent: CardGame.Core.Cards.Models.CardDefinition
+  langs:
+  - csharp
+  - vb
+  name: BaseStats
+  nameWithType: CardDefinition.BaseStats
+  fullName: CardGame.Core.Cards.Models.CardDefinition.BaseStats
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardDefinition.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BaseStats
+    path: ../Source/CardGame.Core/Cards/Models/CardDefinition.cs
+    startLine: 72
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the base statistics (attack, health, cost) of the card.
+  example: []
+  syntax:
+    content: public CardStats BaseStats { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Models.CardStats
+    content.vb: Public ReadOnly Property BaseStats As CardStats
+  overload: CardGame.Core.Cards.Models.CardDefinition.BaseStats*
+- uid: CardGame.Core.Cards.Models.CardDefinition.Keywords
+  commentId: P:CardGame.Core.Cards.Models.CardDefinition.Keywords
+  id: Keywords
+  parent: CardGame.Core.Cards.Models.CardDefinition
+  langs:
+  - csharp
+  - vb
+  name: Keywords
+  nameWithType: CardDefinition.Keywords
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Keywords
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardDefinition.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Keywords
+    path: ../Source/CardGame.Core/Cards/Models/CardDefinition.cs
+    startLine: 77
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the keywords associated with the card.
+  example: []
+  syntax:
+    content: public IReadOnlyList<Keyword> Keywords { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.Keyword}
+    content.vb: Public ReadOnly Property Keywords As IReadOnlyList(Of Keyword)
+  overload: CardGame.Core.Cards.Models.CardDefinition.Keywords*
+- uid: CardGame.Core.Cards.Models.CardDefinition.Effects
+  commentId: P:CardGame.Core.Cards.Models.CardDefinition.Effects
+  id: Effects
+  parent: CardGame.Core.Cards.Models.CardDefinition
+  langs:
+  - csharp
+  - vb
+  name: Effects
+  nameWithType: CardDefinition.Effects
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Effects
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Models/CardDefinition.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Effects
+    path: ../Source/CardGame.Core/Cards/Models/CardDefinition.cs
+    startLine: 82
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Models
+  summary: Gets the effects and abilities of the card.
+  example: []
+  syntax:
+    content: public IReadOnlyList<EffectData> Effects { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.EffectData}
+    content.vb: Public ReadOnly Property Effects As IReadOnlyList(Of EffectData)
+  overload: CardGame.Core.Cards.Models.CardDefinition.Effects*
+references:
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Models.CardDefinition.#ctor*
+  commentId: Overload:CardGame.Core.Cards.Models.CardDefinition.#ctor
+  href: CardGame.Core.Cards.Models.CardDefinition.html#CardGame_Core_Cards_Models_CardDefinition__ctor_System_String_System_String_System_String_CardGame_Core_Cards_Data_CardType_System_Collections_Generic_IEnumerable_System_String__CardGame_Core_Cards_Models_CardStats_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Data_Keyword__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Data_EffectData__
+  name: CardDefinition
+  nameWithType: CardDefinition.CardDefinition
+  fullName: CardGame.Core.Cards.Models.CardDefinition.CardDefinition
+  nameWithType.vb: CardDefinition.New
+  fullName.vb: CardGame.Core.Cards.Models.CardDefinition.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.Core.Cards.Data.CardType
+  commentId: T:CardGame.Core.Cards.Data.CardType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.CardType.html
+  name: CardType
+  nameWithType: CardType
+  fullName: CardGame.Core.Cards.Data.CardType
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: CardGame.Core.Cards.Models.CardStats
+  commentId: T:CardGame.Core.Cards.Models.CardStats
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardStats.html
+  name: CardStats
+  nameWithType: CardStats
+  fullName: CardGame.Core.Cards.Models.CardStats
+- uid: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword}
+  commentId: T:System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: IEnumerable<Keyword>
+  nameWithType: IEnumerable<Keyword>
+  fullName: System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Data.Keyword>
+  nameWithType.vb: IEnumerable(Of Keyword)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Data.Keyword)
+  name.vb: IEnumerable(Of Keyword)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.EffectData}
+  commentId: T:System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.EffectData}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: CardGame.Core.Cards.Data.EffectData.html
+  name: IEnumerable<EffectData>
+  nameWithType: IEnumerable<EffectData>
+  fullName: System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Data.EffectData>
+  nameWithType.vb: IEnumerable(Of EffectData)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Data.EffectData)
+  name.vb: IEnumerable(Of EffectData)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.EffectData
+    name: EffectData
+    href: CardGame.Core.Cards.Data.EffectData.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.EffectData
+    name: EffectData
+    href: CardGame.Core.Cards.Data.EffectData.html
+  - name: )
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.Core.Cards.Models.CardDefinition.Id*
+  commentId: Overload:CardGame.Core.Cards.Models.CardDefinition.Id
+  href: CardGame.Core.Cards.Models.CardDefinition.html#CardGame_Core_Cards_Models_CardDefinition_Id
+  name: Id
+  nameWithType: CardDefinition.Id
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Id
+- uid: CardGame.Core.Cards.Models.CardDefinition.Name*
+  commentId: Overload:CardGame.Core.Cards.Models.CardDefinition.Name
+  href: CardGame.Core.Cards.Models.CardDefinition.html#CardGame_Core_Cards_Models_CardDefinition_Name
+  name: Name
+  nameWithType: CardDefinition.Name
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Name
+- uid: CardGame.Core.Cards.Models.CardDefinition.Description*
+  commentId: Overload:CardGame.Core.Cards.Models.CardDefinition.Description
+  href: CardGame.Core.Cards.Models.CardDefinition.html#CardGame_Core_Cards_Models_CardDefinition_Description
+  name: Description
+  nameWithType: CardDefinition.Description
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Description
+- uid: CardGame.Core.Cards.Models.CardDefinition.Type*
+  commentId: Overload:CardGame.Core.Cards.Models.CardDefinition.Type
+  href: CardGame.Core.Cards.Models.CardDefinition.html#CardGame_Core_Cards_Models_CardDefinition_Type
+  name: Type
+  nameWithType: CardDefinition.Type
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Type
+- uid: CardGame.Core.Cards.Models.CardDefinition.Subtypes*
+  commentId: Overload:CardGame.Core.Cards.Models.CardDefinition.Subtypes
+  href: CardGame.Core.Cards.Models.CardDefinition.html#CardGame_Core_Cards_Models_CardDefinition_Subtypes
+  name: Subtypes
+  nameWithType: CardDefinition.Subtypes
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Subtypes
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Cards.Models.CardDefinition.BaseStats*
+  commentId: Overload:CardGame.Core.Cards.Models.CardDefinition.BaseStats
+  href: CardGame.Core.Cards.Models.CardDefinition.html#CardGame_Core_Cards_Models_CardDefinition_BaseStats
+  name: BaseStats
+  nameWithType: CardDefinition.BaseStats
+  fullName: CardGame.Core.Cards.Models.CardDefinition.BaseStats
+- uid: CardGame.Core.Cards.Models.CardDefinition.Keywords*
+  commentId: Overload:CardGame.Core.Cards.Models.CardDefinition.Keywords
+  href: CardGame.Core.Cards.Models.CardDefinition.html#CardGame_Core_Cards_Models_CardDefinition_Keywords
+  name: Keywords
+  nameWithType: CardDefinition.Keywords
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Keywords
+- uid: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.Keyword}
+  commentId: T:System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.Keyword}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: IReadOnlyList<Keyword>
+  nameWithType: IReadOnlyList<Keyword>
+  fullName: System.Collections.Generic.IReadOnlyList<CardGame.Core.Cards.Data.Keyword>
+  nameWithType.vb: IReadOnlyList(Of Keyword)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of CardGame.Core.Cards.Data.Keyword)
+  name.vb: IReadOnlyList(Of Keyword)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: )
+- uid: CardGame.Core.Cards.Models.CardDefinition.Effects*
+  commentId: Overload:CardGame.Core.Cards.Models.CardDefinition.Effects
+  href: CardGame.Core.Cards.Models.CardDefinition.html#CardGame_Core_Cards_Models_CardDefinition_Effects
+  name: Effects
+  nameWithType: CardDefinition.Effects
+  fullName: CardGame.Core.Cards.Models.CardDefinition.Effects
+- uid: System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.EffectData}
+  commentId: T:System.Collections.Generic.IReadOnlyList{CardGame.Core.Cards.Data.EffectData}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: CardGame.Core.Cards.Data.EffectData.html
+  name: IReadOnlyList<EffectData>
+  nameWithType: IReadOnlyList<EffectData>
+  fullName: System.Collections.Generic.IReadOnlyList<CardGame.Core.Cards.Data.EffectData>
+  nameWithType.vb: IReadOnlyList(Of EffectData)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of CardGame.Core.Cards.Data.EffectData)
+  name.vb: IReadOnlyList(Of EffectData)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Data.EffectData
+    name: EffectData
+    href: CardGame.Core.Cards.Data.EffectData.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Data.EffectData
+    name: EffectData
+    href: CardGame.Core.Cards.Data.EffectData.html
+  - name: )

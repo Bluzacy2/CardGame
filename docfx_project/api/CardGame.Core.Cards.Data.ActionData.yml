@@ -1,0 +1,525 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.Cards.Data.ActionData
+  commentId: T:CardGame.Core.Cards.Data.ActionData
+  id: ActionData
+  parent: CardGame.Core.Cards.Data
+  children:
+  - CardGame.Core.Cards.Data.ActionData.Amount
+  - CardGame.Core.Cards.Data.ActionData.BuffAtk
+  - CardGame.Core.Cards.Data.ActionData.BuffHp
+  - CardGame.Core.Cards.Data.ActionData.Resource
+  - CardGame.Core.Cards.Data.ActionData.StatusKeyword
+  - CardGame.Core.Cards.Data.ActionData.StringParam
+  - CardGame.Core.Cards.Data.ActionData.Target
+  - CardGame.Core.Cards.Data.ActionData.Type
+  - CardGame.Core.Cards.Data.ActionData.ValueParam
+  langs:
+  - csharp
+  - vb
+  name: ActionData
+  nameWithType: ActionData
+  fullName: CardGame.Core.Cards.Data.ActionData
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ActionData
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 112
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Represents a single game action within an effect.
+  example: []
+  syntax:
+    content: public class ActionData
+    content.vb: Public Class ActionData
+  inheritance:
+  - System.Object
+- uid: CardGame.Core.Cards.Data.ActionData.Type
+  commentId: P:CardGame.Core.Cards.Data.ActionData.Type
+  id: Type
+  parent: CardGame.Core.Cards.Data.ActionData
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: ActionData.Type
+  fullName: CardGame.Core.Cards.Data.ActionData.Type
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Type
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 117
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the type of action to perform.
+  example: []
+  syntax:
+    content: public ActionType Type { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.ActionType
+    content.vb: Public Property Type As ActionType
+  overload: CardGame.Core.Cards.Data.ActionData.Type*
+- uid: CardGame.Core.Cards.Data.ActionData.Target
+  commentId: P:CardGame.Core.Cards.Data.ActionData.Target
+  id: Target
+  parent: CardGame.Core.Cards.Data.ActionData
+  langs:
+  - csharp
+  - vb
+  name: Target
+  nameWithType: ActionData.Target
+  fullName: CardGame.Core.Cards.Data.ActionData.Target
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Target
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 122
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the target selection for this action.
+  example: []
+  syntax:
+    content: public TargetType Target { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Data.TargetType
+    content.vb: Public Property Target As TargetType
+  overload: CardGame.Core.Cards.Data.ActionData.Target*
+- uid: CardGame.Core.Cards.Data.ActionData.Amount
+  commentId: P:CardGame.Core.Cards.Data.ActionData.Amount
+  id: Amount
+  parent: CardGame.Core.Cards.Data.ActionData
+  langs:
+  - csharp
+  - vb
+  name: Amount
+  nameWithType: ActionData.Amount
+  fullName: CardGame.Core.Cards.Data.ActionData.Amount
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Amount
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 127
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the primary numerical value for the action.
+  example: []
+  syntax:
+    content: public int Amount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Amount As Integer
+  overload: CardGame.Core.Cards.Data.ActionData.Amount*
+- uid: CardGame.Core.Cards.Data.ActionData.BuffAtk
+  commentId: P:CardGame.Core.Cards.Data.ActionData.BuffAtk
+  id: BuffAtk
+  parent: CardGame.Core.Cards.Data.ActionData
+  langs:
+  - csharp
+  - vb
+  name: BuffAtk
+  nameWithType: ActionData.BuffAtk
+  fullName: CardGame.Core.Cards.Data.ActionData.BuffAtk
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BuffAtk
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 132
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the attack buff value for stat modification actions.
+  example: []
+  syntax:
+    content: public int BuffAtk { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property BuffAtk As Integer
+  overload: CardGame.Core.Cards.Data.ActionData.BuffAtk*
+- uid: CardGame.Core.Cards.Data.ActionData.BuffHp
+  commentId: P:CardGame.Core.Cards.Data.ActionData.BuffHp
+  id: BuffHp
+  parent: CardGame.Core.Cards.Data.ActionData
+  langs:
+  - csharp
+  - vb
+  name: BuffHp
+  nameWithType: ActionData.BuffHp
+  fullName: CardGame.Core.Cards.Data.ActionData.BuffHp
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BuffHp
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 137
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the health buff value for stat modification actions.
+  example: []
+  syntax:
+    content: public int BuffHp { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property BuffHp As Integer
+  overload: CardGame.Core.Cards.Data.ActionData.BuffHp*
+- uid: CardGame.Core.Cards.Data.ActionData.ValueParam
+  commentId: P:CardGame.Core.Cards.Data.ActionData.ValueParam
+  id: ValueParam
+  parent: CardGame.Core.Cards.Data.ActionData
+  langs:
+  - csharp
+  - vb
+  name: ValueParam
+  nameWithType: ActionData.ValueParam
+  fullName: CardGame.Core.Cards.Data.ActionData.ValueParam
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ValueParam
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 142
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets an additional numerical parameter.
+  example: []
+  syntax:
+    content: public int ValueParam { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ValueParam As Integer
+  overload: CardGame.Core.Cards.Data.ActionData.ValueParam*
+- uid: CardGame.Core.Cards.Data.ActionData.StatusKeyword
+  commentId: P:CardGame.Core.Cards.Data.ActionData.StatusKeyword
+  id: StatusKeyword
+  parent: CardGame.Core.Cards.Data.ActionData
+  langs:
+  - csharp
+  - vb
+  name: StatusKeyword
+  nameWithType: ActionData.StatusKeyword
+  fullName: CardGame.Core.Cards.Data.ActionData.StatusKeyword
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: StatusKeyword
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 147
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the keyword to apply for status effects.
+  example: []
+  syntax:
+    content: public Keyword? StatusKeyword { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{CardGame.Core.Cards.Data.Keyword}
+    content.vb: Public Property StatusKeyword As Keyword?
+  overload: CardGame.Core.Cards.Data.ActionData.StatusKeyword*
+- uid: CardGame.Core.Cards.Data.ActionData.Resource
+  commentId: P:CardGame.Core.Cards.Data.ActionData.Resource
+  id: Resource
+  parent: CardGame.Core.Cards.Data.ActionData
+  langs:
+  - csharp
+  - vb
+  name: Resource
+  nameWithType: ActionData.Resource
+  fullName: CardGame.Core.Cards.Data.ActionData.Resource
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Resource
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 152
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets the resource type for resource-related actions.
+  example: []
+  syntax:
+    content: public ResourceType? Resource { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{CardGame.Core.Cards.Data.ResourceType}
+    content.vb: Public Property Resource As ResourceType?
+  overload: CardGame.Core.Cards.Data.ActionData.Resource*
+- uid: CardGame.Core.Cards.Data.ActionData.StringParam
+  commentId: P:CardGame.Core.Cards.Data.ActionData.StringParam
+  id: StringParam
+  parent: CardGame.Core.Cards.Data.ActionData
+  langs:
+  - csharp
+  - vb
+  name: StringParam
+  nameWithType: ActionData.StringParam
+  fullName: CardGame.Core.Cards.Data.ActionData.StringParam
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.Core/Cards/Data/CardDataModels.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: StringParam
+    path: ../Source/CardGame.Core/Cards/Data/CardDataModels.cs
+    startLine: 157
+  assemblies:
+  - CardGame.Core
+  namespace: CardGame.Core.Cards.Data
+  summary: Gets or sets a string parameter for card names, descriptions, or other text data.
+  example: []
+  syntax:
+    content: public string? StringParam { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property StringParam As String
+  overload: CardGame.Core.Cards.Data.ActionData.StringParam*
+references:
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.Core.Cards.Data.ActionData.Type*
+  commentId: Overload:CardGame.Core.Cards.Data.ActionData.Type
+  href: CardGame.Core.Cards.Data.ActionData.html#CardGame_Core_Cards_Data_ActionData_Type
+  name: Type
+  nameWithType: ActionData.Type
+  fullName: CardGame.Core.Cards.Data.ActionData.Type
+- uid: CardGame.Core.Cards.Data.ActionType
+  commentId: T:CardGame.Core.Cards.Data.ActionType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.ActionType.html
+  name: ActionType
+  nameWithType: ActionType
+  fullName: CardGame.Core.Cards.Data.ActionType
+- uid: CardGame.Core.Cards.Data.ActionData.Target*
+  commentId: Overload:CardGame.Core.Cards.Data.ActionData.Target
+  href: CardGame.Core.Cards.Data.ActionData.html#CardGame_Core_Cards_Data_ActionData_Target
+  name: Target
+  nameWithType: ActionData.Target
+  fullName: CardGame.Core.Cards.Data.ActionData.Target
+- uid: CardGame.Core.Cards.Data.TargetType
+  commentId: T:CardGame.Core.Cards.Data.TargetType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.TargetType.html
+  name: TargetType
+  nameWithType: TargetType
+  fullName: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data.ActionData.Amount*
+  commentId: Overload:CardGame.Core.Cards.Data.ActionData.Amount
+  href: CardGame.Core.Cards.Data.ActionData.html#CardGame_Core_Cards_Data_ActionData_Amount
+  name: Amount
+  nameWithType: ActionData.Amount
+  fullName: CardGame.Core.Cards.Data.ActionData.Amount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Data.ActionData.BuffAtk*
+  commentId: Overload:CardGame.Core.Cards.Data.ActionData.BuffAtk
+  href: CardGame.Core.Cards.Data.ActionData.html#CardGame_Core_Cards_Data_ActionData_BuffAtk
+  name: BuffAtk
+  nameWithType: ActionData.BuffAtk
+  fullName: CardGame.Core.Cards.Data.ActionData.BuffAtk
+- uid: CardGame.Core.Cards.Data.ActionData.BuffHp*
+  commentId: Overload:CardGame.Core.Cards.Data.ActionData.BuffHp
+  href: CardGame.Core.Cards.Data.ActionData.html#CardGame_Core_Cards_Data_ActionData_BuffHp
+  name: BuffHp
+  nameWithType: ActionData.BuffHp
+  fullName: CardGame.Core.Cards.Data.ActionData.BuffHp
+- uid: CardGame.Core.Cards.Data.ActionData.ValueParam*
+  commentId: Overload:CardGame.Core.Cards.Data.ActionData.ValueParam
+  href: CardGame.Core.Cards.Data.ActionData.html#CardGame_Core_Cards_Data_ActionData_ValueParam
+  name: ValueParam
+  nameWithType: ActionData.ValueParam
+  fullName: CardGame.Core.Cards.Data.ActionData.ValueParam
+- uid: CardGame.Core.Cards.Data.ActionData.StatusKeyword*
+  commentId: Overload:CardGame.Core.Cards.Data.ActionData.StatusKeyword
+  href: CardGame.Core.Cards.Data.ActionData.html#CardGame_Core_Cards_Data_ActionData_StatusKeyword
+  name: StatusKeyword
+  nameWithType: ActionData.StatusKeyword
+  fullName: CardGame.Core.Cards.Data.ActionData.StatusKeyword
+- uid: System.Nullable{CardGame.Core.Cards.Data.Keyword}
+  commentId: T:System.Nullable{CardGame.Core.Cards.Data.Keyword}
+  parent: System
+  definition: System.Nullable`1
+  href: CardGame.Core.Cards.Data.Keyword.html
+  name: Keyword?
+  nameWithType: Keyword?
+  fullName: CardGame.Core.Cards.Data.Keyword?
+  spec.csharp:
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: '?'
+  spec.vb:
+  - uid: CardGame.Core.Cards.Data.Keyword
+    name: Keyword
+    href: CardGame.Core.Cards.Data.Keyword.html
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.Core.Cards.Data.ActionData.Resource*
+  commentId: Overload:CardGame.Core.Cards.Data.ActionData.Resource
+  href: CardGame.Core.Cards.Data.ActionData.html#CardGame_Core_Cards_Data_ActionData_Resource
+  name: Resource
+  nameWithType: ActionData.Resource
+  fullName: CardGame.Core.Cards.Data.ActionData.Resource
+- uid: System.Nullable{CardGame.Core.Cards.Data.ResourceType}
+  commentId: T:System.Nullable{CardGame.Core.Cards.Data.ResourceType}
+  parent: System
+  definition: System.Nullable`1
+  href: CardGame.Core.Cards.Data.ResourceType.html
+  name: ResourceType?
+  nameWithType: ResourceType?
+  fullName: CardGame.Core.Cards.Data.ResourceType?
+  spec.csharp:
+  - uid: CardGame.Core.Cards.Data.ResourceType
+    name: ResourceType
+    href: CardGame.Core.Cards.Data.ResourceType.html
+  - name: '?'
+  spec.vb:
+  - uid: CardGame.Core.Cards.Data.ResourceType
+    name: ResourceType
+    href: CardGame.Core.Cards.Data.ResourceType.html
+  - name: '?'
+- uid: CardGame.Core.Cards.Data.ActionData.StringParam*
+  commentId: Overload:CardGame.Core.Cards.Data.ActionData.StringParam
+  href: CardGame.Core.Cards.Data.ActionData.html#CardGame_Core_Cards_Data_ActionData_StringParam
+  name: StringParam
+  nameWithType: ActionData.StringParam
+  fullName: CardGame.Core.Cards.Data.ActionData.StringParam
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

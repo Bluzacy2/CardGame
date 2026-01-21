@@ -1,0 +1,531 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  id: ArchetypeSpecialistOptimizer.SpecialistTarget
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.Archetype
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ForbiddenCards
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ManaCurveTarget
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.RequiredCards
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.SubtypeRequirements
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetCardCount
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetPurity
+  langs:
+  - csharp
+  - vb
+  name: ArchetypeSpecialistOptimizer.SpecialistTarget
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SpecialistTarget
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 540
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class ArchetypeSpecialistOptimizer.SpecialistTarget
+    content.vb: Public Class ArchetypeSpecialistOptimizer.SpecialistTarget
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.Archetype
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.Archetype
+  id: Archetype
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  langs:
+  - csharp
+  - vb
+  name: Archetype
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.Archetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.Archetype
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Archetype
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 542
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public string Archetype { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Archetype As String
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.Archetype*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetPurity
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetPurity
+  id: TargetPurity
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  langs:
+  - csharp
+  - vb
+  name: TargetPurity
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.TargetPurity
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetPurity
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: TargetPurity
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 543
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float TargetPurity { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property TargetPurity As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetPurity*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetCardCount
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetCardCount
+  id: TargetCardCount
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  langs:
+  - csharp
+  - vb
+  name: TargetCardCount
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.TargetCardCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetCardCount
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: TargetCardCount
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 544
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int TargetCardCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TargetCardCount As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetCardCount*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.RequiredCards
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.RequiredCards
+  id: RequiredCards
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  langs:
+  - csharp
+  - vb
+  name: RequiredCards
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.RequiredCards
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.RequiredCards
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: RequiredCards
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 545
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<int> RequiredCards { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Int32}
+    content.vb: Public Property RequiredCards As List(Of Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.RequiredCards*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ForbiddenCards
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ForbiddenCards
+  id: ForbiddenCards
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  langs:
+  - csharp
+  - vb
+  name: ForbiddenCards
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.ForbiddenCards
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ForbiddenCards
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ForbiddenCards
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 546
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public List<int> ForbiddenCards { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Int32}
+    content.vb: Public Property ForbiddenCards As List(Of Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ForbiddenCards*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ManaCurveTarget
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ManaCurveTarget
+  id: ManaCurveTarget
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  langs:
+  - csharp
+  - vb
+  name: ManaCurveTarget
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.ManaCurveTarget
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ManaCurveTarget
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ManaCurveTarget
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 547
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float ManaCurveTarget { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property ManaCurveTarget As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ManaCurveTarget*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.SubtypeRequirements
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.SubtypeRequirements
+  id: SubtypeRequirements
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget
+  langs:
+  - csharp
+  - vb
+  name: SubtypeRequirements
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.SubtypeRequirements
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.SubtypeRequirements
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SubtypeRequirements
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 548
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public Dictionary<string, int> SubtypeRequirements { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Int32}
+    content.vb: Public Property SubtypeRequirements As Dictionary(Of String, Integer)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.SubtypeRequirements*
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.Archetype*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.Archetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeSpecialistOptimizer_SpecialistTarget_Archetype
+  name: Archetype
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.Archetype
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.Archetype
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetPurity*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetPurity
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeSpecialistOptimizer_SpecialistTarget_TargetPurity
+  name: TargetPurity
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.TargetPurity
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetPurity
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetCardCount*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetCardCount
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeSpecialistOptimizer_SpecialistTarget_TargetCardCount
+  name: TargetCardCount
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.TargetCardCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.TargetCardCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.RequiredCards*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.RequiredCards
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeSpecialistOptimizer_SpecialistTarget_RequiredCards
+  name: RequiredCards
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.RequiredCards
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.RequiredCards
+- uid: System.Collections.Generic.List{System.Int32}
+  commentId: T:System.Collections.Generic.List{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<int>
+  nameWithType: List<int>
+  fullName: System.Collections.Generic.List<int>
+  nameWithType.vb: List(Of Integer)
+  fullName.vb: System.Collections.Generic.List(Of Integer)
+  name.vb: List(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ForbiddenCards*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ForbiddenCards
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeSpecialistOptimizer_SpecialistTarget_ForbiddenCards
+  name: ForbiddenCards
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.ForbiddenCards
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ForbiddenCards
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ManaCurveTarget*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ManaCurveTarget
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeSpecialistOptimizer_SpecialistTarget_ManaCurveTarget
+  name: ManaCurveTarget
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.ManaCurveTarget
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.ManaCurveTarget
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.SubtypeRequirements*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.SubtypeRequirements
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.html#CardGame_ConsoleApp_Evolution_V2_NewGen_ArchetypeSpecialistOptimizer_SpecialistTarget_SubtypeRequirements
+  name: SubtypeRequirements
+  nameWithType: ArchetypeSpecialistOptimizer.SpecialistTarget.SubtypeRequirements
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.ArchetypeSpecialistOptimizer.SpecialistTarget.SubtypeRequirements
+- uid: System.Collections.Generic.Dictionary{System.String,System.Int32}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<string, int>
+  nameWithType: Dictionary<string, int>
+  fullName: System.Collections.Generic.Dictionary<string, int>
+  nameWithType.vb: Dictionary(Of String, Integer)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Integer)
+  name.vb: Dictionary(Of String, Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )

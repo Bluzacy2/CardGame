@@ -1,0 +1,24 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.GameRules.Auras
+  commentId: N:CardGame.Core.GameRules.Auras
+  id: Auras
+  parent: CardGame.Core.GameRules
+  children:
+  - CardGame.Core.GameRules.Auras.AuraSystem
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.GameRules.Auras
+  nameWithType: CardGame.Core.GameRules.Auras
+  fullName: CardGame.Core.GameRules.Auras
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.GameRules.Auras.AuraSystem
+  commentId: T:CardGame.Core.GameRules.Auras.AuraSystem
+  href: CardGame.Core.GameRules.Auras.AuraSystem.html
+  name: AuraSystem
+  nameWithType: AuraSystem
+  fullName: CardGame.Core.GameRules.Auras.AuraSystem

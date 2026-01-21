@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.Analytics
+  commentId: N:CardGame.ConsoleApp.Evolution.Analytics
+  id: Analytics
+  parent: CardGame.ConsoleApp.Evolution
+  children:
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+  - CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  - CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer
+  langs:
+  - csharp
+  - vb
+  name: CardGame.ConsoleApp.Evolution.Analytics
+  nameWithType: CardGame.ConsoleApp.Evolution.Analytics
+  fullName: CardGame.ConsoleApp.Evolution.Analytics
+  type: Namespace
+  assemblies:
+  - CardGame.ConsoleApp
+references:
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+  commentId: T:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.html
+  name: CardAnalytics
+  nameWithType: CardAnalytics
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  commentId: T:CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.html
+  name: CardAnalytics.CardEntry
+  nameWithType: CardAnalytics.CardEntry
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+  spec.csharp:
+  - uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+    name: CardAnalytics
+    href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+    name: CardEntry
+    href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html
+  spec.vb:
+  - uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics
+    name: CardAnalytics
+    href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry
+    name: CardEntry
+    href: CardGame.ConsoleApp.Evolution.Analytics.CardAnalytics.CardEntry.html
+- uid: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer
+  commentId: T:CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer
+  href: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer.html
+  name: CardMetaViewer
+  nameWithType: CardMetaViewer
+  fullName: CardGame.ConsoleApp.Evolution.Analytics.CardMetaViewer

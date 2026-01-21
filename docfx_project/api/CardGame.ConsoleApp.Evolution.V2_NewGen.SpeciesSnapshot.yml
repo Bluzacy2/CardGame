@@ -1,0 +1,270 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+  id: SpeciesSnapshot
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  children:
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.Species)
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.AverageFitness
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.Id
+  - CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.MemberCount
+  langs:
+  - csharp
+  - vb
+  name: SpeciesSnapshot
+  nameWithType: SpeciesSnapshot
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SpeciesSnapshot
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4720
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public class SpeciesSnapshot
+    content.vb: Public Class SpeciesSnapshot
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.Id
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.Id
+  id: Id
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: SpeciesSnapshot.Id
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.Id
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Id
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4722
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.Id*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.MemberCount
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.MemberCount
+  id: MemberCount
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+  langs:
+  - csharp
+  - vb
+  name: MemberCount
+  nameWithType: SpeciesSnapshot.MemberCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.MemberCount
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MemberCount
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4723
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public int MemberCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MemberCount As Integer
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.MemberCount*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.AverageFitness
+  commentId: P:CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.AverageFitness
+  id: AverageFitness
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+  langs:
+  - csharp
+  - vb
+  name: AverageFitness
+  nameWithType: SpeciesSnapshot.AverageFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.AverageFitness
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AverageFitness
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4724
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public float AverageFitness { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property AverageFitness As Single
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.AverageFitness*
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.Species)
+  commentId: M:CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.Species)
+  id: '#ctor(CardGame.ConsoleApp.Evolution.V2_NewGen.Species)'
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot
+  langs:
+  - csharp
+  - vb
+  name: SpeciesSnapshot(Species)
+  nameWithType: SpeciesSnapshot.SpeciesSnapshot(Species)
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.SpeciesSnapshot(CardGame.ConsoleApp.Evolution.V2_NewGen.Species)
+  type: Constructor
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: .ctor
+    path: ../Source/CardGame.ConsoleApp/Evolution/V2_NewGen/EvolutionRunnerV3.cs
+    startLine: 4726
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Evolution.V2_NewGen
+  syntax:
+    content: public SpeciesSnapshot(Species species)
+    parameters:
+    - id: species
+      type: CardGame.ConsoleApp.Evolution.V2_NewGen.Species
+    content.vb: Public Sub New(species As Species)
+  overload: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.#ctor*
+  nameWithType.vb: SpeciesSnapshot.New(Species)
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.New(CardGame.ConsoleApp.Evolution.V2_NewGen.Species)
+  name.vb: New(Species)
+references:
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+  commentId: N:CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V2_NewGen
+  nameWithType: CardGame.ConsoleApp.Evolution.V2_NewGen
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V2_NewGen
+    name: V2_NewGen
+    href: CardGame.ConsoleApp.Evolution.V2_NewGen.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.Id*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.Id
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.html#CardGame_ConsoleApp_Evolution_V2_NewGen_SpeciesSnapshot_Id
+  name: Id
+  nameWithType: SpeciesSnapshot.Id
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.MemberCount*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.MemberCount
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.html#CardGame_ConsoleApp_Evolution_V2_NewGen_SpeciesSnapshot_MemberCount
+  name: MemberCount
+  nameWithType: SpeciesSnapshot.MemberCount
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.MemberCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.AverageFitness*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.AverageFitness
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.html#CardGame_ConsoleApp_Evolution_V2_NewGen_SpeciesSnapshot_AverageFitness
+  name: AverageFitness
+  nameWithType: SpeciesSnapshot.AverageFitness
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.AverageFitness
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.#ctor*
+  commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.#ctor
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.html#CardGame_ConsoleApp_Evolution_V2_NewGen_SpeciesSnapshot__ctor_CardGame_ConsoleApp_Evolution_V2_NewGen_Species_
+  name: SpeciesSnapshot
+  nameWithType: SpeciesSnapshot.SpeciesSnapshot
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.SpeciesSnapshot
+  nameWithType.vb: SpeciesSnapshot.New
+  fullName.vb: CardGame.ConsoleApp.Evolution.V2_NewGen.SpeciesSnapshot.New
+  name.vb: New
+- uid: CardGame.ConsoleApp.Evolution.V2_NewGen.Species
+  commentId: T:CardGame.ConsoleApp.Evolution.V2_NewGen.Species
+  parent: CardGame.ConsoleApp.Evolution.V2_NewGen
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.Species.html
+  name: Species
+  nameWithType: Species
+  fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.Species

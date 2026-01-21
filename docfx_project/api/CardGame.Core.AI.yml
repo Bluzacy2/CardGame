@@ -1,0 +1,179 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI
+  commentId: N:CardGame.Core.AI
+  id: AI
+  parent: CardGame.Core
+  children:
+  - CardGame.Core.AI.AIPlayerController
+  - CardGame.Core.AI.AISolverType
+  - CardGame.Core.AI.Interfaces
+  - CardGame.Core.AI.Logic
+  - CardGame.Core.AI.Strategies
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.AI
+  nameWithType: CardGame.Core.AI
+  fullName: CardGame.Core.AI
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.AI.Interfaces
+  commentId: N:CardGame.Core.AI.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.AI.Interfaces
+  nameWithType: CardGame.Core.AI.Interfaces
+  fullName: CardGame.Core.AI.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Interfaces
+    name: Interfaces
+    href: CardGame.Core.AI.Interfaces.html
+- uid: CardGame.Core.AI.Logic
+  commentId: N:CardGame.Core.AI.Logic
+  href: CardGame.html
+  name: CardGame.Core.AI.Logic
+  nameWithType: CardGame.Core.AI.Logic
+  fullName: CardGame.Core.AI.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+- uid: CardGame.Core.AI.Strategies
+  commentId: N:CardGame.Core.AI.Strategies
+  href: CardGame.html
+  name: CardGame.Core.AI.Strategies
+  nameWithType: CardGame.Core.AI.Strategies
+  fullName: CardGame.Core.AI.Strategies
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Strategies
+    name: Strategies
+    href: CardGame.Core.AI.Strategies.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Strategies
+    name: Strategies
+    href: CardGame.Core.AI.Strategies.html
+- uid: CardGame.Core.AI.AIPlayerController
+  commentId: T:CardGame.Core.AI.AIPlayerController
+  href: CardGame.Core.AI.AIPlayerController.html
+  name: AIPlayerController
+  nameWithType: AIPlayerController
+  fullName: CardGame.Core.AI.AIPlayerController
+- uid: CardGame.Core.AI.AISolverType
+  commentId: T:CardGame.Core.AI.AISolverType
+  parent: CardGame.Core.AI
+  href: CardGame.Core.AI.AISolverType.html
+  name: AISolverType
+  nameWithType: AISolverType
+  fullName: CardGame.Core.AI.AISolverType
+- uid: CardGame.Core.AI
+  commentId: N:CardGame.Core.AI
+  href: CardGame.html
+  name: CardGame.Core.AI
+  nameWithType: CardGame.Core.AI
+  fullName: CardGame.Core.AI
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html

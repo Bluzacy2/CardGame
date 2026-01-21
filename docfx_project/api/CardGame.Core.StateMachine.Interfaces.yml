@@ -1,0 +1,63 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.StateMachine.Interfaces
+  commentId: N:CardGame.Core.StateMachine.Interfaces
+  id: Interfaces
+  parent: CardGame.Core.StateMachine
+  children:
+  - CardGame.Core.StateMachine.Interfaces.IPhaseState
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.StateMachine.Interfaces
+  nameWithType: CardGame.Core.StateMachine.Interfaces
+  fullName: CardGame.Core.StateMachine.Interfaces
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.StateMachine.Interfaces.IPhaseState
+  commentId: T:CardGame.Core.StateMachine.Interfaces.IPhaseState
+  parent: CardGame.Core.StateMachine.Interfaces
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html
+  name: IPhaseState
+  nameWithType: IPhaseState
+  fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState
+- uid: CardGame.Core.StateMachine.Interfaces
+  commentId: N:CardGame.Core.StateMachine.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.StateMachine.Interfaces
+  nameWithType: CardGame.Core.StateMachine.Interfaces
+  fullName: CardGame.Core.StateMachine.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Interfaces
+    name: Interfaces
+    href: CardGame.Core.StateMachine.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.StateMachine
+    name: StateMachine
+    href: CardGame.Core.StateMachine.html
+  - name: .
+  - uid: CardGame.Core.StateMachine.Interfaces
+    name: Interfaces
+    href: CardGame.Core.StateMachine.Interfaces.html

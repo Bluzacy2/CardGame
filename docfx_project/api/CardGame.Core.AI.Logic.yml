@@ -1,0 +1,140 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.Core.AI.Logic
+  commentId: N:CardGame.Core.AI.Logic
+  id: Logic
+  parent: CardGame.Core.AI
+  children:
+  - CardGame.Core.AI.Logic.BotSolver
+  - CardGame.Core.AI.Logic.EvaluatedMove
+  - CardGame.Core.AI.Logic.Mcts
+  - CardGame.Core.AI.Logic.MoveGenerator
+  - CardGame.Core.AI.Logic.SimulationNode
+  - CardGame.Core.AI.Logic.VirtualOpponent
+  langs:
+  - csharp
+  - vb
+  name: CardGame.Core.AI.Logic
+  nameWithType: CardGame.Core.AI.Logic
+  fullName: CardGame.Core.AI.Logic
+  type: Namespace
+  assemblies:
+  - CardGame.Core
+references:
+- uid: CardGame.Core.AI.Logic.Mcts
+  commentId: N:CardGame.Core.AI.Logic.Mcts
+  href: CardGame.html
+  name: CardGame.Core.AI.Logic.Mcts
+  nameWithType: CardGame.Core.AI.Logic.Mcts
+  fullName: CardGame.Core.AI.Logic.Mcts
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic.Mcts
+    name: Mcts
+    href: CardGame.Core.AI.Logic.Mcts.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic.Mcts
+    name: Mcts
+    href: CardGame.Core.AI.Logic.Mcts.html
+- uid: CardGame.Core.AI.Logic.BotSolver
+  commentId: T:CardGame.Core.AI.Logic.BotSolver
+  parent: CardGame.Core.AI.Logic
+  href: CardGame.Core.AI.Logic.BotSolver.html
+  name: BotSolver
+  nameWithType: BotSolver
+  fullName: CardGame.Core.AI.Logic.BotSolver
+- uid: CardGame.Core.AI.Logic.EvaluatedMove
+  commentId: T:CardGame.Core.AI.Logic.EvaluatedMove
+  parent: CardGame.Core.AI.Logic
+  href: CardGame.Core.AI.Logic.EvaluatedMove.html
+  name: EvaluatedMove
+  nameWithType: EvaluatedMove
+  fullName: CardGame.Core.AI.Logic.EvaluatedMove
+- uid: CardGame.Core.AI.Logic.MoveGenerator
+  commentId: T:CardGame.Core.AI.Logic.MoveGenerator
+  parent: CardGame.Core.AI.Logic
+  href: CardGame.Core.AI.Logic.MoveGenerator.html
+  name: MoveGenerator
+  nameWithType: MoveGenerator
+  fullName: CardGame.Core.AI.Logic.MoveGenerator
+- uid: CardGame.Core.AI.Logic.SimulationNode
+  commentId: T:CardGame.Core.AI.Logic.SimulationNode
+  href: CardGame.Core.AI.Logic.SimulationNode.html
+  name: SimulationNode
+  nameWithType: SimulationNode
+  fullName: CardGame.Core.AI.Logic.SimulationNode
+- uid: CardGame.Core.AI.Logic.VirtualOpponent
+  commentId: T:CardGame.Core.AI.Logic.VirtualOpponent
+  href: CardGame.Core.AI.Logic.VirtualOpponent.html
+  name: VirtualOpponent
+  nameWithType: VirtualOpponent
+  fullName: CardGame.Core.AI.Logic.VirtualOpponent
+- uid: CardGame.Core.AI.Logic
+  commentId: N:CardGame.Core.AI.Logic
+  href: CardGame.html
+  name: CardGame.Core.AI.Logic
+  nameWithType: CardGame.Core.AI.Logic
+  fullName: CardGame.Core.AI.Logic
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  - name: .
+  - uid: CardGame.Core.AI.Logic
+    name: Logic
+    href: CardGame.Core.AI.Logic.html

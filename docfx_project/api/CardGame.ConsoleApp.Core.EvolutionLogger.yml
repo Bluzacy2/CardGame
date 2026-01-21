@@ -1,0 +1,188 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.ConsoleApp.Core.EvolutionLogger
+  commentId: T:CardGame.ConsoleApp.Core.EvolutionLogger
+  id: EvolutionLogger
+  parent: CardGame.ConsoleApp.Core
+  children:
+  - CardGame.ConsoleApp.Core.EvolutionLogger.Log(System.Int32,CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual,System.Single,System.Single)
+  langs:
+  - csharp
+  - vb
+  name: EvolutionLogger
+  nameWithType: EvolutionLogger
+  fullName: CardGame.ConsoleApp.Core.EvolutionLogger
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Core/EvolutionLogger.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EvolutionLogger
+    path: ../Source/CardGame.ConsoleApp/Core/EvolutionLogger.cs
+    startLine: 6
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Core
+  syntax:
+    content: public static class EvolutionLogger
+    content.vb: Public Module EvolutionLogger
+  inheritance:
+  - System.Object
+- uid: CardGame.ConsoleApp.Core.EvolutionLogger.Log(System.Int32,CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual,System.Single,System.Single)
+  commentId: M:CardGame.ConsoleApp.Core.EvolutionLogger.Log(System.Int32,CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual,System.Single,System.Single)
+  id: Log(System.Int32,CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual,System.Single,System.Single)
+  parent: CardGame.ConsoleApp.Core.EvolutionLogger
+  langs:
+  - csharp
+  - vb
+  name: Log(int, GeneticIndividual, float, float)
+  nameWithType: EvolutionLogger.Log(int, GeneticIndividual, float, float)
+  fullName: CardGame.ConsoleApp.Core.EvolutionLogger.Log(int, CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual, float, float)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.ConsoleApp/Core/EvolutionLogger.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Log
+    path: ../Source/CardGame.ConsoleApp/Core/EvolutionLogger.cs
+    startLine: 10
+  assemblies:
+  - CardGame.ConsoleApp
+  namespace: CardGame.ConsoleApp.Core
+  syntax:
+    content: public static void Log(int gen, GeneticIndividual best, float avgAggro, float avgControl)
+    parameters:
+    - id: gen
+      type: System.Int32
+    - id: best
+      type: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+    - id: avgAggro
+      type: System.Single
+    - id: avgControl
+      type: System.Single
+    content.vb: Public Shared Sub Log(gen As Integer, best As GeneticIndividual, avgAggro As Single, avgControl As Single)
+  overload: CardGame.ConsoleApp.Core.EvolutionLogger.Log*
+  nameWithType.vb: EvolutionLogger.Log(Integer, GeneticIndividual, Single, Single)
+  fullName.vb: CardGame.ConsoleApp.Core.EvolutionLogger.Log(Integer, CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual, Single, Single)
+  name.vb: Log(Integer, GeneticIndividual, Single, Single)
+references:
+- uid: CardGame.ConsoleApp.Core
+  commentId: N:CardGame.ConsoleApp.Core
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Core
+  nameWithType: CardGame.ConsoleApp.Core
+  fullName: CardGame.ConsoleApp.Core
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Core
+    name: Core
+    href: CardGame.ConsoleApp.Core.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Core
+    name: Core
+    href: CardGame.ConsoleApp.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: CardGame.ConsoleApp.Core.EvolutionLogger.Log*
+  commentId: Overload:CardGame.ConsoleApp.Core.EvolutionLogger.Log
+  href: CardGame.ConsoleApp.Core.EvolutionLogger.html#CardGame_ConsoleApp_Core_EvolutionLogger_Log_System_Int32_CardGame_ConsoleApp_Evolution_V1_Legacy_GeneticIndividual_System_Single_System_Single_
+  name: Log
+  nameWithType: EvolutionLogger.Log
+  fullName: CardGame.ConsoleApp.Core.EvolutionLogger.Log
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  commentId: T:CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+  parent: CardGame.ConsoleApp.Evolution.V1_Legacy
+  href: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual.html
+  name: GeneticIndividual
+  nameWithType: GeneticIndividual
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy.GeneticIndividual
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+  commentId: N:CardGame.ConsoleApp.Evolution.V1_Legacy
+  href: CardGame.html
+  name: CardGame.ConsoleApp.Evolution.V1_Legacy
+  nameWithType: CardGame.ConsoleApp.Evolution.V1_Legacy
+  fullName: CardGame.ConsoleApp.Evolution.V1_Legacy
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.ConsoleApp
+    name: ConsoleApp
+    href: CardGame.ConsoleApp.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution
+    name: Evolution
+    href: CardGame.ConsoleApp.Evolution.html
+  - name: .
+  - uid: CardGame.ConsoleApp.Evolution.V1_Legacy
+    name: V1_Legacy
+    href: CardGame.ConsoleApp.Evolution.V1_Legacy.html
