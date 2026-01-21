@@ -1,0 +1,88 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.LineView.CardDroppedOnLineEventHandler
+  commentId: T:CardGame.GodotClient.LineView.CardDroppedOnLineEventHandler
+  id: LineView.CardDroppedOnLineEventHandler
+  parent: CardGame.GodotClient
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: LineView.CardDroppedOnLineEventHandler
+  nameWithType: LineView.CardDroppedOnLineEventHandler
+  fullName: CardGame.GodotClient.LineView.CardDroppedOnLineEventHandler
+  type: Delegate
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/LineView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardDroppedOnLineEventHandler
+    path: ../Source/CardGame.GodotClient/Scripts/LineView.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Signal emitted when a card is dropped onto this line.
+  example: []
+  syntax:
+    content: >-
+      [Signal]
+
+      public delegate void LineView.CardDroppedOnLineEventHandler(int cardInstanceId, int lineIndex)
+    parameters:
+    - id: cardInstanceId
+      type: System.Int32
+      description: The ID of the dropped card instance.
+    - id: lineIndex
+      type: System.Int32
+      description: The index of this line.
+    content.vb: >-
+      <Signal>
+
+      Public Delegate Sub LineView.CardDroppedOnLineEventHandler(cardInstanceId As Integer, lineIndex As Integer)
+  attributes:
+  - type: Godot.SignalAttribute
+    ctor: Godot.SignalAttribute.#ctor
+    arguments: []
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+memberLayout: SeparatePages

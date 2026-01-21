@@ -123,94 +123,23 @@ Class MctsSolver  <a class="header-action link-secondary" title="View source" hr
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsSolver__ctor_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsSolver.#ctor*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsSolver__ctor_CardGame_Core_Application_GameEngine_System_Int32_CardGame_Core_AI_Interfaces_IAIStrategy_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsSolver.#ctor(CardGame.Core.Application.GameEngine,System.Int32,CardGame.Core.AI.Interfaces.IAIStrategy)">
-  MctsSolver(GameEngine, int, IAIStrategy)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsSolver.cs/#L47"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the Monte Carlo Tree Search solver.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MctsSolver(GameEngine engine, int botId, IAIStrategy heuristic)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>engine</code> <a class="xref" href="CardGame.Core.Application.GameEngine.html">GameEngine</a></dt>
-    <dd><p>The game engine template for simulations.</p>
-</dd>
-    <dt><code>botId</code> <span class="xref">int</span></dt>
-    <dd><p>The identifier of the bot player.</p>
-</dd>
-    <dt><code>heuristic</code> <a class="xref" href="CardGame.Core.AI.Interfaces.IAIStrategy.html">IAIStrategy</a></dt>
-    <dd><p>The heuristic evaluation strategy.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsSolver.-ctor.html#CardGame_Core_AI_Logic_Mcts_MctsSolver__ctor_CardGame_Core_Application_GameEngine_System_Int32_CardGame_Core_AI_Interfaces_IAIStrategy_">MctsSolver(GameEngine, int, IAIStrategy)</a></dt>
+    <dd><p>Initializes a new instance of the Monte Carlo Tree Search solver.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsSolver_FindBestMove_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsSolver.FindBestMove*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsSolver_FindBestMove_CardGame_Core_State_Models_GameState_System_Int32_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsSolver.FindBestMove(CardGame.Core.State.Models.GameState,System.Int32)">
-  FindBestMove(GameState, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsSolver.cs/#L65"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Analyzes the game state and returns the best move according to MCTS simulation.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvaluatedMove FindBestMove(GameState rootState, int thinkingTimeMs = 1500)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>rootState</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state to analyze.</p>
-</dd>
-    <dt><code>thinkingTimeMs</code> <span class="xref">int</span></dt>
-    <dd><p>Maximum time to spend on analysis in milliseconds.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsSolver.FindBestMove.html#CardGame_Core_AI_Logic_Mcts_MctsSolver_FindBestMove_CardGame_Core_State_Models_GameState_System_Int32_">FindBestMove(GameState, int)</a></dt>
+    <dd><p>Analyzes the game state and returns the best move according to MCTS simulation.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.AI.Logic.EvaluatedMove.html">EvaluatedMove</a></dt>
-    <dd><p>The best evaluated move with its probability of success.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

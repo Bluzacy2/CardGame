@@ -472,7 +472,7 @@ references:
   fullName: System
 - uid: CardGame.Core.Cards.Data.CardData.Id*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.Id
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Id
+  href: CardGame.Core.Cards.Data.CardData.Id.html#CardGame_Core_Cards_Data_CardData_Id
   name: Id
   nameWithType: CardData.Id
   fullName: CardGame.Core.Cards.Data.CardData.Id
@@ -488,7 +488,7 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Cards.Data.CardData.Name*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.Name
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Name
+  href: CardGame.Core.Cards.Data.CardData.Name.html#CardGame_Core_Cards_Data_CardData_Name
   name: Name
   nameWithType: CardData.Name
   fullName: CardGame.Core.Cards.Data.CardData.Name
@@ -504,7 +504,7 @@ references:
   name.vb: String
 - uid: CardGame.Core.Cards.Data.CardData.Type*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.Type
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Type
+  href: CardGame.Core.Cards.Data.CardData.Type.html#CardGame_Core_Cards_Data_CardData_Type
   name: Type
   nameWithType: CardData.Type
   fullName: CardGame.Core.Cards.Data.CardData.Type
@@ -517,7 +517,7 @@ references:
   fullName: CardGame.Core.Cards.Data.CardType
 - uid: CardGame.Core.Cards.Data.CardData.Subtypes*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.Subtypes
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Subtypes
+  href: CardGame.Core.Cards.Data.CardData.Subtypes.html#CardGame_Core_Cards_Data_CardData_Subtypes
   name: Subtypes
   nameWithType: CardData.Subtypes
   fullName: CardGame.Core.Cards.Data.CardData.Subtypes
@@ -615,13 +615,13 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.Core.Cards.Data.CardData.Cost*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.Cost
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Cost
+  href: CardGame.Core.Cards.Data.CardData.Cost.html#CardGame_Core_Cards_Data_CardData_Cost
   name: Cost
   nameWithType: CardData.Cost
   fullName: CardGame.Core.Cards.Data.CardData.Cost
 - uid: CardGame.Core.Cards.Data.CardData.CostType*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.CostType
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_CostType
+  href: CardGame.Core.Cards.Data.CardData.CostType.html#CardGame_Core_Cards_Data_CardData_CostType
   name: CostType
   nameWithType: CardData.CostType
   fullName: CardGame.Core.Cards.Data.CardData.CostType
@@ -634,19 +634,19 @@ references:
   fullName: CardGame.Core.Cards.Data.ResourceType
 - uid: CardGame.Core.Cards.Data.CardData.Attack*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.Attack
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Attack
+  href: CardGame.Core.Cards.Data.CardData.Attack.html#CardGame_Core_Cards_Data_CardData_Attack
   name: Attack
   nameWithType: CardData.Attack
   fullName: CardGame.Core.Cards.Data.CardData.Attack
 - uid: CardGame.Core.Cards.Data.CardData.Health*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.Health
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Health
+  href: CardGame.Core.Cards.Data.CardData.Health.html#CardGame_Core_Cards_Data_CardData_Health
   name: Health
   nameWithType: CardData.Health
   fullName: CardGame.Core.Cards.Data.CardData.Health
 - uid: CardGame.Core.Cards.Data.CardData.Keywords*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.Keywords
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Keywords
+  href: CardGame.Core.Cards.Data.CardData.Keywords.html#CardGame_Core_Cards_Data_CardData_Keywords
   name: Keywords
   nameWithType: CardData.Keywords
   fullName: CardGame.Core.Cards.Data.CardData.Keywords
@@ -683,7 +683,7 @@ references:
   - name: )
 - uid: CardGame.Core.Cards.Data.CardData.KeywordParams*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.KeywordParams
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_KeywordParams
+  href: CardGame.Core.Cards.Data.CardData.KeywordParams.html#CardGame_Core_Cards_Data_CardData_KeywordParams
   name: KeywordParams
   nameWithType: CardData.KeywordParams
   fullName: CardGame.Core.Cards.Data.CardData.KeywordParams
@@ -761,13 +761,13 @@ references:
   - name: )
 - uid: CardGame.Core.Cards.Data.CardData.Description*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.Description
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Description
+  href: CardGame.Core.Cards.Data.CardData.Description.html#CardGame_Core_Cards_Data_CardData_Description
   name: Description
   nameWithType: CardData.Description
   fullName: CardGame.Core.Cards.Data.CardData.Description
 - uid: CardGame.Core.Cards.Data.CardData.Effects*
   commentId: Overload:CardGame.Core.Cards.Data.CardData.Effects
-  href: CardGame.Core.Cards.Data.CardData.html#CardGame_Core_Cards_Data_CardData_Effects
+  href: CardGame.Core.Cards.Data.CardData.Effects.html#CardGame_Core_Cards_Data_CardData_Effects
   name: Effects
   nameWithType: CardData.Effects
   fullName: CardGame.Core.Cards.Data.CardData.Effects
@@ -802,3 +802,4 @@ references:
     name: EffectData
     href: CardGame.Core.Cards.Data.EffectData.html
   - name: )
+memberLayout: SeparatePages

@@ -123,204 +123,43 @@ Class EventBus  <a class="header-action link-secondary" title="View source" href
 
 
 
-
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Events_EventBus_HasEvents_" data-uid="CardGame.Core.Events.EventBus.HasEvents*"></a>
-
-  <h3 id="CardGame_Core_Events_EventBus_HasEvents" data-uid="CardGame.Core.Events.EventBus.HasEvents">
-  HasEvents
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/EventBus.cs/#L35"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets a value indicating whether there are pending events in the processing queue.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HasEvents { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.EventBus.HasEvents.html#CardGame_Core_Events_EventBus_HasEvents">HasEvents</a></dt>
+    <dd><p>Gets a value indicating whether there are pending events in the processing queue.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_Events_EventBus_ClearHistory_" data-uid="CardGame.Core.Events.EventBus.ClearHistory*"></a>
-
-  <h3 id="CardGame_Core_Events_EventBus_ClearHistory" data-uid="CardGame.Core.Events.EventBus.ClearHistory">
-  ClearHistory()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/EventBus.cs/#L53"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Clears the short-term command history (used between command executions).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ClearHistory()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_EventBus_GetGlobalHistory_" data-uid="CardGame.Core.Events.EventBus.GetGlobalHistory*"></a>
-
-  <h3 id="CardGame_Core_Events_EventBus_GetGlobalHistory" data-uid="CardGame.Core.Events.EventBus.GetGlobalHistory">
-  GetGlobalHistory()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/EventBus.cs/#L71"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the complete history of all events from the start of the game.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;IGameEvent&gt; GetGlobalHistory()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Events.Interfaces.IGameEvent.html">IGameEvent</a>&gt;</dt>
-    <dd><p>A read-only collection of all game events.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.EventBus.ClearHistory.html#CardGame_Core_Events_EventBus_ClearHistory">ClearHistory()</a></dt>
+    <dd><p>Clears the short-term command history (used between command executions).</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_EventBus_GetHistory_" data-uid="CardGame.Core.Events.EventBus.GetHistory*"></a>
-
-  <h3 id="CardGame_Core_Events_EventBus_GetHistory" data-uid="CardGame.Core.Events.EventBus.GetHistory">
-  GetHistory()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/EventBus.cs/#L62"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the short-term history of events for the current command/frame.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;IGameEvent&gt; GetHistory()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Events.Interfaces.IGameEvent.html">IGameEvent</a>&gt;</dt>
-    <dd><p>A read-only collection of recent events.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.EventBus.GetGlobalHistory.html#CardGame_Core_Events_EventBus_GetGlobalHistory">GetGlobalHistory()</a></dt>
+    <dd><p>Gets the complete history of all events from the start of the game.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_EventBus_Pop_" data-uid="CardGame.Core.Events.EventBus.Pop*"></a>
-
-  <h3 id="CardGame_Core_Events_EventBus_Pop" data-uid="CardGame.Core.Events.EventBus.Pop">
-  Pop()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/EventBus.cs/#L41"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Removes and returns the next event from the processing queue.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IGameEvent Pop()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Events.Interfaces.IGameEvent.html">IGameEvent</a></dt>
-    <dd><p>The next IGameEvent in the queue.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.EventBus.GetHistory.html#CardGame_Core_Events_EventBus_GetHistory">GetHistory()</a></dt>
+    <dd><p>Gets the short-term history of events for the current command/frame.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_EventBus_Publish_" data-uid="CardGame.Core.Events.EventBus.Publish*"></a>
-
-  <h3 id="CardGame_Core_Events_EventBus_Publish_CardGame_Core_Events_Interfaces_IGameEvent_" data-uid="CardGame.Core.Events.EventBus.Publish(CardGame.Core.Events.Interfaces.IGameEvent)">
-  Publish(IGameEvent)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/EventBus.cs/#L25"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Publishes a game event to the processing queue and history.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Publish(IGameEvent gameEvent)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>gameEvent</code> <a class="xref" href="CardGame.Core.Events.Interfaces.IGameEvent.html">IGameEvent</a></dt>
-    <dd><p>The event to publish.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.EventBus.Pop.html#CardGame_Core_Events_EventBus_Pop">Pop()</a></dt>
+    <dd><p>Removes and returns the next event from the processing queue.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.EventBus.Publish.html#CardGame_Core_Events_EventBus_Publish_CardGame_Core_Events_Interfaces_IGameEvent_">Publish(IGameEvent)</a></dt>
+    <dd><p>Publishes a game event to the processing queue and history.</p>
+</dd>
+  </dl>
 
 
 

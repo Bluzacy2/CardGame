@@ -264,7 +264,7 @@ references:
     href: CardGame.Core.Events.Interfaces.html
 - uid: CardGame.Core.Events.UnitDestroyedEvent.Unit*
   commentId: Overload:CardGame.Core.Events.UnitDestroyedEvent.Unit
-  href: CardGame.Core.Events.UnitDestroyedEvent.html#CardGame_Core_Events_UnitDestroyedEvent_Unit
+  href: CardGame.Core.Events.UnitDestroyedEvent.Unit.html#CardGame_Core_Events_UnitDestroyedEvent_Unit
   name: Unit
   nameWithType: UnitDestroyedEvent.Unit
   fullName: CardGame.Core.Events.UnitDestroyedEvent.Unit
@@ -315,7 +315,7 @@ references:
     href: CardGame.Core.Cards.Models.html
 - uid: CardGame.Core.Events.UnitDestroyedEvent.OwnerId*
   commentId: Overload:CardGame.Core.Events.UnitDestroyedEvent.OwnerId
-  href: CardGame.Core.Events.UnitDestroyedEvent.html#CardGame_Core_Events_UnitDestroyedEvent_OwnerId
+  href: CardGame.Core.Events.UnitDestroyedEvent.OwnerId.html#CardGame_Core_Events_UnitDestroyedEvent_OwnerId
   name: OwnerId
   nameWithType: UnitDestroyedEvent.OwnerId
   fullName: CardGame.Core.Events.UnitDestroyedEvent.OwnerId
@@ -331,23 +331,24 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Events.UnitDestroyedEvent.SourcePlayerId*
   commentId: Overload:CardGame.Core.Events.UnitDestroyedEvent.SourcePlayerId
-  href: CardGame.Core.Events.UnitDestroyedEvent.html#CardGame_Core_Events_UnitDestroyedEvent_SourcePlayerId
+  href: CardGame.Core.Events.UnitDestroyedEvent.SourcePlayerId.html#CardGame_Core_Events_UnitDestroyedEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: UnitDestroyedEvent.SourcePlayerId
   fullName: CardGame.Core.Events.UnitDestroyedEvent.SourcePlayerId
 - uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   parent: CardGame.Core.Events.Interfaces.IGameEvent
-  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  href: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: IGameEvent.SourcePlayerId
   fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
 - uid: CardGame.Core.Events.UnitDestroyedEvent.#ctor*
   commentId: Overload:CardGame.Core.Events.UnitDestroyedEvent.#ctor
-  href: CardGame.Core.Events.UnitDestroyedEvent.html#CardGame_Core_Events_UnitDestroyedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_
+  href: CardGame.Core.Events.UnitDestroyedEvent.-ctor.html#CardGame_Core_Events_UnitDestroyedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_
   name: UnitDestroyedEvent
   nameWithType: UnitDestroyedEvent.UnitDestroyedEvent
   fullName: CardGame.Core.Events.UnitDestroyedEvent.UnitDestroyedEvent
   nameWithType.vb: UnitDestroyedEvent.New
   fullName.vb: CardGame.Core.Events.UnitDestroyedEvent.New
   name.vb: New
+memberLayout: SeparatePages

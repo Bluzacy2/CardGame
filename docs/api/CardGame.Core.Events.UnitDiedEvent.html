@@ -129,212 +129,43 @@ Class UnitDiedEvent  <a class="header-action link-secondary" title="View source"
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_Events_UnitDiedEvent__ctor_" data-uid="CardGame.Core.Events.UnitDiedEvent.#ctor*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitDiedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_System_Nullable_System_Int32__" data-uid="CardGame.Core.Events.UnitDiedEvent.#ctor(CardGame.Core.Cards.Models.CardInstance,System.Int32,System.Nullable{System.Int32})">
-  UnitDiedEvent(CardInstance, int, int?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitDiedEvent.cs/#L44"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the UnitDiedEvent class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UnitDiedEvent(CardInstance unit, int lineIndex = -1, int? killerId = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>unit</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd><p>The unit instance that died.</p>
-</dd>
-    <dt><code>lineIndex</code> <span class="xref">int</span></dt>
-    <dd><p>The board lane index where the unit was located.</p>
-</dd>
-    <dt><code>killerId</code> <span class="xref">int</span>?</dt>
-    <dd><p>The optional instance ID of the killer unit.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitDiedEvent.-ctor.html#CardGame_Core_Events_UnitDiedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_System_Nullable_System_Int32__">UnitDiedEvent(CardInstance, int, int?)</a></dt>
+    <dd><p>Initializes a new instance of the UnitDiedEvent class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Events_UnitDiedEvent_KillerInstanceId_" data-uid="CardGame.Core.Events.UnitDiedEvent.KillerInstanceId*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitDiedEvent_KillerInstanceId" data-uid="CardGame.Core.Events.UnitDiedEvent.KillerInstanceId">
-  KillerInstanceId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitDiedEvent.cs/#L36"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the optional instance ID of the unit that killed this unit.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? KillerInstanceId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span>?</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitDiedEvent.KillerInstanceId.html#CardGame_Core_Events_UnitDiedEvent_KillerInstanceId">KillerInstanceId</a></dt>
+    <dd><p>Gets the optional instance ID of the unit that killed this unit.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitDiedEvent_LineIndex_" data-uid="CardGame.Core.Events.UnitDiedEvent.LineIndex*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitDiedEvent_LineIndex" data-uid="CardGame.Core.Events.UnitDiedEvent.LineIndex">
-  LineIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitDiedEvent.cs/#L31"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the index of the board lane where the unit was located when it died.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int LineIndex { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitDiedEvent.LineIndex.html#CardGame_Core_Events_UnitDiedEvent_LineIndex">LineIndex</a></dt>
+    <dd><p>Gets the index of the board lane where the unit was located when it died.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitDiedEvent_OwnerId_" data-uid="CardGame.Core.Events.UnitDiedEvent.OwnerId*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitDiedEvent_OwnerId" data-uid="CardGame.Core.Events.UnitDiedEvent.OwnerId">
-  OwnerId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitDiedEvent.cs/#L21"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the ID of the player who owned the unit.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int OwnerId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitDiedEvent.OwnerId.html#CardGame_Core_Events_UnitDiedEvent_OwnerId">OwnerId</a></dt>
+    <dd><p>Gets the ID of the player who owned the unit.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitDiedEvent_SourcePlayerId_" data-uid="CardGame.Core.Events.UnitDiedEvent.SourcePlayerId*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitDiedEvent_SourcePlayerId" data-uid="CardGame.Core.Events.UnitDiedEvent.SourcePlayerId">
-  SourcePlayerId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitDiedEvent.cs/#L26"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the ID of the player who caused the death (same as owner for self-destruction).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int SourcePlayerId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitDiedEvent.SourcePlayerId.html#CardGame_Core_Events_UnitDiedEvent_SourcePlayerId">SourcePlayerId</a></dt>
+    <dd><p>Gets the ID of the player who caused the death (same as owner for self-destruction).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitDiedEvent_Unit_" data-uid="CardGame.Core.Events.UnitDiedEvent.Unit*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitDiedEvent_Unit" data-uid="CardGame.Core.Events.UnitDiedEvent.Unit">
-  Unit
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitDiedEvent.cs/#L16"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the unit that died.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CardInstance Unit { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitDiedEvent.Unit.html#CardGame_Core_Events_UnitDiedEvent_Unit">Unit</a></dt>
+    <dd><p>Gets the unit that died.</p>
+</dd>
   </dl>
-
-
-
-
-
-
 
 
 

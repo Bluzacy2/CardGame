@@ -1,0 +1,801 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.HeroPortrait
+  commentId: T:CardGame.GodotClient.HeroPortrait
+  id: HeroPortrait
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.HeroPortrait.Avatar
+  - CardGame.GodotClient.HeroPortrait.HighlightBorder
+  - CardGame.GodotClient.HeroPortrait.HpLabel
+  - CardGame.GodotClient.HeroPortrait.ManaLabel
+  - CardGame.GodotClient.HeroPortrait.OnHeroClicked
+  - CardGame.GodotClient.HeroPortrait.OwnerId
+  - CardGame.GodotClient.HeroPortrait.SetHighlight(System.Boolean,Godot.Color)
+  - CardGame.GodotClient.HeroPortrait.UpdateStats(System.Int32,System.Int32,System.Int32)
+  - CardGame.GodotClient.HeroPortrait._CanDropData(Godot.Vector2,Godot.Variant)
+  - CardGame.GodotClient.HeroPortrait._DropData(Godot.Vector2,Godot.Variant)
+  - CardGame.GodotClient.HeroPortrait._Ready
+  langs:
+  - csharp
+  - vb
+  name: HeroPortrait
+  nameWithType: HeroPortrait
+  fullName: CardGame.GodotClient.HeroPortrait
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.HeroPortrait_ScriptSignals.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HeroPortrait
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.HeroPortrait_ScriptSignals.generated.cs
+    startLine: 5
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Visual component representing a player's hero.
+
+    Displays Health, Resources (Blood), and the Avatar image.
+
+    Handles interactions like targeting the hero with spells and receiving dropped cards.
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/HeroPortrait.cs")]
+
+      public class HeroPortrait : Control
+    content.vb: >-
+      <ScriptPath("res://Scripts/HeroPortrait.cs")>
+
+      Public Class HeroPortrait Inherits Control
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  - Godot.CanvasItem
+  - Godot.Control
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/HeroPortrait.cs
+- uid: CardGame.GodotClient.HeroPortrait.HpLabel
+  commentId: F:CardGame.GodotClient.HeroPortrait.HpLabel
+  id: HpLabel
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: HpLabel
+  nameWithType: HeroPortrait.HpLabel
+  fullName: CardGame.GodotClient.HeroPortrait.HpLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HpLabel
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label displaying the hero's current health.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label HpLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public HpLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.HeroPortrait.ManaLabel
+  commentId: F:CardGame.GodotClient.HeroPortrait.ManaLabel
+  id: ManaLabel
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: ManaLabel
+  nameWithType: HeroPortrait.ManaLabel
+  fullName: CardGame.GodotClient.HeroPortrait.ManaLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ManaLabel
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 18
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label displaying the hero's current/max resources (Blood).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label ManaLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public ManaLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.HeroPortrait.Avatar
+  commentId: F:CardGame.GodotClient.HeroPortrait.Avatar
+  id: Avatar
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: Avatar
+  nameWithType: HeroPortrait.Avatar
+  fullName: CardGame.GodotClient.HeroPortrait.Avatar
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Avatar
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 21
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: TextureRect displaying the hero's avatar image.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public TextureRect Avatar
+    return:
+      type: Godot.TextureRect
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public Avatar As TextureRect
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.HeroPortrait.HighlightBorder
+  commentId: F:CardGame.GodotClient.HeroPortrait.HighlightBorder
+  id: HighlightBorder
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: HighlightBorder
+  nameWithType: HeroPortrait.HighlightBorder
+  fullName: CardGame.GodotClient.HeroPortrait.HighlightBorder
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HighlightBorder
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 24
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Control used to highlight the portrait during targeting sequences.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control HighlightBorder
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public HighlightBorder As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.HeroPortrait.OwnerId
+  commentId: P:CardGame.GodotClient.HeroPortrait.OwnerId
+  id: OwnerId
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: OwnerId
+  nameWithType: HeroPortrait.OwnerId
+  fullName: CardGame.GodotClient.HeroPortrait.OwnerId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OwnerId
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 33
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Gets or sets the ID of the player this portrait represents (1 or 2).
+  example: []
+  syntax:
+    content: public int OwnerId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property OwnerId As Integer
+  overload: CardGame.GodotClient.HeroPortrait.OwnerId*
+- uid: CardGame.GodotClient.HeroPortrait.OnHeroClicked
+  commentId: E:CardGame.GodotClient.HeroPortrait.OnHeroClicked
+  id: OnHeroClicked
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: OnHeroClicked
+  nameWithType: HeroPortrait.OnHeroClicked
+  fullName: CardGame.GodotClient.HeroPortrait.OnHeroClicked
+  type: Event
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnHeroClicked
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 39
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Event triggered when the hero portrait is clicked (e.g., when selected as a spell target).
+
+    Sends the OwnerId of the clicked hero.
+  example: []
+  syntax:
+    content: public event Action<int> OnHeroClicked
+    return:
+      type: System.Action{System.Int32}
+    content.vb: Public Event OnHeroClicked As Action(Of Integer)
+- uid: CardGame.GodotClient.HeroPortrait._Ready
+  commentId: M:CardGame.GodotClient.HeroPortrait._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: HeroPortrait._Ready()
+  fullName: CardGame.GodotClient.HeroPortrait._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 49
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Called when the node enters the scene tree.
+
+    Initializes visibility states and sets up input handling for clicks.
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.HeroPortrait._Ready*
+- uid: CardGame.GodotClient.HeroPortrait.UpdateStats(System.Int32,System.Int32,System.Int32)
+  commentId: M:CardGame.GodotClient.HeroPortrait.UpdateStats(System.Int32,System.Int32,System.Int32)
+  id: UpdateStats(System.Int32,System.Int32,System.Int32)
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: UpdateStats(int, int, int)
+  nameWithType: HeroPortrait.UpdateStats(int, int, int)
+  fullName: CardGame.GodotClient.HeroPortrait.UpdateStats(int, int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateStats
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 76
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Updates the visual statistics of the hero (Health and Mana/Blood).
+  example: []
+  syntax:
+    content: public void UpdateStats(int hp, int currentMana, int maxMana)
+    parameters:
+    - id: hp
+      type: System.Int32
+      description: Current health points.
+    - id: currentMana
+      type: System.Int32
+      description: Current available resources.
+    - id: maxMana
+      type: System.Int32
+      description: Maximum resource capacity.
+    content.vb: Public Sub UpdateStats(hp As Integer, currentMana As Integer, maxMana As Integer)
+  overload: CardGame.GodotClient.HeroPortrait.UpdateStats*
+  nameWithType.vb: HeroPortrait.UpdateStats(Integer, Integer, Integer)
+  fullName.vb: CardGame.GodotClient.HeroPortrait.UpdateStats(Integer, Integer, Integer)
+  name.vb: UpdateStats(Integer, Integer, Integer)
+- uid: CardGame.GodotClient.HeroPortrait.SetHighlight(System.Boolean,Godot.Color)
+  commentId: M:CardGame.GodotClient.HeroPortrait.SetHighlight(System.Boolean,Godot.Color)
+  id: SetHighlight(System.Boolean,Godot.Color)
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: SetHighlight(bool, Color)
+  nameWithType: HeroPortrait.SetHighlight(bool, Color)
+  fullName: CardGame.GodotClient.HeroPortrait.SetHighlight(bool, Godot.Color)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetHighlight
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 96
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Toggles the targeting highlight border on the portrait.
+  example: []
+  syntax:
+    content: public void SetHighlight(bool active, Color color)
+    parameters:
+    - id: active
+      type: System.Boolean
+      description: If set to <code>true</code>, the highlight is shown.
+    - id: color
+      type: Godot.Color
+      description: The color of the highlight border.
+    content.vb: Public Sub SetHighlight(active As Boolean, color As Color)
+  overload: CardGame.GodotClient.HeroPortrait.SetHighlight*
+  nameWithType.vb: HeroPortrait.SetHighlight(Boolean, Color)
+  fullName.vb: CardGame.GodotClient.HeroPortrait.SetHighlight(Boolean, Godot.Color)
+  name.vb: SetHighlight(Boolean, Color)
+- uid: CardGame.GodotClient.HeroPortrait._CanDropData(Godot.Vector2,Godot.Variant)
+  commentId: M:CardGame.GodotClient.HeroPortrait._CanDropData(Godot.Vector2,Godot.Variant)
+  id: _CanDropData(Godot.Vector2,Godot.Variant)
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: _CanDropData(Vector2, Variant)
+  nameWithType: HeroPortrait._CanDropData(Vector2, Variant)
+  fullName: CardGame.GodotClient.HeroPortrait._CanDropData(Godot.Vector2, Godot.Variant)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _CanDropData
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 116
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Determines whether the dragged data can be dropped onto the hero portrait.
+
+    Accepts data of type <xref href="System.Int32" data-throw-if-not-resolved="false"></xref> (representing a Card Instance ID).
+  example: []
+  syntax:
+    content: public override bool _CanDropData(Vector2 atPosition, Variant data)
+    parameters:
+    - id: atPosition
+      type: Godot.Vector2
+      description: The local position of the drag.
+    - id: data
+      type: Godot.Variant
+      description: The data being dragged.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the data is a card ID; otherwise, <code>false</code>.
+    content.vb: Public Overrides Function _CanDropData(atPosition As Vector2, data As [Variant]) As Boolean
+  overridden: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+  overload: CardGame.GodotClient.HeroPortrait._CanDropData*
+- uid: CardGame.GodotClient.HeroPortrait._DropData(Godot.Vector2,Godot.Variant)
+  commentId: M:CardGame.GodotClient.HeroPortrait._DropData(Godot.Vector2,Godot.Variant)
+  id: _DropData(Godot.Vector2,Godot.Variant)
+  parent: CardGame.GodotClient.HeroPortrait
+  langs:
+  - csharp
+  - vb
+  name: _DropData(Vector2, Variant)
+  nameWithType: HeroPortrait._DropData(Vector2, Variant)
+  fullName: CardGame.GodotClient.HeroPortrait._DropData(Godot.Vector2, Godot.Variant)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _DropData
+    path: ../Source/CardGame.GodotClient/Scripts/HeroPortrait.cs
+    startLine: 127
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Handles the drop event when a card is released over the hero portrait.
+
+    Useful for playing cards directly on the hero (e.g., direct damage spells or buffs).
+  example: []
+  syntax:
+    content: public override void _DropData(Vector2 atPosition, Variant data)
+    parameters:
+    - id: atPosition
+      type: Godot.Vector2
+      description: The local position of the drop.
+    - id: data
+      type: Godot.Variant
+      description: The dropped data (Card ID).
+    content.vb: Public Overrides Sub _DropData(atPosition As Vector2, data As [Variant])
+  overridden: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+  overload: CardGame.GodotClient.HeroPortrait._DropData*
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: Godot.CanvasItem
+  commentId: T:Godot.CanvasItem
+  parent: Godot
+  isExternal: true
+  name: CanvasItem
+  nameWithType: CanvasItem
+  fullName: Godot.CanvasItem
+- uid: Godot.Control
+  commentId: T:Godot.Control
+  parent: Godot
+  isExternal: true
+  name: Control
+  nameWithType: Control
+  fullName: Godot.Control
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.Label
+  commentId: T:Godot.Label
+  parent: Godot
+  isExternal: true
+  name: Label
+  nameWithType: Label
+  fullName: Godot.Label
+- uid: Godot.TextureRect
+  commentId: T:Godot.TextureRect
+  parent: Godot
+  isExternal: true
+  name: TextureRect
+  nameWithType: TextureRect
+  fullName: Godot.TextureRect
+- uid: CardGame.GodotClient.HeroPortrait.OwnerId*
+  commentId: Overload:CardGame.GodotClient.HeroPortrait.OwnerId
+  href: CardGame.GodotClient.HeroPortrait.OwnerId.html#CardGame_GodotClient_HeroPortrait_OwnerId
+  name: OwnerId
+  nameWithType: HeroPortrait.OwnerId
+  fullName: CardGame.GodotClient.HeroPortrait.OwnerId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Action{System.Int32}
+  commentId: T:System.Action{System.Int32}
+  parent: System
+  definition: System.Action`1
+  name: Action<int>
+  nameWithType: Action<int>
+  fullName: System.Action<int>
+  nameWithType.vb: Action(Of Integer)
+  fullName.vb: System.Action(Of Integer)
+  name.vb: Action(Of Integer)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.HeroPortrait._Ready*
+  commentId: Overload:CardGame.GodotClient.HeroPortrait._Ready
+  href: CardGame.GodotClient.HeroPortrait._Ready.html#CardGame_GodotClient_HeroPortrait__Ready
+  name: _Ready
+  nameWithType: HeroPortrait._Ready
+  fullName: CardGame.GodotClient.HeroPortrait._Ready
+- uid: CardGame.GodotClient.HeroPortrait.UpdateStats*
+  commentId: Overload:CardGame.GodotClient.HeroPortrait.UpdateStats
+  href: CardGame.GodotClient.HeroPortrait.UpdateStats.html#CardGame_GodotClient_HeroPortrait_UpdateStats_System_Int32_System_Int32_System_Int32_
+  name: UpdateStats
+  nameWithType: HeroPortrait.UpdateStats
+  fullName: CardGame.GodotClient.HeroPortrait.UpdateStats
+- uid: CardGame.GodotClient.HeroPortrait.SetHighlight*
+  commentId: Overload:CardGame.GodotClient.HeroPortrait.SetHighlight
+  href: CardGame.GodotClient.HeroPortrait.SetHighlight.html#CardGame_GodotClient_HeroPortrait_SetHighlight_System_Boolean_Godot_Color_
+  name: SetHighlight
+  nameWithType: HeroPortrait.SetHighlight
+  fullName: CardGame.GodotClient.HeroPortrait.SetHighlight
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Godot.Color
+  commentId: T:Godot.Color
+  parent: Godot
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: Godot.Color
+- uid: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+  commentId: M:Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+  parent: Godot.Control
+  isExternal: true
+  name: _CanDropData(Vector2, Variant)
+  nameWithType: Control._CanDropData(Vector2, Variant)
+  fullName: Godot.Control._CanDropData(Godot.Vector2, Godot.Variant)
+  spec.csharp:
+  - uid: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+    name: _CanDropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+    name: _CanDropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+- uid: CardGame.GodotClient.HeroPortrait._CanDropData*
+  commentId: Overload:CardGame.GodotClient.HeroPortrait._CanDropData
+  href: CardGame.GodotClient.HeroPortrait._CanDropData.html#CardGame_GodotClient_HeroPortrait__CanDropData_Godot_Vector2_Godot_Variant_
+  name: _CanDropData
+  nameWithType: HeroPortrait._CanDropData
+  fullName: CardGame.GodotClient.HeroPortrait._CanDropData
+- uid: Godot.Vector2
+  commentId: T:Godot.Vector2
+  parent: Godot
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Godot.Vector2
+- uid: Godot.Variant
+  commentId: T:Godot.Variant
+  parent: Godot
+  isExternal: true
+  name: Variant
+  nameWithType: Variant
+  fullName: Godot.Variant
+- uid: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+  commentId: M:Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+  parent: Godot.Control
+  isExternal: true
+  name: _DropData(Vector2, Variant)
+  nameWithType: Control._DropData(Vector2, Variant)
+  fullName: Godot.Control._DropData(Godot.Vector2, Godot.Variant)
+  spec.csharp:
+  - uid: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+    name: _DropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+    name: _DropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+- uid: CardGame.GodotClient.HeroPortrait._DropData*
+  commentId: Overload:CardGame.GodotClient.HeroPortrait._DropData
+  href: CardGame.GodotClient.HeroPortrait._DropData.html#CardGame_GodotClient_HeroPortrait__DropData_Godot_Vector2_Godot_Variant_
+  name: _DropData
+  nameWithType: HeroPortrait._DropData
+  fullName: CardGame.GodotClient.HeroPortrait._DropData
+memberLayout: SeparatePages

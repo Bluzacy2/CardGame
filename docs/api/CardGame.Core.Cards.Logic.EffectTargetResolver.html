@@ -123,142 +123,23 @@ Class EffectTargetResolver  <a class="header-action link-secondary" title="View 
 
 
 
-
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_Cards_Logic_EffectTargetResolver_GetOwner_" data-uid="CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_EffectTargetResolver_GetOwner_CardGame_Core_State_Models_GameState_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_" data-uid="CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner(CardGame.Core.State.Models.GameState,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)">
-  GetOwner(GameState, int, IGameEvent?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs/#L191"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int GetOwner(GameState state, int instanceId, IGameEvent? contextEvent = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
-    <dt><code>instanceId</code> <span class="xref">int</span></dt>
-    <dd></dd>
-    <dt><code>contextEvent</code> <a class="xref" href="CardGame.Core.Events.Interfaces.IGameEvent.html">IGameEvent</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.EffectTargetResolver.GetOwner.html#CardGame_Core_Cards_Logic_EffectTargetResolver_GetOwner_CardGame_Core_State_Models_GameState_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_">GetOwner(GameState, int, IGameEvent?)</a></dt>
     <dd></dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Logic_EffectTargetResolver_GetPotentialTargets_" data-uid="CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_EffectTargetResolver_GetPotentialTargets_CardGame_Core_Cards_Data_TargetType_CardGame_Core_State_Models_GameState_System_Int32_" data-uid="CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets(CardGame.Core.Cards.Data.TargetType,CardGame.Core.State.Models.GameState,System.Int32)">
-  GetPotentialTargets(TargetType, GameState, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs/#L173"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets all potential targets for a given targeting type without requiring a specific context event.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;CardInstance&gt; GetPotentialTargets(TargetType type, GameState state, int sourceCardId)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>type</code> <a class="xref" href="CardGame.Core.Cards.Data.TargetType.html">TargetType</a></dt>
-    <dd><p>The targeting type to get potential targets for.</p>
-</dd>
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state.</p>
-</dd>
-    <dt><code>sourceCardId</code> <span class="xref">int</span></dt>
-    <dd><p>The instance ID of the card that owns the effect.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.EffectTargetResolver.GetPotentialTargets.html#CardGame_Core_Cards_Logic_EffectTargetResolver_GetPotentialTargets_CardGame_Core_Cards_Data_TargetType_CardGame_Core_State_Models_GameState_System_Int32_">GetPotentialTargets(TargetType, GameState, int)</a></dt>
+    <dd><p>Gets all potential targets for a given targeting type without requiring a specific context event.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">List</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd><p>A list of potential target units.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve.html#CardGame_Core_Cards_Logic_EffectTargetResolver_Resolve_CardGame_Core_Cards_Data_TargetType_CardGame_Core_State_Models_GameState_CardGame_Core_Events_Interfaces_IGameEvent_System_Int32_">Resolve(TargetType, GameState, IGameEvent, int)</a></dt>
+    <dd><p>Resolves the targets for an effect based on the specified targeting type and context.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Logic_EffectTargetResolver_Resolve_" data-uid="CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_EffectTargetResolver_Resolve_CardGame_Core_Cards_Data_TargetType_CardGame_Core_State_Models_GameState_CardGame_Core_Events_Interfaces_IGameEvent_System_Int32_" data-uid="CardGame.Core.Cards.Logic.EffectTargetResolver.Resolve(CardGame.Core.Cards.Data.TargetType,CardGame.Core.State.Models.GameState,CardGame.Core.Events.Interfaces.IGameEvent,System.Int32)">
-  Resolve(TargetType, GameState, IGameEvent, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/EffectTargetResolver.cs/#L49"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Resolves the targets for an effect based on the specified targeting type and context.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static EffectTargets Resolve(TargetType type, GameState state, IGameEvent contextEvent, int sourceCardId)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>type</code> <a class="xref" href="CardGame.Core.Cards.Data.TargetType.html">TargetType</a></dt>
-    <dd><p>The targeting type to resolve.</p>
-</dd>
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state.</p>
-</dd>
-    <dt><code>contextEvent</code> <a class="xref" href="CardGame.Core.Events.Interfaces.IGameEvent.html">IGameEvent</a></dt>
-    <dd><p>The context event that triggered the effect.</p>
-</dd>
-    <dt><code>sourceCardId</code> <span class="xref">int</span></dt>
-    <dd><p>The instance ID of the card that owns the effect.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Logic.EffectTargets.html">EffectTargets</a></dt>
-    <dd><p>An EffectTargets object containing all resolved targets.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

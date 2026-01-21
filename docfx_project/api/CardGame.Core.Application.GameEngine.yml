@@ -367,7 +367,7 @@ references:
   fullName: System
 - uid: CardGame.Core.Application.GameEngine.CurrentState*
   commentId: Overload:CardGame.Core.Application.GameEngine.CurrentState
-  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_CurrentState
+  href: CardGame.Core.Application.GameEngine.CurrentState.html#CardGame_Core_Application_GameEngine_CurrentState
   name: CurrentState
   nameWithType: GameEngine.CurrentState
   fullName: CardGame.Core.Application.GameEngine.CurrentState
@@ -418,7 +418,7 @@ references:
     href: CardGame.Core.State.Models.html
 - uid: CardGame.Core.Application.GameEngine.IsGameOver*
   commentId: Overload:CardGame.Core.Application.GameEngine.IsGameOver
-  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_IsGameOver
+  href: CardGame.Core.Application.GameEngine.IsGameOver.html#CardGame_Core_Application_GameEngine_IsGameOver
   name: IsGameOver
   nameWithType: GameEngine.IsGameOver
   fullName: CardGame.Core.Application.GameEngine.IsGameOver
@@ -434,7 +434,7 @@ references:
   name.vb: Boolean
 - uid: CardGame.Core.Application.GameEngine.WinnerId*
   commentId: Overload:CardGame.Core.Application.GameEngine.WinnerId
-  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_WinnerId
+  href: CardGame.Core.Application.GameEngine.WinnerId.html#CardGame_Core_Application_GameEngine_WinnerId
   name: WinnerId
   nameWithType: GameEngine.WinnerId
   fullName: CardGame.Core.Application.GameEngine.WinnerId
@@ -485,7 +485,7 @@ references:
   - name: )
 - uid: CardGame.Core.Application.GameEngine.Events*
   commentId: Overload:CardGame.Core.Application.GameEngine.Events
-  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_Events
+  href: CardGame.Core.Application.GameEngine.Events.html#CardGame_Core_Application_GameEngine_Events
   name: Events
   nameWithType: GameEngine.Events
   fullName: CardGame.Core.Application.GameEngine.Events
@@ -528,7 +528,7 @@ references:
     href: CardGame.Core.Events.html
 - uid: CardGame.Core.Application.GameEngine.Factory*
   commentId: Overload:CardGame.Core.Application.GameEngine.Factory
-  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_Factory
+  href: CardGame.Core.Application.GameEngine.Factory.html#CardGame_Core_Application_GameEngine_Factory
   name: Factory
   nameWithType: GameEngine.Factory
   fullName: CardGame.Core.Application.GameEngine.Factory
@@ -579,7 +579,7 @@ references:
     href: CardGame.Core.Cards.Factories.html
 - uid: CardGame.Core.Application.GameEngine.Rng*
   commentId: Overload:CardGame.Core.Application.GameEngine.Rng
-  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_Rng
+  href: CardGame.Core.Application.GameEngine.Rng.html#CardGame_Core_Application_GameEngine_Rng
   name: Rng
   nameWithType: GameEngine.Rng
   fullName: CardGame.Core.Application.GameEngine.Rng
@@ -592,7 +592,7 @@ references:
   fullName: CardGame.Core.Application.DeterministicRng
 - uid: CardGame.Core.Application.GameEngine.#ctor*
   commentId: Overload:CardGame.Core.Application.GameEngine.#ctor
-  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine__ctor_CardGame_Core_State_Models_GameState_System_Int32_
+  href: CardGame.Core.Application.GameEngine.-ctor.html#CardGame_Core_Application_GameEngine__ctor_CardGame_Core_State_Models_GameState_System_Int32_
   name: GameEngine
   nameWithType: GameEngine.GameEngine
   fullName: CardGame.Core.Application.GameEngine.GameEngine
@@ -611,7 +611,7 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Application.GameEngine.ExecuteCommand*
   commentId: Overload:CardGame.Core.Application.GameEngine.ExecuteCommand
-  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_ExecuteCommand_CardGame_Core_Commands_Interfaces_IGameCommand_
+  href: CardGame.Core.Application.GameEngine.ExecuteCommand.html#CardGame_Core_Application_GameEngine_ExecuteCommand_CardGame_Core_Commands_Interfaces_IGameCommand_
   name: ExecuteCommand
   nameWithType: GameEngine.ExecuteCommand
   fullName: CardGame.Core.Application.GameEngine.ExecuteCommand
@@ -669,7 +669,7 @@ references:
     href: CardGame.Core.Commands.Interfaces.html
 - uid: CardGame.Core.Application.GameEngine.Update*
   commentId: Overload:CardGame.Core.Application.GameEngine.Update
-  href: CardGame.Core.Application.GameEngine.html#CardGame_Core_Application_GameEngine_Update_System_Single_
+  href: CardGame.Core.Application.GameEngine.Update.html#CardGame_Core_Application_GameEngine_Update_System_Single_
   name: Update
   nameWithType: GameEngine.Update
   fullName: CardGame.Core.Application.GameEngine.Update
@@ -683,3 +683,4 @@ references:
   nameWithType.vb: Single
   fullName.vb: Single
   name.vb: Single
+memberLayout: SeparatePages

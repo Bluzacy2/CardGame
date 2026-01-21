@@ -7,7 +7,18 @@ apiRules:
 # 2. Wykluczamy testy (wszystko co ma Tests w nazwie lub namespace)
 - exclude:
     uidRegex: .*Tests.*
-
+- exclude:
+      uidRegex: ^.*\.MethodName$
+- exclude:
+      uidRegex: ^.*\.PropertyName$
+- exclude:
+      uidRegex: ^.*\.SignalName$
+- exclude:
+      uidRegex: ^.*\.CardDroppedOnLineEventHandler$
+- exclude:
+      uidRegex: ^.*\.InputState$
+- exclude:
+      uidRegex: ^.*\.CardDroppedInSlotEventHandler$
 # 3. Wykluczamy biblioteki systemowe i zewnętrzne (zazwyczaj DocFX robi to sam, ale dla pewności)
 - exclude:
     uidRegex: ^System

@@ -1,0 +1,332 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.HeroPortrait.MethodName
+  commentId: T:CardGame.GodotClient.HeroPortrait.MethodName
+  id: HeroPortrait.MethodName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.HeroPortrait.MethodName.SetHighlight
+  - CardGame.GodotClient.HeroPortrait.MethodName.UpdateStats
+  - CardGame.GodotClient.HeroPortrait.MethodName._CanDropData
+  - CardGame.GodotClient.HeroPortrait.MethodName._DropData
+  - CardGame.GodotClient.HeroPortrait.MethodName._Ready
+  langs:
+  - csharp
+  - vb
+  name: HeroPortrait.MethodName
+  nameWithType: HeroPortrait.MethodName
+  fullName: CardGame.GodotClient.HeroPortrait.MethodName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MethodName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the methods contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class HeroPortrait.MethodName : Control.MethodName'
+    content.vb: Public Class HeroPortrait.MethodName Inherits Control.MethodName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.MethodName
+  - Godot.Node.MethodName
+  - Godot.CanvasItem.MethodName
+  - Godot.Control.MethodName
+- uid: CardGame.GodotClient.HeroPortrait.MethodName._Ready
+  commentId: F:CardGame.GodotClient.HeroPortrait.MethodName._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.HeroPortrait.MethodName
+  langs:
+  - csharp
+  - vb
+  name: _Ready
+  nameWithType: HeroPortrait.MethodName._Ready
+  fullName: CardGame.GodotClient.HeroPortrait.MethodName._Ready
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_Ready' method.
+  example: []
+  syntax:
+    content: public static readonly StringName _Ready
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _Ready As StringName
+- uid: CardGame.GodotClient.HeroPortrait.MethodName.UpdateStats
+  commentId: F:CardGame.GodotClient.HeroPortrait.MethodName.UpdateStats
+  id: UpdateStats
+  parent: CardGame.GodotClient.HeroPortrait.MethodName
+  langs:
+  - csharp
+  - vb
+  name: UpdateStats
+  nameWithType: HeroPortrait.MethodName.UpdateStats
+  fullName: CardGame.GodotClient.HeroPortrait.MethodName.UpdateStats
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateStats
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'UpdateStats' method.
+  example: []
+  syntax:
+    content: public static readonly StringName UpdateStats
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly UpdateStats As StringName
+- uid: CardGame.GodotClient.HeroPortrait.MethodName.SetHighlight
+  commentId: F:CardGame.GodotClient.HeroPortrait.MethodName.SetHighlight
+  id: SetHighlight
+  parent: CardGame.GodotClient.HeroPortrait.MethodName
+  langs:
+  - csharp
+  - vb
+  name: SetHighlight
+  nameWithType: HeroPortrait.MethodName.SetHighlight
+  fullName: CardGame.GodotClient.HeroPortrait.MethodName.SetHighlight
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetHighlight
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'SetHighlight' method.
+  example: []
+  syntax:
+    content: public static readonly StringName SetHighlight
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly SetHighlight As StringName
+- uid: CardGame.GodotClient.HeroPortrait.MethodName._CanDropData
+  commentId: F:CardGame.GodotClient.HeroPortrait.MethodName._CanDropData
+  id: _CanDropData
+  parent: CardGame.GodotClient.HeroPortrait.MethodName
+  langs:
+  - csharp
+  - vb
+  name: _CanDropData
+  nameWithType: HeroPortrait.MethodName._CanDropData
+  fullName: CardGame.GodotClient.HeroPortrait.MethodName._CanDropData
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _CanDropData
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_CanDropData' method.
+  example: []
+  syntax:
+    content: public static readonly StringName _CanDropData
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _CanDropData As StringName
+- uid: CardGame.GodotClient.HeroPortrait.MethodName._DropData
+  commentId: F:CardGame.GodotClient.HeroPortrait.MethodName._DropData
+  id: _DropData
+  parent: CardGame.GodotClient.HeroPortrait.MethodName
+  langs:
+  - csharp
+  - vb
+  name: _DropData
+  nameWithType: HeroPortrait.MethodName._DropData
+  fullName: CardGame.GodotClient.HeroPortrait.MethodName._DropData
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _DropData
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.HeroPortrait_ScriptMethods.generated.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_DropData' method.
+  example: []
+  syntax:
+    content: public static readonly StringName _DropData
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _DropData As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.MethodName
+  commentId: T:Godot.GodotObject.MethodName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.MethodName
+  nameWithType: GodotObject.MethodName
+  fullName: Godot.GodotObject.MethodName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Node.MethodName
+  commentId: T:Godot.Node.MethodName
+  parent: Godot
+  isExternal: true
+  name: Node.MethodName
+  nameWithType: Node.MethodName
+  fullName: Godot.Node.MethodName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.CanvasItem.MethodName
+  commentId: T:Godot.CanvasItem.MethodName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.MethodName
+  nameWithType: CanvasItem.MethodName
+  fullName: Godot.CanvasItem.MethodName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Control.MethodName
+  commentId: T:Godot.Control.MethodName
+  parent: Godot
+  isExternal: true
+  name: Control.MethodName
+  nameWithType: Control.MethodName
+  fullName: Godot.Control.MethodName
+  spec.csharp:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.MethodName
+    name: MethodName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

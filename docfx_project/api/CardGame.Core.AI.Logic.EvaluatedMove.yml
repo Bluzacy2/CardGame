@@ -261,7 +261,7 @@ references:
   fullName: System
 - uid: CardGame.Core.AI.Logic.EvaluatedMove.Command*
   commentId: Overload:CardGame.Core.AI.Logic.EvaluatedMove.Command
-  href: CardGame.Core.AI.Logic.EvaluatedMove.html#CardGame_Core_AI_Logic_EvaluatedMove_Command
+  href: CardGame.Core.AI.Logic.EvaluatedMove.Command.html#CardGame_Core_AI_Logic_EvaluatedMove_Command
   name: Command
   nameWithType: EvaluatedMove.Command
   fullName: CardGame.Core.AI.Logic.EvaluatedMove.Command
@@ -312,7 +312,7 @@ references:
     href: CardGame.Core.Commands.Interfaces.html
 - uid: CardGame.Core.AI.Logic.EvaluatedMove.Score*
   commentId: Overload:CardGame.Core.AI.Logic.EvaluatedMove.Score
-  href: CardGame.Core.AI.Logic.EvaluatedMove.html#CardGame_Core_AI_Logic_EvaluatedMove_Score
+  href: CardGame.Core.AI.Logic.EvaluatedMove.Score.html#CardGame_Core_AI_Logic_EvaluatedMove_Score
   name: Score
   nameWithType: EvaluatedMove.Score
   fullName: CardGame.Core.AI.Logic.EvaluatedMove.Score
@@ -328,7 +328,7 @@ references:
   name.vb: Single
 - uid: CardGame.Core.AI.Logic.EvaluatedMove.Description*
   commentId: Overload:CardGame.Core.AI.Logic.EvaluatedMove.Description
-  href: CardGame.Core.AI.Logic.EvaluatedMove.html#CardGame_Core_AI_Logic_EvaluatedMove_Description
+  href: CardGame.Core.AI.Logic.EvaluatedMove.Description.html#CardGame_Core_AI_Logic_EvaluatedMove_Description
   name: Description
   nameWithType: EvaluatedMove.Description
   fullName: CardGame.Core.AI.Logic.EvaluatedMove.Description
@@ -344,16 +344,17 @@ references:
   name.vb: String
 - uid: CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning*
   commentId: Overload:CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning
-  href: CardGame.Core.AI.Logic.EvaluatedMove.html#CardGame_Core_AI_Logic_EvaluatedMove_DeepReasoning
+  href: CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning.html#CardGame_Core_AI_Logic_EvaluatedMove_DeepReasoning
   name: DeepReasoning
   nameWithType: EvaluatedMove.DeepReasoning
   fullName: CardGame.Core.AI.Logic.EvaluatedMove.DeepReasoning
 - uid: CardGame.Core.AI.Logic.EvaluatedMove.#ctor*
   commentId: Overload:CardGame.Core.AI.Logic.EvaluatedMove.#ctor
-  href: CardGame.Core.AI.Logic.EvaluatedMove.html#CardGame_Core_AI_Logic_EvaluatedMove__ctor_CardGame_Core_Commands_Interfaces_IGameCommand_System_Single_System_String_System_String_
+  href: CardGame.Core.AI.Logic.EvaluatedMove.-ctor.html#CardGame_Core_AI_Logic_EvaluatedMove__ctor_CardGame_Core_Commands_Interfaces_IGameCommand_System_Single_System_String_System_String_
   name: EvaluatedMove
   nameWithType: EvaluatedMove.EvaluatedMove
   fullName: CardGame.Core.AI.Logic.EvaluatedMove.EvaluatedMove
   nameWithType.vb: EvaluatedMove.New
   fullName.vb: CardGame.Core.AI.Logic.EvaluatedMove.New
   name.vb: New
+memberLayout: SeparatePages

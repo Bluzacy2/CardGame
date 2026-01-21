@@ -1,0 +1,764 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.UIManager.MethodName
+  commentId: T:CardGame.GodotClient.UIManager.MethodName
+  id: UIManager.MethodName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.UIManager.MethodName.ClearHighlights
+  - CardGame.GodotClient.UIManager.MethodName.DrawBlood
+  - CardGame.GodotClient.UIManager.MethodName.FindCardUnderMouse
+  - CardGame.GodotClient.UIManager.MethodName.FindCardUnderMouseRecursive
+  - CardGame.GodotClient.UIManager.MethodName.FindCardViewRecursiveById
+  - CardGame.GodotClient.UIManager.MethodName.FindVisualPosition
+  - CardGame.GodotClient.UIManager.MethodName.GetArrowStartPosition
+  - CardGame.GodotClient.UIManager.MethodName.GetGhostUnit
+  - CardGame.GodotClient.UIManager.MethodName.GetPhaseFriendlyName
+  - CardGame.GodotClient.UIManager.MethodName.HideChoiceModal
+  - CardGame.GodotClient.UIManager.MethodName.HideTargetingArrow
+  - CardGame.GodotClient.UIManager.MethodName.HighlightTargets
+  - CardGame.GodotClient.UIManager.MethodName.RemoveGhostUnit
+  - CardGame.GodotClient.UIManager.MethodName.SetCancelButtonVisible
+  - CardGame.GodotClient.UIManager.MethodName.SetEndTurnEnabled
+  - CardGame.GodotClient.UIManager.MethodName.SetupUI
+  - CardGame.GodotClient.UIManager.MethodName.ShowFloatingText
+  - CardGame.GodotClient.UIManager.MethodName.ToggleMulliganPanel
+  - CardGame.GodotClient.UIManager.MethodName.UpdateMulliganCounter
+  - CardGame.GodotClient.UIManager.MethodName.UpdateTargetingArrow
+  - CardGame.GodotClient.UIManager.MethodName._Ready
+  langs:
+  - csharp
+  - vb
+  name: UIManager.MethodName
+  nameWithType: UIManager.MethodName
+  fullName: CardGame.GodotClient.UIManager.MethodName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MethodName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the methods contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class UIManager.MethodName : Node.MethodName'
+    content.vb: Public Class UIManager.MethodName Inherits Node.MethodName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.MethodName
+  - Godot.Node.MethodName
+- uid: CardGame.GodotClient.UIManager.MethodName._Ready
+  commentId: F:CardGame.GodotClient.UIManager.MethodName._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: _Ready
+  nameWithType: UIManager.MethodName._Ready
+  fullName: CardGame.GodotClient.UIManager.MethodName._Ready
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_Ready' method.
+  example: []
+  syntax:
+    content: public static readonly StringName _Ready
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _Ready As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.SetupUI
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.SetupUI
+  id: SetupUI
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: SetupUI
+  nameWithType: UIManager.MethodName.SetupUI
+  fullName: CardGame.GodotClient.UIManager.MethodName.SetupUI
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetupUI
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'SetupUI' method.
+  example: []
+  syntax:
+    content: public static readonly StringName SetupUI
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly SetupUI As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.RemoveGhostUnit
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.RemoveGhostUnit
+  id: RemoveGhostUnit
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: RemoveGhostUnit
+  nameWithType: UIManager.MethodName.RemoveGhostUnit
+  fullName: CardGame.GodotClient.UIManager.MethodName.RemoveGhostUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: RemoveGhostUnit
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'RemoveGhostUnit' method.
+  example: []
+  syntax:
+    content: public static readonly StringName RemoveGhostUnit
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly RemoveGhostUnit As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.GetGhostUnit
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.GetGhostUnit
+  id: GetGhostUnit
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: GetGhostUnit
+  nameWithType: UIManager.MethodName.GetGhostUnit
+  fullName: CardGame.GodotClient.UIManager.MethodName.GetGhostUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetGhostUnit
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'GetGhostUnit' method.
+  example: []
+  syntax:
+    content: public static readonly StringName GetGhostUnit
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly GetGhostUnit As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.GetArrowStartPosition
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.GetArrowStartPosition
+  id: GetArrowStartPosition
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: GetArrowStartPosition
+  nameWithType: UIManager.MethodName.GetArrowStartPosition
+  fullName: CardGame.GodotClient.UIManager.MethodName.GetArrowStartPosition
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetArrowStartPosition
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'GetArrowStartPosition' method.
+  example: []
+  syntax:
+    content: public static readonly StringName GetArrowStartPosition
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly GetArrowStartPosition As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.HideChoiceModal
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.HideChoiceModal
+  id: HideChoiceModal
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: HideChoiceModal
+  nameWithType: UIManager.MethodName.HideChoiceModal
+  fullName: CardGame.GodotClient.UIManager.MethodName.HideChoiceModal
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HideChoiceModal
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 35
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'HideChoiceModal' method.
+  example: []
+  syntax:
+    content: public static readonly StringName HideChoiceModal
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly HideChoiceModal As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.HighlightTargets
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.HighlightTargets
+  id: HighlightTargets
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: HighlightTargets
+  nameWithType: UIManager.MethodName.HighlightTargets
+  fullName: CardGame.GodotClient.UIManager.MethodName.HighlightTargets
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HighlightTargets
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 39
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'HighlightTargets' method.
+  example: []
+  syntax:
+    content: public static readonly StringName HighlightTargets
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly HighlightTargets As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.ClearHighlights
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.ClearHighlights
+  id: ClearHighlights
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: ClearHighlights
+  nameWithType: UIManager.MethodName.ClearHighlights
+  fullName: CardGame.GodotClient.UIManager.MethodName.ClearHighlights
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ClearHighlights
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 43
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'ClearHighlights' method.
+  example: []
+  syntax:
+    content: public static readonly StringName ClearHighlights
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly ClearHighlights As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.DrawBlood
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.DrawBlood
+  id: DrawBlood
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: DrawBlood
+  nameWithType: UIManager.MethodName.DrawBlood
+  fullName: CardGame.GodotClient.UIManager.MethodName.DrawBlood
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DrawBlood
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 47
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'DrawBlood' method.
+  example: []
+  syntax:
+    content: public static readonly StringName DrawBlood
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly DrawBlood As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.ToggleMulliganPanel
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.ToggleMulliganPanel
+  id: ToggleMulliganPanel
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: ToggleMulliganPanel
+  nameWithType: UIManager.MethodName.ToggleMulliganPanel
+  fullName: CardGame.GodotClient.UIManager.MethodName.ToggleMulliganPanel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ToggleMulliganPanel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 51
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'ToggleMulliganPanel' method.
+  example: []
+  syntax:
+    content: public static readonly StringName ToggleMulliganPanel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly ToggleMulliganPanel As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.UpdateMulliganCounter
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.UpdateMulliganCounter
+  id: UpdateMulliganCounter
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: UpdateMulliganCounter
+  nameWithType: UIManager.MethodName.UpdateMulliganCounter
+  fullName: CardGame.GodotClient.UIManager.MethodName.UpdateMulliganCounter
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateMulliganCounter
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 55
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'UpdateMulliganCounter' method.
+  example: []
+  syntax:
+    content: public static readonly StringName UpdateMulliganCounter
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly UpdateMulliganCounter As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.UpdateTargetingArrow
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.UpdateTargetingArrow
+  id: UpdateTargetingArrow
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: UpdateTargetingArrow
+  nameWithType: UIManager.MethodName.UpdateTargetingArrow
+  fullName: CardGame.GodotClient.UIManager.MethodName.UpdateTargetingArrow
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateTargetingArrow
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 59
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'UpdateTargetingArrow' method.
+  example: []
+  syntax:
+    content: public static readonly StringName UpdateTargetingArrow
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly UpdateTargetingArrow As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.HideTargetingArrow
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.HideTargetingArrow
+  id: HideTargetingArrow
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: HideTargetingArrow
+  nameWithType: UIManager.MethodName.HideTargetingArrow
+  fullName: CardGame.GodotClient.UIManager.MethodName.HideTargetingArrow
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HideTargetingArrow
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 63
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'HideTargetingArrow' method.
+  example: []
+  syntax:
+    content: public static readonly StringName HideTargetingArrow
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly HideTargetingArrow As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.SetCancelButtonVisible
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.SetCancelButtonVisible
+  id: SetCancelButtonVisible
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: SetCancelButtonVisible
+  nameWithType: UIManager.MethodName.SetCancelButtonVisible
+  fullName: CardGame.GodotClient.UIManager.MethodName.SetCancelButtonVisible
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetCancelButtonVisible
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 67
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'SetCancelButtonVisible' method.
+  example: []
+  syntax:
+    content: public static readonly StringName SetCancelButtonVisible
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly SetCancelButtonVisible As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.SetEndTurnEnabled
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.SetEndTurnEnabled
+  id: SetEndTurnEnabled
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: SetEndTurnEnabled
+  nameWithType: UIManager.MethodName.SetEndTurnEnabled
+  fullName: CardGame.GodotClient.UIManager.MethodName.SetEndTurnEnabled
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetEndTurnEnabled
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 71
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'SetEndTurnEnabled' method.
+  example: []
+  syntax:
+    content: public static readonly StringName SetEndTurnEnabled
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly SetEndTurnEnabled As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.ShowFloatingText
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.ShowFloatingText
+  id: ShowFloatingText
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: ShowFloatingText
+  nameWithType: UIManager.MethodName.ShowFloatingText
+  fullName: CardGame.GodotClient.UIManager.MethodName.ShowFloatingText
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ShowFloatingText
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 75
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'ShowFloatingText' method.
+  example: []
+  syntax:
+    content: public static readonly StringName ShowFloatingText
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly ShowFloatingText As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.FindCardUnderMouse
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.FindCardUnderMouse
+  id: FindCardUnderMouse
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: FindCardUnderMouse
+  nameWithType: UIManager.MethodName.FindCardUnderMouse
+  fullName: CardGame.GodotClient.UIManager.MethodName.FindCardUnderMouse
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: FindCardUnderMouse
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 79
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'FindCardUnderMouse' method.
+  example: []
+  syntax:
+    content: public static readonly StringName FindCardUnderMouse
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly FindCardUnderMouse As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.GetPhaseFriendlyName
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.GetPhaseFriendlyName
+  id: GetPhaseFriendlyName
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: GetPhaseFriendlyName
+  nameWithType: UIManager.MethodName.GetPhaseFriendlyName
+  fullName: CardGame.GodotClient.UIManager.MethodName.GetPhaseFriendlyName
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetPhaseFriendlyName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 83
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'GetPhaseFriendlyName' method.
+  example: []
+  syntax:
+    content: public static readonly StringName GetPhaseFriendlyName
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly GetPhaseFriendlyName As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.FindCardUnderMouseRecursive
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.FindCardUnderMouseRecursive
+  id: FindCardUnderMouseRecursive
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: FindCardUnderMouseRecursive
+  nameWithType: UIManager.MethodName.FindCardUnderMouseRecursive
+  fullName: CardGame.GodotClient.UIManager.MethodName.FindCardUnderMouseRecursive
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: FindCardUnderMouseRecursive
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 87
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'FindCardUnderMouseRecursive' method.
+  example: []
+  syntax:
+    content: public static readonly StringName FindCardUnderMouseRecursive
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly FindCardUnderMouseRecursive As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.FindVisualPosition
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.FindVisualPosition
+  id: FindVisualPosition
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: FindVisualPosition
+  nameWithType: UIManager.MethodName.FindVisualPosition
+  fullName: CardGame.GodotClient.UIManager.MethodName.FindVisualPosition
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: FindVisualPosition
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 91
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'FindVisualPosition' method.
+  example: []
+  syntax:
+    content: public static readonly StringName FindVisualPosition
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly FindVisualPosition As StringName
+- uid: CardGame.GodotClient.UIManager.MethodName.FindCardViewRecursiveById
+  commentId: F:CardGame.GodotClient.UIManager.MethodName.FindCardViewRecursiveById
+  id: FindCardViewRecursiveById
+  parent: CardGame.GodotClient.UIManager.MethodName
+  langs:
+  - csharp
+  - vb
+  name: FindCardViewRecursiveById
+  nameWithType: UIManager.MethodName.FindCardViewRecursiveById
+  fullName: CardGame.GodotClient.UIManager.MethodName.FindCardViewRecursiveById
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: FindCardViewRecursiveById
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.UIManager_ScriptMethods.generated.cs
+    startLine: 95
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'FindCardViewRecursiveById' method.
+  example: []
+  syntax:
+    content: public static readonly StringName FindCardViewRecursiveById
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly FindCardViewRecursiveById As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.MethodName
+  commentId: T:Godot.GodotObject.MethodName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.MethodName
+  nameWithType: GodotObject.MethodName
+  fullName: Godot.GodotObject.MethodName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Node.MethodName
+  commentId: T:Godot.Node.MethodName
+  parent: Godot
+  isExternal: true
+  name: Node.MethodName
+  nameWithType: Node.MethodName
+  fullName: Godot.Node.MethodName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

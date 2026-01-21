@@ -229,7 +229,7 @@ references:
     href: CardGame.Core.Events.Interfaces.html
 - uid: CardGame.Core.Events.InteractionRequiredEvent.Interaction*
   commentId: Overload:CardGame.Core.Events.InteractionRequiredEvent.Interaction
-  href: CardGame.Core.Events.InteractionRequiredEvent.html#CardGame_Core_Events_InteractionRequiredEvent_Interaction
+  href: CardGame.Core.Events.InteractionRequiredEvent.Interaction.html#CardGame_Core_Events_InteractionRequiredEvent_Interaction
   name: Interaction
   nameWithType: InteractionRequiredEvent.Interaction
   fullName: CardGame.Core.Events.InteractionRequiredEvent.Interaction
@@ -280,14 +280,14 @@ references:
     href: CardGame.Core.State.Models.html
 - uid: CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId*
   commentId: Overload:CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId
-  href: CardGame.Core.Events.InteractionRequiredEvent.html#CardGame_Core_Events_InteractionRequiredEvent_SourcePlayerId
+  href: CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId.html#CardGame_Core_Events_InteractionRequiredEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: InteractionRequiredEvent.SourcePlayerId
   fullName: CardGame.Core.Events.InteractionRequiredEvent.SourcePlayerId
 - uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   parent: CardGame.Core.Events.Interfaces.IGameEvent
-  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  href: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: IGameEvent.SourcePlayerId
   fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
@@ -303,10 +303,11 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Events.InteractionRequiredEvent.#ctor*
   commentId: Overload:CardGame.Core.Events.InteractionRequiredEvent.#ctor
-  href: CardGame.Core.Events.InteractionRequiredEvent.html#CardGame_Core_Events_InteractionRequiredEvent__ctor_CardGame_Core_State_Models_PendingInteraction_
+  href: CardGame.Core.Events.InteractionRequiredEvent.-ctor.html#CardGame_Core_Events_InteractionRequiredEvent__ctor_CardGame_Core_State_Models_PendingInteraction_
   name: InteractionRequiredEvent
   nameWithType: InteractionRequiredEvent.InteractionRequiredEvent
   fullName: CardGame.Core.Events.InteractionRequiredEvent.InteractionRequiredEvent
   nameWithType.vb: InteractionRequiredEvent.New
   fullName.vb: CardGame.Core.Events.InteractionRequiredEvent.New
   name.vb: New
+memberLayout: SeparatePages

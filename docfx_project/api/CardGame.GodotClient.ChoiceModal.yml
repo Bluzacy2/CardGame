@@ -1,0 +1,778 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.ChoiceModal
+  commentId: T:CardGame.GodotClient.ChoiceModal
+  id: ChoiceModal
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.ChoiceModal.ButtonContainer
+  - CardGame.GodotClient.ChoiceModal.CardGrid
+  - CardGame.GodotClient.ChoiceModal.CardGridScroll
+  - CardGame.GodotClient.ChoiceModal.HideModal
+  - CardGame.GodotClient.ChoiceModal.SetCallback(System.Action{System.Int32})
+  - CardGame.GodotClient.ChoiceModal.ShowCardGrid(System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},Godot.PackedScene)
+  - CardGame.GodotClient.ChoiceModal.ShowOptions(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.List{System.Boolean})
+  - CardGame.GodotClient.ChoiceModal.TitleLabel
+  - CardGame.GodotClient.ChoiceModal._Ready
+  langs:
+  - csharp
+  - vb
+  name: ChoiceModal
+  nameWithType: ChoiceModal
+  fullName: CardGame.GodotClient.ChoiceModal
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.ChoiceModal_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ChoiceModal
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.ChoiceModal_ScriptMethods.generated.cs
+    startLine: 5
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    UI Component responsible for displaying modal choices to the player.
+
+    Supports both text-based options (buttons) and card selection grids (tutor).
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/ChoiceModal.cs")]
+
+      public class ChoiceModal : Control
+    content.vb: >-
+      <ScriptPath("res://Scripts/ChoiceModal.cs")>
+
+      Public Class ChoiceModal Inherits Control
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  - Godot.CanvasItem
+  - Godot.Control
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/ChoiceModal.cs
+- uid: CardGame.GodotClient.ChoiceModal.ButtonContainer
+  commentId: F:CardGame.GodotClient.ChoiceModal.ButtonContainer
+  id: ButtonContainer
+  parent: CardGame.GodotClient.ChoiceModal
+  langs:
+  - csharp
+  - vb
+  name: ButtonContainer
+  nameWithType: ChoiceModal.ButtonContainer
+  fullName: CardGame.GodotClient.ChoiceModal.ButtonContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ButtonContainer
+    path: ../Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+    startLine: 17
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Container for standard text-based option buttons.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control ButtonContainer
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public ButtonContainer As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.ChoiceModal.TitleLabel
+  commentId: F:CardGame.GodotClient.ChoiceModal.TitleLabel
+  id: TitleLabel
+  parent: CardGame.GodotClient.ChoiceModal
+  langs:
+  - csharp
+  - vb
+  name: TitleLabel
+  nameWithType: ChoiceModal.TitleLabel
+  fullName: CardGame.GodotClient.ChoiceModal.TitleLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: TitleLabel
+    path: ../Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label displaying the title of the modal (e.g., "Choose an Option").
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label TitleLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public TitleLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.ChoiceModal.CardGridScroll
+  commentId: F:CardGame.GodotClient.ChoiceModal.CardGridScroll
+  id: CardGridScroll
+  parent: CardGame.GodotClient.ChoiceModal
+  langs:
+  - csharp
+  - vb
+  name: CardGridScroll
+  nameWithType: ChoiceModal.CardGridScroll
+  fullName: CardGame.GodotClient.ChoiceModal.CardGridScroll
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardGridScroll
+    path: ../Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+    startLine: 22
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Scroll container wrapping the card grid for tutor effects.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public ScrollContainer CardGridScroll
+    return:
+      type: Godot.ScrollContainer
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public CardGridScroll As ScrollContainer
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.ChoiceModal.CardGrid
+  commentId: F:CardGame.GodotClient.ChoiceModal.CardGrid
+  id: CardGrid
+  parent: CardGame.GodotClient.ChoiceModal
+  langs:
+  - csharp
+  - vb
+  name: CardGrid
+  nameWithType: ChoiceModal.CardGrid
+  fullName: CardGame.GodotClient.ChoiceModal.CardGrid
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardGrid
+    path: ../Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+    startLine: 24
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Container for displaying cards in a grid layout.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control CardGrid
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public CardGrid As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.ChoiceModal._Ready
+  commentId: M:CardGame.GodotClient.ChoiceModal._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.ChoiceModal
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: ChoiceModal._Ready()
+  fullName: CardGame.GodotClient.ChoiceModal._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+    startLine: 35
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Initializes the modal, hiding it by default and setting up input blocking.
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.ChoiceModal._Ready*
+- uid: CardGame.GodotClient.ChoiceModal.SetCallback(System.Action{System.Int32})
+  commentId: M:CardGame.GodotClient.ChoiceModal.SetCallback(System.Action{System.Int32})
+  id: SetCallback(System.Action{System.Int32})
+  parent: CardGame.GodotClient.ChoiceModal
+  langs:
+  - csharp
+  - vb
+  name: SetCallback(Action<int>)
+  nameWithType: ChoiceModal.SetCallback(Action<int>)
+  fullName: CardGame.GodotClient.ChoiceModal.SetCallback(System.Action<int>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetCallback
+    path: ../Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+    startLine: 50
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Sets the callback function to be executed when an option is selected.
+  example: []
+  syntax:
+    content: public void SetCallback(Action<int> callback)
+    parameters:
+    - id: callback
+      type: System.Action{System.Int32}
+      description: Action receiving the selected index.
+    content.vb: Public Sub SetCallback(callback As Action(Of Integer))
+  overload: CardGame.GodotClient.ChoiceModal.SetCallback*
+  nameWithType.vb: ChoiceModal.SetCallback(Action(Of Integer))
+  fullName.vb: CardGame.GodotClient.ChoiceModal.SetCallback(System.Action(Of Integer))
+  name.vb: SetCallback(Action(Of Integer))
+- uid: CardGame.GodotClient.ChoiceModal.ShowOptions(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.List{System.Boolean})
+  commentId: M:CardGame.GodotClient.ChoiceModal.ShowOptions(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.List{System.Boolean})
+  id: ShowOptions(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.List{System.Boolean})
+  parent: CardGame.GodotClient.ChoiceModal
+  langs:
+  - csharp
+  - vb
+  name: ShowOptions(IEnumerable<string>, List<bool>)
+  nameWithType: ChoiceModal.ShowOptions(IEnumerable<string>, List<bool>)
+  fullName: CardGame.GodotClient.ChoiceModal.ShowOptions(System.Collections.Generic.IEnumerable<string>, System.Collections.Generic.List<bool>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ShowOptions
+    path: ../Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+    startLine: 64
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Displays a list of text-based options as buttons (e.g., for modal spells like 'Expectancy').
+  example: []
+  syntax:
+    content: public void ShowOptions(IEnumerable<string> options, List<bool> enabledStates = null)
+    parameters:
+    - id: options
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: List of option text labels.
+    - id: enabledStates
+      type: System.Collections.Generic.List{System.Boolean}
+      description: Optional list of booleans enabling/disabling specific options.
+    content.vb: Public Sub ShowOptions(options As IEnumerable(Of String), enabledStates As List(Of Boolean) = Nothing)
+  overload: CardGame.GodotClient.ChoiceModal.ShowOptions*
+  nameWithType.vb: ChoiceModal.ShowOptions(IEnumerable(Of String), List(Of Boolean))
+  fullName.vb: CardGame.GodotClient.ChoiceModal.ShowOptions(System.Collections.Generic.IEnumerable(Of String), System.Collections.Generic.List(Of Boolean))
+  name.vb: ShowOptions(IEnumerable(Of String), List(Of Boolean))
+- uid: CardGame.GodotClient.ChoiceModal.ShowCardGrid(System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},Godot.PackedScene)
+  commentId: M:CardGame.GodotClient.ChoiceModal.ShowCardGrid(System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},Godot.PackedScene)
+  id: ShowCardGrid(System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},Godot.PackedScene)
+  parent: CardGame.GodotClient.ChoiceModal
+  langs:
+  - csharp
+  - vb
+  name: ShowCardGrid(List<CardInstance>, PackedScene)
+  nameWithType: ChoiceModal.ShowCardGrid(List<CardInstance>, PackedScene)
+  fullName: CardGame.GodotClient.ChoiceModal.ShowCardGrid(System.Collections.Generic.List<CardGame.Core.Cards.Models.CardInstance>, Godot.PackedScene)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ShowCardGrid
+    path: ../Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+    startLine: 106
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Displays a grid of cards for selection (e.g., for Tutor effects like 'Critical Thinking').
+  example: []
+  syntax:
+    content: public void ShowCardGrid(List<CardInstance> cards, PackedScene cardTemplate)
+    parameters:
+    - id: cards
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+      description: List of card instances to display.
+    - id: cardTemplate
+      type: Godot.PackedScene
+      description: The scene template used to instantiate card visuals.
+    content.vb: Public Sub ShowCardGrid(cards As List(Of CardInstance), cardTemplate As PackedScene)
+  overload: CardGame.GodotClient.ChoiceModal.ShowCardGrid*
+  nameWithType.vb: ChoiceModal.ShowCardGrid(List(Of CardInstance), PackedScene)
+  fullName.vb: CardGame.GodotClient.ChoiceModal.ShowCardGrid(System.Collections.Generic.List(Of CardGame.Core.Cards.Models.CardInstance), Godot.PackedScene)
+  name.vb: ShowCardGrid(List(Of CardInstance), PackedScene)
+- uid: CardGame.GodotClient.ChoiceModal.HideModal
+  commentId: M:CardGame.GodotClient.ChoiceModal.HideModal
+  id: HideModal
+  parent: CardGame.GodotClient.ChoiceModal
+  langs:
+  - csharp
+  - vb
+  name: HideModal()
+  nameWithType: ChoiceModal.HideModal()
+  fullName: CardGame.GodotClient.ChoiceModal.HideModal()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HideModal
+    path: ../Source/CardGame.GodotClient/Scripts/ChoiceModal.cs
+    startLine: 195
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Hides the modal window.
+  example: []
+  syntax:
+    content: public void HideModal()
+    content.vb: Public Sub HideModal()
+  overload: CardGame.GodotClient.ChoiceModal.HideModal*
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: Godot.CanvasItem
+  commentId: T:Godot.CanvasItem
+  parent: Godot
+  isExternal: true
+  name: CanvasItem
+  nameWithType: CanvasItem
+  fullName: Godot.CanvasItem
+- uid: Godot.Control
+  commentId: T:Godot.Control
+  parent: Godot
+  isExternal: true
+  name: Control
+  nameWithType: Control
+  fullName: Godot.Control
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.Label
+  commentId: T:Godot.Label
+  parent: Godot
+  isExternal: true
+  name: Label
+  nameWithType: Label
+  fullName: Godot.Label
+- uid: Godot.ScrollContainer
+  commentId: T:Godot.ScrollContainer
+  parent: Godot
+  isExternal: true
+  name: ScrollContainer
+  nameWithType: ScrollContainer
+  fullName: Godot.ScrollContainer
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.ChoiceModal._Ready*
+  commentId: Overload:CardGame.GodotClient.ChoiceModal._Ready
+  href: CardGame.GodotClient.ChoiceModal._Ready.html#CardGame_GodotClient_ChoiceModal__Ready
+  name: _Ready
+  nameWithType: ChoiceModal._Ready
+  fullName: CardGame.GodotClient.ChoiceModal._Ready
+- uid: CardGame.GodotClient.ChoiceModal.SetCallback*
+  commentId: Overload:CardGame.GodotClient.ChoiceModal.SetCallback
+  href: CardGame.GodotClient.ChoiceModal.SetCallback.html#CardGame_GodotClient_ChoiceModal_SetCallback_System_Action_System_Int32__
+  name: SetCallback
+  nameWithType: ChoiceModal.SetCallback
+  fullName: CardGame.GodotClient.ChoiceModal.SetCallback
+- uid: System.Action{System.Int32}
+  commentId: T:System.Action{System.Int32}
+  parent: System
+  definition: System.Action`1
+  name: Action<int>
+  nameWithType: Action<int>
+  fullName: System.Action<int>
+  nameWithType.vb: Action(Of Integer)
+  fullName.vb: System.Action(Of Integer)
+  name.vb: Action(Of Integer)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.GodotClient.ChoiceModal.ShowOptions*
+  commentId: Overload:CardGame.GodotClient.ChoiceModal.ShowOptions
+  href: CardGame.GodotClient.ChoiceModal.ShowOptions.html#CardGame_GodotClient_ChoiceModal_ShowOptions_System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_List_System_Boolean__
+  name: ShowOptions
+  nameWithType: ChoiceModal.ShowOptions
+  fullName: CardGame.GodotClient.ChoiceModal.ShowOptions
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List{System.Boolean}
+  commentId: T:System.Collections.Generic.List{System.Boolean}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<bool>
+  nameWithType: List<bool>
+  fullName: System.Collections.Generic.List<bool>
+  nameWithType.vb: List(Of Boolean)
+  fullName.vb: System.Collections.Generic.List(Of Boolean)
+  name.vb: List(Of Boolean)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.GodotClient.ChoiceModal.ShowCardGrid*
+  commentId: Overload:CardGame.GodotClient.ChoiceModal.ShowCardGrid
+  href: CardGame.GodotClient.ChoiceModal.ShowCardGrid.html#CardGame_GodotClient_ChoiceModal_ShowCardGrid_System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__Godot_PackedScene_
+  name: ShowCardGrid
+  nameWithType: ChoiceModal.ShowCardGrid
+  fullName: CardGame.GodotClient.ChoiceModal.ShowCardGrid
+- uid: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: List<CardInstance>
+  nameWithType: List<CardInstance>
+  fullName: System.Collections.Generic.List<CardGame.Core.Cards.Models.CardInstance>
+  nameWithType.vb: List(Of CardInstance)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Cards.Models.CardInstance)
+  name.vb: List(Of CardInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: )
+- uid: Godot.PackedScene
+  commentId: T:Godot.PackedScene
+  parent: Godot
+  isExternal: true
+  name: PackedScene
+  nameWithType: PackedScene
+  fullName: Godot.PackedScene
+- uid: CardGame.GodotClient.ChoiceModal.HideModal*
+  commentId: Overload:CardGame.GodotClient.ChoiceModal.HideModal
+  href: CardGame.GodotClient.ChoiceModal.HideModal.html#CardGame_GodotClient_ChoiceModal_HideModal
+  name: HideModal
+  nameWithType: ChoiceModal.HideModal
+  fullName: CardGame.GodotClient.ChoiceModal.HideModal
+memberLayout: SeparatePages

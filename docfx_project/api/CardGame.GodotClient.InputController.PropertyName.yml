@@ -1,0 +1,224 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.InputController.PropertyName
+  commentId: T:CardGame.GodotClient.InputController.PropertyName
+  id: InputController.PropertyName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.InputController.PropertyName._currentState
+  - CardGame.GodotClient.InputController.PropertyName._playerId
+  - CardGame.GodotClient.InputController.PropertyName._ui
+  langs:
+  - csharp
+  - vb
+  name: InputController.PropertyName
+  nameWithType: InputController.PropertyName
+  fullName: CardGame.GodotClient.InputController.PropertyName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.InputController_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PropertyName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.InputController_ScriptProperties.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the properties and fields contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class InputController.PropertyName : Node.PropertyName'
+    content.vb: Public Class InputController.PropertyName Inherits Node.PropertyName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.PropertyName
+  - Godot.Node.PropertyName
+- uid: CardGame.GodotClient.InputController.PropertyName._currentState
+  commentId: F:CardGame.GodotClient.InputController.PropertyName._currentState
+  id: _currentState
+  parent: CardGame.GodotClient.InputController.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _currentState
+  nameWithType: InputController.PropertyName._currentState
+  fullName: CardGame.GodotClient.InputController.PropertyName._currentState
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.InputController_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _currentState
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.InputController_ScriptProperties.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_currentState' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _currentState
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _currentState As StringName
+- uid: CardGame.GodotClient.InputController.PropertyName._playerId
+  commentId: F:CardGame.GodotClient.InputController.PropertyName._playerId
+  id: _playerId
+  parent: CardGame.GodotClient.InputController.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _playerId
+  nameWithType: InputController.PropertyName._playerId
+  fullName: CardGame.GodotClient.InputController.PropertyName._playerId
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.InputController_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _playerId
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.InputController_ScriptProperties.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_playerId' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _playerId
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _playerId As StringName
+- uid: CardGame.GodotClient.InputController.PropertyName._ui
+  commentId: F:CardGame.GodotClient.InputController.PropertyName._ui
+  id: _ui
+  parent: CardGame.GodotClient.InputController.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _ui
+  nameWithType: InputController.PropertyName._ui
+  fullName: CardGame.GodotClient.InputController.PropertyName._ui
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.InputController_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _ui
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.InputController_ScriptProperties.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_ui' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _ui
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _ui As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.PropertyName
+  commentId: T:Godot.GodotObject.PropertyName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.PropertyName
+  nameWithType: GodotObject.PropertyName
+  fullName: Godot.GodotObject.PropertyName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Node.PropertyName
+  commentId: T:Godot.Node.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Node.PropertyName
+  nameWithType: Node.PropertyName
+  fullName: Godot.Node.PropertyName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

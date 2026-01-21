@@ -143,7 +143,7 @@ references:
     href: CardGame.Core.Commands.Interfaces.html
 - uid: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId*
   commentId: Overload:CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
-  href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_PlayerId
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId.html#CardGame_Core_Commands_Interfaces_IGameCommand_PlayerId
   name: PlayerId
   nameWithType: IGameCommand.PlayerId
   fullName: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
@@ -166,7 +166,7 @@ references:
   fullName: System
 - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute*
   commentId: Overload:CardGame.Core.Commands.Interfaces.IGameCommand.Execute
-  href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.Execute.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
   name: Execute
   nameWithType: IGameCommand.Execute
   fullName: CardGame.Core.Commands.Interfaces.IGameCommand.Execute
@@ -289,3 +289,4 @@ references:
   - uid: CardGame.Core.Application
     name: Application
     href: CardGame.Core.Application.html
+memberLayout: SeparatePages

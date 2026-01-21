@@ -242,14 +242,14 @@ references:
     href: CardGame.Core.Cards.Component.Actions.html
 - uid: CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.Type*
   commentId: Overload:CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.Type
-  href: CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.html#CardGame_Core_Cards_Components_Actions_Handlers_DrawCardHandler_Type
+  href: CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.Type.html#CardGame_Core_Cards_Components_Actions_Handlers_DrawCardHandler_Type
   name: Type
   nameWithType: DrawCardHandler.Type
   fullName: CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.Type
 - uid: CardGame.Core.Cards.Component.Actions.IActionHandler.Type
   commentId: P:CardGame.Core.Cards.Component.Actions.IActionHandler.Type
   parent: CardGame.Core.Cards.Component.Actions.IActionHandler
-  href: CardGame.Core.Cards.Component.Actions.IActionHandler.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Type
+  href: CardGame.Core.Cards.Component.Actions.IActionHandler.Type.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Type
   name: Type
   nameWithType: IActionHandler.Type
   fullName: CardGame.Core.Cards.Component.Actions.IActionHandler.Type
@@ -300,7 +300,7 @@ references:
     href: CardGame.Core.Cards.Data.html
 - uid: CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.Execute*
   commentId: Overload:CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.Execute
-  href: CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.html#CardGame_Core_Cards_Components_Actions_Handlers_DrawCardHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
+  href: CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.Execute.html#CardGame_Core_Cards_Components_Actions_Handlers_DrawCardHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
   name: Execute
   nameWithType: DrawCardHandler.Execute
   fullName: CardGame.Core.Cards.Components.Actions.Handlers.DrawCardHandler.Execute
@@ -308,7 +308,7 @@ references:
   commentId: M:CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
   parent: CardGame.Core.Cards.Component.Actions.IActionHandler
   isExternal: true
-  href: CardGame.Core.Cards.Component.Actions.IActionHandler.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
+  href: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
   name: Execute(GameState, GameContext, ActionData, EffectTargets, int, IGameEvent)
   nameWithType: IActionHandler.Execute(GameState, GameContext, ActionData, EffectTargets, int, IGameEvent)
   fullName: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Application.GameContext, CardGame.Core.Cards.Data.ActionData, CardGame.Core.Cards.Logic.EffectTargets, int, CardGame.Core.Events.Interfaces.IGameEvent)
@@ -318,7 +318,7 @@ references:
   spec.csharp:
   - uid: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
     name: Execute
-    href: CardGame.Core.Cards.Component.Actions.IActionHandler.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
+    href: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -352,7 +352,7 @@ references:
   spec.vb:
   - uid: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,CardGame.Core.Cards.Data.ActionData,CardGame.Core.Cards.Logic.EffectTargets,System.Int32,CardGame.Core.Events.Interfaces.IGameEvent)
     name: Execute
-    href: CardGame.Core.Cards.Component.Actions.IActionHandler.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
+    href: CardGame.Core.Cards.Component.Actions.IActionHandler.Execute.html#CardGame_Core_Cards_Component_Actions_IActionHandler_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_CardGame_Core_Cards_Data_ActionData_CardGame_Core_Cards_Logic_EffectTargets_System_Int32_CardGame_Core_Events_Interfaces_IGameEvent_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -572,3 +572,4 @@ references:
   - uid: CardGame.Core.Events.Interfaces
     name: Interfaces
     href: CardGame.Core.Events.Interfaces.html
+memberLayout: SeparatePages

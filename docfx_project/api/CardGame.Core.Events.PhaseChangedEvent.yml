@@ -264,7 +264,7 @@ references:
     href: CardGame.Core.Events.Interfaces.html
 - uid: CardGame.Core.Events.PhaseChangedEvent.NewPhase*
   commentId: Overload:CardGame.Core.Events.PhaseChangedEvent.NewPhase
-  href: CardGame.Core.Events.PhaseChangedEvent.html#CardGame_Core_Events_PhaseChangedEvent_NewPhase
+  href: CardGame.Core.Events.PhaseChangedEvent.NewPhase.html#CardGame_Core_Events_PhaseChangedEvent_NewPhase
   name: NewPhase
   nameWithType: PhaseChangedEvent.NewPhase
   fullName: CardGame.Core.Events.PhaseChangedEvent.NewPhase
@@ -315,7 +315,7 @@ references:
     href: CardGame.Core.State.Enums.html
 - uid: CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId*
   commentId: Overload:CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId
-  href: CardGame.Core.Events.PhaseChangedEvent.html#CardGame_Core_Events_PhaseChangedEvent_ActivePlayerId
+  href: CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId.html#CardGame_Core_Events_PhaseChangedEvent_ActivePlayerId
   name: ActivePlayerId
   nameWithType: PhaseChangedEvent.ActivePlayerId
   fullName: CardGame.Core.Events.PhaseChangedEvent.ActivePlayerId
@@ -331,23 +331,24 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId*
   commentId: Overload:CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId
-  href: CardGame.Core.Events.PhaseChangedEvent.html#CardGame_Core_Events_PhaseChangedEvent_SourcePlayerId
+  href: CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId.html#CardGame_Core_Events_PhaseChangedEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: PhaseChangedEvent.SourcePlayerId
   fullName: CardGame.Core.Events.PhaseChangedEvent.SourcePlayerId
 - uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   parent: CardGame.Core.Events.Interfaces.IGameEvent
-  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  href: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: IGameEvent.SourcePlayerId
   fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
 - uid: CardGame.Core.Events.PhaseChangedEvent.#ctor*
   commentId: Overload:CardGame.Core.Events.PhaseChangedEvent.#ctor
-  href: CardGame.Core.Events.PhaseChangedEvent.html#CardGame_Core_Events_PhaseChangedEvent__ctor_CardGame_Core_State_Enums_GamePhase_System_Int32_
+  href: CardGame.Core.Events.PhaseChangedEvent.-ctor.html#CardGame_Core_Events_PhaseChangedEvent__ctor_CardGame_Core_State_Enums_GamePhase_System_Int32_
   name: PhaseChangedEvent
   nameWithType: PhaseChangedEvent.PhaseChangedEvent
   fullName: CardGame.Core.Events.PhaseChangedEvent.PhaseChangedEvent
   nameWithType.vb: PhaseChangedEvent.New
   fullName.vb: CardGame.Core.Events.PhaseChangedEvent.New
   name.vb: New
+memberLayout: SeparatePages

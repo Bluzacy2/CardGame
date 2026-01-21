@@ -1,0 +1,1446 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.CardView
+  commentId: T:CardGame.GodotClient.CardView
+  id: CardView
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.CardView.AtkLabel
+  - CardGame.GodotClient.CardView.AttackSquare
+  - CardGame.GodotClient.CardView.Background
+  - CardGame.GodotClient.CardView.CostLabel
+  - CardGame.GodotClient.CardView.CountBadge
+  - CardGame.GodotClient.CardView.DescLabel
+  - CardGame.GodotClient.CardView.HealthSquare
+  - CardGame.GodotClient.CardView.HighlightBorder
+  - CardGame.GodotClient.CardView.HpLabel
+  - CardGame.GodotClient.CardView.Illustration
+  - CardGame.GodotClient.CardView.KeywordContainer
+  - CardGame.GodotClient.CardView.KeywordsLabel
+  - CardGame.GodotClient.CardView.MyCardData
+  - CardGame.GodotClient.CardView.NameLabel
+  - CardGame.GodotClient.CardView.OnClicked
+  - CardGame.GodotClient.CardView.Render(CardGame.Core.Cards.Models.CardInstance)
+  - CardGame.GodotClient.CardView.RenderCardBack
+  - CardGame.GodotClient.CardView.SetHighlight(System.Boolean,Godot.Color)
+  - CardGame.GodotClient.CardView.SetMulliganSelected(System.Boolean)
+  - CardGame.GodotClient.CardView.SubtypeLabel
+  - CardGame.GodotClient.CardView.UpdateCount(System.Int32,System.Int32)
+  - CardGame.GodotClient.CardView.XOverlay
+  - CardGame.GodotClient.CardView._GetDragData(Godot.Vector2)
+  - CardGame.GodotClient.CardView._GuiInput(Godot.InputEvent)
+  - CardGame.GodotClient.CardView._Ready
+  langs:
+  - csharp
+  - vb
+  name: CardView
+  nameWithType: CardView
+  fullName: CardGame.GodotClient.CardView
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPathAttributeGenerator/CardGame.GodotClient.CardView_ScriptPath.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardView
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPathAttributeGenerator/CardGame.GodotClient.CardView_ScriptPath.generated.cs
+    startLine: 3
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Controls the visual representation of a single card in the game UI.
+
+    Handles rendering card data (stats, text, art), input interactions (hover, click),
+
+    and visual states (highlighting, selection).
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/CardView.cs")]
+
+      public class CardView : Control
+    content.vb: >-
+      <ScriptPath("res://Scripts/CardView.cs")>
+
+      Public Class CardView Inherits Control
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  - Godot.CanvasItem
+  - Godot.Control
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/CardView.cs
+- uid: CardGame.GodotClient.CardView.NameLabel
+  commentId: F:CardGame.GodotClient.CardView.NameLabel
+  id: NameLabel
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: NameLabel
+  nameWithType: CardView.NameLabel
+  fullName: CardGame.GodotClient.CardView.NameLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: NameLabel
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportGroup("UI Elements", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public Label NameLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <ExportGroup("UI Elements", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public NameLabel As Label
+  attributes:
+  - type: Godot.ExportGroupAttribute
+    ctor: Godot.ExportGroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: UI Elements
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.CostLabel
+  commentId: F:CardGame.GodotClient.CardView.CostLabel
+  id: CostLabel
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: CostLabel
+  nameWithType: CardView.CostLabel
+  fullName: CardGame.GodotClient.CardView.CostLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CostLabel
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 21
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label displaying the mana/blood cost.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label CostLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public CostLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.HpLabel
+  commentId: F:CardGame.GodotClient.CardView.HpLabel
+  id: HpLabel
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: HpLabel
+  nameWithType: CardView.HpLabel
+  fullName: CardGame.GodotClient.CardView.HpLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HpLabel
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label displaying current health.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label HpLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public HpLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.AtkLabel
+  commentId: F:CardGame.GodotClient.CardView.AtkLabel
+  id: AtkLabel
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: AtkLabel
+  nameWithType: CardView.AtkLabel
+  fullName: CardGame.GodotClient.CardView.AtkLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AtkLabel
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 25
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label displaying current attack power.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label AtkLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public AtkLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.DescLabel
+  commentId: F:CardGame.GodotClient.CardView.DescLabel
+  id: DescLabel
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: DescLabel
+  nameWithType: CardView.DescLabel
+  fullName: CardGame.GodotClient.CardView.DescLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DescLabel
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label for card description/flavor text.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public RichTextLabel DescLabel
+    return:
+      type: Godot.RichTextLabel
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public DescLabel As RichTextLabel
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.SubtypeLabel
+  commentId: F:CardGame.GodotClient.CardView.SubtypeLabel
+  id: SubtypeLabel
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: SubtypeLabel
+  nameWithType: CardView.SubtypeLabel
+  fullName: CardGame.GodotClient.CardView.SubtypeLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SubtypeLabel
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 29
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label for card subtypes (e.g. "Monster Animal").
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public RichTextLabel SubtypeLabel
+    return:
+      type: Godot.RichTextLabel
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public SubtypeLabel As RichTextLabel
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.KeywordsLabel
+  commentId: F:CardGame.GodotClient.CardView.KeywordsLabel
+  id: KeywordsLabel
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: KeywordsLabel
+  nameWithType: CardView.KeywordsLabel
+  fullName: CardGame.GodotClient.CardView.KeywordsLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: KeywordsLabel
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label for displaying keywords (e.g. "Flying, Armored").
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public RichTextLabel KeywordsLabel
+    return:
+      type: Godot.RichTextLabel
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public KeywordsLabel As RichTextLabel
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.Background
+  commentId: F:CardGame.GodotClient.CardView.Background
+  id: Background
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: Background
+  nameWithType: CardView.Background
+  fullName: CardGame.GodotClient.CardView.Background
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Background
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 34
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: The main background texture or frame of the card.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public TextureRect Background
+    return:
+      type: Godot.TextureRect
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public Background As TextureRect
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.Illustration
+  commentId: F:CardGame.GodotClient.CardView.Illustration
+  id: Illustration
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: Illustration
+  nameWithType: CardView.Illustration
+  fullName: CardGame.GodotClient.CardView.Illustration
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Illustration
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 36
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: The texture displaying the card's illustration/art.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public TextureRect Illustration
+    return:
+      type: Godot.TextureRect
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public Illustration As TextureRect
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.AttackSquare
+  commentId: F:CardGame.GodotClient.CardView.AttackSquare
+  id: AttackSquare
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: AttackSquare
+  nameWithType: CardView.AttackSquare
+  fullName: CardGame.GodotClient.CardView.AttackSquare
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AttackSquare
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 38
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Icon/Frame for the attack value.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public TextureRect AttackSquare
+    return:
+      type: Godot.TextureRect
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public AttackSquare As TextureRect
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.HealthSquare
+  commentId: F:CardGame.GodotClient.CardView.HealthSquare
+  id: HealthSquare
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: HealthSquare
+  nameWithType: CardView.HealthSquare
+  fullName: CardGame.GodotClient.CardView.HealthSquare
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HealthSquare
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 40
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Icon/Frame for the health value.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public TextureRect HealthSquare
+    return:
+      type: Godot.TextureRect
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public HealthSquare As TextureRect
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.HighlightBorder
+  commentId: F:CardGame.GodotClient.CardView.HighlightBorder
+  id: HighlightBorder
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: HighlightBorder
+  nameWithType: CardView.HighlightBorder
+  fullName: CardGame.GodotClient.CardView.HighlightBorder
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HighlightBorder
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 43
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Border control used for targeting highlights.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control HighlightBorder
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public HighlightBorder As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.KeywordContainer
+  commentId: F:CardGame.GodotClient.CardView.KeywordContainer
+  id: KeywordContainer
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: KeywordContainer
+  nameWithType: CardView.KeywordContainer
+  fullName: CardGame.GodotClient.CardView.KeywordContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: KeywordContainer
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 45
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Container for keyword icons (optional/future use).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public HBoxContainer KeywordContainer
+    return:
+      type: Godot.HBoxContainer
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public KeywordContainer As HBoxContainer
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.XOverlay
+  commentId: F:CardGame.GodotClient.CardView.XOverlay
+  id: XOverlay
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: XOverlay
+  nameWithType: CardView.XOverlay
+  fullName: CardGame.GodotClient.CardView.XOverlay
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: XOverlay
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 47
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Overlay used to indicate selection (e.g. during Mulligan).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control XOverlay
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public XOverlay As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.CountBadge
+  commentId: F:CardGame.GodotClient.CardView.CountBadge
+  id: CountBadge
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: CountBadge
+  nameWithType: CardView.CountBadge
+  fullName: CardGame.GodotClient.CardView.CountBadge
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CountBadge
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 49
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Badge displaying card count (used in Deck Editor).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label CountBadge
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public CountBadge As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.CardView.MyCardData
+  commentId: P:CardGame.GodotClient.CardView.MyCardData
+  id: MyCardData
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: MyCardData
+  nameWithType: CardView.MyCardData
+  fullName: CardGame.GodotClient.CardView.MyCardData
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MyCardData
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 56
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Gets the data model associated with this card view.
+  example: []
+  syntax:
+    content: public CardInstance MyCardData { get; }
+    parameters: []
+    return:
+      type: CardGame.Core.Cards.Models.CardInstance
+    content.vb: Public Property MyCardData As CardInstance
+  overload: CardGame.GodotClient.CardView.MyCardData*
+- uid: CardGame.GodotClient.CardView.OnClicked
+  commentId: E:CardGame.GodotClient.CardView.OnClicked
+  id: OnClicked
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: OnClicked
+  nameWithType: CardView.OnClicked
+  fullName: CardGame.GodotClient.CardView.OnClicked
+  type: Event
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnClicked
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 61
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Event triggered when the card is clicked.
+  example: []
+  syntax:
+    content: public event Action<CardView> OnClicked
+    return:
+      type: System.Action{CardGame.GodotClient.CardView}
+    content.vb: Public Event OnClicked As Action(Of CardView)
+- uid: CardGame.GodotClient.CardView._Ready
+  commentId: M:CardGame.GodotClient.CardView._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: CardView._Ready()
+  fullName: CardGame.GodotClient.CardView._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 72
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Initializes the card view, setting default size, mouse filter, and visual properties.
+
+    Configures child controls to scale properly.
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.CardView._Ready*
+- uid: CardGame.GodotClient.CardView._GuiInput(Godot.InputEvent)
+  commentId: M:CardGame.GodotClient.CardView._GuiInput(Godot.InputEvent)
+  id: _GuiInput(Godot.InputEvent)
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: _GuiInput(InputEvent)
+  nameWithType: CardView._GuiInput(InputEvent)
+  fullName: CardGame.GodotClient.CardView._GuiInput(Godot.InputEvent)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _GuiInput
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 107
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Handles GUI input events directly on the card control.
+
+    Detects left clicks to trigger interaction.
+  example: []
+  syntax:
+    content: public override void _GuiInput(InputEvent @event)
+    parameters:
+    - id: event
+      type: Godot.InputEvent
+    content.vb: Public Overrides Sub _GuiInput([event] As InputEvent)
+  overridden: Godot.Control._GuiInput(Godot.InputEvent)
+  overload: CardGame.GodotClient.CardView._GuiInput*
+- uid: CardGame.GodotClient.CardView.Render(CardGame.Core.Cards.Models.CardInstance)
+  commentId: M:CardGame.GodotClient.CardView.Render(CardGame.Core.Cards.Models.CardInstance)
+  id: Render(CardGame.Core.Cards.Models.CardInstance)
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: Render(CardInstance)
+  nameWithType: CardView.Render(CardInstance)
+  fullName: CardGame.GodotClient.CardView.Render(CardGame.Core.Cards.Models.CardInstance)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Render
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 124
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Updates the card's visual state based on the provided card data.
+
+    Sets text, stats, colors, and art.
+  example: []
+  syntax:
+    content: public void Render(CardInstance card)
+    parameters:
+    - id: card
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The card data instance to display.
+    content.vb: Public Sub Render(card As CardInstance)
+  overload: CardGame.GodotClient.CardView.Render*
+- uid: CardGame.GodotClient.CardView.RenderCardBack
+  commentId: M:CardGame.GodotClient.CardView.RenderCardBack
+  id: RenderCardBack
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: RenderCardBack()
+  nameWithType: CardView.RenderCardBack()
+  fullName: CardGame.GodotClient.CardView.RenderCardBack()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: RenderCardBack
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 232
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Renders the card back (face down state).
+
+    Hides all stats and text, shows a card back texture or color.
+  example: []
+  syntax:
+    content: public void RenderCardBack()
+    content.vb: Public Sub RenderCardBack()
+  overload: CardGame.GodotClient.CardView.RenderCardBack*
+- uid: CardGame.GodotClient.CardView.SetHighlight(System.Boolean,Godot.Color)
+  commentId: M:CardGame.GodotClient.CardView.SetHighlight(System.Boolean,Godot.Color)
+  id: SetHighlight(System.Boolean,Godot.Color)
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: SetHighlight(bool, Color)
+  nameWithType: CardView.SetHighlight(bool, Color)
+  fullName: CardGame.GodotClient.CardView.SetHighlight(bool, Godot.Color)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetHighlight
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 299
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Toggles the visual highlight effect on the card border.
+  example: []
+  syntax:
+    content: public void SetHighlight(bool active, Color color)
+    parameters:
+    - id: active
+      type: System.Boolean
+      description: True to show highlight, false to hide.
+    - id: color
+      type: Godot.Color
+      description: The color of the highlight.
+    content.vb: Public Sub SetHighlight(active As Boolean, color As Color)
+  overload: CardGame.GodotClient.CardView.SetHighlight*
+  nameWithType.vb: CardView.SetHighlight(Boolean, Color)
+  fullName.vb: CardGame.GodotClient.CardView.SetHighlight(Boolean, Godot.Color)
+  name.vb: SetHighlight(Boolean, Color)
+- uid: CardGame.GodotClient.CardView.SetMulliganSelected(System.Boolean)
+  commentId: M:CardGame.GodotClient.CardView.SetMulliganSelected(System.Boolean)
+  id: SetMulliganSelected(System.Boolean)
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: SetMulliganSelected(bool)
+  nameWithType: CardView.SetMulliganSelected(bool)
+  fullName: CardGame.GodotClient.CardView.SetMulliganSelected(bool)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetMulliganSelected
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 311
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Sets the visual state for Mulligan selection (e.g., overlay X).
+  example: []
+  syntax:
+    content: public void SetMulliganSelected(bool selected)
+    parameters:
+    - id: selected
+      type: System.Boolean
+    content.vb: Public Sub SetMulliganSelected(selected As Boolean)
+  overload: CardGame.GodotClient.CardView.SetMulliganSelected*
+  nameWithType.vb: CardView.SetMulliganSelected(Boolean)
+  fullName.vb: CardGame.GodotClient.CardView.SetMulliganSelected(Boolean)
+  name.vb: SetMulliganSelected(Boolean)
+- uid: CardGame.GodotClient.CardView.UpdateCount(System.Int32,System.Int32)
+  commentId: M:CardGame.GodotClient.CardView.UpdateCount(System.Int32,System.Int32)
+  id: UpdateCount(System.Int32,System.Int32)
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: UpdateCount(int, int)
+  nameWithType: CardView.UpdateCount(int, int)
+  fullName: CardGame.GodotClient.CardView.UpdateCount(int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateCount
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 320
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Updates the visual count badge (used in Deck Editor).
+  example: []
+  syntax:
+    content: public void UpdateCount(int current, int max)
+    parameters:
+    - id: current
+      type: System.Int32
+    - id: max
+      type: System.Int32
+    content.vb: Public Sub UpdateCount(current As Integer, max As Integer)
+  overload: CardGame.GodotClient.CardView.UpdateCount*
+  nameWithType.vb: CardView.UpdateCount(Integer, Integer)
+  fullName.vb: CardGame.GodotClient.CardView.UpdateCount(Integer, Integer)
+  name.vb: UpdateCount(Integer, Integer)
+- uid: CardGame.GodotClient.CardView._GetDragData(Godot.Vector2)
+  commentId: M:CardGame.GodotClient.CardView._GetDragData(Godot.Vector2)
+  id: _GetDragData(Godot.Vector2)
+  parent: CardGame.GodotClient.CardView
+  langs:
+  - csharp
+  - vb
+  name: _GetDragData(Vector2)
+  nameWithType: CardView._GetDragData(Vector2)
+  fullName: CardGame.GodotClient.CardView._GetDragData(Godot.Vector2)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _GetDragData
+    path: ../Source/CardGame.GodotClient/Scripts/CardView.cs
+    startLine: 338
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Generates drag data when the user starts dragging the card.
+
+    Creates a visual preview of the card under the cursor.
+  example: []
+  syntax:
+    content: public override Variant _GetDragData(Vector2 atPosition)
+    parameters:
+    - id: atPosition
+      type: Godot.Vector2
+    return:
+      type: Godot.Variant
+      description: The InstanceID of the card data.
+    content.vb: Public Overrides Function _GetDragData(atPosition As Vector2) As [Variant]
+  overridden: Godot.Control._GetDragData(Godot.Vector2)
+  overload: CardGame.GodotClient.CardView._GetDragData*
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: Godot.CanvasItem
+  commentId: T:Godot.CanvasItem
+  parent: Godot
+  isExternal: true
+  name: CanvasItem
+  nameWithType: CanvasItem
+  fullName: Godot.CanvasItem
+- uid: Godot.Control
+  commentId: T:Godot.Control
+  parent: Godot
+  isExternal: true
+  name: Control
+  nameWithType: Control
+  fullName: Godot.Control
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.Label
+  commentId: T:Godot.Label
+  parent: Godot
+  isExternal: true
+  name: Label
+  nameWithType: Label
+  fullName: Godot.Label
+- uid: Godot.RichTextLabel
+  commentId: T:Godot.RichTextLabel
+  parent: Godot
+  isExternal: true
+  name: RichTextLabel
+  nameWithType: RichTextLabel
+  fullName: Godot.RichTextLabel
+- uid: Godot.TextureRect
+  commentId: T:Godot.TextureRect
+  parent: Godot
+  isExternal: true
+  name: TextureRect
+  nameWithType: TextureRect
+  fullName: Godot.TextureRect
+- uid: Godot.HBoxContainer
+  commentId: T:Godot.HBoxContainer
+  parent: Godot
+  isExternal: true
+  name: HBoxContainer
+  nameWithType: HBoxContainer
+  fullName: Godot.HBoxContainer
+- uid: CardGame.GodotClient.CardView.MyCardData*
+  commentId: Overload:CardGame.GodotClient.CardView.MyCardData
+  href: CardGame.GodotClient.CardView.MyCardData.html#CardGame_GodotClient_CardView_MyCardData
+  name: MyCardData
+  nameWithType: CardView.MyCardData
+  fullName: CardGame.GodotClient.CardView.MyCardData
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: System.Action{CardGame.GodotClient.CardView}
+  commentId: T:System.Action{CardGame.GodotClient.CardView}
+  parent: System
+  definition: System.Action`1
+  href: CardGame.GodotClient.CardView.html
+  name: Action<CardView>
+  nameWithType: Action<CardView>
+  fullName: System.Action<CardGame.GodotClient.CardView>
+  nameWithType.vb: Action(Of CardView)
+  fullName.vb: System.Action(Of CardGame.GodotClient.CardView)
+  name.vb: Action(Of CardView)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: CardGame.GodotClient.CardView
+    name: CardView
+    href: CardGame.GodotClient.CardView.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.GodotClient.CardView
+    name: CardView
+    href: CardGame.GodotClient.CardView.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.CardView._Ready*
+  commentId: Overload:CardGame.GodotClient.CardView._Ready
+  href: CardGame.GodotClient.CardView._Ready.html#CardGame_GodotClient_CardView__Ready
+  name: _Ready
+  nameWithType: CardView._Ready
+  fullName: CardGame.GodotClient.CardView._Ready
+- uid: Godot.Control._GuiInput(Godot.InputEvent)
+  commentId: M:Godot.Control._GuiInput(Godot.InputEvent)
+  parent: Godot.Control
+  isExternal: true
+  name: _GuiInput(InputEvent)
+  nameWithType: Control._GuiInput(InputEvent)
+  fullName: Godot.Control._GuiInput(Godot.InputEvent)
+  spec.csharp:
+  - uid: Godot.Control._GuiInput(Godot.InputEvent)
+    name: _GuiInput
+    isExternal: true
+  - name: (
+  - uid: Godot.InputEvent
+    name: InputEvent
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Godot.Control._GuiInput(Godot.InputEvent)
+    name: _GuiInput
+    isExternal: true
+  - name: (
+  - uid: Godot.InputEvent
+    name: InputEvent
+    isExternal: true
+  - name: )
+- uid: CardGame.GodotClient.CardView._GuiInput*
+  commentId: Overload:CardGame.GodotClient.CardView._GuiInput
+  href: CardGame.GodotClient.CardView._GuiInput.html#CardGame_GodotClient_CardView__GuiInput_Godot_InputEvent_
+  name: _GuiInput
+  nameWithType: CardView._GuiInput
+  fullName: CardGame.GodotClient.CardView._GuiInput
+- uid: Godot.InputEvent
+  commentId: T:Godot.InputEvent
+  parent: Godot
+  isExternal: true
+  name: InputEvent
+  nameWithType: InputEvent
+  fullName: Godot.InputEvent
+- uid: CardGame.GodotClient.CardView.Render*
+  commentId: Overload:CardGame.GodotClient.CardView.Render
+  href: CardGame.GodotClient.CardView.Render.html#CardGame_GodotClient_CardView_Render_CardGame_Core_Cards_Models_CardInstance_
+  name: Render
+  nameWithType: CardView.Render
+  fullName: CardGame.GodotClient.CardView.Render
+- uid: CardGame.GodotClient.CardView.RenderCardBack*
+  commentId: Overload:CardGame.GodotClient.CardView.RenderCardBack
+  href: CardGame.GodotClient.CardView.RenderCardBack.html#CardGame_GodotClient_CardView_RenderCardBack
+  name: RenderCardBack
+  nameWithType: CardView.RenderCardBack
+  fullName: CardGame.GodotClient.CardView.RenderCardBack
+- uid: CardGame.GodotClient.CardView.SetHighlight*
+  commentId: Overload:CardGame.GodotClient.CardView.SetHighlight
+  href: CardGame.GodotClient.CardView.SetHighlight.html#CardGame_GodotClient_CardView_SetHighlight_System_Boolean_Godot_Color_
+  name: SetHighlight
+  nameWithType: CardView.SetHighlight
+  fullName: CardGame.GodotClient.CardView.SetHighlight
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Godot.Color
+  commentId: T:Godot.Color
+  parent: Godot
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: Godot.Color
+- uid: CardGame.GodotClient.CardView.SetMulliganSelected*
+  commentId: Overload:CardGame.GodotClient.CardView.SetMulliganSelected
+  href: CardGame.GodotClient.CardView.SetMulliganSelected.html#CardGame_GodotClient_CardView_SetMulliganSelected_System_Boolean_
+  name: SetMulliganSelected
+  nameWithType: CardView.SetMulliganSelected
+  fullName: CardGame.GodotClient.CardView.SetMulliganSelected
+- uid: CardGame.GodotClient.CardView.UpdateCount*
+  commentId: Overload:CardGame.GodotClient.CardView.UpdateCount
+  href: CardGame.GodotClient.CardView.UpdateCount.html#CardGame_GodotClient_CardView_UpdateCount_System_Int32_System_Int32_
+  name: UpdateCount
+  nameWithType: CardView.UpdateCount
+  fullName: CardGame.GodotClient.CardView.UpdateCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Godot.Control._GetDragData(Godot.Vector2)
+  commentId: M:Godot.Control._GetDragData(Godot.Vector2)
+  parent: Godot.Control
+  isExternal: true
+  name: _GetDragData(Vector2)
+  nameWithType: Control._GetDragData(Vector2)
+  fullName: Godot.Control._GetDragData(Godot.Vector2)
+  spec.csharp:
+  - uid: Godot.Control._GetDragData(Godot.Vector2)
+    name: _GetDragData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Godot.Control._GetDragData(Godot.Vector2)
+    name: _GetDragData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: CardGame.GodotClient.CardView._GetDragData*
+  commentId: Overload:CardGame.GodotClient.CardView._GetDragData
+  href: CardGame.GodotClient.CardView._GetDragData.html#CardGame_GodotClient_CardView__GetDragData_Godot_Vector2_
+  name: _GetDragData
+  nameWithType: CardView._GetDragData
+  fullName: CardGame.GodotClient.CardView._GetDragData
+- uid: Godot.Vector2
+  commentId: T:Godot.Vector2
+  parent: Godot
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Godot.Vector2
+- uid: Godot.Variant
+  commentId: T:Godot.Variant
+  parent: Godot
+  isExternal: true
+  name: Variant
+  nameWithType: Variant
+  fullName: Godot.Variant
+memberLayout: SeparatePages

@@ -1,0 +1,3132 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.UIManager
+  commentId: T:CardGame.GodotClient.UIManager
+  id: UIManager
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.UIManager.BoardContainer
+  - CardGame.GodotClient.UIManager.CancelSpellButton
+  - CardGame.GodotClient.UIManager.CardSceneTemplate
+  - CardGame.GodotClient.UIManager.ChoiceModalScene
+  - CardGame.GodotClient.UIManager.ClearHighlights
+  - CardGame.GodotClient.UIManager.ConfirmMulliganButton
+  - CardGame.GodotClient.UIManager.CreateGhostUnit(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  - CardGame.GodotClient.UIManager.DeckCountLabel
+  - CardGame.GodotClient.UIManager.EndTurnButton
+  - CardGame.GodotClient.UIManager.EnemyBloodGrid
+  - CardGame.GodotClient.UIManager.EnemyHandContainer
+  - CardGame.GodotClient.UIManager.EnemyHpLabel
+  - CardGame.GodotClient.UIManager.EnemyManaLabel
+  - CardGame.GodotClient.UIManager.FindCardUnderMouse(Godot.Vector2)
+  - CardGame.GodotClient.UIManager.GetArrowStartPosition
+  - CardGame.GodotClient.UIManager.GetGhostUnit
+  - CardGame.GodotClient.UIManager.GraveyardContainer
+  - CardGame.GodotClient.UIManager.HandContainer
+  - CardGame.GodotClient.UIManager.HandleVisualEvents(System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent},System.Int32)
+  - CardGame.GodotClient.UIManager.HideChoiceModal
+  - CardGame.GodotClient.UIManager.HideTargetingArrow
+  - CardGame.GodotClient.UIManager.HighlightTargets(CardGame.Core.Cards.Data.TargetType,System.Int32)
+  - CardGame.GodotClient.UIManager.HighlightValidTargets(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  - CardGame.GodotClient.UIManager.IsCardInHand(CardGame.Core.Cards.Models.CardInstance)
+  - CardGame.GodotClient.UIManager.LineSceneTemplate
+  - CardGame.GodotClient.UIManager.MessageLabel
+  - CardGame.GodotClient.UIManager.MessagePanel
+  - CardGame.GodotClient.UIManager.MulliganCardsContainer
+  - CardGame.GodotClient.UIManager.MulliganCounterLabel
+  - CardGame.GodotClient.UIManager.MulliganPanel
+  - CardGame.GodotClient.UIManager.NotificationLayer
+  - CardGame.GodotClient.UIManager.OnCancelSpellClicked
+  - CardGame.GodotClient.UIManager.OnCardClicked
+  - CardGame.GodotClient.UIManager.OnConfirmMulliganClicked
+  - CardGame.GodotClient.UIManager.OnEndTurnClicked
+  - CardGame.GodotClient.UIManager.OnRestartClicked
+  - CardGame.GodotClient.UIManager.PlayerBloodGrid
+  - CardGame.GodotClient.UIManager.PlayerHpLabel
+  - CardGame.GodotClient.UIManager.PlayerManaLabel
+  - CardGame.GodotClient.UIManager.RemoveGhostUnit
+  - CardGame.GodotClient.UIManager.RenderMulliganCards(System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.List{System.Int32})
+  - CardGame.GodotClient.UIManager.RestartButton
+  - CardGame.GodotClient.UIManager.SetCancelButtonVisible(System.Boolean)
+  - CardGame.GodotClient.UIManager.SetEndTurnEnabled(System.Boolean)
+  - CardGame.GodotClient.UIManager.ShowBigMessage(System.String,System.Single,System.Nullable{Godot.Color})
+  - CardGame.GodotClient.UIManager.ShowCardSelectionModal(System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},System.Action{System.Int32})
+  - CardGame.GodotClient.UIManager.ShowChoiceModal(System.Collections.Generic.IEnumerable{System.String},System.Action{System.Int32},System.Collections.Generic.List{System.Boolean})
+  - CardGame.GodotClient.UIManager.ShowFloatingText(System.String,Godot.Vector2,Godot.Color)
+  - CardGame.GodotClient.UIManager.ShowGameOverScreen(System.Nullable{System.Int32},System.Int32,System.Int32)
+  - CardGame.GodotClient.UIManager.TargetingArrow
+  - CardGame.GodotClient.UIManager.ToggleMulliganPanel(System.Boolean)
+  - CardGame.GodotClient.UIManager.UpdateDisplay(CardGame.Core.State.Models.GameState,System.Int32)
+  - CardGame.GodotClient.UIManager.UpdateMulliganCounter(System.Int32,System.Int32)
+  - CardGame.GodotClient.UIManager.UpdateTargetingArrow(Godot.Vector2,Godot.Vector2)
+  - CardGame.GodotClient.UIManager.VFXContainer
+  - CardGame.GodotClient.UIManager._Ready
+  langs:
+  - csharp
+  - vb
+  name: UIManager
+  nameWithType: UIManager
+  fullName: CardGame.GodotClient.UIManager
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/CardGame.GodotClient.UIManager_ScriptSerialization.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UIManager
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/CardGame.GodotClient.UIManager_ScriptSerialization.generated.cs
+    startLine: 5
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Manages the entire visual presentation of the gameplay scene.
+
+    Acts as the View layer, rendering the GameState and handling UI interactions.
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/UIManager.cs")]
+
+      public class UIManager : Node
+    content.vb: >-
+      <ScriptPath("res://Scripts/UIManager.cs")>
+
+      Public Class UIManager Inherits Node
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/UIManager.cs
+- uid: CardGame.GodotClient.UIManager.HandContainer
+  commentId: F:CardGame.GodotClient.UIManager.HandContainer
+  id: HandContainer
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: HandContainer
+  nameWithType: UIManager.HandContainer
+  fullName: CardGame.GodotClient.UIManager.HandContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HandContainer
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportGroup("Containers", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public Control HandContainer
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <ExportGroup("Containers", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public HandContainer As Control
+  attributes:
+  - type: Godot.ExportGroupAttribute
+    ctor: Godot.ExportGroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Containers
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.BoardContainer
+  commentId: F:CardGame.GodotClient.UIManager.BoardContainer
+  id: BoardContainer
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: BoardContainer
+  nameWithType: UIManager.BoardContainer
+  fullName: CardGame.GodotClient.UIManager.BoardContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BoardContainer
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 25
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Container for the board lines (lanes).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control BoardContainer
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public BoardContainer As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.EnemyHandContainer
+  commentId: F:CardGame.GodotClient.UIManager.EnemyHandContainer
+  id: EnemyHandContainer
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: EnemyHandContainer
+  nameWithType: UIManager.EnemyHandContainer
+  fullName: CardGame.GodotClient.UIManager.EnemyHandContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnemyHandContainer
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Container for the opponent's hand (card backs).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control EnemyHandContainer
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public EnemyHandContainer As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.VFXContainer
+  commentId: F:CardGame.GodotClient.UIManager.VFXContainer
+  id: VFXContainer
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: VFXContainer
+  nameWithType: UIManager.VFXContainer
+  fullName: CardGame.GodotClient.UIManager.VFXContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: VFXContainer
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 29
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Container for floating texts and visual effects.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control VFXContainer
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public VFXContainer As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.EndTurnButton
+  commentId: F:CardGame.GodotClient.UIManager.EndTurnButton
+  id: EndTurnButton
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: EndTurnButton
+  nameWithType: UIManager.EndTurnButton
+  fullName: CardGame.GodotClient.UIManager.EndTurnButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EndTurnButton
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 33
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportGroup("UI Elements", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public Button EndTurnButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <ExportGroup("UI Elements", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public EndTurnButton As Button
+  attributes:
+  - type: Godot.ExportGroupAttribute
+    ctor: Godot.ExportGroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: UI Elements
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.CancelSpellButton
+  commentId: F:CardGame.GodotClient.UIManager.CancelSpellButton
+  id: CancelSpellButton
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: CancelSpellButton
+  nameWithType: UIManager.CancelSpellButton
+  fullName: CardGame.GodotClient.UIManager.CancelSpellButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CancelSpellButton
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 35
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Button to cancel the current spell casting or targeting action.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button CancelSpellButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public CancelSpellButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.RestartButton
+  commentId: F:CardGame.GodotClient.UIManager.RestartButton
+  id: RestartButton
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: RestartButton
+  nameWithType: UIManager.RestartButton
+  fullName: CardGame.GodotClient.UIManager.RestartButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: RestartButton
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 37
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Button shown at game over to restart the match.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button RestartButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public RestartButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.TargetingArrow
+  commentId: F:CardGame.GodotClient.UIManager.TargetingArrow
+  id: TargetingArrow
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: TargetingArrow
+  nameWithType: UIManager.TargetingArrow
+  fullName: CardGame.GodotClient.UIManager.TargetingArrow
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: TargetingArrow
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 39
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Line2D used to draw a visual arrow during targeting.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Line2D TargetingArrow
+    return:
+      type: Godot.Line2D
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public TargetingArrow As Line2D
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.PlayerHpLabel
+  commentId: F:CardGame.GodotClient.UIManager.PlayerHpLabel
+  id: PlayerHpLabel
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: PlayerHpLabel
+  nameWithType: UIManager.PlayerHpLabel
+  fullName: CardGame.GodotClient.UIManager.PlayerHpLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerHpLabel
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 42
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportSubgroup("Labels", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public Label PlayerHpLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <ExportSubgroup("Labels", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public PlayerHpLabel As Label
+  attributes:
+  - type: Godot.ExportSubgroupAttribute
+    ctor: Godot.ExportSubgroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Labels
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.PlayerManaLabel
+  commentId: F:CardGame.GodotClient.UIManager.PlayerManaLabel
+  id: PlayerManaLabel
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: PlayerManaLabel
+  nameWithType: UIManager.PlayerManaLabel
+  fullName: CardGame.GodotClient.UIManager.PlayerManaLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerManaLabel
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 43
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label PlayerManaLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public PlayerManaLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.EnemyHpLabel
+  commentId: F:CardGame.GodotClient.UIManager.EnemyHpLabel
+  id: EnemyHpLabel
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: EnemyHpLabel
+  nameWithType: UIManager.EnemyHpLabel
+  fullName: CardGame.GodotClient.UIManager.EnemyHpLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnemyHpLabel
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 44
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label EnemyHpLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public EnemyHpLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.EnemyManaLabel
+  commentId: F:CardGame.GodotClient.UIManager.EnemyManaLabel
+  id: EnemyManaLabel
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: EnemyManaLabel
+  nameWithType: UIManager.EnemyManaLabel
+  fullName: CardGame.GodotClient.UIManager.EnemyManaLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnemyManaLabel
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 45
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label EnemyManaLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public EnemyManaLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.NotificationLayer
+  commentId: F:CardGame.GodotClient.UIManager.NotificationLayer
+  id: NotificationLayer
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: NotificationLayer
+  nameWithType: UIManager.NotificationLayer
+  fullName: CardGame.GodotClient.UIManager.NotificationLayer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: NotificationLayer
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 49
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportGroup("Notifications", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public Control NotificationLayer
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <ExportGroup("Notifications", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public NotificationLayer As Control
+  attributes:
+  - type: Godot.ExportGroupAttribute
+    ctor: Godot.ExportGroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Notifications
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.MessagePanel
+  commentId: F:CardGame.GodotClient.UIManager.MessagePanel
+  id: MessagePanel
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: MessagePanel
+  nameWithType: UIManager.MessagePanel
+  fullName: CardGame.GodotClient.UIManager.MessagePanel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MessagePanel
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 50
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control MessagePanel
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public MessagePanel As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.MessageLabel
+  commentId: F:CardGame.GodotClient.UIManager.MessageLabel
+  id: MessageLabel
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: MessageLabel
+  nameWithType: UIManager.MessageLabel
+  fullName: CardGame.GodotClient.UIManager.MessageLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MessageLabel
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 51
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label MessageLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public MessageLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.CardSceneTemplate
+  commentId: F:CardGame.GodotClient.UIManager.CardSceneTemplate
+  id: CardSceneTemplate
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: CardSceneTemplate
+  nameWithType: UIManager.CardSceneTemplate
+  fullName: CardGame.GodotClient.UIManager.CardSceneTemplate
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardSceneTemplate
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 55
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportGroup("Templates", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public PackedScene CardSceneTemplate
+    return:
+      type: Godot.PackedScene
+    content.vb: >-
+      <ExportGroup("Templates", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public CardSceneTemplate As PackedScene
+  attributes:
+  - type: Godot.ExportGroupAttribute
+    ctor: Godot.ExportGroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Templates
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.LineSceneTemplate
+  commentId: F:CardGame.GodotClient.UIManager.LineSceneTemplate
+  id: LineSceneTemplate
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: LineSceneTemplate
+  nameWithType: UIManager.LineSceneTemplate
+  fullName: CardGame.GodotClient.UIManager.LineSceneTemplate
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LineSceneTemplate
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 57
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: The PackedScene used to instantiate board lines.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public PackedScene LineSceneTemplate
+    return:
+      type: Godot.PackedScene
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public LineSceneTemplate As PackedScene
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.ChoiceModalScene
+  commentId: F:CardGame.GodotClient.UIManager.ChoiceModalScene
+  id: ChoiceModalScene
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: ChoiceModalScene
+  nameWithType: UIManager.ChoiceModalScene
+  fullName: CardGame.GodotClient.UIManager.ChoiceModalScene
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ChoiceModalScene
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 59
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: The PackedScene used to instantiate the Choice Modal.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public PackedScene ChoiceModalScene
+    return:
+      type: Godot.PackedScene
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public ChoiceModalScene As PackedScene
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.MulliganPanel
+  commentId: F:CardGame.GodotClient.UIManager.MulliganPanel
+  id: MulliganPanel
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: MulliganPanel
+  nameWithType: UIManager.MulliganPanel
+  fullName: CardGame.GodotClient.UIManager.MulliganPanel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MulliganPanel
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 62
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportGroup("Mulligan UI", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public Control MulliganPanel
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <ExportGroup("Mulligan UI", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public MulliganPanel As Control
+  attributes:
+  - type: Godot.ExportGroupAttribute
+    ctor: Godot.ExportGroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Mulligan UI
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.MulliganCardsContainer
+  commentId: F:CardGame.GodotClient.UIManager.MulliganCardsContainer
+  id: MulliganCardsContainer
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: MulliganCardsContainer
+  nameWithType: UIManager.MulliganCardsContainer
+  fullName: CardGame.GodotClient.UIManager.MulliganCardsContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MulliganCardsContainer
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 63
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control MulliganCardsContainer
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public MulliganCardsContainer As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.ConfirmMulliganButton
+  commentId: F:CardGame.GodotClient.UIManager.ConfirmMulliganButton
+  id: ConfirmMulliganButton
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: ConfirmMulliganButton
+  nameWithType: UIManager.ConfirmMulliganButton
+  fullName: CardGame.GodotClient.UIManager.ConfirmMulliganButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ConfirmMulliganButton
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 64
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button ConfirmMulliganButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public ConfirmMulliganButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.MulliganCounterLabel
+  commentId: F:CardGame.GodotClient.UIManager.MulliganCounterLabel
+  id: MulliganCounterLabel
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: MulliganCounterLabel
+  nameWithType: UIManager.MulliganCounterLabel
+  fullName: CardGame.GodotClient.UIManager.MulliganCounterLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MulliganCounterLabel
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 65
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label MulliganCounterLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public MulliganCounterLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.PlayerBloodGrid
+  commentId: F:CardGame.GodotClient.UIManager.PlayerBloodGrid
+  id: PlayerBloodGrid
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: PlayerBloodGrid
+  nameWithType: UIManager.PlayerBloodGrid
+  fullName: CardGame.GodotClient.UIManager.PlayerBloodGrid
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerBloodGrid
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 68
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportGroup("Piles", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public Control PlayerBloodGrid
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <ExportGroup("Piles", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public PlayerBloodGrid As Control
+  attributes:
+  - type: Godot.ExportGroupAttribute
+    ctor: Godot.ExportGroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Piles
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.EnemyBloodGrid
+  commentId: F:CardGame.GodotClient.UIManager.EnemyBloodGrid
+  id: EnemyBloodGrid
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: EnemyBloodGrid
+  nameWithType: UIManager.EnemyBloodGrid
+  fullName: CardGame.GodotClient.UIManager.EnemyBloodGrid
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnemyBloodGrid
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 69
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control EnemyBloodGrid
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public EnemyBloodGrid As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.DeckCountLabel
+  commentId: F:CardGame.GodotClient.UIManager.DeckCountLabel
+  id: DeckCountLabel
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: DeckCountLabel
+  nameWithType: UIManager.DeckCountLabel
+  fullName: CardGame.GodotClient.UIManager.DeckCountLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckCountLabel
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 70
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label DeckCountLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public DeckCountLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.GraveyardContainer
+  commentId: F:CardGame.GodotClient.UIManager.GraveyardContainer
+  id: GraveyardContainer
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: GraveyardContainer
+  nameWithType: UIManager.GraveyardContainer
+  fullName: CardGame.GodotClient.UIManager.GraveyardContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GraveyardContainer
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 71
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control GraveyardContainer
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public GraveyardContainer As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.UIManager.OnCardClicked
+  commentId: E:CardGame.GodotClient.UIManager.OnCardClicked
+  id: OnCardClicked
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: OnCardClicked
+  nameWithType: UIManager.OnCardClicked
+  fullName: CardGame.GodotClient.UIManager.OnCardClicked
+  type: Event
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnCardClicked
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 90
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Fired when a CardView (in hand or on board) is clicked.
+  example: []
+  syntax:
+    content: public event Action<CardView> OnCardClicked
+    return:
+      type: System.Action{CardGame.GodotClient.CardView}
+    content.vb: Public Event OnCardClicked As Action(Of CardView)
+- uid: CardGame.GodotClient.UIManager.OnEndTurnClicked
+  commentId: E:CardGame.GodotClient.UIManager.OnEndTurnClicked
+  id: OnEndTurnClicked
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: OnEndTurnClicked
+  nameWithType: UIManager.OnEndTurnClicked
+  fullName: CardGame.GodotClient.UIManager.OnEndTurnClicked
+  type: Event
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnEndTurnClicked
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 92
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Fired when the End Turn button is clicked.
+  example: []
+  syntax:
+    content: public event Action OnEndTurnClicked
+    return:
+      type: System.Action
+    content.vb: Public Event OnEndTurnClicked As Action
+- uid: CardGame.GodotClient.UIManager.OnRestartClicked
+  commentId: E:CardGame.GodotClient.UIManager.OnRestartClicked
+  id: OnRestartClicked
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: OnRestartClicked
+  nameWithType: UIManager.OnRestartClicked
+  fullName: CardGame.GodotClient.UIManager.OnRestartClicked
+  type: Event
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnRestartClicked
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 94
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Fired when the Restart button is clicked.
+  example: []
+  syntax:
+    content: public event Action OnRestartClicked
+    return:
+      type: System.Action
+    content.vb: Public Event OnRestartClicked As Action
+- uid: CardGame.GodotClient.UIManager.OnCancelSpellClicked
+  commentId: E:CardGame.GodotClient.UIManager.OnCancelSpellClicked
+  id: OnCancelSpellClicked
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: OnCancelSpellClicked
+  nameWithType: UIManager.OnCancelSpellClicked
+  fullName: CardGame.GodotClient.UIManager.OnCancelSpellClicked
+  type: Event
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnCancelSpellClicked
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 96
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Fired when the Cancel Spell button is clicked.
+  example: []
+  syntax:
+    content: public event Action OnCancelSpellClicked
+    return:
+      type: System.Action
+    content.vb: Public Event OnCancelSpellClicked As Action
+- uid: CardGame.GodotClient.UIManager.OnConfirmMulliganClicked
+  commentId: E:CardGame.GodotClient.UIManager.OnConfirmMulliganClicked
+  id: OnConfirmMulliganClicked
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: OnConfirmMulliganClicked
+  nameWithType: UIManager.OnConfirmMulliganClicked
+  fullName: CardGame.GodotClient.UIManager.OnConfirmMulliganClicked
+  type: Event
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnConfirmMulliganClicked
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 98
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Fired when the Confirm Mulligan button is clicked.
+  example: []
+  syntax:
+    content: public event Action OnConfirmMulliganClicked
+    return:
+      type: System.Action
+    content.vb: Public Event OnConfirmMulliganClicked As Action
+- uid: CardGame.GodotClient.UIManager._Ready
+  commentId: M:CardGame.GodotClient.UIManager._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: UIManager._Ready()
+  fullName: CardGame.GodotClient.UIManager._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 107
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Initializes UI components, hides overlays, connects internal signals, and instantiates the ChoiceModal.
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.UIManager._Ready*
+- uid: CardGame.GodotClient.UIManager.CreateGhostUnit(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  commentId: M:CardGame.GodotClient.UIManager.CreateGhostUnit(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  id: CreateGhostUnit(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: CreateGhostUnit(CardInstance, int)
+  nameWithType: UIManager.CreateGhostUnit(CardInstance, int)
+  fullName: CardGame.GodotClient.UIManager.CreateGhostUnit(CardGame.Core.Cards.Models.CardInstance, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CreateGhostUnit
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 159
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Creates a semi-transparent "Ghost" unit on the board.
+
+    Used to visualize where a unit will be placed while the player is selecting a target for its Battlecry.
+  example: []
+  syntax:
+    content: public void CreateGhostUnit(CardInstance card, int lineIdx)
+    parameters:
+    - id: card
+      type: CardGame.Core.Cards.Models.CardInstance
+      description: The card data to visualize.
+    - id: lineIdx
+      type: System.Int32
+      description: The board line index where the ghost should appear.
+    content.vb: Public Sub CreateGhostUnit(card As CardInstance, lineIdx As Integer)
+  overload: CardGame.GodotClient.UIManager.CreateGhostUnit*
+  nameWithType.vb: UIManager.CreateGhostUnit(CardInstance, Integer)
+  fullName.vb: CardGame.GodotClient.UIManager.CreateGhostUnit(CardGame.Core.Cards.Models.CardInstance, Integer)
+  name.vb: CreateGhostUnit(CardInstance, Integer)
+- uid: CardGame.GodotClient.UIManager.RemoveGhostUnit
+  commentId: M:CardGame.GodotClient.UIManager.RemoveGhostUnit
+  id: RemoveGhostUnit
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: RemoveGhostUnit()
+  nameWithType: UIManager.RemoveGhostUnit()
+  fullName: CardGame.GodotClient.UIManager.RemoveGhostUnit()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: RemoveGhostUnit
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 190
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Removes the current ghost unit from the board.
+  example: []
+  syntax:
+    content: public void RemoveGhostUnit()
+    content.vb: Public Sub RemoveGhostUnit()
+  overload: CardGame.GodotClient.UIManager.RemoveGhostUnit*
+- uid: CardGame.GodotClient.UIManager.GetGhostUnit
+  commentId: M:CardGame.GodotClient.UIManager.GetGhostUnit
+  id: GetGhostUnit
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: GetGhostUnit()
+  nameWithType: UIManager.GetGhostUnit()
+  fullName: CardGame.GodotClient.UIManager.GetGhostUnit()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetGhostUnit
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 211
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Gets the current ghost unit instance.
+  example: []
+  syntax:
+    content: public CardView GetGhostUnit()
+    return:
+      type: CardGame.GodotClient.CardView
+    content.vb: Public Function GetGhostUnit() As CardView
+  overload: CardGame.GodotClient.UIManager.GetGhostUnit*
+- uid: CardGame.GodotClient.UIManager.GetArrowStartPosition
+  commentId: M:CardGame.GodotClient.UIManager.GetArrowStartPosition
+  id: GetArrowStartPosition
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: GetArrowStartPosition()
+  nameWithType: UIManager.GetArrowStartPosition()
+  fullName: CardGame.GodotClient.UIManager.GetArrowStartPosition()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GetArrowStartPosition
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 221
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Returns the screen position from which the targeting arrow should originate.
+
+    If a Ghost Unit exists, returns its center. Otherwise, returns a default position (hand).
+  example: []
+  syntax:
+    content: public Vector2 GetArrowStartPosition()
+    return:
+      type: Godot.Vector2
+    content.vb: Public Function GetArrowStartPosition() As Vector2
+  overload: CardGame.GodotClient.UIManager.GetArrowStartPosition*
+- uid: CardGame.GodotClient.UIManager.ShowChoiceModal(System.Collections.Generic.IEnumerable{System.String},System.Action{System.Int32},System.Collections.Generic.List{System.Boolean})
+  commentId: M:CardGame.GodotClient.UIManager.ShowChoiceModal(System.Collections.Generic.IEnumerable{System.String},System.Action{System.Int32},System.Collections.Generic.List{System.Boolean})
+  id: ShowChoiceModal(System.Collections.Generic.IEnumerable{System.String},System.Action{System.Int32},System.Collections.Generic.List{System.Boolean})
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: ShowChoiceModal(IEnumerable<string>, Action<int>, List<bool>)
+  nameWithType: UIManager.ShowChoiceModal(IEnumerable<string>, Action<int>, List<bool>)
+  fullName: CardGame.GodotClient.UIManager.ShowChoiceModal(System.Collections.Generic.IEnumerable<string>, System.Action<int>, System.Collections.Generic.List<bool>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ShowChoiceModal
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 236
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Displays the choice modal with text options (e.g., for Expectancy card).
+  example: []
+  syntax:
+    content: public void ShowChoiceModal(IEnumerable<string> options, Action<int> onSelected, List<bool> enabledStates = null)
+    parameters:
+    - id: options
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: List of option text labels.
+    - id: onSelected
+      type: System.Action{System.Int32}
+      description: Callback action with the selected index.
+    - id: enabledStates
+      type: System.Collections.Generic.List{System.Boolean}
+      description: Optional list of booleans indicating which options are enabled.
+    content.vb: Public Sub ShowChoiceModal(options As IEnumerable(Of String), onSelected As Action(Of Integer), enabledStates As List(Of Boolean) = Nothing)
+  overload: CardGame.GodotClient.UIManager.ShowChoiceModal*
+  nameWithType.vb: UIManager.ShowChoiceModal(IEnumerable(Of String), Action(Of Integer), List(Of Boolean))
+  fullName.vb: CardGame.GodotClient.UIManager.ShowChoiceModal(System.Collections.Generic.IEnumerable(Of String), System.Action(Of Integer), System.Collections.Generic.List(Of Boolean))
+  name.vb: ShowChoiceModal(IEnumerable(Of String), Action(Of Integer), List(Of Boolean))
+- uid: CardGame.GodotClient.UIManager.ShowCardSelectionModal(System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},System.Action{System.Int32})
+  commentId: M:CardGame.GodotClient.UIManager.ShowCardSelectionModal(System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},System.Action{System.Int32})
+  id: ShowCardSelectionModal(System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance},System.Action{System.Int32})
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: ShowCardSelectionModal(List<CardInstance>, Action<int>)
+  nameWithType: UIManager.ShowCardSelectionModal(List<CardInstance>, Action<int>)
+  fullName: CardGame.GodotClient.UIManager.ShowCardSelectionModal(System.Collections.Generic.List<CardGame.Core.Cards.Models.CardInstance>, System.Action<int>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ShowCardSelectionModal
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 248
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Displays the choice modal with a grid of cards (e.g., for Tutor/Search effects).
+  example: []
+  syntax:
+    content: public void ShowCardSelectionModal(List<CardInstance> cards, Action<int> onSelected)
+    parameters:
+    - id: cards
+      type: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+      description: List of cards to display.
+    - id: onSelected
+      type: System.Action{System.Int32}
+      description: Callback action with the selected index.
+    content.vb: Public Sub ShowCardSelectionModal(cards As List(Of CardInstance), onSelected As Action(Of Integer))
+  overload: CardGame.GodotClient.UIManager.ShowCardSelectionModal*
+  nameWithType.vb: UIManager.ShowCardSelectionModal(List(Of CardInstance), Action(Of Integer))
+  fullName.vb: CardGame.GodotClient.UIManager.ShowCardSelectionModal(System.Collections.Generic.List(Of CardGame.Core.Cards.Models.CardInstance), System.Action(Of Integer))
+  name.vb: ShowCardSelectionModal(List(Of CardInstance), Action(Of Integer))
+- uid: CardGame.GodotClient.UIManager.HideChoiceModal
+  commentId: M:CardGame.GodotClient.UIManager.HideChoiceModal
+  id: HideChoiceModal
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: HideChoiceModal()
+  nameWithType: UIManager.HideChoiceModal()
+  fullName: CardGame.GodotClient.UIManager.HideChoiceModal()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HideChoiceModal
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 261
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Hides the choice modal.
+  example: []
+  syntax:
+    content: public void HideChoiceModal()
+    content.vb: Public Sub HideChoiceModal()
+  overload: CardGame.GodotClient.UIManager.HideChoiceModal*
+- uid: CardGame.GodotClient.UIManager.HighlightTargets(CardGame.Core.Cards.Data.TargetType,System.Int32)
+  commentId: M:CardGame.GodotClient.UIManager.HighlightTargets(CardGame.Core.Cards.Data.TargetType,System.Int32)
+  id: HighlightTargets(CardGame.Core.Cards.Data.TargetType,System.Int32)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: HighlightTargets(TargetType, int)
+  nameWithType: UIManager.HighlightTargets(TargetType, int)
+  fullName: CardGame.GodotClient.UIManager.HighlightTargets(CardGame.Core.Cards.Data.TargetType, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HighlightTargets
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 271
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Highlights valid targets on the board with a colored border.
+  example: []
+  syntax:
+    content: public void HighlightTargets(TargetType type, int playerId)
+    parameters:
+    - id: type
+      type: CardGame.Core.Cards.Data.TargetType
+      description: The type of targets to highlight (Enemy, Friendly, etc.).
+    - id: playerId
+      type: System.Int32
+      description: The local player's ID.
+    content.vb: Public Sub HighlightTargets(type As TargetType, playerId As Integer)
+  overload: CardGame.GodotClient.UIManager.HighlightTargets*
+  nameWithType.vb: UIManager.HighlightTargets(TargetType, Integer)
+  fullName.vb: CardGame.GodotClient.UIManager.HighlightTargets(CardGame.Core.Cards.Data.TargetType, Integer)
+  name.vb: HighlightTargets(TargetType, Integer)
+- uid: CardGame.GodotClient.UIManager.HighlightValidTargets(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  commentId: M:CardGame.GodotClient.UIManager.HighlightValidTargets(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  id: HighlightValidTargets(CardGame.Core.Cards.Models.CardInstance,System.Int32)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: HighlightValidTargets(CardInstance, int)
+  nameWithType: UIManager.HighlightValidTargets(CardInstance, int)
+  fullName: CardGame.GodotClient.UIManager.HighlightValidTargets(CardGame.Core.Cards.Models.CardInstance, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HighlightValidTargets
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 304
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Helper for legacy calls. Highlights valid targets for a spell.
+  example: []
+  syntax:
+    content: public void HighlightValidTargets(CardInstance spell, int playerId)
+    parameters:
+    - id: spell
+      type: CardGame.Core.Cards.Models.CardInstance
+    - id: playerId
+      type: System.Int32
+    content.vb: Public Sub HighlightValidTargets(spell As CardInstance, playerId As Integer)
+  overload: CardGame.GodotClient.UIManager.HighlightValidTargets*
+  nameWithType.vb: UIManager.HighlightValidTargets(CardInstance, Integer)
+  fullName.vb: CardGame.GodotClient.UIManager.HighlightValidTargets(CardGame.Core.Cards.Models.CardInstance, Integer)
+  name.vb: HighlightValidTargets(CardInstance, Integer)
+- uid: CardGame.GodotClient.UIManager.ClearHighlights
+  commentId: M:CardGame.GodotClient.UIManager.ClearHighlights
+  id: ClearHighlights
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: ClearHighlights()
+  nameWithType: UIManager.ClearHighlights()
+  fullName: CardGame.GodotClient.UIManager.ClearHighlights()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ClearHighlights
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 312
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Removes highlights from all cards on the board.
+  example: []
+  syntax:
+    content: public void ClearHighlights()
+    content.vb: Public Sub ClearHighlights()
+  overload: CardGame.GodotClient.UIManager.ClearHighlights*
+- uid: CardGame.GodotClient.UIManager.IsCardInHand(CardGame.Core.Cards.Models.CardInstance)
+  commentId: M:CardGame.GodotClient.UIManager.IsCardInHand(CardGame.Core.Cards.Models.CardInstance)
+  id: IsCardInHand(CardGame.Core.Cards.Models.CardInstance)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: IsCardInHand(CardInstance)
+  nameWithType: UIManager.IsCardInHand(CardInstance)
+  fullName: CardGame.GodotClient.UIManager.IsCardInHand(CardGame.Core.Cards.Models.CardInstance)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: IsCardInHand
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 324
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Checks if a given card instance is currently visually in the player's hand.
+  example: []
+  syntax:
+    content: public bool IsCardInHand(CardInstance card)
+    parameters:
+    - id: card
+      type: CardGame.Core.Cards.Models.CardInstance
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsCardInHand(card As CardInstance) As Boolean
+  overload: CardGame.GodotClient.UIManager.IsCardInHand*
+- uid: CardGame.GodotClient.UIManager.UpdateDisplay(CardGame.Core.State.Models.GameState,System.Int32)
+  commentId: M:CardGame.GodotClient.UIManager.UpdateDisplay(CardGame.Core.State.Models.GameState,System.Int32)
+  id: UpdateDisplay(CardGame.Core.State.Models.GameState,System.Int32)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: UpdateDisplay(GameState, int)
+  nameWithType: UIManager.UpdateDisplay(GameState, int)
+  fullName: CardGame.GodotClient.UIManager.UpdateDisplay(CardGame.Core.State.Models.GameState, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateDisplay
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 341
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Main render loop. Updates the entire UI based on the current GameState.
+  example: []
+  syntax:
+    content: public void UpdateDisplay(GameState currentState, int playerId)
+    parameters:
+    - id: currentState
+      type: CardGame.Core.State.Models.GameState
+      description: The current game state to render.
+    - id: playerId
+      type: System.Int32
+      description: The local player's ID.
+    content.vb: Public Sub UpdateDisplay(currentState As GameState, playerId As Integer)
+  overload: CardGame.GodotClient.UIManager.UpdateDisplay*
+  nameWithType.vb: UIManager.UpdateDisplay(GameState, Integer)
+  fullName.vb: CardGame.GodotClient.UIManager.UpdateDisplay(CardGame.Core.State.Models.GameState, Integer)
+  name.vb: UpdateDisplay(GameState, Integer)
+- uid: CardGame.GodotClient.UIManager.ToggleMulliganPanel(System.Boolean)
+  commentId: M:CardGame.GodotClient.UIManager.ToggleMulliganPanel(System.Boolean)
+  id: ToggleMulliganPanel(System.Boolean)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: ToggleMulliganPanel(bool)
+  nameWithType: UIManager.ToggleMulliganPanel(bool)
+  fullName: CardGame.GodotClient.UIManager.ToggleMulliganPanel(bool)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ToggleMulliganPanel
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 501
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public void ToggleMulliganPanel(bool visible)
+    parameters:
+    - id: visible
+      type: System.Boolean
+    content.vb: Public Sub ToggleMulliganPanel(visible As Boolean)
+  overload: CardGame.GodotClient.UIManager.ToggleMulliganPanel*
+  nameWithType.vb: UIManager.ToggleMulliganPanel(Boolean)
+  fullName.vb: CardGame.GodotClient.UIManager.ToggleMulliganPanel(Boolean)
+  name.vb: ToggleMulliganPanel(Boolean)
+- uid: CardGame.GodotClient.UIManager.UpdateMulliganCounter(System.Int32,System.Int32)
+  commentId: M:CardGame.GodotClient.UIManager.UpdateMulliganCounter(System.Int32,System.Int32)
+  id: UpdateMulliganCounter(System.Int32,System.Int32)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: UpdateMulliganCounter(int, int)
+  nameWithType: UIManager.UpdateMulliganCounter(int, int)
+  fullName: CardGame.GodotClient.UIManager.UpdateMulliganCounter(int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateMulliganCounter
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 502
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public void UpdateMulliganCounter(int current, int max)
+    parameters:
+    - id: current
+      type: System.Int32
+    - id: max
+      type: System.Int32
+    content.vb: Public Sub UpdateMulliganCounter(current As Integer, max As Integer)
+  overload: CardGame.GodotClient.UIManager.UpdateMulliganCounter*
+  nameWithType.vb: UIManager.UpdateMulliganCounter(Integer, Integer)
+  fullName.vb: CardGame.GodotClient.UIManager.UpdateMulliganCounter(Integer, Integer)
+  name.vb: UpdateMulliganCounter(Integer, Integer)
+- uid: CardGame.GodotClient.UIManager.RenderMulliganCards(System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.List{System.Int32})
+  commentId: M:CardGame.GodotClient.UIManager.RenderMulliganCards(System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.List{System.Int32})
+  id: RenderMulliganCards(System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.List{System.Int32})
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: RenderMulliganCards(IEnumerable<CardInstance>, List<int>)
+  nameWithType: UIManager.RenderMulliganCards(IEnumerable<CardInstance>, List<int>)
+  fullName: CardGame.GodotClient.UIManager.RenderMulliganCards(System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Models.CardInstance>, System.Collections.Generic.List<int>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: RenderMulliganCards
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 504
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public void RenderMulliganCards(IEnumerable<CardInstance> cards, List<int> selectedIds)
+    parameters:
+    - id: cards
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance}
+    - id: selectedIds
+      type: System.Collections.Generic.List{System.Int32}
+    content.vb: Public Sub RenderMulliganCards(cards As IEnumerable(Of CardInstance), selectedIds As List(Of Integer))
+  overload: CardGame.GodotClient.UIManager.RenderMulliganCards*
+  nameWithType.vb: UIManager.RenderMulliganCards(IEnumerable(Of CardInstance), List(Of Integer))
+  fullName.vb: CardGame.GodotClient.UIManager.RenderMulliganCards(System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Models.CardInstance), System.Collections.Generic.List(Of Integer))
+  name.vb: RenderMulliganCards(IEnumerable(Of CardInstance), List(Of Integer))
+- uid: CardGame.GodotClient.UIManager.UpdateTargetingArrow(Godot.Vector2,Godot.Vector2)
+  commentId: M:CardGame.GodotClient.UIManager.UpdateTargetingArrow(Godot.Vector2,Godot.Vector2)
+  id: UpdateTargetingArrow(Godot.Vector2,Godot.Vector2)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: UpdateTargetingArrow(Vector2, Vector2)
+  nameWithType: UIManager.UpdateTargetingArrow(Vector2, Vector2)
+  fullName: CardGame.GodotClient.UIManager.UpdateTargetingArrow(Godot.Vector2, Godot.Vector2)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateTargetingArrow
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 518
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public void UpdateTargetingArrow(Vector2 start, Vector2 end)
+    parameters:
+    - id: start
+      type: Godot.Vector2
+    - id: end
+      type: Godot.Vector2
+    content.vb: Public Sub UpdateTargetingArrow(start As Vector2, [end] As Vector2)
+  overload: CardGame.GodotClient.UIManager.UpdateTargetingArrow*
+- uid: CardGame.GodotClient.UIManager.HideTargetingArrow
+  commentId: M:CardGame.GodotClient.UIManager.HideTargetingArrow
+  id: HideTargetingArrow
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: HideTargetingArrow()
+  nameWithType: UIManager.HideTargetingArrow()
+  fullName: CardGame.GodotClient.UIManager.HideTargetingArrow()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HideTargetingArrow
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 529
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public void HideTargetingArrow()
+    content.vb: Public Sub HideTargetingArrow()
+  overload: CardGame.GodotClient.UIManager.HideTargetingArrow*
+- uid: CardGame.GodotClient.UIManager.SetCancelButtonVisible(System.Boolean)
+  commentId: M:CardGame.GodotClient.UIManager.SetCancelButtonVisible(System.Boolean)
+  id: SetCancelButtonVisible(System.Boolean)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: SetCancelButtonVisible(bool)
+  nameWithType: UIManager.SetCancelButtonVisible(bool)
+  fullName: CardGame.GodotClient.UIManager.SetCancelButtonVisible(bool)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetCancelButtonVisible
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 530
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public void SetCancelButtonVisible(bool visible)
+    parameters:
+    - id: visible
+      type: System.Boolean
+    content.vb: Public Sub SetCancelButtonVisible(visible As Boolean)
+  overload: CardGame.GodotClient.UIManager.SetCancelButtonVisible*
+  nameWithType.vb: UIManager.SetCancelButtonVisible(Boolean)
+  fullName.vb: CardGame.GodotClient.UIManager.SetCancelButtonVisible(Boolean)
+  name.vb: SetCancelButtonVisible(Boolean)
+- uid: CardGame.GodotClient.UIManager.SetEndTurnEnabled(System.Boolean)
+  commentId: M:CardGame.GodotClient.UIManager.SetEndTurnEnabled(System.Boolean)
+  id: SetEndTurnEnabled(System.Boolean)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: SetEndTurnEnabled(bool)
+  nameWithType: UIManager.SetEndTurnEnabled(bool)
+  fullName: CardGame.GodotClient.UIManager.SetEndTurnEnabled(bool)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetEndTurnEnabled
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 531
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public void SetEndTurnEnabled(bool enabled)
+    parameters:
+    - id: enabled
+      type: System.Boolean
+    content.vb: Public Sub SetEndTurnEnabled(enabled As Boolean)
+  overload: CardGame.GodotClient.UIManager.SetEndTurnEnabled*
+  nameWithType.vb: UIManager.SetEndTurnEnabled(Boolean)
+  fullName.vb: CardGame.GodotClient.UIManager.SetEndTurnEnabled(Boolean)
+  name.vb: SetEndTurnEnabled(Boolean)
+- uid: CardGame.GodotClient.UIManager.ShowFloatingText(System.String,Godot.Vector2,Godot.Color)
+  commentId: M:CardGame.GodotClient.UIManager.ShowFloatingText(System.String,Godot.Vector2,Godot.Color)
+  id: ShowFloatingText(System.String,Godot.Vector2,Godot.Color)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: ShowFloatingText(string, Vector2, Color)
+  nameWithType: UIManager.ShowFloatingText(string, Vector2, Color)
+  fullName: CardGame.GodotClient.UIManager.ShowFloatingText(string, Godot.Vector2, Godot.Color)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ShowFloatingText
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 536
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Displays floating text (e.g. damage numbers) at a specific position.
+  example: []
+  syntax:
+    content: public void ShowFloatingText(string text, Vector2 pos, Color color)
+    parameters:
+    - id: text
+      type: System.String
+    - id: pos
+      type: Godot.Vector2
+    - id: color
+      type: Godot.Color
+    content.vb: Public Sub ShowFloatingText(text As String, pos As Vector2, color As Color)
+  overload: CardGame.GodotClient.UIManager.ShowFloatingText*
+  nameWithType.vb: UIManager.ShowFloatingText(String, Vector2, Color)
+  fullName.vb: CardGame.GodotClient.UIManager.ShowFloatingText(String, Godot.Vector2, Godot.Color)
+  name.vb: ShowFloatingText(String, Vector2, Color)
+- uid: CardGame.GodotClient.UIManager.FindCardUnderMouse(Godot.Vector2)
+  commentId: M:CardGame.GodotClient.UIManager.FindCardUnderMouse(Godot.Vector2)
+  id: FindCardUnderMouse(Godot.Vector2)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: FindCardUnderMouse(Vector2)
+  nameWithType: UIManager.FindCardUnderMouse(Vector2)
+  fullName: CardGame.GodotClient.UIManager.FindCardUnderMouse(Godot.Vector2)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: FindCardUnderMouse
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 555
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public CardView FindCardUnderMouse(Vector2 mousePos)
+    parameters:
+    - id: mousePos
+      type: Godot.Vector2
+    return:
+      type: CardGame.GodotClient.CardView
+    content.vb: Public Function FindCardUnderMouse(mousePos As Vector2) As CardView
+  overload: CardGame.GodotClient.UIManager.FindCardUnderMouse*
+- uid: CardGame.GodotClient.UIManager.ShowBigMessage(System.String,System.Single,System.Nullable{Godot.Color})
+  commentId: M:CardGame.GodotClient.UIManager.ShowBigMessage(System.String,System.Single,System.Nullable{Godot.Color})
+  id: ShowBigMessage(System.String,System.Single,System.Nullable{Godot.Color})
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: ShowBigMessage(string, float, Color?)
+  nameWithType: UIManager.ShowBigMessage(string, float, Color?)
+  fullName: CardGame.GodotClient.UIManager.ShowBigMessage(string, float, Godot.Color?)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ShowBigMessage
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 561
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public void ShowBigMessage(string text, float duration = 0, Color? color = null)
+    parameters:
+    - id: text
+      type: System.String
+    - id: duration
+      type: System.Single
+    - id: color
+      type: System.Nullable{Godot.Color}
+    content.vb: Public Sub ShowBigMessage(text As String, duration As Single = 0, color As Color? = Nothing)
+  overload: CardGame.GodotClient.UIManager.ShowBigMessage*
+  nameWithType.vb: UIManager.ShowBigMessage(String, Single, Color?)
+  fullName.vb: CardGame.GodotClient.UIManager.ShowBigMessage(String, Single, Godot.Color?)
+  name.vb: ShowBigMessage(String, Single, Color?)
+- uid: CardGame.GodotClient.UIManager.ShowGameOverScreen(System.Nullable{System.Int32},System.Int32,System.Int32)
+  commentId: M:CardGame.GodotClient.UIManager.ShowGameOverScreen(System.Nullable{System.Int32},System.Int32,System.Int32)
+  id: ShowGameOverScreen(System.Nullable{System.Int32},System.Int32,System.Int32)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: ShowGameOverScreen(int?, int, int)
+  nameWithType: UIManager.ShowGameOverScreen(int?, int, int)
+  fullName: CardGame.GodotClient.UIManager.ShowGameOverScreen(int?, int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ShowGameOverScreen
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 587
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public void ShowGameOverScreen(int? winnerId, int playerId, int botId)
+    parameters:
+    - id: winnerId
+      type: System.Nullable{System.Int32}
+    - id: playerId
+      type: System.Int32
+    - id: botId
+      type: System.Int32
+    content.vb: Public Sub ShowGameOverScreen(winnerId As Integer?, playerId As Integer, botId As Integer)
+  overload: CardGame.GodotClient.UIManager.ShowGameOverScreen*
+  nameWithType.vb: UIManager.ShowGameOverScreen(Integer?, Integer, Integer)
+  fullName.vb: CardGame.GodotClient.UIManager.ShowGameOverScreen(Integer?, Integer, Integer)
+  name.vb: ShowGameOverScreen(Integer?, Integer, Integer)
+- uid: CardGame.GodotClient.UIManager.HandleVisualEvents(System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent},System.Int32)
+  commentId: M:CardGame.GodotClient.UIManager.HandleVisualEvents(System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent},System.Int32)
+  id: HandleVisualEvents(System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent},System.Int32)
+  parent: CardGame.GodotClient.UIManager
+  langs:
+  - csharp
+  - vb
+  name: HandleVisualEvents(IEnumerable<IGameEvent>, int)
+  nameWithType: UIManager.HandleVisualEvents(IEnumerable<IGameEvent>, int)
+  fullName: CardGame.GodotClient.UIManager.HandleVisualEvents(System.Collections.Generic.IEnumerable<CardGame.Core.Events.Interfaces.IGameEvent>, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/UIManager.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HandleVisualEvents
+    path: ../Source/CardGame.GodotClient/Scripts/UIManager.cs
+    startLine: 609
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: public void HandleVisualEvents(IEnumerable<IGameEvent> events, int playerId)
+    parameters:
+    - id: events
+      type: System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent}
+    - id: playerId
+      type: System.Int32
+    content.vb: Public Sub HandleVisualEvents(events As IEnumerable(Of IGameEvent), playerId As Integer)
+  overload: CardGame.GodotClient.UIManager.HandleVisualEvents*
+  nameWithType.vb: UIManager.HandleVisualEvents(IEnumerable(Of IGameEvent), Integer)
+  fullName.vb: CardGame.GodotClient.UIManager.HandleVisualEvents(System.Collections.Generic.IEnumerable(Of CardGame.Core.Events.Interfaces.IGameEvent), Integer)
+  name.vb: HandleVisualEvents(IEnumerable(Of IGameEvent), Integer)
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.Control
+  commentId: T:Godot.Control
+  parent: Godot
+  isExternal: true
+  name: Control
+  nameWithType: Control
+  fullName: Godot.Control
+- uid: Godot.Button
+  commentId: T:Godot.Button
+  parent: Godot
+  isExternal: true
+  name: Button
+  nameWithType: Button
+  fullName: Godot.Button
+- uid: Godot.Line2D
+  commentId: T:Godot.Line2D
+  parent: Godot
+  isExternal: true
+  name: Line2D
+  nameWithType: Line2D
+  fullName: Godot.Line2D
+- uid: Godot.Label
+  commentId: T:Godot.Label
+  parent: Godot
+  isExternal: true
+  name: Label
+  nameWithType: Label
+  fullName: Godot.Label
+- uid: Godot.PackedScene
+  commentId: T:Godot.PackedScene
+  parent: Godot
+  isExternal: true
+  name: PackedScene
+  nameWithType: PackedScene
+  fullName: Godot.PackedScene
+- uid: System.Action{CardGame.GodotClient.CardView}
+  commentId: T:System.Action{CardGame.GodotClient.CardView}
+  parent: System
+  definition: System.Action`1
+  href: CardGame.GodotClient.CardView.html
+  name: Action<CardView>
+  nameWithType: Action<CardView>
+  fullName: System.Action<CardGame.GodotClient.CardView>
+  nameWithType.vb: Action(Of CardView)
+  fullName.vb: System.Action(Of CardGame.GodotClient.CardView)
+  name.vb: Action(Of CardView)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: CardGame.GodotClient.CardView
+    name: CardView
+    href: CardGame.GodotClient.CardView.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.GodotClient.CardView
+    name: CardView
+    href: CardGame.GodotClient.CardView.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action
+  commentId: T:System.Action
+  parent: System
+  isExternal: true
+  name: Action
+  nameWithType: Action
+  fullName: System.Action
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.UIManager._Ready*
+  commentId: Overload:CardGame.GodotClient.UIManager._Ready
+  href: CardGame.GodotClient.UIManager._Ready.html#CardGame_GodotClient_UIManager__Ready
+  name: _Ready
+  nameWithType: UIManager._Ready
+  fullName: CardGame.GodotClient.UIManager._Ready
+- uid: CardGame.GodotClient.UIManager.CreateGhostUnit*
+  commentId: Overload:CardGame.GodotClient.UIManager.CreateGhostUnit
+  href: CardGame.GodotClient.UIManager.CreateGhostUnit.html#CardGame_GodotClient_UIManager_CreateGhostUnit_CardGame_Core_Cards_Models_CardInstance_System_Int32_
+  name: CreateGhostUnit
+  nameWithType: UIManager.CreateGhostUnit
+  fullName: CardGame.GodotClient.UIManager.CreateGhostUnit
+- uid: CardGame.Core.Cards.Models.CardInstance
+  commentId: T:CardGame.Core.Cards.Models.CardInstance
+  parent: CardGame.Core.Cards.Models
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: CardInstance
+  nameWithType: CardInstance
+  fullName: CardGame.Core.Cards.Models.CardInstance
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.Cards.Models
+  commentId: N:CardGame.Core.Cards.Models
+  href: CardGame.html
+  name: CardGame.Core.Cards.Models
+  nameWithType: CardGame.Core.Cards.Models
+  fullName: CardGame.Core.Cards.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Models
+    name: Models
+    href: CardGame.Core.Cards.Models.html
+- uid: CardGame.GodotClient.UIManager.RemoveGhostUnit*
+  commentId: Overload:CardGame.GodotClient.UIManager.RemoveGhostUnit
+  href: CardGame.GodotClient.UIManager.RemoveGhostUnit.html#CardGame_GodotClient_UIManager_RemoveGhostUnit
+  name: RemoveGhostUnit
+  nameWithType: UIManager.RemoveGhostUnit
+  fullName: CardGame.GodotClient.UIManager.RemoveGhostUnit
+- uid: CardGame.GodotClient.UIManager.GetGhostUnit*
+  commentId: Overload:CardGame.GodotClient.UIManager.GetGhostUnit
+  href: CardGame.GodotClient.UIManager.GetGhostUnit.html#CardGame_GodotClient_UIManager_GetGhostUnit
+  name: GetGhostUnit
+  nameWithType: UIManager.GetGhostUnit
+  fullName: CardGame.GodotClient.UIManager.GetGhostUnit
+- uid: CardGame.GodotClient.CardView
+  commentId: T:CardGame.GodotClient.CardView
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.CardView.html
+  name: CardView
+  nameWithType: CardView
+  fullName: CardGame.GodotClient.CardView
+- uid: CardGame.GodotClient.UIManager.GetArrowStartPosition*
+  commentId: Overload:CardGame.GodotClient.UIManager.GetArrowStartPosition
+  href: CardGame.GodotClient.UIManager.GetArrowStartPosition.html#CardGame_GodotClient_UIManager_GetArrowStartPosition
+  name: GetArrowStartPosition
+  nameWithType: UIManager.GetArrowStartPosition
+  fullName: CardGame.GodotClient.UIManager.GetArrowStartPosition
+- uid: Godot.Vector2
+  commentId: T:Godot.Vector2
+  parent: Godot
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Godot.Vector2
+- uid: CardGame.GodotClient.UIManager.ShowChoiceModal*
+  commentId: Overload:CardGame.GodotClient.UIManager.ShowChoiceModal
+  href: CardGame.GodotClient.UIManager.ShowChoiceModal.html#CardGame_GodotClient_UIManager_ShowChoiceModal_System_Collections_Generic_IEnumerable_System_String__System_Action_System_Int32__System_Collections_Generic_List_System_Boolean__
+  name: ShowChoiceModal
+  nameWithType: UIManager.ShowChoiceModal
+  fullName: CardGame.GodotClient.UIManager.ShowChoiceModal
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: System.Action{System.Int32}
+  commentId: T:System.Action{System.Int32}
+  parent: System
+  definition: System.Action`1
+  name: Action<int>
+  nameWithType: Action<int>
+  fullName: System.Action<int>
+  nameWithType.vb: Action(Of Integer)
+  fullName.vb: System.Action(Of Integer)
+  name.vb: Action(Of Integer)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.List{System.Boolean}
+  commentId: T:System.Collections.Generic.List{System.Boolean}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<bool>
+  nameWithType: List<bool>
+  fullName: System.Collections.Generic.List<bool>
+  nameWithType.vb: List(Of Boolean)
+  fullName.vb: System.Collections.Generic.List(Of Boolean)
+  name.vb: List(Of Boolean)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.GodotClient.UIManager.ShowCardSelectionModal*
+  commentId: Overload:CardGame.GodotClient.UIManager.ShowCardSelectionModal
+  href: CardGame.GodotClient.UIManager.ShowCardSelectionModal.html#CardGame_GodotClient_UIManager_ShowCardSelectionModal_System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__System_Action_System_Int32__
+  name: ShowCardSelectionModal
+  nameWithType: UIManager.ShowCardSelectionModal
+  fullName: CardGame.GodotClient.UIManager.ShowCardSelectionModal
+- uid: System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  commentId: T:System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: List<CardInstance>
+  nameWithType: List<CardInstance>
+  fullName: System.Collections.Generic.List<CardGame.Core.Cards.Models.CardInstance>
+  nameWithType.vb: List(Of CardInstance)
+  fullName.vb: System.Collections.Generic.List(Of CardGame.Core.Cards.Models.CardInstance)
+  name.vb: List(Of CardInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: )
+- uid: CardGame.GodotClient.UIManager.HideChoiceModal*
+  commentId: Overload:CardGame.GodotClient.UIManager.HideChoiceModal
+  href: CardGame.GodotClient.UIManager.HideChoiceModal.html#CardGame_GodotClient_UIManager_HideChoiceModal
+  name: HideChoiceModal
+  nameWithType: UIManager.HideChoiceModal
+  fullName: CardGame.GodotClient.UIManager.HideChoiceModal
+- uid: CardGame.GodotClient.UIManager.HighlightTargets*
+  commentId: Overload:CardGame.GodotClient.UIManager.HighlightTargets
+  href: CardGame.GodotClient.UIManager.HighlightTargets.html#CardGame_GodotClient_UIManager_HighlightTargets_CardGame_Core_Cards_Data_TargetType_System_Int32_
+  name: HighlightTargets
+  nameWithType: UIManager.HighlightTargets
+  fullName: CardGame.GodotClient.UIManager.HighlightTargets
+- uid: CardGame.Core.Cards.Data.TargetType
+  commentId: T:CardGame.Core.Cards.Data.TargetType
+  parent: CardGame.Core.Cards.Data
+  href: CardGame.Core.Cards.Data.TargetType.html
+  name: TargetType
+  nameWithType: TargetType
+  fullName: CardGame.Core.Cards.Data.TargetType
+- uid: CardGame.Core.Cards.Data
+  commentId: N:CardGame.Core.Cards.Data
+  href: CardGame.html
+  name: CardGame.Core.Cards.Data
+  nameWithType: CardGame.Core.Cards.Data
+  fullName: CardGame.Core.Cards.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Cards
+    name: Cards
+    href: CardGame.Core.Cards.html
+  - name: .
+  - uid: CardGame.Core.Cards.Data
+    name: Data
+    href: CardGame.Core.Cards.Data.html
+- uid: CardGame.GodotClient.UIManager.HighlightValidTargets*
+  commentId: Overload:CardGame.GodotClient.UIManager.HighlightValidTargets
+  href: CardGame.GodotClient.UIManager.HighlightValidTargets.html#CardGame_GodotClient_UIManager_HighlightValidTargets_CardGame_Core_Cards_Models_CardInstance_System_Int32_
+  name: HighlightValidTargets
+  nameWithType: UIManager.HighlightValidTargets
+  fullName: CardGame.GodotClient.UIManager.HighlightValidTargets
+- uid: CardGame.GodotClient.UIManager.ClearHighlights*
+  commentId: Overload:CardGame.GodotClient.UIManager.ClearHighlights
+  href: CardGame.GodotClient.UIManager.ClearHighlights.html#CardGame_GodotClient_UIManager_ClearHighlights
+  name: ClearHighlights
+  nameWithType: UIManager.ClearHighlights
+  fullName: CardGame.GodotClient.UIManager.ClearHighlights
+- uid: CardGame.GodotClient.UIManager.IsCardInHand*
+  commentId: Overload:CardGame.GodotClient.UIManager.IsCardInHand
+  href: CardGame.GodotClient.UIManager.IsCardInHand.html#CardGame_GodotClient_UIManager_IsCardInHand_CardGame_Core_Cards_Models_CardInstance_
+  name: IsCardInHand
+  nameWithType: UIManager.IsCardInHand
+  fullName: CardGame.GodotClient.UIManager.IsCardInHand
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.GodotClient.UIManager.UpdateDisplay*
+  commentId: Overload:CardGame.GodotClient.UIManager.UpdateDisplay
+  href: CardGame.GodotClient.UIManager.UpdateDisplay.html#CardGame_GodotClient_UIManager_UpdateDisplay_CardGame_Core_State_Models_GameState_System_Int32_
+  name: UpdateDisplay
+  nameWithType: UIManager.UpdateDisplay
+  fullName: CardGame.GodotClient.UIManager.UpdateDisplay
+- uid: CardGame.Core.State.Models.GameState
+  commentId: T:CardGame.Core.State.Models.GameState
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: CardGame.Core.State.Models.GameState
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: CardGame.GodotClient.UIManager.ToggleMulliganPanel*
+  commentId: Overload:CardGame.GodotClient.UIManager.ToggleMulliganPanel
+  href: CardGame.GodotClient.UIManager.ToggleMulliganPanel.html#CardGame_GodotClient_UIManager_ToggleMulliganPanel_System_Boolean_
+  name: ToggleMulliganPanel
+  nameWithType: UIManager.ToggleMulliganPanel
+  fullName: CardGame.GodotClient.UIManager.ToggleMulliganPanel
+- uid: CardGame.GodotClient.UIManager.UpdateMulliganCounter*
+  commentId: Overload:CardGame.GodotClient.UIManager.UpdateMulliganCounter
+  href: CardGame.GodotClient.UIManager.UpdateMulliganCounter.html#CardGame_GodotClient_UIManager_UpdateMulliganCounter_System_Int32_System_Int32_
+  name: UpdateMulliganCounter
+  nameWithType: UIManager.UpdateMulliganCounter
+  fullName: CardGame.GodotClient.UIManager.UpdateMulliganCounter
+- uid: CardGame.GodotClient.UIManager.RenderMulliganCards*
+  commentId: Overload:CardGame.GodotClient.UIManager.RenderMulliganCards
+  href: CardGame.GodotClient.UIManager.RenderMulliganCards.html#CardGame_GodotClient_UIManager_RenderMulliganCards_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_List_System_Int32__
+  name: RenderMulliganCards
+  nameWithType: UIManager.RenderMulliganCards
+  fullName: CardGame.GodotClient.UIManager.RenderMulliganCards
+- uid: System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance}
+  commentId: T:System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: CardGame.Core.Cards.Models.CardInstance.html
+  name: IEnumerable<CardInstance>
+  nameWithType: IEnumerable<CardInstance>
+  fullName: System.Collections.Generic.IEnumerable<CardGame.Core.Cards.Models.CardInstance>
+  nameWithType.vb: IEnumerable(Of CardInstance)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CardGame.Core.Cards.Models.CardInstance)
+  name.vb: IEnumerable(Of CardInstance)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Cards.Models.CardInstance
+    name: CardInstance
+    href: CardGame.Core.Cards.Models.CardInstance.html
+  - name: )
+- uid: System.Collections.Generic.List{System.Int32}
+  commentId: T:System.Collections.Generic.List{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<int>
+  nameWithType: List<int>
+  fullName: System.Collections.Generic.List<int>
+  nameWithType.vb: List(Of Integer)
+  fullName.vb: System.Collections.Generic.List(Of Integer)
+  name.vb: List(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: CardGame.GodotClient.UIManager.UpdateTargetingArrow*
+  commentId: Overload:CardGame.GodotClient.UIManager.UpdateTargetingArrow
+  href: CardGame.GodotClient.UIManager.UpdateTargetingArrow.html#CardGame_GodotClient_UIManager_UpdateTargetingArrow_Godot_Vector2_Godot_Vector2_
+  name: UpdateTargetingArrow
+  nameWithType: UIManager.UpdateTargetingArrow
+  fullName: CardGame.GodotClient.UIManager.UpdateTargetingArrow
+- uid: CardGame.GodotClient.UIManager.HideTargetingArrow*
+  commentId: Overload:CardGame.GodotClient.UIManager.HideTargetingArrow
+  href: CardGame.GodotClient.UIManager.HideTargetingArrow.html#CardGame_GodotClient_UIManager_HideTargetingArrow
+  name: HideTargetingArrow
+  nameWithType: UIManager.HideTargetingArrow
+  fullName: CardGame.GodotClient.UIManager.HideTargetingArrow
+- uid: CardGame.GodotClient.UIManager.SetCancelButtonVisible*
+  commentId: Overload:CardGame.GodotClient.UIManager.SetCancelButtonVisible
+  href: CardGame.GodotClient.UIManager.SetCancelButtonVisible.html#CardGame_GodotClient_UIManager_SetCancelButtonVisible_System_Boolean_
+  name: SetCancelButtonVisible
+  nameWithType: UIManager.SetCancelButtonVisible
+  fullName: CardGame.GodotClient.UIManager.SetCancelButtonVisible
+- uid: CardGame.GodotClient.UIManager.SetEndTurnEnabled*
+  commentId: Overload:CardGame.GodotClient.UIManager.SetEndTurnEnabled
+  href: CardGame.GodotClient.UIManager.SetEndTurnEnabled.html#CardGame_GodotClient_UIManager_SetEndTurnEnabled_System_Boolean_
+  name: SetEndTurnEnabled
+  nameWithType: UIManager.SetEndTurnEnabled
+  fullName: CardGame.GodotClient.UIManager.SetEndTurnEnabled
+- uid: CardGame.GodotClient.UIManager.ShowFloatingText*
+  commentId: Overload:CardGame.GodotClient.UIManager.ShowFloatingText
+  href: CardGame.GodotClient.UIManager.ShowFloatingText.html#CardGame_GodotClient_UIManager_ShowFloatingText_System_String_Godot_Vector2_Godot_Color_
+  name: ShowFloatingText
+  nameWithType: UIManager.ShowFloatingText
+  fullName: CardGame.GodotClient.UIManager.ShowFloatingText
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Godot.Color
+  commentId: T:Godot.Color
+  parent: Godot
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: Godot.Color
+- uid: CardGame.GodotClient.UIManager.FindCardUnderMouse*
+  commentId: Overload:CardGame.GodotClient.UIManager.FindCardUnderMouse
+  href: CardGame.GodotClient.UIManager.FindCardUnderMouse.html#CardGame_GodotClient_UIManager_FindCardUnderMouse_Godot_Vector2_
+  name: FindCardUnderMouse
+  nameWithType: UIManager.FindCardUnderMouse
+  fullName: CardGame.GodotClient.UIManager.FindCardUnderMouse
+- uid: CardGame.GodotClient.UIManager.ShowBigMessage*
+  commentId: Overload:CardGame.GodotClient.UIManager.ShowBigMessage
+  href: CardGame.GodotClient.UIManager.ShowBigMessage.html#CardGame_GodotClient_UIManager_ShowBigMessage_System_String_System_Single_System_Nullable_Godot_Color__
+  name: ShowBigMessage
+  nameWithType: UIManager.ShowBigMessage
+  fullName: CardGame.GodotClient.UIManager.ShowBigMessage
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Nullable{Godot.Color}
+  commentId: T:System.Nullable{Godot.Color}
+  parent: System
+  definition: System.Nullable`1
+  name: Color?
+  nameWithType: Color?
+  fullName: Godot.Color?
+  spec.csharp:
+  - uid: Godot.Color
+    name: Color
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: Godot.Color
+    name: Color
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.GodotClient.UIManager.ShowGameOverScreen*
+  commentId: Overload:CardGame.GodotClient.UIManager.ShowGameOverScreen
+  href: CardGame.GodotClient.UIManager.ShowGameOverScreen.html#CardGame_GodotClient_UIManager_ShowGameOverScreen_System_Nullable_System_Int32__System_Int32_System_Int32_
+  name: ShowGameOverScreen
+  nameWithType: UIManager.ShowGameOverScreen
+  fullName: CardGame.GodotClient.UIManager.ShowGameOverScreen
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: CardGame.GodotClient.UIManager.HandleVisualEvents*
+  commentId: Overload:CardGame.GodotClient.UIManager.HandleVisualEvents
+  href: CardGame.GodotClient.UIManager.HandleVisualEvents.html#CardGame_GodotClient_UIManager_HandleVisualEvents_System_Collections_Generic_IEnumerable_CardGame_Core_Events_Interfaces_IGameEvent__System_Int32_
+  name: HandleVisualEvents
+  nameWithType: UIManager.HandleVisualEvents
+  fullName: CardGame.GodotClient.UIManager.HandleVisualEvents
+- uid: System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent}
+  commentId: T:System.Collections.Generic.IEnumerable{CardGame.Core.Events.Interfaces.IGameEvent}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  name: IEnumerable<IGameEvent>
+  nameWithType: IEnumerable<IGameEvent>
+  fullName: System.Collections.Generic.IEnumerable<CardGame.Core.Events.Interfaces.IGameEvent>
+  nameWithType.vb: IEnumerable(Of IGameEvent)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CardGame.Core.Events.Interfaces.IGameEvent)
+  name.vb: IEnumerable(Of IGameEvent)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Events.Interfaces.IGameEvent
+    name: IGameEvent
+    href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Events.Interfaces.IGameEvent
+    name: IGameEvent
+    href: CardGame.Core.Events.Interfaces.IGameEvent.html
+  - name: )
+memberLayout: SeparatePages

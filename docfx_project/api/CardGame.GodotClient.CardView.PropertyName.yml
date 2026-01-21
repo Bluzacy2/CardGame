@@ -1,0 +1,662 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.CardView.PropertyName
+  commentId: T:CardGame.GodotClient.CardView.PropertyName
+  id: CardView.PropertyName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.CardView.PropertyName.AtkLabel
+  - CardGame.GodotClient.CardView.PropertyName.AttackSquare
+  - CardGame.GodotClient.CardView.PropertyName.Background
+  - CardGame.GodotClient.CardView.PropertyName.CostLabel
+  - CardGame.GodotClient.CardView.PropertyName.CountBadge
+  - CardGame.GodotClient.CardView.PropertyName.DescLabel
+  - CardGame.GodotClient.CardView.PropertyName.HealthSquare
+  - CardGame.GodotClient.CardView.PropertyName.HighlightBorder
+  - CardGame.GodotClient.CardView.PropertyName.HpLabel
+  - CardGame.GodotClient.CardView.PropertyName.Illustration
+  - CardGame.GodotClient.CardView.PropertyName.KeywordContainer
+  - CardGame.GodotClient.CardView.PropertyName.KeywordsLabel
+  - CardGame.GodotClient.CardView.PropertyName.NameLabel
+  - CardGame.GodotClient.CardView.PropertyName.SubtypeLabel
+  - CardGame.GodotClient.CardView.PropertyName.XOverlay
+  - CardGame.GodotClient.CardView.PropertyName._baseScale
+  langs:
+  - csharp
+  - vb
+  name: CardView.PropertyName
+  nameWithType: CardView.PropertyName
+  fullName: CardGame.GodotClient.CardView.PropertyName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PropertyName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the properties and fields contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class CardView.PropertyName : Control.PropertyName'
+    content.vb: Public Class CardView.PropertyName Inherits Control.PropertyName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.PropertyName
+  - Godot.Node.PropertyName
+  - Godot.CanvasItem.PropertyName
+  - Godot.Control.PropertyName
+- uid: CardGame.GodotClient.CardView.PropertyName.NameLabel
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.NameLabel
+  id: NameLabel
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: NameLabel
+  nameWithType: CardView.PropertyName.NameLabel
+  fullName: CardGame.GodotClient.CardView.PropertyName.NameLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: NameLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'NameLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName NameLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly NameLabel As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.CostLabel
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.CostLabel
+  id: CostLabel
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: CostLabel
+  nameWithType: CardView.PropertyName.CostLabel
+  fullName: CardGame.GodotClient.CardView.PropertyName.CostLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CostLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'CostLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName CostLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly CostLabel As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.HpLabel
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.HpLabel
+  id: HpLabel
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: HpLabel
+  nameWithType: CardView.PropertyName.HpLabel
+  fullName: CardGame.GodotClient.CardView.PropertyName.HpLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HpLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'HpLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName HpLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly HpLabel As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.AtkLabel
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.AtkLabel
+  id: AtkLabel
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: AtkLabel
+  nameWithType: CardView.PropertyName.AtkLabel
+  fullName: CardGame.GodotClient.CardView.PropertyName.AtkLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AtkLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'AtkLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName AtkLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly AtkLabel As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.DescLabel
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.DescLabel
+  id: DescLabel
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: DescLabel
+  nameWithType: CardView.PropertyName.DescLabel
+  fullName: CardGame.GodotClient.CardView.PropertyName.DescLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DescLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'DescLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName DescLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly DescLabel As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.SubtypeLabel
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.SubtypeLabel
+  id: SubtypeLabel
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: SubtypeLabel
+  nameWithType: CardView.PropertyName.SubtypeLabel
+  fullName: CardGame.GodotClient.CardView.PropertyName.SubtypeLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SubtypeLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 35
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'SubtypeLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName SubtypeLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly SubtypeLabel As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.KeywordsLabel
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.KeywordsLabel
+  id: KeywordsLabel
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: KeywordsLabel
+  nameWithType: CardView.PropertyName.KeywordsLabel
+  fullName: CardGame.GodotClient.CardView.PropertyName.KeywordsLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: KeywordsLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 39
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'KeywordsLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName KeywordsLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly KeywordsLabel As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.Background
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.Background
+  id: Background
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: Background
+  nameWithType: CardView.PropertyName.Background
+  fullName: CardGame.GodotClient.CardView.PropertyName.Background
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Background
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 43
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'Background' field.
+  example: []
+  syntax:
+    content: public static readonly StringName Background
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly Background As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.Illustration
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.Illustration
+  id: Illustration
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: Illustration
+  nameWithType: CardView.PropertyName.Illustration
+  fullName: CardGame.GodotClient.CardView.PropertyName.Illustration
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Illustration
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 47
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'Illustration' field.
+  example: []
+  syntax:
+    content: public static readonly StringName Illustration
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly Illustration As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.AttackSquare
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.AttackSquare
+  id: AttackSquare
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: AttackSquare
+  nameWithType: CardView.PropertyName.AttackSquare
+  fullName: CardGame.GodotClient.CardView.PropertyName.AttackSquare
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: AttackSquare
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 51
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'AttackSquare' field.
+  example: []
+  syntax:
+    content: public static readonly StringName AttackSquare
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly AttackSquare As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.HealthSquare
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.HealthSquare
+  id: HealthSquare
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: HealthSquare
+  nameWithType: CardView.PropertyName.HealthSquare
+  fullName: CardGame.GodotClient.CardView.PropertyName.HealthSquare
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HealthSquare
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 55
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'HealthSquare' field.
+  example: []
+  syntax:
+    content: public static readonly StringName HealthSquare
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly HealthSquare As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.HighlightBorder
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.HighlightBorder
+  id: HighlightBorder
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: HighlightBorder
+  nameWithType: CardView.PropertyName.HighlightBorder
+  fullName: CardGame.GodotClient.CardView.PropertyName.HighlightBorder
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HighlightBorder
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 59
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'HighlightBorder' field.
+  example: []
+  syntax:
+    content: public static readonly StringName HighlightBorder
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly HighlightBorder As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.KeywordContainer
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.KeywordContainer
+  id: KeywordContainer
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: KeywordContainer
+  nameWithType: CardView.PropertyName.KeywordContainer
+  fullName: CardGame.GodotClient.CardView.PropertyName.KeywordContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: KeywordContainer
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 63
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'KeywordContainer' field.
+  example: []
+  syntax:
+    content: public static readonly StringName KeywordContainer
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly KeywordContainer As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.XOverlay
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.XOverlay
+  id: XOverlay
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: XOverlay
+  nameWithType: CardView.PropertyName.XOverlay
+  fullName: CardGame.GodotClient.CardView.PropertyName.XOverlay
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: XOverlay
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 67
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'XOverlay' field.
+  example: []
+  syntax:
+    content: public static readonly StringName XOverlay
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly XOverlay As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName.CountBadge
+  commentId: F:CardGame.GodotClient.CardView.PropertyName.CountBadge
+  id: CountBadge
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: CountBadge
+  nameWithType: CardView.PropertyName.CountBadge
+  fullName: CardGame.GodotClient.CardView.PropertyName.CountBadge
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CountBadge
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 71
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'CountBadge' field.
+  example: []
+  syntax:
+    content: public static readonly StringName CountBadge
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly CountBadge As StringName
+- uid: CardGame.GodotClient.CardView.PropertyName._baseScale
+  commentId: F:CardGame.GodotClient.CardView.PropertyName._baseScale
+  id: _baseScale
+  parent: CardGame.GodotClient.CardView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _baseScale
+  nameWithType: CardView.PropertyName._baseScale
+  fullName: CardGame.GodotClient.CardView.PropertyName._baseScale
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _baseScale
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardView_ScriptProperties.generated.cs
+    startLine: 75
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_baseScale' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _baseScale
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _baseScale As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.PropertyName
+  commentId: T:Godot.GodotObject.PropertyName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.PropertyName
+  nameWithType: GodotObject.PropertyName
+  fullName: Godot.GodotObject.PropertyName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Node.PropertyName
+  commentId: T:Godot.Node.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Node.PropertyName
+  nameWithType: Node.PropertyName
+  fullName: Godot.Node.PropertyName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.CanvasItem.PropertyName
+  commentId: T:Godot.CanvasItem.PropertyName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.PropertyName
+  nameWithType: CanvasItem.PropertyName
+  fullName: Godot.CanvasItem.PropertyName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Control.PropertyName
+  commentId: T:Godot.Control.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Control.PropertyName
+  nameWithType: Control.PropertyName
+  fullName: Godot.Control.PropertyName
+  spec.csharp:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

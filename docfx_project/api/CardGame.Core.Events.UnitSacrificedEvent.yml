@@ -296,7 +296,7 @@ references:
     href: CardGame.Core.Events.Interfaces.html
 - uid: CardGame.Core.Events.UnitSacrificedEvent.Unit*
   commentId: Overload:CardGame.Core.Events.UnitSacrificedEvent.Unit
-  href: CardGame.Core.Events.UnitSacrificedEvent.html#CardGame_Core_Events_UnitSacrificedEvent_Unit
+  href: CardGame.Core.Events.UnitSacrificedEvent.Unit.html#CardGame_Core_Events_UnitSacrificedEvent_Unit
   name: Unit
   nameWithType: UnitSacrificedEvent.Unit
   fullName: CardGame.Core.Events.UnitSacrificedEvent.Unit
@@ -347,7 +347,7 @@ references:
     href: CardGame.Core.Cards.Models.html
 - uid: CardGame.Core.Events.UnitSacrificedEvent.OwnerId*
   commentId: Overload:CardGame.Core.Events.UnitSacrificedEvent.OwnerId
-  href: CardGame.Core.Events.UnitSacrificedEvent.html#CardGame_Core_Events_UnitSacrificedEvent_OwnerId
+  href: CardGame.Core.Events.UnitSacrificedEvent.OwnerId.html#CardGame_Core_Events_UnitSacrificedEvent_OwnerId
   name: OwnerId
   nameWithType: UnitSacrificedEvent.OwnerId
   fullName: CardGame.Core.Events.UnitSacrificedEvent.OwnerId
@@ -363,29 +363,30 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Events.UnitSacrificedEvent.SourcePlayerId*
   commentId: Overload:CardGame.Core.Events.UnitSacrificedEvent.SourcePlayerId
-  href: CardGame.Core.Events.UnitSacrificedEvent.html#CardGame_Core_Events_UnitSacrificedEvent_SourcePlayerId
+  href: CardGame.Core.Events.UnitSacrificedEvent.SourcePlayerId.html#CardGame_Core_Events_UnitSacrificedEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: UnitSacrificedEvent.SourcePlayerId
   fullName: CardGame.Core.Events.UnitSacrificedEvent.SourcePlayerId
 - uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   parent: CardGame.Core.Events.Interfaces.IGameEvent
-  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  href: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: IGameEvent.SourcePlayerId
   fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
 - uid: CardGame.Core.Events.UnitSacrificedEvent.LineIndex*
   commentId: Overload:CardGame.Core.Events.UnitSacrificedEvent.LineIndex
-  href: CardGame.Core.Events.UnitSacrificedEvent.html#CardGame_Core_Events_UnitSacrificedEvent_LineIndex
+  href: CardGame.Core.Events.UnitSacrificedEvent.LineIndex.html#CardGame_Core_Events_UnitSacrificedEvent_LineIndex
   name: LineIndex
   nameWithType: UnitSacrificedEvent.LineIndex
   fullName: CardGame.Core.Events.UnitSacrificedEvent.LineIndex
 - uid: CardGame.Core.Events.UnitSacrificedEvent.#ctor*
   commentId: Overload:CardGame.Core.Events.UnitSacrificedEvent.#ctor
-  href: CardGame.Core.Events.UnitSacrificedEvent.html#CardGame_Core_Events_UnitSacrificedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_
+  href: CardGame.Core.Events.UnitSacrificedEvent.-ctor.html#CardGame_Core_Events_UnitSacrificedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_
   name: UnitSacrificedEvent
   nameWithType: UnitSacrificedEvent.UnitSacrificedEvent
   fullName: CardGame.Core.Events.UnitSacrificedEvent.UnitSacrificedEvent
   nameWithType.vb: UnitSacrificedEvent.New
   fullName.vb: CardGame.Core.Events.UnitSacrificedEvent.New
   name.vb: New
+memberLayout: SeparatePages

@@ -1,0 +1,332 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.LineView.PropertyName
+  commentId: T:CardGame.GodotClient.LineView.PropertyName
+  id: LineView.PropertyName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.LineView.PropertyName.EnemySlot
+  - CardGame.GodotClient.LineView.PropertyName.InfoLabel
+  - CardGame.GodotClient.LineView.PropertyName.PlayerSlot
+  - CardGame.GodotClient.LineView.PropertyName._myIndex
+  - CardGame.GodotClient.LineView.PropertyName._romans
+  langs:
+  - csharp
+  - vb
+  name: LineView.PropertyName
+  nameWithType: LineView.PropertyName
+  fullName: CardGame.GodotClient.LineView.PropertyName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PropertyName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the properties and fields contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class LineView.PropertyName : Control.PropertyName'
+    content.vb: Public Class LineView.PropertyName Inherits Control.PropertyName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.PropertyName
+  - Godot.Node.PropertyName
+  - Godot.CanvasItem.PropertyName
+  - Godot.Control.PropertyName
+- uid: CardGame.GodotClient.LineView.PropertyName.InfoLabel
+  commentId: F:CardGame.GodotClient.LineView.PropertyName.InfoLabel
+  id: InfoLabel
+  parent: CardGame.GodotClient.LineView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: InfoLabel
+  nameWithType: LineView.PropertyName.InfoLabel
+  fullName: CardGame.GodotClient.LineView.PropertyName.InfoLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: InfoLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'InfoLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName InfoLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly InfoLabel As StringName
+- uid: CardGame.GodotClient.LineView.PropertyName.EnemySlot
+  commentId: F:CardGame.GodotClient.LineView.PropertyName.EnemySlot
+  id: EnemySlot
+  parent: CardGame.GodotClient.LineView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: EnemySlot
+  nameWithType: LineView.PropertyName.EnemySlot
+  fullName: CardGame.GodotClient.LineView.PropertyName.EnemySlot
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnemySlot
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'EnemySlot' field.
+  example: []
+  syntax:
+    content: public static readonly StringName EnemySlot
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly EnemySlot As StringName
+- uid: CardGame.GodotClient.LineView.PropertyName.PlayerSlot
+  commentId: F:CardGame.GodotClient.LineView.PropertyName.PlayerSlot
+  id: PlayerSlot
+  parent: CardGame.GodotClient.LineView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: PlayerSlot
+  nameWithType: LineView.PropertyName.PlayerSlot
+  fullName: CardGame.GodotClient.LineView.PropertyName.PlayerSlot
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerSlot
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'PlayerSlot' field.
+  example: []
+  syntax:
+    content: public static readonly StringName PlayerSlot
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly PlayerSlot As StringName
+- uid: CardGame.GodotClient.LineView.PropertyName._myIndex
+  commentId: F:CardGame.GodotClient.LineView.PropertyName._myIndex
+  id: _myIndex
+  parent: CardGame.GodotClient.LineView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _myIndex
+  nameWithType: LineView.PropertyName._myIndex
+  fullName: CardGame.GodotClient.LineView.PropertyName._myIndex
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _myIndex
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_myIndex' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _myIndex
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _myIndex As StringName
+- uid: CardGame.GodotClient.LineView.PropertyName._romans
+  commentId: F:CardGame.GodotClient.LineView.PropertyName._romans
+  id: _romans
+  parent: CardGame.GodotClient.LineView.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _romans
+  nameWithType: LineView.PropertyName._romans
+  fullName: CardGame.GodotClient.LineView.PropertyName._romans
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _romans
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.LineView_ScriptProperties.generated.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_romans' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _romans
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _romans As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.PropertyName
+  commentId: T:Godot.GodotObject.PropertyName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.PropertyName
+  nameWithType: GodotObject.PropertyName
+  fullName: Godot.GodotObject.PropertyName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Node.PropertyName
+  commentId: T:Godot.Node.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Node.PropertyName
+  nameWithType: Node.PropertyName
+  fullName: Godot.Node.PropertyName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.CanvasItem.PropertyName
+  commentId: T:Godot.CanvasItem.PropertyName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.PropertyName
+  nameWithType: CanvasItem.PropertyName
+  fullName: Godot.CanvasItem.PropertyName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Control.PropertyName
+  commentId: T:Godot.Control.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Control.PropertyName
+  nameWithType: Control.PropertyName
+  fullName: Godot.Control.PropertyName
+  spec.csharp:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

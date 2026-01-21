@@ -130,129 +130,34 @@ Unlike other commands, it does not modify game state directly but triggers a pha
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_Commands_Implementations_EndPhaseCommand__ctor_" data-uid="CardGame.Core.Commands.Implementations.EndPhaseCommand.#ctor*"></a>
-
-  <h3 id="CardGame_Core_Commands_Implementations_EndPhaseCommand__ctor_System_Int32_" data-uid="CardGame.Core.Commands.Implementations.EndPhaseCommand.#ctor(System.Int32)">
-  EndPhaseCommand(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Commands/Implementations/EndPhaseCommand.cs/#L27"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the EndPhaseCommand class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EndPhaseCommand(int playerId)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>playerId</code> <span class="xref">int</span></dt>
-    <dd><p>The ID of the player ending the phase.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Commands.Implementations.EndPhaseCommand.-ctor.html#CardGame_Core_Commands_Implementations_EndPhaseCommand__ctor_System_Int32_">EndPhaseCommand(int)</a></dt>
+    <dd><p>Initializes a new instance of the EndPhaseCommand class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Commands_Implementations_EndPhaseCommand_PlayerId_" data-uid="CardGame.Core.Commands.Implementations.EndPhaseCommand.PlayerId*"></a>
-
-  <h3 id="CardGame_Core_Commands_Implementations_EndPhaseCommand_PlayerId" data-uid="CardGame.Core.Commands.Implementations.EndPhaseCommand.PlayerId">
-  PlayerId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Commands/Implementations/EndPhaseCommand.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the ID of the player ending the phase.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int PlayerId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Commands.Implementations.EndPhaseCommand.PlayerId.html#CardGame_Core_Commands_Implementations_EndPhaseCommand_PlayerId">PlayerId</a></dt>
+    <dd><p>Gets the ID of the player ending the phase.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_Commands_Implementations_EndPhaseCommand_Execute_" data-uid="CardGame.Core.Commands.Implementations.EndPhaseCommand.Execute*"></a>
-
-  <h3 id="CardGame_Core_Commands_Implementations_EndPhaseCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_" data-uid="CardGame.Core.Commands.Implementations.EndPhaseCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)">
-  Execute(GameState, EventBus, GameContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Commands/Implementations/EndPhaseCommand.cs/#L43"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Signals the state machine to end the current phase and transition to the next phase.
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Commands.Implementations.EndPhaseCommand.Execute.html#CardGame_Core_Commands_Implementations_EndPhaseCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_">Execute(GameState, EventBus, GameContext)</a></dt>
+    <dd><p>Signals the state machine to end the current phase and transition to the next phase.
 This command is an exception to the usual pattern - it does not modify game state directly
 but returns the current state unchanged, allowing the state machine to handle the phase transition.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>currentState</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state.</p>
-</dd>
-    <dt><code>eventBus</code> <a class="xref" href="CardGame.Core.Events.EventBus.html">EventBus</a></dt>
-    <dd><p>The event bus for publishing game events.</p>
-</dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd><p>The game context with additional services.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state unchanged, signaling that phase transition logic should be handled elsewhere.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

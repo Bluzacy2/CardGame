@@ -369,14 +369,14 @@ references:
     href: CardGame.Core.Cards.Logic.Keywords.html
 - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.Type*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.Type
-  href: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_Type
+  href: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.Type.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_Type
   name: Type
   nameWithType: UnkillableHandler.Type
   fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.Type
 - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type
   commentId: P:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type
   parent: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
-  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_Type
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_Type
   name: Type
   nameWithType: IKeywordHandler.Type
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type
@@ -427,7 +427,7 @@ references:
     href: CardGame.Core.Cards.Data.html
 - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnModifyDamageTaken*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnModifyDamageTaken
-  href: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+  href: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnModifyDamageTaken.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
   name: OnModifyDamageTaken
   nameWithType: UnkillableHandler.OnModifyDamageTaken
   fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnModifyDamageTaken
@@ -435,7 +435,7 @@ references:
   commentId: M:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
   parent: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
   isExternal: true
-  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
   name: OnModifyDamageTaken(int, DamageContext)
   nameWithType: IKeywordHandler.OnModifyDamageTaken(int, DamageContext)
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(int, CardGame.Core.GameRules.Damage.DamageContext)
@@ -445,7 +445,7 @@ references:
   spec.csharp:
   - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
     name: OnModifyDamageTaken
-    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
   - name: (
   - uid: System.Int32
     name: int
@@ -459,7 +459,7 @@ references:
   spec.vb:
   - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)
     name: OnModifyDamageTaken
-    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
   - name: (
   - uid: System.Int32
     name: Integer
@@ -527,7 +527,7 @@ references:
     href: CardGame.Core.GameRules.Damage.html
 - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnAfterAttack*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnAfterAttack
-  href: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnAfterAttack.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
   name: OnAfterAttack
   nameWithType: UnkillableHandler.OnAfterAttack
   fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnAfterAttack
@@ -535,7 +535,7 @@ references:
   commentId: M:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
   parent: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
   isExternal: true
-  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
   name: OnAfterAttack(GameState, CardInstance, CardInstance, int, GameContext)
   nameWithType: IKeywordHandler.OnAfterAttack(GameState, CardInstance, CardInstance, int, GameContext)
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Cards.Models.CardInstance, int, CardGame.Core.Application.GameContext)
@@ -545,7 +545,7 @@ references:
   spec.csharp:
   - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
     name: OnAfterAttack
-    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -574,7 +574,7 @@ references:
   spec.vb:
   - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)
     name: OnAfterAttack
-    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -729,21 +729,21 @@ references:
     href: CardGame.Core.Application.html
 - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnRoundEnd*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnRoundEnd
-  href: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnRoundEnd.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
   name: OnRoundEnd
   nameWithType: UnkillableHandler.OnRoundEnd
   fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnRoundEnd
 - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
   commentId: M:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
   parent: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
-  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
   name: OnRoundEnd(GameState, CardInstance, GameContext)
   nameWithType: IKeywordHandler.OnRoundEnd(GameState, CardInstance, GameContext)
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext)
   spec.csharp:
   - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
     name: OnRoundEnd
-    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -762,7 +762,7 @@ references:
   spec.vb:
   - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)
     name: OnRoundEnd
-    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -780,7 +780,7 @@ references:
   - name: )
 - uid: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnPreventDeath*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnPreventDeath
-  href: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+  href: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnPreventDeath.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
   name: OnPreventDeath
   nameWithType: UnkillableHandler.OnPreventDeath
   fullName: CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnPreventDeath
@@ -788,7 +788,7 @@ references:
   commentId: M:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
   parent: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
   isExternal: true
-  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
   name: OnPreventDeath(ref GameState, CardInstance, GameContext, bool)
   nameWithType: IKeywordHandler.OnPreventDeath(ref GameState, CardInstance, GameContext, bool)
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(ref CardGame.Core.State.Models.GameState, CardGame.Core.Cards.Models.CardInstance, CardGame.Core.Application.GameContext, bool)
@@ -798,7 +798,7 @@ references:
   spec.csharp:
   - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
     name: OnPreventDeath
-    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
   - name: (
   - name: ref
   - name: " "
@@ -824,7 +824,7 @@ references:
   spec.vb:
   - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)
     name: OnPreventDeath
-    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+    href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -855,3 +855,4 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+memberLayout: SeparatePages

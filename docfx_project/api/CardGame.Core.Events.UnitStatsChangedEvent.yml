@@ -442,7 +442,7 @@ references:
     href: CardGame.Core.Events.Interfaces.html
 - uid: CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId*
   commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId
-  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_TargetUnitId
+  href: CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId.html#CardGame_Core_Events_UnitStatsChangedEvent_TargetUnitId
   name: TargetUnitId
   nameWithType: UnitStatsChangedEvent.TargetUnitId
   fullName: CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId
@@ -458,7 +458,7 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Events.UnitStatsChangedEvent.SourceId*
   commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.SourceId
-  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_SourceId
+  href: CardGame.Core.Events.UnitStatsChangedEvent.SourceId.html#CardGame_Core_Events_UnitStatsChangedEvent_SourceId
   name: SourceId
   nameWithType: UnitStatsChangedEvent.SourceId
   fullName: CardGame.Core.Events.UnitStatsChangedEvent.SourceId
@@ -509,31 +509,31 @@ references:
   - name: )
 - uid: CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta*
   commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta
-  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_AttackDelta
+  href: CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta.html#CardGame_Core_Events_UnitStatsChangedEvent_AttackDelta
   name: AttackDelta
   nameWithType: UnitStatsChangedEvent.AttackDelta
   fullName: CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta
 - uid: CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta*
   commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta
-  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_HealthDelta
+  href: CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta.html#CardGame_Core_Events_UnitStatsChangedEvent_HealthDelta
   name: HealthDelta
   nameWithType: UnitStatsChangedEvent.HealthDelta
   fullName: CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta
 - uid: CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack*
   commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack
-  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_CurrentAttack
+  href: CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack.html#CardGame_Core_Events_UnitStatsChangedEvent_CurrentAttack
   name: CurrentAttack
   nameWithType: UnitStatsChangedEvent.CurrentAttack
   fullName: CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack
 - uid: CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth*
   commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth
-  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_CurrentHealth
+  href: CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth.html#CardGame_Core_Events_UnitStatsChangedEvent_CurrentHealth
   name: CurrentHealth
   nameWithType: UnitStatsChangedEvent.CurrentHealth
   fullName: CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth
 - uid: CardGame.Core.Events.UnitStatsChangedEvent.IsAura*
   commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.IsAura
-  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_IsAura
+  href: CardGame.Core.Events.UnitStatsChangedEvent.IsAura.html#CardGame_Core_Events_UnitStatsChangedEvent_IsAura
   name: IsAura
   nameWithType: UnitStatsChangedEvent.IsAura
   fullName: CardGame.Core.Events.UnitStatsChangedEvent.IsAura
@@ -549,23 +549,24 @@ references:
   name.vb: Boolean
 - uid: CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId*
   commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId
-  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent_SourcePlayerId
+  href: CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId.html#CardGame_Core_Events_UnitStatsChangedEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: UnitStatsChangedEvent.SourcePlayerId
   fullName: CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId
 - uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   parent: CardGame.Core.Events.Interfaces.IGameEvent
-  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  href: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: IGameEvent.SourcePlayerId
   fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
 - uid: CardGame.Core.Events.UnitStatsChangedEvent.#ctor*
   commentId: Overload:CardGame.Core.Events.UnitStatsChangedEvent.#ctor
-  href: CardGame.Core.Events.UnitStatsChangedEvent.html#CardGame_Core_Events_UnitStatsChangedEvent__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Nullable_System_Int32__System_Int32_System_Boolean_
+  href: CardGame.Core.Events.UnitStatsChangedEvent.-ctor.html#CardGame_Core_Events_UnitStatsChangedEvent__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Nullable_System_Int32__System_Int32_System_Boolean_
   name: UnitStatsChangedEvent
   nameWithType: UnitStatsChangedEvent.UnitStatsChangedEvent
   fullName: CardGame.Core.Events.UnitStatsChangedEvent.UnitStatsChangedEvent
   nameWithType.vb: UnitStatsChangedEvent.New
   fullName.vb: CardGame.Core.Events.UnitStatsChangedEvent.New
   name.vb: New
+memberLayout: SeparatePages

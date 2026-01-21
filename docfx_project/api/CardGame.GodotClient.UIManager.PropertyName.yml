@@ -1,0 +1,1034 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.UIManager.PropertyName
+  commentId: T:CardGame.GodotClient.UIManager.PropertyName
+  id: UIManager.PropertyName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.UIManager.PropertyName.BoardContainer
+  - CardGame.GodotClient.UIManager.PropertyName.CancelSpellButton
+  - CardGame.GodotClient.UIManager.PropertyName.CardSceneTemplate
+  - CardGame.GodotClient.UIManager.PropertyName.ChoiceModalScene
+  - CardGame.GodotClient.UIManager.PropertyName.ConfirmMulliganButton
+  - CardGame.GodotClient.UIManager.PropertyName.DeckCountLabel
+  - CardGame.GodotClient.UIManager.PropertyName.EndTurnButton
+  - CardGame.GodotClient.UIManager.PropertyName.EnemyBloodGrid
+  - CardGame.GodotClient.UIManager.PropertyName.EnemyHandContainer
+  - CardGame.GodotClient.UIManager.PropertyName.EnemyHpLabel
+  - CardGame.GodotClient.UIManager.PropertyName.EnemyManaLabel
+  - CardGame.GodotClient.UIManager.PropertyName.GraveyardContainer
+  - CardGame.GodotClient.UIManager.PropertyName.HandContainer
+  - CardGame.GodotClient.UIManager.PropertyName.LineSceneTemplate
+  - CardGame.GodotClient.UIManager.PropertyName.MessageLabel
+  - CardGame.GodotClient.UIManager.PropertyName.MessagePanel
+  - CardGame.GodotClient.UIManager.PropertyName.MulliganCardsContainer
+  - CardGame.GodotClient.UIManager.PropertyName.MulliganCounterLabel
+  - CardGame.GodotClient.UIManager.PropertyName.MulliganPanel
+  - CardGame.GodotClient.UIManager.PropertyName.NotificationLayer
+  - CardGame.GodotClient.UIManager.PropertyName.PlayerBloodGrid
+  - CardGame.GodotClient.UIManager.PropertyName.PlayerHpLabel
+  - CardGame.GodotClient.UIManager.PropertyName.PlayerManaLabel
+  - CardGame.GodotClient.UIManager.PropertyName.RestartButton
+  - CardGame.GodotClient.UIManager.PropertyName.TargetingArrow
+  - CardGame.GodotClient.UIManager.PropertyName.VFXContainer
+  - CardGame.GodotClient.UIManager.PropertyName._activeMessageTween
+  - CardGame.GodotClient.UIManager.PropertyName._choiceModalInstance
+  - CardGame.GodotClient.UIManager.PropertyName._ghostLineIdx
+  - CardGame.GodotClient.UIManager.PropertyName._ghostUnit
+  langs:
+  - csharp
+  - vb
+  name: UIManager.PropertyName
+  nameWithType: UIManager.PropertyName
+  fullName: CardGame.GodotClient.UIManager.PropertyName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PropertyName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the properties and fields contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class UIManager.PropertyName : Node.PropertyName'
+    content.vb: Public Class UIManager.PropertyName Inherits Node.PropertyName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.PropertyName
+  - Godot.Node.PropertyName
+- uid: CardGame.GodotClient.UIManager.PropertyName.HandContainer
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.HandContainer
+  id: HandContainer
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: HandContainer
+  nameWithType: UIManager.PropertyName.HandContainer
+  fullName: CardGame.GodotClient.UIManager.PropertyName.HandContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HandContainer
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'HandContainer' field.
+  example: []
+  syntax:
+    content: public static readonly StringName HandContainer
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly HandContainer As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.BoardContainer
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.BoardContainer
+  id: BoardContainer
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: BoardContainer
+  nameWithType: UIManager.PropertyName.BoardContainer
+  fullName: CardGame.GodotClient.UIManager.PropertyName.BoardContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BoardContainer
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'BoardContainer' field.
+  example: []
+  syntax:
+    content: public static readonly StringName BoardContainer
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly BoardContainer As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.EnemyHandContainer
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.EnemyHandContainer
+  id: EnemyHandContainer
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: EnemyHandContainer
+  nameWithType: UIManager.PropertyName.EnemyHandContainer
+  fullName: CardGame.GodotClient.UIManager.PropertyName.EnemyHandContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnemyHandContainer
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'EnemyHandContainer' field.
+  example: []
+  syntax:
+    content: public static readonly StringName EnemyHandContainer
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly EnemyHandContainer As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.VFXContainer
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.VFXContainer
+  id: VFXContainer
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: VFXContainer
+  nameWithType: UIManager.PropertyName.VFXContainer
+  fullName: CardGame.GodotClient.UIManager.PropertyName.VFXContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: VFXContainer
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'VFXContainer' field.
+  example: []
+  syntax:
+    content: public static readonly StringName VFXContainer
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly VFXContainer As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.EndTurnButton
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.EndTurnButton
+  id: EndTurnButton
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: EndTurnButton
+  nameWithType: UIManager.PropertyName.EndTurnButton
+  fullName: CardGame.GodotClient.UIManager.PropertyName.EndTurnButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EndTurnButton
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'EndTurnButton' field.
+  example: []
+  syntax:
+    content: public static readonly StringName EndTurnButton
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly EndTurnButton As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.CancelSpellButton
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.CancelSpellButton
+  id: CancelSpellButton
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: CancelSpellButton
+  nameWithType: UIManager.PropertyName.CancelSpellButton
+  fullName: CardGame.GodotClient.UIManager.PropertyName.CancelSpellButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CancelSpellButton
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 35
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'CancelSpellButton' field.
+  example: []
+  syntax:
+    content: public static readonly StringName CancelSpellButton
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly CancelSpellButton As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.RestartButton
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.RestartButton
+  id: RestartButton
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: RestartButton
+  nameWithType: UIManager.PropertyName.RestartButton
+  fullName: CardGame.GodotClient.UIManager.PropertyName.RestartButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: RestartButton
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 39
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'RestartButton' field.
+  example: []
+  syntax:
+    content: public static readonly StringName RestartButton
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly RestartButton As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.TargetingArrow
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.TargetingArrow
+  id: TargetingArrow
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: TargetingArrow
+  nameWithType: UIManager.PropertyName.TargetingArrow
+  fullName: CardGame.GodotClient.UIManager.PropertyName.TargetingArrow
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: TargetingArrow
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 43
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'TargetingArrow' field.
+  example: []
+  syntax:
+    content: public static readonly StringName TargetingArrow
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly TargetingArrow As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.PlayerHpLabel
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.PlayerHpLabel
+  id: PlayerHpLabel
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: PlayerHpLabel
+  nameWithType: UIManager.PropertyName.PlayerHpLabel
+  fullName: CardGame.GodotClient.UIManager.PropertyName.PlayerHpLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerHpLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 47
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'PlayerHpLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName PlayerHpLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly PlayerHpLabel As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.PlayerManaLabel
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.PlayerManaLabel
+  id: PlayerManaLabel
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: PlayerManaLabel
+  nameWithType: UIManager.PropertyName.PlayerManaLabel
+  fullName: CardGame.GodotClient.UIManager.PropertyName.PlayerManaLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerManaLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 51
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'PlayerManaLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName PlayerManaLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly PlayerManaLabel As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.EnemyHpLabel
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.EnemyHpLabel
+  id: EnemyHpLabel
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: EnemyHpLabel
+  nameWithType: UIManager.PropertyName.EnemyHpLabel
+  fullName: CardGame.GodotClient.UIManager.PropertyName.EnemyHpLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnemyHpLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 55
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'EnemyHpLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName EnemyHpLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly EnemyHpLabel As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.EnemyManaLabel
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.EnemyManaLabel
+  id: EnemyManaLabel
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: EnemyManaLabel
+  nameWithType: UIManager.PropertyName.EnemyManaLabel
+  fullName: CardGame.GodotClient.UIManager.PropertyName.EnemyManaLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnemyManaLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 59
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'EnemyManaLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName EnemyManaLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly EnemyManaLabel As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.NotificationLayer
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.NotificationLayer
+  id: NotificationLayer
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: NotificationLayer
+  nameWithType: UIManager.PropertyName.NotificationLayer
+  fullName: CardGame.GodotClient.UIManager.PropertyName.NotificationLayer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: NotificationLayer
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 63
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'NotificationLayer' field.
+  example: []
+  syntax:
+    content: public static readonly StringName NotificationLayer
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly NotificationLayer As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.MessagePanel
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.MessagePanel
+  id: MessagePanel
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: MessagePanel
+  nameWithType: UIManager.PropertyName.MessagePanel
+  fullName: CardGame.GodotClient.UIManager.PropertyName.MessagePanel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MessagePanel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 67
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'MessagePanel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName MessagePanel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly MessagePanel As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.MessageLabel
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.MessageLabel
+  id: MessageLabel
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: MessageLabel
+  nameWithType: UIManager.PropertyName.MessageLabel
+  fullName: CardGame.GodotClient.UIManager.PropertyName.MessageLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MessageLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 71
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'MessageLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName MessageLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly MessageLabel As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.CardSceneTemplate
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.CardSceneTemplate
+  id: CardSceneTemplate
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: CardSceneTemplate
+  nameWithType: UIManager.PropertyName.CardSceneTemplate
+  fullName: CardGame.GodotClient.UIManager.PropertyName.CardSceneTemplate
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardSceneTemplate
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 75
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'CardSceneTemplate' field.
+  example: []
+  syntax:
+    content: public static readonly StringName CardSceneTemplate
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly CardSceneTemplate As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.LineSceneTemplate
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.LineSceneTemplate
+  id: LineSceneTemplate
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: LineSceneTemplate
+  nameWithType: UIManager.PropertyName.LineSceneTemplate
+  fullName: CardGame.GodotClient.UIManager.PropertyName.LineSceneTemplate
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LineSceneTemplate
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 79
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'LineSceneTemplate' field.
+  example: []
+  syntax:
+    content: public static readonly StringName LineSceneTemplate
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly LineSceneTemplate As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.ChoiceModalScene
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.ChoiceModalScene
+  id: ChoiceModalScene
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: ChoiceModalScene
+  nameWithType: UIManager.PropertyName.ChoiceModalScene
+  fullName: CardGame.GodotClient.UIManager.PropertyName.ChoiceModalScene
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ChoiceModalScene
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 83
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'ChoiceModalScene' field.
+  example: []
+  syntax:
+    content: public static readonly StringName ChoiceModalScene
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly ChoiceModalScene As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.MulliganPanel
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.MulliganPanel
+  id: MulliganPanel
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: MulliganPanel
+  nameWithType: UIManager.PropertyName.MulliganPanel
+  fullName: CardGame.GodotClient.UIManager.PropertyName.MulliganPanel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MulliganPanel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 87
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'MulliganPanel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName MulliganPanel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly MulliganPanel As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.MulliganCardsContainer
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.MulliganCardsContainer
+  id: MulliganCardsContainer
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: MulliganCardsContainer
+  nameWithType: UIManager.PropertyName.MulliganCardsContainer
+  fullName: CardGame.GodotClient.UIManager.PropertyName.MulliganCardsContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MulliganCardsContainer
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 91
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'MulliganCardsContainer' field.
+  example: []
+  syntax:
+    content: public static readonly StringName MulliganCardsContainer
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly MulliganCardsContainer As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.ConfirmMulliganButton
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.ConfirmMulliganButton
+  id: ConfirmMulliganButton
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: ConfirmMulliganButton
+  nameWithType: UIManager.PropertyName.ConfirmMulliganButton
+  fullName: CardGame.GodotClient.UIManager.PropertyName.ConfirmMulliganButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ConfirmMulliganButton
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 95
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'ConfirmMulliganButton' field.
+  example: []
+  syntax:
+    content: public static readonly StringName ConfirmMulliganButton
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly ConfirmMulliganButton As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.MulliganCounterLabel
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.MulliganCounterLabel
+  id: MulliganCounterLabel
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: MulliganCounterLabel
+  nameWithType: UIManager.PropertyName.MulliganCounterLabel
+  fullName: CardGame.GodotClient.UIManager.PropertyName.MulliganCounterLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MulliganCounterLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 99
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'MulliganCounterLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName MulliganCounterLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly MulliganCounterLabel As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.PlayerBloodGrid
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.PlayerBloodGrid
+  id: PlayerBloodGrid
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: PlayerBloodGrid
+  nameWithType: UIManager.PropertyName.PlayerBloodGrid
+  fullName: CardGame.GodotClient.UIManager.PropertyName.PlayerBloodGrid
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerBloodGrid
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 103
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'PlayerBloodGrid' field.
+  example: []
+  syntax:
+    content: public static readonly StringName PlayerBloodGrid
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly PlayerBloodGrid As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.EnemyBloodGrid
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.EnemyBloodGrid
+  id: EnemyBloodGrid
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: EnemyBloodGrid
+  nameWithType: UIManager.PropertyName.EnemyBloodGrid
+  fullName: CardGame.GodotClient.UIManager.PropertyName.EnemyBloodGrid
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnemyBloodGrid
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 107
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'EnemyBloodGrid' field.
+  example: []
+  syntax:
+    content: public static readonly StringName EnemyBloodGrid
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly EnemyBloodGrid As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.DeckCountLabel
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.DeckCountLabel
+  id: DeckCountLabel
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: DeckCountLabel
+  nameWithType: UIManager.PropertyName.DeckCountLabel
+  fullName: CardGame.GodotClient.UIManager.PropertyName.DeckCountLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckCountLabel
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 111
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'DeckCountLabel' field.
+  example: []
+  syntax:
+    content: public static readonly StringName DeckCountLabel
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly DeckCountLabel As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName.GraveyardContainer
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName.GraveyardContainer
+  id: GraveyardContainer
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: GraveyardContainer
+  nameWithType: UIManager.PropertyName.GraveyardContainer
+  fullName: CardGame.GodotClient.UIManager.PropertyName.GraveyardContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GraveyardContainer
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 115
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'GraveyardContainer' field.
+  example: []
+  syntax:
+    content: public static readonly StringName GraveyardContainer
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly GraveyardContainer As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName._ghostUnit
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName._ghostUnit
+  id: _ghostUnit
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _ghostUnit
+  nameWithType: UIManager.PropertyName._ghostUnit
+  fullName: CardGame.GodotClient.UIManager.PropertyName._ghostUnit
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _ghostUnit
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 119
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_ghostUnit' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _ghostUnit
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _ghostUnit As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName._ghostLineIdx
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName._ghostLineIdx
+  id: _ghostLineIdx
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _ghostLineIdx
+  nameWithType: UIManager.PropertyName._ghostLineIdx
+  fullName: CardGame.GodotClient.UIManager.PropertyName._ghostLineIdx
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _ghostLineIdx
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 123
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_ghostLineIdx' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _ghostLineIdx
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _ghostLineIdx As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName._choiceModalInstance
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName._choiceModalInstance
+  id: _choiceModalInstance
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _choiceModalInstance
+  nameWithType: UIManager.PropertyName._choiceModalInstance
+  fullName: CardGame.GodotClient.UIManager.PropertyName._choiceModalInstance
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _choiceModalInstance
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 127
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_choiceModalInstance' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _choiceModalInstance
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _choiceModalInstance As StringName
+- uid: CardGame.GodotClient.UIManager.PropertyName._activeMessageTween
+  commentId: F:CardGame.GodotClient.UIManager.PropertyName._activeMessageTween
+  id: _activeMessageTween
+  parent: CardGame.GodotClient.UIManager.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _activeMessageTween
+  nameWithType: UIManager.PropertyName._activeMessageTween
+  fullName: CardGame.GodotClient.UIManager.PropertyName._activeMessageTween
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _activeMessageTween
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.UIManager_ScriptProperties.generated.cs
+    startLine: 131
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_activeMessageTween' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _activeMessageTween
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _activeMessageTween As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.PropertyName
+  commentId: T:Godot.GodotObject.PropertyName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.PropertyName
+  nameWithType: GodotObject.PropertyName
+  fullName: Godot.GodotObject.PropertyName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Node.PropertyName
+  commentId: T:Godot.Node.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Node.PropertyName
+  nameWithType: Node.PropertyName
+  fullName: Godot.Node.PropertyName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

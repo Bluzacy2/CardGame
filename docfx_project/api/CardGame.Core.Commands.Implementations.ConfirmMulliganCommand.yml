@@ -284,14 +284,14 @@ references:
     href: CardGame.Core.Commands.Interfaces.html
 - uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId*
   commentId: Overload:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId
-  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand_PlayerId
+  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand_PlayerId
   name: PlayerId
   nameWithType: ConfirmMulliganCommand.PlayerId
   fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.PlayerId
 - uid: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
   commentId: P:CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
   parent: CardGame.Core.Commands.Interfaces.IGameCommand
-  href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_PlayerId
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId.html#CardGame_Core_Commands_Interfaces_IGameCommand_PlayerId
   name: PlayerId
   nameWithType: IGameCommand.PlayerId
   fullName: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
@@ -307,7 +307,7 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds*
   commentId: Overload:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds
-  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand_RejectedCardIds
+  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand_RejectedCardIds
   name: RejectedCardIds
   nameWithType: ConfirmMulliganCommand.RejectedCardIds
   fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.RejectedCardIds
@@ -405,7 +405,7 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.#ctor*
   commentId: Overload:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.#ctor
-  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand__ctor_System_Int32_System_Collections_Generic_List_System_Int32__
+  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.-ctor.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand__ctor_System_Int32_System_Collections_Generic_List_System_Int32__
   name: ConfirmMulliganCommand
   nameWithType: ConfirmMulliganCommand.ConfirmMulliganCommand
   fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.ConfirmMulliganCommand
@@ -414,21 +414,21 @@ references:
   name.vb: New
 - uid: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute*
   commentId: Overload:CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute
-  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute.html#CardGame_Core_Commands_Implementations_ConfirmMulliganCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
   name: Execute
   nameWithType: ConfirmMulliganCommand.Execute
   fullName: CardGame.Core.Commands.Implementations.ConfirmMulliganCommand.Execute
 - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
   commentId: M:CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
   parent: CardGame.Core.Commands.Interfaces.IGameCommand
-  href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.Execute.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
   name: Execute(GameState, EventBus, GameContext)
   nameWithType: IGameCommand.Execute(GameState, EventBus, GameContext)
   fullName: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
   spec.csharp:
   - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
     name: Execute
-    href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.Execute.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -447,7 +447,7 @@ references:
   spec.vb:
   - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
     name: Execute
-    href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.Execute.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -582,3 +582,4 @@ references:
   - uid: CardGame.Core.Application
     name: Application
     href: CardGame.Core.Application.html
+memberLayout: SeparatePages

@@ -5,10 +5,21 @@ items:
   id: GodotClient
   parent: CardGame
   children:
+  - CardGame.GodotClient.BotCoordinator
+  - CardGame.GodotClient.CardSlot
+  - CardGame.GodotClient.CardView
+  - CardGame.GodotClient.ChoiceModal
+  - CardGame.GodotClient.DeckEditor
+  - CardGame.GodotClient.DeckSelection
   - CardGame.GodotClient.GameBootstrap
-  - CardGame.GodotClient.GameBootstrap.MethodName
-  - CardGame.GodotClient.GameBootstrap.PropertyName
-  - CardGame.GodotClient.GameBootstrap.SignalName
+  - CardGame.GodotClient.GameDeckSelector
+  - CardGame.GodotClient.GameSession
+  - CardGame.GodotClient.HeroPortrait
+  - CardGame.GodotClient.InputController
+  - CardGame.GodotClient.LibraryCardEntry
+  - CardGame.GodotClient.LineView
+  - CardGame.GodotClient.MainMenu
+  - CardGame.GodotClient.UIManager
   langs:
   - csharp
   - vb
@@ -19,75 +30,120 @@ items:
   assemblies:
   - CardGame.GodotClient
 references:
+- uid: CardGame.GodotClient.BotCoordinator
+  commentId: T:CardGame.GodotClient.BotCoordinator
+  href: CardGame.GodotClient.BotCoordinator.html
+  name: BotCoordinator
+  nameWithType: BotCoordinator
+  fullName: CardGame.GodotClient.BotCoordinator
+- uid: CardGame.GodotClient.CardSlot
+  commentId: T:CardGame.GodotClient.CardSlot
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.CardSlot.html
+  name: CardSlot
+  nameWithType: CardSlot
+  fullName: CardGame.GodotClient.CardSlot
+- uid: CardGame.GodotClient.CardView
+  commentId: T:CardGame.GodotClient.CardView
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.CardView.html
+  name: CardView
+  nameWithType: CardView
+  fullName: CardGame.GodotClient.CardView
+- uid: CardGame.GodotClient.ChoiceModal
+  commentId: T:CardGame.GodotClient.ChoiceModal
+  href: CardGame.GodotClient.ChoiceModal.html
+  name: ChoiceModal
+  nameWithType: ChoiceModal
+  fullName: CardGame.GodotClient.ChoiceModal
+- uid: CardGame.GodotClient.DeckEditor
+  commentId: T:CardGame.GodotClient.DeckEditor
+  href: CardGame.GodotClient.DeckEditor.html
+  name: DeckEditor
+  nameWithType: DeckEditor
+  fullName: CardGame.GodotClient.DeckEditor
+- uid: CardGame.GodotClient.DeckSelection
+  commentId: T:CardGame.GodotClient.DeckSelection
+  href: CardGame.GodotClient.DeckSelection.html
+  name: DeckSelection
+  nameWithType: DeckSelection
+  fullName: CardGame.GodotClient.DeckSelection
 - uid: CardGame.GodotClient.GameBootstrap
   commentId: T:CardGame.GodotClient.GameBootstrap
   href: CardGame.GodotClient.GameBootstrap.html
   name: GameBootstrap
   nameWithType: GameBootstrap
   fullName: CardGame.GodotClient.GameBootstrap
-- uid: CardGame.GodotClient.GameBootstrap.MethodName
-  commentId: T:CardGame.GodotClient.GameBootstrap.MethodName
-  href: CardGame.GodotClient.GameBootstrap.html
-  name: GameBootstrap.MethodName
-  nameWithType: GameBootstrap.MethodName
-  fullName: CardGame.GodotClient.GameBootstrap.MethodName
+- uid: CardGame.GodotClient.GameDeckSelector
+  commentId: T:CardGame.GodotClient.GameDeckSelector
+  href: CardGame.GodotClient.GameDeckSelector.html
+  name: GameDeckSelector
+  nameWithType: GameDeckSelector
+  fullName: CardGame.GodotClient.GameDeckSelector
+- uid: CardGame.GodotClient.GameSession
+  commentId: T:CardGame.GodotClient.GameSession
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.GameSession.html
+  name: GameSession
+  nameWithType: GameSession
+  fullName: CardGame.GodotClient.GameSession
+- uid: CardGame.GodotClient.HeroPortrait
+  commentId: T:CardGame.GodotClient.HeroPortrait
+  href: CardGame.GodotClient.HeroPortrait.html
+  name: HeroPortrait
+  nameWithType: HeroPortrait
+  fullName: CardGame.GodotClient.HeroPortrait
+- uid: CardGame.GodotClient.InputController
+  commentId: T:CardGame.GodotClient.InputController
+  href: CardGame.GodotClient.InputController.html
+  name: InputController
+  nameWithType: InputController
+  fullName: CardGame.GodotClient.InputController
+- uid: CardGame.GodotClient.LibraryCardEntry
+  commentId: T:CardGame.GodotClient.LibraryCardEntry
+  href: CardGame.GodotClient.LibraryCardEntry.html
+  name: LibraryCardEntry
+  nameWithType: LibraryCardEntry
+  fullName: CardGame.GodotClient.LibraryCardEntry
+- uid: CardGame.GodotClient.LineView
+  commentId: T:CardGame.GodotClient.LineView
+  href: CardGame.GodotClient.LineView.html
+  name: LineView
+  nameWithType: LineView
+  fullName: CardGame.GodotClient.LineView
+- uid: CardGame.GodotClient.MainMenu
+  commentId: T:CardGame.GodotClient.MainMenu
+  href: CardGame.GodotClient.MainMenu.html
+  name: MainMenu
+  nameWithType: MainMenu
+  fullName: CardGame.GodotClient.MainMenu
+- uid: CardGame.GodotClient.UIManager
+  commentId: T:CardGame.GodotClient.UIManager
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.UIManager.html
+  name: UIManager
+  nameWithType: UIManager
+  fullName: CardGame.GodotClient.UIManager
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
   spec.csharp:
-  - uid: CardGame.GodotClient.GameBootstrap
-    name: GameBootstrap
-    href: CardGame.GodotClient.GameBootstrap.html
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
   - name: .
-  - uid: CardGame.GodotClient.GameBootstrap.MethodName
-    name: MethodName
-    href: CardGame.GodotClient.GameBootstrap.MethodName.html
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
   spec.vb:
-  - uid: CardGame.GodotClient.GameBootstrap
-    name: GameBootstrap
-    href: CardGame.GodotClient.GameBootstrap.html
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
   - name: .
-  - uid: CardGame.GodotClient.GameBootstrap.MethodName
-    name: MethodName
-    href: CardGame.GodotClient.GameBootstrap.MethodName.html
-- uid: CardGame.GodotClient.GameBootstrap.PropertyName
-  commentId: T:CardGame.GodotClient.GameBootstrap.PropertyName
-  href: CardGame.GodotClient.GameBootstrap.html
-  name: GameBootstrap.PropertyName
-  nameWithType: GameBootstrap.PropertyName
-  fullName: CardGame.GodotClient.GameBootstrap.PropertyName
-  spec.csharp:
-  - uid: CardGame.GodotClient.GameBootstrap
-    name: GameBootstrap
-    href: CardGame.GodotClient.GameBootstrap.html
-  - name: .
-  - uid: CardGame.GodotClient.GameBootstrap.PropertyName
-    name: PropertyName
-    href: CardGame.GodotClient.GameBootstrap.PropertyName.html
-  spec.vb:
-  - uid: CardGame.GodotClient.GameBootstrap
-    name: GameBootstrap
-    href: CardGame.GodotClient.GameBootstrap.html
-  - name: .
-  - uid: CardGame.GodotClient.GameBootstrap.PropertyName
-    name: PropertyName
-    href: CardGame.GodotClient.GameBootstrap.PropertyName.html
-- uid: CardGame.GodotClient.GameBootstrap.SignalName
-  commentId: T:CardGame.GodotClient.GameBootstrap.SignalName
-  href: CardGame.GodotClient.GameBootstrap.html
-  name: GameBootstrap.SignalName
-  nameWithType: GameBootstrap.SignalName
-  fullName: CardGame.GodotClient.GameBootstrap.SignalName
-  spec.csharp:
-  - uid: CardGame.GodotClient.GameBootstrap
-    name: GameBootstrap
-    href: CardGame.GodotClient.GameBootstrap.html
-  - name: .
-  - uid: CardGame.GodotClient.GameBootstrap.SignalName
-    name: SignalName
-    href: CardGame.GodotClient.GameBootstrap.SignalName.html
-  spec.vb:
-  - uid: CardGame.GodotClient.GameBootstrap
-    name: GameBootstrap
-    href: CardGame.GodotClient.GameBootstrap.html
-  - name: .
-  - uid: CardGame.GodotClient.GameBootstrap.SignalName
-    name: SignalName
-    href: CardGame.GodotClient.GameBootstrap.SignalName.html
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+memberLayout: SeparatePages

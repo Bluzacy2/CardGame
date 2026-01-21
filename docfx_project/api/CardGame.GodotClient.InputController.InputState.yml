@@ -1,0 +1,222 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.InputController.InputState
+  commentId: T:CardGame.GodotClient.InputController.InputState
+  id: InputController.InputState
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.InputController.InputState.Idle
+  - CardGame.GodotClient.InputController.InputState.Mulligan
+  - CardGame.GodotClient.InputController.InputState.Normal
+  - CardGame.GodotClient.InputController.InputState.PendingTarget
+  - CardGame.GodotClient.InputController.InputState.TargetingCard
+  langs:
+  - csharp
+  - vb
+  name: InputController.InputState
+  nameWithType: InputController.InputState
+  fullName: CardGame.GodotClient.InputController.InputState
+  type: Enum
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/InputController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: InputState
+    path: ../Source/CardGame.GodotClient/Scripts/InputController.cs
+    startLine: 25
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Represents the current state of player input.
+  example: []
+  syntax:
+    content: public enum InputController.InputState
+    content.vb: Public Enum InputController.InputState
+- uid: CardGame.GodotClient.InputController.InputState.Idle
+  commentId: F:CardGame.GodotClient.InputController.InputState.Idle
+  id: Idle
+  parent: CardGame.GodotClient.InputController.InputState
+  langs:
+  - csharp
+  - vb
+  name: Idle
+  nameWithType: InputController.InputState.Idle
+  fullName: CardGame.GodotClient.InputController.InputState.Idle
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/InputController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Idle
+    path: ../Source/CardGame.GodotClient/Scripts/InputController.cs
+    startLine: 28
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Waiting for turn or animation, no input allowed.
+  example: []
+  syntax:
+    content: Idle = 0
+    return:
+      type: CardGame.GodotClient.InputController.InputState
+- uid: CardGame.GodotClient.InputController.InputState.Normal
+  commentId: F:CardGame.GodotClient.InputController.InputState.Normal
+  id: Normal
+  parent: CardGame.GodotClient.InputController.InputState
+  langs:
+  - csharp
+  - vb
+  name: Normal
+  nameWithType: InputController.InputState.Normal
+  fullName: CardGame.GodotClient.InputController.InputState.Normal
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/InputController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Normal
+    path: ../Source/CardGame.GodotClient/Scripts/InputController.cs
+    startLine: 30
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Standard turn state, can play cards from hand.
+  example: []
+  syntax:
+    content: Normal = 1
+    return:
+      type: CardGame.GodotClient.InputController.InputState
+- uid: CardGame.GodotClient.InputController.InputState.TargetingCard
+  commentId: F:CardGame.GodotClient.InputController.InputState.TargetingCard
+  id: TargetingCard
+  parent: CardGame.GodotClient.InputController.InputState
+  langs:
+  - csharp
+  - vb
+  name: TargetingCard
+  nameWithType: InputController.InputState.TargetingCard
+  fullName: CardGame.GodotClient.InputController.InputState.TargetingCard
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/InputController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: TargetingCard
+    path: ../Source/CardGame.GodotClient/Scripts/InputController.cs
+    startLine: 32
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Player selected a card and is choosing a target.
+  example: []
+  syntax:
+    content: TargetingCard = 2
+    return:
+      type: CardGame.GodotClient.InputController.InputState
+- uid: CardGame.GodotClient.InputController.InputState.PendingTarget
+  commentId: F:CardGame.GodotClient.InputController.InputState.PendingTarget
+  id: PendingTarget
+  parent: CardGame.GodotClient.InputController.InputState
+  langs:
+  - csharp
+  - vb
+  name: PendingTarget
+  nameWithType: InputController.InputState.PendingTarget
+  fullName: CardGame.GodotClient.InputController.InputState.PendingTarget
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/InputController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PendingTarget
+    path: ../Source/CardGame.GodotClient/Scripts/InputController.cs
+    startLine: 34
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Engine requested a decision (choice or target) from the player.
+  example: []
+  syntax:
+    content: PendingTarget = 3
+    return:
+      type: CardGame.GodotClient.InputController.InputState
+- uid: CardGame.GodotClient.InputController.InputState.Mulligan
+  commentId: F:CardGame.GodotClient.InputController.InputState.Mulligan
+  id: Mulligan
+  parent: CardGame.GodotClient.InputController.InputState
+  langs:
+  - csharp
+  - vb
+  name: Mulligan
+  nameWithType: InputController.InputState.Mulligan
+  fullName: CardGame.GodotClient.InputController.InputState.Mulligan
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/InputController.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Mulligan
+    path: ../Source/CardGame.GodotClient/Scripts/InputController.cs
+    startLine: 36
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Initial mulligan phase for card replacement.
+  example: []
+  syntax:
+    content: Mulligan = 4
+    return:
+      type: CardGame.GodotClient.InputController.InputState
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: CardGame.GodotClient.InputController.InputState
+  commentId: T:CardGame.GodotClient.InputController.InputState
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.InputController.html
+  name: InputController.InputState
+  nameWithType: InputController.InputState
+  fullName: CardGame.GodotClient.InputController.InputState
+  spec.csharp:
+  - uid: CardGame.GodotClient.InputController
+    name: InputController
+    href: CardGame.GodotClient.InputController.html
+  - name: .
+  - uid: CardGame.GodotClient.InputController.InputState
+    name: InputState
+    href: CardGame.GodotClient.InputController.InputState.html
+  spec.vb:
+  - uid: CardGame.GodotClient.InputController
+    name: InputController
+    href: CardGame.GodotClient.InputController.html
+  - name: .
+  - uid: CardGame.GodotClient.InputController.InputState
+    name: InputState
+    href: CardGame.GodotClient.InputController.InputState.html
+memberLayout: SeparatePages

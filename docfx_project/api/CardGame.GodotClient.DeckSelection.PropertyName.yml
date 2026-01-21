@@ -1,0 +1,302 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.DeckSelection.PropertyName
+  commentId: T:CardGame.GodotClient.DeckSelection.PropertyName
+  id: DeckSelection.PropertyName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.DeckSelection.PropertyName.BackButton
+  - CardGame.GodotClient.DeckSelection.PropertyName.DeckEditorScene
+  - CardGame.GodotClient.DeckSelection.PropertyName.DeckListContainer
+  - CardGame.GodotClient.DeckSelection.PropertyName.NewDeckButton
+  langs:
+  - csharp
+  - vb
+  name: DeckSelection.PropertyName
+  nameWithType: DeckSelection.PropertyName
+  fullName: CardGame.GodotClient.DeckSelection.PropertyName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.DeckSelection_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PropertyName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.DeckSelection_ScriptProperties.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the properties and fields contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class DeckSelection.PropertyName : Control.PropertyName'
+    content.vb: Public Class DeckSelection.PropertyName Inherits Control.PropertyName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.PropertyName
+  - Godot.Node.PropertyName
+  - Godot.CanvasItem.PropertyName
+  - Godot.Control.PropertyName
+- uid: CardGame.GodotClient.DeckSelection.PropertyName.DeckListContainer
+  commentId: F:CardGame.GodotClient.DeckSelection.PropertyName.DeckListContainer
+  id: DeckListContainer
+  parent: CardGame.GodotClient.DeckSelection.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: DeckListContainer
+  nameWithType: DeckSelection.PropertyName.DeckListContainer
+  fullName: CardGame.GodotClient.DeckSelection.PropertyName.DeckListContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.DeckSelection_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckListContainer
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.DeckSelection_ScriptProperties.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'DeckListContainer' field.
+  example: []
+  syntax:
+    content: public static readonly StringName DeckListContainer
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly DeckListContainer As StringName
+- uid: CardGame.GodotClient.DeckSelection.PropertyName.NewDeckButton
+  commentId: F:CardGame.GodotClient.DeckSelection.PropertyName.NewDeckButton
+  id: NewDeckButton
+  parent: CardGame.GodotClient.DeckSelection.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: NewDeckButton
+  nameWithType: DeckSelection.PropertyName.NewDeckButton
+  fullName: CardGame.GodotClient.DeckSelection.PropertyName.NewDeckButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.DeckSelection_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: NewDeckButton
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.DeckSelection_ScriptProperties.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'NewDeckButton' field.
+  example: []
+  syntax:
+    content: public static readonly StringName NewDeckButton
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly NewDeckButton As StringName
+- uid: CardGame.GodotClient.DeckSelection.PropertyName.BackButton
+  commentId: F:CardGame.GodotClient.DeckSelection.PropertyName.BackButton
+  id: BackButton
+  parent: CardGame.GodotClient.DeckSelection.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: BackButton
+  nameWithType: DeckSelection.PropertyName.BackButton
+  fullName: CardGame.GodotClient.DeckSelection.PropertyName.BackButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.DeckSelection_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BackButton
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.DeckSelection_ScriptProperties.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'BackButton' field.
+  example: []
+  syntax:
+    content: public static readonly StringName BackButton
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly BackButton As StringName
+- uid: CardGame.GodotClient.DeckSelection.PropertyName.DeckEditorScene
+  commentId: F:CardGame.GodotClient.DeckSelection.PropertyName.DeckEditorScene
+  id: DeckEditorScene
+  parent: CardGame.GodotClient.DeckSelection.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: DeckEditorScene
+  nameWithType: DeckSelection.PropertyName.DeckEditorScene
+  fullName: CardGame.GodotClient.DeckSelection.PropertyName.DeckEditorScene
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.DeckSelection_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckEditorScene
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.DeckSelection_ScriptProperties.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'DeckEditorScene' field.
+  example: []
+  syntax:
+    content: public static readonly StringName DeckEditorScene
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly DeckEditorScene As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.PropertyName
+  commentId: T:Godot.GodotObject.PropertyName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.PropertyName
+  nameWithType: GodotObject.PropertyName
+  fullName: Godot.GodotObject.PropertyName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Node.PropertyName
+  commentId: T:Godot.Node.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Node.PropertyName
+  nameWithType: Node.PropertyName
+  fullName: Godot.Node.PropertyName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.CanvasItem.PropertyName
+  commentId: T:Godot.CanvasItem.PropertyName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.PropertyName
+  nameWithType: CanvasItem.PropertyName
+  fullName: Godot.CanvasItem.PropertyName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Control.PropertyName
+  commentId: T:Godot.Control.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Control.PropertyName
+  nameWithType: Control.PropertyName
+  fullName: Godot.Control.PropertyName
+  spec.csharp:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

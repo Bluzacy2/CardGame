@@ -123,183 +123,38 @@ Class DamageContext  <a class="header-action link-secondary" title="View source"
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_GameRules_Damage_DamageContext__ctor_" data-uid="CardGame.Core.GameRules.Damage.DamageContext.#ctor*"></a>
-
-  <h3 id="CardGame_Core_GameRules_Damage_DamageContext__ctor_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_GameRules_Damage_DamageType_" data-uid="CardGame.Core.GameRules.Damage.DamageContext.#ctor(CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.GameRules.Damage.DamageType)">
-  DamageContext(CardInstance?, CardInstance, int, DamageType)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/GameRules/Damage/DamageContext.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the DamageContext class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DamageContext(CardInstance? source, CardInstance target, int rawAmount, DamageType type)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>source</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd><p>The card instance that is the source of the damage, or null if there is no specific source.</p>
-</dd>
-    <dt><code>target</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd><p>The card instance that is the target of the damage.</p>
-</dd>
-    <dt><code>rawAmount</code> <span class="xref">int</span></dt>
-    <dd><p>The base amount of damage before any modifications.</p>
-</dd>
-    <dt><code>type</code> <a class="xref" href="CardGame.Core.GameRules.Damage.DamageType.html">DamageType</a></dt>
-    <dd><p>The type of damage being dealt.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.GameRules.Damage.DamageContext.-ctor.html#CardGame_Core_GameRules_Damage_DamageContext__ctor_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_GameRules_Damage_DamageType_">DamageContext(CardInstance?, CardInstance, int, DamageType)</a></dt>
+    <dd><p>Initializes a new instance of the DamageContext class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_GameRules_Damage_DamageContext_RawAmount_" data-uid="CardGame.Core.GameRules.Damage.DamageContext.RawAmount*"></a>
-
-  <h3 id="CardGame_Core_GameRules_Damage_DamageContext_RawAmount" data-uid="CardGame.Core.GameRules.Damage.DamageContext.RawAmount">
-  RawAmount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/GameRules/Damage/DamageContext.cs/#L42"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the base amount of damage before any modifications (armor, keywords, etc.).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int RawAmount { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.GameRules.Damage.DamageContext.RawAmount.html#CardGame_Core_GameRules_Damage_DamageContext_RawAmount">RawAmount</a></dt>
+    <dd><p>Gets the base amount of damage before any modifications (armor, keywords, etc.).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_GameRules_Damage_DamageContext_Source_" data-uid="CardGame.Core.GameRules.Damage.DamageContext.Source*"></a>
-
-  <h3 id="CardGame_Core_GameRules_Damage_DamageContext_Source" data-uid="CardGame.Core.GameRules.Damage.DamageContext.Source">
-  Source
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/GameRules/Damage/DamageContext.cs/#L32"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the card instance that is the source of the damage, or null if there is no specific source.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CardInstance? Source { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.GameRules.Damage.DamageContext.Source.html#CardGame_Core_GameRules_Damage_DamageContext_Source">Source</a></dt>
+    <dd><p>Gets the card instance that is the source of the damage, or null if there is no specific source.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_GameRules_Damage_DamageContext_Target_" data-uid="CardGame.Core.GameRules.Damage.DamageContext.Target*"></a>
-
-  <h3 id="CardGame_Core_GameRules_Damage_DamageContext_Target" data-uid="CardGame.Core.GameRules.Damage.DamageContext.Target">
-  Target
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/GameRules/Damage/DamageContext.cs/#L37"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the card instance that is the target of the damage.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CardInstance Target { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.GameRules.Damage.DamageContext.Target.html#CardGame_Core_GameRules_Damage_DamageContext_Target">Target</a></dt>
+    <dd><p>Gets the card instance that is the target of the damage.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_GameRules_Damage_DamageContext_Type_" data-uid="CardGame.Core.GameRules.Damage.DamageContext.Type*"></a>
-
-  <h3 id="CardGame_Core_GameRules_Damage_DamageContext_Type" data-uid="CardGame.Core.GameRules.Damage.DamageContext.Type">
-  Type
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/GameRules/Damage/DamageContext.cs/#L47"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the type of damage being dealt.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DamageType Type { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.GameRules.Damage.DamageType.html">DamageType</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.GameRules.Damage.DamageContext.Type.html#CardGame_Core_GameRules_Damage_DamageContext_Type">Type</a></dt>
+    <dd><p>Gets the type of damage being dealt.</p>
+</dd>
   </dl>
-
-
-
-
-
-
 
 
 

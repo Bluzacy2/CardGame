@@ -1,0 +1,392 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.GameDeckSelector.MethodName
+  commentId: T:CardGame.GodotClient.GameDeckSelector.MethodName
+  id: GameDeckSelector.MethodName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.GameDeckSelector.MethodName.ApplyButtonStyle
+  - CardGame.GodotClient.GameDeckSelector.MethodName.LoadDecks
+  - CardGame.GodotClient.GameDeckSelector.MethodName.OnStartGamePressed
+  - CardGame.GodotClient.GameDeckSelector.MethodName.UpdateAllButtonsVisuals
+  - CardGame.GodotClient.GameDeckSelector.MethodName.UpdateSelectionInfo
+  - CardGame.GodotClient.GameDeckSelector.MethodName.UpdateShaderSize
+  - CardGame.GodotClient.GameDeckSelector.MethodName._Ready
+  langs:
+  - csharp
+  - vb
+  name: GameDeckSelector.MethodName
+  nameWithType: GameDeckSelector.MethodName
+  fullName: CardGame.GodotClient.GameDeckSelector.MethodName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MethodName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the methods contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class GameDeckSelector.MethodName : Control.MethodName'
+    content.vb: Public Class GameDeckSelector.MethodName Inherits Control.MethodName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.MethodName
+  - Godot.Node.MethodName
+  - Godot.CanvasItem.MethodName
+  - Godot.Control.MethodName
+- uid: CardGame.GodotClient.GameDeckSelector.MethodName._Ready
+  commentId: F:CardGame.GodotClient.GameDeckSelector.MethodName._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.GameDeckSelector.MethodName
+  langs:
+  - csharp
+  - vb
+  name: _Ready
+  nameWithType: GameDeckSelector.MethodName._Ready
+  fullName: CardGame.GodotClient.GameDeckSelector.MethodName._Ready
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_Ready' method.
+  example: []
+  syntax:
+    content: public static readonly StringName _Ready
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _Ready As StringName
+- uid: CardGame.GodotClient.GameDeckSelector.MethodName.LoadDecks
+  commentId: F:CardGame.GodotClient.GameDeckSelector.MethodName.LoadDecks
+  id: LoadDecks
+  parent: CardGame.GodotClient.GameDeckSelector.MethodName
+  langs:
+  - csharp
+  - vb
+  name: LoadDecks
+  nameWithType: GameDeckSelector.MethodName.LoadDecks
+  fullName: CardGame.GodotClient.GameDeckSelector.MethodName.LoadDecks
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LoadDecks
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'LoadDecks' method.
+  example: []
+  syntax:
+    content: public static readonly StringName LoadDecks
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly LoadDecks As StringName
+- uid: CardGame.GodotClient.GameDeckSelector.MethodName.UpdateShaderSize
+  commentId: F:CardGame.GodotClient.GameDeckSelector.MethodName.UpdateShaderSize
+  id: UpdateShaderSize
+  parent: CardGame.GodotClient.GameDeckSelector.MethodName
+  langs:
+  - csharp
+  - vb
+  name: UpdateShaderSize
+  nameWithType: GameDeckSelector.MethodName.UpdateShaderSize
+  fullName: CardGame.GodotClient.GameDeckSelector.MethodName.UpdateShaderSize
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateShaderSize
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'UpdateShaderSize' method.
+  example: []
+  syntax:
+    content: public static readonly StringName UpdateShaderSize
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly UpdateShaderSize As StringName
+- uid: CardGame.GodotClient.GameDeckSelector.MethodName.UpdateAllButtonsVisuals
+  commentId: F:CardGame.GodotClient.GameDeckSelector.MethodName.UpdateAllButtonsVisuals
+  id: UpdateAllButtonsVisuals
+  parent: CardGame.GodotClient.GameDeckSelector.MethodName
+  langs:
+  - csharp
+  - vb
+  name: UpdateAllButtonsVisuals
+  nameWithType: GameDeckSelector.MethodName.UpdateAllButtonsVisuals
+  fullName: CardGame.GodotClient.GameDeckSelector.MethodName.UpdateAllButtonsVisuals
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateAllButtonsVisuals
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'UpdateAllButtonsVisuals' method.
+  example: []
+  syntax:
+    content: public static readonly StringName UpdateAllButtonsVisuals
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly UpdateAllButtonsVisuals As StringName
+- uid: CardGame.GodotClient.GameDeckSelector.MethodName.ApplyButtonStyle
+  commentId: F:CardGame.GodotClient.GameDeckSelector.MethodName.ApplyButtonStyle
+  id: ApplyButtonStyle
+  parent: CardGame.GodotClient.GameDeckSelector.MethodName
+  langs:
+  - csharp
+  - vb
+  name: ApplyButtonStyle
+  nameWithType: GameDeckSelector.MethodName.ApplyButtonStyle
+  fullName: CardGame.GodotClient.GameDeckSelector.MethodName.ApplyButtonStyle
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ApplyButtonStyle
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'ApplyButtonStyle' method.
+  example: []
+  syntax:
+    content: public static readonly StringName ApplyButtonStyle
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly ApplyButtonStyle As StringName
+- uid: CardGame.GodotClient.GameDeckSelector.MethodName.UpdateSelectionInfo
+  commentId: F:CardGame.GodotClient.GameDeckSelector.MethodName.UpdateSelectionInfo
+  id: UpdateSelectionInfo
+  parent: CardGame.GodotClient.GameDeckSelector.MethodName
+  langs:
+  - csharp
+  - vb
+  name: UpdateSelectionInfo
+  nameWithType: GameDeckSelector.MethodName.UpdateSelectionInfo
+  fullName: CardGame.GodotClient.GameDeckSelector.MethodName.UpdateSelectionInfo
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateSelectionInfo
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+    startLine: 35
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'UpdateSelectionInfo' method.
+  example: []
+  syntax:
+    content: public static readonly StringName UpdateSelectionInfo
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly UpdateSelectionInfo As StringName
+- uid: CardGame.GodotClient.GameDeckSelector.MethodName.OnStartGamePressed
+  commentId: F:CardGame.GodotClient.GameDeckSelector.MethodName.OnStartGamePressed
+  id: OnStartGamePressed
+  parent: CardGame.GodotClient.GameDeckSelector.MethodName
+  langs:
+  - csharp
+  - vb
+  name: OnStartGamePressed
+  nameWithType: GameDeckSelector.MethodName.OnStartGamePressed
+  fullName: CardGame.GodotClient.GameDeckSelector.MethodName.OnStartGamePressed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnStartGamePressed
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameDeckSelector_ScriptMethods.generated.cs
+    startLine: 39
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'OnStartGamePressed' method.
+  example: []
+  syntax:
+    content: public static readonly StringName OnStartGamePressed
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly OnStartGamePressed As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.MethodName
+  commentId: T:Godot.GodotObject.MethodName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.MethodName
+  nameWithType: GodotObject.MethodName
+  fullName: Godot.GodotObject.MethodName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Node.MethodName
+  commentId: T:Godot.Node.MethodName
+  parent: Godot
+  isExternal: true
+  name: Node.MethodName
+  nameWithType: Node.MethodName
+  fullName: Godot.Node.MethodName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.CanvasItem.MethodName
+  commentId: T:Godot.CanvasItem.MethodName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.MethodName
+  nameWithType: CanvasItem.MethodName
+  fullName: Godot.CanvasItem.MethodName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Control.MethodName
+  commentId: T:Godot.Control.MethodName
+  parent: Godot
+  isExternal: true
+  name: Control.MethodName
+  nameWithType: Control.MethodName
+  fullName: Godot.Control.MethodName
+  spec.csharp:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.MethodName
+    name: MethodName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

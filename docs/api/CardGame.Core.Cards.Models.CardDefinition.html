@@ -123,323 +123,58 @@ Class CardDefinition  <a class="header-action link-secondary" title="View source
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_Cards_Models_CardDefinition__ctor_" data-uid="CardGame.Core.Cards.Models.CardDefinition.#ctor*"></a>
-
-  <h3 id="CardGame_Core_Cards_Models_CardDefinition__ctor_System_String_System_String_System_String_CardGame_Core_Cards_Data_CardType_System_Collections_Generic_IEnumerable_System_String__CardGame_Core_Cards_Models_CardStats_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Data_Keyword__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Data_EffectData__" data-uid="CardGame.Core.Cards.Models.CardDefinition.#ctor(System.String,System.String,System.String,CardGame.Core.Cards.Data.CardType,System.Collections.Generic.IEnumerable{System.String},CardGame.Core.Cards.Models.CardStats,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.Keyword},System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Data.EffectData})">
-  CardDefinition(string, string, string, CardType, IEnumerable&lt;string&gt;, CardStats, IEnumerable&lt;Keyword&gt;, IEnumerable&lt;EffectData&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardDefinition.cs/#L23"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the CardDefinition class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CardDefinition(string id, string name, string description, CardType type, IEnumerable&lt;string&gt; subtypes, CardStats baseStats, IEnumerable&lt;Keyword&gt; keywords, IEnumerable&lt;EffectData&gt; effects)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>id</code> <span class="xref">string</span></dt>
-    <dd><p>The unique identifier of the card.</p>
-</dd>
-    <dt><code>name</code> <span class="xref">string</span></dt>
-    <dd><p>The display name of the card.</p>
-</dd>
-    <dt><code>description</code> <span class="xref">string</span></dt>
-    <dd><p>The flavor text or ability description of the card.</p>
-</dd>
-    <dt><code>type</code> <a class="xref" href="CardGame.Core.Cards.Data.CardType.html">CardType</a></dt>
-    <dd><p>The type of card (Unit, Spell, etc.).</p>
-</dd>
-    <dt><code>subtypes</code> <span class="xref">IEnumerable</span>&lt;<span class="xref">string</span>&gt;</dt>
-    <dd><p>The subtype classifications of the card.</p>
-</dd>
-    <dt><code>baseStats</code> <a class="xref" href="CardGame.Core.Cards.Models.CardStats.html">CardStats</a></dt>
-    <dd><p>The base statistics (attack, health, cost) of the card.</p>
-</dd>
-    <dt><code>keywords</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Data.Keyword.html">Keyword</a>&gt;</dt>
-    <dd><p>The keywords associated with the card.</p>
-</dd>
-    <dt><code>effects</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Data.EffectData.html">EffectData</a>&gt;</dt>
-    <dd><p>The effects and abilities of the card.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.-ctor.html#CardGame_Core_Cards_Models_CardDefinition__ctor_System_String_System_String_System_String_CardGame_Core_Cards_Data_CardType_System_Collections_Generic_IEnumerable_System_String__CardGame_Core_Cards_Models_CardStats_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Data_Keyword__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Data_EffectData__">CardDefinition(string, string, string, CardType, IEnumerable&lt;string&gt;, CardStats, IEnumerable&lt;Keyword&gt;, IEnumerable&lt;EffectData&gt;)</a></dt>
+    <dd><p>Initializes a new instance of the CardDefinition class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Cards_Models_CardDefinition_BaseStats_" data-uid="CardGame.Core.Cards.Models.CardDefinition.BaseStats*"></a>
-
-  <h3 id="CardGame_Core_Cards_Models_CardDefinition_BaseStats" data-uid="CardGame.Core.Cards.Models.CardDefinition.BaseStats">
-  BaseStats
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardDefinition.cs/#L73"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the base statistics (attack, health, cost) of the card.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CardStats BaseStats { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardStats.html">CardStats</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.BaseStats.html#CardGame_Core_Cards_Models_CardDefinition_BaseStats">BaseStats</a></dt>
+    <dd><p>Gets the base statistics (attack, health, cost) of the card.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Models_CardDefinition_Description_" data-uid="CardGame.Core.Cards.Models.CardDefinition.Description*"></a>
-
-  <h3 id="CardGame_Core_Cards_Models_CardDefinition_Description" data-uid="CardGame.Core.Cards.Models.CardDefinition.Description">
-  Description
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardDefinition.cs/#L58"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the flavor text or ability description of the card.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Description { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">string</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.Description.html#CardGame_Core_Cards_Models_CardDefinition_Description">Description</a></dt>
+    <dd><p>Gets the flavor text or ability description of the card.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Models_CardDefinition_Effects_" data-uid="CardGame.Core.Cards.Models.CardDefinition.Effects*"></a>
-
-  <h3 id="CardGame_Core_Cards_Models_CardDefinition_Effects" data-uid="CardGame.Core.Cards.Models.CardDefinition.Effects">
-  Effects
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardDefinition.cs/#L83"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the effects and abilities of the card.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;EffectData&gt; Effects { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="CardGame.Core.Cards.Data.EffectData.html">EffectData</a>&gt;</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.Effects.html#CardGame_Core_Cards_Models_CardDefinition_Effects">Effects</a></dt>
+    <dd><p>Gets the effects and abilities of the card.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Models_CardDefinition_Id_" data-uid="CardGame.Core.Cards.Models.CardDefinition.Id*"></a>
-
-  <h3 id="CardGame_Core_Cards_Models_CardDefinition_Id" data-uid="CardGame.Core.Cards.Models.CardDefinition.Id">
-  Id
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardDefinition.cs/#L48"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the unique identifier of the card.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Id { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">string</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.Id.html#CardGame_Core_Cards_Models_CardDefinition_Id">Id</a></dt>
+    <dd><p>Gets the unique identifier of the card.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Models_CardDefinition_Keywords_" data-uid="CardGame.Core.Cards.Models.CardDefinition.Keywords*"></a>
-
-  <h3 id="CardGame_Core_Cards_Models_CardDefinition_Keywords" data-uid="CardGame.Core.Cards.Models.CardDefinition.Keywords">
-  Keywords
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardDefinition.cs/#L78"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the keywords associated with the card.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;Keyword&gt; Keywords { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="CardGame.Core.Cards.Data.Keyword.html">Keyword</a>&gt;</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.Keywords.html#CardGame_Core_Cards_Models_CardDefinition_Keywords">Keywords</a></dt>
+    <dd><p>Gets the keywords associated with the card.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Models_CardDefinition_Name_" data-uid="CardGame.Core.Cards.Models.CardDefinition.Name*"></a>
-
-  <h3 id="CardGame_Core_Cards_Models_CardDefinition_Name" data-uid="CardGame.Core.Cards.Models.CardDefinition.Name">
-  Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardDefinition.cs/#L53"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the display name of the card.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">string</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.Name.html#CardGame_Core_Cards_Models_CardDefinition_Name">Name</a></dt>
+    <dd><p>Gets the display name of the card.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Models_CardDefinition_Subtypes_" data-uid="CardGame.Core.Cards.Models.CardDefinition.Subtypes*"></a>
-
-  <h3 id="CardGame_Core_Cards_Models_CardDefinition_Subtypes" data-uid="CardGame.Core.Cards.Models.CardDefinition.Subtypes">
-  Subtypes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardDefinition.cs/#L68"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the subtype classifications of the card.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string&gt; Subtypes { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IReadOnlyList</span>&lt;<span class="xref">string</span>&gt;</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.Subtypes.html#CardGame_Core_Cards_Models_CardDefinition_Subtypes">Subtypes</a></dt>
+    <dd><p>Gets the subtype classifications of the card.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Models_CardDefinition_Type_" data-uid="CardGame.Core.Cards.Models.CardDefinition.Type*"></a>
-
-  <h3 id="CardGame_Core_Cards_Models_CardDefinition_Type" data-uid="CardGame.Core.Cards.Models.CardDefinition.Type">
-  Type
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Models/CardDefinition.cs/#L63"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the type of card (Unit, Spell, etc.).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CardType Type { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Data.CardType.html">CardType</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardDefinition.Type.html#CardGame_Core_Cards_Models_CardDefinition_Type">Type</a></dt>
+    <dd><p>Gets the type of card (Unit, Spell, etc.).</p>
+</dd>
   </dl>
-
-
-
-
-
-
 
 
 

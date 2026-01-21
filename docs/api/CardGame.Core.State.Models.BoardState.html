@@ -123,232 +123,47 @@ Class BoardState  <a class="header-action link-secondary" title="View source" hr
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_State_Models_BoardState__ctor_" data-uid="CardGame.Core.State.Models.BoardState.#ctor*"></a>
-
-  <h3 id="CardGame_Core_State_Models_BoardState__ctor_System_Collections_Generic_IEnumerable_CardGame_Core_State_Models_Line__" data-uid="CardGame.Core.State.Models.BoardState.#ctor(System.Collections.Generic.IEnumerable{CardGame.Core.State.Models.Line})">
-  BoardState(IEnumerable&lt;Line&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/BoardState.cs/#L25"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the BoardState class with the specified lines.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BoardState(IEnumerable&lt;Line&gt; lines)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>lines</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.State.Models.Line.html">Line</a>&gt;</dt>
-    <dd><p>The collection of lines to initialize the board with.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.BoardState.-ctor.html#CardGame_Core_State_Models_BoardState__ctor_System_Collections_Generic_IEnumerable_CardGame_Core_State_Models_Line__">BoardState(IEnumerable&lt;Line&gt;)</a></dt>
+    <dd><p>Initializes a new instance of the BoardState class with the specified lines.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_State_Models_BoardState_Lines_" data-uid="CardGame.Core.State.Models.BoardState.Lines*"></a>
-
-  <h3 id="CardGame_Core_State_Models_BoardState_Lines" data-uid="CardGame.Core.State.Models.BoardState.Lines">
-  Lines
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/BoardState.cs/#L17"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the collection of battle lines on the board.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;Line&gt; Lines { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="CardGame.Core.State.Models.Line.html">Line</a>&gt;</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.BoardState.Lines.html#CardGame_Core_State_Models_BoardState_Lines">Lines</a></dt>
+    <dd><p>Gets the collection of battle lines on the board.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_State_Models_BoardState_Empty_" data-uid="CardGame.Core.State.Models.BoardState.Empty*"></a>
-
-  <h3 id="CardGame_Core_State_Models_BoardState_Empty" data-uid="CardGame.Core.State.Models.BoardState.Empty">
-  Empty()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/BoardState.cs/#L36"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Creates an empty board state with 4 empty lines.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static BoardState Empty()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.BoardState.html">BoardState</a></dt>
-    <dd><p>A new BoardState with all lines empty.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.BoardState.Empty.html#CardGame_Core_State_Models_BoardState_Empty">Empty()</a></dt>
+    <dd><p>Creates an empty board state with 4 empty lines.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_BoardState_GetAllUnits_" data-uid="CardGame.Core.State.Models.BoardState.GetAllUnits*"></a>
-
-  <h3 id="CardGame_Core_State_Models_BoardState_GetAllUnits" data-uid="CardGame.Core.State.Models.BoardState.GetAllUnits">
-  GetAllUnits()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/BoardState.cs/#L107"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets all units currently on the board, from all lines and both players.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;CardInstance&gt; GetAllUnits()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">List</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd><p>A list containing all units on the board.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.BoardState.GetAllUnits.html#CardGame_Core_State_Models_BoardState_GetAllUnits">GetAllUnits()</a></dt>
+    <dd><p>Gets all units currently on the board, from all lines and both players.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_BoardState_UpdateUnit_" data-uid="CardGame.Core.State.Models.BoardState.UpdateUnit*"></a>
-
-  <h3 id="CardGame_Core_State_Models_BoardState_UpdateUnit_CardGame_Core_Cards_Models_CardInstance_" data-uid="CardGame.Core.State.Models.BoardState.UpdateUnit(CardGame.Core.Cards.Models.CardInstance)">
-  UpdateUnit(CardInstance)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/BoardState.cs/#L73"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Updates a unit on the board with a modified instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BoardState UpdateUnit(CardInstance updatedUnit)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>updatedUnit</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd><p>The updated unit instance.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.BoardState.UpdateUnit.html#CardGame_Core_State_Models_BoardState_UpdateUnit_CardGame_Core_Cards_Models_CardInstance_">UpdateUnit(CardInstance)</a></dt>
+    <dd><p>Updates a unit on the board with a modified instance.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.BoardState.html">BoardState</a></dt>
-    <dd><p>A new BoardState with the unit updated, or the same state if the unit was not found.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.BoardState.WithUnitPlacedAt.html#CardGame_Core_State_Models_BoardState_WithUnitPlacedAt_System_Int32_System_Int32_CardGame_Core_Cards_Models_CardInstance_">WithUnitPlacedAt(int, int, CardInstance?)</a></dt>
+    <dd><p>Places a unit at the specified line and player slot, returning a new board state.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_BoardState_WithUnitPlacedAt_" data-uid="CardGame.Core.State.Models.BoardState.WithUnitPlacedAt*"></a>
-
-  <h3 id="CardGame_Core_State_Models_BoardState_WithUnitPlacedAt_System_Int32_System_Int32_CardGame_Core_Cards_Models_CardInstance_" data-uid="CardGame.Core.State.Models.BoardState.WithUnitPlacedAt(System.Int32,System.Int32,CardGame.Core.Cards.Models.CardInstance)">
-  WithUnitPlacedAt(int, int, CardInstance?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/BoardState.cs/#L55"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Places a unit at the specified line and player slot, returning a new board state.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BoardState WithUnitPlacedAt(int lineIndex, int playerId, CardInstance? unit)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>lineIndex</code> <span class="xref">int</span></dt>
-    <dd><p>The index of the line (0-3).</p>
-</dd>
-    <dt><code>playerId</code> <span class="xref">int</span></dt>
-    <dd><p>The ID of the player (1 or 2).</p>
-</dd>
-    <dt><code>unit</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd><p>The unit to place, or null to clear the slot.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.BoardState.html">BoardState</a></dt>
-    <dd><p>A new BoardState with the unit placed at the specified location.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,0 +1,695 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.CardSlot
+  commentId: T:CardGame.GodotClient.CardSlot
+  id: CardSlot
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.CardSlot.CardDefId
+  - CardGame.GodotClient.CardSlot.CardDroppedInSlot
+  - CardGame.GodotClient.CardSlot.ClearSlot
+  - CardGame.GodotClient.CardSlot.EmitSignalCardDroppedInSlot(System.Int32,CardGame.GodotClient.CardSlot)
+  - CardGame.GodotClient.CardSlot.HostedCardView
+  - CardGame.GodotClient.CardSlot.PlaceCard(CardGame.GodotClient.CardView,System.Int32)
+  - CardGame.GodotClient.CardSlot._CanDropData(Godot.Vector2,Godot.Variant)
+  - CardGame.GodotClient.CardSlot._DropData(Godot.Vector2,Godot.Variant)
+  - CardGame.GodotClient.CardSlot._Ready
+  langs:
+  - csharp
+  - vb
+  name: CardSlot
+  nameWithType: CardSlot
+  fullName: CardGame.GodotClient.CardSlot
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/CardGame.GodotClient.CardSlot_ScriptSerialization.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardSlot
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/CardGame.GodotClient.CardSlot_ScriptSerialization.generated.cs
+    startLine: 5
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Represents a visual container slot in the Deck Editor where a card can be dropped.
+
+    Handles drag-and-drop detection and holds a reference to the displayed card.
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/CardSlot.cs")]
+
+      public class CardSlot : PanelContainer
+    content.vb: >-
+      <ScriptPath("res://Scripts/CardSlot.cs")>
+
+      Public Class CardSlot Inherits PanelContainer
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  - Godot.CanvasItem
+  - Godot.Control
+  - Godot.Container
+  - Godot.PanelContainer
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/CardSlot.cs
+- uid: CardGame.GodotClient.CardSlot.HostedCardView
+  commentId: P:CardGame.GodotClient.CardSlot.HostedCardView
+  id: HostedCardView
+  parent: CardGame.GodotClient.CardSlot
+  langs:
+  - csharp
+  - vb
+  name: HostedCardView
+  nameWithType: CardSlot.HostedCardView
+  fullName: CardGame.GodotClient.CardSlot.HostedCardView
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardSlot.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HostedCardView
+    path: ../Source/CardGame.GodotClient/Scripts/CardSlot.cs
+    startLine: 25
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Gets the visual representation of the card currently hosted in this slot.
+  example: []
+  syntax:
+    content: public CardView HostedCardView { get; }
+    parameters: []
+    return:
+      type: CardGame.GodotClient.CardView
+    content.vb: Public Property HostedCardView As CardView
+  overload: CardGame.GodotClient.CardSlot.HostedCardView*
+- uid: CardGame.GodotClient.CardSlot.CardDefId
+  commentId: P:CardGame.GodotClient.CardSlot.CardDefId
+  id: CardDefId
+  parent: CardGame.GodotClient.CardSlot
+  langs:
+  - csharp
+  - vb
+  name: CardDefId
+  nameWithType: CardSlot.CardDefId
+  fullName: CardGame.GodotClient.CardSlot.CardDefId
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardSlot.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardDefId
+    path: ../Source/CardGame.GodotClient/Scripts/CardSlot.cs
+    startLine: 30
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Gets the definition ID of the card currently in this slot, or null if empty.
+  example: []
+  syntax:
+    content: public int? CardDefId { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property CardDefId As Integer?
+  overload: CardGame.GodotClient.CardSlot.CardDefId*
+- uid: CardGame.GodotClient.CardSlot._Ready
+  commentId: M:CardGame.GodotClient.CardSlot._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.CardSlot
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: CardSlot._Ready()
+  fullName: CardGame.GodotClient.CardSlot._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardSlot.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/CardSlot.cs
+    startLine: 36
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Called when the node enters the scene tree.
+
+    Sets the mouse filter to Stop to ensure drop events are captured.
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.CardSlot._Ready*
+- uid: CardGame.GodotClient.CardSlot.PlaceCard(CardGame.GodotClient.CardView,System.Int32)
+  commentId: M:CardGame.GodotClient.CardSlot.PlaceCard(CardGame.GodotClient.CardView,System.Int32)
+  id: PlaceCard(CardGame.GodotClient.CardView,System.Int32)
+  parent: CardGame.GodotClient.CardSlot
+  langs:
+  - csharp
+  - vb
+  name: PlaceCard(CardView, int)
+  nameWithType: CardSlot.PlaceCard(CardView, int)
+  fullName: CardGame.GodotClient.CardSlot.PlaceCard(CardGame.GodotClient.CardView, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardSlot.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlaceCard
+    path: ../Source/CardGame.GodotClient/Scripts/CardSlot.cs
+    startLine: 46
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Places a visual card instance into this slot, clearing any existing card first.
+  example: []
+  syntax:
+    content: public void PlaceCard(CardView cardVisual, int cardId)
+    parameters:
+    - id: cardVisual
+      type: CardGame.GodotClient.CardView
+      description: The visual card node to display.
+    - id: cardId
+      type: System.Int32
+      description: The definition ID of the card.
+    content.vb: Public Sub PlaceCard(cardVisual As CardView, cardId As Integer)
+  overload: CardGame.GodotClient.CardSlot.PlaceCard*
+  nameWithType.vb: CardSlot.PlaceCard(CardView, Integer)
+  fullName.vb: CardGame.GodotClient.CardSlot.PlaceCard(CardGame.GodotClient.CardView, Integer)
+  name.vb: PlaceCard(CardView, Integer)
+- uid: CardGame.GodotClient.CardSlot.ClearSlot
+  commentId: M:CardGame.GodotClient.CardSlot.ClearSlot
+  id: ClearSlot
+  parent: CardGame.GodotClient.CardSlot
+  langs:
+  - csharp
+  - vb
+  name: ClearSlot()
+  nameWithType: CardSlot.ClearSlot()
+  fullName: CardGame.GodotClient.CardSlot.ClearSlot()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardSlot.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ClearSlot
+    path: ../Source/CardGame.GodotClient/Scripts/CardSlot.cs
+    startLine: 60
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Removes and frees the currently hosted card visual from this slot.
+  example: []
+  syntax:
+    content: public void ClearSlot()
+    content.vb: Public Sub ClearSlot()
+  overload: CardGame.GodotClient.CardSlot.ClearSlot*
+- uid: CardGame.GodotClient.CardSlot._CanDropData(Godot.Vector2,Godot.Variant)
+  commentId: M:CardGame.GodotClient.CardSlot._CanDropData(Godot.Vector2,Godot.Variant)
+  id: _CanDropData(Godot.Vector2,Godot.Variant)
+  parent: CardGame.GodotClient.CardSlot
+  langs:
+  - csharp
+  - vb
+  name: _CanDropData(Vector2, Variant)
+  nameWithType: CardSlot._CanDropData(Vector2, Variant)
+  fullName: CardGame.GodotClient.CardSlot._CanDropData(Godot.Vector2, Godot.Variant)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardSlot.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _CanDropData
+    path: ../Source/CardGame.GodotClient/Scripts/CardSlot.cs
+    startLine: 73
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Checks if the dragged data is compatible with this slot (expects an integer Card ID).
+  example: []
+  syntax:
+    content: public override bool _CanDropData(Vector2 atPosition, Variant data)
+    parameters:
+    - id: atPosition
+      type: Godot.Vector2
+    - id: data
+      type: Godot.Variant
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function _CanDropData(atPosition As Vector2, data As [Variant]) As Boolean
+  overridden: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+  overload: CardGame.GodotClient.CardSlot._CanDropData*
+- uid: CardGame.GodotClient.CardSlot._DropData(Godot.Vector2,Godot.Variant)
+  commentId: M:CardGame.GodotClient.CardSlot._DropData(Godot.Vector2,Godot.Variant)
+  id: _DropData(Godot.Vector2,Godot.Variant)
+  parent: CardGame.GodotClient.CardSlot
+  langs:
+  - csharp
+  - vb
+  name: _DropData(Vector2, Variant)
+  nameWithType: CardSlot._DropData(Vector2, Variant)
+  fullName: CardGame.GodotClient.CardSlot._DropData(Godot.Vector2, Godot.Variant)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/CardSlot.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _DropData
+    path: ../Source/CardGame.GodotClient/Scripts/CardSlot.cs
+    startLine: 81
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Handles the drop event, emitting the CardDroppedInSlot signal with the card ID.
+  example: []
+  syntax:
+    content: public override void _DropData(Vector2 atPosition, Variant data)
+    parameters:
+    - id: atPosition
+      type: Godot.Vector2
+    - id: data
+      type: Godot.Variant
+    content.vb: Public Overrides Sub _DropData(atPosition As Vector2, data As [Variant])
+  overridden: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+  overload: CardGame.GodotClient.CardSlot._DropData*
+- uid: CardGame.GodotClient.CardSlot.CardDroppedInSlot
+  commentId: E:CardGame.GodotClient.CardSlot.CardDroppedInSlot
+  id: CardDroppedInSlot
+  parent: CardGame.GodotClient.CardSlot
+  langs:
+  - csharp
+  - vb
+  name: CardDroppedInSlot
+  nameWithType: CardSlot.CardDroppedInSlot
+  fullName: CardGame.GodotClient.CardSlot.CardDroppedInSlot
+  type: Event
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.CardSlot_ScriptSignals.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardDroppedInSlot
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.CardSlot_ScriptSignals.generated.cs
+    startLine: 32
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Signal emitted when a valid card is dropped onto this slot.
+  example: []
+  syntax:
+    content: public event CardSlot.CardDroppedInSlotEventHandler CardDroppedInSlot
+    return:
+      type: CardGame.GodotClient.CardSlot.CardDroppedInSlotEventHandler
+    content.vb: Public Event CardDroppedInSlot As CardSlot.CardDroppedInSlotEventHandler
+- uid: CardGame.GodotClient.CardSlot.EmitSignalCardDroppedInSlot(System.Int32,CardGame.GodotClient.CardSlot)
+  commentId: M:CardGame.GodotClient.CardSlot.EmitSignalCardDroppedInSlot(System.Int32,CardGame.GodotClient.CardSlot)
+  id: EmitSignalCardDroppedInSlot(System.Int32,CardGame.GodotClient.CardSlot)
+  parent: CardGame.GodotClient.CardSlot
+  langs:
+  - csharp
+  - vb
+  name: EmitSignalCardDroppedInSlot(int, CardSlot)
+  nameWithType: CardSlot.EmitSignalCardDroppedInSlot(int, CardSlot)
+  fullName: CardGame.GodotClient.CardSlot.EmitSignalCardDroppedInSlot(int, CardGame.GodotClient.CardSlot)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.CardSlot_ScriptSignals.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EmitSignalCardDroppedInSlot
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.CardSlot_ScriptSignals.generated.cs
+    startLine: 36
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: protected void EmitSignalCardDroppedInSlot(int cardDefId, CardSlot slot)
+    parameters:
+    - id: cardDefId
+      type: System.Int32
+    - id: slot
+      type: CardGame.GodotClient.CardSlot
+    content.vb: Protected Sub EmitSignalCardDroppedInSlot(cardDefId As Integer, slot As CardSlot)
+  overload: CardGame.GodotClient.CardSlot.EmitSignalCardDroppedInSlot*
+  nameWithType.vb: CardSlot.EmitSignalCardDroppedInSlot(Integer, CardSlot)
+  fullName.vb: CardGame.GodotClient.CardSlot.EmitSignalCardDroppedInSlot(Integer, CardGame.GodotClient.CardSlot)
+  name.vb: EmitSignalCardDroppedInSlot(Integer, CardSlot)
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: Godot.CanvasItem
+  commentId: T:Godot.CanvasItem
+  parent: Godot
+  isExternal: true
+  name: CanvasItem
+  nameWithType: CanvasItem
+  fullName: Godot.CanvasItem
+- uid: Godot.Control
+  commentId: T:Godot.Control
+  parent: Godot
+  isExternal: true
+  name: Control
+  nameWithType: Control
+  fullName: Godot.Control
+- uid: Godot.Container
+  commentId: T:Godot.Container
+  parent: Godot
+  isExternal: true
+  name: Container
+  nameWithType: Container
+  fullName: Godot.Container
+- uid: Godot.PanelContainer
+  commentId: T:Godot.PanelContainer
+  parent: Godot
+  isExternal: true
+  name: PanelContainer
+  nameWithType: PanelContainer
+  fullName: Godot.PanelContainer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: CardGame.GodotClient.CardSlot.HostedCardView*
+  commentId: Overload:CardGame.GodotClient.CardSlot.HostedCardView
+  href: CardGame.GodotClient.CardSlot.HostedCardView.html#CardGame_GodotClient_CardSlot_HostedCardView
+  name: HostedCardView
+  nameWithType: CardSlot.HostedCardView
+  fullName: CardGame.GodotClient.CardSlot.HostedCardView
+- uid: CardGame.GodotClient.CardView
+  commentId: T:CardGame.GodotClient.CardView
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.CardView.html
+  name: CardView
+  nameWithType: CardView
+  fullName: CardGame.GodotClient.CardView
+- uid: CardGame.GodotClient.CardSlot.CardDefId*
+  commentId: Overload:CardGame.GodotClient.CardSlot.CardDefId
+  href: CardGame.GodotClient.CardSlot.CardDefId.html#CardGame_GodotClient_CardSlot_CardDefId
+  name: CardDefId
+  nameWithType: CardSlot.CardDefId
+  fullName: CardGame.GodotClient.CardSlot.CardDefId
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.CardSlot._Ready*
+  commentId: Overload:CardGame.GodotClient.CardSlot._Ready
+  href: CardGame.GodotClient.CardSlot._Ready.html#CardGame_GodotClient_CardSlot__Ready
+  name: _Ready
+  nameWithType: CardSlot._Ready
+  fullName: CardGame.GodotClient.CardSlot._Ready
+- uid: CardGame.GodotClient.CardSlot.PlaceCard*
+  commentId: Overload:CardGame.GodotClient.CardSlot.PlaceCard
+  href: CardGame.GodotClient.CardSlot.PlaceCard.html#CardGame_GodotClient_CardSlot_PlaceCard_CardGame_GodotClient_CardView_System_Int32_
+  name: PlaceCard
+  nameWithType: CardSlot.PlaceCard
+  fullName: CardGame.GodotClient.CardSlot.PlaceCard
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.GodotClient.CardSlot.ClearSlot*
+  commentId: Overload:CardGame.GodotClient.CardSlot.ClearSlot
+  href: CardGame.GodotClient.CardSlot.ClearSlot.html#CardGame_GodotClient_CardSlot_ClearSlot
+  name: ClearSlot
+  nameWithType: CardSlot.ClearSlot
+  fullName: CardGame.GodotClient.CardSlot.ClearSlot
+- uid: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+  commentId: M:Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+  parent: Godot.Control
+  isExternal: true
+  name: _CanDropData(Vector2, Variant)
+  nameWithType: Control._CanDropData(Vector2, Variant)
+  fullName: Godot.Control._CanDropData(Godot.Vector2, Godot.Variant)
+  spec.csharp:
+  - uid: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+    name: _CanDropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+    name: _CanDropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+- uid: CardGame.GodotClient.CardSlot._CanDropData*
+  commentId: Overload:CardGame.GodotClient.CardSlot._CanDropData
+  href: CardGame.GodotClient.CardSlot._CanDropData.html#CardGame_GodotClient_CardSlot__CanDropData_Godot_Vector2_Godot_Variant_
+  name: _CanDropData
+  nameWithType: CardSlot._CanDropData
+  fullName: CardGame.GodotClient.CardSlot._CanDropData
+- uid: Godot.Vector2
+  commentId: T:Godot.Vector2
+  parent: Godot
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Godot.Vector2
+- uid: Godot.Variant
+  commentId: T:Godot.Variant
+  parent: Godot
+  isExternal: true
+  name: Variant
+  nameWithType: Variant
+  fullName: Godot.Variant
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+  commentId: M:Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+  parent: Godot.Control
+  isExternal: true
+  name: _DropData(Vector2, Variant)
+  nameWithType: Control._DropData(Vector2, Variant)
+  fullName: Godot.Control._DropData(Godot.Vector2, Godot.Variant)
+  spec.csharp:
+  - uid: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+    name: _DropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+    name: _DropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+- uid: CardGame.GodotClient.CardSlot._DropData*
+  commentId: Overload:CardGame.GodotClient.CardSlot._DropData
+  href: CardGame.GodotClient.CardSlot._DropData.html#CardGame_GodotClient_CardSlot__DropData_Godot_Vector2_Godot_Variant_
+  name: _DropData
+  nameWithType: CardSlot._DropData
+  fullName: CardGame.GodotClient.CardSlot._DropData
+- uid: CardGame.GodotClient.CardSlot.CardDroppedInSlotEventHandler
+  commentId: T:CardGame.GodotClient.CardSlot.CardDroppedInSlotEventHandler
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.CardSlot.html
+  name: CardSlot.CardDroppedInSlotEventHandler
+  nameWithType: CardSlot.CardDroppedInSlotEventHandler
+  fullName: CardGame.GodotClient.CardSlot.CardDroppedInSlotEventHandler
+  spec.csharp:
+  - uid: CardGame.GodotClient.CardSlot
+    name: CardSlot
+    href: CardGame.GodotClient.CardSlot.html
+  - name: .
+  - uid: CardGame.GodotClient.CardSlot.CardDroppedInSlotEventHandler
+    name: CardDroppedInSlotEventHandler
+  spec.vb:
+  - uid: CardGame.GodotClient.CardSlot
+    name: CardSlot
+    href: CardGame.GodotClient.CardSlot.html
+  - name: .
+  - uid: CardGame.GodotClient.CardSlot.CardDroppedInSlotEventHandler
+    name: CardDroppedInSlotEventHandler
+- uid: CardGame.GodotClient.CardSlot.EmitSignalCardDroppedInSlot*
+  commentId: Overload:CardGame.GodotClient.CardSlot.EmitSignalCardDroppedInSlot
+  href: CardGame.GodotClient.CardSlot.EmitSignalCardDroppedInSlot.html#CardGame_GodotClient_CardSlot_EmitSignalCardDroppedInSlot_System_Int32_CardGame_GodotClient_CardSlot_
+  name: EmitSignalCardDroppedInSlot
+  nameWithType: CardSlot.EmitSignalCardDroppedInSlot
+  fullName: CardGame.GodotClient.CardSlot.EmitSignalCardDroppedInSlot
+- uid: CardGame.GodotClient.CardSlot
+  commentId: T:CardGame.GodotClient.CardSlot
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.CardSlot.html
+  name: CardSlot
+  nameWithType: CardSlot
+  fullName: CardGame.GodotClient.CardSlot
+memberLayout: SeparatePages

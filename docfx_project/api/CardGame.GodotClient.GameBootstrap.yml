@@ -17,11 +17,11 @@ items:
   type: Class
   source:
     remote:
-      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/CardGame.GodotClient.GameBootstrap_ScriptSerialization.generated.cs
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
       branch: main
       repo: https://github.com/Bluzacy2/CardGame
     id: GameBootstrap
-    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/CardGame.GodotClient.GameBootstrap_ScriptSerialization.generated.cs
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
     startLine: 5
   assemblies:
   - CardGame.GodotClient
@@ -87,7 +87,7 @@ items:
 
       public UIManager UI
     return:
-      type: UIManager
+      type: CardGame.GodotClient.UIManager
     content.vb: >-
       <Export(PropertyHint.None, "")>
 
@@ -251,12 +251,13 @@ references:
   name: Godot
   nameWithType: Godot
   fullName: Godot
-- uid: UIManager
-  commentId: T:UIManager
-  href: UIManager.html
+- uid: CardGame.GodotClient.UIManager
+  commentId: T:CardGame.GodotClient.UIManager
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.UIManager.html
   name: UIManager
   nameWithType: UIManager
-  fullName: UIManager
+  fullName: CardGame.GodotClient.UIManager
 - uid: Godot.Node._Ready
   commentId: M:Godot.Node._Ready
   parent: Godot.Node
@@ -278,7 +279,7 @@ references:
   - name: )
 - uid: CardGame.GodotClient.GameBootstrap._Ready*
   commentId: Overload:CardGame.GodotClient.GameBootstrap._Ready
-  href: CardGame.GodotClient.GameBootstrap.html#CardGame_GodotClient_GameBootstrap__Ready
+  href: CardGame.GodotClient.GameBootstrap._Ready.html#CardGame_GodotClient_GameBootstrap__Ready
   name: _Ready
   nameWithType: GameBootstrap._Ready
   fullName: CardGame.GodotClient.GameBootstrap._Ready
@@ -312,7 +313,7 @@ references:
   - name: )
 - uid: CardGame.GodotClient.GameBootstrap._Process*
   commentId: Overload:CardGame.GodotClient.GameBootstrap._Process
-  href: CardGame.GodotClient.GameBootstrap.html#CardGame_GodotClient_GameBootstrap__Process_System_Double_
+  href: CardGame.GodotClient.GameBootstrap._Process.html#CardGame_GodotClient_GameBootstrap__Process_System_Double_
   name: _Process
   nameWithType: GameBootstrap._Process
   fullName: CardGame.GodotClient.GameBootstrap._Process
@@ -326,3 +327,4 @@ references:
   nameWithType.vb: Double
   fullName.vb: Double
   name.vb: Double
+memberLayout: SeparatePages

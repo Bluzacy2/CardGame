@@ -123,1064 +123,156 @@ Class PlayerState  <a class="header-action link-secondary" title="View source" h
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_State_Models_PlayerState__ctor_" data-uid="CardGame.Core.State.Models.PlayerState.#ctor*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_CardGame_Core_Cards_Models_CardStats__" data-uid="CardGame.Core.State.Models.PlayerState.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Nullable{CardGame.Core.Cards.Models.CardStats})">
-  PlayerState(int, int, int, int, IEnumerable&lt;CardInstance&gt;, IEnumerable&lt;CardInstance&gt;, IEnumerable&lt;CardInstance&gt;, CardStats?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L77"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the PlayerState class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState(int playerId, int health, int maxBlood, int currentBlood, IEnumerable&lt;CardInstance&gt; hand, IEnumerable&lt;CardInstance&gt; drawPile, IEnumerable&lt;CardInstance&gt; discardPile, CardStats? globalUnitBuffs = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>playerId</code> <span class="xref">int</span></dt>
-    <dd><p>The unique identifier of the player.</p>
-</dd>
-    <dt><code>health</code> <span class="xref">int</span></dt>
-    <dd><p>The current health of the player.</p>
-</dd>
-    <dt><code>maxBlood</code> <span class="xref">int</span></dt>
-    <dd><p>The maximum blood resource available.</p>
-</dd>
-    <dt><code>currentBlood</code> <span class="xref">int</span></dt>
-    <dd><p>The current available blood resource.</p>
-</dd>
-    <dt><code>hand</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd><p>The cards in the player's hand.</p>
-</dd>
-    <dt><code>drawPile</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd><p>The player's draw pile.</p>
-</dd>
-    <dt><code>discardPile</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd><p>The player's discard pile.</p>
-</dd>
-    <dt><code>globalUnitBuffs</code> <a class="xref" href="CardGame.Core.Cards.Models.CardStats.html">CardStats</a>?</dt>
-    <dd><p>Optional global unit buffs.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.-ctor.html#CardGame_Core_State_Models_PlayerState__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_CardGame_Core_Cards_Models_CardStats__">PlayerState(int, int, int, int, IEnumerable&lt;CardInstance&gt;, IEnumerable&lt;CardInstance&gt;, IEnumerable&lt;CardInstance&gt;, CardStats?)</a></dt>
+    <dd><p>Initializes a new instance of the PlayerState class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="fields">Fields
 </h2>
 
-
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_MaxHandSize" data-uid="CardGame.Core.State.Models.PlayerState.MaxHandSize">
-  MaxHandSize
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L20"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Maximum number of cards allowed in a player's hand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const int MaxHandSize = 8</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.MaxHandSize.html">MaxHandSize</a></dt>
+    <dd><p>Maximum number of cards allowed in a player's hand.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_State_Models_PlayerState_CurrentBlood_" data-uid="CardGame.Core.State.Models.PlayerState.CurrentBlood*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_CurrentBlood" data-uid="CardGame.Core.State.Models.PlayerState.CurrentBlood">
-  CurrentBlood
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L42"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the current available blood resource.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int CurrentBlood { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.CurrentBlood.html#CardGame_Core_State_Models_PlayerState_CurrentBlood">CurrentBlood</a></dt>
+    <dd><p>Gets the current available blood resource.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_DiscardPile_" data-uid="CardGame.Core.State.Models.PlayerState.DiscardPile*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_DiscardPile" data-uid="CardGame.Core.State.Models.PlayerState.DiscardPile">
-  DiscardPile
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L57"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the player's discard pile (graveyard).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;CardInstance&gt; DiscardPile { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.DiscardPile.html#CardGame_Core_State_Models_PlayerState_DiscardPile">DiscardPile</a></dt>
+    <dd><p>Gets the player's discard pile (graveyard).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_DrawPile_" data-uid="CardGame.Core.State.Models.PlayerState.DrawPile*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_DrawPile" data-uid="CardGame.Core.State.Models.PlayerState.DrawPile">
-  DrawPile
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L52"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the player's draw pile (deck).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;CardInstance&gt; DrawPile { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.DrawPile.html#CardGame_Core_State_Models_PlayerState_DrawPile">DrawPile</a></dt>
+    <dd><p>Gets the player's draw pile (deck).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_GlobalUnitBuffs_" data-uid="CardGame.Core.State.Models.PlayerState.GlobalUnitBuffs*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_GlobalUnitBuffs" data-uid="CardGame.Core.State.Models.PlayerState.GlobalUnitBuffs">
-  GlobalUnitBuffs
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L62"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the global stat buffs applied to all units controlled by this player.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CardStats GlobalUnitBuffs { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardStats.html">CardStats</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.GlobalUnitBuffs.html#CardGame_Core_State_Models_PlayerState_GlobalUnitBuffs">GlobalUnitBuffs</a></dt>
+    <dd><p>Gets the global stat buffs applied to all units controlled by this player.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_Hand_" data-uid="CardGame.Core.State.Models.PlayerState.Hand*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_Hand" data-uid="CardGame.Core.State.Models.PlayerState.Hand">
-  Hand
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L47"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the cards currently in the player's hand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;CardInstance&gt; Hand { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.Hand.html#CardGame_Core_State_Models_PlayerState_Hand">Hand</a></dt>
+    <dd><p>Gets the cards currently in the player's hand.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_Health_" data-uid="CardGame.Core.State.Models.PlayerState.Health*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_Health" data-uid="CardGame.Core.State.Models.PlayerState.Health">
-  Health
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L32"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the current health of the player.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Health { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.Health.html#CardGame_Core_State_Models_PlayerState_Health">Health</a></dt>
+    <dd><p>Gets the current health of the player.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_MaxBlood_" data-uid="CardGame.Core.State.Models.PlayerState.MaxBlood*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_MaxBlood" data-uid="CardGame.Core.State.Models.PlayerState.MaxBlood">
-  MaxBlood
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L37"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the maximum blood resource available to the player.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MaxBlood { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.MaxBlood.html#CardGame_Core_State_Models_PlayerState_MaxBlood">MaxBlood</a></dt>
+    <dd><p>Gets the maximum blood resource available to the player.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_PlayerId_" data-uid="CardGame.Core.State.Models.PlayerState.PlayerId*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_PlayerId" data-uid="CardGame.Core.State.Models.PlayerState.PlayerId">
-  PlayerId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L27"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the unique identifier of the player (1 or 2).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int PlayerId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.PlayerId.html#CardGame_Core_State_Models_PlayerState_PlayerId">PlayerId</a></dt>
+    <dd><p>Gets the unique identifier of the player (1 or 2).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_State_Models_PlayerState_CanPlayCard_" data-uid="CardGame.Core.State.Models.PlayerState.CanPlayCard*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_CanPlayCard_System_Int32_" data-uid="CardGame.Core.State.Models.PlayerState.CanPlayCard(System.Int32)">
-  CanPlayCard(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L328"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Determines whether the player can play a card with the specified cost.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool CanPlayCard(int cost)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cost</code> <span class="xref">int</span></dt>
-    <dd><p>The blood cost of the card.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.CanPlayCard.html#CardGame_Core_State_Models_PlayerState_CanPlayCard_System_Int32_">CanPlayCard(int)</a></dt>
+    <dd><p>Determines whether the player can play a card with the specified cost.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd><p>True if the player has enough blood to play the card, otherwise false.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.Initial.html#CardGame_Core_State_Models_PlayerState_Initial_System_Int32_System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__">Initial(int, List&lt;CardInstance&gt;)</a></dt>
+    <dd><p>Creates an initial player state for the start of a game.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_Initial_" data-uid="CardGame.Core.State.Models.PlayerState.Initial*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_Initial_System_Int32_System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__" data-uid="CardGame.Core.State.Models.PlayerState.Initial(System.Int32,System.Collections.Generic.List{CardGame.Core.Cards.Models.CardInstance})">
-  Initial(int, List&lt;CardInstance&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L105"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Creates an initial player state for the start of a game.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static PlayerState Initial(int playerId, List&lt;CardInstance&gt; startingDeck)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>playerId</code> <span class="xref">int</span></dt>
-    <dd><p>The unique identifier of the player.</p>
-</dd>
-    <dt><code>startingDeck</code> <span class="xref">List</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd><p>The player's starting deck.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.With.html#CardGame_Core_State_Models_PlayerState_With_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_CardGame_Core_Cards_Models_CardStats__">With(int?, int?, int?, IEnumerable&lt;CardInstance&gt;?, IEnumerable&lt;CardInstance&gt;?, IEnumerable&lt;CardInstance&gt;?, CardStats?)</a></dt>
+    <dd><p>Creates a new PlayerState with the specified properties modified.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState representing the initial state.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithBloodSpent.html#CardGame_Core_State_Models_PlayerState_WithBloodSpent_System_Int32_">WithBloodSpent(int)</a></dt>
+    <dd><p>Spends a specified amount of blood resource.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_With_" data-uid="CardGame.Core.State.Models.PlayerState.With*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_With_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_CardGame_Core_Cards_Models_CardStats__" data-uid="CardGame.Core.State.Models.PlayerState.With(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Collections.Generic.IEnumerable{CardGame.Core.Cards.Models.CardInstance},System.Nullable{CardGame.Core.Cards.Models.CardStats})">
-  With(int?, int?, int?, IEnumerable&lt;CardInstance&gt;?, IEnumerable&lt;CardInstance&gt;?, IEnumerable&lt;CardInstance&gt;?, CardStats?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L121"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Creates a new PlayerState with the specified properties modified.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState With(int? health = null, int? maxBlood = null, int? currentBlood = null, IEnumerable&lt;CardInstance&gt;? hand = null, IEnumerable&lt;CardInstance&gt;? drawPile = null, IEnumerable&lt;CardInstance&gt;? discardPile = null, CardStats? globalUnitBuffs = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>health</code> <span class="xref">int</span>?</dt>
-    <dd><p>Optional new health value.</p>
-</dd>
-    <dt><code>maxBlood</code> <span class="xref">int</span>?</dt>
-    <dd><p>Optional new maximum blood value.</p>
-</dd>
-    <dt><code>currentBlood</code> <span class="xref">int</span>?</dt>
-    <dd><p>Optional new current blood value.</p>
-</dd>
-    <dt><code>hand</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd><p>Optional new hand collection.</p>
-</dd>
-    <dt><code>drawPile</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd><p>Optional new draw pile collection.</p>
-</dd>
-    <dt><code>discardPile</code> <span class="xref">IEnumerable</span>&lt;<a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a>&gt;</dt>
-    <dd><p>Optional new discard pile collection.</p>
-</dd>
-    <dt><code>globalUnitBuffs</code> <a class="xref" href="CardGame.Core.Cards.Models.CardStats.html">CardStats</a>?</dt>
-    <dd><p>Optional new global unit buffs.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithCardAddedToDiscard.html#CardGame_Core_State_Models_PlayerState_WithCardAddedToDiscard_CardGame_Core_Cards_Models_CardInstance_">WithCardAddedToDiscard(CardInstance)</a></dt>
+    <dd><p>Adds a card to the player's discard pile.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with the specified modifications.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithCardAddedToHand.html#CardGame_Core_State_Models_PlayerState_WithCardAddedToHand_CardGame_Core_Cards_Models_CardInstance_">WithCardAddedToHand(CardInstance)</a></dt>
+    <dd><p>Adds a card to the player's hand.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithBloodSpent_" data-uid="CardGame.Core.State.Models.PlayerState.WithBloodSpent*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithBloodSpent_System_Int32_" data-uid="CardGame.Core.State.Models.PlayerState.WithBloodSpent(System.Int32)">
-  WithBloodSpent(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L156"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Spends a specified amount of blood resource.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithBloodSpent(int amount)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>amount</code> <span class="xref">int</span></dt>
-    <dd><p>The amount of blood to spend.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithCardDrawn.html#CardGame_Core_State_Models_PlayerState_WithCardDrawn_CardGame_Core_Events_EventBus_">WithCardDrawn(EventBus?)</a></dt>
+    <dd><p>Draws a card from the draw pile into the hand.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with reduced current blood.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithCardRemovedFromDeck.html#CardGame_Core_State_Models_PlayerState_WithCardRemovedFromDeck_CardGame_Core_Cards_Models_CardInstance_">WithCardRemovedFromDeck(CardInstance)</a></dt>
+    <dd><p>Removes a card from the player's draw pile.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithCardAddedToDiscard_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardAddedToDiscard*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithCardAddedToDiscard_CardGame_Core_Cards_Models_CardInstance_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardAddedToDiscard(CardGame.Core.Cards.Models.CardInstance)">
-  WithCardAddedToDiscard(CardInstance)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L246"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Adds a card to the player's discard pile.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithCardAddedToDiscard(CardInstance card)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>card</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd><p>The card to add.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithCardRemovedFromHand.html#CardGame_Core_State_Models_PlayerState_WithCardRemovedFromHand_CardGame_Core_Cards_Models_CardInstance_">WithCardRemovedFromHand(CardInstance)</a></dt>
+    <dd><p>Removes a card from the player's hand.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with the card added to the discard pile.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithCardsDrawnFromDiscard.html#CardGame_Core_State_Models_PlayerState_WithCardsDrawnFromDiscard_System_Int32_CardGame_Core_Events_EventBus_System_Nullable_System_Int32__">WithCardsDrawnFromDiscard(int, EventBus?, int?)</a></dt>
+    <dd><p>Draws cards from the discard pile into the hand.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithCardAddedToHand_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardAddedToHand*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithCardAddedToHand_CardGame_Core_Cards_Models_CardInstance_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardAddedToHand(CardGame.Core.Cards.Models.CardInstance)">
-  WithCardAddedToHand(CardInstance)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L238"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Adds a card to the player's hand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithCardAddedToHand(CardInstance card)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>card</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd><p>The card to add.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithDamageTaken.html#CardGame_Core_State_Models_PlayerState_WithDamageTaken_System_Int32_">WithDamageTaken(int)</a></dt>
+    <dd><p>Applies damage to the player.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with the card added to hand, or the same state if hand is full.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithGlobalBuffModifier.html#CardGame_Core_State_Models_PlayerState_WithGlobalBuffModifier_System_Int32_System_Int32_">WithGlobalBuffModifier(int, int)</a></dt>
+    <dd><p>Modifies the global unit buffs for this player.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithCardDrawn_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardDrawn*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithCardDrawn_CardGame_Core_Events_EventBus_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardDrawn(CardGame.Core.Events.EventBus)">
-  WithCardDrawn(EventBus?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L171"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Draws a card from the draw pile into the hand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithCardDrawn(EventBus? events = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>events</code> <a class="xref" href="CardGame.Core.Events.EventBus.html">EventBus</a></dt>
-    <dd><p>Optional event bus for publishing draw events.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithHealthRestored.html#CardGame_Core_State_Models_PlayerState_WithHealthRestored_System_Int32_">WithHealthRestored(int)</a></dt>
+    <dd><p>Restores health to the player.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with a card drawn, or the same state if drawing is not possible.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithMulliganPerformed.html#CardGame_Core_State_Models_PlayerState_WithMulliganPerformed_System_Collections_Generic_List_System_Int32__">WithMulliganPerformed(List&lt;int&gt;)</a></dt>
+    <dd><p>Performs a mulligan operation, replacing specified cards in hand with new ones from the deck.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithCardRemovedFromDeck_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardRemovedFromDeck*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithCardRemovedFromDeck_CardGame_Core_Cards_Models_CardInstance_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardRemovedFromDeck(CardGame.Core.Cards.Models.CardInstance)">
-  WithCardRemovedFromDeck(CardInstance)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L294"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Removes a card from the player's draw pile.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithCardRemovedFromDeck(CardInstance card)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>card</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd><p>The card to remove.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithResourceChanged.html#CardGame_Core_State_Models_PlayerState_WithResourceChanged_CardGame_Core_Cards_Data_ResourceType_System_Int32_System_Int32_">WithResourceChanged(ResourceType, int, int)</a></dt>
+    <dd><p>Updates the player's resource values.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with the card removed from the draw pile.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithShuffledDeck.html#CardGame_Core_State_Models_PlayerState_WithShuffledDeck_CardGame_Core_Application_DeterministicRng_">WithShuffledDeck(DeterministicRng)</a></dt>
+    <dd><p>Shuffles the player's draw pile.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithCardRemovedFromHand_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardRemovedFromHand*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithCardRemovedFromHand_CardGame_Core_Cards_Models_CardInstance_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardRemovedFromHand(CardGame.Core.Cards.Models.CardInstance)">
-  WithCardRemovedFromHand(CardInstance)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L163"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Removes a card from the player's hand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithCardRemovedFromHand(CardInstance card)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>card</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd><p>The card to remove.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.WithTurnStartBlood.html#CardGame_Core_State_Models_PlayerState_WithTurnStartBlood_System_Int32_System_Boolean_">WithTurnStartBlood(int, bool)</a></dt>
+    <dd><p>Updates blood resources at the start of a turn.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with the card removed from hand.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithCardsDrawnFromDiscard_" data-uid="CardGame.Core.State.Models.PlayerState.WithCardsDrawnFromDiscard*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithCardsDrawnFromDiscard_System_Int32_CardGame_Core_Events_EventBus_System_Nullable_System_Int32__" data-uid="CardGame.Core.State.Models.PlayerState.WithCardsDrawnFromDiscard(System.Int32,CardGame.Core.Events.EventBus,System.Nullable{System.Int32})">
-  WithCardsDrawnFromDiscard(int, EventBus?, int?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L194"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Draws cards from the discard pile into the hand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithCardsDrawnFromDiscard(int count, EventBus? events = null, int? excludeId = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>count</code> <span class="xref">int</span></dt>
-    <dd><p>The number of cards to draw.</p>
-</dd>
-    <dt><code>events</code> <a class="xref" href="CardGame.Core.Events.EventBus.html">EventBus</a></dt>
-    <dd><p>Optional event bus for publishing card movement events.</p>
-</dd>
-    <dt><code>excludeId</code> <span class="xref">int</span>?</dt>
-    <dd><p>Optional card instance ID to exclude from drawing.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with cards drawn from discard, or the same state if drawing is not possible.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithDamageTaken_" data-uid="CardGame.Core.State.Models.PlayerState.WithDamageTaken*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithDamageTaken_System_Int32_" data-uid="CardGame.Core.State.Models.PlayerState.WithDamageTaken(System.Int32)">
-  WithDamageTaken(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L260"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Applies damage to the player.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithDamageTaken(int amount)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>amount</code> <span class="xref">int</span></dt>
-    <dd><p>The amount of damage to apply.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with reduced health.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithGlobalBuffModifier_" data-uid="CardGame.Core.State.Models.PlayerState.WithGlobalBuffModifier*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithGlobalBuffModifier_System_Int32_System_Int32_" data-uid="CardGame.Core.State.Models.PlayerState.WithGlobalBuffModifier(System.Int32,System.Int32)">
-  WithGlobalBuffModifier(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L286"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Modifies the global unit buffs for this player.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithGlobalBuffModifier(int attack, int health)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>attack</code> <span class="xref">int</span></dt>
-    <dd><p>The attack value to add to global buffs.</p>
-</dd>
-    <dt><code>health</code> <span class="xref">int</span></dt>
-    <dd><p>The health value to add to global buffs.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with updated global unit buffs.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithHealthRestored_" data-uid="CardGame.Core.State.Models.PlayerState.WithHealthRestored*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithHealthRestored_System_Int32_" data-uid="CardGame.Core.State.Models.PlayerState.WithHealthRestored(System.Int32)">
-  WithHealthRestored(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L253"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Restores health to the player.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithHealthRestored(int amount)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>amount</code> <span class="xref">int</span></dt>
-    <dd><p>The amount of health to restore.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with increased health.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithMulliganPerformed_" data-uid="CardGame.Core.State.Models.PlayerState.WithMulliganPerformed*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithMulliganPerformed_System_Collections_Generic_List_System_Int32__" data-uid="CardGame.Core.State.Models.PlayerState.WithMulliganPerformed(System.Collections.Generic.List{System.Int32})">
-  WithMulliganPerformed(List&lt;int&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L302"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Performs a mulligan operation, replacing specified cards in hand with new ones from the deck.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithMulliganPerformed(List&lt;int&gt; cardIds)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cardIds</code> <span class="xref">List</span>&lt;<span class="xref">int</span>&gt;</dt>
-    <dd><p>The instance IDs of cards to replace.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState after performing the mulligan.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithResourceChanged_" data-uid="CardGame.Core.State.Models.PlayerState.WithResourceChanged*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithResourceChanged_CardGame_Core_Cards_Data_ResourceType_System_Int32_System_Int32_" data-uid="CardGame.Core.State.Models.PlayerState.WithResourceChanged(CardGame.Core.Cards.Data.ResourceType,System.Int32,System.Int32)">
-  WithResourceChanged(ResourceType, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L148"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Updates the player's resource values.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithResourceChanged(ResourceType type, int current, int max)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>type</code> <a class="xref" href="CardGame.Core.Cards.Data.ResourceType.html">ResourceType</a></dt>
-    <dd><p>The type of resource to update (currently only Blood).</p>
-</dd>
-    <dt><code>current</code> <span class="xref">int</span></dt>
-    <dd><p>The new current value of the resource.</p>
-</dd>
-    <dt><code>max</code> <span class="xref">int</span></dt>
-    <dd><p>The new maximum value of the resource.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with updated resource values.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithShuffledDeck_" data-uid="CardGame.Core.State.Models.PlayerState.WithShuffledDeck*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithShuffledDeck_CardGame_Core_Application_DeterministicRng_" data-uid="CardGame.Core.State.Models.PlayerState.WithShuffledDeck(CardGame.Core.Application.DeterministicRng)">
-  WithShuffledDeck(DeterministicRng)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L267"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Shuffles the player's draw pile.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithShuffledDeck(DeterministicRng rng)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>rng</code> <a class="xref" href="CardGame.Core.Application.DeterministicRng.html">DeterministicRng</a></dt>
-    <dd><p>The random number generator to use for shuffling.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with a shuffled draw pile.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PlayerState_WithTurnStartBlood_" data-uid="CardGame.Core.State.Models.PlayerState.WithTurnStartBlood*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PlayerState_WithTurnStartBlood_System_Int32_System_Boolean_" data-uid="CardGame.Core.State.Models.PlayerState.WithTurnStartBlood(System.Int32,System.Boolean)">
-  WithTurnStartBlood(int, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PlayerState.cs/#L227"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Updates blood resources at the start of a turn.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerState WithTurnStartBlood(int manaLimit, bool refill)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>manaLimit</code> <span class="xref">int</span></dt>
-    <dd><p>The maximum mana (blood) limit for the turn.</p>
-</dd>
-    <dt><code>refill</code> <span class="xref">bool</span></dt>
-    <dd><p>Whether to refill the current blood to the maximum.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.PlayerState.html">PlayerState</a></dt>
-    <dd><p>A new PlayerState with updated blood resources.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

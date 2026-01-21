@@ -129,214 +129,39 @@ Class UnkillableHandler  <a class="header-action link-secondary" title="View sou
 
 
 
-
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_Type_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.Type*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_Type" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.Type">
-  Type
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs/#L275"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the keyword type this handler processes (Unkillable).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Keyword Type { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Data.Keyword.html">Keyword</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.Type.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_Type">Type</a></dt>
+    <dd><p>Gets the keyword type this handler processes (Unkillable).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnAfterAttack_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnAfterAttack*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)">
-  OnAfterAttack(GameState, CardInstance, CardInstance?, int, GameContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs/#L285"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Unkillable has no special effects after attacking.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
-    <dt><code>attacker</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
-    <dt><code>victim</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
-    <dt><code>lineIndex</code> <span class="xref">int</span></dt>
-    <dd></dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnAfterAttack.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_">OnAfterAttack(GameState, CardInstance, CardInstance?, int, GameContext)</a></dt>
+    <dd><p>Unkillable has no special effects after attacking.</p>
+</dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnModifyDamageTaken.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_">OnModifyDamageTaken(int, DamageContext)</a></dt>
+    <dd><p>Unkillable does not modify incoming damage.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnModifyDamageTaken_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnModifyDamageTaken*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)">
-  OnModifyDamageTaken(int, DamageContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs/#L280"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Unkillable does not modify incoming damage.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int OnModifyDamageTaken(int amount, DamageContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>amount</code> <span class="xref">int</span></dt>
-    <dd></dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.GameRules.Damage.DamageContext.html">DamageContext</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnPreventDeath_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnPreventDeath*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)">
-  OnPreventDeath(ref GameState, CardInstance, GameContext, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs/#L296"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Prevents death by returning the unit to the owner's hand.
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnPreventDeath.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_">OnPreventDeath(ref GameState, CardInstance, GameContext, bool)</a></dt>
+    <dd><p>Prevents death by returning the unit to the owner's hand.
 Silenced units cannot use this effect.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
-    <dt><code>unit</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd></dd>
-    <dt><code>isSacrifice</code> <span class="xref">bool</span></dt>
-    <dd></dd>
+</dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnRoundEnd.html#CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_">OnRoundEnd(GameState, CardInstance, GameContext)</a></dt>
+    <dd><p>Unkillable has no special effects at round end.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnRoundEnd_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnRoundEnd*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_Keywords_Handlers_UnkillableHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.UnkillableHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)">
-  OnRoundEnd(GameState, CardInstance, GameContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs/#L290"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Unkillable has no special effects at round end.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
-    <dt><code>unit</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

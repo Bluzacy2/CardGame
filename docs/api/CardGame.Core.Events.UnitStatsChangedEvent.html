@@ -129,323 +129,58 @@ Class UnitStatsChangedEvent  <a class="header-action link-secondary" title="View
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_Events_UnitStatsChangedEvent__ctor_" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.#ctor*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitStatsChangedEvent__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Nullable_System_Int32__System_Int32_System_Boolean_" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Int32,System.Boolean)">
-  UnitStatsChangedEvent(int, int, int, int, int, int?, int, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitStatsChangedEvent.cs/#L61"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the UnitStatsChangedEvent class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UnitStatsChangedEvent(int targetId, int atkDelta, int hpDelta, int curAtk, int curHp, int? sourceId, int sourcePlayerId, bool isAura = false)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>targetId</code> <span class="xref">int</span></dt>
-    <dd><p>The ID of the target unit.</p>
-</dd>
-    <dt><code>atkDelta</code> <span class="xref">int</span></dt>
-    <dd><p>The change in attack value.</p>
-</dd>
-    <dt><code>hpDelta</code> <span class="xref">int</span></dt>
-    <dd><p>The change in health value.</p>
-</dd>
-    <dt><code>curAtk</code> <span class="xref">int</span></dt>
-    <dd><p>The current attack value after change.</p>
-</dd>
-    <dt><code>curHp</code> <span class="xref">int</span></dt>
-    <dd><p>The current health value after change.</p>
-</dd>
-    <dt><code>sourceId</code> <span class="xref">int</span>?</dt>
-    <dd><p>The optional source ID that caused the change.</p>
-</dd>
-    <dt><code>sourcePlayerId</code> <span class="xref">int</span></dt>
-    <dd><p>The ID of the player who caused the change.</p>
-</dd>
-    <dt><code>isAura</code> <span class="xref">bool</span></dt>
-    <dd><p>Whether the change was caused by an aura effect.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitStatsChangedEvent.-ctor.html#CardGame_Core_Events_UnitStatsChangedEvent__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Nullable_System_Int32__System_Int32_System_Boolean_">UnitStatsChangedEvent(int, int, int, int, int, int?, int, bool)</a></dt>
+    <dd><p>Initializes a new instance of the UnitStatsChangedEvent class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Events_UnitStatsChangedEvent_AttackDelta_" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitStatsChangedEvent_AttackDelta" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta">
-  AttackDelta
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitStatsChangedEvent.cs/#L23"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the change in attack value (positive for increase, negative for decrease).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int AttackDelta { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitStatsChangedEvent.AttackDelta.html#CardGame_Core_Events_UnitStatsChangedEvent_AttackDelta">AttackDelta</a></dt>
+    <dd><p>Gets the change in attack value (positive for increase, negative for decrease).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitStatsChangedEvent_CurrentAttack_" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitStatsChangedEvent_CurrentAttack" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack">
-  CurrentAttack
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitStatsChangedEvent.cs/#L33"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the current attack value after the change.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int CurrentAttack { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitStatsChangedEvent.CurrentAttack.html#CardGame_Core_Events_UnitStatsChangedEvent_CurrentAttack">CurrentAttack</a></dt>
+    <dd><p>Gets the current attack value after the change.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitStatsChangedEvent_CurrentHealth_" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitStatsChangedEvent_CurrentHealth" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth">
-  CurrentHealth
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitStatsChangedEvent.cs/#L38"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the current health value after the change.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int CurrentHealth { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitStatsChangedEvent.CurrentHealth.html#CardGame_Core_Events_UnitStatsChangedEvent_CurrentHealth">CurrentHealth</a></dt>
+    <dd><p>Gets the current health value after the change.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitStatsChangedEvent_HealthDelta_" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitStatsChangedEvent_HealthDelta" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta">
-  HealthDelta
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitStatsChangedEvent.cs/#L28"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the change in health value (positive for increase, negative for decrease).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int HealthDelta { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitStatsChangedEvent.HealthDelta.html#CardGame_Core_Events_UnitStatsChangedEvent_HealthDelta">HealthDelta</a></dt>
+    <dd><p>Gets the change in health value (positive for increase, negative for decrease).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitStatsChangedEvent_IsAura_" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.IsAura*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitStatsChangedEvent_IsAura" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.IsAura">
-  IsAura
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitStatsChangedEvent.cs/#L43"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets a value indicating whether the change was caused by an aura effect.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsAura { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitStatsChangedEvent.IsAura.html#CardGame_Core_Events_UnitStatsChangedEvent_IsAura">IsAura</a></dt>
+    <dd><p>Gets a value indicating whether the change was caused by an aura effect.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitStatsChangedEvent_SourceId_" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.SourceId*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitStatsChangedEvent_SourceId" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.SourceId">
-  SourceId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitStatsChangedEvent.cs/#L18"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the optional source ID that caused the stat change.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? SourceId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span>?</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitStatsChangedEvent.SourceId.html#CardGame_Core_Events_UnitStatsChangedEvent_SourceId">SourceId</a></dt>
+    <dd><p>Gets the optional source ID that caused the stat change.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitStatsChangedEvent_SourcePlayerId_" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitStatsChangedEvent_SourcePlayerId" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId">
-  SourcePlayerId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitStatsChangedEvent.cs/#L48"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the ID of the player who caused the stat change.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int SourcePlayerId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitStatsChangedEvent.SourcePlayerId.html#CardGame_Core_Events_UnitStatsChangedEvent_SourcePlayerId">SourcePlayerId</a></dt>
+    <dd><p>Gets the ID of the player who caused the stat change.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitStatsChangedEvent_TargetUnitId_" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitStatsChangedEvent_TargetUnitId" data-uid="CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId">
-  TargetUnitId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitStatsChangedEvent.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the ID of the unit whose statistics changed.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int TargetUnitId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitStatsChangedEvent.TargetUnitId.html#CardGame_Core_Events_UnitStatsChangedEvent_TargetUnitId">TargetUnitId</a></dt>
+    <dd><p>Gets the ID of the unit whose statistics changed.</p>
+</dd>
   </dl>
-
-
-
-
-
-
 
 
 

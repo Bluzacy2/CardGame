@@ -301,7 +301,7 @@ references:
   fullName: System
 - uid: CardGame.Core.State.Models.BoardState.Lines*
   commentId: Overload:CardGame.Core.State.Models.BoardState.Lines
-  href: CardGame.Core.State.Models.BoardState.html#CardGame_Core_State_Models_BoardState_Lines
+  href: CardGame.Core.State.Models.BoardState.Lines.html#CardGame_Core_State_Models_BoardState_Lines
   name: Lines
   nameWithType: BoardState.Lines
   fullName: CardGame.Core.State.Models.BoardState.Lines
@@ -400,7 +400,7 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.Core.State.Models.BoardState.#ctor*
   commentId: Overload:CardGame.Core.State.Models.BoardState.#ctor
-  href: CardGame.Core.State.Models.BoardState.html#CardGame_Core_State_Models_BoardState__ctor_System_Collections_Generic_IEnumerable_CardGame_Core_State_Models_Line__
+  href: CardGame.Core.State.Models.BoardState.-ctor.html#CardGame_Core_State_Models_BoardState__ctor_System_Collections_Generic_IEnumerable_CardGame_Core_State_Models_Line__
   name: BoardState
   nameWithType: BoardState.BoardState
   fullName: CardGame.Core.State.Models.BoardState.BoardState
@@ -465,7 +465,7 @@ references:
   - name: )
 - uid: CardGame.Core.State.Models.BoardState.Empty*
   commentId: Overload:CardGame.Core.State.Models.BoardState.Empty
-  href: CardGame.Core.State.Models.BoardState.html#CardGame_Core_State_Models_BoardState_Empty
+  href: CardGame.Core.State.Models.BoardState.Empty.html#CardGame_Core_State_Models_BoardState_Empty
   name: Empty
   nameWithType: BoardState.Empty
   fullName: CardGame.Core.State.Models.BoardState.Empty
@@ -478,7 +478,7 @@ references:
   fullName: CardGame.Core.State.Models.BoardState
 - uid: CardGame.Core.State.Models.BoardState.WithUnitPlacedAt*
   commentId: Overload:CardGame.Core.State.Models.BoardState.WithUnitPlacedAt
-  href: CardGame.Core.State.Models.BoardState.html#CardGame_Core_State_Models_BoardState_WithUnitPlacedAt_System_Int32_System_Int32_CardGame_Core_Cards_Models_CardInstance_
+  href: CardGame.Core.State.Models.BoardState.WithUnitPlacedAt.html#CardGame_Core_State_Models_BoardState_WithUnitPlacedAt_System_Int32_System_Int32_CardGame_Core_Cards_Models_CardInstance_
   name: WithUnitPlacedAt
   nameWithType: BoardState.WithUnitPlacedAt
   fullName: CardGame.Core.State.Models.BoardState.WithUnitPlacedAt
@@ -539,13 +539,13 @@ references:
     href: CardGame.Core.Cards.Models.html
 - uid: CardGame.Core.State.Models.BoardState.UpdateUnit*
   commentId: Overload:CardGame.Core.State.Models.BoardState.UpdateUnit
-  href: CardGame.Core.State.Models.BoardState.html#CardGame_Core_State_Models_BoardState_UpdateUnit_CardGame_Core_Cards_Models_CardInstance_
+  href: CardGame.Core.State.Models.BoardState.UpdateUnit.html#CardGame_Core_State_Models_BoardState_UpdateUnit_CardGame_Core_Cards_Models_CardInstance_
   name: UpdateUnit
   nameWithType: BoardState.UpdateUnit
   fullName: CardGame.Core.State.Models.BoardState.UpdateUnit
 - uid: CardGame.Core.State.Models.BoardState.GetAllUnits*
   commentId: Overload:CardGame.Core.State.Models.BoardState.GetAllUnits
-  href: CardGame.Core.State.Models.BoardState.html#CardGame_Core_State_Models_BoardState_GetAllUnits
+  href: CardGame.Core.State.Models.BoardState.GetAllUnits.html#CardGame_Core_State_Models_BoardState_GetAllUnits
   name: GetAllUnits
   nameWithType: BoardState.GetAllUnits
   fullName: CardGame.Core.State.Models.BoardState.GetAllUnits
@@ -605,3 +605,4 @@ references:
   - name: " "
   - name: T
   - name: )
+memberLayout: SeparatePages

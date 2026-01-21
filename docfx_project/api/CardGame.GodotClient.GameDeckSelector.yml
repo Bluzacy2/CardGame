@@ -1,0 +1,427 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.GameDeckSelector
+  commentId: T:CardGame.GodotClient.GameDeckSelector
+  id: GameDeckSelector
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.GameDeckSelector.BackButton
+  - CardGame.GodotClient.GameDeckSelector.BotSelectedLabel
+  - CardGame.GodotClient.GameDeckSelector.DeckListContainer
+  - CardGame.GodotClient.GameDeckSelector.PlayerSelectedLabel
+  - CardGame.GodotClient.GameDeckSelector.StartGameButton
+  - CardGame.GodotClient.GameDeckSelector._Ready
+  langs:
+  - csharp
+  - vb
+  name: GameDeckSelector
+  nameWithType: GameDeckSelector
+  fullName: CardGame.GodotClient.GameDeckSelector
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameDeckSelector_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GameDeckSelector
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameDeckSelector_ScriptProperties.generated.cs
+    startLine: 5
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Manages the deck selection screen before a match starts.
+
+    Allows the player to choose their own deck (Left Click) and the bot's deck (Right Click).
+
+    Features a custom SDF shader for visual feedback on selection states (Player, Bot, or Both).
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/GameDeckSelector.cs")]
+
+      public class GameDeckSelector : Control
+    content.vb: >-
+      <ScriptPath("res://Scripts/GameDeckSelector.cs")>
+
+      Public Class GameDeckSelector Inherits Control
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  - Godot.CanvasItem
+  - Godot.Control
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/GameDeckSelector.cs
+- uid: CardGame.GodotClient.GameDeckSelector.DeckListContainer
+  commentId: F:CardGame.GodotClient.GameDeckSelector.DeckListContainer
+  id: DeckListContainer
+  parent: CardGame.GodotClient.GameDeckSelector
+  langs:
+  - csharp
+  - vb
+  name: DeckListContainer
+  nameWithType: GameDeckSelector.DeckListContainer
+  fullName: CardGame.GodotClient.GameDeckSelector.DeckListContainer
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckListContainer
+    path: ../Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+    startLine: 20
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Container where deck selection buttons are instantiated.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public VBoxContainer DeckListContainer
+    return:
+      type: Godot.VBoxContainer
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public DeckListContainer As VBoxContainer
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.GameDeckSelector.StartGameButton
+  commentId: F:CardGame.GodotClient.GameDeckSelector.StartGameButton
+  id: StartGameButton
+  parent: CardGame.GodotClient.GameDeckSelector
+  langs:
+  - csharp
+  - vb
+  name: StartGameButton
+  nameWithType: GameDeckSelector.StartGameButton
+  fullName: CardGame.GodotClient.GameDeckSelector.StartGameButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: StartGameButton
+    path: ../Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Button to start the match (enabled only when both decks are selected).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button StartGameButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public StartGameButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.GameDeckSelector.BackButton
+  commentId: F:CardGame.GodotClient.GameDeckSelector.BackButton
+  id: BackButton
+  parent: CardGame.GodotClient.GameDeckSelector
+  langs:
+  - csharp
+  - vb
+  name: BackButton
+  nameWithType: GameDeckSelector.BackButton
+  fullName: CardGame.GodotClient.GameDeckSelector.BackButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BackButton
+    path: ../Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+    startLine: 26
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Button to return to the Main Menu.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button BackButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public BackButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.GameDeckSelector.PlayerSelectedLabel
+  commentId: F:CardGame.GodotClient.GameDeckSelector.PlayerSelectedLabel
+  id: PlayerSelectedLabel
+  parent: CardGame.GodotClient.GameDeckSelector
+  langs:
+  - csharp
+  - vb
+  name: PlayerSelectedLabel
+  nameWithType: GameDeckSelector.PlayerSelectedLabel
+  fullName: CardGame.GodotClient.GameDeckSelector.PlayerSelectedLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerSelectedLabel
+    path: ../Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+    startLine: 29
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label displaying the name of the deck selected by the player.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label PlayerSelectedLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public PlayerSelectedLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.GameDeckSelector.BotSelectedLabel
+  commentId: F:CardGame.GodotClient.GameDeckSelector.BotSelectedLabel
+  id: BotSelectedLabel
+  parent: CardGame.GodotClient.GameDeckSelector
+  langs:
+  - csharp
+  - vb
+  name: BotSelectedLabel
+  nameWithType: GameDeckSelector.BotSelectedLabel
+  fullName: CardGame.GodotClient.GameDeckSelector.BotSelectedLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BotSelectedLabel
+    path: ../Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+    startLine: 32
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label displaying the name of the deck selected for the bot.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label BotSelectedLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public BotSelectedLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.GameDeckSelector._Ready
+  commentId: M:CardGame.GodotClient.GameDeckSelector._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.GameDeckSelector
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: GameDeckSelector._Ready()
+  fullName: CardGame.GodotClient.GameDeckSelector._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/GameDeckSelector.cs
+    startLine: 110
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Called when the node enters the scene tree.
+
+    Initializes the shader material, loads decks from disk, and sets up UI state.
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.GameDeckSelector._Ready*
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: Godot.CanvasItem
+  commentId: T:Godot.CanvasItem
+  parent: Godot
+  isExternal: true
+  name: CanvasItem
+  nameWithType: CanvasItem
+  fullName: Godot.CanvasItem
+- uid: Godot.Control
+  commentId: T:Godot.Control
+  parent: Godot
+  isExternal: true
+  name: Control
+  nameWithType: Control
+  fullName: Godot.Control
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.VBoxContainer
+  commentId: T:Godot.VBoxContainer
+  parent: Godot
+  isExternal: true
+  name: VBoxContainer
+  nameWithType: VBoxContainer
+  fullName: Godot.VBoxContainer
+- uid: Godot.Button
+  commentId: T:Godot.Button
+  parent: Godot
+  isExternal: true
+  name: Button
+  nameWithType: Button
+  fullName: Godot.Button
+- uid: Godot.Label
+  commentId: T:Godot.Label
+  parent: Godot
+  isExternal: true
+  name: Label
+  nameWithType: Label
+  fullName: Godot.Label
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.GameDeckSelector._Ready*
+  commentId: Overload:CardGame.GodotClient.GameDeckSelector._Ready
+  href: CardGame.GodotClient.GameDeckSelector._Ready.html#CardGame_GodotClient_GameDeckSelector__Ready
+  name: _Ready
+  nameWithType: GameDeckSelector._Ready
+  fullName: CardGame.GodotClient.GameDeckSelector._Ready
+memberLayout: SeparatePages

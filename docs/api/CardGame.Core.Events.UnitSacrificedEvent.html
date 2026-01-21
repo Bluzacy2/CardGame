@@ -129,177 +129,38 @@ Class UnitSacrificedEvent  <a class="header-action link-secondary" title="View s
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_Events_UnitSacrificedEvent__ctor_" data-uid="CardGame.Core.Events.UnitSacrificedEvent.#ctor*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitSacrificedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_" data-uid="CardGame.Core.Events.UnitSacrificedEvent.#ctor(CardGame.Core.Cards.Models.CardInstance,System.Int32)">
-  UnitSacrificedEvent(CardInstance, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitSacrificedEvent.cs/#L38"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the UnitSacrificedEvent class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UnitSacrificedEvent(CardInstance unit, int lineIndex)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>unit</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd><p>The unit instance being sacrificed.</p>
-</dd>
-    <dt><code>lineIndex</code> <span class="xref">int</span></dt>
-    <dd><p>The board lane index where the unit was located.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitSacrificedEvent.-ctor.html#CardGame_Core_Events_UnitSacrificedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_">UnitSacrificedEvent(CardInstance, int)</a></dt>
+    <dd><p>Initializes a new instance of the UnitSacrificedEvent class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Events_UnitSacrificedEvent_LineIndex_" data-uid="CardGame.Core.Events.UnitSacrificedEvent.LineIndex*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitSacrificedEvent_LineIndex" data-uid="CardGame.Core.Events.UnitSacrificedEvent.LineIndex">
-  LineIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitSacrificedEvent.cs/#L31"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the index of the board lane where the unit was sacrificed.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int LineIndex { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitSacrificedEvent.LineIndex.html#CardGame_Core_Events_UnitSacrificedEvent_LineIndex">LineIndex</a></dt>
+    <dd><p>Gets the index of the board lane where the unit was sacrificed.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitSacrificedEvent_OwnerId_" data-uid="CardGame.Core.Events.UnitSacrificedEvent.OwnerId*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitSacrificedEvent_OwnerId" data-uid="CardGame.Core.Events.UnitSacrificedEvent.OwnerId">
-  OwnerId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitSacrificedEvent.cs/#L21"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the ID of the player who owns (sacrificed) the unit.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int OwnerId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitSacrificedEvent.OwnerId.html#CardGame_Core_Events_UnitSacrificedEvent_OwnerId">OwnerId</a></dt>
+    <dd><p>Gets the ID of the player who owns (sacrificed) the unit.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitSacrificedEvent_SourcePlayerId_" data-uid="CardGame.Core.Events.UnitSacrificedEvent.SourcePlayerId*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitSacrificedEvent_SourcePlayerId" data-uid="CardGame.Core.Events.UnitSacrificedEvent.SourcePlayerId">
-  SourcePlayerId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitSacrificedEvent.cs/#L26"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the ID of the player who performed the sacrifice (same as OwnerId).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int SourcePlayerId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitSacrificedEvent.SourcePlayerId.html#CardGame_Core_Events_UnitSacrificedEvent_SourcePlayerId">SourcePlayerId</a></dt>
+    <dd><p>Gets the ID of the player who performed the sacrifice (same as OwnerId).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Events_UnitSacrificedEvent_Unit_" data-uid="CardGame.Core.Events.UnitSacrificedEvent.Unit*"></a>
-
-  <h3 id="CardGame_Core_Events_UnitSacrificedEvent_Unit" data-uid="CardGame.Core.Events.UnitSacrificedEvent.Unit">
-  Unit
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Events/UnitSacrificedEvent.cs/#L16"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the unit that was sacrificed.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CardInstance Unit { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Events.UnitSacrificedEvent.Unit.html#CardGame_Core_Events_UnitSacrificedEvent_Unit">Unit</a></dt>
+    <dd><p>Gets the unit that was sacrificed.</p>
+</dd>
   </dl>
-
-
-
-
-
-
 
 
 

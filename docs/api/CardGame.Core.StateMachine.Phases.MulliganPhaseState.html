@@ -129,171 +129,33 @@ Class MulliganPhaseState  <a class="header-action link-secondary" title="View so
 
 
 
-
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_StateMachine_Phases_MulliganPhaseState_PhaseType_" data-uid="CardGame.Core.StateMachine.Phases.MulliganPhaseState.PhaseType*"></a>
-
-  <h3 id="CardGame_Core_StateMachine_Phases_MulliganPhaseState_PhaseType" data-uid="CardGame.Core.StateMachine.Phases.MulliganPhaseState.PhaseType">
-  PhaseType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/MulliganPhaseState.cs/#L20"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the type of game phase this state represents (Mulligan).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GamePhase PhaseType { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Enums.GamePhase.html">GamePhase</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.StateMachine.Phases.MulliganPhaseState.PhaseType.html#CardGame_Core_StateMachine_Phases_MulliganPhaseState_PhaseType">PhaseType</a></dt>
+    <dd><p>Gets the type of game phase this state represents (Mulligan).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_StateMachine_Phases_MulliganPhaseState_IsCommandAllowed_" data-uid="CardGame.Core.StateMachine.Phases.MulliganPhaseState.IsCommandAllowed*"></a>
-
-  <h3 id="CardGame_Core_StateMachine_Phases_MulliganPhaseState_IsCommandAllowed_CardGame_Core_Commands_Interfaces_IGameCommand_CardGame_Core_State_Models_GameState_" data-uid="CardGame.Core.StateMachine.Phases.MulliganPhaseState.IsCommandAllowed(CardGame.Core.Commands.Interfaces.IGameCommand,CardGame.Core.State.Models.GameState)">
-  IsCommandAllowed(IGameCommand, GameState)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/MulliganPhaseState.cs/#L30"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Determines whether a specific command is allowed in the current mulligan phase.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsCommandAllowed(IGameCommand command, GameState state)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="CardGame.Core.Commands.Interfaces.IGameCommand.html">IGameCommand</a></dt>
-    <dd><p>The command to validate.</p>
-</dd>
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.StateMachine.Phases.MulliganPhaseState.IsCommandAllowed.html#CardGame_Core_StateMachine_Phases_MulliganPhaseState_IsCommandAllowed_CardGame_Core_Commands_Interfaces_IGameCommand_CardGame_Core_State_Models_GameState_">IsCommandAllowed(IGameCommand, GameState)</a></dt>
+    <dd><p>Determines whether a specific command is allowed in the current mulligan phase.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd><p>True only for ConfirmMulliganCommand, false for all other commands.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.StateMachine.Phases.MulliganPhaseState.ProcessEndPhase.html#CardGame_Core_StateMachine_Phases_MulliganPhaseState_ProcessEndPhase_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_">ProcessEndPhase(GameState, EventBus, GameContext)</a></dt>
+    <dd><p>Processes the end of the mulligan phase and transitions to the first unit phase of the game.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_StateMachine_Phases_MulliganPhaseState_ProcessEndPhase_" data-uid="CardGame.Core.StateMachine.Phases.MulliganPhaseState.ProcessEndPhase*"></a>
-
-  <h3 id="CardGame_Core_StateMachine_Phases_MulliganPhaseState_ProcessEndPhase_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_" data-uid="CardGame.Core.StateMachine.Phases.MulliganPhaseState.ProcessEndPhase(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)">
-  ProcessEndPhase(GameState, EventBus, GameContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/MulliganPhaseState.cs/#L50"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Processes the end of the mulligan phase and transitions to the first unit phase of the game.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState ProcessEndPhase(GameState currentState, EventBus eventBus, GameContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>currentState</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state at phase end.</p>
-</dd>
-    <dt><code>eventBus</code> <a class="xref" href="CardGame.Core.Events.EventBus.html">EventBus</a></dt>
-    <dd><p>The event bus for publishing phase transition events.</p>
-</dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd><p>The game context with additional services.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.StateMachine.Phases.MulliganPhaseState.ShouldEndPhaseAutomatically.html#CardGame_Core_StateMachine_Phases_MulliganPhaseState_ShouldEndPhaseAutomatically_CardGame_Core_State_Models_GameState_">ShouldEndPhaseAutomatically(GameState)</a></dt>
+    <dd><p>Determines whether the mulligan phase should end automatically when both players are ready.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The updated game state with phase set to UnitOnly and both players drawing a card.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_StateMachine_Phases_MulliganPhaseState_ShouldEndPhaseAutomatically_" data-uid="CardGame.Core.StateMachine.Phases.MulliganPhaseState.ShouldEndPhaseAutomatically*"></a>
-
-  <h3 id="CardGame_Core_StateMachine_Phases_MulliganPhaseState_ShouldEndPhaseAutomatically_CardGame_Core_State_Models_GameState_" data-uid="CardGame.Core.StateMachine.Phases.MulliganPhaseState.ShouldEndPhaseAutomatically(CardGame.Core.State.Models.GameState)">
-  ShouldEndPhaseAutomatically(GameState)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/MulliganPhaseState.cs/#L38"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Determines whether the mulligan phase should end automatically when both players are ready.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ShouldEndPhaseAutomatically(GameState state)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd><p>True if both players have confirmed their mulligan, otherwise false.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

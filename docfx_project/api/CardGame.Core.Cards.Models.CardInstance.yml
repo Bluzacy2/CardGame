@@ -822,7 +822,7 @@ references:
   fullName: System
 - uid: CardGame.Core.Cards.Models.CardInstance.InstanceId*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.InstanceId
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_InstanceId
+  href: CardGame.Core.Cards.Models.CardInstance.InstanceId.html#CardGame_Core_Cards_Models_CardInstance_InstanceId
   name: InstanceId
   nameWithType: CardInstance.InstanceId
   fullName: CardGame.Core.Cards.Models.CardInstance.InstanceId
@@ -838,13 +838,13 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_OwnerPlayerId
+  href: CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId.html#CardGame_Core_Cards_Models_CardInstance_OwnerPlayerId
   name: OwnerPlayerId
   nameWithType: CardInstance.OwnerPlayerId
   fullName: CardGame.Core.Cards.Models.CardInstance.OwnerPlayerId
 - uid: CardGame.Core.Cards.Models.CardInstance.Definition*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.Definition
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_Definition
+  href: CardGame.Core.Cards.Models.CardInstance.Definition.html#CardGame_Core_Cards_Models_CardInstance_Definition
   name: Definition
   nameWithType: CardInstance.Definition
   fullName: CardGame.Core.Cards.Models.CardInstance.Definition
@@ -857,13 +857,13 @@ references:
   fullName: CardGame.Core.Cards.Models.CardDefinition
 - uid: CardGame.Core.Cards.Models.CardInstance.DamageTaken*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.DamageTaken
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_DamageTaken
+  href: CardGame.Core.Cards.Models.CardInstance.DamageTaken.html#CardGame_Core_Cards_Models_CardInstance_DamageTaken
   name: DamageTaken
   nameWithType: CardInstance.DamageTaken
   fullName: CardGame.Core.Cards.Models.CardInstance.DamageTaken
 - uid: CardGame.Core.Cards.Models.CardInstance.PermanentBuffs*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.PermanentBuffs
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_PermanentBuffs
+  href: CardGame.Core.Cards.Models.CardInstance.PermanentBuffs.html#CardGame_Core_Cards_Models_CardInstance_PermanentBuffs
   name: PermanentBuffs
   nameWithType: CardInstance.PermanentBuffs
   fullName: CardGame.Core.Cards.Models.CardInstance.PermanentBuffs
@@ -876,7 +876,7 @@ references:
   fullName: CardGame.Core.Cards.Models.CardStats
 - uid: CardGame.Core.Cards.Models.CardInstance.AuraKeywords*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.AuraKeywords
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_AuraKeywords
+  href: CardGame.Core.Cards.Models.CardInstance.AuraKeywords.html#CardGame_Core_Cards_Models_CardInstance_AuraKeywords
   name: AuraKeywords
   nameWithType: CardInstance.AuraKeywords
   fullName: CardGame.Core.Cards.Models.CardInstance.AuraKeywords
@@ -975,13 +975,13 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_SuppressedKeywords
+  href: CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords.html#CardGame_Core_Cards_Models_CardInstance_SuppressedKeywords
   name: SuppressedKeywords
   nameWithType: CardInstance.SuppressedKeywords
   fullName: CardGame.Core.Cards.Models.CardInstance.SuppressedKeywords
 - uid: CardGame.Core.Cards.Models.CardInstance.IsSilenced*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.IsSilenced
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_IsSilenced
+  href: CardGame.Core.Cards.Models.CardInstance.IsSilenced.html#CardGame_Core_Cards_Models_CardInstance_IsSilenced
   name: IsSilenced
   nameWithType: CardInstance.IsSilenced
   fullName: CardGame.Core.Cards.Models.CardInstance.IsSilenced
@@ -997,25 +997,25 @@ references:
   name.vb: Boolean
 - uid: CardGame.Core.Cards.Models.CardInstance.CostReduction*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.CostReduction
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_CostReduction
+  href: CardGame.Core.Cards.Models.CardInstance.CostReduction.html#CardGame_Core_Cards_Models_CardInstance_CostReduction
   name: CostReduction
   nameWithType: CardInstance.CostReduction
   fullName: CardGame.Core.Cards.Models.CardInstance.CostReduction
 - uid: CardGame.Core.Cards.Models.CardInstance.CurrentStats*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.CurrentStats
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_CurrentStats
+  href: CardGame.Core.Cards.Models.CardInstance.CurrentStats.html#CardGame_Core_Cards_Models_CardInstance_CurrentStats
   name: CurrentStats
   nameWithType: CardInstance.CurrentStats
   fullName: CardGame.Core.Cards.Models.CardInstance.CurrentStats
 - uid: CardGame.Core.Cards.Models.CardInstance.MaxHealth*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.MaxHealth
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_MaxHealth
+  href: CardGame.Core.Cards.Models.CardInstance.MaxHealth.html#CardGame_Core_Cards_Models_CardInstance_MaxHealth
   name: MaxHealth
   nameWithType: CardInstance.MaxHealth
   fullName: CardGame.Core.Cards.Models.CardInstance.MaxHealth
 - uid: CardGame.Core.Cards.Models.CardInstance.#ctor*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.#ctor
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance__ctor_System_Int32_System_Int32_CardGame_Core_Cards_Models_CardDefinition_
+  href: CardGame.Core.Cards.Models.CardInstance.-ctor.html#CardGame_Core_Cards_Models_CardInstance__ctor_System_Int32_System_Int32_CardGame_Core_Cards_Models_CardDefinition_
   name: CardInstance
   nameWithType: CardInstance.CardInstance
   fullName: CardGame.Core.Cards.Models.CardInstance.CardInstance
@@ -1024,7 +1024,7 @@ references:
   name.vb: New
 - uid: CardGame.Core.Cards.Models.CardInstance.MoveAndReset*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.MoveAndReset
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_MoveAndReset
+  href: CardGame.Core.Cards.Models.CardInstance.MoveAndReset.html#CardGame_Core_Cards_Models_CardInstance_MoveAndReset
   name: MoveAndReset
   nameWithType: CardInstance.MoveAndReset
   fullName: CardGame.Core.Cards.Models.CardInstance.MoveAndReset
@@ -1037,31 +1037,31 @@ references:
   fullName: CardGame.Core.Cards.Models.CardInstance
 - uid: CardGame.Core.Cards.Models.CardInstance.WithDamage*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.WithDamage
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_WithDamage_System_Int32_
+  href: CardGame.Core.Cards.Models.CardInstance.WithDamage.html#CardGame_Core_Cards_Models_CardInstance_WithDamage_System_Int32_
   name: WithDamage
   nameWithType: CardInstance.WithDamage
   fullName: CardGame.Core.Cards.Models.CardInstance.WithDamage
 - uid: CardGame.Core.Cards.Models.CardInstance.TakeDamage*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.TakeDamage
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_TakeDamage_System_Int32_
+  href: CardGame.Core.Cards.Models.CardInstance.TakeDamage.html#CardGame_Core_Cards_Models_CardInstance_TakeDamage_System_Int32_
   name: TakeDamage
   nameWithType: CardInstance.TakeDamage
   fullName: CardGame.Core.Cards.Models.CardInstance.TakeDamage
 - uid: CardGame.Core.Cards.Models.CardInstance.Heal*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.Heal
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_Heal_System_Int32_
+  href: CardGame.Core.Cards.Models.CardInstance.Heal.html#CardGame_Core_Cards_Models_CardInstance_Heal_System_Int32_
   name: Heal
   nameWithType: CardInstance.Heal
   fullName: CardGame.Core.Cards.Models.CardInstance.Heal
 - uid: CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_AddPermanentBuff_CardGame_Core_Cards_Models_CardStats_
+  href: CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff.html#CardGame_Core_Cards_Models_CardInstance_AddPermanentBuff_CardGame_Core_Cards_Models_CardStats_
   name: AddPermanentBuff
   nameWithType: CardInstance.AddPermanentBuff
   fullName: CardGame.Core.Cards.Models.CardInstance.AddPermanentBuff
 - uid: CardGame.Core.Cards.Models.CardInstance.WithAuras*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.WithAuras
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_WithAuras_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Data_Keyword__
+  href: CardGame.Core.Cards.Models.CardInstance.WithAuras.html#CardGame_Core_Cards_Models_CardInstance_WithAuras_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Data_Keyword__
   name: WithAuras
   nameWithType: CardInstance.WithAuras
   fullName: CardGame.Core.Cards.Models.CardInstance.WithAuras
@@ -1123,13 +1123,13 @@ references:
   - name: )
 - uid: CardGame.Core.Cards.Models.CardInstance.WithCostReduction*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.WithCostReduction
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_WithCostReduction_System_Int32_
+  href: CardGame.Core.Cards.Models.CardInstance.WithCostReduction.html#CardGame_Core_Cards_Models_CardInstance_WithCostReduction_System_Int32_
   name: WithCostReduction
   nameWithType: CardInstance.WithCostReduction
   fullName: CardGame.Core.Cards.Models.CardInstance.WithCostReduction
 - uid: CardGame.Core.Cards.Models.CardInstance.SuppressKeyword*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.SuppressKeyword
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_SuppressKeyword_CardGame_Core_Cards_Data_Keyword_
+  href: CardGame.Core.Cards.Models.CardInstance.SuppressKeyword.html#CardGame_Core_Cards_Models_CardInstance_SuppressKeyword_CardGame_Core_Cards_Data_Keyword_
   name: SuppressKeyword
   nameWithType: CardInstance.SuppressKeyword
   fullName: CardGame.Core.Cards.Models.CardInstance.SuppressKeyword
@@ -1180,7 +1180,8 @@ references:
     href: CardGame.Core.Cards.Data.html
 - uid: CardGame.Core.Cards.Models.CardInstance.Silence*
   commentId: Overload:CardGame.Core.Cards.Models.CardInstance.Silence
-  href: CardGame.Core.Cards.Models.CardInstance.html#CardGame_Core_Cards_Models_CardInstance_Silence
+  href: CardGame.Core.Cards.Models.CardInstance.Silence.html#CardGame_Core_Cards_Models_CardInstance_Silence
   name: Silence
   nameWithType: CardInstance.Silence
   fullName: CardGame.Core.Cards.Models.CardInstance.Silence
+memberLayout: SeparatePages

@@ -315,7 +315,7 @@ references:
   fullName: System
 - uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler
-  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_RegisterHandler_CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_RegisterHandler_CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_
   name: RegisterHandler
   nameWithType: KeywordProcessor.RegisterHandler
   fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.RegisterHandler
@@ -328,7 +328,7 @@ references:
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler
 - uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken
-  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_ProcessDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_ProcessDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
   name: ProcessDamageTaken
   nameWithType: KeywordProcessor.ProcessDamageTaken
   fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessDamageTaken
@@ -389,7 +389,7 @@ references:
     href: CardGame.Core.GameRules.Damage.html
 - uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack
-  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_ProcessPostAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_ProcessPostAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
   name: ProcessPostAttack
   nameWithType: KeywordProcessor.ProcessPostAttack
   fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessPostAttack
@@ -522,13 +522,13 @@ references:
     href: CardGame.Core.Application.html
 - uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd
-  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_ProcessRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_ProcessRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
   name: ProcessRoundEnd
   nameWithType: KeywordProcessor.ProcessRoundEnd
   fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.ProcessRoundEnd
 - uid: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath
-  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_TryPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+  href: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath.html#CardGame_Core_Cards_Logic_Keywords_KeywordProcessor_TryPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
   name: TryPreventDeath
   nameWithType: KeywordProcessor.TryPreventDeath
   fullName: CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.TryPreventDeath
@@ -542,3 +542,4 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+memberLayout: SeparatePages

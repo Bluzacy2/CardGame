@@ -129,162 +129,37 @@ Class SelectTargetCommand  <a class="header-action link-secondary" title="View s
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_Commands_Implementations_SelectTargetCommand__ctor_" data-uid="CardGame.Core.Commands.Implementations.SelectTargetCommand.#ctor*"></a>
-
-  <h3 id="CardGame_Core_Commands_Implementations_SelectTargetCommand__ctor_System_Int32_System_Int32_" data-uid="CardGame.Core.Commands.Implementations.SelectTargetCommand.#ctor(System.Int32,System.Int32)">
-  SelectTargetCommand(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Commands/Implementations/SelectTargetCommand.cs/#L34"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the SelectTargetCommand class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SelectTargetCommand(int playerId, int targetId)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>playerId</code> <span class="xref">int</span></dt>
-    <dd><p>The ID of the player making the selection.</p>
-</dd>
-    <dt><code>targetId</code> <span class="xref">int</span></dt>
-    <dd><p>The ID of the selected target.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Commands.Implementations.SelectTargetCommand.-ctor.html#CardGame_Core_Commands_Implementations_SelectTargetCommand__ctor_System_Int32_System_Int32_">SelectTargetCommand(int, int)</a></dt>
+    <dd><p>Initializes a new instance of the SelectTargetCommand class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Commands_Implementations_SelectTargetCommand_PlayerId_" data-uid="CardGame.Core.Commands.Implementations.SelectTargetCommand.PlayerId*"></a>
-
-  <h3 id="CardGame_Core_Commands_Implementations_SelectTargetCommand_PlayerId" data-uid="CardGame.Core.Commands.Implementations.SelectTargetCommand.PlayerId">
-  PlayerId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Commands/Implementations/SelectTargetCommand.cs/#L20"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the ID of the player making the target selection.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int PlayerId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Commands.Implementations.SelectTargetCommand.PlayerId.html#CardGame_Core_Commands_Implementations_SelectTargetCommand_PlayerId">PlayerId</a></dt>
+    <dd><p>Gets the ID of the player making the target selection.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Commands_Implementations_SelectTargetCommand_TargetId_" data-uid="CardGame.Core.Commands.Implementations.SelectTargetCommand.TargetId*"></a>
-
-  <h3 id="CardGame_Core_Commands_Implementations_SelectTargetCommand_TargetId" data-uid="CardGame.Core.Commands.Implementations.SelectTargetCommand.TargetId">
-  TargetId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Commands/Implementations/SelectTargetCommand.cs/#L25"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the ID of the selected target (unit, player, or other entity).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int TargetId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Commands.Implementations.SelectTargetCommand.TargetId.html#CardGame_Core_Commands_Implementations_SelectTargetCommand_TargetId">TargetId</a></dt>
+    <dd><p>Gets the ID of the selected target (unit, player, or other entity).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_Commands_Implementations_SelectTargetCommand_Execute_" data-uid="CardGame.Core.Commands.Implementations.SelectTargetCommand.Execute*"></a>
-
-  <h3 id="CardGame_Core_Commands_Implementations_SelectTargetCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_" data-uid="CardGame.Core.Commands.Implementations.SelectTargetCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)">
-  Execute(GameState, EventBus, GameContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Commands/Implementations/SelectTargetCommand.cs/#L49"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Executes the target selection, resolves the pending interaction, and applies the associated effect.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState Execute(GameState currentState, EventBus eventBus, GameContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>currentState</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state with a pending interaction.</p>
-</dd>
-    <dt><code>eventBus</code> <a class="xref" href="CardGame.Core.Events.EventBus.html">EventBus</a></dt>
-    <dd><p>The event bus for publishing game events.</p>
-</dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd><p>The game context with additional services.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Commands.Implementations.SelectTargetCommand.Execute.html#CardGame_Core_Commands_Implementations_SelectTargetCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_">Execute(GameState, EventBus, GameContext)</a></dt>
+    <dd><p>Executes the target selection, resolves the pending interaction, and applies the associated effect.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The updated game state after resolving the target selection.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

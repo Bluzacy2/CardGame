@@ -747,16 +747,49 @@ items:
     name: GodotClient
     type: Namespace
     items:
+    - uid: CardGame.GodotClient.BotCoordinator
+      name: BotCoordinator
+      type: Class
+    - uid: CardGame.GodotClient.CardSlot
+      name: CardSlot
+      type: Class
+    - uid: CardGame.GodotClient.CardView
+      name: CardView
+      type: Class
+    - uid: CardGame.GodotClient.ChoiceModal
+      name: ChoiceModal
+      type: Class
+    - uid: CardGame.GodotClient.DeckEditor
+      name: DeckEditor
+      type: Class
+    - uid: CardGame.GodotClient.DeckSelection
+      name: DeckSelection
+      type: Class
     - uid: CardGame.GodotClient.GameBootstrap
       name: GameBootstrap
       type: Class
-    - uid: CardGame.GodotClient.GameBootstrap.MethodName
-      name: GameBootstrap.MethodName
+    - uid: CardGame.GodotClient.GameDeckSelector
+      name: GameDeckSelector
       type: Class
-    - uid: CardGame.GodotClient.GameBootstrap.PropertyName
-      name: GameBootstrap.PropertyName
+    - uid: CardGame.GodotClient.GameSession
+      name: GameSession
       type: Class
-    - uid: CardGame.GodotClient.GameBootstrap.SignalName
-      name: GameBootstrap.SignalName
+    - uid: CardGame.GodotClient.HeroPortrait
+      name: HeroPortrait
       type: Class
-memberLayout: SamePage
+    - uid: CardGame.GodotClient.InputController
+      name: InputController
+      type: Class
+    - uid: CardGame.GodotClient.LibraryCardEntry
+      name: LibraryCardEntry
+      type: Class
+    - uid: CardGame.GodotClient.LineView
+      name: LineView
+      type: Class
+    - uid: CardGame.GodotClient.MainMenu
+      name: MainMenu
+      type: Class
+    - uid: CardGame.GodotClient.UIManager
+      name: UIManager
+      type: Class
+memberLayout: SeparatePages

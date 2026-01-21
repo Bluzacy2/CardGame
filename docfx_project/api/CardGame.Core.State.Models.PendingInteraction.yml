@@ -328,7 +328,7 @@ references:
   fullName: System
 - uid: CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId*
   commentId: Overload:CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId
-  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_SourceCardInstanceId
+  href: CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId.html#CardGame_Core_State_Models_PendingInteraction_SourceCardInstanceId
   name: SourceCardInstanceId
   nameWithType: PendingInteraction.SourceCardInstanceId
   fullName: CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId
@@ -344,19 +344,19 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.State.Models.PendingInteraction.EffectIndex*
   commentId: Overload:CardGame.Core.State.Models.PendingInteraction.EffectIndex
-  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_EffectIndex
+  href: CardGame.Core.State.Models.PendingInteraction.EffectIndex.html#CardGame_Core_State_Models_PendingInteraction_EffectIndex
   name: EffectIndex
   nameWithType: PendingInteraction.EffectIndex
   fullName: CardGame.Core.State.Models.PendingInteraction.EffectIndex
 - uid: CardGame.Core.State.Models.PendingInteraction.ActionIndex*
   commentId: Overload:CardGame.Core.State.Models.PendingInteraction.ActionIndex
-  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_ActionIndex
+  href: CardGame.Core.State.Models.PendingInteraction.ActionIndex.html#CardGame_Core_State_Models_PendingInteraction_ActionIndex
   name: ActionIndex
   nameWithType: PendingInteraction.ActionIndex
   fullName: CardGame.Core.State.Models.PendingInteraction.ActionIndex
 - uid: CardGame.Core.State.Models.PendingInteraction.RequiredTargetType*
   commentId: Overload:CardGame.Core.State.Models.PendingInteraction.RequiredTargetType
-  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_RequiredTargetType
+  href: CardGame.Core.State.Models.PendingInteraction.RequiredTargetType.html#CardGame_Core_State_Models_PendingInteraction_RequiredTargetType
   name: RequiredTargetType
   nameWithType: PendingInteraction.RequiredTargetType
   fullName: CardGame.Core.State.Models.PendingInteraction.RequiredTargetType
@@ -407,13 +407,13 @@ references:
     href: CardGame.Core.Cards.Data.html
 - uid: CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses*
   commentId: Overload:CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses
-  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_PlayerIdWhoChooses
+  href: CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses.html#CardGame_Core_State_Models_PendingInteraction_PlayerIdWhoChooses
   name: PlayerIdWhoChooses
   nameWithType: PendingInteraction.PlayerIdWhoChooses
   fullName: CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses
 - uid: CardGame.Core.State.Models.PendingInteraction.Options*
   commentId: Overload:CardGame.Core.State.Models.PendingInteraction.Options
-  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction_Options
+  href: CardGame.Core.State.Models.PendingInteraction.Options.html#CardGame_Core_State_Models_PendingInteraction_Options
   name: Options
   nameWithType: PendingInteraction.Options
   fullName: CardGame.Core.State.Models.PendingInteraction.Options
@@ -511,7 +511,7 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.Core.State.Models.PendingInteraction.#ctor*
   commentId: Overload:CardGame.Core.State.Models.PendingInteraction.#ctor
-  href: CardGame.Core.State.Models.PendingInteraction.html#CardGame_Core_State_Models_PendingInteraction__ctor_System_Int32_System_Int32_System_Int32_CardGame_Core_Cards_Data_TargetType_System_Int32_System_Collections_Generic_IEnumerable_System_String__
+  href: CardGame.Core.State.Models.PendingInteraction.-ctor.html#CardGame_Core_State_Models_PendingInteraction__ctor_System_Int32_System_Int32_System_Int32_CardGame_Core_Cards_Data_TargetType_System_Int32_System_Collections_Generic_IEnumerable_System_String__
   name: PendingInteraction
   nameWithType: PendingInteraction.PendingInteraction
   fullName: CardGame.Core.State.Models.PendingInteraction.PendingInteraction
@@ -573,3 +573,4 @@ references:
   - name: " "
   - name: T
   - name: )
+memberLayout: SeparatePages

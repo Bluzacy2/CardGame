@@ -334,7 +334,7 @@ references:
     href: CardGame.Core.Events.Interfaces.html
 - uid: CardGame.Core.Events.CardPlayedEvent.#ctor*
   commentId: Overload:CardGame.Core.Events.CardPlayedEvent.#ctor
-  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent__ctor_System_Int32_CardGame_Core_Cards_Models_CardInstance_System_Nullable_System_Int32__System_Nullable_System_Int32__
+  href: CardGame.Core.Events.CardPlayedEvent.-ctor.html#CardGame_Core_Events_CardPlayedEvent__ctor_System_Int32_CardGame_Core_Cards_Models_CardInstance_System_Nullable_System_Int32__System_Nullable_System_Int32__
   name: CardPlayedEvent
   nameWithType: CardPlayedEvent.CardPlayedEvent
   fullName: CardGame.Core.Events.CardPlayedEvent.CardPlayedEvent
@@ -443,38 +443,39 @@ references:
   - name: )
 - uid: CardGame.Core.Events.CardPlayedEvent.PlayerId*
   commentId: Overload:CardGame.Core.Events.CardPlayedEvent.PlayerId
-  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent_PlayerId
+  href: CardGame.Core.Events.CardPlayedEvent.PlayerId.html#CardGame_Core_Events_CardPlayedEvent_PlayerId
   name: PlayerId
   nameWithType: CardPlayedEvent.PlayerId
   fullName: CardGame.Core.Events.CardPlayedEvent.PlayerId
 - uid: CardGame.Core.Events.CardPlayedEvent.SourcePlayerId*
   commentId: Overload:CardGame.Core.Events.CardPlayedEvent.SourcePlayerId
-  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent_SourcePlayerId
+  href: CardGame.Core.Events.CardPlayedEvent.SourcePlayerId.html#CardGame_Core_Events_CardPlayedEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: CardPlayedEvent.SourcePlayerId
   fullName: CardGame.Core.Events.CardPlayedEvent.SourcePlayerId
 - uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   parent: CardGame.Core.Events.Interfaces.IGameEvent
-  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  href: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: IGameEvent.SourcePlayerId
   fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
 - uid: CardGame.Core.Events.CardPlayedEvent.Card*
   commentId: Overload:CardGame.Core.Events.CardPlayedEvent.Card
-  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent_Card
+  href: CardGame.Core.Events.CardPlayedEvent.Card.html#CardGame_Core_Events_CardPlayedEvent_Card
   name: Card
   nameWithType: CardPlayedEvent.Card
   fullName: CardGame.Core.Events.CardPlayedEvent.Card
 - uid: CardGame.Core.Events.CardPlayedEvent.LineIndex*
   commentId: Overload:CardGame.Core.Events.CardPlayedEvent.LineIndex
-  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent_LineIndex
+  href: CardGame.Core.Events.CardPlayedEvent.LineIndex.html#CardGame_Core_Events_CardPlayedEvent_LineIndex
   name: LineIndex
   nameWithType: CardPlayedEvent.LineIndex
   fullName: CardGame.Core.Events.CardPlayedEvent.LineIndex
 - uid: CardGame.Core.Events.CardPlayedEvent.SelectedTargetId*
   commentId: Overload:CardGame.Core.Events.CardPlayedEvent.SelectedTargetId
-  href: CardGame.Core.Events.CardPlayedEvent.html#CardGame_Core_Events_CardPlayedEvent_SelectedTargetId
+  href: CardGame.Core.Events.CardPlayedEvent.SelectedTargetId.html#CardGame_Core_Events_CardPlayedEvent_SelectedTargetId
   name: SelectedTargetId
   nameWithType: CardPlayedEvent.SelectedTargetId
   fullName: CardGame.Core.Events.CardPlayedEvent.SelectedTargetId
+memberLayout: SeparatePages

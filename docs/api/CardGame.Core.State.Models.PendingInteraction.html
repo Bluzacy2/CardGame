@@ -123,251 +123,47 @@ Class PendingInteraction  <a class="header-action link-secondary" title="View so
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_State_Models_PendingInteraction__ctor_" data-uid="CardGame.Core.State.Models.PendingInteraction.#ctor*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PendingInteraction__ctor_System_Int32_System_Int32_System_Int32_CardGame_Core_Cards_Data_TargetType_System_Int32_System_Collections_Generic_IEnumerable_System_String__" data-uid="CardGame.Core.State.Models.PendingInteraction.#ctor(System.Int32,System.Int32,System.Int32,CardGame.Core.Cards.Data.TargetType,System.Int32,System.Collections.Generic.IEnumerable{System.String})">
-  PendingInteraction(int, int, int, TargetType, int, IEnumerable&lt;string&gt;?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PendingInteraction.cs/#L50"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the PendingInteraction class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PendingInteraction(int sourceId, int effectIndex, int actionIndex, TargetType targetType, int playerIdWhoChooses, IEnumerable&lt;string&gt;? options = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sourceId</code> <span class="xref">int</span></dt>
-    <dd><p>The instance ID of the card executing the effect.</p>
-</dd>
-    <dt><code>effectIndex</code> <span class="xref">int</span></dt>
-    <dd><p>The index of the effect within the card's Effects list.</p>
-</dd>
-    <dt><code>actionIndex</code> <span class="xref">int</span></dt>
-    <dd><p>The index of the action within the effect.</p>
-</dd>
-    <dt><code>targetType</code> <a class="xref" href="CardGame.Core.Cards.Data.TargetType.html">TargetType</a></dt>
-    <dd><p>The type of target the UI should look for.</p>
-</dd>
-    <dt><code>playerIdWhoChooses</code> <span class="xref">int</span></dt>
-    <dd></dd>
-    <dt><code>options</code> <span class="xref">IEnumerable</span>&lt;<span class="xref">string</span>&gt;</dt>
-    <dd><p>Optional list of options for the interaction.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PendingInteraction.-ctor.html#CardGame_Core_State_Models_PendingInteraction__ctor_System_Int32_System_Int32_System_Int32_CardGame_Core_Cards_Data_TargetType_System_Int32_System_Collections_Generic_IEnumerable_System_String__">PendingInteraction(int, int, int, TargetType, int, IEnumerable&lt;string&gt;?)</a></dt>
+    <dd><p>Initializes a new instance of the PendingInteraction class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_State_Models_PendingInteraction_ActionIndex_" data-uid="CardGame.Core.State.Models.PendingInteraction.ActionIndex*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PendingInteraction_ActionIndex" data-uid="CardGame.Core.State.Models.PendingInteraction.ActionIndex">
-  ActionIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PendingInteraction.cs/#L25"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the index of the action within the effect (0, 1, 2...).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int ActionIndex { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PendingInteraction.ActionIndex.html#CardGame_Core_State_Models_PendingInteraction_ActionIndex">ActionIndex</a></dt>
+    <dd><p>Gets the index of the action within the effect (0, 1, 2...).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PendingInteraction.EffectIndex.html#CardGame_Core_State_Models_PendingInteraction_EffectIndex">EffectIndex</a></dt>
+    <dd><p>Gets the index of the effect within the card's Effects list (0, 1, 2...).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PendingInteraction.Options.html#CardGame_Core_State_Models_PendingInteraction_Options">Options</a></dt>
+    <dd><p>Gets the list of options available for this interaction.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses.html#CardGame_Core_State_Models_PendingInteraction_PlayerIdWhoChooses">PlayerIdWhoChooses</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PendingInteraction_EffectIndex_" data-uid="CardGame.Core.State.Models.PendingInteraction.EffectIndex*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PendingInteraction_EffectIndex" data-uid="CardGame.Core.State.Models.PendingInteraction.EffectIndex">
-  EffectIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PendingInteraction.cs/#L20"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the index of the effect within the card's Effects list (0, 1, 2...).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int EffectIndex { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PendingInteraction.RequiredTargetType.html#CardGame_Core_State_Models_PendingInteraction_RequiredTargetType">RequiredTargetType</a></dt>
+    <dd><p>Gets the type of target the UI should look for.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PendingInteraction_Options_" data-uid="CardGame.Core.State.Models.PendingInteraction.Options*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PendingInteraction_Options" data-uid="CardGame.Core.State.Models.PendingInteraction.Options">
-  Options
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PendingInteraction.cs/#L37"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the list of options available for this interaction.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;string&gt; Options { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IReadOnlyList</span>&lt;<span class="xref">string</span>&gt;</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId.html#CardGame_Core_State_Models_PendingInteraction_SourceCardInstanceId">SourceCardInstanceId</a></dt>
+    <dd><p>Gets the instance ID of the card executing the effect.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PendingInteraction_PlayerIdWhoChooses_" data-uid="CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PendingInteraction_PlayerIdWhoChooses" data-uid="CardGame.Core.State.Models.PendingInteraction.PlayerIdWhoChooses">
-  PlayerIdWhoChooses
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PendingInteraction.cs/#L32"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int PlayerIdWhoChooses { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PendingInteraction_RequiredTargetType_" data-uid="CardGame.Core.State.Models.PendingInteraction.RequiredTargetType*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PendingInteraction_RequiredTargetType" data-uid="CardGame.Core.State.Models.PendingInteraction.RequiredTargetType">
-  RequiredTargetType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PendingInteraction.cs/#L30"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the type of target the UI should look for.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TargetType RequiredTargetType { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Data.TargetType.html">TargetType</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_State_Models_PendingInteraction_SourceCardInstanceId_" data-uid="CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId*"></a>
-
-  <h3 id="CardGame_Core_State_Models_PendingInteraction_SourceCardInstanceId" data-uid="CardGame.Core.State.Models.PendingInteraction.SourceCardInstanceId">
-  SourceCardInstanceId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/State/Models/PendingInteraction.cs/#L15"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the instance ID of the card executing the effect.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int SourceCardInstanceId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
 
 
 

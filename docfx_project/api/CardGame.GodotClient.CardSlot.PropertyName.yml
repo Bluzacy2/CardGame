@@ -1,0 +1,260 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.CardSlot.PropertyName
+  commentId: T:CardGame.GodotClient.CardSlot.PropertyName
+  id: CardSlot.PropertyName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.CardSlot.PropertyName.HostedCardView
+  langs:
+  - csharp
+  - vb
+  name: CardSlot.PropertyName
+  nameWithType: CardSlot.PropertyName
+  fullName: CardGame.GodotClient.CardSlot.PropertyName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardSlot_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PropertyName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardSlot_ScriptProperties.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the properties and fields contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class CardSlot.PropertyName : PanelContainer.PropertyName'
+    content.vb: Public Class CardSlot.PropertyName Inherits PanelContainer.PropertyName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.PropertyName
+  - Godot.Node.PropertyName
+  - Godot.CanvasItem.PropertyName
+  - Godot.Control.PropertyName
+  - Godot.Container.PropertyName
+  - Godot.PanelContainer.PropertyName
+- uid: CardGame.GodotClient.CardSlot.PropertyName.HostedCardView
+  commentId: F:CardGame.GodotClient.CardSlot.PropertyName.HostedCardView
+  id: HostedCardView
+  parent: CardGame.GodotClient.CardSlot.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: HostedCardView
+  nameWithType: CardSlot.PropertyName.HostedCardView
+  fullName: CardGame.GodotClient.CardSlot.PropertyName.HostedCardView
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardSlot_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: HostedCardView
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.CardSlot_ScriptProperties.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'HostedCardView' property.
+  example: []
+  syntax:
+    content: public static readonly StringName HostedCardView
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly HostedCardView As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.PropertyName
+  commentId: T:Godot.GodotObject.PropertyName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.PropertyName
+  nameWithType: GodotObject.PropertyName
+  fullName: Godot.GodotObject.PropertyName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Node.PropertyName
+  commentId: T:Godot.Node.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Node.PropertyName
+  nameWithType: Node.PropertyName
+  fullName: Godot.Node.PropertyName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.CanvasItem.PropertyName
+  commentId: T:Godot.CanvasItem.PropertyName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.PropertyName
+  nameWithType: CanvasItem.PropertyName
+  fullName: Godot.CanvasItem.PropertyName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Control.PropertyName
+  commentId: T:Godot.Control.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Control.PropertyName
+  nameWithType: Control.PropertyName
+  fullName: Godot.Control.PropertyName
+  spec.csharp:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Container.PropertyName
+  commentId: T:Godot.Container.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Container.PropertyName
+  nameWithType: Container.PropertyName
+  fullName: Godot.Container.PropertyName
+  spec.csharp:
+  - uid: Godot.Container
+    name: Container
+    isExternal: true
+  - name: .
+  - uid: Godot.Container.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Container
+    name: Container
+    isExternal: true
+  - name: .
+  - uid: Godot.Container.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.PanelContainer.PropertyName
+  commentId: T:Godot.PanelContainer.PropertyName
+  parent: Godot
+  isExternal: true
+  name: PanelContainer.PropertyName
+  nameWithType: PanelContainer.PropertyName
+  fullName: Godot.PanelContainer.PropertyName
+  spec.csharp:
+  - uid: Godot.PanelContainer
+    name: PanelContainer
+    isExternal: true
+  - name: .
+  - uid: Godot.PanelContainer.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.PanelContainer
+    name: PanelContainer
+    isExternal: true
+  - name: .
+  - uid: Godot.PanelContainer.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

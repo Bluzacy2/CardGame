@@ -264,7 +264,7 @@ references:
     href: CardGame.Core.Events.Interfaces.html
 - uid: CardGame.Core.Events.CardCreatedEvent.#ctor*
   commentId: Overload:CardGame.Core.Events.CardCreatedEvent.#ctor
-  href: CardGame.Core.Events.CardCreatedEvent.html#CardGame_Core_Events_CardCreatedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_
+  href: CardGame.Core.Events.CardCreatedEvent.-ctor.html#CardGame_Core_Events_CardCreatedEvent__ctor_CardGame_Core_Cards_Models_CardInstance_System_Int32_
   name: CardCreatedEvent
   nameWithType: CardCreatedEvent.CardCreatedEvent
   fullName: CardGame.Core.Events.CardCreatedEvent.CardCreatedEvent
@@ -328,26 +328,27 @@ references:
     href: CardGame.Core.Cards.Models.html
 - uid: CardGame.Core.Events.CardCreatedEvent.Card*
   commentId: Overload:CardGame.Core.Events.CardCreatedEvent.Card
-  href: CardGame.Core.Events.CardCreatedEvent.html#CardGame_Core_Events_CardCreatedEvent_Card
+  href: CardGame.Core.Events.CardCreatedEvent.Card.html#CardGame_Core_Events_CardCreatedEvent_Card
   name: Card
   nameWithType: CardCreatedEvent.Card
   fullName: CardGame.Core.Events.CardCreatedEvent.Card
 - uid: CardGame.Core.Events.CardCreatedEvent.OwnerId*
   commentId: Overload:CardGame.Core.Events.CardCreatedEvent.OwnerId
-  href: CardGame.Core.Events.CardCreatedEvent.html#CardGame_Core_Events_CardCreatedEvent_OwnerId
+  href: CardGame.Core.Events.CardCreatedEvent.OwnerId.html#CardGame_Core_Events_CardCreatedEvent_OwnerId
   name: OwnerId
   nameWithType: CardCreatedEvent.OwnerId
   fullName: CardGame.Core.Events.CardCreatedEvent.OwnerId
 - uid: CardGame.Core.Events.CardCreatedEvent.SourcePlayerId*
   commentId: Overload:CardGame.Core.Events.CardCreatedEvent.SourcePlayerId
-  href: CardGame.Core.Events.CardCreatedEvent.html#CardGame_Core_Events_CardCreatedEvent_SourcePlayerId
+  href: CardGame.Core.Events.CardCreatedEvent.SourcePlayerId.html#CardGame_Core_Events_CardCreatedEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: CardCreatedEvent.SourcePlayerId
   fullName: CardGame.Core.Events.CardCreatedEvent.SourcePlayerId
 - uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   parent: CardGame.Core.Events.Interfaces.IGameEvent
-  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  href: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: IGameEvent.SourcePlayerId
   fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+memberLayout: SeparatePages

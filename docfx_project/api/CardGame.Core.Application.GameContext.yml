@@ -362,7 +362,7 @@ references:
   fullName: System
 - uid: CardGame.Core.Application.GameContext.Factory*
   commentId: Overload:CardGame.Core.Application.GameContext.Factory
-  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Factory
+  href: CardGame.Core.Application.GameContext.Factory.html#CardGame_Core_Application_GameContext_Factory
   name: Factory
   nameWithType: GameContext.Factory
   fullName: CardGame.Core.Application.GameContext.Factory
@@ -413,7 +413,7 @@ references:
     href: CardGame.Core.Cards.Factories.html
 - uid: CardGame.Core.Application.GameContext.Rng*
   commentId: Overload:CardGame.Core.Application.GameContext.Rng
-  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Rng
+  href: CardGame.Core.Application.GameContext.Rng.html#CardGame_Core_Application_GameContext_Rng
   name: Rng
   nameWithType: GameContext.Rng
   fullName: CardGame.Core.Application.GameContext.Rng
@@ -426,7 +426,7 @@ references:
   fullName: CardGame.Core.Application.DeterministicRng
 - uid: CardGame.Core.Application.GameContext.Events*
   commentId: Overload:CardGame.Core.Application.GameContext.Events
-  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Events
+  href: CardGame.Core.Application.GameContext.Events.html#CardGame_Core_Application_GameContext_Events
   name: Events
   nameWithType: GameContext.Events
   fullName: CardGame.Core.Application.GameContext.Events
@@ -469,7 +469,7 @@ references:
     href: CardGame.Core.Events.html
 - uid: CardGame.Core.Application.GameContext.DamageCalculator*
   commentId: Overload:CardGame.Core.Application.GameContext.DamageCalculator
-  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_DamageCalculator
+  href: CardGame.Core.Application.GameContext.DamageCalculator.html#CardGame_Core_Application_GameContext_DamageCalculator
   name: DamageCalculator
   nameWithType: GameContext.DamageCalculator
   fullName: CardGame.Core.Application.GameContext.DamageCalculator
@@ -520,7 +520,7 @@ references:
     href: CardGame.Core.GameRules.Damage.html
 - uid: CardGame.Core.Application.GameContext.ActionRegistry*
   commentId: Overload:CardGame.Core.Application.GameContext.ActionRegistry
-  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_ActionRegistry
+  href: CardGame.Core.Application.GameContext.ActionRegistry.html#CardGame_Core_Application_GameContext_ActionRegistry
   name: ActionRegistry
   nameWithType: GameContext.ActionRegistry
   fullName: CardGame.Core.Application.GameContext.ActionRegistry
@@ -579,7 +579,7 @@ references:
     href: CardGame.Core.Cards.Components.Actions.html
 - uid: CardGame.Core.Application.GameContext.Keywords*
   commentId: Overload:CardGame.Core.Application.GameContext.Keywords
-  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Keywords
+  href: CardGame.Core.Application.GameContext.Keywords.html#CardGame_Core_Application_GameContext_Keywords
   name: Keywords
   nameWithType: GameContext.Keywords
   fullName: CardGame.Core.Application.GameContext.Keywords
@@ -638,7 +638,7 @@ references:
     href: CardGame.Core.Cards.Logic.Keywords.html
 - uid: CardGame.Core.Application.GameContext.Battle*
   commentId: Overload:CardGame.Core.Application.GameContext.Battle
-  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Battle
+  href: CardGame.Core.Application.GameContext.Battle.html#CardGame_Core_Application_GameContext_Battle
   name: Battle
   nameWithType: GameContext.Battle
   fullName: CardGame.Core.Application.GameContext.Battle
@@ -689,7 +689,7 @@ references:
     href: CardGame.Core.GameRules.Battle.html
 - uid: CardGame.Core.Application.GameContext.Death*
   commentId: Overload:CardGame.Core.Application.GameContext.Death
-  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext_Death
+  href: CardGame.Core.Application.GameContext.Death.html#CardGame_Core_Application_GameContext_Death
   name: Death
   nameWithType: GameContext.Death
   fullName: CardGame.Core.Application.GameContext.Death
@@ -740,10 +740,11 @@ references:
     href: CardGame.Core.GameRules.Death.html
 - uid: CardGame.Core.Application.GameContext.#ctor*
   commentId: Overload:CardGame.Core.Application.GameContext.#ctor
-  href: CardGame.Core.Application.GameContext.html#CardGame_Core_Application_GameContext__ctor_CardGame_Core_Cards_Factories_CardFactory_CardGame_Core_Application_DeterministicRng_CardGame_Core_Events_EventBus_
+  href: CardGame.Core.Application.GameContext.-ctor.html#CardGame_Core_Application_GameContext__ctor_CardGame_Core_Cards_Factories_CardFactory_CardGame_Core_Application_DeterministicRng_CardGame_Core_Events_EventBus_
   name: GameContext
   nameWithType: GameContext.GameContext
   fullName: CardGame.Core.Application.GameContext.GameContext
   nameWithType.vb: GameContext.New
   fullName.vb: CardGame.Core.Application.GameContext.New
   name.vb: New
+memberLayout: SeparatePages

@@ -539,7 +539,7 @@ references:
   fullName: System
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.State*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.State
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_State
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.State.html#CardGame_Core_AI_Logic_Mcts_MctsNode_State
   name: State
   nameWithType: MctsNode.State
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.State
@@ -590,7 +590,7 @@ references:
     href: CardGame.Core.State.Models.html
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Parent*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.Parent
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Parent
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.Parent.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Parent
   name: Parent
   nameWithType: MctsNode.Parent
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Parent
@@ -603,7 +603,7 @@ references:
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_MoveEntered
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered.html#CardGame_Core_AI_Logic_Mcts_MctsNode_MoveEntered
   name: MoveEntered
   nameWithType: MctsNode.MoveEntered
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered
@@ -654,7 +654,7 @@ references:
     href: CardGame.Core.Commands.Interfaces.html
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_PlayerIdJustMoved
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved.html#CardGame_Core_AI_Logic_Mcts_MctsNode_PlayerIdJustMoved
   name: PlayerIdJustMoved
   nameWithType: MctsNode.PlayerIdJustMoved
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved
@@ -670,7 +670,7 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Children*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.Children
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Children
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.Children.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Children
   name: Children
   nameWithType: MctsNode.Children
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Children
@@ -769,7 +769,7 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_UntriedMoves
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves.html#CardGame_Core_AI_Logic_Mcts_MctsNode_UntriedMoves
   name: UntriedMoves
   nameWithType: MctsNode.UntriedMoves
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves
@@ -806,13 +806,13 @@ references:
   - name: )
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Visits*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.Visits
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Visits
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.Visits.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Visits
   name: Visits
   nameWithType: MctsNode.Visits
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Visits
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Score*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.Score
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Score
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.Score.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Score
   name: Score
   nameWithType: MctsNode.Score
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Score
@@ -828,7 +828,7 @@ references:
   name.vb: Double
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_IsFullyExpanded
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded.html#CardGame_Core_AI_Logic_Mcts_MctsNode_IsFullyExpanded
   name: IsFullyExpanded
   nameWithType: MctsNode.IsFullyExpanded
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded
@@ -844,13 +844,13 @@ references:
   name.vb: Boolean
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_IsTerminal
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal.html#CardGame_Core_AI_Logic_Mcts_MctsNode_IsTerminal
   name: IsTerminal
   nameWithType: MctsNode.IsTerminal
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.#ctor*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.#ctor
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode__ctor_CardGame_Core_State_Models_GameState_CardGame_Core_AI_Logic_Mcts_MctsNode_CardGame_Core_Commands_Interfaces_IGameCommand_System_Int32_CardGame_Core_AI_Logic_MoveGenerator_
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.-ctor.html#CardGame_Core_AI_Logic_Mcts_MctsNode__ctor_CardGame_Core_State_Models_GameState_CardGame_Core_AI_Logic_Mcts_MctsNode_CardGame_Core_Commands_Interfaces_IGameCommand_System_Int32_CardGame_Core_AI_Logic_MoveGenerator_
   name: MctsNode
   nameWithType: MctsNode.MctsNode
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.MctsNode
@@ -904,13 +904,14 @@ references:
     href: CardGame.Core.AI.Logic.html
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.Update*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.Update
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Update_System_Double_
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.Update.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Update_System_Double_
   name: Update
   nameWithType: MctsNode.Update
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.Update
 - uid: CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild*
   commentId: Overload:CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild
-  href: CardGame.Core.AI.Logic.Mcts.MctsNode.html#CardGame_Core_AI_Logic_Mcts_MctsNode_GetBestChild_System_Double_
+  href: CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild.html#CardGame_Core_AI_Logic_Mcts_MctsNode_GetBestChild_System_Double_
   name: GetBestChild
   nameWithType: MctsNode.GetBestChild
   fullName: CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild
+memberLayout: SeparatePages

@@ -1,0 +1,314 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.LibraryCardEntry.MethodName
+  commentId: T:CardGame.GodotClient.LibraryCardEntry.MethodName
+  id: LibraryCardEntry.MethodName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.LibraryCardEntry.MethodName.UpdateCounter
+  - CardGame.GodotClient.LibraryCardEntry.MethodName._Ready
+  langs:
+  - csharp
+  - vb
+  name: LibraryCardEntry.MethodName
+  nameWithType: LibraryCardEntry.MethodName
+  fullName: CardGame.GodotClient.LibraryCardEntry.MethodName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.LibraryCardEntry_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MethodName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.LibraryCardEntry_ScriptMethods.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the methods contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class LibraryCardEntry.MethodName : VBoxContainer.MethodName'
+    content.vb: Public Class LibraryCardEntry.MethodName Inherits VBoxContainer.MethodName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.MethodName
+  - Godot.Node.MethodName
+  - Godot.CanvasItem.MethodName
+  - Godot.Control.MethodName
+  - Godot.Container.MethodName
+  - Godot.BoxContainer.MethodName
+  - Godot.VBoxContainer.MethodName
+- uid: CardGame.GodotClient.LibraryCardEntry.MethodName._Ready
+  commentId: F:CardGame.GodotClient.LibraryCardEntry.MethodName._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.LibraryCardEntry.MethodName
+  langs:
+  - csharp
+  - vb
+  name: _Ready
+  nameWithType: LibraryCardEntry.MethodName._Ready
+  fullName: CardGame.GodotClient.LibraryCardEntry.MethodName._Ready
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.LibraryCardEntry_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.LibraryCardEntry_ScriptMethods.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_Ready' method.
+  example: []
+  syntax:
+    content: public static readonly StringName _Ready
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _Ready As StringName
+- uid: CardGame.GodotClient.LibraryCardEntry.MethodName.UpdateCounter
+  commentId: F:CardGame.GodotClient.LibraryCardEntry.MethodName.UpdateCounter
+  id: UpdateCounter
+  parent: CardGame.GodotClient.LibraryCardEntry.MethodName
+  langs:
+  - csharp
+  - vb
+  name: UpdateCounter
+  nameWithType: LibraryCardEntry.MethodName.UpdateCounter
+  fullName: CardGame.GodotClient.LibraryCardEntry.MethodName.UpdateCounter
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.LibraryCardEntry_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateCounter
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.LibraryCardEntry_ScriptMethods.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'UpdateCounter' method.
+  example: []
+  syntax:
+    content: public static readonly StringName UpdateCounter
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly UpdateCounter As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.MethodName
+  commentId: T:Godot.GodotObject.MethodName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.MethodName
+  nameWithType: GodotObject.MethodName
+  fullName: Godot.GodotObject.MethodName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Node.MethodName
+  commentId: T:Godot.Node.MethodName
+  parent: Godot
+  isExternal: true
+  name: Node.MethodName
+  nameWithType: Node.MethodName
+  fullName: Godot.Node.MethodName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.CanvasItem.MethodName
+  commentId: T:Godot.CanvasItem.MethodName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.MethodName
+  nameWithType: CanvasItem.MethodName
+  fullName: Godot.CanvasItem.MethodName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Control.MethodName
+  commentId: T:Godot.Control.MethodName
+  parent: Godot
+  isExternal: true
+  name: Control.MethodName
+  nameWithType: Control.MethodName
+  fullName: Godot.Control.MethodName
+  spec.csharp:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Container.MethodName
+  commentId: T:Godot.Container.MethodName
+  parent: Godot
+  isExternal: true
+  name: Container.MethodName
+  nameWithType: Container.MethodName
+  fullName: Godot.Container.MethodName
+  spec.csharp:
+  - uid: Godot.Container
+    name: Container
+    isExternal: true
+  - name: .
+  - uid: Godot.Container.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Container
+    name: Container
+    isExternal: true
+  - name: .
+  - uid: Godot.Container.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.BoxContainer.MethodName
+  commentId: T:Godot.BoxContainer.MethodName
+  parent: Godot
+  isExternal: true
+  name: BoxContainer.MethodName
+  nameWithType: BoxContainer.MethodName
+  fullName: Godot.BoxContainer.MethodName
+  spec.csharp:
+  - uid: Godot.BoxContainer
+    name: BoxContainer
+    isExternal: true
+  - name: .
+  - uid: Godot.BoxContainer.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.BoxContainer
+    name: BoxContainer
+    isExternal: true
+  - name: .
+  - uid: Godot.BoxContainer.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.VBoxContainer.MethodName
+  commentId: T:Godot.VBoxContainer.MethodName
+  parent: Godot
+  isExternal: true
+  name: VBoxContainer.MethodName
+  nameWithType: VBoxContainer.MethodName
+  fullName: Godot.VBoxContainer.MethodName
+  spec.csharp:
+  - uid: Godot.VBoxContainer
+    name: VBoxContainer
+    isExternal: true
+  - name: .
+  - uid: Godot.VBoxContainer.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.VBoxContainer
+    name: VBoxContainer
+    isExternal: true
+  - name: .
+  - uid: Godot.VBoxContainer.MethodName
+    name: MethodName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

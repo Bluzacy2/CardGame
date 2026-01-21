@@ -1,0 +1,362 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.MainMenu.MethodName
+  commentId: T:CardGame.GodotClient.MainMenu.MethodName
+  id: MainMenu.MethodName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.MainMenu.MethodName.OnEditorPressed
+  - CardGame.GodotClient.MainMenu.MethodName.OnMusicButtonPressed
+  - CardGame.GodotClient.MainMenu.MethodName.OnPlayPressed
+  - CardGame.GodotClient.MainMenu.MethodName.OnQuitPressed
+  - CardGame.GodotClient.MainMenu.MethodName.UpdateMusicButtonText
+  - CardGame.GodotClient.MainMenu.MethodName._Ready
+  langs:
+  - csharp
+  - vb
+  name: MainMenu.MethodName
+  nameWithType: MainMenu.MethodName
+  fullName: CardGame.GodotClient.MainMenu.MethodName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MethodName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the methods contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class MainMenu.MethodName : Control.MethodName'
+    content.vb: Public Class MainMenu.MethodName Inherits Control.MethodName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.MethodName
+  - Godot.Node.MethodName
+  - Godot.CanvasItem.MethodName
+  - Godot.Control.MethodName
+- uid: CardGame.GodotClient.MainMenu.MethodName._Ready
+  commentId: F:CardGame.GodotClient.MainMenu.MethodName._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.MainMenu.MethodName
+  langs:
+  - csharp
+  - vb
+  name: _Ready
+  nameWithType: MainMenu.MethodName._Ready
+  fullName: CardGame.GodotClient.MainMenu.MethodName._Ready
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_Ready' method.
+  example: []
+  syntax:
+    content: public static readonly StringName _Ready
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _Ready As StringName
+- uid: CardGame.GodotClient.MainMenu.MethodName.OnMusicButtonPressed
+  commentId: F:CardGame.GodotClient.MainMenu.MethodName.OnMusicButtonPressed
+  id: OnMusicButtonPressed
+  parent: CardGame.GodotClient.MainMenu.MethodName
+  langs:
+  - csharp
+  - vb
+  name: OnMusicButtonPressed
+  nameWithType: MainMenu.MethodName.OnMusicButtonPressed
+  fullName: CardGame.GodotClient.MainMenu.MethodName.OnMusicButtonPressed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnMusicButtonPressed
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'OnMusicButtonPressed' method.
+  example: []
+  syntax:
+    content: public static readonly StringName OnMusicButtonPressed
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly OnMusicButtonPressed As StringName
+- uid: CardGame.GodotClient.MainMenu.MethodName.UpdateMusicButtonText
+  commentId: F:CardGame.GodotClient.MainMenu.MethodName.UpdateMusicButtonText
+  id: UpdateMusicButtonText
+  parent: CardGame.GodotClient.MainMenu.MethodName
+  langs:
+  - csharp
+  - vb
+  name: UpdateMusicButtonText
+  nameWithType: MainMenu.MethodName.UpdateMusicButtonText
+  fullName: CardGame.GodotClient.MainMenu.MethodName.UpdateMusicButtonText
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UpdateMusicButtonText
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'UpdateMusicButtonText' method.
+  example: []
+  syntax:
+    content: public static readonly StringName UpdateMusicButtonText
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly UpdateMusicButtonText As StringName
+- uid: CardGame.GodotClient.MainMenu.MethodName.OnPlayPressed
+  commentId: F:CardGame.GodotClient.MainMenu.MethodName.OnPlayPressed
+  id: OnPlayPressed
+  parent: CardGame.GodotClient.MainMenu.MethodName
+  langs:
+  - csharp
+  - vb
+  name: OnPlayPressed
+  nameWithType: MainMenu.MethodName.OnPlayPressed
+  fullName: CardGame.GodotClient.MainMenu.MethodName.OnPlayPressed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnPlayPressed
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'OnPlayPressed' method.
+  example: []
+  syntax:
+    content: public static readonly StringName OnPlayPressed
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly OnPlayPressed As StringName
+- uid: CardGame.GodotClient.MainMenu.MethodName.OnEditorPressed
+  commentId: F:CardGame.GodotClient.MainMenu.MethodName.OnEditorPressed
+  id: OnEditorPressed
+  parent: CardGame.GodotClient.MainMenu.MethodName
+  langs:
+  - csharp
+  - vb
+  name: OnEditorPressed
+  nameWithType: MainMenu.MethodName.OnEditorPressed
+  fullName: CardGame.GodotClient.MainMenu.MethodName.OnEditorPressed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnEditorPressed
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'OnEditorPressed' method.
+  example: []
+  syntax:
+    content: public static readonly StringName OnEditorPressed
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly OnEditorPressed As StringName
+- uid: CardGame.GodotClient.MainMenu.MethodName.OnQuitPressed
+  commentId: F:CardGame.GodotClient.MainMenu.MethodName.OnQuitPressed
+  id: OnQuitPressed
+  parent: CardGame.GodotClient.MainMenu.MethodName
+  langs:
+  - csharp
+  - vb
+  name: OnQuitPressed
+  nameWithType: MainMenu.MethodName.OnQuitPressed
+  fullName: CardGame.GodotClient.MainMenu.MethodName.OnQuitPressed
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnQuitPressed
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.MainMenu_ScriptMethods.generated.cs
+    startLine: 35
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'OnQuitPressed' method.
+  example: []
+  syntax:
+    content: public static readonly StringName OnQuitPressed
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly OnQuitPressed As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.MethodName
+  commentId: T:Godot.GodotObject.MethodName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.MethodName
+  nameWithType: GodotObject.MethodName
+  fullName: Godot.GodotObject.MethodName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Node.MethodName
+  commentId: T:Godot.Node.MethodName
+  parent: Godot
+  isExternal: true
+  name: Node.MethodName
+  nameWithType: Node.MethodName
+  fullName: Godot.Node.MethodName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.CanvasItem.MethodName
+  commentId: T:Godot.CanvasItem.MethodName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.MethodName
+  nameWithType: CanvasItem.MethodName
+  fullName: Godot.CanvasItem.MethodName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Control.MethodName
+  commentId: T:Godot.Control.MethodName
+  parent: Godot
+  isExternal: true
+  name: Control.MethodName
+  nameWithType: Control.MethodName
+  fullName: Godot.Control.MethodName
+  spec.csharp:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.MethodName
+    name: MethodName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

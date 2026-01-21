@@ -845,7 +845,7 @@ references:
   fullName: System
 - uid: CardGame.Core.State.Models.GameState.TurnNumber*
   commentId: Overload:CardGame.Core.State.Models.GameState.TurnNumber
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_TurnNumber
+  href: CardGame.Core.State.Models.GameState.TurnNumber.html#CardGame_Core_State_Models_GameState_TurnNumber
   name: TurnNumber
   nameWithType: GameState.TurnNumber
   fullName: CardGame.Core.State.Models.GameState.TurnNumber
@@ -861,7 +861,7 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.State.Models.GameState.CurrentPhase*
   commentId: Overload:CardGame.Core.State.Models.GameState.CurrentPhase
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_CurrentPhase
+  href: CardGame.Core.State.Models.GameState.CurrentPhase.html#CardGame_Core_State_Models_GameState_CurrentPhase
   name: CurrentPhase
   nameWithType: GameState.CurrentPhase
   fullName: CardGame.Core.State.Models.GameState.CurrentPhase
@@ -912,13 +912,13 @@ references:
     href: CardGame.Core.State.Enums.html
 - uid: CardGame.Core.State.Models.GameState.ActivePlayerId*
   commentId: Overload:CardGame.Core.State.Models.GameState.ActivePlayerId
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_ActivePlayerId
+  href: CardGame.Core.State.Models.GameState.ActivePlayerId.html#CardGame_Core_State_Models_GameState_ActivePlayerId
   name: ActivePlayerId
   nameWithType: GameState.ActivePlayerId
   fullName: CardGame.Core.State.Models.GameState.ActivePlayerId
 - uid: CardGame.Core.State.Models.GameState.Board*
   commentId: Overload:CardGame.Core.State.Models.GameState.Board
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_Board
+  href: CardGame.Core.State.Models.GameState.Board.html#CardGame_Core_State_Models_GameState_Board
   name: Board
   nameWithType: GameState.Board
   fullName: CardGame.Core.State.Models.GameState.Board
@@ -931,7 +931,7 @@ references:
   fullName: CardGame.Core.State.Models.BoardState
 - uid: CardGame.Core.State.Models.GameState.PlayerA*
   commentId: Overload:CardGame.Core.State.Models.GameState.PlayerA
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_PlayerA
+  href: CardGame.Core.State.Models.GameState.PlayerA.html#CardGame_Core_State_Models_GameState_PlayerA
   name: PlayerA
   nameWithType: GameState.PlayerA
   fullName: CardGame.Core.State.Models.GameState.PlayerA
@@ -944,13 +944,13 @@ references:
   fullName: CardGame.Core.State.Models.PlayerState
 - uid: CardGame.Core.State.Models.GameState.PlayerB*
   commentId: Overload:CardGame.Core.State.Models.GameState.PlayerB
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_PlayerB
+  href: CardGame.Core.State.Models.GameState.PlayerB.html#CardGame_Core_State_Models_GameState_PlayerB
   name: PlayerB
   nameWithType: GameState.PlayerB
   fullName: CardGame.Core.State.Models.GameState.PlayerB
 - uid: CardGame.Core.State.Models.GameState.PlayersReady*
   commentId: Overload:CardGame.Core.State.Models.GameState.PlayersReady
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_PlayersReady
+  href: CardGame.Core.State.Models.GameState.PlayersReady.html#CardGame_Core_State_Models_GameState_PlayersReady
   name: PlayersReady
   nameWithType: GameState.PlayersReady
   fullName: CardGame.Core.State.Models.GameState.PlayersReady
@@ -1048,7 +1048,7 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.Core.State.Models.GameState.PendingInteraction*
   commentId: Overload:CardGame.Core.State.Models.GameState.PendingInteraction
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_PendingInteraction
+  href: CardGame.Core.State.Models.GameState.PendingInteraction.html#CardGame_Core_State_Models_GameState_PendingInteraction
   name: PendingInteraction
   nameWithType: GameState.PendingInteraction
   fullName: CardGame.Core.State.Models.GameState.PendingInteraction
@@ -1061,7 +1061,7 @@ references:
   fullName: CardGame.Core.State.Models.PendingInteraction
 - uid: CardGame.Core.State.Models.GameState.SpellStack*
   commentId: Overload:CardGame.Core.State.Models.GameState.SpellStack
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_SpellStack
+  href: CardGame.Core.State.Models.GameState.SpellStack.html#CardGame_Core_State_Models_GameState_SpellStack
   name: SpellStack
   nameWithType: GameState.SpellStack
   fullName: CardGame.Core.State.Models.GameState.SpellStack
@@ -1098,25 +1098,25 @@ references:
   - name: )
 - uid: CardGame.Core.State.Models.GameState.RoundStartingPlayerId*
   commentId: Overload:CardGame.Core.State.Models.GameState.RoundStartingPlayerId
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_RoundStartingPlayerId
+  href: CardGame.Core.State.Models.GameState.RoundStartingPlayerId.html#CardGame_Core_State_Models_GameState_RoundStartingPlayerId
   name: RoundStartingPlayerId
   nameWithType: GameState.RoundStartingPlayerId
   fullName: CardGame.Core.State.Models.GameState.RoundStartingPlayerId
 - uid: CardGame.Core.State.Models.GameState.CombatLineIndex*
   commentId: Overload:CardGame.Core.State.Models.GameState.CombatLineIndex
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_CombatLineIndex
+  href: CardGame.Core.State.Models.GameState.CombatLineIndex.html#CardGame_Core_State_Models_GameState_CombatLineIndex
   name: CombatLineIndex
   nameWithType: GameState.CombatLineIndex
   fullName: CardGame.Core.State.Models.GameState.CombatLineIndex
 - uid: CardGame.Core.State.Models.GameState.CombatStep*
   commentId: Overload:CardGame.Core.State.Models.GameState.CombatStep
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_CombatStep
+  href: CardGame.Core.State.Models.GameState.CombatStep.html#CardGame_Core_State_Models_GameState_CombatStep
   name: CombatStep
   nameWithType: GameState.CombatStep
   fullName: CardGame.Core.State.Models.GameState.CombatStep
 - uid: CardGame.Core.State.Models.GameState.#ctor*
   commentId: Overload:CardGame.Core.State.Models.GameState.#ctor
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState__ctor_System_Int32_CardGame_Core_State_Enums_GamePhase_System_Int32_CardGame_Core_State_Models_BoardState_CardGame_Core_State_Models_PlayerState_CardGame_Core_State_Models_PlayerState_System_Collections_Generic_IEnumerable_System_Int32__CardGame_Core_State_Models_PendingInteraction_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Int32_System_Int32_System_Int32_
+  href: CardGame.Core.State.Models.GameState.-ctor.html#CardGame_Core_State_Models_GameState__ctor_System_Int32_CardGame_Core_State_Enums_GamePhase_System_Int32_CardGame_Core_State_Models_BoardState_CardGame_Core_State_Models_PlayerState_CardGame_Core_State_Models_PlayerState_System_Collections_Generic_IEnumerable_System_Int32__CardGame_Core_State_Models_PendingInteraction_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Int32_System_Int32_System_Int32_
   name: GameState
   nameWithType: GameState.GameState
   fullName: CardGame.Core.State.Models.GameState.GameState
@@ -1211,7 +1211,7 @@ references:
   - name: )
 - uid: CardGame.Core.State.Models.GameState.Initial*
   commentId: Overload:CardGame.Core.State.Models.GameState.Initial
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_Initial_System_Int32_System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__CardGame_Core_Application_DeterministicRng_
+  href: CardGame.Core.State.Models.GameState.Initial.html#CardGame_Core_State_Models_GameState_Initial_System_Int32_System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__CardGame_Core_Application_DeterministicRng_
   name: Initial
   nameWithType: GameState.Initial
   fullName: CardGame.Core.State.Models.GameState.Initial
@@ -1317,7 +1317,7 @@ references:
     href: CardGame.Core.Application.html
 - uid: CardGame.Core.State.Models.GameState.With*
   commentId: Overload:CardGame.Core.State.Models.GameState.With
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_With_System_Nullable_System_Int32__System_Nullable_CardGame_Core_State_Enums_GamePhase__System_Nullable_System_Int32__CardGame_Core_State_Models_BoardState_CardGame_Core_State_Models_PlayerState_CardGame_Core_State_Models_PlayerState_System_Collections_Generic_IEnumerable_System_Int32__CardGame_Core_State_Models_PendingInteraction_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_System_Int32__System_Boolean_System_Nullable_System_Int32__System_Nullable_System_Int32__
+  href: CardGame.Core.State.Models.GameState.With.html#CardGame_Core_State_Models_GameState_With_System_Nullable_System_Int32__System_Nullable_CardGame_Core_State_Enums_GamePhase__System_Nullable_System_Int32__CardGame_Core_State_Models_BoardState_CardGame_Core_State_Models_PlayerState_CardGame_Core_State_Models_PlayerState_System_Collections_Generic_IEnumerable_System_Int32__CardGame_Core_State_Models_PendingInteraction_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_System_Int32__System_Boolean_System_Nullable_System_Int32__System_Nullable_System_Int32__
   name: With
   nameWithType: GameState.With
   fullName: CardGame.Core.State.Models.GameState.With
@@ -1396,31 +1396,32 @@ references:
   - name: )
 - uid: CardGame.Core.State.Models.GameState.MarkPlayerAsReady*
   commentId: Overload:CardGame.Core.State.Models.GameState.MarkPlayerAsReady
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_MarkPlayerAsReady_System_Int32_
+  href: CardGame.Core.State.Models.GameState.MarkPlayerAsReady.html#CardGame_Core_State_Models_GameState_MarkPlayerAsReady_System_Int32_
   name: MarkPlayerAsReady
   nameWithType: GameState.MarkPlayerAsReady
   fullName: CardGame.Core.State.Models.GameState.MarkPlayerAsReady
 - uid: CardGame.Core.State.Models.GameState.GetPlayer*
   commentId: Overload:CardGame.Core.State.Models.GameState.GetPlayer
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_GetPlayer_System_Int32_
+  href: CardGame.Core.State.Models.GameState.GetPlayer.html#CardGame_Core_State_Models_GameState_GetPlayer_System_Int32_
   name: GetPlayer
   nameWithType: GameState.GetPlayer
   fullName: CardGame.Core.State.Models.GameState.GetPlayer
 - uid: CardGame.Core.State.Models.GameState.GetOpponent*
   commentId: Overload:CardGame.Core.State.Models.GameState.GetOpponent
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_GetOpponent_System_Int32_
+  href: CardGame.Core.State.Models.GameState.GetOpponent.html#CardGame_Core_State_Models_GameState_GetOpponent_System_Int32_
   name: GetOpponent
   nameWithType: GameState.GetOpponent
   fullName: CardGame.Core.State.Models.GameState.GetOpponent
 - uid: CardGame.Core.State.Models.GameState.UpdatePlayer*
   commentId: Overload:CardGame.Core.State.Models.GameState.UpdatePlayer
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_UpdatePlayer_CardGame_Core_State_Models_PlayerState_
+  href: CardGame.Core.State.Models.GameState.UpdatePlayer.html#CardGame_Core_State_Models_GameState_UpdatePlayer_CardGame_Core_State_Models_PlayerState_
   name: UpdatePlayer
   nameWithType: GameState.UpdatePlayer
   fullName: CardGame.Core.State.Models.GameState.UpdatePlayer
 - uid: CardGame.Core.State.Models.GameState.UpdateBoard*
   commentId: Overload:CardGame.Core.State.Models.GameState.UpdateBoard
-  href: CardGame.Core.State.Models.GameState.html#CardGame_Core_State_Models_GameState_UpdateBoard_CardGame_Core_State_Models_BoardState_
+  href: CardGame.Core.State.Models.GameState.UpdateBoard.html#CardGame_Core_State_Models_GameState_UpdateBoard_CardGame_Core_State_Models_BoardState_
   name: UpdateBoard
   nameWithType: GameState.UpdateBoard
   fullName: CardGame.Core.State.Models.GameState.UpdateBoard
+memberLayout: SeparatePages

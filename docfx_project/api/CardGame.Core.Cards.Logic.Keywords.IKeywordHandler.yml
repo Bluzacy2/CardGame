@@ -292,7 +292,7 @@ references:
     href: CardGame.Core.Cards.Logic.Keywords.html
 - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type
-  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_Type
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_Type
   name: Type
   nameWithType: IKeywordHandler.Type
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.Type
@@ -343,7 +343,7 @@ references:
     href: CardGame.Core.Cards.Data.html
 - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken
-  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_
   name: OnModifyDamageTaken
   nameWithType: IKeywordHandler.OnModifyDamageTaken
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnModifyDamageTaken
@@ -411,7 +411,7 @@ references:
     href: CardGame.Core.GameRules.Damage.html
 - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack
-  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_
   name: OnAfterAttack
   nameWithType: IKeywordHandler.OnAfterAttack
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnAfterAttack
@@ -544,13 +544,13 @@ references:
     href: CardGame.Core.Application.html
 - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd
-  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_
   name: OnRoundEnd
   nameWithType: IKeywordHandler.OnRoundEnd
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnRoundEnd
 - uid: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath*
   commentId: Overload:CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath
-  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
+  href: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath.html#CardGame_Core_Cards_Logic_Keywords_IKeywordHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_
   name: OnPreventDeath
   nameWithType: IKeywordHandler.OnPreventDeath
   fullName: CardGame.Core.Cards.Logic.Keywords.IKeywordHandler.OnPreventDeath
@@ -564,3 +564,4 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+memberLayout: SeparatePages

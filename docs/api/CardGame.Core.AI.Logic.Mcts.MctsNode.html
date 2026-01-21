@@ -123,454 +123,82 @@ Class MctsNode  <a class="header-action link-secondary" title="View source" href
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode__ctor_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.#ctor*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode__ctor_CardGame_Core_State_Models_GameState_CardGame_Core_AI_Logic_Mcts_MctsNode_CardGame_Core_Commands_Interfaces_IGameCommand_System_Int32_CardGame_Core_AI_Logic_MoveGenerator_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.#ctor(CardGame.Core.State.Models.GameState,CardGame.Core.AI.Logic.Mcts.MctsNode,CardGame.Core.Commands.Interfaces.IGameCommand,System.Int32,CardGame.Core.AI.Logic.MoveGenerator)">
-  MctsNode(GameState, MctsNode?, IGameCommand?, int, MoveGenerator)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L78"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the MctsNode class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MctsNode(GameState state, MctsNode? parent, IGameCommand? move, int playerIdJustMoved, MoveGenerator moveGenerator)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The game state at this node.</p>
-</dd>
-    <dt><code>parent</code> <a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.html">MctsNode</a></dt>
-    <dd><p>The parent node, or null if this is the root.</p>
-</dd>
-    <dt><code>move</code> <a class="xref" href="CardGame.Core.Commands.Interfaces.IGameCommand.html">IGameCommand</a></dt>
-    <dd><p>The move that led to this state.</p>
-</dd>
-    <dt><code>playerIdJustMoved</code> <span class="xref">int</span></dt>
-    <dd><p>The ID of the player who just moved.</p>
-</dd>
-    <dt><code>moveGenerator</code> <a class="xref" href="CardGame.Core.AI.Logic.MoveGenerator.html">MoveGenerator</a></dt>
-    <dd><p>The move generator for creating untried moves.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.-ctor.html#CardGame_Core_AI_Logic_Mcts_MctsNode__ctor_CardGame_Core_State_Models_GameState_CardGame_Core_AI_Logic_Mcts_MctsNode_CardGame_Core_Commands_Interfaces_IGameCommand_System_Int32_CardGame_Core_AI_Logic_MoveGenerator_">MctsNode(GameState, MctsNode?, IGameCommand?, int, MoveGenerator)</a></dt>
+    <dd><p>Initializes a new instance of the MctsNode class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_Children_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.Children*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_Children" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.Children">
-  Children
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L39"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the child nodes of this node.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;MctsNode&gt; Children { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">List</span>&lt;<a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.html">MctsNode</a>&gt;</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.Children.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Children">Children</a></dt>
+    <dd><p>Gets the child nodes of this node.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_IsFullyExpanded_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_IsFullyExpanded" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded">
-  IsFullyExpanded
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L59"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets a value indicating whether all possible moves have been expanded from this node.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsFullyExpanded { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.IsFullyExpanded.html#CardGame_Core_AI_Logic_Mcts_MctsNode_IsFullyExpanded">IsFullyExpanded</a></dt>
+    <dd><p>Gets a value indicating whether all possible moves have been expanded from this node.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_IsTerminal_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_IsTerminal" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal">
-  IsTerminal
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L64"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets a value indicating whether this node represents a terminal game state (game over).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsTerminal { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.IsTerminal.html#CardGame_Core_AI_Logic_Mcts_MctsNode_IsTerminal">IsTerminal</a></dt>
+    <dd><p>Gets a value indicating whether this node represents a terminal game state (game over).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_MoveEntered_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_MoveEntered" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered">
-  MoveEntered
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L29"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the move that led to this state.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IGameCommand? MoveEntered { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Commands.Interfaces.IGameCommand.html">IGameCommand</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.MoveEntered.html#CardGame_Core_AI_Logic_Mcts_MctsNode_MoveEntered">MoveEntered</a></dt>
+    <dd><p>Gets the move that led to this state.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_Parent_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.Parent*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_Parent" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.Parent">
-  Parent
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L24"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the parent node of this node.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MctsNode? Parent { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.html">MctsNode</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.Parent.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Parent">Parent</a></dt>
+    <dd><p>Gets the parent node of this node.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_PlayerIdJustMoved_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_PlayerIdJustMoved" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved">
-  PlayerIdJustMoved
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L34"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the ID of the player who just moved to reach this state.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int PlayerIdJustMoved { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.PlayerIdJustMoved.html#CardGame_Core_AI_Logic_Mcts_MctsNode_PlayerIdJustMoved">PlayerIdJustMoved</a></dt>
+    <dd><p>Gets the ID of the player who just moved to reach this state.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_Score_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.Score*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_Score" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.Score">
-  Score
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L54"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the cumulative score from simulations (from the perspective of the root player).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Score { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">double</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.Score.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Score">Score</a></dt>
+    <dd><p>Gets the cumulative score from simulations (from the perspective of the root player).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_State_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.State*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_State" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.State">
-  State
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the game state at this node.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState State { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.State.html#CardGame_Core_AI_Logic_Mcts_MctsNode_State">State</a></dt>
+    <dd><p>Gets the game state at this node.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_UntriedMoves_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_UntriedMoves" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves">
-  UntriedMoves
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L44"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the list of moves that have not been tried from this node.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;IGameCommand&gt; UntriedMoves { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">List</span>&lt;<a class="xref" href="CardGame.Core.Commands.Interfaces.IGameCommand.html">IGameCommand</a>&gt;</dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.UntriedMoves.html#CardGame_Core_AI_Logic_Mcts_MctsNode_UntriedMoves">UntriedMoves</a></dt>
+    <dd><p>Gets the list of moves that have not been tried from this node.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_Visits_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.Visits*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_Visits" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.Visits">
-  Visits
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L49"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the number of times this node has been visited during simulation.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Visits { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.Visits.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Visits">Visits</a></dt>
+    <dd><p>Gets the number of times this node has been visited during simulation.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_GetBestChild_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_GetBestChild_System_Double_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild(System.Double)">
-  GetBestChild(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L113"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Selects the best child node using the UCT (Upper Confidence Bound for Trees) formula.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MctsNode GetBestChild(double explorationParameter = 1.41)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>explorationParameter</code> <span class="xref">double</span></dt>
-    <dd><p>The exploration constant (default is √2).</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.GetBestChild.html#CardGame_Core_AI_Logic_Mcts_MctsNode_GetBestChild_System_Double_">GetBestChild(double)</a></dt>
+    <dd><p>Selects the best child node using the UCT (Upper Confidence Bound for Trees) formula.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.html">MctsNode</a></dt>
-    <dd><p>The child node with the highest UCT value.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.Mcts.MctsNode.Update.html#CardGame_Core_AI_Logic_Mcts_MctsNode_Update_System_Double_">Update(double)</a></dt>
+    <dd><p>Updates the node's statistics with the result of a simulation.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_Mcts_MctsNode_Update_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.Update*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_Mcts_MctsNode_Update_System_Double_" data-uid="CardGame.Core.AI.Logic.Mcts.MctsNode.Update(System.Double)">
-  Update(double)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/MCTS/MctsNode.cs/#L102"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Updates the node's statistics with the result of a simulation.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Update(double result)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>result</code> <span class="xref">double</span></dt>
-    <dd><p>The result value to add (from root player's perspective).</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
 
 
 

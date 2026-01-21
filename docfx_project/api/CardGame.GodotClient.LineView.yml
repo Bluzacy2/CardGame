@@ -1,0 +1,851 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.LineView
+  commentId: T:CardGame.GodotClient.LineView
+  id: LineView
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.LineView.CardDroppedOnLine
+  - CardGame.GodotClient.LineView.EmitSignalCardDroppedOnLine(System.Int32,System.Int32)
+  - CardGame.GodotClient.LineView.EnemySlot
+  - CardGame.GodotClient.LineView.InfoLabel
+  - CardGame.GodotClient.LineView.PlayerSlot
+  - CardGame.GodotClient.LineView.Render(CardGame.Core.State.Models.Line,Godot.PackedScene,System.Action{CardGame.GodotClient.CardView})
+  - CardGame.GodotClient.LineView._CanDropData(Godot.Vector2,Godot.Variant)
+  - CardGame.GodotClient.LineView._DropData(Godot.Vector2,Godot.Variant)
+  - CardGame.GodotClient.LineView._Ready
+  langs:
+  - csharp
+  - vb
+  name: LineView
+  nameWithType: LineView
+  fullName: CardGame.GodotClient.LineView
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.LineView_ScriptSignals.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LineView
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.LineView_ScriptSignals.generated.cs
+    startLine: 5
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Visual controller for a single board lane (Line).
+
+    Manages the placement of Enemy units (Top) and Player units (Bottom).
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/LineView.cs")]
+
+      public class LineView : Control
+    content.vb: >-
+      <ScriptPath("res://Scripts/LineView.cs")>
+
+      Public Class LineView Inherits Control
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  - Godot.CanvasItem
+  - Godot.Control
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/LineView.cs
+- uid: CardGame.GodotClient.LineView.InfoLabel
+  commentId: F:CardGame.GodotClient.LineView.InfoLabel
+  id: InfoLabel
+  parent: CardGame.GodotClient.LineView
+  langs:
+  - csharp
+  - vb
+  name: InfoLabel
+  nameWithType: LineView.InfoLabel
+  fullName: CardGame.GodotClient.LineView.InfoLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/LineView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: InfoLabel
+    path: ../Source/CardGame.GodotClient/Scripts/LineView.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label displaying the line number (e.g., I, II, III, IV).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label InfoLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public InfoLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.LineView.EnemySlot
+  commentId: F:CardGame.GodotClient.LineView.EnemySlot
+  id: EnemySlot
+  parent: CardGame.GodotClient.LineView
+  langs:
+  - csharp
+  - vb
+  name: EnemySlot
+  nameWithType: LineView.EnemySlot
+  fullName: CardGame.GodotClient.LineView.EnemySlot
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/LineView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EnemySlot
+    path: ../Source/CardGame.GodotClient/Scripts/LineView.cs
+    startLine: 17
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Container for the enemy's unit (Top slot).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control EnemySlot
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public EnemySlot As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.LineView.PlayerSlot
+  commentId: F:CardGame.GodotClient.LineView.PlayerSlot
+  id: PlayerSlot
+  parent: CardGame.GodotClient.LineView
+  langs:
+  - csharp
+  - vb
+  name: PlayerSlot
+  nameWithType: LineView.PlayerSlot
+  fullName: CardGame.GodotClient.LineView.PlayerSlot
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/LineView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayerSlot
+    path: ../Source/CardGame.GodotClient/Scripts/LineView.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Container for the player's unit (Bottom slot).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control PlayerSlot
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public PlayerSlot As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.LineView._Ready
+  commentId: M:CardGame.GodotClient.LineView._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.LineView
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: LineView._Ready()
+  fullName: CardGame.GodotClient.LineView._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/LineView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/LineView.cs
+    startLine: 32
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    <p>Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their <xref href="Godot.Node._Ready" data-throw-if-not-resolved="false"></xref> callbacks get triggered first, and the parent node will receive the ready notification afterwards.</p>
+
+    <p>Corresponds to the <xref href="Godot.Node.NotificationReady" data-throw-if-not-resolved="false"></xref> notification in <xref href="Godot.GodotObject._Notification(System.Int32)" data-throw-if-not-resolved="false"></xref>. See also the <code>@onready</code> annotation for variables.</p>
+
+    <p>Usually used for initialization. For even earlier initialization, <xref href="Godot.GodotObject.%23ctor" data-throw-if-not-resolved="false"></xref> may be used. See also <xref href="Godot.Node._EnterTree" data-throw-if-not-resolved="false"></xref>.</p>
+
+    <p><b>Note:</b> This method may be called only once for each node. After removing a node from the scene tree and adding it again, <xref href="Godot.Node._Ready" data-throw-if-not-resolved="false"></xref> will <b>not</b> be called a second time. This can be bypassed by requesting another call with <xref href="Godot.Node.RequestReady" data-throw-if-not-resolved="false"></xref>, which may be called anywhere before adding the node again.</p>
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.LineView._Ready*
+- uid: CardGame.GodotClient.LineView.Render(CardGame.Core.State.Models.Line,Godot.PackedScene,System.Action{CardGame.GodotClient.CardView})
+  commentId: M:CardGame.GodotClient.LineView.Render(CardGame.Core.State.Models.Line,Godot.PackedScene,System.Action{CardGame.GodotClient.CardView})
+  id: Render(CardGame.Core.State.Models.Line,Godot.PackedScene,System.Action{CardGame.GodotClient.CardView})
+  parent: CardGame.GodotClient.LineView
+  langs:
+  - csharp
+  - vb
+  name: Render(Line, PackedScene, Action<CardView>)
+  nameWithType: LineView.Render(Line, PackedScene, Action<CardView>)
+  fullName: CardGame.GodotClient.LineView.Render(CardGame.Core.State.Models.Line, Godot.PackedScene, System.Action<CardGame.GodotClient.CardView>)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/LineView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Render
+    path: ../Source/CardGame.GodotClient/Scripts/LineView.cs
+    startLine: 44
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Renders the current state of the line, updating unit visuals for both slots.
+  example: []
+  syntax:
+    content: public void Render(Line lineData, PackedScene cardScene, Action<CardView> onClickHandler)
+    parameters:
+    - id: lineData
+      type: CardGame.Core.State.Models.Line
+      description: The data model representing this line.
+    - id: cardScene
+      type: Godot.PackedScene
+      description: The template scene for creating unit visuals.
+    - id: onClickHandler
+      type: System.Action{CardGame.GodotClient.CardView}
+      description: Callback action for unit click events (targeting).
+    content.vb: Public Sub Render(lineData As Line, cardScene As PackedScene, onClickHandler As Action(Of CardView))
+  overload: CardGame.GodotClient.LineView.Render*
+  nameWithType.vb: LineView.Render(Line, PackedScene, Action(Of CardView))
+  fullName.vb: CardGame.GodotClient.LineView.Render(CardGame.Core.State.Models.Line, Godot.PackedScene, System.Action(Of CardGame.GodotClient.CardView))
+  name.vb: Render(Line, PackedScene, Action(Of CardView))
+- uid: CardGame.GodotClient.LineView._CanDropData(Godot.Vector2,Godot.Variant)
+  commentId: M:CardGame.GodotClient.LineView._CanDropData(Godot.Vector2,Godot.Variant)
+  id: _CanDropData(Godot.Vector2,Godot.Variant)
+  parent: CardGame.GodotClient.LineView
+  langs:
+  - csharp
+  - vb
+  name: _CanDropData(Vector2, Variant)
+  nameWithType: LineView._CanDropData(Vector2, Variant)
+  fullName: CardGame.GodotClient.LineView._CanDropData(Godot.Vector2, Godot.Variant)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/LineView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _CanDropData
+    path: ../Source/CardGame.GodotClient/Scripts/LineView.cs
+    startLine: 105
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Checks if drag data is valid for dropping on this line (expects Card ID int).
+  example: []
+  syntax:
+    content: public override bool _CanDropData(Vector2 atPosition, Variant data)
+    parameters:
+    - id: atPosition
+      type: Godot.Vector2
+    - id: data
+      type: Godot.Variant
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function _CanDropData(atPosition As Vector2, data As [Variant]) As Boolean
+  overridden: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+  overload: CardGame.GodotClient.LineView._CanDropData*
+- uid: CardGame.GodotClient.LineView._DropData(Godot.Vector2,Godot.Variant)
+  commentId: M:CardGame.GodotClient.LineView._DropData(Godot.Vector2,Godot.Variant)
+  id: _DropData(Godot.Vector2,Godot.Variant)
+  parent: CardGame.GodotClient.LineView
+  langs:
+  - csharp
+  - vb
+  name: _DropData(Vector2, Variant)
+  nameWithType: LineView._DropData(Vector2, Variant)
+  fullName: CardGame.GodotClient.LineView._DropData(Godot.Vector2, Godot.Variant)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/LineView.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _DropData
+    path: ../Source/CardGame.GodotClient/Scripts/LineView.cs
+    startLine: 113
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Handles the drop event, emitting a signal to the GameBootstrap/InputController.
+  example: []
+  syntax:
+    content: public override void _DropData(Vector2 atPosition, Variant data)
+    parameters:
+    - id: atPosition
+      type: Godot.Vector2
+    - id: data
+      type: Godot.Variant
+    content.vb: Public Overrides Sub _DropData(atPosition As Vector2, data As [Variant])
+  overridden: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+  overload: CardGame.GodotClient.LineView._DropData*
+- uid: CardGame.GodotClient.LineView.CardDroppedOnLine
+  commentId: E:CardGame.GodotClient.LineView.CardDroppedOnLine
+  id: CardDroppedOnLine
+  parent: CardGame.GodotClient.LineView
+  langs:
+  - csharp
+  - vb
+  name: CardDroppedOnLine
+  nameWithType: LineView.CardDroppedOnLine
+  fullName: CardGame.GodotClient.LineView.CardDroppedOnLine
+  type: Event
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.LineView_ScriptSignals.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardDroppedOnLine
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.LineView_ScriptSignals.generated.cs
+    startLine: 32
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Signal emitted when a card is dropped onto this line.
+  example: []
+  syntax:
+    content: public event LineView.CardDroppedOnLineEventHandler CardDroppedOnLine
+    return:
+      type: CardGame.GodotClient.LineView.CardDroppedOnLineEventHandler
+    content.vb: Public Event CardDroppedOnLine As LineView.CardDroppedOnLineEventHandler
+- uid: CardGame.GodotClient.LineView.EmitSignalCardDroppedOnLine(System.Int32,System.Int32)
+  commentId: M:CardGame.GodotClient.LineView.EmitSignalCardDroppedOnLine(System.Int32,System.Int32)
+  id: EmitSignalCardDroppedOnLine(System.Int32,System.Int32)
+  parent: CardGame.GodotClient.LineView
+  langs:
+  - csharp
+  - vb
+  name: EmitSignalCardDroppedOnLine(int, int)
+  nameWithType: LineView.EmitSignalCardDroppedOnLine(int, int)
+  fullName: CardGame.GodotClient.LineView.EmitSignalCardDroppedOnLine(int, int)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.LineView_ScriptSignals.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EmitSignalCardDroppedOnLine
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.LineView_ScriptSignals.generated.cs
+    startLine: 36
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: protected void EmitSignalCardDroppedOnLine(int cardInstanceId, int lineIndex)
+    parameters:
+    - id: cardInstanceId
+      type: System.Int32
+    - id: lineIndex
+      type: System.Int32
+    content.vb: Protected Sub EmitSignalCardDroppedOnLine(cardInstanceId As Integer, lineIndex As Integer)
+  overload: CardGame.GodotClient.LineView.EmitSignalCardDroppedOnLine*
+  nameWithType.vb: LineView.EmitSignalCardDroppedOnLine(Integer, Integer)
+  fullName.vb: CardGame.GodotClient.LineView.EmitSignalCardDroppedOnLine(Integer, Integer)
+  name.vb: EmitSignalCardDroppedOnLine(Integer, Integer)
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: Godot.CanvasItem
+  commentId: T:Godot.CanvasItem
+  parent: Godot
+  isExternal: true
+  name: CanvasItem
+  nameWithType: CanvasItem
+  fullName: Godot.CanvasItem
+- uid: Godot.Control
+  commentId: T:Godot.Control
+  parent: Godot
+  isExternal: true
+  name: Control
+  nameWithType: Control
+  fullName: Godot.Control
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.Label
+  commentId: T:Godot.Label
+  parent: Godot
+  isExternal: true
+  name: Label
+  nameWithType: Label
+  fullName: Godot.Label
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Godot.Node.NotificationReady
+  commentId: F:Godot.Node.NotificationReady
+  isExternal: true
+  name: NotificationReady
+  nameWithType: Node.NotificationReady
+  fullName: Godot.Node.NotificationReady
+- uid: Godot.GodotObject._Notification(System.Int32)
+  commentId: M:Godot.GodotObject._Notification(System.Int32)
+  isExternal: true
+  name: _Notification(int)
+  nameWithType: GodotObject._Notification(int)
+  fullName: Godot.GodotObject._Notification(int)
+  nameWithType.vb: GodotObject._Notification(Integer)
+  fullName.vb: Godot.GodotObject._Notification(Integer)
+  name.vb: _Notification(Integer)
+  spec.csharp:
+  - uid: Godot.GodotObject._Notification(System.Int32)
+    name: _Notification
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Godot.GodotObject._Notification(System.Int32)
+    name: _Notification
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Godot.GodotObject.#ctor
+  commentId: M:Godot.GodotObject.#ctor
+  isExternal: true
+  name: GodotObject()
+  nameWithType: GodotObject.GodotObject()
+  fullName: Godot.GodotObject.GodotObject()
+  nameWithType.vb: GodotObject.New()
+  fullName.vb: Godot.GodotObject.New()
+  name.vb: New()
+  spec.csharp:
+  - uid: Godot.GodotObject.#ctor
+    name: GodotObject
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - name: New
+  - name: (
+  - name: )
+- uid: Godot.Node._EnterTree
+  commentId: M:Godot.Node._EnterTree
+  isExternal: true
+  name: _EnterTree()
+  nameWithType: Node._EnterTree()
+  fullName: Godot.Node._EnterTree()
+  spec.csharp:
+  - uid: Godot.Node._EnterTree
+    name: _EnterTree
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._EnterTree
+    name: _EnterTree
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Godot.Node.RequestReady
+  commentId: M:Godot.Node.RequestReady
+  isExternal: true
+  name: RequestReady()
+  nameWithType: Node.RequestReady()
+  fullName: Godot.Node.RequestReady()
+  spec.csharp:
+  - uid: Godot.Node.RequestReady
+    name: RequestReady
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node.RequestReady
+    name: RequestReady
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.LineView._Ready*
+  commentId: Overload:CardGame.GodotClient.LineView._Ready
+  href: CardGame.GodotClient.LineView._Ready.html#CardGame_GodotClient_LineView__Ready
+  name: _Ready
+  nameWithType: LineView._Ready
+  fullName: CardGame.GodotClient.LineView._Ready
+- uid: CardGame.GodotClient.LineView.Render*
+  commentId: Overload:CardGame.GodotClient.LineView.Render
+  href: CardGame.GodotClient.LineView.Render.html#CardGame_GodotClient_LineView_Render_CardGame_Core_State_Models_Line_Godot_PackedScene_System_Action_CardGame_GodotClient_CardView__
+  name: Render
+  nameWithType: LineView.Render
+  fullName: CardGame.GodotClient.LineView.Render
+- uid: CardGame.Core.State.Models.Line
+  commentId: T:CardGame.Core.State.Models.Line
+  parent: CardGame.Core.State.Models
+  href: CardGame.Core.State.Models.Line.html
+  name: Line
+  nameWithType: Line
+  fullName: CardGame.Core.State.Models.Line
+- uid: Godot.PackedScene
+  commentId: T:Godot.PackedScene
+  parent: Godot
+  isExternal: true
+  name: PackedScene
+  nameWithType: PackedScene
+  fullName: Godot.PackedScene
+- uid: System.Action{CardGame.GodotClient.CardView}
+  commentId: T:System.Action{CardGame.GodotClient.CardView}
+  parent: System
+  definition: System.Action`1
+  href: CardGame.GodotClient.CardView.html
+  name: Action<CardView>
+  nameWithType: Action<CardView>
+  fullName: System.Action<CardGame.GodotClient.CardView>
+  nameWithType.vb: Action(Of CardView)
+  fullName.vb: System.Action(Of CardGame.GodotClient.CardView)
+  name.vb: Action(Of CardView)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: CardGame.GodotClient.CardView
+    name: CardView
+    href: CardGame.GodotClient.CardView.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.GodotClient.CardView
+    name: CardView
+    href: CardGame.GodotClient.CardView.html
+  - name: )
+- uid: CardGame.Core.State.Models
+  commentId: N:CardGame.Core.State.Models
+  href: CardGame.html
+  name: CardGame.Core.State.Models
+  nameWithType: CardGame.Core.State.Models
+  fullName: CardGame.Core.State.Models
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.State
+    name: State
+    href: CardGame.Core.State.html
+  - name: .
+  - uid: CardGame.Core.State.Models
+    name: Models
+    href: CardGame.Core.State.Models.html
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+  commentId: M:Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+  parent: Godot.Control
+  isExternal: true
+  name: _CanDropData(Vector2, Variant)
+  nameWithType: Control._CanDropData(Vector2, Variant)
+  fullName: Godot.Control._CanDropData(Godot.Vector2, Godot.Variant)
+  spec.csharp:
+  - uid: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+    name: _CanDropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Godot.Control._CanDropData(Godot.Vector2,Godot.Variant)
+    name: _CanDropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+- uid: CardGame.GodotClient.LineView._CanDropData*
+  commentId: Overload:CardGame.GodotClient.LineView._CanDropData
+  href: CardGame.GodotClient.LineView._CanDropData.html#CardGame_GodotClient_LineView__CanDropData_Godot_Vector2_Godot_Variant_
+  name: _CanDropData
+  nameWithType: LineView._CanDropData
+  fullName: CardGame.GodotClient.LineView._CanDropData
+- uid: Godot.Vector2
+  commentId: T:Godot.Vector2
+  parent: Godot
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Godot.Vector2
+- uid: Godot.Variant
+  commentId: T:Godot.Variant
+  parent: Godot
+  isExternal: true
+  name: Variant
+  nameWithType: Variant
+  fullName: Godot.Variant
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+  commentId: M:Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+  parent: Godot.Control
+  isExternal: true
+  name: _DropData(Vector2, Variant)
+  nameWithType: Control._DropData(Vector2, Variant)
+  fullName: Godot.Control._DropData(Godot.Vector2, Godot.Variant)
+  spec.csharp:
+  - uid: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+    name: _DropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Godot.Control._DropData(Godot.Vector2,Godot.Variant)
+    name: _DropData
+    isExternal: true
+  - name: (
+  - uid: Godot.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Godot.Variant
+    name: Variant
+    isExternal: true
+  - name: )
+- uid: CardGame.GodotClient.LineView._DropData*
+  commentId: Overload:CardGame.GodotClient.LineView._DropData
+  href: CardGame.GodotClient.LineView._DropData.html#CardGame_GodotClient_LineView__DropData_Godot_Vector2_Godot_Variant_
+  name: _DropData
+  nameWithType: LineView._DropData
+  fullName: CardGame.GodotClient.LineView._DropData
+- uid: CardGame.GodotClient.LineView.CardDroppedOnLineEventHandler
+  commentId: T:CardGame.GodotClient.LineView.CardDroppedOnLineEventHandler
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.LineView.html
+  name: LineView.CardDroppedOnLineEventHandler
+  nameWithType: LineView.CardDroppedOnLineEventHandler
+  fullName: CardGame.GodotClient.LineView.CardDroppedOnLineEventHandler
+  spec.csharp:
+  - uid: CardGame.GodotClient.LineView
+    name: LineView
+    href: CardGame.GodotClient.LineView.html
+  - name: .
+  - uid: CardGame.GodotClient.LineView.CardDroppedOnLineEventHandler
+    name: CardDroppedOnLineEventHandler
+  spec.vb:
+  - uid: CardGame.GodotClient.LineView
+    name: LineView
+    href: CardGame.GodotClient.LineView.html
+  - name: .
+  - uid: CardGame.GodotClient.LineView.CardDroppedOnLineEventHandler
+    name: CardDroppedOnLineEventHandler
+- uid: CardGame.GodotClient.LineView.EmitSignalCardDroppedOnLine*
+  commentId: Overload:CardGame.GodotClient.LineView.EmitSignalCardDroppedOnLine
+  href: CardGame.GodotClient.LineView.EmitSignalCardDroppedOnLine.html#CardGame_GodotClient_LineView_EmitSignalCardDroppedOnLine_System_Int32_System_Int32_
+  name: EmitSignalCardDroppedOnLine
+  nameWithType: LineView.EmitSignalCardDroppedOnLine
+  fullName: CardGame.GodotClient.LineView.EmitSignalCardDroppedOnLine
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+memberLayout: SeparatePages

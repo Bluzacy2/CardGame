@@ -229,7 +229,7 @@ references:
     href: CardGame.Core.Events.Interfaces.html
 - uid: CardGame.Core.Events.GameOverEvent.WinnerId*
   commentId: Overload:CardGame.Core.Events.GameOverEvent.WinnerId
-  href: CardGame.Core.Events.GameOverEvent.html#CardGame_Core_Events_GameOverEvent_WinnerId
+  href: CardGame.Core.Events.GameOverEvent.WinnerId.html#CardGame_Core_Events_GameOverEvent_WinnerId
   name: WinnerId
   nameWithType: GameOverEvent.WinnerId
   fullName: CardGame.Core.Events.GameOverEvent.WinnerId
@@ -280,14 +280,14 @@ references:
   - name: )
 - uid: CardGame.Core.Events.GameOverEvent.SourcePlayerId*
   commentId: Overload:CardGame.Core.Events.GameOverEvent.SourcePlayerId
-  href: CardGame.Core.Events.GameOverEvent.html#CardGame_Core_Events_GameOverEvent_SourcePlayerId
+  href: CardGame.Core.Events.GameOverEvent.SourcePlayerId.html#CardGame_Core_Events_GameOverEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: GameOverEvent.SourcePlayerId
   fullName: CardGame.Core.Events.GameOverEvent.SourcePlayerId
 - uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   parent: CardGame.Core.Events.Interfaces.IGameEvent
-  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  href: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: IGameEvent.SourcePlayerId
   fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
@@ -303,10 +303,11 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Events.GameOverEvent.#ctor*
   commentId: Overload:CardGame.Core.Events.GameOverEvent.#ctor
-  href: CardGame.Core.Events.GameOverEvent.html#CardGame_Core_Events_GameOverEvent__ctor_System_Nullable_System_Int32__
+  href: CardGame.Core.Events.GameOverEvent.-ctor.html#CardGame_Core_Events_GameOverEvent__ctor_System_Nullable_System_Int32__
   name: GameOverEvent
   nameWithType: GameOverEvent.GameOverEvent
   fullName: CardGame.Core.Events.GameOverEvent.GameOverEvent
   nameWithType.vb: GameOverEvent.New
   fullName.vb: CardGame.Core.Events.GameOverEvent.New
   name.vb: New
+memberLayout: SeparatePages

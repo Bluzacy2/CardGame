@@ -1,0 +1,377 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.GameSession
+  commentId: T:CardGame.GodotClient.GameSession
+  id: GameSession
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.GameSession.Instance
+  - CardGame.GodotClient.GameSession.Reset
+  - CardGame.GodotClient.GameSession.SelectedBotDeck
+  - CardGame.GodotClient.GameSession.SelectedPlayerDeck
+  - CardGame.GodotClient.GameSession._Ready
+  langs:
+  - csharp
+  - vb
+  name: GameSession
+  nameWithType: GameSession
+  fullName: CardGame.GodotClient.GameSession
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameSession_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GameSession
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameSession_ScriptMethods.generated.cs
+    startLine: 5
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    A persistent Singleton (Autoload) that stores global game data across scene transitions.
+
+    Used to pass selected deck configurations from the Menu scenes to the Gameplay scene.
+
+    This node persists throughout the application lifecycle.
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/GameSession.cs")]
+
+      public class GameSession : Node
+    content.vb: >-
+      <ScriptPath("res://Scripts/GameSession.cs")>
+
+      Public Class GameSession Inherits Node
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/GameSession.cs
+- uid: CardGame.GodotClient.GameSession.Instance
+  commentId: P:CardGame.GodotClient.GameSession.Instance
+  id: Instance
+  parent: CardGame.GodotClient.GameSession
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: GameSession.Instance
+  fullName: CardGame.GodotClient.GameSession.Instance
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameSession.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Instance
+    path: ../Source/CardGame.GodotClient/Scripts/GameSession.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: The global singleton instance accessible from any script.
+  example: []
+  syntax:
+    content: public static GameSession Instance { get; }
+    parameters: []
+    return:
+      type: CardGame.GodotClient.GameSession
+    content.vb: Public Shared Property Instance As GameSession
+  overload: CardGame.GodotClient.GameSession.Instance*
+- uid: CardGame.GodotClient.GameSession.SelectedPlayerDeck
+  commentId: P:CardGame.GodotClient.GameSession.SelectedPlayerDeck
+  id: SelectedPlayerDeck
+  parent: CardGame.GodotClient.GameSession
+  langs:
+  - csharp
+  - vb
+  name: SelectedPlayerDeck
+  nameWithType: GameSession.SelectedPlayerDeck
+  fullName: CardGame.GodotClient.GameSession.SelectedPlayerDeck
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameSession.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SelectedPlayerDeck
+    path: ../Source/CardGame.GodotClient/Scripts/GameSession.cs
+    startLine: 21
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    The deck data selected by the human player for the upcoming match.
+
+    Used by GameBootstrap to initialize the player's hand and deck.
+  example: []
+  syntax:
+    content: public DeckData SelectedPlayerDeck { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Decks.Data.DeckData
+    content.vb: Public Property SelectedPlayerDeck As DeckData
+  overload: CardGame.GodotClient.GameSession.SelectedPlayerDeck*
+- uid: CardGame.GodotClient.GameSession.SelectedBotDeck
+  commentId: P:CardGame.GodotClient.GameSession.SelectedBotDeck
+  id: SelectedBotDeck
+  parent: CardGame.GodotClient.GameSession
+  langs:
+  - csharp
+  - vb
+  name: SelectedBotDeck
+  nameWithType: GameSession.SelectedBotDeck
+  fullName: CardGame.GodotClient.GameSession.SelectedBotDeck
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameSession.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SelectedBotDeck
+    path: ../Source/CardGame.GodotClient/Scripts/GameSession.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    The deck data selected for the AI opponent for the upcoming match.
+
+    Used by GameBootstrap to initialize the opponent's hand and deck.
+  example: []
+  syntax:
+    content: public DeckData SelectedBotDeck { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Decks.Data.DeckData
+    content.vb: Public Property SelectedBotDeck As DeckData
+  overload: CardGame.GodotClient.GameSession.SelectedBotDeck*
+- uid: CardGame.GodotClient.GameSession._Ready
+  commentId: M:CardGame.GodotClient.GameSession._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.GameSession
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: GameSession._Ready()
+  fullName: CardGame.GodotClient.GameSession._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameSession.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/GameSession.cs
+    startLine: 32
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Initializes the singleton instance when the node enters the scene tree.
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.GameSession._Ready*
+- uid: CardGame.GodotClient.GameSession.Reset
+  commentId: M:CardGame.GodotClient.GameSession.Reset
+  id: Reset
+  parent: CardGame.GodotClient.GameSession
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: GameSession.Reset()
+  fullName: CardGame.GodotClient.GameSession.Reset()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameSession.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Reset
+    path: ../Source/CardGame.GodotClient/Scripts/GameSession.cs
+    startLine: 41
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Clears the stored session data (e.g., when returning to the main menu).
+
+    Ensures subsequent games don't accidentally use stale deck selections.
+  example: []
+  syntax:
+    content: public void Reset()
+    content.vb: Public Sub Reset()
+  overload: CardGame.GodotClient.GameSession.Reset*
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: CardGame.GodotClient.GameSession.Instance*
+  commentId: Overload:CardGame.GodotClient.GameSession.Instance
+  href: CardGame.GodotClient.GameSession.Instance.html#CardGame_GodotClient_GameSession_Instance
+  name: Instance
+  nameWithType: GameSession.Instance
+  fullName: CardGame.GodotClient.GameSession.Instance
+- uid: CardGame.GodotClient.GameSession
+  commentId: T:CardGame.GodotClient.GameSession
+  parent: CardGame.GodotClient
+  href: CardGame.GodotClient.GameSession.html
+  name: GameSession
+  nameWithType: GameSession
+  fullName: CardGame.GodotClient.GameSession
+- uid: CardGame.GodotClient.GameSession.SelectedPlayerDeck*
+  commentId: Overload:CardGame.GodotClient.GameSession.SelectedPlayerDeck
+  href: CardGame.GodotClient.GameSession.SelectedPlayerDeck.html#CardGame_GodotClient_GameSession_SelectedPlayerDeck
+  name: SelectedPlayerDeck
+  nameWithType: GameSession.SelectedPlayerDeck
+  fullName: CardGame.GodotClient.GameSession.SelectedPlayerDeck
+- uid: CardGame.Core.Decks.Data.DeckData
+  commentId: T:CardGame.Core.Decks.Data.DeckData
+  parent: CardGame.Core.Decks.Data
+  href: CardGame.Core.Decks.Data.DeckData.html
+  name: DeckData
+  nameWithType: DeckData
+  fullName: CardGame.Core.Decks.Data.DeckData
+- uid: CardGame.Core.Decks.Data
+  commentId: N:CardGame.Core.Decks.Data
+  href: CardGame.html
+  name: CardGame.Core.Decks.Data
+  nameWithType: CardGame.Core.Decks.Data
+  fullName: CardGame.Core.Decks.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html
+- uid: CardGame.GodotClient.GameSession.SelectedBotDeck*
+  commentId: Overload:CardGame.GodotClient.GameSession.SelectedBotDeck
+  href: CardGame.GodotClient.GameSession.SelectedBotDeck.html#CardGame_GodotClient_GameSession_SelectedBotDeck
+  name: SelectedBotDeck
+  nameWithType: GameSession.SelectedBotDeck
+  fullName: CardGame.GodotClient.GameSession.SelectedBotDeck
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.GameSession._Ready*
+  commentId: Overload:CardGame.GodotClient.GameSession._Ready
+  href: CardGame.GodotClient.GameSession._Ready.html#CardGame_GodotClient_GameSession__Ready
+  name: _Ready
+  nameWithType: GameSession._Ready
+  fullName: CardGame.GodotClient.GameSession._Ready
+- uid: CardGame.GodotClient.GameSession.Reset*
+  commentId: Overload:CardGame.GodotClient.GameSession.Reset
+  href: CardGame.GodotClient.GameSession.Reset.html#CardGame_GodotClient_GameSession_Reset
+  name: Reset
+  nameWithType: GameSession.Reset
+  fullName: CardGame.GodotClient.GameSession.Reset
+memberLayout: SeparatePages

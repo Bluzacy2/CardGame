@@ -124,305 +124,55 @@ Manages state transitions, command execution, and the resolution of triggered ef
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_Application_GameEngine__ctor_" data-uid="CardGame.Core.Application.GameEngine.#ctor*"></a>
-
-  <h3 id="CardGame_Core_Application_GameEngine__ctor_CardGame_Core_State_Models_GameState_System_Int32_" data-uid="CardGame.Core.Application.GameEngine.#ctor(CardGame.Core.State.Models.GameState,System.Int32)">
-  GameEngine(GameState, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameEngine.cs/#L38"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameEngine(GameState initialState, int seed = 0)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>initialState</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
-    <dt><code>seed</code> <span class="xref">int</span></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameEngine.-ctor.html#CardGame_Core_Application_GameEngine__ctor_CardGame_Core_State_Models_GameState_System_Int32_">GameEngine(GameState, int)</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Application_GameEngine_CurrentState_" data-uid="CardGame.Core.Application.GameEngine.CurrentState*"></a>
-
-  <h3 id="CardGame_Core_Application_GameEngine_CurrentState" data-uid="CardGame.Core.Application.GameEngine.CurrentState">
-  CurrentState
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameEngine.cs/#L30"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState CurrentState { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameEngine.CurrentState.html#CardGame_Core_Application_GameEngine_CurrentState">CurrentState</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameEngine_Events_" data-uid="CardGame.Core.Application.GameEngine.Events*"></a>
-
-  <h3 id="CardGame_Core_Application_GameEngine_Events" data-uid="CardGame.Core.Application.GameEngine.Events">
-  Events
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameEngine.cs/#L33"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EventBus Events { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Events.EventBus.html">EventBus</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameEngine.Events.html#CardGame_Core_Application_GameEngine_Events">Events</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameEngine_Factory_" data-uid="CardGame.Core.Application.GameEngine.Factory*"></a>
-
-  <h3 id="CardGame_Core_Application_GameEngine_Factory" data-uid="CardGame.Core.Application.GameEngine.Factory">
-  Factory
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameEngine.cs/#L34"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CardFactory Factory { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Factories.CardFactory.html">CardFactory</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameEngine.Factory.html#CardGame_Core_Application_GameEngine_Factory">Factory</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameEngine_IsGameOver_" data-uid="CardGame.Core.Application.GameEngine.IsGameOver*"></a>
-
-  <h3 id="CardGame_Core_Application_GameEngine_IsGameOver" data-uid="CardGame.Core.Application.GameEngine.IsGameOver">
-  IsGameOver
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameEngine.cs/#L31"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsGameOver { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameEngine.IsGameOver.html#CardGame_Core_Application_GameEngine_IsGameOver">IsGameOver</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameEngine_Rng_" data-uid="CardGame.Core.Application.GameEngine.Rng*"></a>
-
-  <h3 id="CardGame_Core_Application_GameEngine_Rng" data-uid="CardGame.Core.Application.GameEngine.Rng">
-  Rng
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameEngine.cs/#L35"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DeterministicRng Rng { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Application.DeterministicRng.html">DeterministicRng</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameEngine.Rng.html#CardGame_Core_Application_GameEngine_Rng">Rng</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameEngine_WinnerId_" data-uid="CardGame.Core.Application.GameEngine.WinnerId*"></a>
-
-  <h3 id="CardGame_Core_Application_GameEngine_WinnerId" data-uid="CardGame.Core.Application.GameEngine.WinnerId">
-  WinnerId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameEngine.cs/#L32"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? WinnerId { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span>?</dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameEngine.WinnerId.html#CardGame_Core_Application_GameEngine_WinnerId">WinnerId</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_Application_GameEngine_ExecuteCommand_" data-uid="CardGame.Core.Application.GameEngine.ExecuteCommand*"></a>
-
-  <h3 id="CardGame_Core_Application_GameEngine_ExecuteCommand_CardGame_Core_Commands_Interfaces_IGameCommand_" data-uid="CardGame.Core.Application.GameEngine.ExecuteCommand(CardGame.Core.Commands.Interfaces.IGameCommand)">
-  ExecuteCommand(IGameCommand)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameEngine.cs/#L58"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Processes a player command, updates the game state, and resolves all resulting triggers/auras.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ExecutionResult ExecuteCommand(IGameCommand command)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>command</code> <a class="xref" href="CardGame.Core.Commands.Interfaces.IGameCommand.html">IGameCommand</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameEngine.ExecuteCommand.html#CardGame_Core_Application_GameEngine_ExecuteCommand_CardGame_Core_Commands_Interfaces_IGameCommand_">ExecuteCommand(IGameCommand)</a></dt>
+    <dd><p>Processes a player command, updates the game state, and resolves all resulting triggers/auras.</p>
+</dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Application.ExecutionResult.html">ExecutionResult</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameEngine.Update.html#CardGame_Core_Application_GameEngine_Update_System_Single_">Update(float)</a></dt>
+    <dd><p>Periodic update for handling interaction timeouts.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameEngine_Update_" data-uid="CardGame.Core.Application.GameEngine.Update*"></a>
-
-  <h3 id="CardGame_Core_Application_GameEngine_Update_System_Single_" data-uid="CardGame.Core.Application.GameEngine.Update(System.Single)">
-  Update(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameEngine.cs/#L130"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Periodic update for handling interaction timeouts.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Update(float delta)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>delta</code> <span class="xref">float</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
 
 
 

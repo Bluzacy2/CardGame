@@ -1,0 +1,465 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.MainMenu
+  commentId: T:CardGame.GodotClient.MainMenu
+  id: MainMenu
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.MainMenu.DeckEditorButton
+  - CardGame.GodotClient.MainMenu.DeckSelectionEditorPath
+  - CardGame.GodotClient.MainMenu.GameSetupPath
+  - CardGame.GodotClient.MainMenu.MusicButton
+  - CardGame.GodotClient.MainMenu.PlayButton
+  - CardGame.GodotClient.MainMenu.QuitButton
+  - CardGame.GodotClient.MainMenu._Ready
+  langs:
+  - csharp
+  - vb
+  name: MainMenu
+  nameWithType: MainMenu
+  fullName: CardGame.GodotClient.MainMenu
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.MainMenu_ScriptSignals.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MainMenu
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.MainMenu_ScriptSignals.generated.cs
+    startLine: 5
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Controls the Main Menu scene, handling navigation to gameplay, deck editing,
+
+    and providing global settings controls (like music).
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/MainMenu.cs")]
+
+      public class MainMenu : Control
+    content.vb: >-
+      <ScriptPath("res://Scripts/MainMenu.cs")>
+
+      Public Class MainMenu Inherits Control
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  - Godot.CanvasItem
+  - Godot.Control
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/MainMenu.cs
+- uid: CardGame.GodotClient.MainMenu.PlayButton
+  commentId: F:CardGame.GodotClient.MainMenu.PlayButton
+  id: PlayButton
+  parent: CardGame.GodotClient.MainMenu
+  langs:
+  - csharp
+  - vb
+  name: PlayButton
+  nameWithType: MainMenu.PlayButton
+  fullName: CardGame.GodotClient.MainMenu.PlayButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/MainMenu.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayButton
+    path: ../Source/CardGame.GodotClient/Scripts/MainMenu.cs
+    startLine: 14
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Button to navigate to the game setup screen (deck selection for battle).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button PlayButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public PlayButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.MainMenu.DeckEditorButton
+  commentId: F:CardGame.GodotClient.MainMenu.DeckEditorButton
+  id: DeckEditorButton
+  parent: CardGame.GodotClient.MainMenu
+  langs:
+  - csharp
+  - vb
+  name: DeckEditorButton
+  nameWithType: MainMenu.DeckEditorButton
+  fullName: CardGame.GodotClient.MainMenu.DeckEditorButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/MainMenu.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckEditorButton
+    path: ../Source/CardGame.GodotClient/Scripts/MainMenu.cs
+    startLine: 17
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Button to navigate to the deck editor selection screen.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button DeckEditorButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public DeckEditorButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.MainMenu.QuitButton
+  commentId: F:CardGame.GodotClient.MainMenu.QuitButton
+  id: QuitButton
+  parent: CardGame.GodotClient.MainMenu
+  langs:
+  - csharp
+  - vb
+  name: QuitButton
+  nameWithType: MainMenu.QuitButton
+  fullName: CardGame.GodotClient.MainMenu.QuitButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/MainMenu.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: QuitButton
+    path: ../Source/CardGame.GodotClient/Scripts/MainMenu.cs
+    startLine: 20
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Button to exit the application.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button QuitButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public QuitButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.MainMenu.MusicButton
+  commentId: F:CardGame.GodotClient.MainMenu.MusicButton
+  id: MusicButton
+  parent: CardGame.GodotClient.MainMenu
+  langs:
+  - csharp
+  - vb
+  name: MusicButton
+  nameWithType: MainMenu.MusicButton
+  fullName: CardGame.GodotClient.MainMenu.MusicButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/MainMenu.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MusicButton
+    path: ../Source/CardGame.GodotClient/Scripts/MainMenu.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Button to toggle background music on/off.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button MusicButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public MusicButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.MainMenu.DeckSelectionEditorPath
+  commentId: F:CardGame.GodotClient.MainMenu.DeckSelectionEditorPath
+  id: DeckSelectionEditorPath
+  parent: CardGame.GodotClient.MainMenu
+  langs:
+  - csharp
+  - vb
+  name: DeckSelectionEditorPath
+  nameWithType: MainMenu.DeckSelectionEditorPath
+  fullName: CardGame.GodotClient.MainMenu.DeckSelectionEditorPath
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/MainMenu.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckSelectionEditorPath
+    path: ../Source/CardGame.GodotClient/Scripts/MainMenu.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: File path to the Deck Selection scene (used for editing decks).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.File, "*.tscn")]
+
+      public string DeckSelectionEditorPath
+    return:
+      type: System.String
+    content.vb: >-
+      <Export(PropertyHint.File, "*.tscn")>
+
+      Public DeckSelectionEditorPath As String
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "13"
+    - type: System.String
+      value: '*.tscn'
+- uid: CardGame.GodotClient.MainMenu.GameSetupPath
+  commentId: F:CardGame.GodotClient.MainMenu.GameSetupPath
+  id: GameSetupPath
+  parent: CardGame.GodotClient.MainMenu
+  langs:
+  - csharp
+  - vb
+  name: GameSetupPath
+  nameWithType: MainMenu.GameSetupPath
+  fullName: CardGame.GodotClient.MainMenu.GameSetupPath
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/MainMenu.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GameSetupPath
+    path: ../Source/CardGame.GodotClient/Scripts/MainMenu.cs
+    startLine: 35
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: File path to the Game Setup scene (used for starting a match).
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.File, "*.tscn")]
+
+      public string GameSetupPath
+    return:
+      type: System.String
+    content.vb: >-
+      <Export(PropertyHint.File, "*.tscn")>
+
+      Public GameSetupPath As String
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "13"
+    - type: System.String
+      value: '*.tscn'
+- uid: CardGame.GodotClient.MainMenu._Ready
+  commentId: M:CardGame.GodotClient.MainMenu._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.MainMenu
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: MainMenu._Ready()
+  fullName: CardGame.GodotClient.MainMenu._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/MainMenu.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/MainMenu.cs
+    startLine: 45
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Called when the node enters the scene tree.
+
+    Connects button signals and initializes UI states.
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.MainMenu._Ready*
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: Godot.CanvasItem
+  commentId: T:Godot.CanvasItem
+  parent: Godot
+  isExternal: true
+  name: CanvasItem
+  nameWithType: CanvasItem
+  fullName: Godot.CanvasItem
+- uid: Godot.Control
+  commentId: T:Godot.Control
+  parent: Godot
+  isExternal: true
+  name: Control
+  nameWithType: Control
+  fullName: Godot.Control
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.Button
+  commentId: T:Godot.Button
+  parent: Godot
+  isExternal: true
+  name: Button
+  nameWithType: Button
+  fullName: Godot.Button
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.MainMenu._Ready*
+  commentId: Overload:CardGame.GodotClient.MainMenu._Ready
+  href: CardGame.GodotClient.MainMenu._Ready.html#CardGame_GodotClient_MainMenu__Ready
+  name: _Ready
+  nameWithType: MainMenu._Ready
+  fullName: CardGame.GodotClient.MainMenu._Ready
+memberLayout: SeparatePages

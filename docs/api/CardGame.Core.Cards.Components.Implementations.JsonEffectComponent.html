@@ -123,187 +123,33 @@ Class JsonEffectComponent  <a class="header-action link-secondary" title="View s
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_Cards_Components_Implementations_JsonEffectComponent__ctor_" data-uid="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.#ctor*"></a>
-
-  <h3 id="CardGame_Core_Cards_Components_Implementations_JsonEffectComponent__ctor_CardGame_Core_Cards_Data_EffectData_System_Int32_System_Int32_" data-uid="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.#ctor(CardGame.Core.Cards.Data.EffectData,System.Int32,System.Int32)">
-  JsonEffectComponent(EffectData, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Component/JsonEffectComponent.cs/#L26"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the JsonEffectComponent class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public JsonEffectComponent(EffectData data, int sourceId, int effectIndex = 0)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>data</code> <a class="xref" href="CardGame.Core.Cards.Data.EffectData.html">EffectData</a></dt>
-    <dd><p>The effect data definition.</p>
-</dd>
-    <dt><code>sourceId</code> <span class="xref">int</span></dt>
-    <dd><p>The ID of the card that owns this effect.</p>
-</dd>
-    <dt><code>effectIndex</code> <span class="xref">int</span></dt>
-    <dd><p>The index of this effect within the card's effect list.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.-ctor.html#CardGame_Core_Cards_Components_Implementations_JsonEffectComponent__ctor_CardGame_Core_Cards_Data_EffectData_System_Int32_System_Int32_">JsonEffectComponent(EffectData, int, int)</a></dt>
+    <dd><p>Initializes a new instance of the JsonEffectComponent class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_Cards_Components_Implementations_JsonEffectComponent_Resolve_" data-uid="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.Resolve*"></a>
-
-  <h3 id="CardGame_Core_Cards_Components_Implementations_JsonEffectComponent_Resolve_CardGame_Core_Events_Interfaces_IGameEvent_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_" data-uid="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.Resolve(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext)">
-  Resolve(IGameEvent, GameState, GameContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Component/JsonEffectComponent.cs/#L51"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Resolves the effect, potentially creating player interactions for choices.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState Resolve(IGameEvent evt, GameState state, GameContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>evt</code> <a class="xref" href="CardGame.Core.Events.Interfaces.IGameEvent.html">IGameEvent</a></dt>
-    <dd><p>The triggering game event.</p>
-</dd>
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state.</p>
-</dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd><p>The game context with access to services.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.Resolve.html#CardGame_Core_Cards_Components_Implementations_JsonEffectComponent_Resolve_CardGame_Core_Events_Interfaces_IGameEvent_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_">Resolve(IGameEvent, GameState, GameContext)</a></dt>
+    <dd><p>Resolves the effect, potentially creating player interactions for choices.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The updated game state after resolution.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.ResolveFromIndex.html#CardGame_Core_Cards_Components_Implementations_JsonEffectComponent_ResolveFromIndex_CardGame_Core_Events_Interfaces_IGameEvent_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_System_Int32_">ResolveFromIndex(IGameEvent, GameState, GameContext, int)</a></dt>
+    <dd><p>Resolves the effect starting from a specific action index.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Components_Implementations_JsonEffectComponent_ResolveFromIndex_" data-uid="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.ResolveFromIndex*"></a>
-
-  <h3 id="CardGame_Core_Cards_Components_Implementations_JsonEffectComponent_ResolveFromIndex_CardGame_Core_Events_Interfaces_IGameEvent_CardGame_Core_State_Models_GameState_CardGame_Core_Application_GameContext_System_Int32_" data-uid="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.ResolveFromIndex(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState,CardGame.Core.Application.GameContext,System.Int32)">
-  ResolveFromIndex(IGameEvent, GameState, GameContext, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Component/JsonEffectComponent.cs/#L71"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Resolves the effect starting from a specific action index.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState ResolveFromIndex(IGameEvent evt, GameState state, GameContext context, int startIndex)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>evt</code> <a class="xref" href="CardGame.Core.Events.Interfaces.IGameEvent.html">IGameEvent</a></dt>
-    <dd><p>The triggering game event.</p>
-</dd>
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state.</p>
-</dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd><p>The game context with access to services.</p>
-</dd>
-    <dt><code>startIndex</code> <span class="xref">int</span></dt>
-    <dd><p>The index of the first action to execute.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.ShouldTrigger.html#CardGame_Core_Cards_Components_Implementations_JsonEffectComponent_ShouldTrigger_CardGame_Core_Events_Interfaces_IGameEvent_CardGame_Core_State_Models_GameState_">ShouldTrigger(IGameEvent, GameState)</a></dt>
+    <dd><p>Determines whether this effect should trigger based on the current game event and state.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The updated game state after partial resolution.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Components_Implementations_JsonEffectComponent_ShouldTrigger_" data-uid="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.ShouldTrigger*"></a>
-
-  <h3 id="CardGame_Core_Cards_Components_Implementations_JsonEffectComponent_ShouldTrigger_CardGame_Core_Events_Interfaces_IGameEvent_CardGame_Core_State_Models_GameState_" data-uid="CardGame.Core.Cards.Components.Implementations.JsonEffectComponent.ShouldTrigger(CardGame.Core.Events.Interfaces.IGameEvent,CardGame.Core.State.Models.GameState)">
-  ShouldTrigger(IGameEvent, GameState)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Component/JsonEffectComponent.cs/#L41"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Determines whether this effect should trigger based on the current game event and state.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ShouldTrigger(IGameEvent e, GameState s)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>e</code> <a class="xref" href="CardGame.Core.Events.Interfaces.IGameEvent.html">IGameEvent</a></dt>
-    <dd><p>The game event that occurred.</p>
-</dd>
-    <dt><code>s</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd><p>True if the effect should trigger, otherwise false.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

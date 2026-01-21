@@ -218,7 +218,7 @@ references:
     href: CardGame.Core.StateMachine.Interfaces.html
 - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.PhaseType*
   commentId: Overload:CardGame.Core.StateMachine.Interfaces.IPhaseState.PhaseType
-  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_PhaseType
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.PhaseType.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_PhaseType
   name: PhaseType
   nameWithType: IPhaseState.PhaseType
   fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState.PhaseType
@@ -269,7 +269,7 @@ references:
     href: CardGame.Core.State.Enums.html
 - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.IsCommandAllowed*
   commentId: Overload:CardGame.Core.StateMachine.Interfaces.IPhaseState.IsCommandAllowed
-  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_IsCommandAllowed_CardGame_Core_Commands_Interfaces_IGameCommand_CardGame_Core_State_Models_GameState_
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.IsCommandAllowed.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_IsCommandAllowed_CardGame_Core_Commands_Interfaces_IGameCommand_CardGame_Core_State_Models_GameState_
   name: IsCommandAllowed
   nameWithType: IPhaseState.IsCommandAllowed
   fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState.IsCommandAllowed
@@ -382,13 +382,13 @@ references:
   fullName: System
 - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.ShouldEndPhaseAutomatically*
   commentId: Overload:CardGame.Core.StateMachine.Interfaces.IPhaseState.ShouldEndPhaseAutomatically
-  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_ShouldEndPhaseAutomatically_CardGame_Core_State_Models_GameState_
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.ShouldEndPhaseAutomatically.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_ShouldEndPhaseAutomatically_CardGame_Core_State_Models_GameState_
   name: ShouldEndPhaseAutomatically
   nameWithType: IPhaseState.ShouldEndPhaseAutomatically
   fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState.ShouldEndPhaseAutomatically
 - uid: CardGame.Core.StateMachine.Interfaces.IPhaseState.ProcessEndPhase*
   commentId: Overload:CardGame.Core.StateMachine.Interfaces.IPhaseState.ProcessEndPhase
-  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_ProcessEndPhase_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.StateMachine.Interfaces.IPhaseState.ProcessEndPhase.html#CardGame_Core_StateMachine_Interfaces_IPhaseState_ProcessEndPhase_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
   name: ProcessEndPhase
   nameWithType: IPhaseState.ProcessEndPhase
   fullName: CardGame.Core.StateMachine.Interfaces.IPhaseState.ProcessEndPhase
@@ -466,3 +466,4 @@ references:
   - uid: CardGame.Core.Application
     name: Application
     href: CardGame.Core.Application.html
+memberLayout: SeparatePages

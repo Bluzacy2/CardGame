@@ -123,132 +123,32 @@ Class BotSolver  <a class="header-action link-secondary" title="View source" hre
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_AI_Logic_BotSolver__ctor_" data-uid="CardGame.Core.AI.Logic.BotSolver.#ctor*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_BotSolver__ctor_CardGame_Core_Application_GameEngine_System_Int32_CardGame_Core_AI_Interfaces_IAIStrategy_System_Int32_System_Int32_" data-uid="CardGame.Core.AI.Logic.BotSolver.#ctor(CardGame.Core.Application.GameEngine,System.Int32,CardGame.Core.AI.Interfaces.IAIStrategy,System.Int32,System.Int32)">
-  BotSolver(GameEngine, int, IAIStrategy, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/BotSolver.cs/#L146"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the BotSolver with the specified configuration.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BotSolver(GameEngine engine, int botId, IAIStrategy strategy, int beamWidth = 4, int maxDepth = 5)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>engine</code> <a class="xref" href="CardGame.Core.Application.GameEngine.html">GameEngine</a></dt>
-    <dd><p>The game engine template for simulations.</p>
-</dd>
-    <dt><code>botId</code> <span class="xref">int</span></dt>
-    <dd><p>The identifier of the bot player.</p>
-</dd>
-    <dt><code>strategy</code> <a class="xref" href="CardGame.Core.AI.Interfaces.IAIStrategy.html">IAIStrategy</a></dt>
-    <dd><p>The AI strategy for state evaluation.</p>
-</dd>
-    <dt><code>beamWidth</code> <span class="xref">int</span></dt>
-    <dd><p>The width of the beam search in full evaluation mode.</p>
-</dd>
-    <dt><code>maxDepth</code> <span class="xref">int</span></dt>
-    <dd><p>The maximum search depth in full evaluation mode.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.BotSolver.-ctor.html#CardGame_Core_AI_Logic_BotSolver__ctor_CardGame_Core_Application_GameEngine_System_Int32_CardGame_Core_AI_Interfaces_IAIStrategy_System_Int32_System_Int32_">BotSolver(GameEngine, int, IAIStrategy, int, int)</a></dt>
+    <dd><p>Initializes a new instance of the BotSolver with the specified configuration.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="fields">Fields
 </h2>
 
-
-
-  <h3 id="CardGame_Core_AI_Logic_BotSolver_IsEvolving" data-uid="CardGame.Core.AI.Logic.BotSolver.IsEvolving">
-  IsEvolving
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/BotSolver.cs/#L117"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Determines whether the AI is in evolving mode (faster, less accurate) or full evaluation mode.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool IsEvolving</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.BotSolver.IsEvolving.html">IsEvolving</a></dt>
+    <dd><p>Determines whether the AI is in evolving mode (faster, less accurate) or full evaluation mode.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_AI_Logic_BotSolver_FindBestMoves_" data-uid="CardGame.Core.AI.Logic.BotSolver.FindBestMoves*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_BotSolver_FindBestMoves_CardGame_Core_State_Models_GameState_" data-uid="CardGame.Core.AI.Logic.BotSolver.FindBestMoves(CardGame.Core.State.Models.GameState)">
-  FindBestMoves(GameState)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/BotSolver.cs/#L172"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Evaluates all legal moves from the current game state and returns them sorted by score.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;EvaluatedMove&gt; FindBestMoves(GameState rootState)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>rootState</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The current game state to analyze.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.BotSolver.FindBestMoves.html#CardGame_Core_AI_Logic_BotSolver_FindBestMoves_CardGame_Core_State_Models_GameState_">FindBestMoves(GameState)</a></dt>
+    <dd><p>Evaluates all legal moves from the current game state and returns them sorted by score.</p>
 </dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">List</span>&lt;<a class="xref" href="CardGame.Core.AI.Logic.EvaluatedMove.html">EvaluatedMove</a>&gt;</dt>
-    <dd><p>A list of evaluated moves sorted in descending order of score.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

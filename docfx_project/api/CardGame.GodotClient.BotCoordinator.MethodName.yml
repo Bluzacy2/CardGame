@@ -1,0 +1,194 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.BotCoordinator.MethodName
+  commentId: T:CardGame.GodotClient.BotCoordinator.MethodName
+  id: BotCoordinator.MethodName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.BotCoordinator.MethodName.EmitCommand
+  - CardGame.GodotClient.BotCoordinator.MethodName.PlayTurn
+  langs:
+  - csharp
+  - vb
+  name: BotCoordinator.MethodName
+  nameWithType: BotCoordinator.MethodName
+  fullName: CardGame.GodotClient.BotCoordinator.MethodName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.BotCoordinator_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MethodName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.BotCoordinator_ScriptMethods.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the methods contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class BotCoordinator.MethodName : Node.MethodName'
+    content.vb: Public Class BotCoordinator.MethodName Inherits Node.MethodName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.MethodName
+  - Godot.Node.MethodName
+- uid: CardGame.GodotClient.BotCoordinator.MethodName.PlayTurn
+  commentId: F:CardGame.GodotClient.BotCoordinator.MethodName.PlayTurn
+  id: PlayTurn
+  parent: CardGame.GodotClient.BotCoordinator.MethodName
+  langs:
+  - csharp
+  - vb
+  name: PlayTurn
+  nameWithType: BotCoordinator.MethodName.PlayTurn
+  fullName: CardGame.GodotClient.BotCoordinator.MethodName.PlayTurn
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.BotCoordinator_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayTurn
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.BotCoordinator_ScriptMethods.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'PlayTurn' method.
+  example: []
+  syntax:
+    content: public static readonly StringName PlayTurn
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly PlayTurn As StringName
+- uid: CardGame.GodotClient.BotCoordinator.MethodName.EmitCommand
+  commentId: F:CardGame.GodotClient.BotCoordinator.MethodName.EmitCommand
+  id: EmitCommand
+  parent: CardGame.GodotClient.BotCoordinator.MethodName
+  langs:
+  - csharp
+  - vb
+  name: EmitCommand
+  nameWithType: BotCoordinator.MethodName.EmitCommand
+  fullName: CardGame.GodotClient.BotCoordinator.MethodName.EmitCommand
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.BotCoordinator_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: EmitCommand
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.BotCoordinator_ScriptMethods.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'EmitCommand' method.
+  example: []
+  syntax:
+    content: public static readonly StringName EmitCommand
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly EmitCommand As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.MethodName
+  commentId: T:Godot.GodotObject.MethodName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.MethodName
+  nameWithType: GodotObject.MethodName
+  fullName: Godot.GodotObject.MethodName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Node.MethodName
+  commentId: T:Godot.Node.MethodName
+  parent: Godot
+  isExternal: true
+  name: Node.MethodName
+  nameWithType: Node.MethodName
+  fullName: Godot.Node.MethodName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

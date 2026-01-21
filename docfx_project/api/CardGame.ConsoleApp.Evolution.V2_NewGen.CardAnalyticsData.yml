@@ -356,7 +356,7 @@ references:
   fullName: System
 - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation*
   commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation
-  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_Generation
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_Generation
   name: Generation
   nameWithType: CardAnalyticsData.Generation
   fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Generation
@@ -372,7 +372,7 @@ references:
   name.vb: Integer
 - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp*
   commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp
-  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_Timestamp
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_Timestamp
   name: Timestamp
   nameWithType: CardAnalyticsData.Timestamp
   fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.Timestamp
@@ -388,13 +388,13 @@ references:
   name.vb: Date
 - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals*
   commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals
-  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_TotalIndividuals
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_TotalIndividuals
   name: TotalIndividuals
   nameWithType: CardAnalyticsData.TotalIndividuals
   fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TotalIndividuals
 - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics*
   commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics
-  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_CardStatistics
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_CardStatistics
   name: CardStatistics
   nameWithType: CardAnalyticsData.CardStatistics
   fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardStatistics
@@ -493,7 +493,7 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics*
   commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics
-  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_ArchetypeStatistics
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_ArchetypeStatistics
   name: ArchetypeStatistics
   nameWithType: CardAnalyticsData.ArchetypeStatistics
   fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.ArchetypeStatistics
@@ -530,7 +530,7 @@ references:
   - name: )
 - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype*
   commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype
-  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_TopCardsByArchetype
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_TopCardsByArchetype
   name: TopCardsByArchetype
   nameWithType: CardAnalyticsData.TopCardsByArchetype
   fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopCardsByArchetype
@@ -620,7 +620,7 @@ references:
   - name: )
 - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies*
   commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies
-  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_CardSynergies
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_CardSynergies
   name: CardSynergies
   nameWithType: CardAnalyticsData.CardSynergies
   fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.CardSynergies
@@ -657,7 +657,7 @@ references:
   - name: )
 - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards*
   commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards
-  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_BestWinRateCards
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_BestWinRateCards
   name: BestWinRateCards
   nameWithType: CardAnalyticsData.BestWinRateCards
   fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.BestWinRateCards
@@ -694,7 +694,7 @@ references:
   - name: )
 - uid: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks*
   commentId: Overload:CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks
-  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_TopDecks
+  href: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks.html#CardGame_ConsoleApp_Evolution_V2_NewGen_CardAnalyticsData_TopDecks
   name: TopDecks
   nameWithType: CardAnalyticsData.TopDecks
   fullName: CardGame.ConsoleApp.Evolution.V2_NewGen.CardAnalyticsData.TopDecks
@@ -729,3 +729,4 @@ references:
     name: DeckInfo
     href: CardGame.ConsoleApp.Evolution.V2_NewGen.DeckInfo.html
   - name: )
+memberLayout: SeparatePages

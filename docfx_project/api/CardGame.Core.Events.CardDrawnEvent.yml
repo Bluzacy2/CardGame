@@ -229,7 +229,7 @@ references:
     href: CardGame.Core.Events.Interfaces.html
 - uid: CardGame.Core.Events.CardDrawnEvent.#ctor*
   commentId: Overload:CardGame.Core.Events.CardDrawnEvent.#ctor
-  href: CardGame.Core.Events.CardDrawnEvent.html#CardGame_Core_Events_CardDrawnEvent__ctor_System_Int32_
+  href: CardGame.Core.Events.CardDrawnEvent.-ctor.html#CardGame_Core_Events_CardDrawnEvent__ctor_System_Int32_
   name: CardDrawnEvent
   nameWithType: CardDrawnEvent.CardDrawnEvent
   fullName: CardGame.Core.Events.CardDrawnEvent.CardDrawnEvent
@@ -248,20 +248,21 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Events.CardDrawnEvent.PlayerId*
   commentId: Overload:CardGame.Core.Events.CardDrawnEvent.PlayerId
-  href: CardGame.Core.Events.CardDrawnEvent.html#CardGame_Core_Events_CardDrawnEvent_PlayerId
+  href: CardGame.Core.Events.CardDrawnEvent.PlayerId.html#CardGame_Core_Events_CardDrawnEvent_PlayerId
   name: PlayerId
   nameWithType: CardDrawnEvent.PlayerId
   fullName: CardGame.Core.Events.CardDrawnEvent.PlayerId
 - uid: CardGame.Core.Events.CardDrawnEvent.SourcePlayerId*
   commentId: Overload:CardGame.Core.Events.CardDrawnEvent.SourcePlayerId
-  href: CardGame.Core.Events.CardDrawnEvent.html#CardGame_Core_Events_CardDrawnEvent_SourcePlayerId
+  href: CardGame.Core.Events.CardDrawnEvent.SourcePlayerId.html#CardGame_Core_Events_CardDrawnEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: CardDrawnEvent.SourcePlayerId
   fullName: CardGame.Core.Events.CardDrawnEvent.SourcePlayerId
 - uid: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   commentId: P:CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
   parent: CardGame.Core.Events.Interfaces.IGameEvent
-  href: CardGame.Core.Events.Interfaces.IGameEvent.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
+  href: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId.html#CardGame_Core_Events_Interfaces_IGameEvent_SourcePlayerId
   name: SourcePlayerId
   nameWithType: IGameEvent.SourcePlayerId
   fullName: CardGame.Core.Events.Interfaces.IGameEvent.SourcePlayerId
+memberLayout: SeparatePages

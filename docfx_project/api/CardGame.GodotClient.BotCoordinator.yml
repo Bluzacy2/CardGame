@@ -1,0 +1,503 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.BotCoordinator
+  commentId: T:CardGame.GodotClient.BotCoordinator
+  id: BotCoordinator
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.BotCoordinator.ExecuteBestMove(CardGame.Core.Commands.Interfaces.IGameCommand)
+  - CardGame.GodotClient.BotCoordinator.Initialize(CardGame.Core.Application.GameEngine,System.Int32,CardGame.Core.AI.AIPlayerController)
+  - CardGame.GodotClient.BotCoordinator.IsThinking
+  - CardGame.GodotClient.BotCoordinator.OnBotCommand
+  - CardGame.GodotClient.BotCoordinator.PlayTurn
+  langs:
+  - csharp
+  - vb
+  name: BotCoordinator
+  nameWithType: BotCoordinator
+  fullName: CardGame.GodotClient.BotCoordinator
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.BotCoordinator_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: BotCoordinator
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.BotCoordinator_ScriptMethods.generated.cs
+    startLine: 5
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Manages the AI's turn execution flow within the Godot scene tree.
+
+    Handles visual delays (for better UX), runs AI calculations on background threads to avoid freezing the UI,
+
+    and dispatches the chosen commands back to the main thread.
+  example: []
+  syntax:
+    content: 'public class BotCoordinator : Node'
+    content.vb: Public Class BotCoordinator Inherits Node
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+- uid: CardGame.GodotClient.BotCoordinator.OnBotCommand
+  commentId: E:CardGame.GodotClient.BotCoordinator.OnBotCommand
+  id: OnBotCommand
+  parent: CardGame.GodotClient.BotCoordinator
+  langs:
+  - csharp
+  - vb
+  name: OnBotCommand
+  nameWithType: BotCoordinator.OnBotCommand
+  fullName: CardGame.GodotClient.BotCoordinator.OnBotCommand
+  type: Event
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/BotCordinator.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnBotCommand
+    path: ../Source/CardGame.GodotClient/Scripts/BotCordinator.cs
+    startLine: 33
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Event triggered when the bot has finished thinking and wants to execute a command.
+
+    The GameBootstrap should subscribe to this to forward the command to the GameEngine.
+  example: []
+  syntax:
+    content: public event Action<IGameCommand> OnBotCommand
+    return:
+      type: System.Action{CardGame.Core.Commands.Interfaces.IGameCommand}
+    content.vb: Public Event OnBotCommand As Action(Of IGameCommand)
+- uid: CardGame.GodotClient.BotCoordinator.IsThinking
+  commentId: P:CardGame.GodotClient.BotCoordinator.IsThinking
+  id: IsThinking
+  parent: CardGame.GodotClient.BotCoordinator
+  langs:
+  - csharp
+  - vb
+  name: IsThinking
+  nameWithType: BotCoordinator.IsThinking
+  fullName: CardGame.GodotClient.BotCoordinator.IsThinking
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/BotCordinator.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: IsThinking
+    path: ../Source/CardGame.GodotClient/Scripts/BotCordinator.cs
+    startLine: 39
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Indicates whether the bot is currently processing a turn (waiting or calculating).
+
+    Prevents multiple turn logic executions from overlapping.
+  example: []
+  syntax:
+    content: public bool IsThinking { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsThinking As Boolean
+  overload: CardGame.GodotClient.BotCoordinator.IsThinking*
+- uid: CardGame.GodotClient.BotCoordinator.Initialize(CardGame.Core.Application.GameEngine,System.Int32,CardGame.Core.AI.AIPlayerController)
+  commentId: M:CardGame.GodotClient.BotCoordinator.Initialize(CardGame.Core.Application.GameEngine,System.Int32,CardGame.Core.AI.AIPlayerController)
+  id: Initialize(CardGame.Core.Application.GameEngine,System.Int32,CardGame.Core.AI.AIPlayerController)
+  parent: CardGame.GodotClient.BotCoordinator
+  langs:
+  - csharp
+  - vb
+  name: Initialize(GameEngine, int, AIPlayerController)
+  nameWithType: BotCoordinator.Initialize(GameEngine, int, AIPlayerController)
+  fullName: CardGame.GodotClient.BotCoordinator.Initialize(CardGame.Core.Application.GameEngine, int, CardGame.Core.AI.AIPlayerController)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/BotCordinator.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: Initialize
+    path: ../Source/CardGame.GodotClient/Scripts/BotCordinator.cs
+    startLine: 51
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Initializes the coordinator with the required game logic dependencies.
+  example: []
+  syntax:
+    content: public void Initialize(GameEngine engine, int botId, AIPlayerController aiController)
+    parameters:
+    - id: engine
+      type: CardGame.Core.Application.GameEngine
+      description: The core GameEngine instance.
+    - id: botId
+      type: System.Int32
+      description: The player ID assigned to this bot (usually 2).
+    - id: aiController
+      type: CardGame.Core.AI.AIPlayerController
+      description: The logic controller responsible for finding the best moves.
+    content.vb: Public Sub Initialize(engine As GameEngine, botId As Integer, aiController As AIPlayerController)
+  overload: CardGame.GodotClient.BotCoordinator.Initialize*
+  nameWithType.vb: BotCoordinator.Initialize(GameEngine, Integer, AIPlayerController)
+  fullName.vb: CardGame.GodotClient.BotCoordinator.Initialize(CardGame.Core.Application.GameEngine, Integer, CardGame.Core.AI.AIPlayerController)
+  name.vb: Initialize(GameEngine, Integer, AIPlayerController)
+- uid: CardGame.GodotClient.BotCoordinator.PlayTurn
+  commentId: M:CardGame.GodotClient.BotCoordinator.PlayTurn
+  id: PlayTurn
+  parent: CardGame.GodotClient.BotCoordinator
+  langs:
+  - csharp
+  - vb
+  name: PlayTurn()
+  nameWithType: BotCoordinator.PlayTurn()
+  fullName: CardGame.GodotClient.BotCoordinator.PlayTurn()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/BotCordinator.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PlayTurn
+    path: ../Source/CardGame.GodotClient/Scripts/BotCordinator.cs
+    startLine: 69
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Starts the bot's turn sequence.
+
+    1. Sets IsThinking to true.
+
+    2. Waits for a visual delay (simulating reaction time).
+
+    3. Runs the AI solver algorithm on a background thread.
+
+    4. Schedules the execution of the move on the main thread via CallDeferred.
+  example: []
+  syntax:
+    content: public void PlayTurn()
+    content.vb: Public Sub PlayTurn()
+  overload: CardGame.GodotClient.BotCoordinator.PlayTurn*
+- uid: CardGame.GodotClient.BotCoordinator.ExecuteBestMove(CardGame.Core.Commands.Interfaces.IGameCommand)
+  commentId: M:CardGame.GodotClient.BotCoordinator.ExecuteBestMove(CardGame.Core.Commands.Interfaces.IGameCommand)
+  id: ExecuteBestMove(CardGame.Core.Commands.Interfaces.IGameCommand)
+  parent: CardGame.GodotClient.BotCoordinator
+  langs:
+  - csharp
+  - vb
+  name: ExecuteBestMove(IGameCommand)
+  nameWithType: BotCoordinator.ExecuteBestMove(IGameCommand)
+  fullName: CardGame.GodotClient.BotCoordinator.ExecuteBestMove(CardGame.Core.Commands.Interfaces.IGameCommand)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/BotCordinator.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ExecuteBestMove
+    path: ../Source/CardGame.GodotClient/Scripts/BotCordinator.cs
+    startLine: 102
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Executes the selected command on the main thread.
+
+    Invokes the OnBotCommand event and resets the thinking flag.
+  example: []
+  syntax:
+    content: public void ExecuteBestMove(IGameCommand cmd)
+    parameters:
+    - id: cmd
+      type: CardGame.Core.Commands.Interfaces.IGameCommand
+      description: The command selected by the AI.
+    content.vb: Public Sub ExecuteBestMove(cmd As IGameCommand)
+  overload: CardGame.GodotClient.BotCoordinator.ExecuteBestMove*
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: System.Action{CardGame.Core.Commands.Interfaces.IGameCommand}
+  commentId: T:System.Action{CardGame.Core.Commands.Interfaces.IGameCommand}
+  parent: System
+  definition: System.Action`1
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: Action<IGameCommand>
+  nameWithType: Action<IGameCommand>
+  fullName: System.Action<CardGame.Core.Commands.Interfaces.IGameCommand>
+  nameWithType.vb: Action(Of IGameCommand)
+  fullName.vb: System.Action(Of CardGame.Core.Commands.Interfaces.IGameCommand)
+  name.vb: Action(Of IGameCommand)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand
+    name: IGameCommand
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CardGame.Core.Commands.Interfaces.IGameCommand
+    name: IGameCommand
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: CardGame.GodotClient.BotCoordinator.IsThinking*
+  commentId: Overload:CardGame.GodotClient.BotCoordinator.IsThinking
+  href: CardGame.GodotClient.BotCoordinator.IsThinking.html#CardGame_GodotClient_BotCoordinator_IsThinking
+  name: IsThinking
+  nameWithType: BotCoordinator.IsThinking
+  fullName: CardGame.GodotClient.BotCoordinator.IsThinking
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: CardGame.GodotClient.BotCoordinator.Initialize*
+  commentId: Overload:CardGame.GodotClient.BotCoordinator.Initialize
+  href: CardGame.GodotClient.BotCoordinator.Initialize.html#CardGame_GodotClient_BotCoordinator_Initialize_CardGame_Core_Application_GameEngine_System_Int32_CardGame_Core_AI_AIPlayerController_
+  name: Initialize
+  nameWithType: BotCoordinator.Initialize
+  fullName: CardGame.GodotClient.BotCoordinator.Initialize
+- uid: CardGame.Core.Application.GameEngine
+  commentId: T:CardGame.Core.Application.GameEngine
+  parent: CardGame.Core.Application
+  href: CardGame.Core.Application.GameEngine.html
+  name: GameEngine
+  nameWithType: GameEngine
+  fullName: CardGame.Core.Application.GameEngine
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: CardGame.Core.AI.AIPlayerController
+  commentId: T:CardGame.Core.AI.AIPlayerController
+  parent: CardGame.Core.AI
+  href: CardGame.Core.AI.AIPlayerController.html
+  name: AIPlayerController
+  nameWithType: AIPlayerController
+  fullName: CardGame.Core.AI.AIPlayerController
+- uid: CardGame.Core.Application
+  commentId: N:CardGame.Core.Application
+  href: CardGame.html
+  name: CardGame.Core.Application
+  nameWithType: CardGame.Core.Application
+  fullName: CardGame.Core.Application
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Application
+    name: Application
+    href: CardGame.Core.Application.html
+- uid: CardGame.Core.AI
+  commentId: N:CardGame.Core.AI
+  href: CardGame.html
+  name: CardGame.Core.AI
+  nameWithType: CardGame.Core.AI
+  fullName: CardGame.Core.AI
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.AI
+    name: AI
+    href: CardGame.Core.AI.html
+- uid: CardGame.GodotClient.BotCoordinator.PlayTurn*
+  commentId: Overload:CardGame.GodotClient.BotCoordinator.PlayTurn
+  href: CardGame.GodotClient.BotCoordinator.PlayTurn.html#CardGame_GodotClient_BotCoordinator_PlayTurn
+  name: PlayTurn
+  nameWithType: BotCoordinator.PlayTurn
+  fullName: CardGame.GodotClient.BotCoordinator.PlayTurn
+- uid: CardGame.GodotClient.BotCoordinator.ExecuteBestMove*
+  commentId: Overload:CardGame.GodotClient.BotCoordinator.ExecuteBestMove
+  href: CardGame.GodotClient.BotCoordinator.ExecuteBestMove.html#CardGame_GodotClient_BotCoordinator_ExecuteBestMove_CardGame_Core_Commands_Interfaces_IGameCommand_
+  name: ExecuteBestMove
+  nameWithType: BotCoordinator.ExecuteBestMove
+  fullName: CardGame.GodotClient.BotCoordinator.ExecuteBestMove
+- uid: CardGame.Core.Commands.Interfaces.IGameCommand
+  commentId: T:CardGame.Core.Commands.Interfaces.IGameCommand
+  parent: CardGame.Core.Commands.Interfaces
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.html
+  name: IGameCommand
+  nameWithType: IGameCommand
+  fullName: CardGame.Core.Commands.Interfaces.IGameCommand
+- uid: CardGame.Core.Commands.Interfaces
+  commentId: N:CardGame.Core.Commands.Interfaces
+  href: CardGame.html
+  name: CardGame.Core.Commands.Interfaces
+  nameWithType: CardGame.Core.Commands.Interfaces
+  fullName: CardGame.Core.Commands.Interfaces
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Commands
+    name: Commands
+    href: CardGame.Core.Commands.html
+  - name: .
+  - uid: CardGame.Core.Commands.Interfaces
+    name: Interfaces
+    href: CardGame.Core.Commands.Interfaces.html
+memberLayout: SeparatePages

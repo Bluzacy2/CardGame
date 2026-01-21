@@ -129,213 +129,38 @@ Class SplashDamageHandler  <a class="header-action link-secondary" title="View s
 
 
 
-
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_Type_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.Type*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_Type" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.Type">
-  Type
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs/#L92"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the keyword type this handler processes (SplashDamage).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Keyword Type { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Data.Keyword.html">Keyword</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.Type.html#CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_Type">Type</a></dt>
+    <dd><p>Gets the keyword type this handler processes (SplashDamage).</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnAfterAttack_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnAfterAttack*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnAfterAttack(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Cards.Models.CardInstance,System.Int32,CardGame.Core.Application.GameContext)">
-  OnAfterAttack(GameState, CardInstance, CardInstance?, int, GameContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs/#L102"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Deals splash damage to enemy units in adjacent lines after attacking.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState OnAfterAttack(GameState state, CardInstance attacker, CardInstance? victim, int lineIndex, GameContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
-    <dt><code>attacker</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
-    <dt><code>victim</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
-    <dt><code>lineIndex</code> <span class="xref">int</span></dt>
-    <dd></dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnAfterAttack.html#CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnAfterAttack_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_System_Int32_CardGame_Core_Application_GameContext_">OnAfterAttack(GameState, CardInstance, CardInstance?, int, GameContext)</a></dt>
+    <dd><p>Deals splash damage to enemy units in adjacent lines after attacking.</p>
+</dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnModifyDamageTaken.html#CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_">OnModifyDamageTaken(int, DamageContext)</a></dt>
+    <dd><p>Splash damage does not modify incoming damage.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnModifyDamageTaken_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnModifyDamageTaken*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnModifyDamageTaken_System_Int32_CardGame_Core_GameRules_Damage_DamageContext_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnModifyDamageTaken(System.Int32,CardGame.Core.GameRules.Damage.DamageContext)">
-  OnModifyDamageTaken(int, DamageContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs/#L97"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Splash damage does not modify incoming damage.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int OnModifyDamageTaken(int amount, DamageContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>amount</code> <span class="xref">int</span></dt>
-    <dd></dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.GameRules.Damage.DamageContext.html">DamageContext</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnPreventDeath.html#CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_">OnPreventDeath(ref GameState, CardInstance, GameContext, bool)</a></dt>
+    <dd><p>Splash damage does not prevent death.</p>
+</dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnRoundEnd.html#CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_">OnRoundEnd(GameState, CardInstance, GameContext)</a></dt>
+    <dd><p>Splash damage has no special effects at round end.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnPreventDeath_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnPreventDeath*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnPreventDeath_CardGame_Core_State_Models_GameState__CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_System_Boolean_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnPreventDeath(CardGame.Core.State.Models.GameState@,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext,System.Boolean)">
-  OnPreventDeath(ref GameState, CardInstance, GameContext, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs/#L151"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Splash damage does not prevent death.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool OnPreventDeath(ref GameState state, CardInstance unit, GameContext context, bool isSacrifice)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
-    <dt><code>unit</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd></dd>
-    <dt><code>isSacrifice</code> <span class="xref">bool</span></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">bool</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnRoundEnd_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnRoundEnd*"></a>
-
-  <h3 id="CardGame_Core_Cards_Logic_Keywords_Handlers_SplashDamageHandler_OnRoundEnd_CardGame_Core_State_Models_GameState_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Application_GameContext_" data-uid="CardGame.Core.Cards.Logic.Keywords.Handlers.SplashDamageHandler.OnRoundEnd(CardGame.Core.State.Models.GameState,CardGame.Core.Cards.Models.CardInstance,CardGame.Core.Application.GameContext)">
-  OnRoundEnd(GameState, CardInstance, GameContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Cards/Logic/Keywords/KeywordHandler.cs/#L146"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Splash damage has no special effects at round end.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState OnRoundEnd(GameState state, CardInstance unit, GameContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
-    <dt><code>unit</code> <a class="xref" href="CardGame.Core.Cards.Models.CardInstance.html">CardInstance</a></dt>
-    <dd></dd>
-    <dt><code>context</code> <a class="xref" href="CardGame.Core.Application.GameContext.html">GameContext</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
 

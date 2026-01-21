@@ -123,218 +123,47 @@ Class SimulationNode  <a class="header-action link-secondary" title="View source
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_AI_Logic_SimulationNode__ctor_" data-uid="CardGame.Core.AI.Logic.SimulationNode.#ctor*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_SimulationNode__ctor" data-uid="CardGame.Core.AI.Logic.SimulationNode.#ctor">
-  SimulationNode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/BotSolver.cs/#L78"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the SimulationNode class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SimulationNode()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_SimulationNode__ctor_" data-uid="CardGame.Core.AI.Logic.SimulationNode.#ctor*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_SimulationNode__ctor_CardGame_Core_State_Models_GameState_CardGame_Core_Commands_Interfaces_IGameCommand_System_Single_" data-uid="CardGame.Core.AI.Logic.SimulationNode.#ctor(CardGame.Core.State.Models.GameState,CardGame.Core.Commands.Interfaces.IGameCommand,System.Single)">
-  SimulationNode(GameState, IGameCommand?, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/BotSolver.cs/#L86"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the SimulationNode class with specified values.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SimulationNode(GameState state, IGameCommand? initialMove, float score)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The game state at this node.</p>
-</dd>
-    <dt><code>initialMove</code> <a class="xref" href="CardGame.Core.Commands.Interfaces.IGameCommand.html">IGameCommand</a></dt>
-    <dd><p>The initial move that led to this state.</p>
-</dd>
-    <dt><code>score</code> <span class="xref">float</span></dt>
-    <dd><p>The evaluation score for this node.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.SimulationNode.-ctor.html#CardGame_Core_AI_Logic_SimulationNode__ctor">SimulationNode()</a></dt>
+    <dd><p>Initializes a new instance of the SimulationNode class.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.SimulationNode.-ctor.html#CardGame_Core_AI_Logic_SimulationNode__ctor_CardGame_Core_State_Models_GameState_CardGame_Core_Commands_Interfaces_IGameCommand_System_Single_">SimulationNode(GameState, IGameCommand?, float)</a></dt>
+    <dd><p>Initializes a new instance of the SimulationNode class with specified values.</p>
+</dd>
+  </dl>
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_AI_Logic_SimulationNode_InitialMove_" data-uid="CardGame.Core.AI.Logic.SimulationNode.InitialMove*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_SimulationNode_InitialMove" data-uid="CardGame.Core.AI.Logic.SimulationNode.InitialMove">
-  InitialMove
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/BotSolver.cs/#L68"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the initial move that led to this game state.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IGameCommand? InitialMove { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Commands.Interfaces.IGameCommand.html">IGameCommand</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.SimulationNode.InitialMove.html#CardGame_Core_AI_Logic_SimulationNode_InitialMove">InitialMove</a></dt>
+    <dd><p>Gets or sets the initial move that led to this game state.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_SimulationNode_Score_" data-uid="CardGame.Core.AI.Logic.SimulationNode.Score*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_SimulationNode_Score" data-uid="CardGame.Core.AI.Logic.SimulationNode.Score">
-  Score
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/BotSolver.cs/#L73"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the evaluation score for this node.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Score { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">float</span></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.SimulationNode.Score.html#CardGame_Core_AI_Logic_SimulationNode_Score">Score</a></dt>
+    <dd><p>Gets or sets the evaluation score for this node.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_AI_Logic_SimulationNode_State_" data-uid="CardGame.Core.AI.Logic.SimulationNode.State*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_SimulationNode_State" data-uid="CardGame.Core.AI.Logic.SimulationNode.State">
-  State
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/BotSolver.cs/#L63"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets or sets the game state at this node.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameState State { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd></dd>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.SimulationNode.State.html#CardGame_Core_AI_Logic_SimulationNode_State">State</a></dt>
+    <dd><p>Gets or sets the game state at this node.</p>
+</dd>
   </dl>
-
-
-
-
-
-
-
 
   <h2 class="section" id="methods">Methods
 </h2>
 
-
-  <a id="CardGame_Core_AI_Logic_SimulationNode_Set_" data-uid="CardGame.Core.AI.Logic.SimulationNode.Set*"></a>
-
-  <h3 id="CardGame_Core_AI_Logic_SimulationNode_Set_CardGame_Core_State_Models_GameState_CardGame_Core_Commands_Interfaces_IGameCommand_System_Single_" data-uid="CardGame.Core.AI.Logic.SimulationNode.Set(CardGame.Core.State.Models.GameState,CardGame.Core.Commands.Interfaces.IGameCommand,System.Single)">
-  Set(GameState, IGameCommand?, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/AI/Logic/BotSolver.cs/#L99"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Updates the node with new values for reuse in the object pool.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Set(GameState state, IGameCommand? initialMove, float score)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="CardGame.Core.State.Models.GameState.html">GameState</a></dt>
-    <dd><p>The new game state.</p>
-</dd>
-    <dt><code>initialMove</code> <a class="xref" href="CardGame.Core.Commands.Interfaces.IGameCommand.html">IGameCommand</a></dt>
-    <dd><p>The new initial move.</p>
-</dd>
-    <dt><code>score</code> <span class="xref">float</span></dt>
-    <dd><p>The new evaluation score.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.AI.Logic.SimulationNode.Set.html#CardGame_Core_AI_Logic_SimulationNode_Set_CardGame_Core_State_Models_GameState_CardGame_Core_Commands_Interfaces_IGameCommand_System_Single_">Set(GameState, IGameCommand?, float)</a></dt>
+    <dd><p>Updates the node with new values for reuse in the object pool.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
 
 
 

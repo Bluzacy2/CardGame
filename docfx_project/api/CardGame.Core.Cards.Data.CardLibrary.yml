@@ -381,7 +381,7 @@ references:
   fullName: System
 - uid: CardGame.Core.Cards.Data.CardLibrary.Instance*
   commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.Instance
-  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_Instance
+  href: CardGame.Core.Cards.Data.CardLibrary.Instance.html#CardGame_Core_Cards_Data_CardLibrary_Instance
   name: Instance
   nameWithType: CardLibrary.Instance
   fullName: CardGame.Core.Cards.Data.CardLibrary.Instance
@@ -394,7 +394,7 @@ references:
   fullName: CardGame.Core.Cards.Data.CardLibrary
 - uid: CardGame.Core.Cards.Data.CardLibrary.Clear*
   commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.Clear
-  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_Clear
+  href: CardGame.Core.Cards.Data.CardLibrary.Clear.html#CardGame_Core_Cards_Data_CardLibrary_Clear
   name: Clear
   nameWithType: CardLibrary.Clear
   fullName: CardGame.Core.Cards.Data.CardLibrary.Clear
@@ -406,7 +406,7 @@ references:
   fullName: System.Exception
 - uid: CardGame.Core.Cards.Data.CardLibrary.LoadFromJson*
   commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.LoadFromJson
-  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_LoadFromJson_System_String_
+  href: CardGame.Core.Cards.Data.CardLibrary.LoadFromJson.html#CardGame_Core_Cards_Data_CardLibrary_LoadFromJson_System_String_
   name: LoadFromJson
   nameWithType: CardLibrary.LoadFromJson
   fullName: CardGame.Core.Cards.Data.CardLibrary.LoadFromJson
@@ -422,7 +422,7 @@ references:
   name.vb: String
 - uid: CardGame.Core.Cards.Data.CardLibrary.GetCard*
   commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.GetCard
-  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_GetCard_System_Int32_
+  href: CardGame.Core.Cards.Data.CardLibrary.GetCard.html#CardGame_Core_Cards_Data_CardLibrary_GetCard_System_Int32_
   name: GetCard
   nameWithType: CardLibrary.GetCard
   fullName: CardGame.Core.Cards.Data.CardLibrary.GetCard
@@ -445,7 +445,7 @@ references:
   fullName: CardGame.Core.Cards.Data.CardData
 - uid: CardGame.Core.Cards.Data.CardLibrary.CreateDefinition*
   commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.CreateDefinition
-  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_CreateDefinition_System_Int32_
+  href: CardGame.Core.Cards.Data.CardLibrary.CreateDefinition.html#CardGame_Core_Cards_Data_CardLibrary_CreateDefinition_System_Int32_
   name: CreateDefinition
   nameWithType: CardLibrary.CreateDefinition
   fullName: CardGame.Core.Cards.Data.CardLibrary.CreateDefinition
@@ -496,7 +496,7 @@ references:
     href: CardGame.Core.Cards.Models.html
 - uid: CardGame.Core.Cards.Data.CardLibrary.GetAllIds*
   commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.GetAllIds
-  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_GetAllIds
+  href: CardGame.Core.Cards.Data.CardLibrary.GetAllIds.html#CardGame_Core_Cards_Data_CardLibrary_GetAllIds
   name: GetAllIds
   nameWithType: CardLibrary.GetAllIds
   fullName: CardGame.Core.Cards.Data.CardLibrary.GetAllIds
@@ -522,7 +522,7 @@ references:
   - name: )
 - uid: CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits*
   commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits
-  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_GetCardsByTraits_System_Func_CardGame_Core_Cards_Data_CardData_System_Boolean__
+  href: CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits.html#CardGame_Core_Cards_Data_CardLibrary_GetCardsByTraits_System_Func_CardGame_Core_Cards_Data_CardData_System_Boolean__
   name: GetCardsByTraits
   nameWithType: CardLibrary.GetCardsByTraits
   fullName: CardGame.Core.Cards.Data.CardLibrary.GetCardsByTraits
@@ -693,7 +693,7 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits*
   commentId: Overload:CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits
-  href: CardGame.Core.Cards.Data.CardLibrary.html#CardGame_Core_Cards_Data_CardLibrary_GetCardIdsByTraits_System_Func_CardGame_Core_Cards_Data_CardData_System_Boolean__
+  href: CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits.html#CardGame_Core_Cards_Data_CardLibrary_GetCardIdsByTraits_System_Func_CardGame_Core_Cards_Data_CardData_System_Boolean__
   name: GetCardIdsByTraits
   nameWithType: CardLibrary.GetCardIdsByTraits
   fullName: CardGame.Core.Cards.Data.CardLibrary.GetCardIdsByTraits
@@ -727,3 +727,4 @@ references:
     name: Integer
     isExternal: true
   - name: )
+memberLayout: SeparatePages

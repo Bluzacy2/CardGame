@@ -1,0 +1,302 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.DeckSelection.MethodName
+  commentId: T:CardGame.GodotClient.DeckSelection.MethodName
+  id: DeckSelection.MethodName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.DeckSelection.MethodName.DeleteDeck
+  - CardGame.GodotClient.DeckSelection.MethodName.LoadCardLibrary
+  - CardGame.GodotClient.DeckSelection.MethodName.LoadDecks
+  - CardGame.GodotClient.DeckSelection.MethodName._Ready
+  langs:
+  - csharp
+  - vb
+  name: DeckSelection.MethodName
+  nameWithType: DeckSelection.MethodName
+  fullName: CardGame.GodotClient.DeckSelection.MethodName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.DeckSelection_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MethodName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.DeckSelection_ScriptMethods.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the methods contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class DeckSelection.MethodName : Control.MethodName'
+    content.vb: Public Class DeckSelection.MethodName Inherits Control.MethodName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.MethodName
+  - Godot.Node.MethodName
+  - Godot.CanvasItem.MethodName
+  - Godot.Control.MethodName
+- uid: CardGame.GodotClient.DeckSelection.MethodName._Ready
+  commentId: F:CardGame.GodotClient.DeckSelection.MethodName._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.DeckSelection.MethodName
+  langs:
+  - csharp
+  - vb
+  name: _Ready
+  nameWithType: DeckSelection.MethodName._Ready
+  fullName: CardGame.GodotClient.DeckSelection.MethodName._Ready
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.DeckSelection_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.DeckSelection_ScriptMethods.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_Ready' method.
+  example: []
+  syntax:
+    content: public static readonly StringName _Ready
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _Ready As StringName
+- uid: CardGame.GodotClient.DeckSelection.MethodName.LoadCardLibrary
+  commentId: F:CardGame.GodotClient.DeckSelection.MethodName.LoadCardLibrary
+  id: LoadCardLibrary
+  parent: CardGame.GodotClient.DeckSelection.MethodName
+  langs:
+  - csharp
+  - vb
+  name: LoadCardLibrary
+  nameWithType: DeckSelection.MethodName.LoadCardLibrary
+  fullName: CardGame.GodotClient.DeckSelection.MethodName.LoadCardLibrary
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.DeckSelection_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LoadCardLibrary
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.DeckSelection_ScriptMethods.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'LoadCardLibrary' method.
+  example: []
+  syntax:
+    content: public static readonly StringName LoadCardLibrary
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly LoadCardLibrary As StringName
+- uid: CardGame.GodotClient.DeckSelection.MethodName.LoadDecks
+  commentId: F:CardGame.GodotClient.DeckSelection.MethodName.LoadDecks
+  id: LoadDecks
+  parent: CardGame.GodotClient.DeckSelection.MethodName
+  langs:
+  - csharp
+  - vb
+  name: LoadDecks
+  nameWithType: DeckSelection.MethodName.LoadDecks
+  fullName: CardGame.GodotClient.DeckSelection.MethodName.LoadDecks
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.DeckSelection_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LoadDecks
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.DeckSelection_ScriptMethods.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'LoadDecks' method.
+  example: []
+  syntax:
+    content: public static readonly StringName LoadDecks
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly LoadDecks As StringName
+- uid: CardGame.GodotClient.DeckSelection.MethodName.DeleteDeck
+  commentId: F:CardGame.GodotClient.DeckSelection.MethodName.DeleteDeck
+  id: DeleteDeck
+  parent: CardGame.GodotClient.DeckSelection.MethodName
+  langs:
+  - csharp
+  - vb
+  name: DeleteDeck
+  nameWithType: DeckSelection.MethodName.DeleteDeck
+  fullName: CardGame.GodotClient.DeckSelection.MethodName.DeleteDeck
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.DeckSelection_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeleteDeck
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.DeckSelection_ScriptMethods.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'DeleteDeck' method.
+  example: []
+  syntax:
+    content: public static readonly StringName DeleteDeck
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly DeleteDeck As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.MethodName
+  commentId: T:Godot.GodotObject.MethodName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.MethodName
+  nameWithType: GodotObject.MethodName
+  fullName: Godot.GodotObject.MethodName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Node.MethodName
+  commentId: T:Godot.Node.MethodName
+  parent: Godot
+  isExternal: true
+  name: Node.MethodName
+  nameWithType: Node.MethodName
+  fullName: Godot.Node.MethodName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.CanvasItem.MethodName
+  commentId: T:Godot.CanvasItem.MethodName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.MethodName
+  nameWithType: CanvasItem.MethodName
+  fullName: Godot.CanvasItem.MethodName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Control.MethodName
+  commentId: T:Godot.Control.MethodName
+  parent: Godot
+  isExternal: true
+  name: Control.MethodName
+  nameWithType: Control.MethodName
+  fullName: Godot.Control.MethodName
+  spec.csharp:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Control
+    name: Control
+    isExternal: true
+  - name: .
+  - uid: Godot.Control.MethodName
+    name: MethodName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
+memberLayout: SeparatePages

@@ -1128,31 +1128,31 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.State.Models.PlayerState.PlayerId*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.PlayerId
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_PlayerId
+  href: CardGame.Core.State.Models.PlayerState.PlayerId.html#CardGame_Core_State_Models_PlayerState_PlayerId
   name: PlayerId
   nameWithType: PlayerState.PlayerId
   fullName: CardGame.Core.State.Models.PlayerState.PlayerId
 - uid: CardGame.Core.State.Models.PlayerState.Health*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.Health
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_Health
+  href: CardGame.Core.State.Models.PlayerState.Health.html#CardGame_Core_State_Models_PlayerState_Health
   name: Health
   nameWithType: PlayerState.Health
   fullName: CardGame.Core.State.Models.PlayerState.Health
 - uid: CardGame.Core.State.Models.PlayerState.MaxBlood*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.MaxBlood
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_MaxBlood
+  href: CardGame.Core.State.Models.PlayerState.MaxBlood.html#CardGame_Core_State_Models_PlayerState_MaxBlood
   name: MaxBlood
   nameWithType: PlayerState.MaxBlood
   fullName: CardGame.Core.State.Models.PlayerState.MaxBlood
 - uid: CardGame.Core.State.Models.PlayerState.CurrentBlood*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.CurrentBlood
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_CurrentBlood
+  href: CardGame.Core.State.Models.PlayerState.CurrentBlood.html#CardGame_Core_State_Models_PlayerState_CurrentBlood
   name: CurrentBlood
   nameWithType: PlayerState.CurrentBlood
   fullName: CardGame.Core.State.Models.PlayerState.CurrentBlood
 - uid: CardGame.Core.State.Models.PlayerState.Hand*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.Hand
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_Hand
+  href: CardGame.Core.State.Models.PlayerState.Hand.html#CardGame_Core_State_Models_PlayerState_Hand
   name: Hand
   nameWithType: PlayerState.Hand
   fullName: CardGame.Core.State.Models.PlayerState.Hand
@@ -1251,19 +1251,19 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.Core.State.Models.PlayerState.DrawPile*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.DrawPile
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_DrawPile
+  href: CardGame.Core.State.Models.PlayerState.DrawPile.html#CardGame_Core_State_Models_PlayerState_DrawPile
   name: DrawPile
   nameWithType: PlayerState.DrawPile
   fullName: CardGame.Core.State.Models.PlayerState.DrawPile
 - uid: CardGame.Core.State.Models.PlayerState.DiscardPile*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.DiscardPile
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_DiscardPile
+  href: CardGame.Core.State.Models.PlayerState.DiscardPile.html#CardGame_Core_State_Models_PlayerState_DiscardPile
   name: DiscardPile
   nameWithType: PlayerState.DiscardPile
   fullName: CardGame.Core.State.Models.PlayerState.DiscardPile
 - uid: CardGame.Core.State.Models.PlayerState.GlobalUnitBuffs*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.GlobalUnitBuffs
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_GlobalUnitBuffs
+  href: CardGame.Core.State.Models.PlayerState.GlobalUnitBuffs.html#CardGame_Core_State_Models_PlayerState_GlobalUnitBuffs
   name: GlobalUnitBuffs
   nameWithType: PlayerState.GlobalUnitBuffs
   fullName: CardGame.Core.State.Models.PlayerState.GlobalUnitBuffs
@@ -1314,7 +1314,7 @@ references:
     href: CardGame.Core.Cards.Models.html
 - uid: CardGame.Core.State.Models.PlayerState.#ctor*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.#ctor
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_CardGame_Core_Cards_Models_CardStats__
+  href: CardGame.Core.State.Models.PlayerState.-ctor.html#CardGame_Core_State_Models_PlayerState__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_CardGame_Core_Cards_Models_CardStats__
   name: PlayerState
   nameWithType: PlayerState.PlayerState
   fullName: CardGame.Core.State.Models.PlayerState.PlayerState
@@ -1422,7 +1422,7 @@ references:
   - name: )
 - uid: CardGame.Core.State.Models.PlayerState.Initial*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.Initial
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_Initial_System_Int32_System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__
+  href: CardGame.Core.State.Models.PlayerState.Initial.html#CardGame_Core_State_Models_PlayerState_Initial_System_Int32_System_Collections_Generic_List_CardGame_Core_Cards_Models_CardInstance__
   name: Initial
   nameWithType: PlayerState.Initial
   fullName: CardGame.Core.State.Models.PlayerState.Initial
@@ -1491,7 +1491,7 @@ references:
   - name: )
 - uid: CardGame.Core.State.Models.PlayerState.With*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.With
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_With_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_CardGame_Core_Cards_Models_CardStats__
+  href: CardGame.Core.State.Models.PlayerState.With.html#CardGame_Core_State_Models_PlayerState_With_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Collections_Generic_IEnumerable_CardGame_Core_Cards_Models_CardInstance__System_Nullable_CardGame_Core_Cards_Models_CardStats__
   name: With
   nameWithType: PlayerState.With
   fullName: CardGame.Core.State.Models.PlayerState.With
@@ -1517,7 +1517,7 @@ references:
   - name: '?'
 - uid: CardGame.Core.State.Models.PlayerState.WithResourceChanged*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithResourceChanged
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithResourceChanged_CardGame_Core_Cards_Data_ResourceType_System_Int32_System_Int32_
+  href: CardGame.Core.State.Models.PlayerState.WithResourceChanged.html#CardGame_Core_State_Models_PlayerState_WithResourceChanged_CardGame_Core_Cards_Data_ResourceType_System_Int32_System_Int32_
   name: WithResourceChanged
   nameWithType: PlayerState.WithResourceChanged
   fullName: CardGame.Core.State.Models.PlayerState.WithResourceChanged
@@ -1568,13 +1568,13 @@ references:
     href: CardGame.Core.Cards.Data.html
 - uid: CardGame.Core.State.Models.PlayerState.WithBloodSpent*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithBloodSpent
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithBloodSpent_System_Int32_
+  href: CardGame.Core.State.Models.PlayerState.WithBloodSpent.html#CardGame_Core_State_Models_PlayerState_WithBloodSpent_System_Int32_
   name: WithBloodSpent
   nameWithType: PlayerState.WithBloodSpent
   fullName: CardGame.Core.State.Models.PlayerState.WithBloodSpent
 - uid: CardGame.Core.State.Models.PlayerState.WithCardRemovedFromHand*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithCardRemovedFromHand
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithCardRemovedFromHand_CardGame_Core_Cards_Models_CardInstance_
+  href: CardGame.Core.State.Models.PlayerState.WithCardRemovedFromHand.html#CardGame_Core_State_Models_PlayerState_WithCardRemovedFromHand_CardGame_Core_Cards_Models_CardInstance_
   name: WithCardRemovedFromHand
   nameWithType: PlayerState.WithCardRemovedFromHand
   fullName: CardGame.Core.State.Models.PlayerState.WithCardRemovedFromHand
@@ -1587,7 +1587,7 @@ references:
   fullName: CardGame.Core.Cards.Models.CardInstance
 - uid: CardGame.Core.State.Models.PlayerState.WithCardDrawn*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithCardDrawn
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithCardDrawn_CardGame_Core_Events_EventBus_
+  href: CardGame.Core.State.Models.PlayerState.WithCardDrawn.html#CardGame_Core_State_Models_PlayerState_WithCardDrawn_CardGame_Core_Events_EventBus_
   name: WithCardDrawn
   nameWithType: PlayerState.WithCardDrawn
   fullName: CardGame.Core.State.Models.PlayerState.WithCardDrawn
@@ -1630,13 +1630,13 @@ references:
     href: CardGame.Core.Events.html
 - uid: CardGame.Core.State.Models.PlayerState.WithCardsDrawnFromDiscard*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithCardsDrawnFromDiscard
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithCardsDrawnFromDiscard_System_Int32_CardGame_Core_Events_EventBus_System_Nullable_System_Int32__
+  href: CardGame.Core.State.Models.PlayerState.WithCardsDrawnFromDiscard.html#CardGame_Core_State_Models_PlayerState_WithCardsDrawnFromDiscard_System_Int32_CardGame_Core_Events_EventBus_System_Nullable_System_Int32__
   name: WithCardsDrawnFromDiscard
   nameWithType: PlayerState.WithCardsDrawnFromDiscard
   fullName: CardGame.Core.State.Models.PlayerState.WithCardsDrawnFromDiscard
 - uid: CardGame.Core.State.Models.PlayerState.WithTurnStartBlood*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithTurnStartBlood
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithTurnStartBlood_System_Int32_System_Boolean_
+  href: CardGame.Core.State.Models.PlayerState.WithTurnStartBlood.html#CardGame_Core_State_Models_PlayerState_WithTurnStartBlood_System_Int32_System_Boolean_
   name: WithTurnStartBlood
   nameWithType: PlayerState.WithTurnStartBlood
   fullName: CardGame.Core.State.Models.PlayerState.WithTurnStartBlood
@@ -1652,31 +1652,31 @@ references:
   name.vb: Boolean
 - uid: CardGame.Core.State.Models.PlayerState.WithCardAddedToHand*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithCardAddedToHand
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithCardAddedToHand_CardGame_Core_Cards_Models_CardInstance_
+  href: CardGame.Core.State.Models.PlayerState.WithCardAddedToHand.html#CardGame_Core_State_Models_PlayerState_WithCardAddedToHand_CardGame_Core_Cards_Models_CardInstance_
   name: WithCardAddedToHand
   nameWithType: PlayerState.WithCardAddedToHand
   fullName: CardGame.Core.State.Models.PlayerState.WithCardAddedToHand
 - uid: CardGame.Core.State.Models.PlayerState.WithCardAddedToDiscard*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithCardAddedToDiscard
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithCardAddedToDiscard_CardGame_Core_Cards_Models_CardInstance_
+  href: CardGame.Core.State.Models.PlayerState.WithCardAddedToDiscard.html#CardGame_Core_State_Models_PlayerState_WithCardAddedToDiscard_CardGame_Core_Cards_Models_CardInstance_
   name: WithCardAddedToDiscard
   nameWithType: PlayerState.WithCardAddedToDiscard
   fullName: CardGame.Core.State.Models.PlayerState.WithCardAddedToDiscard
 - uid: CardGame.Core.State.Models.PlayerState.WithHealthRestored*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithHealthRestored
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithHealthRestored_System_Int32_
+  href: CardGame.Core.State.Models.PlayerState.WithHealthRestored.html#CardGame_Core_State_Models_PlayerState_WithHealthRestored_System_Int32_
   name: WithHealthRestored
   nameWithType: PlayerState.WithHealthRestored
   fullName: CardGame.Core.State.Models.PlayerState.WithHealthRestored
 - uid: CardGame.Core.State.Models.PlayerState.WithDamageTaken*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithDamageTaken
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithDamageTaken_System_Int32_
+  href: CardGame.Core.State.Models.PlayerState.WithDamageTaken.html#CardGame_Core_State_Models_PlayerState_WithDamageTaken_System_Int32_
   name: WithDamageTaken
   nameWithType: PlayerState.WithDamageTaken
   fullName: CardGame.Core.State.Models.PlayerState.WithDamageTaken
 - uid: CardGame.Core.State.Models.PlayerState.WithShuffledDeck*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithShuffledDeck
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithShuffledDeck_CardGame_Core_Application_DeterministicRng_
+  href: CardGame.Core.State.Models.PlayerState.WithShuffledDeck.html#CardGame_Core_State_Models_PlayerState_WithShuffledDeck_CardGame_Core_Application_DeterministicRng_
   name: WithShuffledDeck
   nameWithType: PlayerState.WithShuffledDeck
   fullName: CardGame.Core.State.Models.PlayerState.WithShuffledDeck
@@ -1719,19 +1719,19 @@ references:
     href: CardGame.Core.Application.html
 - uid: CardGame.Core.State.Models.PlayerState.WithGlobalBuffModifier*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithGlobalBuffModifier
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithGlobalBuffModifier_System_Int32_System_Int32_
+  href: CardGame.Core.State.Models.PlayerState.WithGlobalBuffModifier.html#CardGame_Core_State_Models_PlayerState_WithGlobalBuffModifier_System_Int32_System_Int32_
   name: WithGlobalBuffModifier
   nameWithType: PlayerState.WithGlobalBuffModifier
   fullName: CardGame.Core.State.Models.PlayerState.WithGlobalBuffModifier
 - uid: CardGame.Core.State.Models.PlayerState.WithCardRemovedFromDeck*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithCardRemovedFromDeck
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithCardRemovedFromDeck_CardGame_Core_Cards_Models_CardInstance_
+  href: CardGame.Core.State.Models.PlayerState.WithCardRemovedFromDeck.html#CardGame_Core_State_Models_PlayerState_WithCardRemovedFromDeck_CardGame_Core_Cards_Models_CardInstance_
   name: WithCardRemovedFromDeck
   nameWithType: PlayerState.WithCardRemovedFromDeck
   fullName: CardGame.Core.State.Models.PlayerState.WithCardRemovedFromDeck
 - uid: CardGame.Core.State.Models.PlayerState.WithMulliganPerformed*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.WithMulliganPerformed
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_WithMulliganPerformed_System_Collections_Generic_List_System_Int32__
+  href: CardGame.Core.State.Models.PlayerState.WithMulliganPerformed.html#CardGame_Core_State_Models_PlayerState_WithMulliganPerformed_System_Collections_Generic_List_System_Int32__
   name: WithMulliganPerformed
   nameWithType: PlayerState.WithMulliganPerformed
   fullName: CardGame.Core.State.Models.PlayerState.WithMulliganPerformed
@@ -1767,7 +1767,8 @@ references:
   - name: )
 - uid: CardGame.Core.State.Models.PlayerState.CanPlayCard*
   commentId: Overload:CardGame.Core.State.Models.PlayerState.CanPlayCard
-  href: CardGame.Core.State.Models.PlayerState.html#CardGame_Core_State_Models_PlayerState_CanPlayCard_System_Int32_
+  href: CardGame.Core.State.Models.PlayerState.CanPlayCard.html#CardGame_Core_State_Models_PlayerState_CanPlayCard_System_Int32_
   name: CanPlayCard
   nameWithType: PlayerState.CanPlayCard
   fullName: CardGame.Core.State.Models.PlayerState.CanPlayCard
+memberLayout: SeparatePages

@@ -123,300 +123,50 @@ Class GameContext  <a class="header-action link-secondary" title="View source" h
 
 
 
-
   <h2 class="section" id="constructors">Constructors
 </h2>
 
-
-  <a id="CardGame_Core_Application_GameContext__ctor_" data-uid="CardGame.Core.Application.GameContext.#ctor*"></a>
-
-  <h3 id="CardGame_Core_Application_GameContext__ctor_CardGame_Core_Cards_Factories_CardFactory_CardGame_Core_Application_DeterministicRng_CardGame_Core_Events_EventBus_" data-uid="CardGame.Core.Application.GameContext.#ctor(CardGame.Core.Cards.Factories.CardFactory,CardGame.Core.Application.DeterministicRng,CardGame.Core.Events.EventBus)">
-  GameContext(CardFactory, DeterministicRng, EventBus)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameContext.cs/#L36"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Initializes a new instance of the GameContext with required dependencies and registers all handlers.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameContext(CardFactory factory, DeterministicRng rng, EventBus events)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>factory</code> <a class="xref" href="CardGame.Core.Cards.Factories.CardFactory.html">CardFactory</a></dt>
-    <dd><p>The card factory for creating card instances.</p>
-</dd>
-    <dt><code>rng</code> <a class="xref" href="CardGame.Core.Application.DeterministicRng.html">DeterministicRng</a></dt>
-    <dd><p>The deterministic random number generator.</p>
-</dd>
-    <dt><code>events</code> <a class="xref" href="CardGame.Core.Events.EventBus.html">EventBus</a></dt>
-    <dd><p>The event bus for game event communication.</p>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameContext.-ctor.html#CardGame_Core_Application_GameContext__ctor_CardGame_Core_Cards_Factories_CardFactory_CardGame_Core_Application_DeterministicRng_CardGame_Core_Events_EventBus_">GameContext(CardFactory, DeterministicRng, EventBus)</a></dt>
+    <dd><p>Initializes a new instance of the GameContext with required dependencies and registers all handlers.</p>
 </dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
 
   <h2 class="section" id="properties">Properties
 </h2>
 
-
-  <a id="CardGame_Core_Application_GameContext_ActionRegistry_" data-uid="CardGame.Core.Application.GameContext.ActionRegistry*"></a>
-
-  <h3 id="CardGame_Core_Application_GameContext_ActionRegistry" data-uid="CardGame.Core.Application.GameContext.ActionRegistry">
-  ActionRegistry
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameContext.cs/#L23"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ActionHandlerRegistry ActionRegistry { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Components.Actions.ActionHandlerRegistry.html">ActionHandlerRegistry</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameContext.ActionRegistry.html#CardGame_Core_Application_GameContext_ActionRegistry">ActionRegistry</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameContext_Battle_" data-uid="CardGame.Core.Application.GameContext.Battle*"></a>
-
-  <h3 id="CardGame_Core_Application_GameContext_Battle" data-uid="CardGame.Core.Application.GameContext.Battle">
-  Battle
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameContext.cs/#L25"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BattleService Battle { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.GameRules.Battle.BattleService.html">BattleService</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameContext.Battle.html#CardGame_Core_Application_GameContext_Battle">Battle</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameContext_DamageCalculator_" data-uid="CardGame.Core.Application.GameContext.DamageCalculator*"></a>
-
-  <h3 id="CardGame_Core_Application_GameContext_DamageCalculator" data-uid="CardGame.Core.Application.GameContext.DamageCalculator">
-  DamageCalculator
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameContext.cs/#L22"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DamageCalculator DamageCalculator { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.GameRules.Damage.DamageCalculator.html">DamageCalculator</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameContext.DamageCalculator.html#CardGame_Core_Application_GameContext_DamageCalculator">DamageCalculator</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameContext_Death_" data-uid="CardGame.Core.Application.GameContext.Death*"></a>
-
-  <h3 id="CardGame_Core_Application_GameContext_Death" data-uid="CardGame.Core.Application.GameContext.Death">
-  Death
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameContext.cs/#L26"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DeathResolver Death { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.GameRules.Death.DeathResolver.html">DeathResolver</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameContext.Death.html#CardGame_Core_Application_GameContext_Death">Death</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameContext_Events_" data-uid="CardGame.Core.Application.GameContext.Events*"></a>
-
-  <h3 id="CardGame_Core_Application_GameContext_Events" data-uid="CardGame.Core.Application.GameContext.Events">
-  Events
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameContext.cs/#L21"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EventBus Events { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Events.EventBus.html">EventBus</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameContext.Events.html#CardGame_Core_Application_GameContext_Events">Events</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameContext_Factory_" data-uid="CardGame.Core.Application.GameContext.Factory*"></a>
-
-  <h3 id="CardGame_Core_Application_GameContext_Factory" data-uid="CardGame.Core.Application.GameContext.Factory">
-  Factory
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameContext.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CardFactory Factory { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Factories.CardFactory.html">CardFactory</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameContext.Factory.html#CardGame_Core_Application_GameContext_Factory">Factory</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameContext_Keywords_" data-uid="CardGame.Core.Application.GameContext.Keywords*"></a>
-
-  <h3 id="CardGame_Core_Application_GameContext_Keywords" data-uid="CardGame.Core.Application.GameContext.Keywords">
-  Keywords
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameContext.cs/#L24"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public KeywordProcessor Keywords { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Cards.Logic.Keywords.KeywordProcessor.html">KeywordProcessor</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameContext.Keywords.html#CardGame_Core_Application_GameContext_Keywords">Keywords</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-  <a id="CardGame_Core_Application_GameContext_Rng_" data-uid="CardGame.Core.Application.GameContext.Rng*"></a>
-
-  <h3 id="CardGame_Core_Application_GameContext_Rng" data-uid="CardGame.Core.Application.GameContext.Rng">
-  Rng
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Bluzacy2/CardGame/blob/main/Source/CardGame.Core/Application/GameContext.cs/#L20"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DeterministicRng Rng { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="CardGame.Core.Application.DeterministicRng.html">DeterministicRng</a></dt>
+  <dl class="jumplist">
+    <dt><a class="xref" href="CardGame.Core.Application.GameContext.Rng.html#CardGame_Core_Application_GameContext_Rng">Rng</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
 
 
 

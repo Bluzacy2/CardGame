@@ -420,7 +420,7 @@ references:
   fullName: System
 - uid: CardGame.Core.State.Models.Line.#ctor*
   commentId: Overload:CardGame.Core.State.Models.Line.#ctor
-  href: CardGame.Core.State.Models.Line.html#CardGame_Core_State_Models_Line__ctor_System_Int32_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_
+  href: CardGame.Core.State.Models.Line.-ctor.html#CardGame_Core_State_Models_Line__ctor_System_Int32_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_
   name: Line
   nameWithType: Line.Line
   fullName: CardGame.Core.State.Models.Line.Line
@@ -484,25 +484,25 @@ references:
     href: CardGame.Core.Cards.Models.html
 - uid: CardGame.Core.State.Models.Line.Index*
   commentId: Overload:CardGame.Core.State.Models.Line.Index
-  href: CardGame.Core.State.Models.Line.html#CardGame_Core_State_Models_Line_Index
+  href: CardGame.Core.State.Models.Line.Index.html#CardGame_Core_State_Models_Line_Index
   name: Index
   nameWithType: Line.Index
   fullName: CardGame.Core.State.Models.Line.Index
 - uid: CardGame.Core.State.Models.Line.Player1Unit*
   commentId: Overload:CardGame.Core.State.Models.Line.Player1Unit
-  href: CardGame.Core.State.Models.Line.html#CardGame_Core_State_Models_Line_Player1Unit
+  href: CardGame.Core.State.Models.Line.Player1Unit.html#CardGame_Core_State_Models_Line_Player1Unit
   name: Player1Unit
   nameWithType: Line.Player1Unit
   fullName: CardGame.Core.State.Models.Line.Player1Unit
 - uid: CardGame.Core.State.Models.Line.Player2Unit*
   commentId: Overload:CardGame.Core.State.Models.Line.Player2Unit
-  href: CardGame.Core.State.Models.Line.html#CardGame_Core_State_Models_Line_Player2Unit
+  href: CardGame.Core.State.Models.Line.Player2Unit.html#CardGame_Core_State_Models_Line_Player2Unit
   name: Player2Unit
   nameWithType: Line.Player2Unit
   fullName: CardGame.Core.State.Models.Line.Player2Unit
 - uid: CardGame.Core.State.Models.Line.Empty*
   commentId: Overload:CardGame.Core.State.Models.Line.Empty
-  href: CardGame.Core.State.Models.Line.html#CardGame_Core_State_Models_Line_Empty_System_Int32_
+  href: CardGame.Core.State.Models.Line.Empty.html#CardGame_Core_State_Models_Line_Empty_System_Int32_
   name: Empty
   nameWithType: Line.Empty
   fullName: CardGame.Core.State.Models.Line.Empty
@@ -515,7 +515,7 @@ references:
   fullName: CardGame.Core.State.Models.Line
 - uid: CardGame.Core.State.Models.Line.IsSlotEmpty*
   commentId: Overload:CardGame.Core.State.Models.Line.IsSlotEmpty
-  href: CardGame.Core.State.Models.Line.html#CardGame_Core_State_Models_Line_IsSlotEmpty_System_Int32_
+  href: CardGame.Core.State.Models.Line.IsSlotEmpty.html#CardGame_Core_State_Models_Line_IsSlotEmpty_System_Int32_
   name: IsSlotEmpty
   nameWithType: Line.IsSlotEmpty
   fullName: CardGame.Core.State.Models.Line.IsSlotEmpty
@@ -531,7 +531,7 @@ references:
   name.vb: Boolean
 - uid: CardGame.Core.State.Models.Line.GetAllUnits*
   commentId: Overload:CardGame.Core.State.Models.Line.GetAllUnits
-  href: CardGame.Core.State.Models.Line.html#CardGame_Core_State_Models_Line_GetAllUnits
+  href: CardGame.Core.State.Models.Line.GetAllUnits.html#CardGame_Core_State_Models_Line_GetAllUnits
   name: GetAllUnits
   nameWithType: Line.GetAllUnits
   fullName: CardGame.Core.State.Models.Line.GetAllUnits
@@ -630,13 +630,14 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: CardGame.Core.State.Models.Line.WithUnitPlaced*
   commentId: Overload:CardGame.Core.State.Models.Line.WithUnitPlaced
-  href: CardGame.Core.State.Models.Line.html#CardGame_Core_State_Models_Line_WithUnitPlaced_System_Int32_CardGame_Core_Cards_Models_CardInstance_
+  href: CardGame.Core.State.Models.Line.WithUnitPlaced.html#CardGame_Core_State_Models_Line_WithUnitPlaced_System_Int32_CardGame_Core_Cards_Models_CardInstance_
   name: WithUnitPlaced
   nameWithType: Line.WithUnitPlaced
   fullName: CardGame.Core.State.Models.Line.WithUnitPlaced
 - uid: CardGame.Core.State.Models.Line.UpdateUnits*
   commentId: Overload:CardGame.Core.State.Models.Line.UpdateUnits
-  href: CardGame.Core.State.Models.Line.html#CardGame_Core_State_Models_Line_UpdateUnits_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_
+  href: CardGame.Core.State.Models.Line.UpdateUnits.html#CardGame_Core_State_Models_Line_UpdateUnits_CardGame_Core_Cards_Models_CardInstance_CardGame_Core_Cards_Models_CardInstance_
   name: UpdateUnits
   nameWithType: Line.UpdateUnits
   fullName: CardGame.Core.State.Models.Line.UpdateUnits
+memberLayout: SeparatePages

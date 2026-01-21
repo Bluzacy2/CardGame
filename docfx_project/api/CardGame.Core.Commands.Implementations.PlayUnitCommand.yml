@@ -354,14 +354,14 @@ references:
     href: CardGame.Core.Commands.Interfaces.html
 - uid: CardGame.Core.Commands.Implementations.PlayUnitCommand.PlayerId*
   commentId: Overload:CardGame.Core.Commands.Implementations.PlayUnitCommand.PlayerId
-  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.html#CardGame_Core_Commands_Implementations_PlayUnitCommand_PlayerId
+  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.PlayerId.html#CardGame_Core_Commands_Implementations_PlayUnitCommand_PlayerId
   name: PlayerId
   nameWithType: PlayUnitCommand.PlayerId
   fullName: CardGame.Core.Commands.Implementations.PlayUnitCommand.PlayerId
 - uid: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
   commentId: P:CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
   parent: CardGame.Core.Commands.Interfaces.IGameCommand
-  href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_PlayerId
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId.html#CardGame_Core_Commands_Interfaces_IGameCommand_PlayerId
   name: PlayerId
   nameWithType: IGameCommand.PlayerId
   fullName: CardGame.Core.Commands.Interfaces.IGameCommand.PlayerId
@@ -377,19 +377,19 @@ references:
   name.vb: Integer
 - uid: CardGame.Core.Commands.Implementations.PlayUnitCommand.CardInstanceId*
   commentId: Overload:CardGame.Core.Commands.Implementations.PlayUnitCommand.CardInstanceId
-  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.html#CardGame_Core_Commands_Implementations_PlayUnitCommand_CardInstanceId
+  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.CardInstanceId.html#CardGame_Core_Commands_Implementations_PlayUnitCommand_CardInstanceId
   name: CardInstanceId
   nameWithType: PlayUnitCommand.CardInstanceId
   fullName: CardGame.Core.Commands.Implementations.PlayUnitCommand.CardInstanceId
 - uid: CardGame.Core.Commands.Implementations.PlayUnitCommand.TargetLineIndex*
   commentId: Overload:CardGame.Core.Commands.Implementations.PlayUnitCommand.TargetLineIndex
-  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.html#CardGame_Core_Commands_Implementations_PlayUnitCommand_TargetLineIndex
+  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.TargetLineIndex.html#CardGame_Core_Commands_Implementations_PlayUnitCommand_TargetLineIndex
   name: TargetLineIndex
   nameWithType: PlayUnitCommand.TargetLineIndex
   fullName: CardGame.Core.Commands.Implementations.PlayUnitCommand.TargetLineIndex
 - uid: CardGame.Core.Commands.Implementations.PlayUnitCommand.SelectedTargetId*
   commentId: Overload:CardGame.Core.Commands.Implementations.PlayUnitCommand.SelectedTargetId
-  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.html#CardGame_Core_Commands_Implementations_PlayUnitCommand_SelectedTargetId
+  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.SelectedTargetId.html#CardGame_Core_Commands_Implementations_PlayUnitCommand_SelectedTargetId
   name: SelectedTargetId
   nameWithType: PlayUnitCommand.SelectedTargetId
   fullName: CardGame.Core.Commands.Implementations.PlayUnitCommand.SelectedTargetId
@@ -440,7 +440,7 @@ references:
   - name: )
 - uid: CardGame.Core.Commands.Implementations.PlayUnitCommand.#ctor*
   commentId: Overload:CardGame.Core.Commands.Implementations.PlayUnitCommand.#ctor
-  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.html#CardGame_Core_Commands_Implementations_PlayUnitCommand__ctor_System_Int32_System_Int32_System_Int32_System_Nullable_System_Int32__
+  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.-ctor.html#CardGame_Core_Commands_Implementations_PlayUnitCommand__ctor_System_Int32_System_Int32_System_Int32_System_Nullable_System_Int32__
   name: PlayUnitCommand
   nameWithType: PlayUnitCommand.PlayUnitCommand
   fullName: CardGame.Core.Commands.Implementations.PlayUnitCommand.PlayUnitCommand
@@ -449,21 +449,21 @@ references:
   name.vb: New
 - uid: CardGame.Core.Commands.Implementations.PlayUnitCommand.Execute*
   commentId: Overload:CardGame.Core.Commands.Implementations.PlayUnitCommand.Execute
-  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.html#CardGame_Core_Commands_Implementations_PlayUnitCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Commands.Implementations.PlayUnitCommand.Execute.html#CardGame_Core_Commands_Implementations_PlayUnitCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
   name: Execute
   nameWithType: PlayUnitCommand.Execute
   fullName: CardGame.Core.Commands.Implementations.PlayUnitCommand.Execute
 - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
   commentId: M:CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
   parent: CardGame.Core.Commands.Interfaces.IGameCommand
-  href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+  href: CardGame.Core.Commands.Interfaces.IGameCommand.Execute.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
   name: Execute(GameState, EventBus, GameContext)
   nameWithType: IGameCommand.Execute(GameState, EventBus, GameContext)
   fullName: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState, CardGame.Core.Events.EventBus, CardGame.Core.Application.GameContext)
   spec.csharp:
   - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
     name: Execute
-    href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.Execute.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -482,7 +482,7 @@ references:
   spec.vb:
   - uid: CardGame.Core.Commands.Interfaces.IGameCommand.Execute(CardGame.Core.State.Models.GameState,CardGame.Core.Events.EventBus,CardGame.Core.Application.GameContext)
     name: Execute
-    href: CardGame.Core.Commands.Interfaces.IGameCommand.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
+    href: CardGame.Core.Commands.Interfaces.IGameCommand.Execute.html#CardGame_Core_Commands_Interfaces_IGameCommand_Execute_CardGame_Core_State_Models_GameState_CardGame_Core_Events_EventBus_CardGame_Core_Application_GameContext_
   - name: (
   - uid: CardGame.Core.State.Models.GameState
     name: GameState
@@ -617,3 +617,4 @@ references:
   - uid: CardGame.Core.Application
     name: Application
     href: CardGame.Core.Application.html
+memberLayout: SeparatePages

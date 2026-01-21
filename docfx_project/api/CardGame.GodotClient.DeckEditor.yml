@@ -1,0 +1,718 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.DeckEditor
+  commentId: T:CardGame.GodotClient.DeckEditor
+  id: DeckEditor
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.DeckEditor.CardCountLabel
+  - CardGame.GodotClient.DeckEditor.CardScene
+  - CardGame.GodotClient.DeckEditor.DeckNameInput
+  - CardGame.GodotClient.DeckEditor.DeckSlotsGrid
+  - CardGame.GodotClient.DeckEditor.ExitButton
+  - CardGame.GodotClient.DeckEditor.LibraryEntryScene
+  - CardGame.GodotClient.DeckEditor.LibraryGrid
+  - CardGame.GodotClient.DeckEditor.PreloadedDeck
+  - CardGame.GodotClient.DeckEditor.SaveButton
+  - CardGame.GodotClient.DeckEditor.SlotScene
+  - CardGame.GodotClient.DeckEditor._Ready
+  langs:
+  - csharp
+  - vb
+  name: DeckEditor
+  nameWithType: DeckEditor
+  fullName: CardGame.GodotClient.DeckEditor
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPathAttributeGenerator/CardGame.GodotClient.DeckEditor_ScriptPath.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckEditor
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPathAttributeGenerator/CardGame.GodotClient.DeckEditor_ScriptPath.generated.cs
+    startLine: 3
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Manages the deck building interface, allowing players to create, edit, and save card decks.
+
+    Handles the visualization of the card library, the current deck slots, and file I/O operations.
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/DeckEditor.cs")]
+
+      public class DeckEditor : Control
+    content.vb: >-
+      <ScriptPath("res://Scripts/DeckEditor.cs")>
+
+      Public Class DeckEditor Inherits Control
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  - Godot.CanvasItem
+  - Godot.Control
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/DeckEditor.cs
+- uid: CardGame.GodotClient.DeckEditor.LibraryGrid
+  commentId: F:CardGame.GodotClient.DeckEditor.LibraryGrid
+  id: LibraryGrid
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: LibraryGrid
+  nameWithType: DeckEditor.LibraryGrid
+  fullName: CardGame.GodotClient.DeckEditor.LibraryGrid
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LibraryGrid
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 22
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportGroup("Kontenery", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public Control LibraryGrid
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <ExportGroup("Kontenery", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public LibraryGrid As Control
+  attributes:
+  - type: Godot.ExportGroupAttribute
+    ctor: Godot.ExportGroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Kontenery
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.DeckEditor.DeckSlotsGrid
+  commentId: F:CardGame.GodotClient.DeckEditor.DeckSlotsGrid
+  id: DeckSlotsGrid
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: DeckSlotsGrid
+  nameWithType: DeckEditor.DeckSlotsGrid
+  fullName: CardGame.GodotClient.DeckEditor.DeckSlotsGrid
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckSlotsGrid
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 24
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Container for displaying the cards currently in the deck.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Control DeckSlotsGrid
+    return:
+      type: Godot.Control
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public DeckSlotsGrid As Control
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.DeckEditor.DeckNameInput
+  commentId: F:CardGame.GodotClient.DeckEditor.DeckNameInput
+  id: DeckNameInput
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: DeckNameInput
+  nameWithType: DeckEditor.DeckNameInput
+  fullName: CardGame.GodotClient.DeckEditor.DeckNameInput
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: DeckNameInput
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 28
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportGroup("UI Elementy", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public LineEdit DeckNameInput
+    return:
+      type: Godot.LineEdit
+    content.vb: >-
+      <ExportGroup("UI Elementy", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public DeckNameInput As LineEdit
+  attributes:
+  - type: Godot.ExportGroupAttribute
+    ctor: Godot.ExportGroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: UI Elementy
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.DeckEditor.CardCountLabel
+  commentId: F:CardGame.GodotClient.DeckEditor.CardCountLabel
+  id: CardCountLabel
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: CardCountLabel
+  nameWithType: DeckEditor.CardCountLabel
+  fullName: CardGame.GodotClient.DeckEditor.CardCountLabel
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardCountLabel
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 30
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Label displaying the current card count (e.g., "15/30").
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Label CardCountLabel
+    return:
+      type: Godot.Label
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public CardCountLabel As Label
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.DeckEditor.SaveButton
+  commentId: F:CardGame.GodotClient.DeckEditor.SaveButton
+  id: SaveButton
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: SaveButton
+  nameWithType: DeckEditor.SaveButton
+  fullName: CardGame.GodotClient.DeckEditor.SaveButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SaveButton
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 32
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Button to save the current deck to a JSON file.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button SaveButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public SaveButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.DeckEditor.ExitButton
+  commentId: F:CardGame.GodotClient.DeckEditor.ExitButton
+  id: ExitButton
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: ExitButton
+  nameWithType: DeckEditor.ExitButton
+  fullName: CardGame.GodotClient.DeckEditor.ExitButton
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ExitButton
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 34
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Button to exit the editor and return to deck selection.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public Button ExitButton
+    return:
+      type: Godot.Button
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public ExitButton As Button
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.DeckEditor.CardScene
+  commentId: F:CardGame.GodotClient.DeckEditor.CardScene
+  id: CardScene
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: CardScene
+  nameWithType: DeckEditor.CardScene
+  fullName: CardGame.GodotClient.DeckEditor.CardScene
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: CardScene
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 38
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  syntax:
+    content: >-
+      [ExportGroup("Szablony", "")]
+
+      [Export(PropertyHint.None, "")]
+
+      public PackedScene CardScene
+    return:
+      type: Godot.PackedScene
+    content.vb: >-
+      <ExportGroup("Szablony", "")>
+
+      <Export(PropertyHint.None, "")>
+
+      Public CardScene As PackedScene
+  attributes:
+  - type: Godot.ExportGroupAttribute
+    ctor: Godot.ExportGroupAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: Szablony
+    - type: System.String
+      value: ''
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.DeckEditor.SlotScene
+  commentId: F:CardGame.GodotClient.DeckEditor.SlotScene
+  id: SlotScene
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: SlotScene
+  nameWithType: DeckEditor.SlotScene
+  fullName: CardGame.GodotClient.DeckEditor.SlotScene
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SlotScene
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 40
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Template scene for instantiating empty card slots in the deck grid.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public PackedScene SlotScene
+    return:
+      type: Godot.PackedScene
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public SlotScene As PackedScene
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.DeckEditor.LibraryEntryScene
+  commentId: F:CardGame.GodotClient.DeckEditor.LibraryEntryScene
+  id: LibraryEntryScene
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: LibraryEntryScene
+  nameWithType: DeckEditor.LibraryEntryScene
+  fullName: CardGame.GodotClient.DeckEditor.LibraryEntryScene
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: LibraryEntryScene
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 42
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Template scene for instantiating library entries.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public PackedScene LibraryEntryScene
+    return:
+      type: Godot.PackedScene
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public LibraryEntryScene As PackedScene
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.DeckEditor.PreloadedDeck
+  commentId: P:CardGame.GodotClient.DeckEditor.PreloadedDeck
+  id: PreloadedDeck
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: PreloadedDeck
+  nameWithType: DeckEditor.PreloadedDeck
+  fullName: CardGame.GodotClient.DeckEditor.PreloadedDeck
+  type: Property
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PreloadedDeck
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 54
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Optional deck data loaded when opening the editor to edit an existing deck.
+
+    If null, a new deck is created.
+  example: []
+  syntax:
+    content: public DeckData PreloadedDeck { get; set; }
+    parameters: []
+    return:
+      type: CardGame.Core.Decks.Data.DeckData
+    content.vb: Public Property PreloadedDeck As DeckData
+  overload: CardGame.GodotClient.DeckEditor.PreloadedDeck*
+- uid: CardGame.GodotClient.DeckEditor._Ready
+  commentId: M:CardGame.GodotClient.DeckEditor._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.DeckEditor
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: DeckEditor._Ready()
+  fullName: CardGame.GodotClient.DeckEditor._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/DeckEditor.cs
+    startLine: 69
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Initializes the editor, loads the card library, sets up slots, and populates UI if a deck is preloaded.
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.DeckEditor._Ready*
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: Godot.CanvasItem
+  commentId: T:Godot.CanvasItem
+  parent: Godot
+  isExternal: true
+  name: CanvasItem
+  nameWithType: CanvasItem
+  fullName: Godot.CanvasItem
+- uid: Godot.Control
+  commentId: T:Godot.Control
+  parent: Godot
+  isExternal: true
+  name: Control
+  nameWithType: Control
+  fullName: Godot.Control
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.LineEdit
+  commentId: T:Godot.LineEdit
+  parent: Godot
+  isExternal: true
+  name: LineEdit
+  nameWithType: LineEdit
+  fullName: Godot.LineEdit
+- uid: Godot.Label
+  commentId: T:Godot.Label
+  parent: Godot
+  isExternal: true
+  name: Label
+  nameWithType: Label
+  fullName: Godot.Label
+- uid: Godot.Button
+  commentId: T:Godot.Button
+  parent: Godot
+  isExternal: true
+  name: Button
+  nameWithType: Button
+  fullName: Godot.Button
+- uid: Godot.PackedScene
+  commentId: T:Godot.PackedScene
+  parent: Godot
+  isExternal: true
+  name: PackedScene
+  nameWithType: PackedScene
+  fullName: Godot.PackedScene
+- uid: CardGame.GodotClient.DeckEditor.PreloadedDeck*
+  commentId: Overload:CardGame.GodotClient.DeckEditor.PreloadedDeck
+  href: CardGame.GodotClient.DeckEditor.PreloadedDeck.html#CardGame_GodotClient_DeckEditor_PreloadedDeck
+  name: PreloadedDeck
+  nameWithType: DeckEditor.PreloadedDeck
+  fullName: CardGame.GodotClient.DeckEditor.PreloadedDeck
+- uid: CardGame.Core.Decks.Data.DeckData
+  commentId: T:CardGame.Core.Decks.Data.DeckData
+  parent: CardGame.Core.Decks.Data
+  href: CardGame.Core.Decks.Data.DeckData.html
+  name: DeckData
+  nameWithType: DeckData
+  fullName: CardGame.Core.Decks.Data.DeckData
+- uid: CardGame.Core.Decks.Data
+  commentId: N:CardGame.Core.Decks.Data
+  href: CardGame.html
+  name: CardGame.Core.Decks.Data
+  nameWithType: CardGame.Core.Decks.Data
+  fullName: CardGame.Core.Decks.Data
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.Core
+    name: Core
+    href: CardGame.Core.html
+  - name: .
+  - uid: CardGame.Core.Decks
+    name: Decks
+    href: CardGame.Core.Decks.html
+  - name: .
+  - uid: CardGame.Core.Decks.Data
+    name: Data
+    href: CardGame.Core.Decks.Data.html
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.DeckEditor._Ready*
+  commentId: Overload:CardGame.GodotClient.DeckEditor._Ready
+  href: CardGame.GodotClient.DeckEditor._Ready.html#CardGame_GodotClient_DeckEditor__Ready
+  name: _Ready
+  nameWithType: DeckEditor._Ready
+  fullName: CardGame.GodotClient.DeckEditor._Ready
+memberLayout: SeparatePages
