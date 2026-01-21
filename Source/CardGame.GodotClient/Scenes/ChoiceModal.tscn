@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk0g276i0rpuu"]
+[gd_scene load_steps=5 format=3 uid="uid://dk0g276i0rpuu"]
 
 [ext_resource type="Script" uid="uid://8lwq036y4o7w" path="res://Scripts/ChoiceModal.cs" id="1_pdqlu"]
+[ext_resource type="FontFile" uid="uid://mf3uygscjewx" path="res://Assets/Fonts/Ari-CBold.ttf" id="2_hqtcm"]
 
 [sub_resource type="Theme" id="Theme_pdqlu"]
 
@@ -43,6 +44,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hqtcm")
 text = "WYBIERZ OPCJĘ"
 horizontal_alignment = 1
 

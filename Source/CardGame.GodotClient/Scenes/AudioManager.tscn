@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://qwktwkrui1g7"]
+
+[ext_resource type="AudioStream" uid="uid://pot2dgsyqy32" path="res://Assets/menumusic.mp3" id="1_dygvs"]
+[ext_resource type="Script" uid="uid://cxg82ohv15lhi" path="res://Scenes/AudioManager.cs" id="1_i2xd5"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_i2xd5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_dygvs")
+autoplay = true
+parameters/looping = true

@@ -29,7 +29,7 @@ public partial class CardView : Control
 
 	public CardInstance MyCardData { get; private set; }
 	public event Action<CardView> OnClicked;
-
+	private Vector2 _baseScale = Vector2.One;
 	//public override void _Ready()
 	//{
 	// To jest baza - mniejsza karta w edytorze talii
@@ -68,7 +68,8 @@ public partial class CardView : Control
 			// OPCJONALNIE: Jeśli chcesz, by ramka przycinała rogi dzieci:
 			// Background.ClipChildren = FillModeEnum.ClipAndDraw;
 		}
-
+		MouseEntered += OnHoverEnter;
+		MouseExited += OnHoverExit;
 		// 3. AUTOMATYCZNA NAPRAWA DZIECI (Illustration, Atk, Hp itd.)
 		// Ta pętla przejdzie przez wszystko co wrzuciłeś do środka karty
 		foreach (var child in GetChildren())
@@ -85,6 +86,30 @@ public partial class CardView : Control
 			}
 		}
 	}
+	private void OnHoverEnter()
+	{
+		// Powiększaj tylko karty w Twojej ręce (HandContainer)
+		if (GetParent() != null && GetParent().Name == "HandContainer")
+		{
+			ZIndex = 100;
+			var tween = CreateTween();
+			tween.SetParallel(true);
+			tween.TweenProperty(this, "scale", new Vector2(1.2f, 1.2f), 0.1f);
+			tween.TweenProperty(this, "position:y", -100, 0.1f);
+		}
+	}
+
+	private void OnHoverExit()
+	{
+		if (GetParent() != null && GetParent().Name == "HandContainer")
+		{
+			ZIndex = 0;
+			var tween = CreateTween();
+			tween.SetParallel(true);
+			tween.TweenProperty(this, "scale", Vector2.One, 0.1f);
+			tween.TweenProperty(this, "position:y", 0, 0.1f);
+		}
+	}
 
 	public override void _GuiInput(InputEvent @event)
 	{
@@ -99,6 +124,7 @@ public partial class CardView : Control
 		if (card == null) return;
 		MyCardData = card;
 
+		if (Background != null) Background.Visible = true;
 		// 1. Podstawowe teksty
 		if (NameLabel != null) NameLabel.Text = card.Definition.Name.ToUpper();
 		if (DescLabel != null) DescLabel.Text = card.Definition.Description;
@@ -214,15 +240,48 @@ public partial class CardView : Control
 
 	// --- LOGIKA ORYGINALNA (Highlight, Drag&Drop, Count) ---
 
+
 	public void RenderCardBack()
+{
+	MyCardData = null;
+	ShowUnitStats(false);
+
+	// Wyłączamy wszystkie teksty
+	if (NameLabel != null) { NameLabel.Text = ""; NameLabel.Visible = false; }
+	if (DescLabel != null) { DescLabel.Text = ""; DescLabel.Visible = false; }
+	if (CostLabel != null) { CostLabel.Visible = false; }
+	if (SubtypeLabel != null) SubtypeLabel.Visible = false;
+	if (KeywordsLabel != null) KeywordsLabel.Visible = false;
+	if (AttackSquare != null) AttackSquare.Visible = false;
+	if (HealthSquare != null) HealthSquare.Visible = false;
+	
+	// Jeśli masz osobny obiekt tła, ukryj go, żeby nie przeszkadzał
+	if (Background != null) Background.Visible = false;
+
+	// --- FIX: UŻYWAMY GŁÓWNEJ ILUSTRACJI ---
+	if (Illustration != null)
 	{
-		MyCardData = null;
-		ShowUnitStats(false);
-		if (NameLabel != null) NameLabel.Visible = false;
-		if (DescLabel != null) DescLabel.Visible = false;
-		if (CostLabel != null) CostLabel.Visible = false;
-		if (Background != null) Background.SelfModulate = new Color(0.3f, 0.15f, 0.05f);
+		Illustration.Visible = true;
+		
+		// 1. Tworzymy obrazek 1x1 w kolorze CZARNYM
+		var image = Image.Create(1, 1, false, Image.Format.Rgba8);
+		image.Fill(Colors.Black);
+		var texture = ImageTexture.CreateFromImage(image);
+
+		// 2. Przypisujemy go
+		Illustration.Texture = texture;
+		
+		// 3. Resetujemy kolory (żeby nie był np. przyciemniony)
+		Illustration.SelfModulate = Colors.White;
+		Illustration.Modulate = Colors.White;
+
+		// 4. KLUCZOWE: Rozciąganie
+		// To sprawi, że ten mały czarny piksel wypełni całą kartę
+		Illustration.SetAnchorsPreset(LayoutPreset.FullRect);
+		Illustration.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+		Illustration.StretchMode = TextureRect.StretchModeEnum.Scale;
 	}
+}
 
 	public void SetMulliganSelected(bool selected)
 	{

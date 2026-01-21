@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddrqm5d5uburs"]
+[gd_scene load_steps=7 format=3 uid="uid://ddrqm5d5uburs"]
 
 [ext_resource type="Script" uid="uid://dnuppewhgypgv" path="res://Scripts/MainMenu.cs" id="1_tt5f1"]
 [ext_resource type="FontFile" uid="uid://mf3uygscjewx" path="res://Assets/Fonts/Ari-CBold.ttf" id="2_853f1"]
+[ext_resource type="Texture2D" uid="uid://cos3xe6molcw8" path="res://Assets/Cards/Cards/FrameWork/AttackSquare.png" id="3_8saeu"]
 
 [sub_resource type="Theme" id="Theme_bnhvo"]
 
@@ -111,3 +112,14 @@ theme_override_font_sizes/font_size = 128
 text = "CARD GAME PROJECT"
 horizontal_alignment = 1
 justification_flags = 162
+
+[node name="Music" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1756.0
+offset_top = 968.0
+offset_right = 1905.0
+offset_bottom = 1069.0
+icon = ExtResource("3_8saeu")
+icon_alignment = 1
+expand_icon = true

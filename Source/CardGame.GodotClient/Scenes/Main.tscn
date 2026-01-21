@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dohitnkit2tdm"]
+[gd_scene load_steps=10 format=3 uid="uid://dohitnkit2tdm"]
 
 [ext_resource type="Script" uid="uid://brjlv20u4il2w" path="res://Scripts/GameBootstrap.cs" id="1_rgh2o"]
 [ext_resource type="Script" uid="uid://rxyqp5ic26n7" path="res://Scripts/UIManager.cs" id="2_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://b2cbjoaeymfw0" path="res://Scenes/Card.tscn" id="3_v1gob"]
 [ext_resource type="PackedScene" uid="uid://c2ia14ntiwycv" path="res://Scenes/Line.tscn" id="4_jw32o"]
 [ext_resource type="PackedScene" uid="uid://dk0g276i0rpuu" path="res://Scenes/ChoiceModal.tscn" id="5_pbw6q"]
+[ext_resource type="Texture2D" uid="uid://c1ruh5k2fh13p" path="res://Assets/Cards/Cards/CardBack.png" id="6_jw32o"]
+[ext_resource type="FontFile" uid="uid://mf3uygscjewx" path="res://Assets/Fonts/Ari-CBold.ttf" id="6_v1gob"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0du0"]
 
@@ -17,7 +19,7 @@ UI = NodePath("UIManager")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="UIManager" type="Node" parent="." node_paths=PackedStringArray("HandContainer", "BoardContainer", "EnemyHandContainer", "VFXContainer", "EndTurnButton", "CancelSpellButton", "RestartButton", "TargetingArrow", "PlayerHpLabel", "PlayerManaLabel", "EnemyHpLabel", "EnemyManaLabel", "NotificationLayer", "MessagePanel", "MessageLabel", "MulliganPanel", "MulliganCardsContainer", "ConfirmMulliganButton", "MulliganCounterLabel")]
+[node name="UIManager" type="Node" parent="." node_paths=PackedStringArray("HandContainer", "BoardContainer", "EnemyHandContainer", "VFXContainer", "EndTurnButton", "CancelSpellButton", "RestartButton", "TargetingArrow", "PlayerHpLabel", "EnemyHpLabel", "NotificationLayer", "MessagePanel", "MessageLabel", "MulliganPanel", "MulliganCardsContainer", "ConfirmMulliganButton", "MulliganCounterLabel", "PlayerBloodGrid", "EnemyBloodGrid", "DeckCountLabel", "GraveyardContainer")]
 script = ExtResource("2_pbw6q")
 HandContainer = NodePath("GameLayer/BottomPanel/HandContainer")
 BoardContainer = NodePath("GameLayer/MiddlePanel/BoardContainer")
@@ -25,12 +27,10 @@ EnemyHandContainer = NodePath("GameLayer/TopPanel/EnemyHandContainer")
 VFXContainer = NodePath("NotificationLayer/VFXContainer")
 EndTurnButton = NodePath("GameLayer/MiddlePanel/RightSidebar/EndTurnButton")
 CancelSpellButton = NodePath("CancelSpellButton")
-RestartButton = NodePath("NotificationLayer/MessagePanel/VBoxContainer/RestartButton")
+RestartButton = NodePath("GameLayer/MiddlePanel/RightSidebar/RestartButton")
 TargetingArrow = NodePath("TargetingArrow")
-PlayerHpLabel = NodePath("GameLayer/BottomPanel/StatsArea/PlayerHP")
-PlayerManaLabel = NodePath("GameLayer/BottomPanel/StatsArea/PlayerMana")
-EnemyHpLabel = NodePath("GameLayer/TopPanel/TopInfo/EnemyHp")
-EnemyManaLabel = NodePath("GameLayer/TopPanel/TopInfo/EnemyMana")
+PlayerHpLabel = NodePath("GameLayer/MiddlePanel/RightSidebar/StatsArea/PlayerHP")
+EnemyHpLabel = NodePath("GameLayer/MiddlePanel/RightSidebar/TopInfo/EnemyHp")
 NotificationLayer = NodePath("NotificationLayer")
 MessagePanel = NodePath("NotificationLayer/MessagePanel")
 MessageLabel = NodePath("NotificationLayer/MessagePanel/VBoxContainer/MessageLabel")
@@ -41,6 +41,18 @@ MulliganPanel = NodePath("MulliganPanel")
 MulliganCardsContainer = NodePath("MulliganPanel/VBoxContainer/MulliganCardsContainer")
 ConfirmMulliganButton = NodePath("MulliganPanel/VBoxContainer/ConfirmMulliganButton")
 MulliganCounterLabel = NodePath("MulliganPanel/VBoxContainer/MulliganCounter")
+PlayerBloodGrid = NodePath("GameLayer/MiddlePanel/RightSidebar/StatsArea/PlayerBloodGrid")
+EnemyBloodGrid = NodePath("GameLayer/MiddlePanel/RightSidebar/TopInfo/EnemyBloodGrid")
+DeckCountLabel = NodePath("GameLayer/MiddlePanel/LeftSpacer/DeckContainer/Label")
+GraveyardContainer = NodePath("GameLayer/MiddlePanel/LeftSpacer/GraveyardContainer")
+
+[node name="ColorRect" type="ColorRect" parent="UIManager"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="GameLayer" type="VBoxContainer" parent="UIManager"]
 anchors_preset = 15
@@ -54,21 +66,8 @@ custom_minimum_size = Vector2(200, 220)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_r0du0")
 
-[node name="TopInfo" type="HBoxContainer" parent="UIManager/GameLayer/TopPanel"]
-custom_minimum_size = Vector2(0, 220)
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="EnemyHp" type="Label" parent="UIManager/GameLayer/TopPanel/TopInfo"]
-layout_mode = 2
-text = "Hp:30
-"
-
-[node name="EnemyMana" type="Label" parent="UIManager/GameLayer/TopPanel/TopInfo"]
-layout_mode = 2
-text = "Blood:Error"
-
 [node name="EnemyHandContainer" type="HBoxContainer" parent="UIManager/GameLayer/TopPanel"]
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 alignment = 1
 
@@ -77,9 +76,31 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="LeftSpacer" type="Control" parent="UIManager/GameLayer/MiddlePanel"]
-custom_minimum_size = Vector2(120, 0)
+[node name="LeftSpacer" type="VBoxContainer" parent="UIManager/GameLayer/MiddlePanel"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+
+[node name="GraveyardContainer" type="CenterContainer" parent="UIManager/GameLayer/MiddlePanel/LeftSpacer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DeckContainer" type="VBoxContainer" parent="UIManager/GameLayer/MiddlePanel/LeftSpacer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="UIManager/GameLayer/MiddlePanel/LeftSpacer/DeckContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_jw32o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UIManager/GameLayer/MiddlePanel/LeftSpacer/DeckContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v1gob")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BoardContainer" type="HBoxContainer" parent="UIManager/GameLayer/MiddlePanel"]
 custom_minimum_size = Vector2(800, 500)
@@ -105,30 +126,56 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
+[node name="TopInfo" type="VBoxContainer" parent="UIManager/GameLayer/MiddlePanel/RightSidebar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EnemyHp" type="Label" parent="UIManager/GameLayer/MiddlePanel/RightSidebar/TopInfo"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("6_v1gob")
+theme_override_font_sizes/font_size = 64
+text = "30
+"
+
+[node name="EnemyBloodGrid" type="HFlowContainer" parent="UIManager/GameLayer/MiddlePanel/RightSidebar/TopInfo"]
+layout_mode = 2
+
 [node name="EndTurnButton" type="Button" parent="UIManager/GameLayer/MiddlePanel/RightSidebar"]
 custom_minimum_size = Vector2(120, 60)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v1gob")
 text = "Koniec Fazy"
 
+[node name="RestartButton" type="Button" parent="UIManager/GameLayer/MiddlePanel/RightSidebar"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_v1gob")
+text = "Zrestartuj Grę"
+
+[node name="StatsArea" type="VBoxContainer" parent="UIManager/GameLayer/MiddlePanel/RightSidebar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerHP" type="Label" parent="UIManager/GameLayer/MiddlePanel/RightSidebar/StatsArea"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("6_v1gob")
+theme_override_font_sizes/font_size = 64
+text = "20"
+
+[node name="PlayerBloodGrid" type="HFlowContainer" parent="UIManager/GameLayer/MiddlePanel/RightSidebar/StatsArea"]
+layout_mode = 2
+
 [node name="BottomPanel" type="PanelContainer" parent="UIManager/GameLayer"]
-custom_minimum_size = Vector2(0, 220)
+custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
-
-[node name="StatsArea" type="VBoxContainer" parent="UIManager/GameLayer/BottomPanel"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-alignment = 1
-
-[node name="PlayerHP" type="Label" parent="UIManager/GameLayer/BottomPanel/StatsArea"]
-layout_mode = 2
-text = "Hp:20"
-
-[node name="PlayerMana" type="Label" parent="UIManager/GameLayer/BottomPanel/StatsArea"]
-layout_mode = 2
-text = "Blood:0"
 
 [node name="HandContainer" type="HBoxContainer" parent="UIManager/GameLayer/BottomPanel"]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(200, 280)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
@@ -141,12 +188,11 @@ default_color = Color(0.74509805, 0.74509805, 0, 1)
 
 [node name="CancelSpellButton" type="Button" parent="UIManager"]
 custom_minimum_size = Vector2(200, 50)
-offset_left = 960.0
-offset_top = 390.0
-offset_right = 1160.0
-offset_bottom = 440.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_left = 1710.0
+offset_top = 861.0
+offset_right = 1910.0
+offset_bottom = 911.0
+theme_override_fonts/font = ExtResource("6_v1gob")
 text = "Anuluj Zaklęcie"
 
 [node name="NotificationLayer" type="Control" parent="UIManager"]
@@ -173,8 +219,10 @@ mouse_filter = 2
 
 [node name="MessagePanel" type="PanelContainer" parent="UIManager/NotificationLayer"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 762.0
+offset_top = -530.0
+offset_right = 958.0
+offset_bottom = -353.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_r0du0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIManager/NotificationLayer/MessagePanel"]
@@ -184,17 +232,12 @@ alignment = 1
 
 [node name="MessageLabel" type="Label" parent="UIManager/NotificationLayer/MessagePanel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v1gob")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartButton" type="Button" parent="UIManager/NotificationLayer/MessagePanel/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Zrestartuj Grę"
-
 [node name="MulliganPanel" type="PanelContainer" parent="UIManager"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -207,12 +250,16 @@ alignment = 1
 
 [node name="MulliganTitle" type="Label" parent="UIManager/MulliganPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v1gob")
+theme_override_font_sizes/font_size = 32
 text = "WYBIERZ KARTY DO WYMIANY"
 horizontal_alignment = 1
 
 [node name="MulliganCounter" type="Label" parent="UIManager/MulliganPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0.38410568, 1)
+theme_override_fonts/font = ExtResource("6_v1gob")
+theme_override_font_sizes/font_size = 32
 text = "0 / 3"
 horizontal_alignment = 1
 
@@ -226,4 +273,5 @@ alignment = 1
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_v1gob")
 text = "ZATWIERDŹ RĘKĘ"

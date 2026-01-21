@@ -45,8 +45,12 @@ public partial class UIManager : Node
 	[Export] public Button ConfirmMulliganButton;
 	[Export] public Label MulliganCounterLabel;
 
-	
-	
+	[Export] public Control PlayerBloodGrid;     
+	[Export] public Control EnemyBloodGrid;     
+	[Export] public Label DeckCountLabel;       
+	[Export] public Control GraveyardContainer;  
+
+
 
 	// --- NOWE: GHOST UNIT ---
 	private CardView _ghostUnit;
@@ -285,14 +289,44 @@ public partial class UIManager : Node
 				return;
 			}
 		}
+		if (MessagePanel != null && MessageLabel != null)
+		{
+			string who = currentState.ActivePlayerId == playerId ? "TWOJA TURA" : "TURA BOTA";
+			string faza = GetPhaseFriendlyName(currentState.CurrentPhase);
 
-		if (_lastRenderedState != null) CheckPhaseChange(currentState, _lastRenderedState, playerId);
+			MessageLabel.Text = $"{faza}\n{who}\nRUNDA {currentState.TurnNumber}";
+
+			MessagePanel.Visible = true;
+			MessagePanel.Modulate = new Color(1, 1, 1, 1);
+
+			if (_activeMessageTween != null && _activeMessageTween.IsValid())
+				_activeMessageTween.Kill();
+		}
+
 		UpdateStats(currentState, playerId);
 		RenderHand(currentState, playerId);
 		RenderEnemyHand(currentState, playerId);
 		RenderBoard(currentState);
+		RenderPiles(currentState, playerId); // Nowa metoda do Decku/Cmentarza
 
 		_lastRenderedState = currentState;
+	}
+
+	private void RenderPiles(GameState state, int playerId)
+	{
+		var p1 = state.GetPlayer(playerId);
+		if (DeckCountLabel != null)
+			DeckCountLabel.Text = $"{p1.DrawPile.Count}x";
+
+		if (GraveyardContainer != null && p1.DiscardPile.Any())
+		{
+			foreach (Node child in GraveyardContainer.GetChildren()) child.QueueFree();
+			var lastDead = p1.DiscardPile.Last();
+			var view = CardSceneTemplate.Instantiate<CardView>();
+			GraveyardContainer.AddChild(view);
+			view.Render(lastDead);
+			view.Modulate = new Color(0.5f, 0.5f, 0.5f);
+		}
 	}
 
 	public void ToggleMulliganPanel(bool visible)
@@ -490,10 +524,40 @@ public partial class UIManager : Node
 		var p1 = state.GetPlayer(playerId);
 		var p2 = state.GetOpponent(playerId);
 
-		if (PlayerHpLabel != null) PlayerHpLabel.Text = $"HP: {p1.Health}";
-		if (PlayerManaLabel != null) PlayerManaLabel.Text = $"Krew: {p1.CurrentBlood}/{p1.MaxBlood}";
-		if (EnemyHpLabel != null) EnemyHpLabel.Text = $"Wróg HP: {p2.Health}";
-		if (EnemyManaLabel != null) EnemyManaLabel.Text = $"Krew: {p2.CurrentBlood}/{p2.MaxBlood}";
+		if (PlayerHpLabel != null) PlayerHpLabel.Text = p1.Health.ToString();
+		if (EnemyHpLabel != null) EnemyHpLabel.Text = p2.Health.ToString();
+
+		DrawBlood(PlayerBloodGrid, p1.CurrentBlood, p1.MaxBlood);
+		DrawBlood(EnemyBloodGrid, p2.CurrentBlood, p2.MaxBlood);
+	}
+
+	private string GetPhaseFriendlyName(GamePhase phase)
+	{
+		switch (phase)
+		{
+			case GamePhase.Mulligan: return "WYMIANA";
+			case GamePhase.UnitOnly: return "JEDNOSTKI";
+			case GamePhase.UnitAndAction: return "MIESZANA";
+			case GamePhase.ActionOnly: return "AKCJE";
+			default: return phase.ToString().ToUpper();
+		}
+	}
+
+	private void DrawBlood(Control grid, int current, int max)
+	{
+		if (grid == null) return;
+		foreach (Node child in grid.GetChildren()) child.QueueFree();
+
+		for (int i = 0; i < max; i++)
+		{
+			var tr = new TextureRect();
+			tr.CustomMinimumSize = new Vector2(25, 25);
+			tr.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+			tr.Texture = GD.Load<Texture2D>(i < current ?
+				"res://Assets/Menus/Game/bloodPoint.png" :
+				"res://Assets/Menus/Game/bloodUnactive.png");
+			grid.AddChild(tr);
+		}
 	}
 
 	private void RenderHand(GameState state, int playerId)
@@ -522,16 +586,20 @@ public partial class UIManager : Node
 	private void RenderEnemyHand(GameState state, int playerId)
 	{
 		if (EnemyHandContainer == null || CardSceneTemplate == null) return;
-
 		var p2 = state.GetOpponent(playerId);
 
 		foreach (Node child in EnemyHandContainer.GetChildren()) child.QueueFree();
+
 		for (int i = 0; i < p2.Hand.Count; i++)
 		{
 			var cardBack = CardSceneTemplate.Instantiate<CardView>();
 			EnemyHandContainer.AddChild(cardBack);
 			cardBack.RenderCardBack();
-			cardBack.Scale = new Vector2(0.6f, 0.6f);
+
+
+			cardBack.Scale = new Vector2(0.4f, 0.4f);
+
+			cardBack.CustomMinimumSize = new Vector2(80, 110);
 		}
 	}
 	public void ShowChoiceModal(IEnumerable<string> options, Action<int> onSelected, List<bool> enabledStates = null)

@@ -12,6 +12,7 @@ public partial class LineView : Control
 	[Signal] public delegate void CardDroppedOnLineEventHandler(int cardInstanceId, int lineIndex);
 
 	private int _myIndex;
+	private readonly string[] _romans = { "I", "II", "III", "IV" };
 
 	public override void _Ready()
 	{
@@ -22,7 +23,15 @@ public partial class LineView : Control
 	public void Render(Line lineData, PackedScene cardScene, Action<CardView> onClickHandler)
 	{
 		_myIndex = lineData.Index;
-		if (InfoLabel != null) InfoLabel.Text = $"L{_myIndex}";
+
+		if (InfoLabel != null)
+		{
+			InfoLabel.Text = _romans[_myIndex];
+			InfoLabel.HorizontalAlignment = HorizontalAlignment.Center;
+			InfoLabel.VerticalAlignment = VerticalAlignment.Center;
+			InfoLabel.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+			InfoLabel.Modulate = new Color(1, 1, 1, 0.2f); 
+		}
 
 		ClearSlot(EnemySlot);
 		ClearSlot(PlayerSlot);
