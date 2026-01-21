@@ -1,0 +1,331 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.GameBootstrap.PropertyName
+  commentId: T:CardGame.GodotClient.GameBootstrap.PropertyName
+  id: GameBootstrap.PropertyName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.GameBootstrap.PropertyName.UI
+  - CardGame.GodotClient.GameBootstrap.PropertyName._botCoordinator
+  - CardGame.GodotClient.GameBootstrap.PropertyName._botId
+  - CardGame.GodotClient.GameBootstrap.PropertyName._inputController
+  - CardGame.GodotClient.GameBootstrap.PropertyName._playerId
+  langs:
+  - csharp
+  - vb
+  name: GameBootstrap.PropertyName
+  nameWithType: GameBootstrap.PropertyName
+  fullName: CardGame.GodotClient.GameBootstrap.PropertyName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: PropertyName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the properties and fields contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class GameBootstrap.PropertyName : Node2D.PropertyName'
+    content.vb: Public Class GameBootstrap.PropertyName Inherits Node2D.PropertyName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.PropertyName
+  - Godot.Node.PropertyName
+  - Godot.CanvasItem.PropertyName
+  - Godot.Node2D.PropertyName
+- uid: CardGame.GodotClient.GameBootstrap.PropertyName.UI
+  commentId: F:CardGame.GodotClient.GameBootstrap.PropertyName.UI
+  id: UI
+  parent: CardGame.GodotClient.GameBootstrap.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: UI
+  nameWithType: GameBootstrap.PropertyName.UI
+  fullName: CardGame.GodotClient.GameBootstrap.PropertyName.UI
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UI
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'UI' field.
+  example: []
+  syntax:
+    content: public static readonly StringName UI
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly UI As StringName
+- uid: CardGame.GodotClient.GameBootstrap.PropertyName._playerId
+  commentId: F:CardGame.GodotClient.GameBootstrap.PropertyName._playerId
+  id: _playerId
+  parent: CardGame.GodotClient.GameBootstrap.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _playerId
+  nameWithType: GameBootstrap.PropertyName._playerId
+  fullName: CardGame.GodotClient.GameBootstrap.PropertyName._playerId
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _playerId
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_playerId' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _playerId
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _playerId As StringName
+- uid: CardGame.GodotClient.GameBootstrap.PropertyName._botId
+  commentId: F:CardGame.GodotClient.GameBootstrap.PropertyName._botId
+  id: _botId
+  parent: CardGame.GodotClient.GameBootstrap.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _botId
+  nameWithType: GameBootstrap.PropertyName._botId
+  fullName: CardGame.GodotClient.GameBootstrap.PropertyName._botId
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _botId
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_botId' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _botId
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _botId As StringName
+- uid: CardGame.GodotClient.GameBootstrap.PropertyName._inputController
+  commentId: F:CardGame.GodotClient.GameBootstrap.PropertyName._inputController
+  id: _inputController
+  parent: CardGame.GodotClient.GameBootstrap.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _inputController
+  nameWithType: GameBootstrap.PropertyName._inputController
+  fullName: CardGame.GodotClient.GameBootstrap.PropertyName._inputController
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _inputController
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_inputController' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _inputController
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _inputController As StringName
+- uid: CardGame.GodotClient.GameBootstrap.PropertyName._botCoordinator
+  commentId: F:CardGame.GodotClient.GameBootstrap.PropertyName._botCoordinator
+  id: _botCoordinator
+  parent: CardGame.GodotClient.GameBootstrap.PropertyName
+  langs:
+  - csharp
+  - vb
+  name: _botCoordinator
+  nameWithType: GameBootstrap.PropertyName._botCoordinator
+  fullName: CardGame.GodotClient.GameBootstrap.PropertyName._botCoordinator
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _botCoordinator
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/CardGame.GodotClient.GameBootstrap_ScriptProperties.generated.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_botCoordinator' field.
+  example: []
+  syntax:
+    content: public static readonly StringName _botCoordinator
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _botCoordinator As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.PropertyName
+  commentId: T:Godot.GodotObject.PropertyName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.PropertyName
+  nameWithType: GodotObject.PropertyName
+  fullName: Godot.GodotObject.PropertyName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Node.PropertyName
+  commentId: T:Godot.Node.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Node.PropertyName
+  nameWithType: Node.PropertyName
+  fullName: Godot.Node.PropertyName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.CanvasItem.PropertyName
+  commentId: T:Godot.CanvasItem.PropertyName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.PropertyName
+  nameWithType: CanvasItem.PropertyName
+  fullName: Godot.CanvasItem.PropertyName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: Godot.Node2D.PropertyName
+  commentId: T:Godot.Node2D.PropertyName
+  parent: Godot
+  isExternal: true
+  name: Node2D.PropertyName
+  nameWithType: Node2D.PropertyName
+  fullName: Godot.Node2D.PropertyName
+  spec.csharp:
+  - uid: Godot.Node2D
+    name: Node2D
+    isExternal: true
+  - name: .
+  - uid: Godot.Node2D.PropertyName
+    name: PropertyName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node2D
+    name: Node2D
+    isExternal: true
+  - name: .
+  - uid: Godot.Node2D.PropertyName
+    name: PropertyName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName

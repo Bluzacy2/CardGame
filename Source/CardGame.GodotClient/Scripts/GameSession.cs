@@ -1,37 +1,48 @@
 using Godot;
 using CardGame.Core.Decks.Data;
 
-/// <summary>
-/// Singleton zarządzający globalnym stanem sesji gry między scenami.
-/// Przechowuje informacje o wybranych taliach przed uruchomieniem właściwej rozgrywki.
-/// </summary>
-public partial class GameSession : Node
+namespace CardGame.GodotClient
 {
     /// <summary>
-    /// Statyczna instancja singletona (Autoload).
+    /// A persistent Singleton (Autoload) that stores global game data across scene transitions.
+    /// Used to pass selected deck configurations from the Menu scenes to the Gameplay scene.
+    /// This node persists throughout the application lifecycle.
     /// </summary>
-    public static GameSession Instance { get; private set; }
-    /// <summary>
-    /// Talia wybrana przez gracza lokalnego.
-    /// </summary>
-    public DeckData SelectedPlayerDeck { get; set; }
-    /// <summary>
-    /// Talia wybrana dla przeciwnika (Bota).
-    /// </summary>
-    public DeckData SelectedBotDeck { get; set; }
-    /// <summary>
-    /// Inicjalizuje singleton po załadowaniu do drzewa sceny.
-    /// </summary>
-    public override void _Ready()
+    public partial class GameSession : Node
     {
-        Instance = this;
-    }
-    /// <summary>
-    /// Czyści zapisane dane sesji (np. po zakończeniu gry).
-    /// </summary>
-    public void Reset()
-    {
-        SelectedPlayerDeck = null;
-        SelectedBotDeck = null;
+        /// <summary>
+        /// The global singleton instance accessible from any script.
+        /// </summary>
+        public static GameSession Instance { get; private set; }
+
+        /// <summary>
+        /// The deck data selected by the human player for the upcoming match.
+        /// Used by GameBootstrap to initialize the player's hand and deck.
+        /// </summary>
+        public DeckData SelectedPlayerDeck { get; set; }
+
+        /// <summary>
+        /// The deck data selected for the AI opponent for the upcoming match.
+        /// Used by GameBootstrap to initialize the opponent's hand and deck.
+        /// </summary>
+        public DeckData SelectedBotDeck { get; set; }
+
+        /// <summary>
+        /// Initializes the singleton instance when the node enters the scene tree.
+        /// </summary>
+        public override void _Ready()
+        {
+            Instance = this;
+        }
+
+        /// <summary>
+        /// Clears the stored session data (e.g., when returning to the main menu).
+        /// Ensures subsequent games don't accidentally use stale deck selections.
+        /// </summary>
+        public void Reset()
+        {
+            SelectedPlayerDeck = null;
+            SelectedBotDeck = null;
+        }
     }
 }

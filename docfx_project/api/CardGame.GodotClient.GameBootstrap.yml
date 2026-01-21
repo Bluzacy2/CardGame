@@ -1,0 +1,328 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.GameBootstrap
+  commentId: T:CardGame.GodotClient.GameBootstrap
+  id: GameBootstrap
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.GameBootstrap.UI
+  - CardGame.GodotClient.GameBootstrap._Process(System.Double)
+  - CardGame.GodotClient.GameBootstrap._Ready
+  langs:
+  - csharp
+  - vb
+  name: GameBootstrap
+  nameWithType: GameBootstrap
+  fullName: CardGame.GodotClient.GameBootstrap
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/CardGame.GodotClient.GameBootstrap_ScriptSerialization.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: GameBootstrap
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/CardGame.GodotClient.GameBootstrap_ScriptSerialization.generated.cs
+    startLine: 5
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    The main entry point and orchestrator for the gameplay scene in Godot.
+
+    Responsible for initializing the core GameEngine, connecting UI and Input systems,
+
+    and managing the main game loop (updates, turns, and game over states).
+  example: []
+  syntax:
+    content: >-
+      [ScriptPath("res://Scripts/GameBootstrap.cs")]
+
+      public class GameBootstrap : Node2D
+    content.vb: >-
+      <ScriptPath("res://Scripts/GameBootstrap.cs")>
+
+      Public Class GameBootstrap Inherits Node2D
+  inheritance:
+  - System.Object
+  - Godot.GodotObject
+  - Godot.Node
+  - Godot.CanvasItem
+  - Godot.Node2D
+  attributes:
+  - type: Godot.ScriptPathAttribute
+    ctor: Godot.ScriptPathAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: res://Scripts/GameBootstrap.cs
+- uid: CardGame.GodotClient.GameBootstrap.UI
+  commentId: F:CardGame.GodotClient.GameBootstrap.UI
+  id: UI
+  parent: CardGame.GodotClient.GameBootstrap
+  langs:
+  - csharp
+  - vb
+  name: UI
+  nameWithType: GameBootstrap.UI
+  fullName: CardGame.GodotClient.GameBootstrap.UI
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameBootstrap.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: UI
+    path: ../Source/CardGame.GodotClient/Scripts/GameBootstrap.cs
+    startLine: 34
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Reference to the UIManager which handles all visual representations.
+
+    Must be assigned in the Godot Editor inspector.
+  example: []
+  syntax:
+    content: >-
+      [Export(PropertyHint.None, "")]
+
+      public UIManager UI
+    return:
+      type: UIManager
+    content.vb: >-
+      <Export(PropertyHint.None, "")>
+
+      Public UI As UIManager
+  attributes:
+  - type: Godot.ExportAttribute
+    ctor: Godot.ExportAttribute.#ctor(Godot.PropertyHint,System.String)
+    arguments:
+    - type: Godot.PropertyHint
+      value: "0"
+    - type: System.String
+      value: ''
+- uid: CardGame.GodotClient.GameBootstrap._Ready
+  commentId: M:CardGame.GodotClient.GameBootstrap._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.GameBootstrap
+  langs:
+  - csharp
+  - vb
+  name: _Ready()
+  nameWithType: GameBootstrap._Ready()
+  fullName: CardGame.GodotClient.GameBootstrap._Ready()
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameBootstrap.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/Scripts/GameBootstrap.cs
+    startLine: 71
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Called when the node enters the scene tree for the first time.
+
+    Validates dependencies and starts the game initialization process.
+  example: []
+  syntax:
+    content: public override void _Ready()
+    content.vb: Public Overrides Sub _Ready()
+  overridden: Godot.Node._Ready
+  overload: CardGame.GodotClient.GameBootstrap._Ready*
+- uid: CardGame.GodotClient.GameBootstrap._Process(System.Double)
+  commentId: M:CardGame.GodotClient.GameBootstrap._Process(System.Double)
+  id: _Process(System.Double)
+  parent: CardGame.GodotClient.GameBootstrap
+  langs:
+  - csharp
+  - vb
+  name: _Process(double)
+  nameWithType: GameBootstrap._Process(double)
+  fullName: CardGame.GodotClient.GameBootstrap._Process(double)
+  type: Method
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/Scripts/GameBootstrap.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Process
+    path: ../Source/CardGame.GodotClient/Scripts/GameBootstrap.cs
+    startLine: 90
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: >-
+    Called every frame. Manages the game loop flow.
+
+    1. Checks for Game Over condition.
+
+    2. Updates InputController state (for targeting/interactions).
+
+    3. Updates UI if the game state has changed.
+
+    4. Triggers AI turn if active.
+  example: []
+  syntax:
+    content: public override void _Process(double delta)
+    parameters:
+    - id: delta
+      type: System.Double
+      description: Time elapsed since the last frame.
+    content.vb: Public Overrides Sub _Process(delta As Double)
+  overridden: Godot.Node._Process(System.Double)
+  overload: CardGame.GodotClient.GameBootstrap._Process*
+  nameWithType.vb: GameBootstrap._Process(Double)
+  fullName.vb: CardGame.GodotClient.GameBootstrap._Process(Double)
+  name.vb: _Process(Double)
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject
+  commentId: T:Godot.GodotObject
+  parent: Godot
+  isExternal: true
+  name: GodotObject
+  nameWithType: GodotObject
+  fullName: Godot.GodotObject
+- uid: Godot.Node
+  commentId: T:Godot.Node
+  parent: Godot
+  isExternal: true
+  name: Node
+  nameWithType: Node
+  fullName: Godot.Node
+- uid: Godot.CanvasItem
+  commentId: T:Godot.CanvasItem
+  parent: Godot
+  isExternal: true
+  name: CanvasItem
+  nameWithType: CanvasItem
+  fullName: Godot.CanvasItem
+- uid: Godot.Node2D
+  commentId: T:Godot.Node2D
+  parent: Godot
+  isExternal: true
+  name: Node2D
+  nameWithType: Node2D
+  fullName: Godot.Node2D
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: UIManager
+  commentId: T:UIManager
+  href: UIManager.html
+  name: UIManager
+  nameWithType: UIManager
+  fullName: UIManager
+- uid: Godot.Node._Ready
+  commentId: M:Godot.Node._Ready
+  parent: Godot.Node
+  isExternal: true
+  name: _Ready()
+  nameWithType: Node._Ready()
+  fullName: Godot.Node._Ready()
+  spec.csharp:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Ready
+    name: _Ready
+    isExternal: true
+  - name: (
+  - name: )
+- uid: CardGame.GodotClient.GameBootstrap._Ready*
+  commentId: Overload:CardGame.GodotClient.GameBootstrap._Ready
+  href: CardGame.GodotClient.GameBootstrap.html#CardGame_GodotClient_GameBootstrap__Ready
+  name: _Ready
+  nameWithType: GameBootstrap._Ready
+  fullName: CardGame.GodotClient.GameBootstrap._Ready
+- uid: Godot.Node._Process(System.Double)
+  commentId: M:Godot.Node._Process(System.Double)
+  parent: Godot.Node
+  isExternal: true
+  name: _Process(double)
+  nameWithType: Node._Process(double)
+  fullName: Godot.Node._Process(double)
+  nameWithType.vb: Node._Process(Double)
+  fullName.vb: Godot.Node._Process(Double)
+  name.vb: _Process(Double)
+  spec.csharp:
+  - uid: Godot.Node._Process(System.Double)
+    name: _Process
+    isExternal: true
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Godot.Node._Process(System.Double)
+    name: _Process
+    isExternal: true
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+  - name: )
+- uid: CardGame.GodotClient.GameBootstrap._Process*
+  commentId: Overload:CardGame.GodotClient.GameBootstrap._Process
+  href: CardGame.GodotClient.GameBootstrap.html#CardGame_GodotClient_GameBootstrap__Process_System_Double_
+  name: _Process
+  nameWithType: GameBootstrap._Process
+  fullName: CardGame.GodotClient.GameBootstrap._Process
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double

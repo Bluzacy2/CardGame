@@ -743,4 +743,20 @@ items:
       - uid: CardGame.Core.StateMachine.GameStateMachine
         name: GameStateMachine
         type: Class
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    type: Namespace
+    items:
+    - uid: CardGame.GodotClient.GameBootstrap
+      name: GameBootstrap
+      type: Class
+    - uid: CardGame.GodotClient.GameBootstrap.MethodName
+      name: GameBootstrap.MethodName
+      type: Class
+    - uid: CardGame.GodotClient.GameBootstrap.PropertyName
+      name: GameBootstrap.PropertyName
+      type: Class
+    - uid: CardGame.GodotClient.GameBootstrap.SignalName
+      name: GameBootstrap.SignalName
+      type: Class
 memberLayout: SamePage

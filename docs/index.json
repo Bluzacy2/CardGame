@@ -1154,14 +1154,39 @@
     "title": "Namespace CardGame.Core | CardGame Docs",
     "summary": "Namespace CardGame.Core Namespaces CardGame.Core.AI CardGame.Core.Application CardGame.Core.Cards CardGame.Core.Combat CardGame.Core.Commands CardGame.Core.Decks CardGame.Core.Events CardGame.Core.GameRules CardGame.Core.State CardGame.Core.StateMachine"
   },
+  "api/CardGame.GodotClient.GameBootstrap.MethodName.html": {
+    "href": "api/CardGame.GodotClient.GameBootstrap.MethodName.html",
+    "title": "Class GameBootstrap.MethodName | CardGame Docs",
+    "summary": "Class GameBootstrap.MethodName Namespace CardGame.GodotClient Assembly CardGame.GodotClient.dll Cached StringNames for the methods contained in this class, for fast lookup. public class GameBootstrap.MethodName : Node2D.MethodName Inheritance object GodotObject.MethodName Node.MethodName CanvasItem.MethodName Node2D.MethodName GameBootstrap.MethodName Fields ConnectLinesSignals Cached name for the 'ConnectLinesSignals' method. public static readonly StringName ConnectLinesSignals Field Value StringName InitializeGame Cached name for the 'InitializeGame' method. public static readonly StringName InitializeGame Field Value StringName OnCardDropped Cached name for the 'OnCardDropped' method. public static readonly StringName OnCardDropped Field Value StringName SetupSubsystems Cached name for the 'SetupSubsystems' method. public static readonly StringName SetupSubsystems Field Value StringName _Process Cached name for the '_Process' method. public static readonly StringName _Process Field Value StringName _Ready Cached name for the '_Ready' method. public static readonly StringName _Ready Field Value StringName"
+  },
+  "api/CardGame.GodotClient.GameBootstrap.PropertyName.html": {
+    "href": "api/CardGame.GodotClient.GameBootstrap.PropertyName.html",
+    "title": "Class GameBootstrap.PropertyName | CardGame Docs",
+    "summary": "Class GameBootstrap.PropertyName Namespace CardGame.GodotClient Assembly CardGame.GodotClient.dll Cached StringNames for the properties and fields contained in this class, for fast lookup. public class GameBootstrap.PropertyName : Node2D.PropertyName Inheritance object GodotObject.PropertyName Node.PropertyName CanvasItem.PropertyName Node2D.PropertyName GameBootstrap.PropertyName Fields UI Cached name for the 'UI' field. public static readonly StringName UI Field Value StringName _botCoordinator Cached name for the '_botCoordinator' field. public static readonly StringName _botCoordinator Field Value StringName _botId Cached name for the '_botId' field. public static readonly StringName _botId Field Value StringName _inputController Cached name for the '_inputController' field. public static readonly StringName _inputController Field Value StringName _playerId Cached name for the '_playerId' field. public static readonly StringName _playerId Field Value StringName"
+  },
+  "api/CardGame.GodotClient.GameBootstrap.SignalName.html": {
+    "href": "api/CardGame.GodotClient.GameBootstrap.SignalName.html",
+    "title": "Class GameBootstrap.SignalName | CardGame Docs",
+    "summary": "Class GameBootstrap.SignalName Namespace CardGame.GodotClient Assembly CardGame.GodotClient.dll Cached StringNames for the signals contained in this class, for fast lookup. public class GameBootstrap.SignalName : Node2D.SignalName Inheritance object GodotObject.SignalName Node.SignalName CanvasItem.SignalName Node2D.SignalName GameBootstrap.SignalName"
+  },
+  "api/CardGame.GodotClient.GameBootstrap.html": {
+    "href": "api/CardGame.GodotClient.GameBootstrap.html",
+    "title": "Class GameBootstrap | CardGame Docs",
+    "summary": "Class GameBootstrap Namespace CardGame.GodotClient Assembly CardGame.GodotClient.dll The main entry point and orchestrator for the gameplay scene in Godot. Responsible for initializing the core GameEngine, connecting UI and Input systems, and managing the main game loop (updates, turns, and game over states). [ScriptPath(\"res://Scripts/GameBootstrap.cs\")] public class GameBootstrap : Node2D Inheritance object GodotObject Node CanvasItem Node2D GameBootstrap Fields UI Reference to the UIManager which handles all visual representations. Must be assigned in the Godot Editor inspector. [Export(PropertyHint.None, \"\")] public UIManager UI Field Value UIManager Methods _Process(double) Called every frame. Manages the game loop flow. Checks for Game Over condition. Updates InputController state (for targeting/interactions). Updates UI if the game state has changed. Triggers AI turn if active. public override void _Process(double delta) Parameters delta double Time elapsed since the last frame. _Ready() Called when the node enters the scene tree for the first time. Validates dependencies and starts the game initialization process. public override void _Ready()"
+  },
+  "api/CardGame.GodotClient.html": {
+    "href": "api/CardGame.GodotClient.html",
+    "title": "Namespace CardGame.GodotClient | CardGame Docs",
+    "summary": "Namespace CardGame.GodotClient Classes GameBootstrap The main entry point and orchestrator for the gameplay scene in Godot. Responsible for initializing the core GameEngine, connecting UI and Input systems, and managing the main game loop (updates, turns, and game over states). GameBootstrap.MethodName Cached StringNames for the methods contained in this class, for fast lookup. GameBootstrap.PropertyName Cached StringNames for the properties and fields contained in this class, for fast lookup. GameBootstrap.SignalName Cached StringNames for the signals contained in this class, for fast lookup."
+  },
   "api/CardGame.html": {
     "href": "api/CardGame.html",
     "title": "Namespace CardGame | CardGame Docs",
-    "summary": "Namespace CardGame Namespaces CardGame.ConsoleApp CardGame.Core"
+    "summary": "Namespace CardGame Namespaces CardGame.ConsoleApp CardGame.Core CardGame.GodotClient"
   },
   "index.html": {
     "href": "index.html",
     "title": "Dokumentacja API | CardGame Docs",
-    "summary": "Dokumentacja API Poniżej znajduje się dokumentacja techniczna wygenerowana z kodu źródłowego. Moduły CardGame.Core <xref:CardGame.GodotClient> CardGame.ConsoleApp (Jeśli linki powyżej nie działają, sprawdź menu po lewej stronie)."
+    "summary": "Dokumentacja API Poniżej znajduje się dokumentacja techniczna wygenerowana z kodu źródłowego. Moduły CardGame.Core CardGame.GodotClient CardGame.ConsoleApp (Jeśli linki powyżej nie działają, sprawdź menu po lewej stronie)."
   }
 }

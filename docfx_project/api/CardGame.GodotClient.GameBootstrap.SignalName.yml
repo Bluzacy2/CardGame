@@ -1,0 +1,174 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.GameBootstrap.SignalName
+  commentId: T:CardGame.GodotClient.GameBootstrap.SignalName
+  id: GameBootstrap.SignalName
+  parent: CardGame.GodotClient
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: GameBootstrap.SignalName
+  nameWithType: GameBootstrap.SignalName
+  fullName: CardGame.GodotClient.GameBootstrap.SignalName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.GameBootstrap_ScriptSignals.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SignalName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSignalsGenerator/CardGame.GodotClient.GameBootstrap_ScriptSignals.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the signals contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class GameBootstrap.SignalName : Node2D.SignalName'
+    content.vb: Public Class GameBootstrap.SignalName Inherits Node2D.SignalName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.SignalName
+  - Godot.Node.SignalName
+  - Godot.CanvasItem.SignalName
+  - Godot.Node2D.SignalName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.SignalName
+  commentId: T:Godot.GodotObject.SignalName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.SignalName
+  nameWithType: GodotObject.SignalName
+  fullName: Godot.GodotObject.SignalName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.SignalName
+    name: SignalName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.SignalName
+    name: SignalName
+    isExternal: true
+- uid: Godot.Node.SignalName
+  commentId: T:Godot.Node.SignalName
+  parent: Godot
+  isExternal: true
+  name: Node.SignalName
+  nameWithType: Node.SignalName
+  fullName: Godot.Node.SignalName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.SignalName
+    name: SignalName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.SignalName
+    name: SignalName
+    isExternal: true
+- uid: Godot.CanvasItem.SignalName
+  commentId: T:Godot.CanvasItem.SignalName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.SignalName
+  nameWithType: CanvasItem.SignalName
+  fullName: Godot.CanvasItem.SignalName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.SignalName
+    name: SignalName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.SignalName
+    name: SignalName
+    isExternal: true
+- uid: Godot.Node2D.SignalName
+  commentId: T:Godot.Node2D.SignalName
+  parent: Godot
+  isExternal: true
+  name: Node2D.SignalName
+  nameWithType: Node2D.SignalName
+  fullName: Godot.Node2D.SignalName
+  spec.csharp:
+  - uid: Godot.Node2D
+    name: Node2D
+    isExternal: true
+  - name: .
+  - uid: Godot.Node2D.SignalName
+    name: SignalName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node2D
+    name: Node2D
+    isExternal: true
+  - name: .
+  - uid: Godot.Node2D.SignalName
+    name: SignalName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot

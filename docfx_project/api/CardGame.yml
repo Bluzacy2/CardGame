@@ -5,6 +5,7 @@ items:
   children:
   - CardGame.ConsoleApp
   - CardGame.Core
+  - CardGame.GodotClient
   langs:
   - csharp
   - vb
@@ -35,3 +36,25 @@ references:
     href: CardGame.ConsoleApp.html
 - uid: CardGame.Core
   isExternal: true
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html

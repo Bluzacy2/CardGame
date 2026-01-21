@@ -1,0 +1,361 @@
+### YamlMime:ManagedReference
+items:
+- uid: CardGame.GodotClient.GameBootstrap.MethodName
+  commentId: T:CardGame.GodotClient.GameBootstrap.MethodName
+  id: GameBootstrap.MethodName
+  parent: CardGame.GodotClient
+  children:
+  - CardGame.GodotClient.GameBootstrap.MethodName.ConnectLinesSignals
+  - CardGame.GodotClient.GameBootstrap.MethodName.InitializeGame
+  - CardGame.GodotClient.GameBootstrap.MethodName.OnCardDropped
+  - CardGame.GodotClient.GameBootstrap.MethodName.SetupSubsystems
+  - CardGame.GodotClient.GameBootstrap.MethodName._Process
+  - CardGame.GodotClient.GameBootstrap.MethodName._Ready
+  langs:
+  - csharp
+  - vb
+  name: GameBootstrap.MethodName
+  nameWithType: GameBootstrap.MethodName
+  fullName: CardGame.GodotClient.GameBootstrap.MethodName
+  type: Class
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: MethodName
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+    startLine: 11
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached StringNames for the methods contained in this class, for fast lookup.
+  example: []
+  syntax:
+    content: 'public class GameBootstrap.MethodName : Node2D.MethodName'
+    content.vb: Public Class GameBootstrap.MethodName Inherits Node2D.MethodName
+  inheritance:
+  - System.Object
+  - Godot.GodotObject.MethodName
+  - Godot.Node.MethodName
+  - Godot.CanvasItem.MethodName
+  - Godot.Node2D.MethodName
+- uid: CardGame.GodotClient.GameBootstrap.MethodName._Ready
+  commentId: F:CardGame.GodotClient.GameBootstrap.MethodName._Ready
+  id: _Ready
+  parent: CardGame.GodotClient.GameBootstrap.MethodName
+  langs:
+  - csharp
+  - vb
+  name: _Ready
+  nameWithType: GameBootstrap.MethodName._Ready
+  fullName: CardGame.GodotClient.GameBootstrap.MethodName._Ready
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Ready
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+    startLine: 15
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_Ready' method.
+  example: []
+  syntax:
+    content: public static readonly StringName _Ready
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _Ready As StringName
+- uid: CardGame.GodotClient.GameBootstrap.MethodName._Process
+  commentId: F:CardGame.GodotClient.GameBootstrap.MethodName._Process
+  id: _Process
+  parent: CardGame.GodotClient.GameBootstrap.MethodName
+  langs:
+  - csharp
+  - vb
+  name: _Process
+  nameWithType: GameBootstrap.MethodName._Process
+  fullName: CardGame.GodotClient.GameBootstrap.MethodName._Process
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: _Process
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+    startLine: 19
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the '_Process' method.
+  example: []
+  syntax:
+    content: public static readonly StringName _Process
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly _Process As StringName
+- uid: CardGame.GodotClient.GameBootstrap.MethodName.InitializeGame
+  commentId: F:CardGame.GodotClient.GameBootstrap.MethodName.InitializeGame
+  id: InitializeGame
+  parent: CardGame.GodotClient.GameBootstrap.MethodName
+  langs:
+  - csharp
+  - vb
+  name: InitializeGame
+  nameWithType: GameBootstrap.MethodName.InitializeGame
+  fullName: CardGame.GodotClient.GameBootstrap.MethodName.InitializeGame
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: InitializeGame
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+    startLine: 23
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'InitializeGame' method.
+  example: []
+  syntax:
+    content: public static readonly StringName InitializeGame
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly InitializeGame As StringName
+- uid: CardGame.GodotClient.GameBootstrap.MethodName.SetupSubsystems
+  commentId: F:CardGame.GodotClient.GameBootstrap.MethodName.SetupSubsystems
+  id: SetupSubsystems
+  parent: CardGame.GodotClient.GameBootstrap.MethodName
+  langs:
+  - csharp
+  - vb
+  name: SetupSubsystems
+  nameWithType: GameBootstrap.MethodName.SetupSubsystems
+  fullName: CardGame.GodotClient.GameBootstrap.MethodName.SetupSubsystems
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: SetupSubsystems
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+    startLine: 27
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'SetupSubsystems' method.
+  example: []
+  syntax:
+    content: public static readonly StringName SetupSubsystems
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly SetupSubsystems As StringName
+- uid: CardGame.GodotClient.GameBootstrap.MethodName.ConnectLinesSignals
+  commentId: F:CardGame.GodotClient.GameBootstrap.MethodName.ConnectLinesSignals
+  id: ConnectLinesSignals
+  parent: CardGame.GodotClient.GameBootstrap.MethodName
+  langs:
+  - csharp
+  - vb
+  name: ConnectLinesSignals
+  nameWithType: GameBootstrap.MethodName.ConnectLinesSignals
+  fullName: CardGame.GodotClient.GameBootstrap.MethodName.ConnectLinesSignals
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: ConnectLinesSignals
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+    startLine: 31
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'ConnectLinesSignals' method.
+  example: []
+  syntax:
+    content: public static readonly StringName ConnectLinesSignals
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly ConnectLinesSignals As StringName
+- uid: CardGame.GodotClient.GameBootstrap.MethodName.OnCardDropped
+  commentId: F:CardGame.GodotClient.GameBootstrap.MethodName.OnCardDropped
+  id: OnCardDropped
+  parent: CardGame.GodotClient.GameBootstrap.MethodName
+  langs:
+  - csharp
+  - vb
+  name: OnCardDropped
+  nameWithType: GameBootstrap.MethodName.OnCardDropped
+  fullName: CardGame.GodotClient.GameBootstrap.MethodName.OnCardDropped
+  type: Field
+  source:
+    remote:
+      path: Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+      branch: main
+      repo: https://github.com/Bluzacy2/CardGame
+    id: OnCardDropped
+    path: ../Source/CardGame.GodotClient/.godot/mono/temp/obj/Release/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CardGame.GodotClient.GameBootstrap_ScriptMethods.generated.cs
+    startLine: 35
+  assemblies:
+  - CardGame.GodotClient
+  namespace: CardGame.GodotClient
+  summary: Cached name for the 'OnCardDropped' method.
+  example: []
+  syntax:
+    content: public static readonly StringName OnCardDropped
+    return:
+      type: Godot.StringName
+    content.vb: Public Shared ReadOnly OnCardDropped As StringName
+references:
+- uid: CardGame.GodotClient
+  commentId: N:CardGame.GodotClient
+  href: CardGame.html
+  name: CardGame.GodotClient
+  nameWithType: CardGame.GodotClient
+  fullName: CardGame.GodotClient
+  spec.csharp:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+  spec.vb:
+  - uid: CardGame
+    name: CardGame
+    href: CardGame.html
+  - name: .
+  - uid: CardGame.GodotClient
+    name: GodotClient
+    href: CardGame.GodotClient.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Godot.GodotObject.MethodName
+  commentId: T:Godot.GodotObject.MethodName
+  parent: Godot
+  isExternal: true
+  name: GodotObject.MethodName
+  nameWithType: GodotObject.MethodName
+  fullName: Godot.GodotObject.MethodName
+  spec.csharp:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.GodotObject
+    name: GodotObject
+    isExternal: true
+  - name: .
+  - uid: Godot.GodotObject.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Node.MethodName
+  commentId: T:Godot.Node.MethodName
+  parent: Godot
+  isExternal: true
+  name: Node.MethodName
+  nameWithType: Node.MethodName
+  fullName: Godot.Node.MethodName
+  spec.csharp:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node
+    name: Node
+    isExternal: true
+  - name: .
+  - uid: Godot.Node.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.CanvasItem.MethodName
+  commentId: T:Godot.CanvasItem.MethodName
+  parent: Godot
+  isExternal: true
+  name: CanvasItem.MethodName
+  nameWithType: CanvasItem.MethodName
+  fullName: Godot.CanvasItem.MethodName
+  spec.csharp:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.CanvasItem
+    name: CanvasItem
+    isExternal: true
+  - name: .
+  - uid: Godot.CanvasItem.MethodName
+    name: MethodName
+    isExternal: true
+- uid: Godot.Node2D.MethodName
+  commentId: T:Godot.Node2D.MethodName
+  parent: Godot
+  isExternal: true
+  name: Node2D.MethodName
+  nameWithType: Node2D.MethodName
+  fullName: Godot.Node2D.MethodName
+  spec.csharp:
+  - uid: Godot.Node2D
+    name: Node2D
+    isExternal: true
+  - name: .
+  - uid: Godot.Node2D.MethodName
+    name: MethodName
+    isExternal: true
+  spec.vb:
+  - uid: Godot.Node2D
+    name: Node2D
+    isExternal: true
+  - name: .
+  - uid: Godot.Node2D.MethodName
+    name: MethodName
+    isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Godot
+  commentId: N:Godot
+  isExternal: true
+  name: Godot
+  nameWithType: Godot
+  fullName: Godot
+- uid: Godot.StringName
+  commentId: T:Godot.StringName
+  parent: Godot
+  isExternal: true
+  name: StringName
+  nameWithType: StringName
+  fullName: Godot.StringName
